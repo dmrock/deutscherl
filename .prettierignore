@@ -1,0 +1,5 @@
+# Prettier formats only .astro and .svelte files (Biome handles everything else).
+dist/
+.astro/
+node_modules/
+pnpm-lock.yaml
