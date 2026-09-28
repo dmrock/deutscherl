@@ -1,0 +1,38 @@
+---
+import { PUBLIC_DEPLOY_ENV } from 'astro:env/client';
+import { site } from '../config/site.ts';
+import { getLocaleConfig, type LocaleCode } from '../i18n/locales.ts';
+import { t } from '../i18n/utils.ts';
+import '../styles/global.css';
+
+interface Props {
+  locale: LocaleCode;
+  title?: string;
+  /** Force noindex for this page (e.g. coming-soon pages). */
+  noindex?: boolean;
+}
+
+const { locale, title, noindex = false } = Astro.props;
+const localeConfig = getLocaleConfig(locale);
+const pageTitle = title ? `${title} · ${site.name}` : site.name;
+const robotsNoindex = noindex || !localeConfig.ready || PUBLIC_DEPLOY_ENV === 'preview';
+---
+
+<!doctype html>
+<html lang={localeConfig.code} dir={localeConfig.dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={t(locale, 'site.tagline')} />
+    {robotsNoindex && <meta name="robots" content="noindex" />}
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only">
+      {t(locale, 'site.skipToContent')}
+    </a>
+    <main id="main" class="mx-auto max-w-3xl px-4 py-8">
+      <slot />
+    </main>
+  </body>
+</html>

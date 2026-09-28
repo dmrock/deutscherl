@@ -1,0 +1,45 @@
+{
+  "name": "deutscherl",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Free website for learning German grammar, with explanations in your native language.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@12.6.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "check:language": "node scripts/check-language.ts",
+    "lint": "biome check . && prettier --check \"**/*.{astro,svelte}\"",
+    "format": "biome check --write . && prettier --write \"**/*.{astro,svelte}\"",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "prepare": "lefthook install"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/svelte": "^9.0.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.5",
+    "svelte": "^5.57.1",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@biomejs/biome": "^2.5.14",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.19.0",
+    "lefthook": "^2.1.14",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
+    "prettier-plugin-svelte": "^4.1.1",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.2",
+    "wrangler": "^4.142.0"
+  }
+}
