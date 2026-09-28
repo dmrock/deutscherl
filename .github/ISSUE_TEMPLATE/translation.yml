@@ -1,0 +1,49 @@
+name: Translation
+description: Propose a new native language, or offer to translate or review an existing one.
+title: '[Translation] '
+labels: ['translation']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please read "Proposing a new native language" in CONTRIBUTING.md first.
+        For a single wrong translation on a page, use "Report a mistake" instead.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What do you propose?
+      options:
+        - A new native language
+        - Translating or reviewing missing parts of an existing language
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      description: Name of the language in English and its code (BCP 47), for example "Ukrainian (uk)".
+    validations:
+      required: true
+  - type: dropdown
+    id: direction
+    attributes:
+      label: Writing direction
+      options:
+        - Left to right
+        - Right to left
+    validations:
+      required: true
+  - type: textarea
+    id: fluency
+    attributes:
+      label: Your fluency
+      description: Are you a native or fluent speaker? A fluent speaker has to review every translation.
+    validations:
+      required: true
+  - type: textarea
+    id: plan
+    attributes:
+      label: What can you do?
+      description: For example "translate UI strings and the A1 topics" or "review existing translations".
+    validations:
+      required: true
