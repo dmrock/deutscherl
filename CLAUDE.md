@@ -239,6 +239,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Required status checks (job names): `DCO`, `Language check`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`.
 - `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"`, default HTML handling (trailing slash, matching Astro), production only on the custom domain, preview URLs enabled. Check the current Wrangler docs for the exact keys.
 - Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account), variable `CLOUDFLARE_ACCOUNT_ID`.
+- Preview URLs live on the account's workers.dev subdomain (`pr-<n>-deutscherl.<subdomain>.workers.dev`), so the Cloudflare account must have one: opening Workers & Pages in the dashboard once creates it. Production does not use workers.dev (`workers_dev: false`).
 
 ## Legal pages (Austria)
 
