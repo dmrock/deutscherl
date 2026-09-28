@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deutscherl architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F9;--paper:#FFFFFF;--ink:#18202E;--ink-2:#4A5568;--ink-3:#7A8699;
+  --line:#DDE1E8;--line-2:#C4CAD4;
+  --red:#C8102E;--red-bg:#FBE9EC;--red-ink:#9A0C23;
+  --blue:#2F5496;--blue-bg:#E8EEF8;
+  --green:#2E7D4F;--green-bg:#E6F3EC;
+  --amber:#8A5A00;--amber-bg:#FBF1DC;
+  --code-bg:#EEF0F4;
+  --font:"Atkinson Hyperlegible Next",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"Atkinson Hyperlegible Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11151C;--paper:#171C25;--ink:#E6E9EF;--ink-2:#B3BBC8;--ink-3:#8993A3;
+    --line:#2A313D;--line-2:#3A4250;
+    --red:#FF5A6E;--red-bg:#3A1A21;--red-ink:#FFB3BD;
+    --blue:#8FB0E8;--blue-bg:#1C2940;
+    --green:#6CCB94;--green-bg:#17301F;
+    --amber:#E8B85C;--amber-bg:#352912;
+    --code-bg:#1E2430;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11151C;--paper:#171C25;--ink:#E6E9EF;--ink-2:#B3BBC8;--ink-3:#8993A3;
+  --line:#2A313D;--line-2:#3A4250;
+  --red:#FF5A6E;--red-bg:#3A1A21;--red-ink:#FFB3BD;
+  --blue:#8FB0E8;--blue-bg:#1C2940;
+  --green:#6CCB94;--green-bg:#17301F;
+  --amber:#E8B85C;--amber-bg:#352912;
+  --code-bg:#1E2430;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:3px}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.top-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:12px 24px}
+.brand{font-weight:700;font-size:19px;letter-spacing:-.01em}
+.brand span{color:var(--red)}
+.top small{color:var(--ink-3);font-size:14px}
+.theme{margin-left:auto;font:inherit;font-size:14px;color:var(--ink-2);background:transparent;border:1px solid var(--line-2);border-radius:8px;padding:5px 12px;cursor:pointer}
+
+.wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;padding:0 24px}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);align-self:start;padding:28px 0;font-size:14.5px}
+.toc p{margin:0 0 8px;color:var(--ink-3);font-size:13px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:8px;padding:4px 10px;border-radius:6px;color:var(--ink-2);text-decoration:none}
+.toc a::before{content:counter(t);color:var(--ink-3);min-width:16px;font-variant-numeric:tabular-nums}
+.toc a:hover{background:var(--code-bg);color:var(--ink)}
+.toc a.on{background:var(--red-bg);color:var(--red-ink)}
+.toc a.on::before{color:var(--red-ink)}
+
+main{padding:40px 0 96px;min-width:0}
+.prose{max-width:760px}
+h1{font-size:40px;line-height:1.15;letter-spacing:-.02em;margin:0 0 14px;font-weight:700}
+.lead{font-size:20px;color:var(--ink-2);margin:0 0 32px;max-width:680px}
+h2{font-size:27px;line-height:1.25;letter-spacing:-.01em;margin:72px 0 12px;font-weight:700;padding-top:20px;border-top:1px solid var(--line)}
+h3{font-size:19px;margin:32px 0 8px;font-weight:700}
+p{margin:0 0 14px}
+ul{padding-left:22px;margin:0 0 14px}
+li{margin:4px 0}
+code{font-family:var(--mono);font-size:.88em;background:var(--code-bg);padding:1px 6px;border-radius:5px}
+pre.tree{font-family:var(--mono);font-size:14px;line-height:1.6;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;overflow-x:auto;margin:0 0 16px}
+pre.tree .c{color:var(--ink-3)}
+pre.tree .k{color:var(--red);font-weight:500}
+
+.fig{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;margin:20px 0 24px;overflow-x:auto}
+.fig figcaption,.cap{font-size:14px;color:var(--ink-3);margin-top:10px}
+pre.mermaid{margin:0;background:transparent;text-align:center;font-family:var(--font)}
+
+.hero-svg{min-width:780px;width:100%;height:auto;display:block}
+.hero-svg text{font-family:var(--font);fill:var(--ink)}
+.hero-svg .t2{fill:var(--ink-2);font-size:14px}
+.hero-svg .t3{fill:var(--ink-3);font-size:13px}
+.hero-svg .ttl{font-size:16px;font-weight:700}
+.hero-svg .box{fill:var(--paper);stroke:var(--line-2);stroke-width:1.2}
+.hero-svg .build{fill:var(--blue-bg);stroke:var(--blue);stroke-width:1.2}
+.hero-svg .run{fill:var(--red-bg);stroke:var(--red);stroke-width:1.2}
+.hero-svg .arrow{stroke:var(--ink-2);stroke-width:1.6;fill:none}
+.hero-svg .divider{stroke:var(--red);stroke-width:1.5;stroke-dasharray:6 6}
+.hero-svg .zone{font-size:14px;font-weight:700}
+.hero-svg .red{fill:var(--red-ink)}
+.hero-svg .blue{fill:var(--blue)}
+
+.layers{display:grid;gap:8px;margin:20px 0 24px}
+.layer{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.layer b{font-weight:700}
+.layer span{display:block;font-size:14px;color:var(--ink-3)}
+.layer p{margin:0;font-size:15.5px;color:var(--ink-2)}
+.layer.l1{border-left:4px solid var(--blue);border-radius:0 10px 10px 0}
+.layer.l2{border-left:4px solid var(--green);border-radius:0 10px 10px 0}
+.layer.l3{border-left:4px solid var(--amber);border-radius:0 10px 10px 0}
+.layer.l4{border-left:4px solid var(--red);border-radius:0 10px 10px 0}
+.layer.l5{border-left:4px solid var(--ink-3);border-radius:0 10px 10px 0}
+
+.tbl-wrap{overflow-x:auto;margin:16px 0 24px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--ink-2);font-size:14px;background:var(--code-bg)}
+tr:last-child td{border-bottom:0}
+td code{white-space:nowrap}
+
+.note{border-radius:12px;padding:14px 18px;margin:18px 0;font-size:16px}
+.note.warn{background:var(--amber-bg);color:var(--amber)}
+.note.info{background:var(--blue-bg);color:var(--blue)}
+.note b{font-weight:700}
+
+.status{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 20px}
+.st{border-radius:8px;padding:6px 12px;font-size:14.5px;font-weight:500}
+.st.d{background:var(--code-bg);color:var(--ink-2)}
+.st.r{background:var(--blue-bg);color:var(--blue)}
+.st.v{background:var(--green-bg);color:var(--green)}
+
+.budget{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:16px 0 24px}
+.budget div{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.budget strong{display:block;font-size:26px;letter-spacing:-.01em}
+.budget span{font-size:14px;color:var(--ink-3)}
+
+.adr{display:grid;gap:12px;margin:16px 0}
+.adr details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.adr summary{cursor:pointer;font-weight:700}
+.adr details[open] summary{margin-bottom:8px}
+.adr p{font-size:15.5px;color:var(--ink-2)}
+
+footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
+
+@media (max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0}
+  .toc{display:none}
+  h1{font-size:32px}
+  .layer{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand">Deutsch<span>erl</span></div>
+  <small>Pilot architecture</small>
+  <button class="theme" id="themeBtn" type="button">Theme</button>
+</div></header>
+
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#idea">Core idea</a></li>
+    <li><a href="#layers">Layers</a></li>
+    <li><a href="#repo">Repository layout</a></li>
+    <li><a href="#content">Content model</a></li>
+    <li><a href="#i18n">Native language and fonts</a></li>
+    <li><a href="#review">Content review</a></li>
+    <li><a href="#dictionary">Dictionary</a></li>
+    <li><a href="#page">Life of a page</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+    <li><a href="#routes">Routes</a></li>
+    <li><a href="#quality">Tests, CI and deployment</a></li>
+    <li><a href="#budgets">Budgets</a></li>
+    <li><a href="#ops">Analytics and legal</a></li>
+    <li><a href="#decisions">Decisions</a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="prose">
+<h1>Deutscherl architecture</h1>
+<p class="lead">A website for learning German grammar with an Austrian angle. Explanations in the learner's native language: English and Russian in the pilot. Levels A1 and A2 with five topics each, a dictionary, multiple-choice and word-order exercises. No accounts, no server code, no cookies.</p>
+<div class="note info">The source of truth is <code>CLAUDE.md</code> in the repository; the decision history is in <code>docs/decisions.md</code>. This page is an illustrated snapshot from the planning phase.</div>
+</div>
+
+<section id="idea">
+<div class="prose">
+<h2>Core idea: everything is built ahead of time</h2>
+<p>The whole site is turned into static files at build time: content validation, dictionary queries, rendering pages in every language and the search index. Visitors get finished HTML from the CDN. Regular pages carry only a couple of tiny inline scripts; exercises load when the visitor scrolls to them.</p>
+</div>
+<figure class="fig">
+<svg class="hero-svg" viewBox="0 0 1040 390" role="img" aria-labelledby="heroT heroD">
+<title id="heroT">Flow from sources to the browser</title>
+<desc id="heroD">Content, dictionary and components are built in GitHub Actions into static files that Cloudflare serves to the browser. There is no server code.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" style="color:var(--ink-2)"/></marker></defs>
+<text x="20" y="28" class="zone blue">Build: GitHub Actions</text>
+<text x="700" y="28" class="zone red">Runtime: CDN and browser</text>
+<rect x="20" y="58" width="190" height="66" rx="10" class="box"/>
+<text x="36" y="86" class="ttl">Content</text><text x="36" y="108" class="t2">MDX + YAML</text>
+<rect x="20" y="148" width="190" height="66" rx="10" class="box"/>
+<text x="36" y="176" class="ttl">Dictionary</text><text x="36" y="198" class="t2">JSONL + overrides</text>
+<rect x="20" y="238" width="190" height="66" rx="10" class="box"/>
+<text x="36" y="266" class="ttl">Components</text><text x="36" y="288" class="t2">Astro + Svelte</text>
+<path d="M210,91 L256,120" class="arrow" marker-end="url(#ah)"/>
+<path d="M210,181 L256,181" class="arrow" marker-end="url(#ah)"/>
+<path d="M210,271 L256,242" class="arrow" marker-end="url(#ah)"/>
+<rect x="260" y="50" width="220" height="262" rx="12" class="build"/>
+<text x="280" y="82" class="ttl blue">checks and build</text>
+<text x="280" y="116" class="t2">schemas, cross-file links</text>
+<text x="280" y="144" class="t2">review status</text>
+<text x="280" y="172" class="t2">SQLite from JSONL</text>
+<text x="280" y="200" class="t2">HTML in every language</text>
+<text x="280" y="228" class="t2">Pagefind indexes</text>
+<text x="280" y="268" class="t3">any error means</text>
+<text x="280" y="288" class="t3">no deployment</text>
+<path d="M480,181 L516,181" class="arrow" marker-end="url(#ah)"/>
+<rect x="520" y="126" width="140" height="110" rx="10" class="box"/>
+<text x="538" y="156" class="ttl">dist/</text>
+<text x="538" y="182" class="t2">HTML, CSS</text>
+<text x="538" y="204" class="t2">a little JS</text>
+<text x="538" y="226" class="t3">fonts, search</text>
+<line x1="680" y1="40" x2="680" y2="340" class="divider"/>
+<path d="M660,181 L706,181" class="arrow" marker-end="url(#ah)"/>
+<rect x="710" y="126" width="130" height="110" rx="10" class="run"/>
+<text x="728" y="156" class="ttl red">Cloudflare</text>
+<text x="728" y="182" class="t2">Workers,</text>
+<text x="728" y="204" class="t2">static</text>
+<text x="728" y="224" class="t2">assets only</text>
+<path d="M840,181 L876,181" class="arrow" marker-end="url(#ah)"/>
+<rect x="880" y="50" width="145" height="262" rx="12" class="run"/>
+<text x="896" y="82" class="ttl red">Browser</text>
+<text x="896" y="116" class="t2">HTML visible</text>
+<text x="896" y="136" class="t2">immediately</text>
+<text x="896" y="170" class="t2">exercises load</text>
+<text x="896" y="190" class="t2">on scroll</text>
+<text x="896" y="224" class="t3">sessionStorage:</text>
+<text x="896" y="242" class="t3">seen exercise ids</text>
+<text x="896" y="272" class="t3">localStorage:</text>
+<text x="896" y="290" class="t3">theme and language</text>
+<text x="20" y="372" class="t3">All the heavy work happens left of the line.</text>
+<text x="700" y="372" class="t3">Right of it: no server, no database.</text>
+</svg>
+<figcaption>The red dashed line is the border between build time and runtime. Only static files cross it.</figcaption>
+</figure>
+</section>
+
+<section id="layers">
+<div class="prose">
+<h2>Layers</h2>
+<p>Each layer only knows about the one below it, so layers can change independently.</p>
+</div>
+<div class="layers">
+  <div class="layer l4"><div><b>Interaction</b><span>Svelte islands and inline JS</span></div><p>Svelte only where real interactivity is needed: exercises and the dictionary filter. Theme, language picker and language hint are a few lines of plain inline JavaScript. Search loads when opened.</p></div>
+  <div class="layer l3"><div><b>Presentation</b><span>Astro components</span></div><p>Layout variant A and MDX components: <code>&lt;InShort&gt;</code>, <code>&lt;RuleTable&gt;</code>, <code>&lt;Example id&gt;</code>, <code>&lt;AustrianNote id&gt;</code>, <code>&lt;Word id&gt;</code>, <code>&lt;SponsorSlot&gt;</code>. Page transitions use native CSS View Transitions.</p></div>
+  <div class="layer l2"><div><b>Logic</b><span>src/lib, plain TypeScript</span></div><p>Item selection with seeded randomness, answer checking with regional variants and alternative word orders, hashes for content review. No DOM, fully unit-tested.</p></div>
+  <div class="layer l1"><div><b>Data</b><span>text files in git</span></div><p>Topics (MDX and YAML), per-language translations, review state, the dictionary as JSONL with manual override files. SQLite is generated from them at build time.</p></div>
+  <div class="layer l5"><div><b>Quality</b><span>cross-cutting</span></div><p>Language check, Biome, <code>astro check</code>, content and review checks, translation coverage, Vitest, Playwright with axe and snapshots, JS budget. Deployment only after every check passes.</p></div>
+</div>
+</section>
+
+<section id="repo">
+<div class="prose">
+<h2>Repository layout</h2>
+<p>Everything people edit is a text file, so every change shows up in the pull request diff. Everything generated stays out of git. Everything is in English except localization files.</p>
+</div>
+<pre class="tree"><span class="k">deutscherl/</span>
+├── CLAUDE.md                     <span class="c">source of truth for Claude Code</span>
+├── PLAN.md                       <span class="c">stages and prompts</span>
+├── LICENSE / LICENSE-CONTENT     <span class="c">MIT for code, CC BY-SA 4.0 for content</span>
+├── CONTRIBUTING.md               <span class="c">issue first, then PR, DCO</span>
+├── wrangler.jsonc                <span class="c">static-assets Worker</span>
+├── .github/                      <span class="c">CI and deployment, issue forms</span>
+├── docs/
+│   ├── decisions.md              <span class="c">decision log</span>
+│   └── adding-a-language.md
+├── src/
+│   ├── i18n/
+│   │   ├── locales.ts            <span class="c">code, ready, dir, font</span>
+│   │   └── ui/en.ts, ui/ru.ts    <span class="c">UI strings</span>
+│   ├── content/topics/a2/perfekt/
+│   │   ├── meta.yaml             <span class="c">level, category, sources</span>
+│   │   ├── <span class="k">german.yaml</span>           <span class="c">all German: examples, exercises</span>
+│   │   ├── en.mdx / ru.mdx       <span class="c">explanations</span>
+│   │   ├── i18n/en.yaml, ru.yaml <span class="c">translations and why texts by id</span>
+│   │   └── <span class="k">review.yaml</span>           <span class="c">status and hashes, managed by a script</span>
+│   ├── components/               <span class="c">layout, content, exercises</span>
+│   ├── lib/                      <span class="c">pure logic</span>
+│   └── pages/
+├── db/
+│   ├── schema.ts                 <span class="c">Drizzle schema</span>
+│   ├── data/words.jsonl          <span class="c">import output</span>
+│   ├── <span class="k">overrides/*.yaml</span>          <span class="c">manual edits, never touched by import</span>
+│   └── seed/lemmas-a1-a2.txt     <span class="c">lemmas and levels</span>
+├── scripts/                      <span class="c">import, dictionary build, checks, review</span>
+├── tests/unit, tests/e2e, tests/fixtures
+├── .data/                        <span class="c">raw kaikki.org files, not in git</span>
+└── .cache/dictionary.sqlite      <span class="c">generated, not in git</span></pre>
+</section>
+
+<section id="content">
+<div class="prose">
+<h2>Content model</h2>
+<p>Core principle: German text is stored exactly once, in <code>german.yaml</code>, and shared by every language. Everything written in the learner's native language lives in that language's own files. Translators never touch German files, and a new translation never resets the German review.</p>
+</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>File</th><th>Contents</th><th>Edited by</th></tr></thead>
+<tbody>
+<tr><td><code>meta.yaml</code></td><td>Level, category, order, reading time, sources</td><td>Topic author</td></tr>
+<tr><td><code>german.yaml</code></td><td>Examples, choice items, word-order items, Austrian notes — German only</td><td>Author, teacher's corrections</td></tr>
+<tr><td><code>en.mdx</code></td><td>Canonical explanation: title, "In short", rule, table, <code>&lt;Example id="e1" /&gt;</code> references</td><td>Author</td></tr>
+<tr><td><code>ru.mdx</code></td><td>The same in Russian, translated from the English meaning</td><td>Translator</td></tr>
+<tr><td><code>i18n/&lt;locale&gt;.yaml</code></td><td>Example translations, <code>why</code> texts, word-order translations, note translations — by id</td><td>Translator</td></tr>
+<tr><td><code>review.yaml</code></td><td>Base and translation statuses, reviewers, hashes, <code>basedOn</code>, history</td><td>Script only</td></tr>
+</tbody></table></div>
+<pre class="tree"><span class="c"># german.yaml (excerpt)</span>
+choice:
+  - id: c7
+    text: "Ich ___ gestern lange gesessen."
+    answer: habe
+    options: [habe, bin]
+    alsoCorrect:
+      - { value: bin, region: AT }
+wordOrder:
+  - id: w1
+    parts: [ich, habe, Pizza, gegessen]     <span class="c"># neutral case: no hint</span>
+    accept:
+      - [Pizza, habe, ich, gegessen]
+    punctuation: "."
+
+<span class="c"># i18n/en.yaml (excerpt)</span>
+choice:
+  c7:
+    why: "Germany: habe gesessen. Austria and southern Germany: bin gesessen."</pre>
+<div class="prose">
+<h3>Where rules are checked</h3>
+<p>Zod in Content Collections validates the shape of each file. Everything that spans files (ids used in MDX exist, every ready language has every key, the answer is among the options, hashes match) is checked by a separate script, <code>validate-content.ts</code>: Zod only sees one file at a time.</p>
+</div>
+</section>
+
+<section id="i18n">
+<div class="prose">
+<h2>Native language and fonts</h2>
+<p>The learner chooses the language grammar is explained in. German is always the language being learned and is never a site language.</p>
+</div>
+<figure class="fig">
+<pre class="mermaid">
+flowchart LR
+  subgraph shared["Shared by all languages"]
+    DE["german.yaml&lt;br/&gt;examples and exercises"]
+    META["meta.yaml"]
+  end
+  subgraph perlocale["Per language"]
+    MDX["en.mdx, ru.mdx&lt;br/&gt;explanation"]
+    TR["i18n/en.yaml, ru.yaml&lt;br/&gt;translations and why"]
+    UI["ui/en.ts, ui/ru.ts&lt;br/&gt;interface"]
+    GL["dictionary&lt;br/&gt;glosses"]
+  end
+  DE --> B["build"]
+  META --> B
+  MDX --> B
+  TR --> B
+  UI --> B
+  GL --> B
+  B --> EN["/a2/perfekt/"]
+  B --> RU["/ru/a2/perfekt/"]
+</pre>
+</figure>
+<div class="prose">
+<ul>
+<li><b>One list of languages.</b> <code>locales.ts</code>: code, name in the language itself, <code>ready</code>, writing direction <code>dir</code> and font. A new language starts with <code>ready: false</code>: its pages are built but hidden from the picker, sitemap and search.</li>
+<li><b>URLs.</b> English without a prefix, others with a prefix, same slugs in every language. The picker is a plain link to the same page.</li>
+<li><b>No redirects.</b> If the page language differs from the saved choice or the browser language, a small dismissible hint appears.</li>
+<li><b>Outdated translations.</b> <code>review.yaml</code> records which version of English and German each translation was written against. If they change, the translation drops back to draft and shows up in <code>review:status</code>.</li>
+<li><b>Ready for right-to-left.</b> Logical CSS properties only (<code>ms-</code>, <code>pe-</code>, <code>start</code>, <code>end</code>) from day one, so Arabic or Hebrew later won't require a layout rewrite.</li>
+<li><b>Markup.</b> <code>&lt;html lang dir&gt;</code> from the page language, German fragments marked <code>lang="de"</code>, <code>hreflang</code> for every version.</li>
+<li><b>Repository language.</b> Native-language text only in localization files; a CI check rejects non-Latin letters anywhere else.</li>
+</ul>
+<h3>Fonts</h3>
+<p>Atkinson Hyperlegible Next has no Cyrillic: its Fontsource package only ships <code>latin</code> and <code>latin-ext</code>. So each language gets its own font.</p>
+</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>What</th><th>Font</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>German blocks in every language</td><td>Atkinson Hyperlegible Next</td><td>Very legible umlauts, ß, I/l/1; German looks the same everywhere</td></tr>
+<tr><td>English pages</td><td>Atkinson Hyperlegible Next</td><td>One font for the whole page</td></tr>
+<tr><td>Russian pages</td><td>Chosen after a comparison: Golos Text, Inter, Noto Sans or Onest</td><td>All four ship Cyrillic and Latin on Fontsource</td></tr>
+<tr><td>Future languages</td><td>Their own entry in <code>locales.ts</code></td><td>Complex scripts need no code changes</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="review">
+<div class="prose">
+<h2>Content review</h2>
+<p>Each topic is reviewed in two parts, so every part is checked by someone who can actually judge it. The German teacher verifies the German content and the canonical English explanation. Each translation is reviewed by a fluent speaker of that language against the verified English page; for Russian, that is the owner. Nobody needs to know German and Russian at the same time.</p>
+</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Scope</th><th>Files</th><th>Statuses</th><th>Checked by</th></tr></thead>
+<tbody>
+<tr><td><b>base</b></td><td><code>meta.yaml</code>, <code>german.yaml</code>, <code>en.mdx</code>, <code>i18n/en.yaml</code></td><td>draft → reviewed → verified</td><td>Owner reads, German teacher verifies</td></tr>
+<tr><td><b>translation</b> (per locale)</td><td><code>ru.mdx</code>, <code>i18n/ru.yaml</code></td><td>draft → reviewed</td><td>Fluent speaker, compared with English</td></tr>
+</tbody></table></div>
+<figure class="fig">
+<pre class="mermaid">
+flowchart TD
+  E["edit"] --> Q{"which files?"}
+  Q -->|"German or English"| RB["base → draft&lt;br/&gt;translations checked against&lt;br/&gt;the old base → draft"]
+  Q -->|"Russian only"| RT["ru translation → draft"]
+  Q -->|"typo, review:minor&lt;br/&gt;with a reason"| K["status kept&lt;br/&gt;history entry"]
+  RB --> H["history entry,&lt;br/&gt;visible in the PR diff"]
+  RT --> H
+</pre>
+<figcaption>Each scope stores a hash of its normalized content; each translation also stores <code>basedOn</code>, the base hash it was checked against. A pre-commit hook performs resets; CI refuses an out-of-sync <code>review.yaml</code>.</figcaption>
+</figure>
+<div class="prose">
+<h3>Badges say exactly what was checked</h3>
+</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Page</th><th>Badge</th></tr></thead>
+<tbody>
+<tr><td>English</td><td>"Checked by a teacher" when base is verified and unchanged, otherwise "Draft"</td></tr>
+<tr><td>Russian</td><td>"German checked by a teacher" (base verified) + "Translation reviewed" (translation reviewed against the current base), always with a link to the English version; otherwise "Draft"</td></tr>
+</tbody></table></div>
+<div class="prose">
+<ul>
+<li><b>Typo without reset.</b> <code>pnpm review:minor a2/perfekt ru --reason "typo in why c3"</code> updates the hash, keeps the status and adds a history entry. Only the owner runs it.</li>
+<li><b>Overview.</b> <code>pnpm review:status</code> lists every topic with base status, translation status per language and outdated translations.</li>
+</ul>
+</div>
+</section>
+
+<section id="dictionary">
+<div class="prose">
+<h2>Dictionary</h2>
+<p>Text files are the source of truth. SQLite exists only for convenient queries at build time and is regenerated every time. A binary file in git can neither be merged nor reviewed in a PR.</p>
+</div>
+<figure class="fig">
+<pre class="mermaid">
+flowchart LR
+  KE[".data/ kaikki.org&lt;br/&gt;en edition"] --> I["import-wiktionary.ts"]
+  KR[".data/ kaikki.org&lt;br/&gt;ru edition"] --> I
+  S["seed/lemmas-a1-a2.txt"] --> I
+  I --> J["data/words.jsonl&lt;br/&gt;in git"]
+  O["overrides/*.yaml&lt;br/&gt;manual edits, in git"] --> BD["build-dictionary.ts"]
+  J --> BD
+  BD --> DB[(".cache/dictionary.sqlite&lt;br/&gt;not in git")]
+  DB --> B["astro build"]
+  DB -.-> ST["Drizzle Studio&lt;br/&gt;browse only"]
+</pre>
+<figcaption>Re-running the import fully rewrites <code>words.jsonl</code> but never touches <code>overrides</code>. At build time manual edits always win.</figcaption>
+</figure>
+<figure class="fig">
+<pre class="mermaid">
+erDiagram
+  WORDS ||--o{ SENSES : has
+  WORDS ||--o{ EXAMPLES : has
+  EXAMPLES ||--o{ EXAMPLE_TRANSLATIONS : "translated as"
+  WORDS ||--o{ REGIONAL_VARIANTS : has
+  WORDS ||--o{ TOPIC_WORDS : "used in"
+  WORDS {
+    string id PK "see-die"
+    string lemma
+    string pos
+    string gender
+    string plural
+    string level
+    string status
+    string source
+    string license
+  }
+  SENSES {
+    string wordId FK
+    string lang
+    string gloss
+    int position
+  }
+  EXAMPLES {
+    string id PK
+    string wordId FK
+    string de
+  }
+  EXAMPLE_TRANSLATIONS {
+    string exampleId FK
+    string lang
+    string text
+  }
+  REGIONAL_VARIANTS {
+    string wordId FK
+    string region
+    string variant
+    string note
+  }
+  TOPIC_WORDS {
+    string topicSlug
+    string wordId FK
+  }
+</pre>
+</figure>
+<div class="prose">
+<h3>Homonyms and URLs</h3>
+<p>A word is identified by lemma, part of speech and gender. The id and URL are built from them; umlauts and ß are kept, otherwise <code>Maße</code> and <code>Masse</code> would collide.</p>
+</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Word</th><th>Id and URL</th></tr></thead>
+<tbody>
+<tr><td>der See (lake) / die See (sea)</td><td><code>see-der</code> / <code>see-die</code></td></tr>
+<tr><td>essen / das Essen</td><td><code>essen-verb</code> / <code>essen-das</code></td></tr>
+<tr><td>die Maße / die Masse</td><td><code>maße-die</code> / <code>masse-die</code></td></tr>
+</tbody></table></div>
+<div class="prose">
+<p>MDX references words by id only: <code>&lt;Word id="see-der" /&gt;</code>. Russian glosses come from the Russian Wiktionary and are matched by the same triple; ambiguous cases go to the import report instead of being guessed.</p>
+</div>
+</section>
+
+<section id="page">
+<div class="prose">
+<h2>Life of a page</h2>
+</div>
+<figure class="fig">
+<pre class="mermaid">
+sequenceDiagram
+  participant U as Visitor
+  participant C as Cloudflare
+  participant R as Exercises
+  participant S as sessionStorage
+  U->>C: GET /ru/a2/perfekt/
+  C-->>U: finished HTML in Russian
+  Note over U: inline script sets the theme, text is visible without JS
+  U->>R: scrolls to the exercises
+  Note over R: client:visible loads the island
+  R->>S: reads seen ids
+  R->>R: picks 5 new items
+  R->>S: stores seen ids
+  U->>R: answers
+  R-->>U: right or wrong, why in Russian
+</pre>
+</figure>
+<div class="prose">
+<p>Moving to another page is a normal browser navigation animated with CSS <code>@view-transition</code>. Chrome and Safari animate it; other browsers simply open the page. No JavaScript involved.</p>
+</div>
+</section>
+
+<section id="exercises">
+<div class="prose">
+<h2>Exercises</h2>
+</div>
+<figure class="fig">
+<pre class="mermaid">
+flowchart TD
+  T["topic page"] -->|"items in the page language"| R["ExerciseRunner.svelte"]
+  R --> C["ChoiceExercise.svelte"]
+  R --> W["WordOrderExercise.svelte"]
+  W --> DND["svelte-dnd-action&lt;br/&gt;two zones: answer line and word bank"]
+  R -.-> L["lib/exercises.ts&lt;br/&gt;selection, checking, seed"]
+</pre>
+</figure>
+<div class="prose">
+<h3>Word order</h3>
+<ul>
+<li><b>Drag and drop like everywhere else.</b> Words move from the bank to the answer line, get reordered inside it, and can go back. Mouse drags immediately; on touch a 250 ms press starts the drag, a quick swipe scrolls. Keyboard and screen readers are supported by the library.</li>
+<li><b>A proven library.</b> svelte-dnd-action supports Svelte 5, a touch delay and multiple zones. About 13.5 KB gzipped.</li>
+<li><b>No capitalization hints.</b> Words are stored in neutral case; the first word is capitalized only after checking.</li>
+<li><b>Several valid orders.</b> Every valid order is listed in <code>accept</code>; comparison is by strings, so repeated words work.</li>
+<li><b>"Check" button</b> becomes active when the bank is empty. Punctuation sits after the line and is not draggable.</li>
+</ul>
+<h3>Multiple choice</h3>
+<p>One correct answer, except established regional variants in <code>alsoCorrect</code>: Austrian "bin gesessen" counts as correct, and <code>why</code> explains the difference.</p>
+<h3>Rounds</h3>
+<p>A round is 5 mixed items. Seen ids live in sessionStorage; the pool resets when exhausted. All randomness goes through a seeded generator, so tests are deterministic.</p>
+<div class="note warn"><b>Accessibility.</b> The target is WCAG 2.2 AA with one deliberate exception: word-order items have no single-tap alternative to dragging (criterion 2.5.7). This is recorded in the decision log and in the accessibility statement.</div>
+</div>
+</section>
+
+<section id="routes">
+<div class="prose">
+<h2>Routes</h2>
+<p>Every page is built at build time in every ready language. Canonical URLs end with <code>/</code>, matching how Cloudflare serves them.</p>
+</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>English</th><th>Russian</th><th>Page</th><th>Indexing</th></tr></thead>
+<tbody>
+<tr><td><code>/</code></td><td><code>/ru/</code></td><td>Home</td><td>yes</td></tr>
+<tr><td><code>/a2/</code></td><td><code>/ru/a2/</code></td><td>Level topics</td><td>yes</td></tr>
+<tr><td><code>/b1/</code></td><td><code>/ru/b1/</code></td><td>Coming soon</td><td>noindex</td></tr>
+<tr><td><code>/a2/perfekt/</code></td><td><code>/ru/a2/perfekt/</code></td><td>Topic with exercises</td><td>yes</td></tr>
+<tr><td><code>/dictionary/</code></td><td><code>/ru/dictionary/</code></td><td>Word list</td><td>yes</td></tr>
+<tr><td><code>/dictionary/see-die/</code></td><td><code>/ru/dictionary/see-die/</code></td><td>Word</td><td>yes</td></tr>
+<tr><td><code>/about/</code>, <code>/about/sources/</code></td><td><code>/ru/about/…</code></td><td>About, accessibility, sources</td><td>yes</td></tr>
+<tr><td><code>/impressum/</code>, <code>/privacy/</code></td><td><code>/ru/impressum/…</code></td><td>Legal pages</td><td>yes</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="quality">
+<div class="prose">
+<h2>Tests, CI and deployment</h2>
+<p>One GitHub Actions workflow: all checks first, then deployment. A broken build never reaches the site, and every PR gets its own URL for testing on a phone.</p>
+</div>
+<figure class="fig">
+<pre class="mermaid">
+flowchart TD
+  PR["push or PR"] --> DCO["DCO"]
+  DCO --> LG["language check"]
+  LG --> L["biome, astro check"]
+  L --> U["vitest"]
+  U --> CT["content: links,&lt;br/&gt;review, translations"]
+  CT --> BD["build dictionary&lt;br/&gt;and site"]
+  BD --> BG["JS budget,&lt;br/&gt;file count"]
+  BG --> E["playwright&lt;br/&gt;English pages"]
+  E --> P{"branch"}
+  P -->|"PR"| PV["preview pr-N&lt;br/&gt;noindex, URL in PR"]
+  P -->|"main"| PD["production&lt;br/&gt;wrangler deploy"]
+</pre>
+</figure>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Level</th><th>What is checked</th><th>Tool</th></tr></thead>
+<tbody>
+<tr><td>Repository</td><td>Native-language text only in localization files, DCO sign-off</td><td>check-language, DCO</td></tr>
+<tr><td>Content</td><td>File shape, cross-file links, answer among options, neutral case, <code>review.yaml</code> in sync</td><td>Zod, validate-content, review script</td></tr>
+<tr><td>Languages</td><td>All keys present, outdated translations, UI strings by type</td><td>TypeScript, i18n-coverage</td></tr>
+<tr><td>Logic</td><td>Seeded item selection, regional answers, word order with <code>accept</code> and duplicates, capitalization after checking</td><td>Vitest</td></tr>
+<tr><td>Dictionary</td><td>Import on fixtures, overrides win, unique ids</td><td>Vitest</td></tr>
+<tr><td>Behavior</td><td>On English pages: exercises with mouse, touch long press and keyboard, navigation, search, noindex, analytics only in production</td><td>Playwright</td></tr>
+<tr><td>Language switching</td><td>The only tests on Russian pages: picker keeps the page and saves the choice, hint, lang/dir/hreflang/canonical, no horizontal scrolling at mobile width</td><td>Playwright</td></tr>
+<tr><td>Accessibility</td><td>axe on every page type. No screenshot tests</td><td>Playwright, axe</td></tr>
+<tr><td>Speed</td><td>JS per page, file count; Lighthouse before launch</td><td>check-js-budget, Lighthouse</td></tr>
+</tbody></table></div>
+<div class="prose">
+<ul>
+<li><b>Preview.</b> <code>wrangler versions upload --preview-alias pr-&lt;number&gt;</code>; the URL is posted as a PR comment; every page is <code>noindex</code>.</li>
+<li><b>Production.</b> <code>wrangler deploy</code> from <code>main</code> in the <code>production</code> environment, no overlapping deploys, custom domain only.</li>
+<li><b>Secrets.</b> A least-privilege API token and the Account ID in GitHub Actions settings. No deploys for forks.</li>
+</ul>
+</div>
+</section>
+
+<section id="budgets">
+<div class="prose">
+<h2>Budgets</h2>
+<p>Checked in CI on every PR.</p>
+</div>
+<div class="budget">
+  <div><strong>≤ 3 KB</strong><span>JS on pages without exercises, inline scripts only</span></div>
+  <div><strong>≤ 45 KB</strong><span>JS on a topic page: Svelte, svelte-dnd-action and logic</span></div>
+  <div><strong>≥ 95</strong><span>Lighthouse in every category before launch</span></div>
+  <div><strong>&lt; 20,000</strong><span>files per deployment on Cloudflare's free plan</span></div>
+</div>
+</section>
+
+<section id="ops">
+<div class="prose">
+<h2>Analytics and legal</h2>
+<h3>Analytics</h3>
+<p><b>Cloudflare Web Analytics</b>: free, cookieless, small script. Shows visits, referrers, countries and Core Web Vitals. The script loads with <code>defer</code> and only in production; preview builds don't include it. The site token is not a secret and lives in <code>site.ts</code>.</p>
+<p><b>Google Search Console</b> is verified via a DNS record in Cloudflare, no code.</p>
+<div class="note info"><b>PostHog is postponed.</b> The full library is about 98 KB gzipped, three times the JS of a whole exercise page. Worth revisiting if exercise-level events matter, e.g. which items people get wrong most often; it could then load after the first interaction.</div>
+<h3>Legal pages (Austria)</h3>
+<ul>
+<li><b><code>/impressum/</code></b> — disclosure under § 25 Mediengesetz for a small private website: owner's name, place of residence, purpose of the site.</li>
+<li><b><code>/privacy/</code></b> — Cloudflare hosting, analytics, what is stored in the browser, text-to-speech via the Web Speech API, links to GitHub.</li>
+<li><b>When ads arrive:</b> banners are labeled as ads, and the Impressum is extended to the requirements for commercial sites.</li>
+</ul>
+<p>Claude Code writes templates with TODO markers; the owner fills in and checks the facts.</p>
+</div>
+</section>
+
+<section id="decisions">
+<div class="prose">
+<h2>Key decisions</h2>
+<p>The full list with reasons and rejected alternatives is in <code>docs/decisions.md</code>. The highlights:</p>
+</div>
+<div class="adr">
+<details><summary>Astro with Svelte islands</summary><p>Almost every page is static. Astro ships no JavaScript by default, and Svelte compiles to small islands. Svelte is used only where it is truly needed.</p></details>
+<details><summary>German stored once, translations in per-language files</summary><p>The teacher checks German once, translators never touch German files, and adding a translation doesn't reset the German review.</p></details>
+<details><summary>Split review with automatic reset</summary><p>The teacher verifies German and the English explanation; each translation is reviewed against the verified English page by a fluent speaker. Hashes record exactly what was checked; any edit returns the affected part to draft, except logged typo fixes. Badges say exactly what was checked.</p></details>
+<details><summary>Functional tests on English only, no screenshot tests</summary><p>All languages share the same code, so functional tests run on English pages; other languages get language-switching tests only. Screenshot comparisons are not used: they are costly to maintain and flaky, and functional tests plus axe catch the relevant breakage.</p></details>
+<details><summary>Dictionary in text files, SQLite generated</summary><p>A binary file can't be merged or reviewed. Import output and manual edits are separate, so re-importing breaks nothing.</p></details>
+<details><summary>A font per language</summary><p>The main font has no Cyrillic, and other scripts will come later. German blocks use one font everywhere, explanations use the language's font.</p></details>
+<details><summary>A proven drag-and-drop library</summary><p>Long press versus scrolling on iOS is hard to get right by hand. svelte-dnd-action already solves it and adds keyboard and screen-reader support.</p></details>
+<details><summary>Minimal JavaScript</summary><p>Theme and language are inline scripts; transitions are CSS. Astro's ClientRouter is not used because it adds JS to every page.</p></details>
+<details><summary>Deployment from GitHub Actions to Cloudflare</summary><p>One build, deployment only after checks, a preview URL for every PR. Cloudflare's free plan allows commercial use.</p></details>
+<details><summary>Cloudflare Web Analytics instead of PostHog</summary><p>Visits, referrers and speed are enough for the pilot. Cloudflare Web Analytics is free, cookieless and light. PostHog is postponed because of its size; it can come back for exercise-level events.</p></details>
+<details><summary>English-only repository except localization</summary><p>Code, docs, templates, commit messages and tests are in English. Native-language text lives only in localization files, enforced by a CI check.</p></details>
+<details><summary>Open repository, PRs from collaborators only</summary><p>Code under MIT, content under CC BY-SA 4.0, DCO sign-off. Mistakes are reported through GitHub issue forms.</p></details>
+</div>
+<footer>Deutscherl is a working name. Pilot: levels A1 and A2, five topics each, English and Russian, dictionary from Wiktionary.</footer>
+</section>
+</main>
+</div>
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('themeBtn');
+  function current(){var t=root.getAttribute('data-theme');if(t)return t;return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+  try{var saved=localStorage.getItem('arch-theme');if(saved)root.setAttribute('data-theme',saved)}catch(e){}
+  function label(){btn.textContent=current()==='dark'?'Light theme':'Dark theme'}
+  label();
+  btn.addEventListener('click',function(){var next=current()==='dark'?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem('arch-theme',next)}catch(e){}label();if(window.renderDiagrams)window.renderDiagrams()});
+  window.currentTheme=current;
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){var i=secs.indexOf(en.target);links.forEach(function(l,k){l.classList.toggle('on',k===i)})}})},{rootMargin:'-30% 0px -60% 0px'});
+    secs.forEach(function(s){if(s)io.observe(s)});
+  }
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const blocks=[...document.querySelectorAll('pre.mermaid')];
+blocks.forEach(b=>{b.dataset.src=b.textContent});
+async function renderDiagrams(){
+  const dark=(window.currentTheme?window.currentTheme():'light')==='dark';
+  mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',fontFamily:'"Atkinson Hyperlegible Next", system-ui, sans-serif',
+    themeVariables:dark?{background:'#171C25',primaryColor:'#1C2940',primaryTextColor:'#E6E9EF',primaryBorderColor:'#8FB0E8',lineColor:'#B3BBC8',secondaryColor:'#3A1A21',tertiaryColor:'#1E2430',textColor:'#E6E9EF',noteBkgColor:'#352912',noteTextColor:'#E8B85C',actorBkg:'#1C2940',actorTextColor:'#E6E9EF',signalColor:'#B3BBC8',signalTextColor:'#E6E9EF',clusterBkg:'#1E2430',clusterBorder:'#3A4250',fontSize:'15px'}
+      :{background:'#FFFFFF',primaryColor:'#E8EEF8',primaryTextColor:'#18202E',primaryBorderColor:'#2F5496',lineColor:'#4A5568',secondaryColor:'#FBE9EC',tertiaryColor:'#EEF0F4',textColor:'#18202E',noteBkgColor:'#FBF1DC',noteTextColor:'#8A5A00',actorBkg:'#E8EEF8',actorTextColor:'#18202E',signalColor:'#4A5568',signalTextColor:'#18202E',clusterBkg:'#F6F7F9',clusterBorder:'#C4CAD4',fontSize:'15px'}});
+  blocks.forEach(b=>{b.removeAttribute('data-processed');b.innerHTML='';b.textContent=b.dataset.src});
+  try{await mermaid.run({nodes:blocks})}catch(e){console.error(e)}
+}
+window.renderDiagrams=renderDiagrams;
+renderDiagrams();
+</script>
+</body>
+</html>
