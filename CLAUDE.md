@@ -55,15 +55,18 @@ Components, pages and tests never contain native-language strings inline: they u
 - Svelte 5 ONLY for islands that need real interactivity: exercises, dictionary filter. Everything else (theme toggle, language picker, language hint) is a few lines of inline vanilla JS.
 - Drag and drop: `svelte-dnd-action` (Svelte 5 compatible, touch delay option, keyboard and screen-reader support). Do not hand-roll drag and drop.
 - Page transitions: native cross-document View Transitions in CSS (`@view-transition { navigation: auto; }`). Do NOT use Astro's `<ClientRouter />`: it adds JS to every page. Browsers without support navigate normally.
-- TypeScript, `strict` preset
+- TypeScript, `strict` preset. TypeScript 6.x until Astro's tooling (`astro check`) supports TypeScript 7 (decision #23).
+- Scripts in `scripts/` run with plain `node` (built-in type stripping): erasable TypeScript only, local imports with the `.ts` extension, no tsx.
 - Tailwind CSS v4. Use logical properties/utilities (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`, `text-start`) everywhere, never left/right, so right-to-left languages work later.
 - Content: MDX for explanations, YAML for German content and translations, via Astro Content Collections with Zod schemas
 - i18n: Astro built-in i18n routing
 - Dictionary: text files in git are the source of truth; a SQLite file is generated from them at build time and queried with Drizzle ORM (build time only, no runtime DB)
 - Search: Pagefind, one index per ready locale, UI loaded only when the user opens search
-- Lint/format: Biome (add Prettier with astro/svelte plugins only for file types Biome can't handle)
+- Lint/format: Biome for TS/JS/JSON/CSS (lints the script part of `.astro`/`.svelte`); Prettier with astro/svelte plugins formats only `.astro` and `.svelte` (Biome's support for them is experimental, decision #25)
+- Git hooks: lefthook (`lefthook.yml`), installed by `pnpm install`
 - Tests: Vitest, Playwright, @axe-core/playwright
-- Package manager: pnpm. Node LTS, pinned in `.nvmrc`
+- Package manager: pnpm, version pinned in `package.json` → `packageManager`; dependency build scripts are denied by default (`pnpm-workspace.yaml` → `allowBuilds`). Node LTS, pinned in `.nvmrc`
+- Versions: latest stable release of every dependency and GitHub Action (check npm / GitHub, not memory); exceptions are recorded in `docs/decisions.md`. GitHub Actions are pinned to commit SHAs with the version in a comment.
 - Hosting: Cloudflare Workers with static assets, deployed from GitHub Actions with Wrangler (see "Deployment")
 - Analytics: Cloudflare Web Analytics (free, cookieless). The beacon script is added with `defer` only on production builds; its site token is public and lives in `src/config/site.ts`. No other analytics or tracking SDKs (PostHog was considered and postponed, see `docs/decisions.md`). Google Search Console is verified via a DNS record, no code.
 
@@ -130,6 +133,7 @@ scripts/
   check-language.ts          # no native-language text outside localization files
   review.ts                  # review status, reset and minor-edit commands
   check-js-budget.ts         # JS size per page type
+  ci/                        # CI-only helpers (wrangler bootstrap config)
 docs/
   decisions.md               # decision log
   architecture.html          # illustrated snapshot
@@ -231,6 +235,8 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Pull requests: `wrangler versions upload --preview-alias pr-<number>`, then a PR comment with the preview URL. Preview builds set `PUBLIC_DEPLOY_ENV=preview`, which adds `noindex` to every page.
 - Push to `main`: `wrangler deploy` in a GitHub Environment `production`. `concurrency` prevents overlapping deploys.
 - Only run deploy jobs for branches of this repository, never for forks.
+- First deploy: if the Worker does not exist yet, the preview job deploys once without `routes` (`scripts/ci/wrangler-bootstrap-config.ts`), so the custom domain is attached only by the first production deploy.
+- Required status checks (job names): `DCO`, `Language check`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`.
 - `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"`, default HTML handling (trailing slash, matching Astro), production only on the custom domain, preview URLs enabled. Check the current Wrangler docs for the exact keys.
 - Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account), variable `CLOUDFLARE_ACCOUNT_ID`.
 
@@ -248,7 +254,8 @@ Functional tests run on the English site only: the code is the same for every lo
 - Data checks (not tests of wording): `i18n-coverage.ts` fails when a ready locale misses a key or file, so a missing translation can never break a page.
 - Playwright on English pages: exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
 - Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale and saves the choice; the language hint appears and can be dismissed; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
-- CI order: DCO → language check → `biome check` → `astro check` → Vitest → validate-content + review sync + i18n coverage → dictionary build → Astro build → JS budget + file count → Playwright → deploy.
+- CI: DCO, language check, lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; later stages add validate-content + review sync + i18n coverage (checks), dictionary build and JS budget + file count (build job). Playwright runs on the build output. Deploy jobs need every check (decision #30).
+- Playwright's web server runs `astro preview --ignore-lock`: Astro 7 moves `astro preview` to the background when it detects an AI agent, and `--ignore-lock` keeps it in the foreground.
 
 ## Don'ts
 
