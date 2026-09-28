@@ -219,7 +219,14 @@ jobs:
             process.stdout.write(entry?.preview_alias_url ?? "");
           ' "$WRANGLER_OUTPUT_FILE_PATH")
           if [ -z "$url" ]; then
-            echo "::error::Wrangler returned no preview alias URL. Check that preview_urls is enabled and the account has a workers.dev subdomain."
+            # Wrangler prints a preview URL only if the Worker has previews enabled and the account
+            # has a workers.dev subdomain. Show both so the cause is visible in the log.
+            api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers"
+            echo "Account workers.dev subdomain:"
+            curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api/subdomain" | jq '{result, errors}'
+            echo "Worker subdomain settings:"
+            curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api/workers/$WORKER_NAME" | jq '{subdomain: .result.subdomain, errors}'
+            echo "::error::Wrangler returned no preview alias URL. Preview URLs need preview_urls enabled on the Worker and a workers.dev subdomain on the account (see the output above)."
             exit 1
           fi
           echo "url=$url" >> "$GITHUB_OUTPUT"
