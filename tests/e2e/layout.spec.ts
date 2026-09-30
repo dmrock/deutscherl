@@ -21,11 +21,6 @@ test.describe('noindex', () => {
       );
     });
   }
-
-  test('the font specimen page is not built for production', async ({ page }) => {
-    const response = await page.goto('/dev/fonts/');
-    expect(response?.status()).toBe(deployEnv === 'production' ? 404 : 200);
-  });
 });
 
 /** Records data-theme as soon as it is set, and whether <body> existed at that moment. */

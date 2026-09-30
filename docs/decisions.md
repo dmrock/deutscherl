@@ -164,7 +164,7 @@ The sidebar is one element: a static column from `lg`, and below `lg` a sheet wi
 
 Every page contains one hidden hint per other ready locale, written in that locale (its own `t()` strings) with a link to the same page. The inline script picks the target (saved locale, else the best `navigator.languages` match among ready locales, stopping at the page's own locale) and un-hides one. Rejected: shipping other locales' strings as JSON for the script (more bytes, JS-built DOM).
 
-## 38. Font specimen page built for dev and previews only — accepted
+## 38. Font specimen page built for dev and previews only — superseded by #43
 
 `/dev/fonts/` is injected by a small integration in `astro.config.ts` unless `PUBLIC_DEPLOY_ENV` is `production`, so the owner can compare fonts on the PR preview (also on a phone) while production never contains it. During the ru comparison it also showed the four candidates; after the choice the candidate mechanism was removed and the page shows only the site fonts. Its labels are plain English (developer tool, not UI strings). Samples live in `tests/fixtures/fonts/` and `tests/fixtures/i18n/ru/` (allowed by the language check).
 
@@ -183,3 +183,7 @@ Added: `@fontsource-variable/atkinson-hyperlegible-next` 5.3.0 and `@fontsource-
 ## 42. Level switcher without visible "soon" — accepted (owner decision)
 
 B1, B2 and C1 are shown muted in the level switcher without a visible "soon" label. Screen readers still get "(soon)" as visually hidden text, so the status is not conveyed by color alone (WCAG 1.4.1). The coming-soon pages themselves say so in full.
+
+## 43. Font specimen page removed — accepted (owner decision)
+
+After the ru font was chosen, `/dev/fonts/` (#38), its `dev-pages` integration and its sample texts were removed: the site fonts are visible on the real pages, and a comparison page is quick to rebuild when a new locale needs a font. Rejected: keeping it as a permanent developer page (code and fixtures to maintain for a one-time decision).

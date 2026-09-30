@@ -94,7 +94,7 @@ Terminology: the "native language" (a.k.a. locale) is the language of the UI, ex
 - German content blocks (examples, exercises, dictionary headwords) use one German font on every locale for consistent umlauts and ß: Atkinson Hyperlegible Next (Latin only), via the `german` utility (German font, slightly larger size). Inline German terms inside explanation text inherit the locale font.
 - `en`: Atkinson Hyperlegible Next.
 - `ru`: Golos Text (owner's choice after the specimen comparison, decision #7).
-- Font specimen page `/dev/fonts/` (`src/dev/fonts.astro`): every site font with the samples in `tests/fixtures/`, body and example size, light and dark. Built in dev and for previews, never for production. To choose a font for a new locale, put the candidates into `locales.ts` one by one (or temporarily extend the page), compare on the PR preview, and keep only the chosen package.
+- Choosing a font for a new locale: build a temporary comparison page on the PR (candidates at body and example size, light and dark, next to German blocks), let the owner choose on the preview, then remove the page and keep only the chosen package (as done for ru, decision #7).
 - A future locale in a script without a good match (Arabic, Hindi, …) simply gets its own font entry; nothing else changes.
 - German example text is slightly larger than explanation text.
 
@@ -125,7 +125,6 @@ src/
                              # BottomBar, LanguageHint, ThemeScript, LocaleScript (inline JS)
   layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts), layout
   lib/                       # pure TS logic — unit-tested (navigation.ts); topics.ts reads collections
-  dev/                       # developer pages, not built for production (fonts.astro)
   pages/[...locale]/         # index, [level]/index, [level]/[topic]/index
 db/
   schema.ts                  # Drizzle schema
@@ -150,7 +149,6 @@ docs/
 tests/
   unit/
   e2e/
-  fixtures/                  # fonts/ (German sample), i18n/<locale>/ (native-language samples)
 ```
 
 ## Content model
@@ -266,7 +264,7 @@ Functional tests run on the English site only: the code is the same for every lo
 - Playwright on English pages: exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
 - Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale and saves the choice; the language hint appears and can be dismissed; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
 - CI: DCO, language check, lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add validate-content + review sync + i18n coverage (checks), dictionary build and file count (build job).
-- The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere; production: no `/dev/` pages).
+- The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere).
 - Local e2e: `pnpm build && pnpm test:e2e` (the tests run against `dist/`). Playwright runs on the build output. Deploy jobs need every check (decision #30).
 - Playwright's web server runs `astro preview --ignore-lock`: Astro 7 moves `astro preview` to the background when it detects an AI agent, and `--ignore-lock` keeps it in the foreground.
 
