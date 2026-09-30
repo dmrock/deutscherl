@@ -1,0 +1,19 @@
+// Static-assets-only Worker: no `main` script, Cloudflare serves ./dist directly.
+// Deployed only from GitHub Actions (.github/workflows/ci.yml).
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "deutscherl",
+  "compatibility_date": "2026-09-26",
+  "assets": {
+    "directory": "./dist",
+    // Serve the nearest 404.html for unknown paths.
+    "not_found_handling": "404-page",
+    // Default handling, stated explicitly: /page redirects to /page/, matching Astro's trailingSlash 'always'.
+    "html_handling": "auto-trailing-slash"
+  },
+  // Production is served only on the custom domain, not on workers.dev.
+  "workers_dev": false,
+  // Version and preview alias URLs (pr-<number>-deutscherl.<subdomain>.workers.dev) stay enabled.
+  "preview_urls": true,
+  "routes": [{ "pattern": "deutscherl.com", "custom_domain": true }]
+}

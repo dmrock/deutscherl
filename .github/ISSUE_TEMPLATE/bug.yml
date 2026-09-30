@@ -1,0 +1,38 @@
+name: Bug report
+description: Something on the site does not work (layout, exercises, navigation, search).
+title: '[Bug] '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: For mistakes in the German content, explanations or translations, use "Report a mistake" instead.
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL
+      placeholder: https://deutscherl.com/a2/perfekt/
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the page
+        2. Click on ...
+    validations:
+      required: false
+  - type: input
+    id: environment
+    attributes:
+      label: Device and browser
+      placeholder: iPhone 15, Safari 18 / Windows 11, Firefox 140
+    validations:
+      required: true

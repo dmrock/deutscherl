@@ -1,0 +1,17 @@
+---
+import { defaultLocale } from '../i18n/locales.ts';
+import { t } from '../i18n/utils.ts';
+import Base from '../layouts/Base.astro';
+
+// Stage 9 adds a 404 page per locale.
+const locale = defaultLocale;
+---
+
+<Base locale={locale} title={t(locale, 'notFound.title')} noindex>
+  <h1 class="text-3xl font-bold">{t(locale, 'notFound.title')}</h1>
+  <p class="mt-4">
+    <a href="/" class="underline">
+      {t(locale, 'notFound.backHome')}
+    </a>
+  </p>
+</Base>

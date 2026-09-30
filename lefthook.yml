@@ -1,0 +1,17 @@
+# Git hooks (https://lefthook.dev). Installed by `pnpm install` via the `prepare` script.
+# Stage 3 adds `review:sync` to pre-commit.
+pre-commit:
+  piped: true
+  jobs:
+    - name: biome
+      glob: '*.{js,mjs,cjs,ts,mts,cts,json,jsonc,css,astro,svelte}'
+      run: pnpm exec biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+
+    - name: prettier
+      glob: '*.{astro,svelte}'
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true
+
+    - name: language
+      run: node scripts/check-language.ts {staged_files}

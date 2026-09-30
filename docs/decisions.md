@@ -97,3 +97,53 @@ No Playwright screenshot comparisons. They need constant updating on design chan
 ## 22. Functional tests on English only — accepted (owner decision)
 
 All locales share the same code, so exercises, navigation, search and accessibility are tested on English pages only. Other locales get language-switching tests only (picker, hint, lang/dir/hreflang/canonical, mobile overflow). Missing translations are caught by the `i18n-coverage` data check, not by tests.
+
+## 23. Toolchain versions: latest stable, with two exceptions — accepted (owner decision)
+
+Every dependency and GitHub Action uses its latest stable release at the time it is added (checked on npm / GitHub releases, not from memory). Exceptions:
+- Node.js: the current LTS line (24, "Krypton"), pinned in `.nvmrc`, not the newest "Current" release (26 is not LTS until late October 2026).
+- TypeScript: 6.x, not 7.x. TypeScript 7 is the native (Go) compiler; its npm package no longer exposes the classic JS compiler API that `@astrojs/check` / `@astrojs/language-server` and `svelte-check` use (they declare peer `typescript ^5 || ^6`). Revisit when Astro's tooling supports TypeScript 7.
+
+pnpm keeps its default `minimumReleaseAge` of 1440 minutes (pnpm ≥ 11): a version younger than one day is not installed yet (stage 1: wrangler 4.142.0 instead of 4.143.0, released the same day). This is a supply-chain safeguard; the next update picks up the newer version.
+
+## 24. pnpm 12 via `packageManager`, dependency build scripts denied — accepted
+
+`package.json` pins `packageManager: pnpm@12.x`; Corepack locally and `pnpm/action-setup` in CI read it, so everyone uses the same pnpm. pnpm blocks dependency lifecycle scripts by default; `pnpm-workspace.yaml` → `allowBuilds` explicitly denies the ones we saw (`esbuild`, `lefthook`, `workerd`): their binaries come from platform-specific optional packages, and lefthook's hooks are installed by our own `prepare` script. Rejected: allowing all builds (supply-chain risk).
+
+## 25. Biome for TS/JS/JSON/CSS, Prettier only for `.astro` and `.svelte` — accepted
+
+Biome's support for Astro, Svelte and Vue files is experimental (`html.experimentalFullSupportEnabled`; per its docs, newer syntax and edge cases may not be covered). So Biome formats and lints TS/JS/JSON/JSONC/CSS (with Tailwind directives) and only lints the script part of `.astro`/`.svelte` files, with the rules the Biome docs recommend disabling for partial support (`useConst`, `useImportType`, `noUnusedVariables`, `noUnusedImports`). Prettier with `prettier-plugin-astro` and `prettier-plugin-svelte` formats `.astro` and `.svelte` files only, so no file has two formatters. Markdown and YAML are not auto-formatted. Revisit when Biome's Astro/Svelte support is stable: then Prettier can be removed.
+
+## 26. Git hooks with lefthook — accepted
+
+lefthook passes staged files to each command (`{staged_files}` with per-command globs), re-stages auto-fixed files (`stage_fixed`) and runs commands in a defined order, in one dev dependency (a single Go binary; nothing ships to the site). Pre-commit: Biome → Prettier → language check; stage 3 adds `review:sync`. Rejected: simple-git-hooks (no staged-file handling, so it would need lint-staged or nano-staged as a second tool), husky + lint-staged (two tools).
+
+## 27. Language check by Unicode script — accepted
+
+`scripts/check-language.ts` flags every letter that is not in the Latin, Common or Inherited script (`/[\p{L}--[\p{Script=Latin}\p{Script=Common}\p{Script=Inherited}]]/v`), so all non-Latin scripts are caught without a list and Latin letters with diacritics (ä ö ü ß é) always pass. Allowed paths are built from the locale codes in `locales.ts` (e.g. only `src/i18n/ui/<locale>.ts`, not any file in `ui/`); in `locales.ts` only `name:` lines may contain other scripts. It checks the files given as arguments (pre-commit) or all `git ls-files` (CI), skipping binary and deleted files. Tests write non-Latin samples as `\u` escapes so they pass the check themselves.
+
+## 28. Scripts run on Node's built-in TypeScript support — accepted
+
+Repository scripts (`scripts/*.ts`) run with plain `node` (type stripping, Node ≥ 22.18). They use erasable syntax only (`erasableSyntaxOnly` in `tsconfig.json`) and import local files with the `.ts` extension. Rejected: tsx (one more dependency for no gain).
+
+## 29. i18n helpers are pure; one catch-all route per page for all locales — accepted
+
+`src/i18n/utils.ts` (`t`, `localizePath`, `getLocaleFromPath`, `stripLocale`, `alternates`) does not import Astro, so it is unit-tested directly and usable in scripts and e2e tests. Pages use a `[...locale]` rest parameter with `getStaticPaths` over `locales.ts` (default locale → no prefix), so adding a locale needs no new page files. Pages are built for every locale in `locales.ts`; `ready: false` locales get `noindex`. The Astro `i18n` config is derived from `locales.ts`. `PUBLIC_DEPLOY_ENV` is declared with `astro:env` (`development` | `preview` | `production`), so a typo in CI fails the build instead of silently indexing a preview.
+
+## 30. CI layout: parallel checks, one build, deploy after everything — accepted
+
+One workflow (`.github/workflows/ci.yml`). The checks (DCO, language, lint, astro check, unit tests, build) run as separate parallel jobs so each can be a required status check and feedback comes fast; E2E tests run on the uploaded build output; deploy jobs `need` every check. This replaces the strictly sequential order in CLAUDE.md "Testing" with the same guarantee (nothing deploys unless every check passed). The site is built once per run: with `PUBLIC_DEPLOY_ENV=preview` on pull requests (noindex), `production` on `main`, and the deploy jobs deploy exactly the tested `dist/`. Third-party actions are pinned to commit SHAs with the version in a comment. Workflow concurrency cancels outdated PR runs; production deploys use their own non-cancelling concurrency group.
+
+Required status checks: `DCO`, `Language check`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`. The deploy jobs are not required checks (they are skipped for forks and on the other event type).
+
+## 31. DCO check inside the workflow — accepted
+
+A small shell step checks that every non-merge commit of a pull request has a `Signed-off-by:` line with the author's email. On pushes to `main` it passes without re-checking (commits were checked in their PR; squash-merge commits get GitHub-generated authors). Rejected: the DCO GitHub App (an external app with repository access; its check is not part of this workflow) and third-party DCO actions (more supply-chain surface for ten lines of shell).
+
+## 32. Wrangler config: custom domain only, preview URLs on — accepted
+
+`wrangler.jsonc` (keys checked in the Wrangler configuration docs): no `main` (static assets only), `assets.directory: ./dist`, `not_found_handling: 404-page`, `html_handling: auto-trailing-slash` (the default, stated explicitly), `workers_dev: false`, `preview_urls: true` (explicit, because its default follows `workers_dev`), `routes: [{ pattern: deutscherl.com, custom_domain: true }]`. Preview alias URLs look like `pr-<n>-deutscherl.<account-subdomain>.workers.dev`. Open: `www.deutscherl.com` (add a redirect rule to the apex in Cloudflare).
+
+## 33. First deploy bootstrapped from CI without the domain — accepted (owner decision)
+
+`wrangler versions upload` fails for a Worker that was never deployed. When the Cloudflare API reports that the Worker does not exist, the preview job deploys once with a generated config without `routes` (`scripts/ci/wrangler-bootstrap-config.ts`), then uploads the preview version. The Worker then exists, but `deutscherl.com` is attached only by the first production deploy from `main`. Rejected: a manual local bootstrap (extra step, local credentials), no preview for the first PR.
