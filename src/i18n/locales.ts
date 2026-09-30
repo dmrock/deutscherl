@@ -8,10 +8,12 @@
 export interface LocaleFont {
   /** CSS font family name */
   family: string;
-  /** Fontsource package that self-hosts the font; null = system font (placeholder) */
-  package: string | null;
-  /** Fontsource subsets this locale needs */
+  /** Fontsource variable-font package that self-hosts the font (src/config/fonts.ts) */
+  package: string;
+  /** Fontsource subsets this locale needs: only these get `@font-face` rules */
   subsets: readonly string[];
+  /** Subsets every page of this locale uses right away: preloaded */
+  preload: readonly string[];
 }
 
 export interface LocaleConfig {
@@ -37,6 +39,7 @@ export const locales = [
       family: 'Atkinson Hyperlegible Next',
       package: '@fontsource-variable/atkinson-hyperlegible-next',
       subsets: ['latin', 'latin-ext'],
+      preload: ['latin'],
     },
   },
   {
@@ -45,11 +48,13 @@ export const locales = [
     default: false,
     ready: true,
     dir: 'ltr',
-    // TODO(stage 2): placeholder until the owner picks a Cyrillic font (docs/decisions.md #7).
+    // Owner's choice after the specimen comparison (docs/decisions.md #7).
     font: {
-      family: 'system-ui',
-      package: null,
+      family: 'Golos Text',
+      package: '@fontsource-variable/golos-text',
       subsets: ['cyrillic', 'latin'],
+      // Punctuation, digits and German terms are in the latin subset, so ru pages need both.
+      preload: ['cyrillic', 'latin'],
     },
   },
 ] as const satisfies readonly LocaleConfig[];

@@ -20,7 +20,7 @@ One pipeline: checks first, then preview (`wrangler versions upload --preview-al
 
 ## 4. English and Russian as native languages, data-driven locales — accepted
 
-English default and unprefixed, Russian under `/ru/`. Locales in one config with `ready`, `dir`, `font`. No automatic redirects; a dismissible hint instead.
+English default and unprefixed, Russian under `/ru/`. Locales in one config with `ready`, `dir`, `font`. No automatic redirects and no language hint (#44): `hreflang` and the always-visible language picker.
 
 ## 5. German single-sourced, translations in per-locale files — accepted
 
@@ -30,9 +30,9 @@ German lives only in `german.yaml`; each locale has its own MDX and `i18n/<local
 
 Atkinson Hyperlegible Next has no Cyrillic (Fontsource subsets: latin, latin-ext). Fonts are configured per locale; German content blocks always use Atkinson. Future scripts get their own font entry.
 
-## 7. Russian font — pending
+## 7. Russian font: Golos Text — accepted (owner decision)
 
-Candidates with Cyrillic: Golos Text, Inter, Noto Sans, Onest. Owner chooses after the comparison page in stage 2.
+Candidates with Cyrillic: Golos Text, Inter, Noto Sans, Onest, compared on the specimen page (`/dev/fonts/`) at body and example size, light and dark, next to German blocks in Atkinson. Golos Text: designed for Russian-language interfaces; its tailed `l` keeps `I`, `l` and `1` clearly apart, in the spirit of Atkinson Hyperlegible. Files: cyrillic 22 KB, latin 37 KB (woff2, variable weight). Rejected: Inter and Onest (`I` and `l` drawn the same; Inter also has the largest latin file), Noto Sans (also distinguishes `I` with serifs, a close second; its wide script coverage is not needed because every locale can have its own font).
 
 ## 8. Page-level review with automatic reset — superseded by #20
 
@@ -64,7 +64,7 @@ Parts stored in neutral case; first word capitalized only after checking. `accep
 
 ## 15. Minimal JavaScript — accepted
 
-Theme, language picker and hint are inline vanilla JS. Page transitions via native CSS cross-document View Transitions (Chrome 126+, Safari 18.2+; others navigate normally). Rejected: Astro `<ClientRouter />` (JS on every page). Budgets enforced in CI: ≤ 3 KB on pages without exercises, ≤ 45 KB on topic pages.
+Theme and language picker are inline vanilla JS. Page transitions via native CSS cross-document View Transitions (Chrome 126+, Safari 18.2+; others navigate normally). Rejected: Astro `<ClientRouter />` (JS on every page). Budgets enforced in CI: ≤ 3 KB on pages without exercises, ≤ 45 KB on topic pages.
 
 ## 16. Open source with controlled contributions — accepted
 
@@ -96,7 +96,7 @@ No Playwright screenshot comparisons. They need constant updating on design chan
 
 ## 22. Functional tests on English only — accepted (owner decision)
 
-All locales share the same code, so exercises, navigation, search and accessibility are tested on English pages only. Other locales get language-switching tests only (picker, hint, lang/dir/hreflang/canonical, mobile overflow). Missing translations are caught by the `i18n-coverage` data check, not by tests.
+All locales share the same code, so exercises, navigation, search and accessibility are tested on English pages only. Other locales get language-switching tests only (picker, lang/dir/hreflang/canonical, mobile overflow). Missing translations are caught by the `i18n-coverage` data check, not by tests.
 
 ## 23. Toolchain versions: latest stable, with two exceptions — accepted (owner decision)
 
@@ -147,3 +147,47 @@ A small shell step checks that every non-merge commit of a pull request has a `S
 ## 33. First deploy bootstrapped from CI without the domain — accepted (owner decision)
 
 `wrangler versions upload` fails for a Worker that was never deployed. When the Cloudflare API reports that the Worker does not exist, the preview job deploys once with a generated config without `routes` (`scripts/ci/wrangler-bootstrap-config.ts`), then uploads the preview version. The Worker then exists, but `deutscherl.com` is attached only by the first production deploy from `main`. Rejected: a manual local bootstrap (extra step, local credentials), no preview for the first PR.
+
+## 34. Fonts through Astro's Fonts API, files from Fontsource packages — accepted
+
+`src/config/fonts.ts` builds Astro's `fonts` config from `locales.ts` plus the German font. A small custom provider (a dozen lines) serves the woff2 files of the installed `@fontsource-variable/*` packages and builds one `@font-face` per configured subset and style from the package's `metadata.json` and `unicode.json`. Why: only the needed subsets are emitted, Astro adds preload links and metric-adjusted fallback faces (less layout shift), versions are pinned by the lockfile and the build needs no network. `locales.ts` gains `preload` (subsets preloaded on every page of the locale: `latin` for en; `cyrillic` and `latin` for ru, because punctuation, digits and German terms are in the latin subset). Rejected: importing Fontsource CSS (emits every subset, no preload or fallback metrics), `fontProviders.fontsource()` (downloads from the Fontsource CDN at build time, versions not pinned), Astro's `local` provider (does not tag faces with a subset, so preloads cannot be filtered by subset).
+
+## 35. Theme via `data-theme`, semantic color tokens — accepted
+
+An inline script in `<head>` sets `data-theme` (saved choice or system preference) before first paint and follows system changes while nothing is saved; a delegated click handler serves every `[data-theme-toggle]` (a toggle button with `aria-pressed`). Colors are semantic CSS variables per `[data-theme]` (usable on any element, so the specimen page shows both themes at once) with a `prefers-color-scheme` fallback for `:root` without JS, exposed to Tailwind with `@theme inline`. Components use only semantic utilities; the `dark:` variant follows `data-theme` and is used only to swap icons. After owner feedback that text glowed in dark mode, the dark palette was softened (text `#dedad7` on `#161412`, 13:1 instead of 18:1, still above AAA) and text uses grayscale antialiasing (`-webkit-font-smoothing: antialiased`), which renders light-on-dark text thinner on macOS. Rejected: CSS `light-dark()` (breaks all colors in Safari < 17.5 instead of degrading), Tailwind `dark:` classes everywhere (duplicated color decisions in every component).
+
+## 36. Zero-JS header widgets: Popover API sheet and `<details>` picker — accepted
+
+The sidebar is one element: a static column from `lg`, and below `lg` a sheet with the `popover` attribute opened by a `popovertarget` button (light dismiss, Esc, top layer; Baseline since 2024). The language picker is a `<details>` disclosure with plain links; a small inline script closes it on an outside click or Escape (owner feedback: it stayed open). Only closing the picker and the theme need JS. Rejected: `<dialog>` with a script, or with invoker commands (too new for older iOS), a Svelte island (JS on every page).
+
+## 37. Language hints are server-rendered — superseded by #44
+
+Every page contains one hidden hint per other ready locale, written in that locale (its own `t()` strings) with a link to the same page. The inline script picks the target (saved locale, else the best `navigator.languages` match among ready locales, stopping at the page's own locale) and un-hides one. Rejected: shipping other locales' strings as JSON for the script (more bytes, JS-built DOM).
+
+## 38. Font specimen page built for dev and previews only — superseded by #43
+
+`/dev/fonts/` is injected by a small integration in `astro.config.ts` unless `PUBLIC_DEPLOY_ENV` is `production`, so the owner can compare fonts on the PR preview (also on a phone) while production never contains it. During the ru comparison it also showed the four candidates; after the choice the candidate mechanism was removed and the page shows only the site fonts. Its labels are plain English (developer tool, not UI strings). Samples live in `tests/fixtures/fonts/` and `tests/fixtures/i18n/ru/` (allowed by the language check).
+
+## 39. Minimal content collection in stage 2 — accepted
+
+The sidebar and the topic stub need real topic data, so stage 2 adds the `topicMeta` (`meta.yaml`: `level`, `category`, `order`) and `topics` (`<locale>.mdx`: `title`, `summary`) collections and one stub topic (`a2/perfekt`, draft, placeholder body). Stage 3 extends the schemas and adds the cross-file checks. Categories are ids in `site.ts` (sidebar order) with labels as UI strings. Reading order inside a level (sidebar, prev/next) is category order, then `order`, then slug (`src/lib/navigation.ts`). Rejected: a hard-coded stub list (thrown away in stage 3, and topic titles would be native-language text in code).
+
+## 40. JS budget measurement — accepted
+
+`scripts/check-js-budget.ts` measures every built HTML page: inline JS scripts, local `<script src>`, `modulepreload` links and island component/renderer URLs, plus all local chunks they import, statically or dynamically (an upper bound). Each file is gzipped separately (level 9). External scripts (the analytics beacon) and non-JS script types (JSON-LD) are not counted. A page with an `<astro-island>` gets the 45 KB budget, any other page 3 KB; the dictionary filter island (stage 6) will fall under the 45 KB class unless a separate budget is added then. Runs as a step of the `Build` job (no new required check).
+
+## 41. Dependency versions in stage 2 — accepted
+
+Added: `@fontsource-variable/atkinson-hyperlegible-next` 5.3.0 and `@fontsource-variable/golos-text` 5.3.0 (dependencies; font files only, no JS), `@axe-core/playwright` 4.13.0 (dev, e2e only). The three rejected font candidates were removed after the choice. Not bumped: `@biomejs/biome` 2.5.15 and `wrangler` 4.145.0 were released on the day of this stage, inside pnpm 12's minimum release age (1 day); installing them would have required `minimumReleaseAgeExclude` entries, which switch off that supply-chain protection. Bump them in the next stage.
+
+## 42. Level switcher without visible "soon" — accepted (owner decision)
+
+B1, B2 and C1 are shown muted in the level switcher without a visible "soon" label. Screen readers still get "(soon)" as visually hidden text, so the status is not conveyed by color alone (WCAG 1.4.1). The coming-soon pages themselves say so in full.
+
+## 43. Font specimen page removed — accepted (owner decision)
+
+After the ru font was chosen, `/dev/fonts/` (#38), its `dev-pages` integration and its sample texts were removed: the site fonts are visible on the real pages, and a comparison page is quick to rebuild when a new locale needs a font. Rejected: keeping it as a permanent developer page (code and fixtures to maintain for a one-time decision).
+
+## 44. No language hint, locale choice not stored — accepted (owner decision)
+
+The dismissible "This page is available in <language>" hint (from the original plan, #4 and #37) was removed after the owner questioned its value. Search engines already send visitors to the right locale through `hreflang`, and the language picker is always visible with language names in their own language; the hint only helped with shared links and direct visits. It cost about half of each page's inline JS, a hidden block per other locale on every page, three UI strings and six e2e tests, and would grow with every locale. With the hint gone, nothing reads a saved locale, so the picker no longer stores the choice. Rejected: keeping the hint (overhead for a small benefit), automatic redirects (still ruled out).

@@ -1,38 +1,88 @@
 ---
+import { Font } from 'astro:assets';
 import { PUBLIC_DEPLOY_ENV } from 'astro:env/client';
-import { site } from '../config/site.ts';
+import BottomBar from '../components/layout/BottomBar.astro';
+import Header from '../components/layout/Header.astro';
+import Sidebar from '../components/layout/Sidebar.astro';
+import ThemeScript from '../components/layout/ThemeScript.astro';
+import { cssVariableOf, germanFont } from '../config/fonts.ts';
+import { categoryIds, type LevelId, site } from '../config/site.ts';
 import { getLocaleConfig, type LocaleCode } from '../i18n/locales.ts';
-import { t } from '../i18n/utils.ts';
+import { alternates, localizePath, t } from '../i18n/utils.ts';
+import { neighbours } from '../lib/navigation.ts';
+import { getTopicLinks } from '../lib/topics.ts';
 import '../styles/global.css';
+
+type CssVariable = import('astro:assets').CssVariable;
 
 interface Props {
   locale: LocaleCode;
-  title?: string;
+  title?: string | undefined;
+  description?: string | undefined;
   /** Force noindex for this page (e.g. coming-soon pages). */
   noindex?: boolean;
+  /** Level of the page: shows the sidebar with that level's topics. */
+  level?: LevelId | undefined;
+  /** Slug of the topic page: marks it in the sidebar and adds the bottom bar. */
+  topic?: string | undefined;
 }
 
-const { locale, title, noindex = false } = Astro.props;
+const { locale, title, description, noindex = false, level, topic } = Astro.props;
 const localeConfig = getLocaleConfig(locale);
+const path = Astro.url.pathname;
 const pageTitle = title ? `${title} · ${site.name}` : site.name;
 const robotsNoindex = noindex || !localeConfig.ready || PUBLIC_DEPLOY_ENV === 'preview';
+const canonical = new URL(localizePath(path, locale), site.url).href;
+
+const bodyFont = cssVariableOf(localeConfig.font.family) as CssVariable;
+const germanFontVar = cssVariableOf(germanFont.family) as CssVariable;
+const fontPreload = localeConfig.font.preload.map((subset) => ({
+  subset,
+  style: 'normal' as const,
+}));
+
+const topics = level ? await getTopicLinks(locale) : [];
+const { prev, next } =
+  level && topic
+    ? neighbours(topics, level, topic, categoryIds)
+    : { prev: undefined, next: undefined };
 ---
 
 <!doctype html>
-<html lang={localeConfig.code} dir={localeConfig.dir}>
+<html
+  lang={localeConfig.code}
+  dir={localeConfig.dir}
+  style={`--font-body: var(${bodyFont}); --font-de: var(${germanFontVar})`}
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <ThemeScript />
     <title>{pageTitle}</title>
-    <meta name="description" content={t(locale, 'site.tagline')} />
+    <meta name="description" content={description ?? t(locale, 'site.tagline')} />
     {robotsNoindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    {alternates(path, site.url).map(({ hreflang, href }) => (
+      <link rel="alternate" hreflang={hreflang} href={href} />
+    ))}
+    <Font cssVariable={bodyFont} preload={fontPreload} />
+    {germanFontVar !== bodyFont && <Font cssVariable={germanFontVar} />}
   </head>
-  <body>
-    <a href="#main" class="sr-only focus:not-sr-only">
+  <body class="min-h-dvh">
+    <a
+      href="#main"
+      class="sr-only z-50 rounded-md bg-accent px-3 py-2 text-accent-fg focus:not-sr-only focus:fixed focus:start-2 focus:top-2"
+    >
       {t(locale, 'site.skipToContent')}
     </a>
-    <main id="main" class="mx-auto max-w-3xl px-4 py-8">
-      <slot />
-    </main>
+    <Header locale={locale} path={path} level={level} hasSidebar={Boolean(level)} />
+    <div class="mx-auto flex max-w-6xl">
+      {level && <Sidebar locale={locale} level={level} topics={topics} current={topic} />}
+      <main id="main" class:list={['min-w-0 flex-1 px-4 py-8 lg:px-8', topic && 'pb-24 lg:pb-8']}>
+        <slot />
+      </main>
+    </div>
+    {topic && <BottomBar locale={locale} prev={prev} next={next} />}
   </body>
 </html>

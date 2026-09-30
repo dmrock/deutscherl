@@ -2,6 +2,7 @@ import mdx from '@astrojs/mdx';
 import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, envField } from 'astro/config';
+import { fontFamilies } from './src/config/fonts.ts';
 import { site } from './src/config/site.ts';
 import { defaultLocale, localeCodes } from './src/i18n/locales.ts';
 
@@ -30,6 +31,7 @@ export default defineConfig({
       }),
     },
   },
+  fonts: fontFamilies(),
   integrations: [svelte(), mdx()],
   vite: {
     plugins: [tailwindcss()],

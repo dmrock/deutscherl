@@ -1,0 +1,72 @@
+---
+/**
+ * Plain links to the same page in every ready locale; names in their own language, no flags.
+ * Opens without JS; the inline script closes it on an outside click or Escape.
+ */
+import { getLocaleConfig, type LocaleCode, readyLocales } from '../../i18n/locales.ts';
+import { localizePath, t } from '../../i18n/utils.ts';
+
+interface Props {
+  locale: LocaleCode;
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+const current = getLocaleConfig(locale);
+---
+
+<details data-language-picker class="relative">
+  <summary class="inline-flex h-10 cursor-pointer list-none items-center gap-1.5 rounded-md px-2 hover:bg-surface">
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      class="size-5"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"></path>
+    </svg>
+    <span class="sr-only">{t(locale, 'nav.languagePicker')}:</span>
+    <span lang={current.code}>{current.name}</span>
+  </summary>
+  <ul class="absolute end-0 top-full z-40 mt-1 min-w-40 rounded-md border border-border bg-bg p-1 shadow-lg">
+    {readyLocales.map((code) => {
+      const config = getLocaleConfig(code);
+      return (
+        <li>
+          <a
+            href={localizePath(path, code)}
+            hreflang={code}
+            lang={code}
+            aria-current={code === locale ? 'true' : undefined}
+            class:list={[
+              'block rounded px-3 py-2 hover:bg-surface',
+              code === locale && 'font-semibold text-accent',
+            ]}
+          >
+            {config.name}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</details>
+
+<script is:inline>
+  (() => {
+    const picker = document.querySelector('[data-language-picker]');
+    if (!picker) return;
+    document.addEventListener('click', (event) => {
+      if (picker.open && !picker.contains(event.target)) picker.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !picker.open) return;
+      picker.open = false;
+      picker.querySelector('summary').focus();
+    });
+  })();
+</script>

@@ -1,0 +1,39 @@
+---
+/**
+ * Theme (CLAUDE.md, "UX rules"): runs in <head> before first paint, so there is no flash.
+ * data-theme = saved choice (localStorage `theme`) or the system preference; follows system changes
+ * while nothing is saved. [data-theme-toggle] buttons flip and save it. Storage errors fall back to
+ * memory. Without JavaScript, CSS follows prefers-color-scheme (global.css).
+ */
+---
+
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const media = matchMedia('(prefers-color-scheme: dark)');
+    let saved = null;
+    try {
+      saved = localStorage.getItem('theme');
+    } catch {}
+    if (saved !== 'light' && saved !== 'dark') saved = null;
+    const apply = (theme) => {
+      root.dataset.theme = theme;
+      for (const button of document.querySelectorAll('[data-theme-toggle]')) {
+        button.setAttribute('aria-pressed', String(theme === 'dark'));
+      }
+    };
+    apply(saved || (media.matches ? 'dark' : 'light'));
+    media.addEventListener('change', (event) => {
+      if (!saved) apply(event.matches ? 'dark' : 'light');
+    });
+    document.addEventListener('DOMContentLoaded', () => apply(root.dataset.theme));
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest?.('[data-theme-toggle]')) return;
+      saved = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      try {
+        localStorage.setItem('theme', saved);
+      } catch {}
+      apply(saved);
+    });
+  })();
+</script>

@@ -237,7 +237,7 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 <text x="896" y="224" class="t3">sessionStorage:</text>
 <text x="896" y="242" class="t3">seen exercise ids</text>
 <text x="896" y="272" class="t3">localStorage:</text>
-<text x="896" y="290" class="t3">theme and language</text>
+<text x="896" y="290" class="t3">theme</text>
 <text x="20" y="372" class="t3">All the heavy work happens left of the line.</text>
 <text x="700" y="372" class="t3">Right of it: no server, no database.</text>
 </svg>
@@ -251,7 +251,7 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 <p>Each layer only knows about the one below it, so layers can change independently.</p>
 </div>
 <div class="layers">
-  <div class="layer l4"><div><b>Interaction</b><span>Svelte islands and inline JS</span></div><p>Svelte only where real interactivity is needed: exercises and the dictionary filter. Theme, language picker and language hint are a few lines of plain inline JavaScript. Search loads when opened.</p></div>
+  <div class="layer l4"><div><b>Interaction</b><span>Svelte islands and inline JS</span></div><p>Svelte only where real interactivity is needed: exercises and the dictionary filter. Theme and language picker are a few lines of plain inline JavaScript. Search loads when opened.</p></div>
   <div class="layer l3"><div><b>Presentation</b><span>Astro components</span></div><p>Layout variant A and MDX components: <code>&lt;InShort&gt;</code>, <code>&lt;RuleTable&gt;</code>, <code>&lt;Example id&gt;</code>, <code>&lt;AustrianNote id&gt;</code>, <code>&lt;Word id&gt;</code>, <code>&lt;SponsorSlot&gt;</code>. Page transitions use native CSS View Transitions.</p></div>
   <div class="layer l2"><div><b>Logic</b><span>src/lib, plain TypeScript</span></div><p>Item selection with seeded randomness, answer checking with regional variants and alternative word orders, hashes for content review. No DOM, fully unit-tested.</p></div>
   <div class="layer l1"><div><b>Data</b><span>text files in git</span></div><p>Topics (MDX and YAML), per-language translations, review state, the dictionary as JSONL with manual override files. SQLite is generated from them at build time.</p></div>
@@ -370,7 +370,7 @@ flowchart LR
 <ul>
 <li><b>One list of languages.</b> <code>locales.ts</code>: code, name in the language itself, <code>ready</code>, writing direction <code>dir</code> and font. A new language starts with <code>ready: false</code>: its pages are built but hidden from the picker, sitemap and search.</li>
 <li><b>URLs.</b> English without a prefix, others with a prefix, same slugs in every language. The picker is a plain link to the same page.</li>
-<li><b>No redirects.</b> If the page language differs from the saved choice or the browser language, a small dismissible hint appears.</li>
+<li><b>No redirects, no language banner.</b> Search engines use hreflang; the language picker is always in the header.</li>
 <li><b>Outdated translations.</b> <code>review.yaml</code> records which version of English and German each translation was written against. If they change, the translation drops back to draft and shows up in <code>review:status</code>.</li>
 <li><b>Ready for right-to-left.</b> Logical CSS properties only (<code>ms-</code>, <code>pe-</code>, <code>start</code>, <code>end</code>) from day one, so Arabic or Hebrew later won't require a layout rewrite.</li>
 <li><b>Markup.</b> <code>&lt;html lang dir&gt;</code> from the page language, German fragments marked <code>lang="de"</code>, <code>hreflang</code> for every version.</li>
@@ -620,7 +620,7 @@ flowchart TD
 <tr><td>Logic</td><td>Seeded item selection, regional answers, word order with <code>accept</code> and duplicates, capitalization after checking</td><td>Vitest</td></tr>
 <tr><td>Dictionary</td><td>Import on fixtures, overrides win, unique ids</td><td>Vitest</td></tr>
 <tr><td>Behavior</td><td>On English pages: exercises with mouse, touch long press and keyboard, navigation, search, noindex, analytics only in production</td><td>Playwright</td></tr>
-<tr><td>Language switching</td><td>The only tests on Russian pages: picker keeps the page and saves the choice, hint, lang/dir/hreflang/canonical, no horizontal scrolling at mobile width</td><td>Playwright</td></tr>
+<tr><td>Language switching</td><td>The only tests on Russian pages: picker keeps the page, lang/dir/hreflang/canonical, no horizontal scrolling at mobile width</td><td>Playwright</td></tr>
 <tr><td>Accessibility</td><td>axe on every page type. No screenshot tests</td><td>Playwright, axe</td></tr>
 <tr><td>Speed</td><td>JS per page, file count; Lighthouse before launch</td><td>check-js-budget, Lighthouse</td></tr>
 </tbody></table></div>

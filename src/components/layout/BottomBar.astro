@@ -1,0 +1,48 @@
+---
+/** Below lg on topic pages: Prev / Practice / Next inside the level. */
+import type { LocaleCode } from '../../i18n/locales.ts';
+import { localizePath, t } from '../../i18n/utils.ts';
+import { type TopicLink, topicPath } from '../../lib/navigation.ts';
+
+interface Props {
+  locale: LocaleCode;
+  prev: TopicLink | undefined;
+  next: TopicLink | undefined;
+}
+
+const { locale, prev, next } = Astro.props;
+const item = 'flex h-14 items-center gap-1 px-2';
+---
+
+<nav
+  aria-label={t(locale, 'nav.topicNavigation')}
+  class="fixed start-0 end-0 bottom-0 z-20 border-t border-border bg-bg lg:hidden"
+>
+  <div class="mx-auto grid max-w-6xl grid-cols-3 text-sm">
+    {prev ? (
+      <a href={localizePath(topicPath(prev), locale)} rel="prev" class={`${item} justify-start`}>
+        <span aria-hidden="true" class="rtl:-scale-x-100">
+          ←
+        </span>
+        {t(locale, 'nav.prev')}
+        <span class="sr-only">: {prev.title}</span>
+      </a>
+    ) : (
+      <span class={`${item} justify-start text-muted`}>{t(locale, 'nav.prev')}</span>
+    )}
+    <a href="#practice" class={`${item} justify-center font-semibold text-accent`}>
+      {t(locale, 'nav.practice')}
+    </a>
+    {next ? (
+      <a href={localizePath(topicPath(next), locale)} rel="next" class={`${item} justify-end`}>
+        {t(locale, 'nav.next')}
+        <span class="sr-only">: {next.title}</span>
+        <span aria-hidden="true" class="rtl:-scale-x-100">
+          →
+        </span>
+      </a>
+    ) : (
+      <span class={`${item} justify-end text-muted`}>{t(locale, 'nav.next')}</span>
+    )}
+  </div>
+</nav>
