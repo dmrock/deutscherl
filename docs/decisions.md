@@ -191,3 +191,19 @@ After the ru font was chosen, `/dev/fonts/` (#38), its `dev-pages` integration a
 ## 44. No language hint, locale choice not stored — accepted (owner decision)
 
 The dismissible "This page is available in <language>" hint (from the original plan, #4 and #37) was removed after the owner questioned its value. Search engines already send visitors to the right locale through `hreflang`, and the language picker is always visible with language names in their own language; the hint only helped with shared links and direct visits. It cost about half of each page's inline JS, a hidden block per other locale on every page, three UI strings and six e2e tests, and would grow with every locale. With the hint gone, nothing reads a saved locale, so the picker no longer stores the choice. Rejected: keeping the hint (overhead for a small benefit), automatic redirects (still ruled out).
+
+## 45. Visual design "Paper", compact spacing — accepted (owner decision)
+
+Four designs were compared on the PR #4 preview with a temporary switcher: Clean (neutral grays, blue, flat), Paper (warm cream, teal, soft cards, serif headings), Friendly (violet, pill-shaped controls, tinted page) and Austria (red-white-red stripe, red accent, sharp corners). The owner chose Paper and asked for less padding. Its values became the only tokens; the other variants and the switcher were removed.
+
+- Tokens: the semantic colors gain `card`, `control` (borders of interactive controls, ≥ 3:1 for WCAG 1.4.11), `accent-soft`, `success`/`danger` with soft backgrounds (exercise feedback) and `header` (translucent bar with backdrop blur), plus radius (`ui` 0.5rem, `card` 0.75rem, `chip` 0.5rem) and shadow (`card`, `pop`) tokens. Every pair used for text meets AA in both themes; dark keeps the softened text (#35).
+- Headings use a system serif stack (Iowan Old Style, Charter, Georgia, ui-serif): no font download and no new dependency; Georgia and platform serifs cover Cyrillic. Trade-off: the serif differs slightly between Apple and other platforms. Rejected: a self-hosted serif (e.g. Literata or Source Serif with Cyrillic), one more font file per page for headings only.
+- Compact spacing: 48 px header and bottom bar, 15rem sidebar, less padding in main, cards, "In short" and the home hero; controls keep at least 36–40 px height.
+- Shared page changes made for the comparison stay: home page with hero and start buttons, level cards with CEFR level names, three feature blocks (with the Austrian flag); topic page with level/category label and an "In short" box. New UI strings in en and ru.
+- The red-white-red `.flag` marks Austrian content in every theme; its colors are fixed (a flag, not a theme color).
+
+Rejected: Clean (too generic), Friendly (playful shapes), Austria (the red accent collides with the red of wrong answers).
+
+## 46. Component sample page until stage 3 — accepted
+
+`/dev/design/` (injected by the `dev-pages` integration, never in production, like #38) shows static mock-ups of the stage 3–4 components in the chosen design: In short, rule table, examples with audio button and a CSS-only "Hide translation" toggle, Austrian note, badges, sponsor slot, choice and word-order exercises and the round result. It stays as the visual reference while those components are built and is removed in stage 3, once a real topic page shows them. Its German samples live in `tests/fixtures/design/sample.json` (not content, not reviewed). Rejected: removing it with the switcher (stage 3 would rebuild the styles from memory).

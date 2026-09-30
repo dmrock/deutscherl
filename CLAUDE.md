@@ -97,6 +97,7 @@ Terminology: the "native language" (a.k.a. locale) is the language of the UI, ex
 - Choosing a font for a new locale: build a temporary comparison page on the PR (candidates at body and example size, light and dark, next to German blocks), let the owner choose on the preview, then remove the page and keep only the chosen package (as done for ru, decision #7).
 - A future locale in a script without a good match (Arabic, Hindi, …) simply gets its own font entry; nothing else changes.
 - German example text is slightly larger than explanation text.
+- Headings (`h1`–`h3`) use a system serif stack (`--heading-font`: Iowan Old Style / Charter on Apple, Georgia elsewhere), no font download (decision #45). Body text stays in the locale font.
 
 ## Project structure (target)
 
@@ -123,6 +124,7 @@ src/
     content/                 # InShort, RuleTable, Example, AustrianNote, Word, SponsorSlot
     layout/                  # Header, LevelSwitcher, LanguagePicker, ThemeToggle, Sidebar,
                              # BottomBar, ThemeScript (inline JS)
+  dev/design.astro           # component sample page, dev/previews only (removed in stage 3)
   layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts), layout
   lib/                       # pure TS logic — unit-tested (navigation.ts); topics.ts reads collections
   pages/[...locale]/         # index, [level]/index, [level]/[topic]/index
@@ -212,7 +214,8 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link.
 - Examples: audio button (Web Speech API placeholder in the pilot, `de-AT` then `de-DE` voice) and a "Hide translation" toggle.
 - Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
-- Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `fg`, `muted`, `border`, `accent`, `accent-fg`, `focus`) defined per `[data-theme]` and exposed to Tailwind (`bg-bg`, `text-muted`, …). Use only these; no raw colors, no `dark:` variants except for swapping icons. Dark text is deliberately not pure white on black (about 13:1 instead of 18:1) and text uses grayscale antialiasing, so it does not glow.
+- Visual design: "Paper" (owner's choice, decision #45): warm cream background, teal accent, soft cards, serif headings, compact spacing. `/dev/design/` (dev and previews only) shows the stage 3–4 components as static mock-ups in this design; build them to match it, then remove the page (decision #46).
+- Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `card`, `fg`, `muted`, `border`, `control`, `accent`, `accent-soft`, `accent-fg`, `focus`, `success(-soft)`, `danger(-soft)`, `header`) defined per `[data-theme]`, plus radii (`rounded-ui`, `rounded-card`, `rounded-chip`) and shadows (`shadow-card`, `shadow-pop`), exposed to Tailwind (`bg-bg`, `text-muted`, `border-control`, …). `control` is the border of interactive controls (≥ 3:1). Use only these; no raw colors (exception: the Austrian `.flag`), no `dark:` variants except for swapping icons. Dark text is deliberately not pure white on black (about 13:1 instead of 18:1) and text uses grayscale antialiasing, so it does not glow.
 - Layout (variant A): header with level switcher, search, language picker, theme toggle; left sidebar with topics grouped by category (category order in `site.ts`, labels `category.<id>`); main column with the topic. On mobile the sidebar becomes a sheet (the same element with the `popover` attribute, opened by a `popovertarget` button: no JS) and a bottom bar shows Prev / Practice / Next. Russian strings are often 20–30% longer than English: layouts must not break.
 - Page transitions: `@view-transition { navigation: auto; }` inside `prefers-reduced-motion: no-preference`; named elements `site-header` and `sidebar`.
 - "Report a mistake": opens the GitHub issue form with page URL, locale and item id prefilled via query parameters. No email.

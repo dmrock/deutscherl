@@ -1,8 +1,9 @@
 ---
 /**
- * DESIGN OPTIONS (temporary, never in production): a sample topic page with static mock-ups of
- * the components from stages 3 and 4 (In short, rule table, examples, Austrian note, badges,
- * exercises), so the owner can compare the four designs on realistic content. Labels are plain
+ * Component sample (dev and previews only, never in production): a topic page with static
+ * mock-ups of the stage 3 and 4 components (In short, rule table, examples, Austrian note, badges,
+ * exercises) in the chosen design (decision #45). It is the visual reference for building them;
+ * stage 3 removes it once the real components render on a topic page. Labels are plain
  * English (developer page, not UI strings); German samples live in tests/fixtures/design/.
  */
 import sample from '../../tests/fixtures/design/sample.json';
@@ -27,7 +28,7 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
 <Base locale="en" title="Design sample" level="a2" topic="perfekt" noindex>
   <article class="max-w-prose">
     <p class="eyebrow text-muted">A2 · Verbs</p>
-    <h1 class="mt-2 text-3xl sm:text-4xl">Perfekt: haben or sein?</h1>
+    <h1 class="mt-1 text-3xl sm:text-4xl">Perfekt: haben or sein?</h1>
     <div class="mt-3 flex flex-wrap gap-2 text-xs">
       <span class="inline-flex items-center gap-1 rounded-chip bg-success-soft px-2.5 py-1 font-semibold text-success">
         <svg {...iconProps} class="size-3.5">
@@ -41,15 +42,15 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
       <span class="inline-flex items-center px-1 py-1 text-muted">5 min read</span>
     </div>
 
-    <aside class="mt-6 rounded-card bg-accent-soft p-5">
+    <aside class="mt-5 rounded-card bg-accent-soft px-4 py-3">
       <p class="eyebrow text-accent">In short</p>
-      <p class="mt-1 text-lg">
+      <p class="mt-0.5 text-lg">
         Most verbs form the Perfekt with <i lang="de">haben</i>. Verbs of movement and change of
         state use <i lang="de">sein</i>.
       </p>
     </aside>
 
-    <h2 class="mt-10 text-2xl">How it works</h2>
+    <h2 class="mt-8 text-2xl">How it works</h2>
     <p class="mt-3">
       The Perfekt has two parts: a form of <i lang="de">haben</i> or <i lang="de">sein</i> in
       position two, and the past participle at the very end of the sentence. Verbs like{' '}
@@ -63,26 +64,26 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
       <table class="w-full text-start text-[0.9375rem]">
         <thead class="bg-surface">
           <tr>
-            <th scope="col" class="px-4 py-2.5 text-start" lang="de">
+            <th scope="col" class="px-4 py-2 text-start" lang="de">
               haben
             </th>
-            <th scope="col" class="border-s border-border px-4 py-2.5 text-start" lang="de">
+            <th scope="col" class="border-s border-border px-4 py-2 text-start" lang="de">
               sein
             </th>
           </tr>
         </thead>
         <tbody class="divide-y divide-border">
           <tr>
-            <td class="px-4 py-2.5">Most verbs</td>
-            <td class="border-s border-border px-4 py-2.5">Movement from A to B</td>
+            <td class="px-4 py-2">Most verbs</td>
+            <td class="border-s border-border px-4 py-2">Movement from A to B</td>
           </tr>
           <tr>
-            <td class="px-4 py-2.5">Verbs with an accusative object</td>
-            <td class="border-s border-border px-4 py-2.5">Change of state</td>
+            <td class="px-4 py-2">Verbs with an accusative object</td>
+            <td class="border-s border-border px-4 py-2">Change of state</td>
           </tr>
           <tr>
-            <td class="px-4 py-2.5">Reflexive verbs</td>
-            <td class="border-s border-border px-4 py-2.5">
+            <td class="px-4 py-2">Reflexive verbs</td>
+            <td class="border-s border-border px-4 py-2">
               <span lang="de">sein, bleiben, werden</span>
             </td>
           </tr>
@@ -90,7 +91,7 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
       </table>
     </div>
 
-    <div class="group mt-10">
+    <div class="group mt-8">
       <div class="flex flex-wrap items-center justify-between gap-3">
         <h2 class="text-2xl">Examples</h2>
         <label class="inline-flex cursor-pointer items-center gap-2 text-sm text-muted">
@@ -100,7 +101,7 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
       </div>
       <ul class="mt-4 divide-y divide-border rounded-card border border-border bg-card shadow-card">
         {sample.examples.map((example) => (
-          <li class="flex items-start gap-3 p-4">
+          <li class="flex items-start gap-3 px-4 py-3">
             <button
               type="button"
               aria-label="Listen"
@@ -124,7 +125,7 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
       </ul>
     </div>
 
-    <aside class="mt-8 rounded-card border border-border bg-card p-5 shadow-card">
+    <aside class="mt-6 rounded-card border border-border bg-card p-4 shadow-card">
       <p class="flex items-center gap-2 font-semibold">
         <span class="flag" aria-hidden="true"></span>
         In Austria
@@ -141,18 +142,18 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
       <p class="text-muted">{sample.austrian.en}</p>
     </aside>
 
-    <aside class="mt-8 flex items-center gap-4 rounded-card border border-dashed border-control p-4 text-sm text-muted">
+    <aside class="mt-6 flex items-center gap-3 rounded-card border border-dashed border-control px-4 py-3 text-sm text-muted">
       <span class="rounded-chip border border-control px-2 py-0.5 text-xs font-semibold">Ad</span>
       Sponsor banner: a static image with a link, no tracking.
     </aside>
   </article>
 
-  <section id="practice" class="mt-12 max-w-prose scroll-mt-20" aria-labelledby="practice-title">
+  <section id="practice" class="mt-10 max-w-prose scroll-mt-16" aria-labelledby="practice-title">
     <h2 id="practice-title" class="text-2xl">
       Practice
     </h2>
 
-    <div class="mt-4 rounded-card border border-border bg-card p-5 shadow-card">
+    <div class="mt-4 rounded-card border border-border bg-card p-4 shadow-card">
       <div class="flex items-center justify-between gap-3 text-sm text-muted">
         <span>Question 2 of 5</span>
         <span class="flex gap-1.5" aria-hidden="true">
@@ -176,7 +177,7 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
             type="button"
             lang="de"
             class:list={[
-              'german flex items-center justify-center gap-2 rounded-ui border-2 px-4 py-2.5 font-semibold',
+              'german flex items-center justify-center gap-2 rounded-ui border-2 px-4 py-2 font-semibold',
               option === sample.choice.answer && 'border-success bg-success-soft text-success',
               option === sample.choice.picked && 'border-danger bg-danger-soft text-danger',
             ]}
@@ -208,14 +209,14 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
         </a>
         <button
           type="button"
-          class="inline-flex h-11 items-center rounded-ui bg-accent px-6 font-semibold text-accent-fg"
+          class="inline-flex h-10 items-center rounded-ui bg-accent px-5 font-semibold text-accent-fg"
         >
           Next
         </button>
       </div>
     </div>
 
-    <div class="mt-6 rounded-card border border-border bg-card p-5 shadow-card">
+    <div class="mt-4 rounded-card border border-border bg-card p-4 shadow-card">
       <p class="text-sm text-muted">Put the words in order</p>
       <p class="mt-1">{sample.wordOrder.translation}</p>
       <div class="mt-4 flex items-end gap-1">
@@ -244,33 +245,33 @@ const chip = 'german rounded-chip border border-control bg-card px-3 py-1 shadow
       <div class="mt-4 flex justify-end gap-3">
         <button
           type="button"
-          class="inline-flex h-11 items-center rounded-ui border border-control px-5 font-semibold"
+          class="inline-flex h-10 items-center rounded-ui border border-control px-4 font-semibold"
         >
           Reset
         </button>
         <button
           type="button"
           disabled
-          class="inline-flex h-11 items-center rounded-ui bg-accent px-6 font-semibold text-accent-fg opacity-50"
+          class="inline-flex h-10 items-center rounded-ui bg-accent px-5 font-semibold text-accent-fg opacity-50"
         >
           Check
         </button>
       </div>
     </div>
 
-    <div class="mt-6 rounded-card border border-border bg-card p-6 text-center shadow-card">
+    <div class="mt-4 rounded-card border border-border bg-card p-5 text-center shadow-card">
       <p class="text-4xl font-bold text-accent">4 / 5</p>
       <p class="mt-2">Well done! You got 4 of 5 right.</p>
       <div class="mt-5 flex flex-wrap justify-center gap-3">
         <button
           type="button"
-          class="inline-flex h-11 items-center rounded-ui bg-accent px-6 font-semibold text-accent-fg"
+          class="inline-flex h-10 items-center rounded-ui bg-accent px-5 font-semibold text-accent-fg"
         >
           Try again
         </button>
         <a
           href="#"
-          class="inline-flex h-11 items-center rounded-ui border border-control px-5 font-semibold"
+          class="inline-flex h-10 items-center rounded-ui border border-control px-5 font-semibold"
         >
           Next topic
         </a>

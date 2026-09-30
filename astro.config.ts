@@ -9,7 +9,7 @@ import { defaultLocale, localeCodes } from './src/i18n/locales.ts';
 
 const deployEnv = process.env.PUBLIC_DEPLOY_ENV ?? 'development';
 
-/** DESIGN OPTIONS (temporary): sample topic page for comparing designs; never in production. */
+/** Developer pages (component sample): built in dev and for previews, never for production. */
 function devPages(): AstroIntegration {
   return {
     name: 'dev-pages',

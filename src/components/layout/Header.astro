@@ -18,7 +18,7 @@ const { locale, path, level, hasSidebar } = Astro.props;
 ---
 
 <header class="site-header sticky top-0 z-30 border-b border-border bg-header backdrop-blur-md">
-  <div class="mx-auto flex h-14 max-w-6xl items-center gap-1 px-4">
+  <div class="mx-auto flex h-12 max-w-6xl items-center gap-1 px-4">
     {hasSidebar && (
       <button
         type="button"
@@ -41,11 +41,9 @@ const { locale, path, level, hasSidebar } = Astro.props;
     )}
     <a
       href={localizePath('/', locale)}
-      class="me-auto inline-flex items-center gap-2 text-lg font-bold tracking-tight lg:me-6"
+      class="me-auto inline-flex items-center gap-2 text-lg font-bold tracking-tight lg:me-5"
     >
-      <span class="brand-mark" aria-hidden="true">
-        {site.name.charAt(0)}
-      </span>
+      <span class="brand-mark" aria-hidden="true"></span>
       {site.name}
     </a>
     <LevelSwitcher locale={locale} active={level} class="me-auto hidden lg:block" />

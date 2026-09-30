@@ -7,8 +7,6 @@ import Sidebar from '../components/layout/Sidebar.astro';
 import ThemeScript from '../components/layout/ThemeScript.astro';
 import { cssVariableOf, germanFont } from '../config/fonts.ts';
 import { categoryIds, type LevelId, site } from '../config/site.ts';
-import DesignScript from '../dev/DesignScript.astro';
-import DesignSwitcher from '../dev/DesignSwitcher.astro';
 import { getLocaleConfig, type LocaleCode } from '../i18n/locales.ts';
 import { alternates, localizePath, t } from '../i18n/utils.ts';
 import { neighbours } from '../lib/navigation.ts';
@@ -34,8 +32,6 @@ const localeConfig = getLocaleConfig(locale);
 const path = Astro.url.pathname;
 const pageTitle = title ? `${title} · ${site.name}` : site.name;
 const robotsNoindex = noindex || !localeConfig.ready || PUBLIC_DEPLOY_ENV === 'preview';
-// DESIGN OPTIONS (temporary): the design switcher exists only outside production.
-const showDesigns = PUBLIC_DEPLOY_ENV !== 'production';
 const canonical = new URL(localizePath(path, locale), site.url).href;
 
 const bodyFont = cssVariableOf(localeConfig.font.family) as CssVariable;
@@ -63,7 +59,6 @@ const { prev, next } =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <ThemeScript />
-    {showDesigns && <DesignScript />}
     <title>{pageTitle}</title>
     <meta name="description" content={description ?? t(locale, 'site.tagline')} />
     {robotsNoindex && <meta name="robots" content="noindex" />}
@@ -84,11 +79,10 @@ const { prev, next } =
     <Header locale={locale} path={path} level={level} hasSidebar={Boolean(level)} />
     <div class="mx-auto flex max-w-6xl">
       {level && <Sidebar locale={locale} level={level} topics={topics} current={topic} />}
-      <main id="main" class:list={['min-w-0 flex-1 px-4 py-8 lg:px-8', topic && 'pb-24 lg:pb-8']}>
+      <main id="main" class:list={['min-w-0 flex-1 px-4 py-6 lg:px-6', topic && 'pb-20 lg:pb-6']}>
         <slot />
       </main>
     </div>
     {topic && <BottomBar locale={locale} prev={prev} next={next} />}
-    {showDesigns && <DesignSwitcher />}
   </body>
 </html>

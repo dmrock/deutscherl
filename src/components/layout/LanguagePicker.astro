@@ -45,9 +45,7 @@ const current = getLocaleConfig(locale);
             aria-current={code === locale ? 'true' : undefined}
             class:list={[
               'block rounded-ui px-3 py-2',
-              code === locale
-                ? 'bg-nav-active font-semibold text-nav-active-fg'
-                : 'hover:bg-surface',
+              code === locale ? 'bg-surface font-semibold' : 'hover:bg-surface',
             ]}
           >
             {config.name}

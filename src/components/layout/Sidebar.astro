@@ -54,18 +54,18 @@ const levelInfo = levels.find((entry) => entry.id === level);
       </a>
     </p>
     {groups.map((group) => (
-      <section class="mt-5">
+      <section class="mt-4">
         <h2 class="eyebrow text-muted px-3">{t(locale, `category.${group.category}`)}</h2>
-        <ul class="mt-1.5 space-y-0.5">
+        <ul class="mt-1">
           {group.topics.map((topic) => (
             <li>
               <a
                 href={localizePath(topicPath(topic), locale)}
                 aria-current={topic.slug === current ? 'page' : undefined}
                 class:list={[
-                  'block rounded-ui border-s-2 px-3 py-1.5 text-[0.9375rem]',
+                  'block rounded-e-ui border-s-2 px-3 py-1 text-[0.9375rem]',
                   topic.slug === current
-                    ? 'border-nav-indicator bg-nav-active font-semibold text-nav-active-fg'
+                    ? 'border-accent bg-surface font-semibold'
                     : 'border-transparent hover:bg-surface',
                 ]}
               >
@@ -111,11 +111,11 @@ const levelInfo = levels.find((entry) => entry.id === level);
     .sidebar {
       display: block;
       position: sticky;
-      inset-block: 3.5rem auto;
+      inset-block: 3rem auto;
       flex: none;
-      width: 16rem;
-      height: calc(100dvh - 3.5rem);
-      padding: 1.5rem 1rem;
+      width: 15rem;
+      height: calc(100dvh - 3rem);
+      padding: 1.25rem 0.75rem;
       view-transition-name: sidebar;
     }
   }
