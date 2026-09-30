@@ -1,1 +1,86 @@
 @import "tailwindcss";
+
+/*
+ * Design tokens. Components use only the semantic colors below (bg-bg, text-fg, border-border, ...),
+ * so they never need `dark:` variants. Themes are selected with `data-theme` (set before first
+ * paint by ThemeScript) and can be nested (the font specimen page shows both side by side).
+ * Without JavaScript the system preference applies.
+ */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f5f5f4;
+  --fg: #1c1917;
+  --muted: #57534e;
+  --border: #d6d3d1;
+  --accent: #1d4ed8;
+  --accent-fg: #ffffff;
+  --focus: #2563eb;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c0a09;
+  --surface: #1c1917;
+  --fg: #f5f5f4;
+  --muted: #a8a29e;
+  --border: #44403c;
+  --accent: #93c5fd;
+  --accent-fg: #0c0a09;
+  --focus: #60a5fa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #0c0a09;
+    --surface: #1c1917;
+    --fg: #f5f5f4;
+    --muted: #a8a29e;
+    --border: #44403c;
+    --accent: #93c5fd;
+    --accent-fg: #0c0a09;
+    --focus: #60a5fa;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-focus: var(--focus);
+
+  /* --font-body is the locale font, --font-de the German font (set in Base.astro). */
+  --font-sans: var(--font-body, system-ui), system-ui, sans-serif;
+  --font-german: var(--font-de, system-ui), system-ui, sans-serif;
+
+  /* German example text is slightly larger than explanation text. */
+  --text-german: 1.125rem;
+  --text-german--line-height: 1.6;
+}
+
+/* German content blocks (examples, exercises, dictionary headwords): same font on every locale. */
+@utility german {
+  font-family: var(--font-german);
+  font-size: var(--text-german);
+  line-height: var(--text-german--line-height);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}

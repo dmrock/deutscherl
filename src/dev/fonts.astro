@@ -1,0 +1,143 @@
+---
+/**
+ * Font specimen page (not built for production, see the `dev-pages` integration in astro.config.ts).
+ * Compares the German font with Cyrillic candidates for the ru locale (CLAUDE.md, "Fonts").
+ * Developer tool: labels are plain English, not UI strings.
+ */
+import '@fontsource-variable/atkinson-hyperlegible-next/wght.css';
+import '@fontsource-variable/golos-text/wght.css';
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource-variable/noto-sans/wght.css';
+import '@fontsource-variable/onest/wght.css';
+import { statSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import germanSample from '../../tests/fixtures/fonts/german-sample.txt?raw';
+import russianSample from '../../tests/fixtures/i18n/ru/font-sample.txt?raw';
+import '../styles/global.css';
+
+interface Specimen {
+  family: string;
+  /** Fontsource package id, used for file sizes */
+  id: string;
+  cyrillic: boolean;
+}
+
+const german: Specimen = {
+  family: 'Atkinson Hyperlegible Next Variable',
+  id: 'atkinson-hyperlegible-next',
+  cyrillic: false,
+};
+
+const candidates: Specimen[] = [
+  { family: 'Golos Text Variable', id: 'golos-text', cyrillic: true },
+  { family: 'Inter Variable', id: 'inter', cyrillic: true },
+  { family: 'Noto Sans Variable', id: 'noto-sans', cyrillic: true },
+  { family: 'Onest Variable', id: 'onest', cyrillic: true },
+];
+
+const require = createRequire(import.meta.url);
+
+/** Size of one subset's woff2 file (normal style), in KB. */
+function subsetKb(id: string, subset: string): string {
+  const file = require.resolve(
+    `@fontsource-variable/${id}/files/${id}-${subset}-wght-normal.woff2`,
+  );
+  return `${Math.round(statSync(file).size / 1024)} KB`;
+}
+
+const specimenLine = 'Il1 | O0 | äöü ÄÖÜ ß ẞ | 0123456789';
+const sizes = [
+  { label: 'Body (1rem)', className: 'text-base' },
+  { label: 'Example (1.125rem)', className: 'text-german' },
+];
+const themes = ['light', 'dark'] as const;
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Font specimens</title>
+    <style>
+      .de-font {
+        font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="font-[system-ui]">
+    <main class="mx-auto max-w-7xl px-4 py-8">
+      <h1 class="text-3xl font-bold">Font specimens</h1>
+      <p class="mt-2 text-muted">
+        German blocks always use {german.family}. Each candidate is the ru locale font: explanation
+        text, grammar terms in parentheses and UI. The German sample and the Russian sample come
+        from
+        <code>tests/fixtures/</code>.
+      </p>
+
+      {[german, ...candidates].map((font) => (
+        <section class="mt-12" aria-labelledby={`font-${font.id}`}>
+          <h2 id={`font-${font.id}`} class="text-2xl font-bold">
+            {font.family.replace(/ Variable$/, '')}
+            {font === german && (
+              <span class="text-base font-normal text-muted"> (German font, reference)</span>
+            )}
+          </h2>
+          <p class="mt-1 text-sm text-muted">
+            latin {subsetKb(font.id, 'latin')}
+            {font.cyrillic && <>, cyrillic {subsetKb(font.id, 'cyrillic')}</>}
+            {!font.cyrillic && <>; no Cyrillic, so the Russian sample is not shown</>}
+          </p>
+          <div class="mt-4 grid gap-4 lg:grid-cols-2">
+            {themes.map((theme) => (
+              <div data-theme={theme} class="rounded-lg border border-border bg-bg p-4 text-fg">
+                <p class="text-xs uppercase tracking-wide text-muted">{theme}</p>
+                <p class="mt-2 text-2xl" style={`font-family: '${font.family}'`} lang="de">
+                  {specimenLine}
+                </p>
+                {sizes.map((size) => (
+                  <div class="mt-4">
+                    <p class="text-xs text-muted">{size.label}</p>
+                    {font.cyrillic && (
+                      <p
+                        class={`mt-1 ${size.className}`}
+                        style={`font-family: '${font.family}'`}
+                        lang="ru"
+                      >
+                        {russianSample}
+                      </p>
+                    )}
+                    <p
+                      class={`mt-2 ${size.className}`}
+                      style={`font-family: '${font.family}'`}
+                      lang="de"
+                    >
+                      {germanSample}
+                    </p>
+                  </div>
+                ))}
+                {font.cyrillic && (
+                  <div class="mt-4">
+                    <p class="text-xs text-muted">
+                      Real mix on a ru page: explanation + German example
+                    </p>
+                    <p class="mt-1" style={`font-family: '${font.family}'`} lang="ru">
+                      {russianSample}
+                    </p>
+                    <p class="de-font mt-2 rounded-md bg-surface p-3 text-german" lang="de">
+                      {germanSample}
+                    </p>
+                    <p class="mt-2 font-bold" style={`font-family: '${font.family}'`} lang="ru">
+                      {russianSample.split('.')[0]}.
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </main>
+  </body>
+</html>
