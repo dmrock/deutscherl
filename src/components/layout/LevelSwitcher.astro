@@ -1,0 +1,35 @@
+---
+import { type LevelId, levels } from '../../config/site.ts';
+import type { LocaleCode } from '../../i18n/locales.ts';
+import { localizePath, t } from '../../i18n/utils.ts';
+
+interface Props {
+  locale: LocaleCode;
+  /** Level of the current page, if any */
+  active?: LevelId | undefined;
+  class?: string;
+}
+
+const { locale, active, class: className } = Astro.props;
+---
+
+<nav aria-label={t(locale, 'nav.levels')} class={className}>
+  <ul class="flex flex-wrap items-center gap-1">
+    {levels.map((level) => (
+      <li>
+        <a
+          href={localizePath(`/${level.id}/`, locale)}
+          aria-current={level.id === active ? 'true' : undefined}
+          class:list={[
+            'inline-flex items-baseline gap-1 rounded-md px-2 py-1 font-semibold hover:bg-surface',
+            level.id === active && 'bg-surface text-accent',
+            !level.available && 'font-normal text-muted',
+          ]}
+        >
+          {level.label}
+          {!level.available && <span class="text-xs">{t(locale, 'level.soon')}</span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

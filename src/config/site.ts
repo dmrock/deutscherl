@@ -2,7 +2,15 @@
  * Site-wide settings. The project name lives only here (working name, may change).
  */
 
-export type LevelId = 'a1' | 'a2' | 'b1' | 'b2' | 'c1';
+export const levelIds = ['a1', 'a2', 'b1', 'b2', 'c1'] as const;
+export type LevelId = (typeof levelIds)[number];
+
+/**
+ * Topic categories in sidebar order. Labels are UI strings (`category.<id>`); topics reference a
+ * category in meta.yaml. Stage 8 adds the rest.
+ */
+export const categoryIds = ['verbs'] as const;
+export type CategoryId = (typeof categoryIds)[number];
 
 export interface Level {
   id: LevelId;

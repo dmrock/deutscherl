@@ -113,6 +113,8 @@ jobs:
           # `preview` adds noindex to every page.
           PUBLIC_DEPLOY_ENV: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
         run: pnpm build
+      - name: JS budget
+        run: pnpm budget
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: dist
@@ -125,6 +127,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      # Same value the build used, so the noindex tests know which build they are testing.
+      PUBLIC_DEPLOY_ENV: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/setup

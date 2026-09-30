@@ -1,0 +1,63 @@
+---
+import { type CollectionEntry, getCollection, getEntry, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import type { LevelId } from '../../../../config/site.ts';
+import { defaultLocale, isLocaleCode, type LocaleCode } from '../../../../i18n/locales.ts';
+import { t } from '../../../../i18n/utils.ts';
+import Base from '../../../../layouts/Base.astro';
+
+// One page per topic MDX file: `a2/perfekt/ru.mdx` becomes `/ru/a2/perfekt/`.
+export const getStaticPaths = (async () => {
+  const pages = await getCollection('topics');
+  const paths = [];
+  for (const page of pages) {
+    const [folderLevel, slug, locale] = page.id.split('/');
+    if (!folderLevel || !slug || !locale || !isLocaleCode(locale)) {
+      throw new Error(`Unexpected topic file: ${page.id}`);
+    }
+    const meta = await getEntry('topicMeta', `${folderLevel}/${slug}`);
+    if (!meta) throw new Error(`Missing meta.yaml for ${folderLevel}/${slug}`);
+    paths.push({
+      params: {
+        locale: locale === defaultLocale ? undefined : locale,
+        level: meta.data.level,
+        topic: slug,
+      },
+      props: { locale, level: meta.data.level, slug, page },
+    });
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+interface Props {
+  locale: LocaleCode;
+  level: LevelId;
+  slug: string;
+  page: CollectionEntry<'topics'>;
+}
+
+const { locale, level, slug, page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<Base
+  locale={locale}
+  title={page.data.title}
+  description={page.data.summary}
+  level={level}
+  topic={slug}
+>
+  <article>
+    <h1 class="text-3xl font-bold">{page.data.title}</h1>
+    <p class="mt-4 max-w-prose text-lg">{page.data.summary}</p>
+    <div class="mt-6 max-w-prose space-y-4">
+      <Content />
+    </div>
+  </article>
+  <section id="practice" class="mt-12 scroll-mt-20" aria-labelledby="practice-title">
+    <h2 id="practice-title" class="text-2xl font-bold">
+      {t(locale, 'nav.practice')}
+    </h2>
+    <p class="mt-2 text-muted">{t(locale, 'topic.practiceSoon')}</p>
+  </section>
+</Base>

@@ -75,11 +75,12 @@ Components, pages and tests never contain native-language strings inline: they u
 Terminology: the "native language" (a.k.a. locale) is the language of the UI, explanations and translations. German is always the language being learned and is never a locale.
 
 - Locales are defined in ONE place: `src/i18n/locales.ts`. Each entry: `code`, `name` (in its own language), `default`, `ready`, `dir` (`ltr` | `rtl`), `font` (see "Fonts"). Adding a language = adding an entry + translations; no code changes elsewhere.
+- Pages are built from `[...locale]` rest-parameter routes (`src/pages/[...locale]/…`) over `locales.ts`, so a new locale needs no new page files.
 - `ready: false` locales are built for preview but hidden from the picker, sitemap and search, and pages get `noindex`.
 - Routing: default locale without prefix (`/a2/perfekt/`), others with prefix (`/ru/a2/perfekt/`). Same slugs in every locale.
 - `<html lang dir>` come from the locale. Every German fragment is wrapped with `lang="de"` (screen readers, TTS, hyphenation, search).
-- Language picker in the header: plain links, language names in their own language (the `name` field of each locale, e.g. Russian written in Cyrillic), no flags. It links to the SAME page in the other locale and saves the choice in `localStorage` (`locale`).
-- No automatic redirects. A small dismissible hint ("This page is available in <language>", text from the target locale's UI strings) appears on a page when its locale differs from the saved choice, or, if nothing is saved, from the best match in `navigator.languages` among ready locales. Dismissal is saved per locale.
+- Language picker in the header: plain links, language names in their own language (the `name` field of each locale, e.g. Russian written in Cyrillic), no flags. It links to the SAME page in the other locale and saves the choice in `localStorage` (`locale`). Markup: a `<details>` disclosure (no JS to open it); every link carries `data-locale`, and one delegated click handler saves the choice.
+- No automatic redirects. A small dismissible hint ("This page is available in <language>", text from the target locale's UI strings) appears on a page when its locale differs from the saved choice, or, if nothing is saved, from the best match in `navigator.languages` among ready locales. Dismissal is saved per locale (`hint-dismissed:<code>`). The hints are server-rendered, hidden, one per other ready locale, each in its own language (`LanguageHint.astro`); `LocaleScript.astro` only un-hides one.
 - UI strings: `src/i18n/ui/en.ts` is the source of truth; every other locale file is typed against it (`satisfies UiStrings`), so a missing key is a type error. Access via `t(locale, key)`; no inline strings in components.
 - German is single-sourced: German sentences exist ONCE and are shared by all locales. Everything written in a native language lives in per-locale files, so translators never touch German files and translations never trigger German re-verification.
 - Translation freshness: `review.yaml` records for each translation the `base` hash it was last written or reviewed against (`basedOn`). If English or German changes afterwards, the translation is outdated: it is reset to `draft` and listed by `review:status` (see "Review and verification").
@@ -88,10 +89,12 @@ Terminology: the "native language" (a.k.a. locale) is the language of the UI, ex
 
 ## Fonts
 
-- Fonts are configured per locale in `locales.ts` (family, Fontsource package, subsets), self-hosted via Fontsource, `font-display: swap`, only the subsets that locale needs.
-- German content blocks (examples, exercises, dictionary headwords) use one German font on every locale for consistent umlauts and ß: Atkinson Hyperlegible Next (Latin only). Inline German terms inside explanation text inherit the locale font.
+- Fonts are configured per locale in `locales.ts` (`family`, Fontsource variable-font `package`, `subsets`, `preload`), self-hosted, `font-display: swap`. Only the listed subsets get `@font-face` rules; `preload` lists the subsets every page of that locale uses right away.
+- Implementation: Astro's built-in Fonts API. `src/config/fonts.ts` builds the `fonts` config from `locales.ts` + `germanFont` with a small provider that reads the files of the installed Fontsource packages (`metadata.json`, `unicode.json`, `files/`): versions pinned by the lockfile, no network at build time, metric-adjusted fallbacks. Each family gets a CSS variable derived from its name (`--font-golos-text`). `Base.astro` renders `<Font>` for the locale font (preloaded) and the German font, and sets `--font-body` / `--font-de`.
+- German content blocks (examples, exercises, dictionary headwords) use one German font on every locale for consistent umlauts and ß: Atkinson Hyperlegible Next (Latin only), via the `german` utility (German font, slightly larger size). Inline German terms inside explanation text inherit the locale font.
 - `en`: Atkinson Hyperlegible Next.
-- `ru`: Atkinson has NO Cyrillic. Candidates with Cyrillic in Fontsource: Golos Text, Inter, Noto Sans, Onest. The owner picks after a side-by-side comparison page (stage 2). Record the choice in `docs/decisions.md`.
+- `ru`: Golos Text (owner's choice after the specimen comparison, decision #7).
+- Font specimen page `/dev/fonts/` (`src/dev/fonts.astro`): every site font plus `fontCandidates` from `src/config/fonts.ts`, with the samples in `tests/fixtures/`, body and example size, light and dark. Built in dev and for previews, never for production. To choose a font for a new locale: add candidates (and their packages as devDependencies), let the owner compare on the PR preview, then keep only the chosen one.
 - A future locale in a script without a good match (Arabic, Hindi, …) simply gets its own font entry; nothing else changes.
 - German example text is slightly larger than explanation text.
 
@@ -99,7 +102,8 @@ Terminology: the "native language" (a.k.a. locale) is the language of the UI, ex
 
 ```
 src/
-  config/site.ts
+  config/site.ts             # name, levels, categories
+  config/fonts.ts            # Fonts API config from locales.ts + German font
   i18n/
     locales.ts               # locales: code, name, default, ready, dir, font
     ui/en.ts                 # UI strings, source of truth
@@ -117,9 +121,12 @@ src/
   components/
     exercises/               # Svelte islands
     content/                 # InShort, RuleTable, Example, AustrianNote, Word, SponsorSlot
-    layout/                  # Header, Sidebar, BottomBar, LanguageHint
-  lib/                       # pure TS logic — unit-tested
-  pages/
+    layout/                  # Header, LevelSwitcher, LanguagePicker, ThemeToggle, Sidebar,
+                             # BottomBar, LanguageHint, ThemeScript, LocaleScript (inline JS)
+  layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts), layout
+  lib/                       # pure TS logic — unit-tested (navigation.ts); topics.ts reads collections
+  dev/                       # developer pages, not built for production (fonts.astro)
+  pages/[...locale]/         # index, [level]/index, [level]/[topic]/index
 db/
   schema.ts                  # Drizzle schema
   data/words.jsonl           # imported data (generated by import, committed)
@@ -132,7 +139,7 @@ scripts/
   i18n-coverage.ts           # missing translation keys and files
   check-language.ts          # no native-language text outside localization files
   review.ts                  # review status, reset and minor-edit commands
-  check-js-budget.ts         # JS size per page type
+  check-js-budget.ts         # gzipped JS per page (islands vs. none), CI build job
   ci/                        # CI-only helpers (wrangler bootstrap config)
 docs/
   decisions.md               # decision log
@@ -143,6 +150,7 @@ docs/
 tests/
   unit/
   e2e/
+  fixtures/                  # fonts/ (German sample), i18n/<locale>/ (native-language samples)
 ```
 
 ## Content model
@@ -205,13 +213,15 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Exercise runner: rounds of 5 mixed items from the topic pool. Seen item IDs in `sessionStorage` under `seen:<level>/<slug>` (shared between locales); reset when the pool is exhausted. Shuffle options and word-bank order. "Try again" starts a new round with unseen items. All randomness goes through a seedable RNG so tests are deterministic. Storage access in try/catch with in-memory fallback.
 - After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link.
 - Examples: audio button (Web Speech API placeholder in the pilot, `de-AT` then `de-DE` voice) and a "Hide translation" toggle.
-- Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage`, applied by a tiny inline script in `<head>` before first paint.
-- Layout (variant A): header with level switcher, search, language picker, theme toggle; left sidebar with topics grouped by category; main column with the topic. On mobile the sidebar becomes a sheet and a bottom bar shows Prev / Practice / Next. Russian strings are often 20–30% longer than English: layouts must not break.
+- Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
+- Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `fg`, `muted`, `border`, `accent`, `accent-fg`, `focus`) defined per `[data-theme]` and exposed to Tailwind (`bg-bg`, `text-muted`, …). Use only these; no raw colors, no `dark:` variants except for swapping icons.
+- Layout (variant A): header with level switcher, search, language picker, theme toggle; left sidebar with topics grouped by category (category order in `site.ts`, labels `category.<id>`); main column with the topic. On mobile the sidebar becomes a sheet (the same element with the `popover` attribute, opened by a `popovertarget` button: no JS) and a bottom bar shows Prev / Practice / Next. Russian strings are often 20–30% longer than English: layouts must not break.
+- Page transitions: `@view-transition { navigation: auto; }` inside `prefers-reduced-motion: no-preference`; named elements `site-header` and `sidebar`.
 - "Report a mistake": opens the GitHub issue form with page URL, locale and item id prefilled via query parameters. No email.
 - Pages that are not ready for search engines get `noindex`: coming-soon pages, `ready: false` locales, preview deployments.
-- Performance budgets, enforced by `scripts/check-js-budget.ts` in CI (gzipped JS loaded by the page, excluding the analytics beacon):
-  - pages without exercises: ≤ 3 KB (inline scripts only)
-  - topic pages with exercises: ≤ 45 KB (Svelte + svelte-dnd-action ≈ 13.5 KB + our code)
+- Performance budgets, enforced by `scripts/check-js-budget.ts` in CI (gzipped JS loaded by the page, excluding the analytics beacon and other external scripts; each file gzipped separately, imported chunks followed):
+  - pages without islands: ≤ 3 KB (inline scripts only)
+  - pages with islands (topic pages with exercises): ≤ 45 KB (Svelte + svelte-dnd-action ≈ 13.5 KB + our code)
   - Lighthouse ≥ 95 in all categories, checked before launch.
 - Accessibility: WCAG 2.2 AA, with one documented exception decided by the owner: success criterion 2.5.7 (Dragging Movements) for word-order exercises, which have drag and keyboard input but no single-tap alternative. Record it in `docs/decisions.md` and on the accessibility statement in `/about`.
 
@@ -255,7 +265,9 @@ Functional tests run on the English site only: the code is the same for every lo
 - Data checks (not tests of wording): `i18n-coverage.ts` fails when a ready locale misses a key or file, so a missing translation can never break a page.
 - Playwright on English pages: exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
 - Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale and saves the choice; the language hint appears and can be dismissed; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
-- CI: DCO, language check, lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; later stages add validate-content + review sync + i18n coverage (checks), dictionary build and JS budget + file count (build job). Playwright runs on the build output. Deploy jobs need every check (decision #30).
+- CI: DCO, language check, lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add validate-content + review sync + i18n coverage (checks), dictionary build and file count (build job).
+- The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere; production: no `/dev/` pages).
+- Local e2e: `pnpm build && pnpm test:e2e` (the tests run against `dist/`). Playwright runs on the build output. Deploy jobs need every check (decision #30).
 - Playwright's web server runs `astro preview --ignore-lock`: Astro 7 moves `astro preview` to the background when it detects an AI agent, and `--ignore-lock` keeps it in the foreground.
 
 ## Don'ts

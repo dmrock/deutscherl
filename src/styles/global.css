@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* `dark:` follows data-theme (set by ThemeScript). Prefer semantic tokens; use this only for icons. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /*
  * Design tokens. Components use only the semantic colors below (bg-bg, text-fg, border-border, ...),
  * so they never need `dark:` variants. Themes are selected with `data-theme` (set before first
@@ -71,7 +74,22 @@
   line-height: var(--text-german--line-height);
 }
 
+/* Native cross-document View Transitions (no ClientRouter); off for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+.site-header {
+  view-transition-name: site-header;
+}
+
 @layer base {
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
   body {
     background-color: var(--color-bg);
     color: var(--color-fg);

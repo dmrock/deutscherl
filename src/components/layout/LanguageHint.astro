@@ -1,0 +1,49 @@
+---
+/**
+ * "This page is available in <language>" for every other ready locale, each in that locale's own
+ * language. All hidden; LocaleScript shows at most one (CLAUDE.md, "Languages").
+ */
+import { getLocaleConfig, type LocaleCode, readyLocales } from '../../i18n/locales.ts';
+import { localizePath, t } from '../../i18n/utils.ts';
+
+interface Props {
+  locale: LocaleCode;
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+const hints = readyLocales
+  .filter((code) => code !== locale)
+  .map((code) => {
+    const [before = '', after = ''] = t(code, 'languageHint.available').split('{language}');
+    return { code, config: getLocaleConfig(code), before, after };
+  });
+---
+
+{hints.map(({ code, config, before, after }) => (
+  <div
+    data-language-hint={code}
+    hidden
+    lang={code}
+    dir={config.dir}
+    class="border-b border-border bg-surface"
+  >
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2 text-sm">
+      <p>
+        {before}
+        <a
+          href={localizePath(path, code)}
+          hreflang={code}
+          data-locale={code}
+          class="font-semibold text-accent underline"
+        >
+          {config.name}
+        </a>
+        {after}
+      </p>
+      <button type="button" data-hint-dismiss class="ms-auto rounded-md px-2 py-1 hover:bg-bg">
+        {t(code, 'languageHint.dismiss')}
+      </button>
+    </div>
+  </div>
+))}
