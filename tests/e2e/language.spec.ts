@@ -14,13 +14,29 @@ const storage = (page: Page, key: string) =>
 test.describe('language picker', () => {
   test('opens the same page in the other locale and saves the choice', async ({ page }) => {
     await page.goto('/a2/perfekt/');
-    const picker = page.locator('.language-picker');
+    const picker = page.locator('[data-language-picker]');
     await picker.locator('summary').click();
     await picker.getByRole('link', { name: ruName }).click();
 
     await expect(page).toHaveURL('/ru/a2/perfekt/');
     await expect(page.locator('html')).toHaveAttribute('lang', 'ru');
     expect(await storage(page, 'locale')).toBe('ru');
+  });
+
+  test('closes on a click outside and on Escape', async ({ page }) => {
+    await page.goto('/a2/perfekt/');
+    const picker = page.locator('[data-language-picker]');
+    const summary = picker.locator('summary');
+
+    await summary.click();
+    await expect(picker).toHaveAttribute('open');
+    await page.getByRole('heading', { level: 1 }).click();
+    await expect(picker).not.toHaveAttribute('open');
+
+    await summary.click();
+    await page.keyboard.press('Escape');
+    await expect(picker).not.toHaveAttribute('open');
+    await expect(summary).toBeFocused();
   });
 });
 

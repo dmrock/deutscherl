@@ -1,9 +1,8 @@
 ---
 /**
  * Font specimen page (not built for production, see the `dev-pages` integration in astro.config.ts).
- * Shows every site font (locale fonts from locales.ts and the German font) plus the candidates in
- * `fontCandidates` (src/config/fonts.ts), with the same German and native-language samples at body
- * and example size, in light and dark (CLAUDE.md, "Fonts").
+ * Shows every site font (locale fonts from locales.ts and the German font) with the same German
+ * and native-language samples at body and example size, in light and dark (CLAUDE.md, "Fonts").
  * Developer tool: labels are plain English, not UI strings.
  */
 import { Font } from 'astro:assets';
@@ -11,13 +10,7 @@ import { statSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import germanSample from '../../tests/fixtures/fonts/german-sample.txt?raw';
 import russianSample from '../../tests/fixtures/i18n/ru/font-sample.txt?raw';
-import {
-  allFonts,
-  cssVariableOf,
-  fontCandidates,
-  germanFont,
-  mergeFonts,
-} from '../config/fonts.ts';
+import { allFonts, cssVariableOf, germanFont, mergeFonts } from '../config/fonts.ts';
 import type { LocaleFont } from '../i18n/locales.ts';
 import '../styles/global.css';
 
@@ -32,8 +25,7 @@ function subsetKb(font: LocaleFont, subset: string): string {
   return `${subset} ${Math.round(statSync(file).size / 1024)} KB`;
 }
 
-const candidateFamilies = new Set(fontCandidates.map((font) => font.family));
-const fonts = mergeFonts([...allFonts(), ...fontCandidates]);
+const fonts = mergeFonts(allFonts());
 const germanVar = cssVariableOf(germanFont.family);
 const fontVar = (font: LocaleFont) => `var(${cssVariableOf(font.family)})`;
 
@@ -60,8 +52,7 @@ const themes = ['light', 'dark'] as const;
     <main class="mx-auto max-w-7xl px-4 py-8">
       <h1 class="text-3xl font-bold">Font specimens</h1>
       <p class="mt-2 text-muted">
-        German blocks always use {germanFont.family}. Candidates come from
-        <code>fontCandidates</code> in <code>src/config/fonts.ts</code>; samples from
+        German blocks always use {germanFont.family}. Samples come from
         <code>tests/fixtures/</code>.
       </p>
 
@@ -69,12 +60,7 @@ const themes = ['light', 'dark'] as const;
         const cyrillic = font.subsets.includes('cyrillic');
         return (
           <section class="mt-12">
-            <h2 class="text-2xl font-bold">
-              {font.family}
-              <span class="text-base font-normal text-muted">
-                {candidateFamilies.has(font.family) ? ' (candidate)' : ' (in use)'}
-              </span>
-            </h2>
+            <h2 class="text-2xl font-bold">{font.family}</h2>
             <p class="mt-1 text-sm text-muted">
               {font.subsets.map((subset) => subsetKb(font, subset)).join(', ')}
             </p>

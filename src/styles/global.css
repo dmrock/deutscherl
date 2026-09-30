@@ -22,28 +22,29 @@
   --focus: #2563eb;
 }
 
+/* Dark: softened text and background (not pure white on black), so text does not glow. */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0c0a09;
-  --surface: #1c1917;
-  --fg: #f5f5f4;
-  --muted: #a8a29e;
+  --bg: #161412;
+  --surface: #221f1d;
+  --fg: #dedad7;
+  --muted: #a39d98;
   --border: #44403c;
-  --accent: #93c5fd;
-  --accent-fg: #0c0a09;
+  --accent: #8fbcf0;
+  --accent-fg: #161412;
   --focus: #60a5fa;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --bg: #0c0a09;
-    --surface: #1c1917;
-    --fg: #f5f5f4;
-    --muted: #a8a29e;
+    --bg: #161412;
+    --surface: #221f1d;
+    --fg: #dedad7;
+    --muted: #a39d98;
     --border: #44403c;
-    --accent: #93c5fd;
-    --accent-fg: #0c0a09;
+    --accent: #8fbcf0;
+    --accent-fg: #161412;
     --focus: #60a5fa;
   }
 }
@@ -95,6 +96,9 @@
     color: var(--color-fg);
     font-family: var(--font-sans);
     line-height: 1.6;
+    /* Grayscale antialiasing: thinner, less glowing light-on-dark text on macOS. */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   :focus-visible {

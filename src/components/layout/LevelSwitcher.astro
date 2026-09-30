@@ -21,13 +21,14 @@ const { locale, active, class: className } = Astro.props;
           href={localizePath(`/${level.id}/`, locale)}
           aria-current={level.id === active ? 'true' : undefined}
           class:list={[
-            'inline-flex items-baseline gap-1 rounded-md px-2 py-1 font-semibold hover:bg-surface',
+            'inline-flex rounded-md px-2 py-1 font-semibold hover:bg-surface',
             level.id === active && 'bg-surface text-accent',
             !level.available && 'font-normal text-muted',
           ]}
         >
           {level.label}
-          {!level.available && <span class="text-xs">{t(locale, 'level.soon')}</span>}
+          {/* Muted color shows "coming soon"; screen readers get it as text (WCAG 1.4.1). */}
+          {!level.available && <span class="sr-only"> ({t(locale, 'level.soon')})</span>}
         </a>
       </li>
     ))}

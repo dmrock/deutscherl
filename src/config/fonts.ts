@@ -121,10 +121,3 @@ export function fontFamilies(fonts: readonly LocaleFont[] = allFonts()): FontFam
 export function allFonts(): LocaleFont[] {
   return [...locales.map((locale) => locale.font), germanFont];
 }
-
-/**
- * Fonts under consideration, shown next to the site fonts on the specimen page (/dev/fonts/) and
- * never loaded in production. Add a candidate here (and its package as a devDependency) when a
- * new locale needs a font; empty once chosen.
- */
-export const fontCandidates: readonly LocaleFont[] = [];

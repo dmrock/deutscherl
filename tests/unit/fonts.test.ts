@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest';
 import {
   cssVariableOf,
   type FontsourcePackage,
-  fontCandidates,
   fontFaces,
   fontFamilies,
   germanFont,
@@ -100,10 +99,6 @@ describe('site fonts', () => {
     expect(families.map((family) => family.cssVariable)).toContain(
       cssVariableOf(germanFont.family),
     );
-  });
-
-  it('has no pending font candidates', () => {
-    expect(fontCandidates).toEqual([]);
   });
 
   it('has a UI label for every category', () => {

@@ -3,7 +3,7 @@ import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 import type { AstroIntegration } from 'astro';
 import { defineConfig, envField } from 'astro/config';
-import { allFonts, fontCandidates, fontFamilies } from './src/config/fonts.ts';
+import { fontFamilies } from './src/config/fonts.ts';
 import { site } from './src/config/site.ts';
 import { defaultLocale, localeCodes } from './src/i18n/locales.ts';
 
@@ -47,8 +47,7 @@ export default defineConfig({
       }),
     },
   },
-  // Font candidates are only registered for the specimen page, never in production.
-  fonts: fontFamilies(deployEnv === 'production' ? allFonts() : [...allFonts(), ...fontCandidates]),
+  fonts: fontFamilies(),
   integrations: [svelte(), mdx(), devPages()],
   vite: {
     plugins: [tailwindcss()],

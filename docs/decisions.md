@@ -154,11 +154,11 @@ A small shell step checks that every non-merge commit of a pull request has a `S
 
 ## 35. Theme via `data-theme`, semantic color tokens — accepted
 
-An inline script in `<head>` sets `data-theme` (saved choice or system preference) before first paint and follows system changes while nothing is saved; a delegated click handler serves every `[data-theme-toggle]` (a toggle button with `aria-pressed`). Colors are semantic CSS variables per `[data-theme]` (usable on any element, so the specimen page shows both themes at once) with a `prefers-color-scheme` fallback for `:root` without JS, exposed to Tailwind with `@theme inline`. Components use only semantic utilities; the `dark:` variant follows `data-theme` and is used only to swap icons. Rejected: CSS `light-dark()` (breaks all colors in Safari < 17.5 instead of degrading), Tailwind `dark:` classes everywhere (duplicated color decisions in every component).
+An inline script in `<head>` sets `data-theme` (saved choice or system preference) before first paint and follows system changes while nothing is saved; a delegated click handler serves every `[data-theme-toggle]` (a toggle button with `aria-pressed`). Colors are semantic CSS variables per `[data-theme]` (usable on any element, so the specimen page shows both themes at once) with a `prefers-color-scheme` fallback for `:root` without JS, exposed to Tailwind with `@theme inline`. Components use only semantic utilities; the `dark:` variant follows `data-theme` and is used only to swap icons. After owner feedback that text glowed in dark mode, the dark palette was softened (text `#dedad7` on `#161412`, 13:1 instead of 18:1, still above AAA) and text uses grayscale antialiasing (`-webkit-font-smoothing: antialiased`), which renders light-on-dark text thinner on macOS. Rejected: CSS `light-dark()` (breaks all colors in Safari < 17.5 instead of degrading), Tailwind `dark:` classes everywhere (duplicated color decisions in every component).
 
 ## 36. Zero-JS header widgets: Popover API sheet and `<details>` picker — accepted
 
-The sidebar is one element: a static column from `lg`, and below `lg` a sheet with the `popover` attribute opened by a `popovertarget` button (light dismiss, Esc, top layer; Baseline since 2024). The language picker is a `<details>` disclosure with plain links. Only the locale choice, the hint and the theme need JS (about 1 KB gzipped together). Rejected: `<dialog>` with a script, or with invoker commands (too new for older iOS), a Svelte island (JS on every page).
+The sidebar is one element: a static column from `lg`, and below `lg` a sheet with the `popover` attribute opened by a `popovertarget` button (light dismiss, Esc, top layer; Baseline since 2024). The language picker is a `<details>` disclosure with plain links; the locale script closes it on an outside click or Escape (owner feedback: it stayed open). Only the locale choice, the hint, closing the picker and the theme need JS (about 1 KB gzipped together). Rejected: `<dialog>` with a script, or with invoker commands (too new for older iOS), a Svelte island (JS on every page).
 
 ## 37. Language hints are server-rendered — accepted
 
@@ -166,7 +166,7 @@ Every page contains one hidden hint per other ready locale, written in that loca
 
 ## 38. Font specimen page built for dev and previews only — accepted
 
-`/dev/fonts/` is injected by a small integration in `astro.config.ts` unless `PUBLIC_DEPLOY_ENV` is `production`, so the owner can compare fonts on the PR preview (also on a phone) while production never contains it. Candidate fonts are registered in the Fonts API only outside production. The page lists every site font and `fontCandidates` (empty after a choice) and stays as a tool for future locales. Its labels are plain English (developer tool, not UI strings). Samples live in `tests/fixtures/fonts/` and `tests/fixtures/i18n/ru/` (allowed by the language check).
+`/dev/fonts/` is injected by a small integration in `astro.config.ts` unless `PUBLIC_DEPLOY_ENV` is `production`, so the owner can compare fonts on the PR preview (also on a phone) while production never contains it. During the ru comparison it also showed the four candidates; after the choice the candidate mechanism was removed and the page shows only the site fonts. Its labels are plain English (developer tool, not UI strings). Samples live in `tests/fixtures/fonts/` and `tests/fixtures/i18n/ru/` (allowed by the language check).
 
 ## 39. Minimal content collection in stage 2 — accepted
 
@@ -179,3 +179,7 @@ The sidebar and the topic stub need real topic data, so stage 2 adds the `topicM
 ## 41. Dependency versions in stage 2 — accepted
 
 Added: `@fontsource-variable/atkinson-hyperlegible-next` 5.3.0 and `@fontsource-variable/golos-text` 5.3.0 (dependencies; font files only, no JS), `@axe-core/playwright` 4.13.0 (dev, e2e only). The three rejected font candidates were removed after the choice. Not bumped: `@biomejs/biome` 2.5.15 and `wrangler` 4.145.0 were released on the day of this stage, inside pnpm 12's minimum release age (1 day); installing them would have required `minimumReleaseAgeExclude` entries, which switch off that supply-chain protection. Bump them in the next stage.
+
+## 42. Level switcher without visible "soon" — accepted (owner decision)
+
+B1, B2 and C1 are shown muted in the level switcher without a visible "soon" label. Screen readers still get "(soon)" as visually hidden text, so the status is not conveyed by color alone (WCAG 1.4.1). The coming-soon pages themselves say so in full.

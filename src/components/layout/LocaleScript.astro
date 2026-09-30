@@ -2,6 +2,7 @@
 /**
  * Language choice and hint (CLAUDE.md, "Languages"). Place at the end of <body>.
  * - Clicking an a[data-locale] link (language picker, hint) saves localStorage `locale`.
+ * - The language picker (<details>) closes on a click outside it and on Escape.
  * - The hint for another ready locale is shown when the saved locale differs from this page's, or,
  *   with nothing saved, when the best match in navigator.languages is another ready locale.
  *   Dismissal is saved per locale (`hint-dismissed:<code>`).
@@ -23,9 +24,16 @@
         localStorage.setItem(key, value);
       } catch {}
     };
+    const picker = document.querySelector('[data-language-picker]');
     document.addEventListener('click', (event) => {
       const link = event.target.closest?.('a[data-locale]');
       if (link) set('locale', link.dataset.locale);
+      if (picker?.open && !picker.contains(event.target)) picker.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !picker?.open) return;
+      picker.open = false;
+      picker.querySelector('summary').focus();
     });
     const current = document.documentElement.dataset.locale;
     const hints = [...document.querySelectorAll('[data-language-hint]')];

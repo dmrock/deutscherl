@@ -1,5 +1,8 @@
 ---
-/** Plain links to the same page in every ready locale; names in their own language, no flags. */
+/**
+ * Plain links to the same page in every ready locale; names in their own language, no flags.
+ * Opens without JS; LocaleScript closes it on an outside click or Escape.
+ */
 import { getLocaleConfig, type LocaleCode, readyLocales } from '../../i18n/locales.ts';
 import { localizePath, t } from '../../i18n/utils.ts';
 
@@ -12,7 +15,7 @@ const { locale, path } = Astro.props;
 const current = getLocaleConfig(locale);
 ---
 
-<details class="language-picker relative">
+<details data-language-picker class="relative">
   <summary class="inline-flex h-10 cursor-pointer list-none items-center gap-1.5 rounded-md px-2 hover:bg-surface">
     <svg
       aria-hidden="true"
