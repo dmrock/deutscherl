@@ -1,7 +1,7 @@
 ---
 /**
  * Plain links to the same page in every ready locale; names in their own language, no flags.
- * Opens without JS; LocaleScript closes it on an outside click or Escape.
+ * Opens without JS; the inline script closes it on an outside click or Escape.
  */
 import { getLocaleConfig, type LocaleCode, readyLocales } from '../../i18n/locales.ts';
 import { localizePath, t } from '../../i18n/utils.ts';
@@ -42,7 +42,6 @@ const current = getLocaleConfig(locale);
             href={localizePath(path, code)}
             hreflang={code}
             lang={code}
-            data-locale={code}
             aria-current={code === locale ? 'true' : undefined}
             class:list={[
               'block rounded px-3 py-2 hover:bg-surface',
@@ -56,3 +55,18 @@ const current = getLocaleConfig(locale);
     })}
   </ul>
 </details>
+
+<script is:inline>
+  (() => {
+    const picker = document.querySelector('[data-language-picker]');
+    if (!picker) return;
+    document.addEventListener('click', (event) => {
+      if (picker.open && !picker.contains(event.target)) picker.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !picker.open) return;
+      picker.open = false;
+      picker.querySelector('summary').focus();
+    });
+  })();
+</script>

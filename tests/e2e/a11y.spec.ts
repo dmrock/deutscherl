@@ -30,10 +30,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
 test.describe('mobile', () => {
   test.use({ viewport: { width: 360, height: 740 } });
 
-  test('topic page with the sheet open and the language hint has no axe violations', async ({
-    page,
-  }) => {
-    await page.addInitScript(() => localStorage.setItem('locale', 'ru'));
+  test('topic page with the sheet open has no axe violations', async ({ page }) => {
     await page.goto('/a2/perfekt/');
     await page.getByRole('button', { name: t('en', 'nav.menu') }).click();
     const results = await new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();

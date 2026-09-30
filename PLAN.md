@@ -71,14 +71,14 @@ Read CLAUDE.md, sections "UX rules", "Languages" and "Fonts". Build the base lay
 - Font comparison page (dev only, not deployed to production): the same German paragraph with ä ö ü ß and the I/l/1, O/0 pairs, and the same Russian paragraph (a localization fixture under tests/fixtures/i18n/ru/) with German terms in parentheses, rendered in Atkinson Hyperlegible Next and each Cyrillic candidate (Golos Text, Inter, Noto Sans, Onest) at body and example sizes, light and dark. Stop and ask me to choose the ru font before continuing.
 - Per-locale fonts from locales.ts via Fontsource, only needed subsets; the German font for German content blocks.
 - Design tokens as CSS variables for light and dark theme, wired into Tailwind v4; logical properties only.
-- Inline <head> script for the theme (no flash), inline scripts for the language picker and the language hint (CLAUDE.md, "Languages"). No Svelte for these. Keep all inline JS under the 3 KB budget.
+- Inline <head> script for the theme (no flash), an inline script for the language picker (CLAUDE.md, "Languages"). No Svelte for these. Keep all inline JS under the 3 KB budget.
 - Header: site name, level switcher (A1, A2 links; B1, B2, C1 muted with "soon"), search button placeholder, language picker, theme toggle.
 - Left sidebar with topics grouped by category; on mobile a sheet opened from a menu button, plus a bottom bar with Prev / Practice / Next.
 - <html lang dir> per locale, hreflang alternates and x-default, noindex rules.
 - Native cross-document View Transitions in CSS with named elements for header and sidebar; disabled under prefers-reduced-motion. No ClientRouter.
 - Stub pages for /, /a1/, /a2/, /b1/ (coming soon, noindex) and one topic page, in both locales. All UI strings through t().
 - scripts/check-js-budget.ts and its CI step (budgets from CLAUDE.md).
-Add Playwright tests: language switching (picker opens the same page in the other locale and saves the choice; hint appears and can be dismissed; lang, dir, hreflang, canonical; no horizontal scrolling on the Russian topic page at mobile width); on English pages: noindex rules, no theme flash, axe checks. No screenshot tests. Record the font choice and other decisions in docs/decisions.md.
+Add Playwright tests: language switching (picker opens the same page in the other locale; lang, dir, hreflang, canonical; no horizontal scrolling on the Russian topic page at mobile width); on English pages: noindex rules, no theme flash, axe checks. No screenshot tests. Record the font choice and other decisions in docs/decisions.md.
 ```
 
 ## Stage 3. Content model, review and the first topic

@@ -52,7 +52,7 @@ Components, pages and tests never contain native-language strings inline: they u
 ## Stack
 
 - Astro (latest stable), fully static output, no SSR adapter. `build.format: 'directory'`, `trailingSlash: 'always'`: canonical URLs end with `/`.
-- Svelte 5 ONLY for islands that need real interactivity: exercises, dictionary filter. Everything else (theme toggle, language picker, language hint) is a few lines of inline vanilla JS.
+- Svelte 5 ONLY for islands that need real interactivity: exercises, dictionary filter. Everything else (theme toggle, closing the language picker) is a few lines of inline vanilla JS.
 - Drag and drop: `svelte-dnd-action` (Svelte 5 compatible, touch delay option, keyboard and screen-reader support). Do not hand-roll drag and drop.
 - Page transitions: native cross-document View Transitions in CSS (`@view-transition { navigation: auto; }`). Do NOT use Astro's `<ClientRouter />`: it adds JS to every page. Browsers without support navigate normally.
 - TypeScript, `strict` preset. TypeScript 6.x until Astro's tooling (`astro check`) supports TypeScript 7 (decision #23).
@@ -79,8 +79,8 @@ Terminology: the "native language" (a.k.a. locale) is the language of the UI, ex
 - `ready: false` locales are built for preview but hidden from the picker, sitemap and search, and pages get `noindex`.
 - Routing: default locale without prefix (`/a2/perfekt/`), others with prefix (`/ru/a2/perfekt/`). Same slugs in every locale.
 - `<html lang dir>` come from the locale. Every German fragment is wrapped with `lang="de"` (screen readers, TTS, hyphenation, search).
-- Language picker in the header: plain links, language names in their own language (the `name` field of each locale, e.g. Russian written in Cyrillic), no flags. It links to the SAME page in the other locale and saves the choice in `localStorage` (`locale`). Markup: a `<details>` disclosure (opens without JS; `LocaleScript.astro` closes it on an outside click or Escape); every link carries `data-locale`, and one delegated click handler saves the choice.
-- No automatic redirects. A small dismissible hint ("This page is available in <language>", text from the target locale's UI strings) appears on a page when its locale differs from the saved choice, or, if nothing is saved, from the best match in `navigator.languages` among ready locales. Dismissal is saved per locale (`hint-dismissed:<code>`). The hints are server-rendered, hidden, one per other ready locale, each in its own language (`LanguageHint.astro`); `LocaleScript.astro` only un-hides one.
+- Language picker in the header: plain links, language names in their own language (the `name` field of each locale, e.g. Russian written in Cyrillic), no flags. It links to the SAME page in the other locale. The choice is not stored. Markup: a `<details>` disclosure (opens without JS; a small inline script in `LanguagePicker.astro` closes it on an outside click or Escape).
+- No automatic redirects and no language hint or banner (owner decision #44): search engines route visitors through `hreflang`, and the picker is always visible.
 - UI strings: `src/i18n/ui/en.ts` is the source of truth; every other locale file is typed against it (`satisfies UiStrings`), so a missing key is a type error. Access via `t(locale, key)`; no inline strings in components.
 - German is single-sourced: German sentences exist ONCE and are shared by all locales. Everything written in a native language lives in per-locale files, so translators never touch German files and translations never trigger German re-verification.
 - Translation freshness: `review.yaml` records for each translation the `base` hash it was last written or reviewed against (`basedOn`). If English or German changes afterwards, the translation is outdated: it is reset to `draft` and listed by `review:status` (see "Review and verification").
@@ -122,7 +122,7 @@ src/
     exercises/               # Svelte islands
     content/                 # InShort, RuleTable, Example, AustrianNote, Word, SponsorSlot
     layout/                  # Header, LevelSwitcher, LanguagePicker, ThemeToggle, Sidebar,
-                             # BottomBar, LanguageHint, ThemeScript, LocaleScript (inline JS)
+                             # BottomBar, ThemeScript (inline JS)
   layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts), layout
   lib/                       # pure TS logic — unit-tested (navigation.ts); topics.ts reads collections
   pages/[...locale]/         # index, [level]/index, [level]/[topic]/index
@@ -262,7 +262,7 @@ Functional tests run on the English site only: the code is the same for every lo
 - Vitest: schemas, `validate-content.ts` rules (with failing fixtures), review hashing/reset/minor-edit including translation reset via `basedOn`, `check-language.ts`, `t()` and path helpers, `src/lib` logic (pool selection with seeded RNG, choice check with `alsoCorrect`, word-order check with `accept`, duplicates, capitalization after check), dictionary import on small JSONL fixtures, slug uniqueness.
 - Data checks (not tests of wording): `i18n-coverage.ts` fails when a ready locale misses a key or file, so a missing translation can never break a page.
 - Playwright on English pages: exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
-- Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale and saves the choice; the language hint appears and can be dismissed; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
+- Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
 - CI: DCO, language check, lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add validate-content + review sync + i18n coverage (checks), dictionary build and file count (build job).
 - The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere).
 - Local e2e: `pnpm build && pnpm test:e2e` (the tests run against `dist/`). Playwright runs on the build output. Deploy jobs need every check (decision #30).

@@ -20,7 +20,7 @@ One pipeline: checks first, then preview (`wrangler versions upload --preview-al
 
 ## 4. English and Russian as native languages, data-driven locales — accepted
 
-English default and unprefixed, Russian under `/ru/`. Locales in one config with `ready`, `dir`, `font`. No automatic redirects; a dismissible hint instead.
+English default and unprefixed, Russian under `/ru/`. Locales in one config with `ready`, `dir`, `font`. No automatic redirects and no language hint (#44): `hreflang` and the always-visible language picker.
 
 ## 5. German single-sourced, translations in per-locale files — accepted
 
@@ -64,7 +64,7 @@ Parts stored in neutral case; first word capitalized only after checking. `accep
 
 ## 15. Minimal JavaScript — accepted
 
-Theme, language picker and hint are inline vanilla JS. Page transitions via native CSS cross-document View Transitions (Chrome 126+, Safari 18.2+; others navigate normally). Rejected: Astro `<ClientRouter />` (JS on every page). Budgets enforced in CI: ≤ 3 KB on pages without exercises, ≤ 45 KB on topic pages.
+Theme and language picker are inline vanilla JS. Page transitions via native CSS cross-document View Transitions (Chrome 126+, Safari 18.2+; others navigate normally). Rejected: Astro `<ClientRouter />` (JS on every page). Budgets enforced in CI: ≤ 3 KB on pages without exercises, ≤ 45 KB on topic pages.
 
 ## 16. Open source with controlled contributions — accepted
 
@@ -96,7 +96,7 @@ No Playwright screenshot comparisons. They need constant updating on design chan
 
 ## 22. Functional tests on English only — accepted (owner decision)
 
-All locales share the same code, so exercises, navigation, search and accessibility are tested on English pages only. Other locales get language-switching tests only (picker, hint, lang/dir/hreflang/canonical, mobile overflow). Missing translations are caught by the `i18n-coverage` data check, not by tests.
+All locales share the same code, so exercises, navigation, search and accessibility are tested on English pages only. Other locales get language-switching tests only (picker, lang/dir/hreflang/canonical, mobile overflow). Missing translations are caught by the `i18n-coverage` data check, not by tests.
 
 ## 23. Toolchain versions: latest stable, with two exceptions — accepted (owner decision)
 
@@ -158,9 +158,9 @@ An inline script in `<head>` sets `data-theme` (saved choice or system preferenc
 
 ## 36. Zero-JS header widgets: Popover API sheet and `<details>` picker — accepted
 
-The sidebar is one element: a static column from `lg`, and below `lg` a sheet with the `popover` attribute opened by a `popovertarget` button (light dismiss, Esc, top layer; Baseline since 2024). The language picker is a `<details>` disclosure with plain links; the locale script closes it on an outside click or Escape (owner feedback: it stayed open). Only the locale choice, the hint, closing the picker and the theme need JS (about 1 KB gzipped together). Rejected: `<dialog>` with a script, or with invoker commands (too new for older iOS), a Svelte island (JS on every page).
+The sidebar is one element: a static column from `lg`, and below `lg` a sheet with the `popover` attribute opened by a `popovertarget` button (light dismiss, Esc, top layer; Baseline since 2024). The language picker is a `<details>` disclosure with plain links; a small inline script closes it on an outside click or Escape (owner feedback: it stayed open). Only closing the picker and the theme need JS. Rejected: `<dialog>` with a script, or with invoker commands (too new for older iOS), a Svelte island (JS on every page).
 
-## 37. Language hints are server-rendered — accepted
+## 37. Language hints are server-rendered — superseded by #44
 
 Every page contains one hidden hint per other ready locale, written in that locale (its own `t()` strings) with a link to the same page. The inline script picks the target (saved locale, else the best `navigator.languages` match among ready locales, stopping at the page's own locale) and un-hides one. Rejected: shipping other locales' strings as JSON for the script (more bytes, JS-built DOM).
 
@@ -187,3 +187,7 @@ B1, B2 and C1 are shown muted in the level switcher without a visible "soon" lab
 ## 43. Font specimen page removed — accepted (owner decision)
 
 After the ru font was chosen, `/dev/fonts/` (#38), its `dev-pages` integration and its sample texts were removed: the site fonts are visible on the real pages, and a comparison page is quick to rebuild when a new locale needs a font. Rejected: keeping it as a permanent developer page (code and fixtures to maintain for a one-time decision).
+
+## 44. No language hint, locale choice not stored — accepted (owner decision)
+
+The dismissible "This page is available in <language>" hint (from the original plan, #4 and #37) was removed after the owner questioned its value. Search engines already send visitors to the right locale through `hreflang`, and the language picker is always visible with language names in their own language; the hint only helped with shared links and direct visits. It cost about half of each page's inline JS, a hidden block per other locale on every page, three UI strings and six e2e tests, and would grow with every locale. With the hint gone, nothing reads a saved locale, so the picker no longer stores the choice. Rejected: keeping the hint (overhead for a small benefit), automatic redirects (still ruled out).

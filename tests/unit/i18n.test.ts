@@ -32,10 +32,8 @@ describe('t()', () => {
   });
 
   it('replaces placeholders and keeps unknown ones', () => {
-    expect(t('en', 'languageHint.available', { language: 'English' })).toBe(
-      'This page is available in English.',
-    );
-    expect(t('en', 'languageHint.available', {})).toBe('This page is available in {language}.');
+    expect(t('en', 'level.title', { level: 'A2' })).toBe('Level A2');
+    expect(t('en', 'level.title', {})).toBe('Level {level}');
   });
 });
 

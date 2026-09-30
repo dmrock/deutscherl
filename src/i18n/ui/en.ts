@@ -27,8 +27,6 @@ export const en = {
   'nav.topicNavigation': 'Topic navigation',
   'search.soon': 'Search (coming soon)',
   'theme.dark': 'Dark theme',
-  'languageHint.available': 'This page is available in {language}.',
-  'languageHint.dismiss': 'Dismiss',
   'notFound.title': 'Page not found',
   'notFound.backHome': 'Go to the home page',
 } as const;

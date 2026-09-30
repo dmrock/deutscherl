@@ -25,8 +25,6 @@ export const ru = {
   'nav.topicNavigation': 'Навигация по темам',
   'search.soon': 'Поиск (скоро)',
   'theme.dark': 'Тёмная тема',
-  'languageHint.available': 'Эта страница есть на языке: {language}.',
-  'languageHint.dismiss': 'Закрыть',
   'notFound.title': 'Страница не найдена',
   'notFound.backHome': 'На главную',
 } satisfies UiStrings;
