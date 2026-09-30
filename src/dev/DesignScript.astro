@@ -1,0 +1,43 @@
+---
+/**
+ * DESIGN OPTIONS (temporary, never in production): sets `data-design` on <html> before first
+ * paint from `?design=<id>` or the saved choice (localStorage `design`). [data-design-option]
+ * buttons in DesignSwitcher change and save it. Removed after the owner picks a design.
+ */
+---
+
+<script is:inline>
+  (() => {
+    const designs = ['clean', 'paper', 'friendly', 'austria'];
+    const root = document.documentElement;
+    const save = (design) => {
+      try {
+        localStorage.setItem('design', design);
+      } catch {}
+    };
+    let design = new URLSearchParams(location.search).get('design');
+    if (designs.includes(design)) save(design);
+    else {
+      try {
+        design = localStorage.getItem('design');
+      } catch {}
+    }
+    const apply = (next) => {
+      root.dataset.design = designs.includes(next) ? next : designs[0];
+      for (const button of document.querySelectorAll('[data-design-option]')) {
+        button.setAttribute(
+          'aria-pressed',
+          String(button.dataset.designOption === root.dataset.design),
+        );
+      }
+    };
+    apply(design);
+    document.addEventListener('DOMContentLoaded', () => apply(root.dataset.design));
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest?.('[data-design-option]');
+      if (!button) return;
+      save(button.dataset.designOption);
+      apply(button.dataset.designOption);
+    });
+  })();
+</script>

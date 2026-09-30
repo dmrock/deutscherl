@@ -8,6 +8,19 @@ export const en = {
   'home.title': 'Learn German grammar',
   'home.intro':
     'Short explanations in your language, examples in German and exercises to practice. Free, no account needed.',
+  'home.start': 'Start with {level}',
+  'home.feature.language.title': 'In your language',
+  'home.feature.language.text':
+    'Short, simple explanations. Every German example comes with a translation.',
+  'home.feature.practice.title': 'Practice right away',
+  'home.feature.practice.text': 'Exercises for every topic, with an explanation for each answer.',
+  'home.feature.austria.title': 'German in Austria',
+  'home.feature.austria.text': 'Notes where people in Austria say it differently from Germany.',
+  'level.a1.name': 'Beginner',
+  'level.a2.name': 'Elementary',
+  'level.b1.name': 'Intermediate',
+  'level.b2.name': 'Upper intermediate',
+  'level.c1.name': 'Advanced',
   'level.comingSoon': 'Coming soon',
   'level.soon': 'soon',
   'level.title': 'Level {level}',
@@ -15,6 +28,7 @@ export const en = {
   'level.comingSoonText':
     'We are working on this level. In the meantime, try one of the available levels.',
   'category.verbs': 'Verbs',
+  'topic.inShort': 'In short',
   'topic.practiceSoon': 'Exercises for this topic are coming soon.',
   'nav.languagePicker': 'Language',
   'nav.levels': 'Levels',

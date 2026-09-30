@@ -6,6 +6,19 @@ export const ru = {
   'home.title': 'Учим грамматику немецкого языка',
   'home.intro':
     'Короткие объяснения на твоём языке, примеры на немецком и упражнения для практики. Бесплатно и без регистрации.',
+  'home.start': 'Начать с {level}',
+  'home.feature.language.title': 'На твоём языке',
+  'home.feature.language.text':
+    'Короткие и простые объяснения. У каждого немецкого примера есть перевод.',
+  'home.feature.practice.title': 'Сразу к практике',
+  'home.feature.practice.text': 'Упражнения к каждой теме и объяснение к каждому ответу.',
+  'home.feature.austria.title': 'Немецкий в Австрии',
+  'home.feature.austria.text': 'Заметки о том, где в Австрии говорят иначе, чем в Германии.',
+  'level.a1.name': 'Начальный',
+  'level.a2.name': 'Базовый',
+  'level.b1.name': 'Средний',
+  'level.b2.name': 'Выше среднего',
+  'level.c1.name': 'Продвинутый',
   'level.comingSoon': 'Скоро',
   'level.soon': 'скоро',
   'level.title': 'Уровень {level}',
@@ -13,6 +26,7 @@ export const ru = {
   'level.comingSoonText':
     'Мы работаем над этим уровнем. А пока попробуй один из доступных уровней.',
   'category.verbs': 'Глаголы',
+  'topic.inShort': 'Коротко',
   'topic.practiceSoon': 'Упражнения по этой теме скоро появятся.',
   'nav.languagePicker': 'Язык',
   'nav.levels': 'Уровни',

@@ -7,6 +7,8 @@ import Sidebar from '../components/layout/Sidebar.astro';
 import ThemeScript from '../components/layout/ThemeScript.astro';
 import { cssVariableOf, germanFont } from '../config/fonts.ts';
 import { categoryIds, type LevelId, site } from '../config/site.ts';
+import DesignScript from '../dev/DesignScript.astro';
+import DesignSwitcher from '../dev/DesignSwitcher.astro';
 import { getLocaleConfig, type LocaleCode } from '../i18n/locales.ts';
 import { alternates, localizePath, t } from '../i18n/utils.ts';
 import { neighbours } from '../lib/navigation.ts';
@@ -32,6 +34,8 @@ const localeConfig = getLocaleConfig(locale);
 const path = Astro.url.pathname;
 const pageTitle = title ? `${title} · ${site.name}` : site.name;
 const robotsNoindex = noindex || !localeConfig.ready || PUBLIC_DEPLOY_ENV === 'preview';
+// DESIGN OPTIONS (temporary): the design switcher exists only outside production.
+const showDesigns = PUBLIC_DEPLOY_ENV !== 'production';
 const canonical = new URL(localizePath(path, locale), site.url).href;
 
 const bodyFont = cssVariableOf(localeConfig.font.family) as CssVariable;
@@ -59,6 +63,7 @@ const { prev, next } =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <ThemeScript />
+    {showDesigns && <DesignScript />}
     <title>{pageTitle}</title>
     <meta name="description" content={description ?? t(locale, 'site.tagline')} />
     {robotsNoindex && <meta name="robots" content="noindex" />}
@@ -72,7 +77,7 @@ const { prev, next } =
   <body class="min-h-dvh">
     <a
       href="#main"
-      class="sr-only z-50 rounded-md bg-accent px-3 py-2 text-accent-fg focus:not-sr-only focus:fixed focus:start-2 focus:top-2"
+      class="sr-only z-50 rounded-ui bg-accent px-3 py-2 text-accent-fg focus:not-sr-only focus:fixed focus:start-2 focus:top-2"
     >
       {t(locale, 'site.skipToContent')}
     </a>
@@ -84,5 +89,6 @@ const { prev, next } =
       </main>
     </div>
     {topic && <BottomBar locale={locale} prev={prev} next={next} />}
+    {showDesigns && <DesignSwitcher />}
   </body>
 </html>
