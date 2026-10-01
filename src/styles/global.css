@@ -140,27 +140,6 @@
   font-weight: 600;
 }
 
-/* Link to a dictionary entry inside explanation text. */
-.word {
-  text-decoration: underline dotted 2px var(--control);
-  text-underline-offset: 4px;
-}
-
-.word:hover {
-  text-decoration-color: var(--accent);
-}
-
-/* Native cross-document View Transitions (no ClientRouter); off for reduced motion. */
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition {
-    navigation: auto;
-  }
-}
-
-.site-header {
-  view-transition-name: site-header;
-}
-
 /* Small accent dot before the site name. */
 .brand-mark {
   display: inline-block;
@@ -183,6 +162,14 @@
 @layer base {
   summary::-webkit-details-marker {
     display: none;
+  }
+
+  /*
+   * Navigation is static (decision #47): always reserve the scrollbar's space, so a page that
+   * scrolls and one that does not put the header and sidebar at the same x position.
+   */
+  html {
+    scrollbar-gutter: stable;
   }
 
   body {

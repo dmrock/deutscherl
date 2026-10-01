@@ -62,7 +62,7 @@ Word-order exercises use drag and keyboard input without a single-tap alternativ
 
 Parts stored in neutral case; first word capitalized only after checking. `accept` lists all valid orders; comparison by strings.
 
-## 15. Minimal JavaScript — accepted
+## 15. Minimal JavaScript — accepted (page transitions superseded by #47)
 
 Theme and language picker are inline vanilla JS. Page transitions via native CSS cross-document View Transitions (Chrome 126+, Safari 18.2+; others navigate normally). Rejected: Astro `<ClientRouter />` (JS on every page). Budgets enforced in CI: ≤ 3 KB on pages without exercises, ≤ 45 KB on topic pages.
 
@@ -204,6 +204,18 @@ Four designs were compared on the PR #4 preview with a temporary switcher: Clean
 
 Rejected: Clean (too generic), Friendly (playful shapes), Austria (the red accent collides with the red of wrong answers).
 
-## 46. Component sample page until stage 3 — accepted
+## 46. Component sample page until stage 3 — superseded by #47
 
 `/dev/design/` (injected by the `dev-pages` integration, never in production, like #38) shows static mock-ups of the stage 3–4 components in the chosen design: In short, rule table, examples with audio button and a CSS-only "Hide translation" toggle, Austrian note, badges, sponsor slot, choice and word-order exercises and the round result. It stays as the visual reference while those components are built and is removed in stage 3, once a real topic page shows them. Its German samples live in `tests/fixtures/design/sample.json` (not content, not reviewed). Rejected: removing it with the switcher (stage 3 would rebuild the styles from memory).
+
+## 47. Static navigation, no page transitions; sample page removed — accepted (owner decision)
+
+The owner saw the header and sidebar jump when switching levels. Causes: level pages were 1 px taller than the viewport (a 49 px header with a sidebar of `100dvh - 3rem`), so they had a scrollbar and the home page did not, which shifted the centered layout sideways with classic (always visible) scrollbars; the cross-document View Transitions (#15) then animated the named `site-header` and `sidebar` elements between the old and new positions, and cross-faded everything else.
+
+- No page transitions: `@view-transition` and the `view-transition-name`s are removed. Pages swap in place (browsers keep the old page painted until the new one is ready, so there is no blank flash).
+- `scrollbar-gutter: stable` on `<html>`: the scrollbar's space is always reserved.
+- The header is exactly 3rem including its border, so the sticky sidebar (top 3rem, height `100dvh - 3rem`) fills the viewport exactly.
+- An e2e test checks that the header widgets and the sidebar have identical boxes on home, level, coming-soon and topic pages, and that a short level page does not scroll.
+- The component sample page `/dev/design/` (#46), its `dev-pages` integration and its fixture were removed at the owner's request. Stage 3 builds the components from the design tokens (#45); the mock-ups stay in git history (commit 41cf8df, `src/dev/design.astro`).
+
+Rejected: keeping View Transitions with non-animated header and sidebar groups (content would still cross-fade; the owner asked for static navigation).

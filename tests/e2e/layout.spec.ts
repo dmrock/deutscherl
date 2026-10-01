@@ -99,6 +99,42 @@ test.describe('navigation on desktop', () => {
   });
 });
 
+test.describe('static navigation', () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  /** Boxes of the header widgets and the sidebar, rounded to whole pixels. */
+  const chromeBoxes = (page: Page) =>
+    page.evaluate(() =>
+      ['header a', 'header nav', 'header [data-theme-toggle]', '#sidebar'].map((selector) => {
+        const element = document.querySelector(selector);
+        if (!element) return null;
+        const { x, y, width, height } = element.getBoundingClientRect();
+        return [x, y, width, height].map(Math.round);
+      }),
+    );
+
+  test('the header and sidebar stay in place on every page type', async ({ page }) => {
+    await page.goto('/');
+    const [brand, levels, toggle] = await chromeBoxes(page);
+    await page.goto('/a1/');
+    const sidebar = (await chromeBoxes(page))[3];
+    expect(sidebar).not.toBeNull();
+
+    for (const path of ['/a2/', '/b1/', '/a2/perfekt/']) {
+      await page.goto(path);
+      expect(await chromeBoxes(page), path).toEqual([brand, levels, toggle, sidebar]);
+    }
+  });
+
+  test('a level page without much content does not scroll', async ({ page }) => {
+    await page.goto('/a1/');
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
+    );
+    expect(overflow).toBe(0);
+  });
+});
+
 test.describe('navigation on mobile', () => {
   test.use({ viewport: { width: 360, height: 740 } });
 

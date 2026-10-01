@@ -17,8 +17,9 @@ interface Props {
 const { locale, path, level, hasSidebar } = Astro.props;
 ---
 
-<header class="site-header sticky top-0 z-30 border-b border-border bg-header backdrop-blur-md">
-  <div class="mx-auto flex h-12 max-w-6xl items-center gap-1 px-4">
+<!-- 3rem including the border: the sticky sidebar starts at 3rem and fills the rest exactly. -->
+<header class="sticky top-0 z-30 h-12 border-b border-border bg-header backdrop-blur-md">
+  <div class="mx-auto flex h-full max-w-6xl items-center gap-1 px-4">
     {hasSidebar && (
       <button
         type="button"
