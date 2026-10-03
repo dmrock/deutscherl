@@ -24,7 +24,7 @@ Other commands:
 
 | Command | What it does |
 |---|---|
-| `pnpm build` | Builds the static site into `dist/` |
+| `pnpm build` | Validates the content, then builds the static site into `dist/` |
 | `pnpm preview` | Serves `dist/` locally |
 | `pnpm check` | Type check (`astro check`) |
 | `pnpm lint` | Biome (TS/JS/JSON/CSS) and Prettier (`.astro`, `.svelte`) |
@@ -32,6 +32,10 @@ Other commands:
 | `pnpm test` | Unit tests (Vitest) |
 | `pnpm test:e2e` | End-to-end tests (Playwright) on the built site; run `pnpm build` first, and `pnpm exec playwright install chromium` once |
 | `pnpm check:language` | Checks that native-language text appears only in localization files |
+| `pnpm validate` | Checks the topic content across files (ids, exercises, translations, review state) |
+| `pnpm i18n:coverage` | Lists missing translation files and keys per language |
+| `pnpm review:sync` | Updates `review.yaml` after content changes (the git hook runs it for you) |
+| `pnpm review:status` | Shows the review status of every topic and its translations |
 
 ## Licenses
 

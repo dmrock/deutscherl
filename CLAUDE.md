@@ -58,12 +58,12 @@ Components, pages and tests never contain native-language strings inline: they u
 - TypeScript, `strict` preset. TypeScript 6.x until Astro's tooling (`astro check`) supports TypeScript 7 (decision #23).
 - Scripts in `scripts/` run with plain `node` (built-in type stripping): erasable TypeScript only, local imports with the `.ts` extension, no tsx.
 - Tailwind CSS v4. Use logical properties/utilities (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`, `text-start`) everywhere, never left/right, so right-to-left languages work later.
-- Content: MDX for explanations, YAML for German content and translations, via Astro Content Collections with Zod schemas
+- Content: MDX for explanations, YAML for German content and translations, via Astro Content Collections with Zod schemas. The schemas live in `src/lib/content-schemas.ts`, shared by `content.config.ts` and the scripts. Scripts parse YAML with `yaml`.
 - i18n: Astro built-in i18n routing
 - Dictionary: text files in git are the source of truth; a SQLite file is generated from them at build time and queried with Drizzle ORM (build time only, no runtime DB)
 - Search: Pagefind, one index per ready locale, UI loaded only when the user opens search
 - Lint/format: Biome for TS/JS/JSON/CSS (lints the script part of `.astro`/`.svelte`); Prettier with astro/svelte plugins formats only `.astro` and `.svelte` (Biome's support for them is experimental, decision #25)
-- Git hooks: lefthook (`lefthook.yml`), installed by `pnpm install`
+- Git hooks: lefthook (`lefthook.yml`), installed by `pnpm install`. Pre-commit: Biome, Prettier, language check, `review:sync` (stages the updated `review.yaml`)
 - Tests: Vitest, Playwright, @axe-core/playwright
 - Package manager: pnpm, version pinned in `package.json` → `packageManager`; dependency build scripts are denied by default (`pnpm-workspace.yaml` → `allowBuilds`). Node LTS, pinned in `.nvmrc`
 - Versions: latest stable release of every dependency and GitHub Action (check npm / GitHub, not memory); exceptions are recorded in `docs/decisions.md`. GitHub Actions are pinned to commit SHAs with the version in a comment.
@@ -121,11 +121,13 @@ src/
   content.config.ts          # per-file Zod schemas
   components/
     exercises/               # Svelte islands
-    content/                 # InShort, RuleTable, Example, AustrianNote, Word, SponsorSlot
+    content/                 # InShort, RuleTable, Example(s), AustrianNote, De, StatusBadges,
+                             # SpeakButton + SpeakScript, SponsorSlot, Word (stage 6)
     layout/                  # Header, LevelSwitcher, LanguagePicker, ThemeToggle, Sidebar,
                              # BottomBar, ThemeScript (inline JS)
   layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts), layout
-  lib/                       # pure TS logic — unit-tested (navigation.ts); topics.ts reads collections
+  lib/                       # pure TS logic — unit-tested (navigation, content-schemas,
+                             # marked-text, review-badges); topics.ts and topic-content.ts read collections
   pages/[...locale]/         # index, [level]/index, [level]/[topic]/index
 db/
   schema.ts                  # Drizzle schema
@@ -133,12 +135,13 @@ db/
   overrides/*.yaml           # manual edits and additions (never touched by import)
   seed/lemmas-a1-a2.txt      # lemma list with levels
 scripts/
+  lib/content.ts             # reads topic folders from disk for the content scripts
   import-wiktionary.ts       # .data/*.jsonl → db/data/words.jsonl
   build-dictionary.ts        # words.jsonl + overrides → .cache/dictionary.sqlite
   validate-content.ts        # cross-file checks
   i18n-coverage.ts           # missing translation keys and files
   check-language.ts          # no native-language text outside localization files
-  review.ts                  # review status, reset and minor-edit commands
+  review.ts                  # review sync/check, status, minor-edit and set commands
   check-js-budget.ts         # gzipped JS per page (islands vs. none), CI build job
   ci/                        # CI-only helpers (wrangler bootstrap config)
 docs/
@@ -150,20 +153,26 @@ docs/
 tests/
   unit/
   e2e/
+  fixtures/content/          # a small valid topic; unit tests copy it and change one file
 ```
 
 ## Content model
 
-- `meta.yaml`: level, category, order, readingMinutes, sources (`{title, url}`).
-- `german.yaml`:
-  - `examples`: `{ id, de, region?: AT }`
+- `meta.yaml`: level (must match the folder), category, order, readingMinutes, sources (`{title, url?}`, at least one).
+- `german.yaml` (ids unique across the whole file):
+  - `examples`: `{ id, de, region?: AT }`; in `de`, `**…**` marks the key words the page highlights (e.g. the Perfekt verb forms); stripped for audio
   - `choice`: `{ id, text (with ___), answer, options, alsoCorrect?: [{ value, region }] }`
   - `wordOrder`: `{ id, parts, fixed?, accept?, punctuation }`
   - `austrianNotes`: `{ id, de }`
-- `<locale>.mdx` frontmatter: `title`, `summary` ("In short"). Body references German content by id: `<Example id="e1" />`. Never write German example sentences directly in MDX.
-- `i18n/<locale>.yaml`: `examples.<id>`, `choice.<id>.why`, `wordOrder.<id>.translation`, `wordOrder.<id>.why`, `austrianNotes.<id>`.
+- `<locale>.mdx` frontmatter: `title`, `summary` ("In short", rendered by the page with `<InShort>`; also the meta description and the level-page card). Body references German content by id. Never write German example sentences directly in MDX. Components (passed by the topic page, no imports in MDX):
+  - `<Examples>` around one or more `<Example id="e1" />` (a card with one row per example: audio button, German, translation);
+  - `<AustrianNote id="at1">explanation in the locale</AustrianNote>` (flag + "In Austria", the children, then the German sentence and its translation);
+  - `<RuleTable>` + blank line + a markdown (GFM) table + blank line;
+  - `<De>haben</De>` for German words inside explanation text (`lang="de"`).
+- `i18n/<locale>.yaml`: `examples.<id>`, `choice.<id>.why`, `wordOrder.<id>.translation`, `wordOrder.<id>.why`, `austrianNotes.<id>` (translation of the note's German sentence). Fields are optional in the schema so a not-ready locale can be translated step by step; `i18n-coverage` requires all of them for ready locales.
+- In native-language text (`summary`, why texts), `*word*` marks a German word (rendered with `lang="de"`, stripped for meta tags).
 - `review.yaml`: see "Review and verification". Managed only by `scripts/review.ts`.
-- Validation: per-file shape with Zod in `content.config.ts`; everything that spans files (ids referenced in MDX and i18n files exist in `german.yaml`, every ready locale has all files and keys, answer is in options, ids unique, review hashes) in `scripts/validate-content.ts`, run in CI and before build. Zod alone cannot do cross-file checks.
+- Validation: per-file shape with Zod (`src/lib/content-schemas.ts`); everything that spans files in `scripts/validate-content.ts` (`pnpm validate`), run in CI and by `pnpm build` before `astro build`. Zod alone cannot do cross-file checks. Rules: schemas, folder level, unique ids, choice (one `___`, answer and `alsoCorrect` in options), word order (`accept` orders are permutations of `parts`, distinct, start with the fixed part; neutral case via a list of closed-class words such as `Ich`, `Gestern`), MDX and i18n ids exist in `german.yaml`, coverage of ready locales, at least 10 choice items, `review.yaml` in sync.
 
 ### Exercise rules
 
@@ -187,10 +196,13 @@ The teacher verifies German and the canonical English explanation. Other locales
   - any change in `base` files → `base` goes back to `draft`, and every translation whose `basedOn` no longer matches goes back to `draft` too (the translation must be re-checked against the new English/German);
   - any change in a translation file → that translation goes back to `draft`.
   Each reset appends a history entry with the previous status and reviewer. A pre-commit hook (`review:sync`) performs the reset so it shows up in the PR diff; CI fails if `review.yaml` is out of sync.
-- Minor edit without reset: `pnpm review:minor <topic> <base|locale> --reason "typo in c3 why"` updates the hash, keeps the status and appends `{ at, reason, previousHash }` to history. Only the owner runs it.
+- Hashing: YAML is parsed and re-serialized with sorted keys (comments do not count); MDX = parsed frontmatter + body with normalized line endings, trailing spaces and blank-line runs. Stored as `sha256:<16 hex>`. A reset of a `draft` scope only updates the hash (no history entry). After a base change, an unchanged translation keeps its old `basedOn`, so it stays listed as outdated until it is edited or reviewed again.
+- `review:sync` reads the working tree; `pnpm review:check` (CI) fails without writing when anything is out of sync.
+- Minor edit without reset: `pnpm review:minor <topic> <base|locale> --reason "typo in c3 why"` updates the hash, keeps the status and appends `{ at, event: minor, reason, previousHash }` to history; for `base`, translations based on the previous hash move to the new one. Only the owner runs it.
+- Status changes: `pnpm review:set <topic> base reviewed|verified --by "Name"` and `pnpm review:set <topic> <locale> reviewed --by "Name"` (sets `basedOn` to the current base hash). Refuses when `review.yaml` is out of sync. Only the owner runs it.
 - Badges say exactly what was checked:
   - English page: "Checked by a teacher" when `base` is `verified` with a matching hash; otherwise "Draft".
-  - Other locales: "German checked by a teacher" when `base` is verified, plus "Translation reviewed" when the translation is reviewed and its `basedOn` matches; a link to the English version is always shown. Otherwise "Draft". All texts localized.
+  - Other locales: "German checked by a teacher" when `base` is verified, plus "Translation reviewed" when the translation is reviewed and its `basedOn` matches, or "Translation not reviewed yet" when it is not (decision #55); a link to the English version is always shown. "Draft" when neither is checked. All texts localized (`review.*` UI strings).
 - `pnpm review:status` prints every topic with base status, translation status per locale and outdated translations.
 - Dictionary entries have their own `status` (draft | verified) without hashing in the pilot; no badge on dictionary pages.
 
@@ -211,7 +223,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Word order UI: two zones built with `svelte-dnd-action`: the answer line and the word bank. Words are dragged from the bank into the line, reordered inside it, and back. Mouse: drag immediately. Touch: `delayTouchStart: 250` (a long press starts the drag, a swipe scrolls). Keyboard: the library's built-in support. A "Check" button becomes active when the bank is empty.
 - Exercise runner: rounds of 5 mixed items from the topic pool. Seen item IDs in `sessionStorage` under `seen:<level>/<slug>` (shared between locales); reset when the pool is exhausted. Shuffle options and word-bank order. "Try again" starts a new round with unseen items. All randomness goes through a seedable RNG so tests are deterministic. Storage access in try/catch with in-memory fallback.
 - After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link.
-- Examples: audio button (Web Speech API placeholder in the pilot, `de-AT` then `de-DE` voice) and a "Hide translation" toggle.
+- Examples: audio button (Web Speech API placeholder in the pilot, `de-AT` then `de-DE` voice; rendered `hidden`, shown by the inline `SpeakScript` only when the browser has `speechSynthesis`) and a page-level "Hide translations" checkbox in the topic header (CSS only via `:has()`, not saved; hides every `[data-translation]`).
 - Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
 - Visual design: "Paper" (owner's choice, decision #45): warm cream background, teal accent, soft cards, serif headings, compact spacing.
 - Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `card`, `fg`, `muted`, `border`, `control`, `accent`, `accent-soft`, `accent-fg`, `focus`, `success(-soft)`, `danger(-soft)`, `header`) defined per `[data-theme]`, plus radii (`rounded-ui`, `rounded-card`, `rounded-chip`) and shadows (`shadow-card`, `shadow-pop`), exposed to Tailwind (`bg-bg`, `text-muted`, `border-control`, …). `control` is the border of interactive controls (≥ 3:1). Use only these; no raw colors (exception: the Austrian `.flag`), no `dark:` variants except for swapping icons. Dark text is deliberately not pure white on black (about 13:1 instead of 18:1) and text uses grayscale antialiasing, so it does not glow.
@@ -246,7 +258,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Push to `main`: `wrangler deploy` in a GitHub Environment `production`. `concurrency` prevents overlapping deploys.
 - Only run deploy jobs for branches of this repository, never for forks.
 - First deploy: if the Worker does not exist yet, the preview job deploys once without `routes` (`scripts/ci/wrangler-bootstrap-config.ts`), so the custom domain is attached only by the first production deploy.
-- Required status checks (job names): `DCO`, `Language check`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`.
+- Required status checks (job names): `DCO`, `Language check`, `Content checks`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`.
 - `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"`, default HTML handling (trailing slash, matching Astro), production only on the custom domain, preview URLs enabled. Check the current Wrangler docs for the exact keys.
 - Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account), variable `CLOUDFLARE_ACCOUNT_ID`.
 - Preview URLs live on the account's workers.dev subdomain (`pr-<n>-deutscherl.<subdomain>.workers.dev`), so the Cloudflare account must have one: opening Workers & Pages in the dashboard once creates it. Production does not use workers.dev (`workers_dev: false`).
@@ -263,9 +275,9 @@ Functional tests run on the English site only: the code is the same for every lo
 
 - Vitest: schemas, `validate-content.ts` rules (with failing fixtures), review hashing/reset/minor-edit including translation reset via `basedOn`, `check-language.ts`, `t()` and path helpers, `src/lib` logic (pool selection with seeded RNG, choice check with `alsoCorrect`, word-order check with `accept`, duplicates, capitalization after check), dictionary import on small JSONL fixtures, slug uniqueness.
 - Data checks (not tests of wording): `i18n-coverage.ts` fails when a ready locale misses a key or file, so a missing translation can never break a page.
-- Playwright on English pages: exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
+- Playwright on English pages: topic page content (examples with `lang="de"`, hide translations, badges, Austrian note, audio button with a stubbed `speechSynthesis`), exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
 - Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
-- CI: DCO, language check, lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add validate-content + review sync + i18n coverage (checks), dictionary build and file count (build job).
+- CI: DCO, language check, content checks (`pnpm validate`, `pnpm i18n:coverage`, `pnpm review:check`), lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add the dictionary build and file count (build job).
 - The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere).
 - Local e2e: `pnpm build && pnpm test:e2e` (the tests run against `dist/`). Playwright runs on the build output. Deploy jobs need every check (decision #30).
 - Playwright's web server runs `astro preview --ignore-lock`: Astro 7 moves `astro preview` to the background when it detects an AI agent, and `--ignore-lock` keeps it in the foreground.
