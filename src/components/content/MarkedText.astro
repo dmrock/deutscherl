@@ -1,0 +1,17 @@
+---
+/**
+ * Native-language text where `*word*` marks a German word (summary, why texts): marked words get
+ * lang="de" for screen readers, speech and hyphenation.
+ */
+import { splitMarked } from '../../lib/marked-text.ts';
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+{splitMarked(text, '*').map((segment) =>
+  segment.marked ? <i lang="de">{segment.text}</i> : segment.text,
+)}

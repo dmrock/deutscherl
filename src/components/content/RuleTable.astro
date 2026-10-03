@@ -1,0 +1,10 @@
+---
+/**
+ * Wrapper for a markdown table in MDX (`<RuleTable>` + blank line + GFM table). Styles live in
+ * global.css (`.rule-table`); the table scrolls inside the box on narrow screens.
+ */
+---
+
+<div class="rule-table my-5 overflow-x-auto rounded-card border border-border bg-card">
+  <slot />
+</div>

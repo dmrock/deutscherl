@@ -159,6 +159,71 @@
   box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15);
 }
 
+/* "Hide translations" on topic pages: a CSS-only, page-level toggle (no JS, not saved). */
+html:has(#hide-translations:checked) [data-translation] {
+  visibility: hidden;
+}
+
+/* Explanation text of a topic (MDX body). */
+@layer components {
+  .topic-prose > * + * {
+    margin-top: 1rem;
+  }
+
+  .topic-prose h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .topic-prose ul,
+  .topic-prose ol {
+    padding-inline-start: 1.25rem;
+  }
+
+  .topic-prose ul {
+    list-style: disc;
+  }
+
+  .topic-prose ol {
+    list-style: decimal;
+  }
+
+  .topic-prose li + li {
+    margin-top: 0.25rem;
+  }
+
+  .topic-prose strong {
+    font-weight: 600;
+  }
+
+  /* Rule tables (<RuleTable> around a markdown table). */
+  .rule-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .rule-table th,
+  .rule-table td {
+    padding: 0.5rem 1rem;
+    text-align: start;
+    vertical-align: top;
+  }
+
+  .rule-table thead {
+    background-color: var(--color-surface);
+  }
+
+  .rule-table tbody tr {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .rule-table th + th,
+  .rule-table td + td {
+    border-inline-start: 1px solid var(--color-border);
+  }
+}
+
 @layer base {
   summary::-webkit-details-marker {
     display: none;

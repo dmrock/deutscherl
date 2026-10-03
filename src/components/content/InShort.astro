@@ -1,0 +1,20 @@
+---
+/** "In short" box with the topic summary (frontmatter `summary`; `*word*` marks German words). */
+import type { LocaleCode } from '../../i18n/locales.ts';
+import { t } from '../../i18n/utils.ts';
+import MarkedText from './MarkedText.astro';
+
+interface Props {
+  locale: LocaleCode;
+  summary: string;
+}
+
+const { locale, summary } = Astro.props;
+---
+
+<aside class="mt-5 rounded-card bg-accent-soft px-4 py-3">
+  <p class="eyebrow text-accent">{t(locale, 'topic.inShort')}</p>
+  <p class="mt-0.5 text-lg">
+    <MarkedText text={summary} />
+  </p>
+</aside>

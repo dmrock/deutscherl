@@ -1,0 +1,41 @@
+---
+/**
+ * `<AustrianNote id="at1">explanation</AustrianNote>` in MDX: the explanation (children, in the page
+ * locale), then the German sentence from german.yaml with its translation and an audio button.
+ */
+import { t } from '../../i18n/utils.ts';
+import { getPageTopicContent } from '../../lib/topic-content.ts';
+import GermanText from './GermanText.astro';
+import SpeakButton from './SpeakButton.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const { locale, german, i18n } = await getPageTopicContent(Astro);
+const note = german.austrianNotes.find((item) => item.id === id);
+if (!note) throw new Error(`Unknown Austrian note id "${id}" on ${Astro.url.pathname}`);
+const translation = i18n?.austrianNotes[id];
+---
+
+<div id={`note-${id}`} class="my-6 rounded-card border border-border bg-card p-4 shadow-card">
+  <p class="flex items-center gap-2 font-semibold">
+    <span class="flag" aria-hidden="true"></span>
+    {t(locale, 'topic.inAustria')}
+  </p>
+  <div class="mt-2">
+    <slot />
+  </div>
+  <div class="mt-3 flex items-start gap-3">
+    <SpeakButton locale={locale} text={note.de} />
+    <div class="min-w-0">
+      <GermanText text={note.de} />
+      {translation && (
+        <p data-translation class="text-muted">
+          {translation}
+        </p>
+      )}
+    </div>
+  </div>
+</div>

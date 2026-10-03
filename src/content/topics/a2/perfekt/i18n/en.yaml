@@ -1,0 +1,54 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I watched a film yesterday.
+  e2: We went to Graz at the weekend.
+  e3: I woke up at seven o'clock today.
+  e4: He stayed at home all day.
+  e5: Did you sleep well?
+
+choice:
+  c1:
+    why: '*gehen* is a movement to another place, so the Perfekt uses *sein*: *ich bin gegangen*.'
+  c2:
+    why: '*essen* has an accusative object (*Pizza*) and nobody moves, so the Perfekt uses *haben*: *wir haben gegessen*.'
+  c3:
+    why: 'Anna goes to another place (*nach Salzburg*), so the Perfekt uses *sein*: *sie ist gefahren*.'
+  c4:
+    why: '*machen* has an accusative object (*was*), so the Perfekt uses *haben*. With *ihr* the form is *habt*.'
+  c5:
+    why: '*werden* is a change of state (he was not a father before), so the Perfekt uses *sein*: *er ist geworden*.'
+  c6:
+    why: 'Sleeping is neither a movement nor a change of state, so the Perfekt uses *haben*: *sie haben geschlafen*.'
+  c7:
+    why: '*aufstehen* is a change of state (from lying to standing), so the Perfekt uses *sein*. With *du* the form is *bist*.'
+  c8:
+    why: '*schreiben* has an accusative object (*eine Nachricht*), so the Perfekt uses *haben*: *ich habe geschrieben*.'
+  c9:
+    why: '*bleiben* always forms the Perfekt with *sein*, even though nothing moves: *wir sind geblieben*.'
+  c10:
+    why: 'In Germany, *sitzen* forms the Perfekt with *haben*: *wir haben gesessen*. In Austria, *wir sind gesessen* is usual and also correct. With *wir*, *hat* and *ist* are the wrong forms.'
+
+wordOrder:
+  w1:
+    translation: I saw a film yesterday.
+    why: '*haben* (here *habe*) is in position 2 and the participle *gesehen* is at the end. *gestern* or *einen Film* can also come first; then the subject *ich* moves after the verb.'
+  w2:
+    translation: We went to Vienna.
+    why: 'A movement to another place, so *sein* (*sind*) in position 2 and *gefahren* at the end.'
+  w3:
+    translation: Did you get home safely?
+    why: 'In a yes/no question the verb *bist* comes first, the subject *du* second, and the participle *gekommen* stays at the end.'
+  w4:
+    translation: When did you get up?
+    why: 'In a question with a question word, *wann* comes first, then the verb *bist*, then the subject. The participle *aufgestanden* is at the end.'
+  w5:
+    translation: He stayed at home.
+    why: '*bleiben* uses *sein*: *ist* in position 2, *geblieben* at the end. *zu Hause* can also come first.'
+  w6:
+    translation: The children ate the pizza.
+    why: '*haben* is in position 2 and *gegessen* at the end. The object *die Pizza* can also come first: *die Pizza haben die Kinder gegessen*. The meaning stays the same, because *haben* (plural) goes with *die Kinder*.'
+
+austrianNotes:
+  at1: I sat in the office all day.
