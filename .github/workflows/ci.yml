@@ -71,6 +71,20 @@ jobs:
       # No dependencies needed: the script runs on Node's built-in TypeScript support.
       - run: node scripts/check-language.ts
 
+  content:
+    name: Content checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/setup
+      - name: Validate content
+        run: pnpm validate
+      - name: i18n coverage
+        run: pnpm i18n:coverage
+      - name: Review state in sync
+        run: pnpm review:check
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -168,7 +182,7 @@ jobs:
 
   deploy-preview:
     name: Deploy preview
-    needs: [dco, language, lint, typecheck, unit, build, e2e]
+    needs: [dco, language, content, lint, typecheck, unit, build, e2e]
     # Pull requests from branches of this repository only, never from forks.
     if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
@@ -266,7 +280,7 @@ jobs:
 
   deploy-production:
     name: Deploy production
-    needs: [dco, language, lint, typecheck, unit, build, e2e]
+    needs: [dco, language, content, lint, typecheck, unit, build, e2e]
     # Pushes to main of this repository only (a fork's own main never deploys).
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'dmrock/deutscherl'
     runs-on: ubuntu-latest

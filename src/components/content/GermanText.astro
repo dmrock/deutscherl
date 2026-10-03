@@ -1,0 +1,21 @@
+---
+/** A German sentence with `**…**` highlights (german.yaml examples and notes). */
+import { splitMarked } from '../../lib/marked-text.ts';
+
+interface Props {
+  text: string;
+  class?: string;
+}
+
+const { text, class: className } = Astro.props;
+---
+
+<p lang="de" class:list={['german', className]}>
+  {splitMarked(text, '**').map((segment) =>
+    segment.marked ? (
+      <strong class="font-semibold text-accent">{segment.text}</strong>
+    ) : (
+      segment.text
+    ),
+  )}
+</p>

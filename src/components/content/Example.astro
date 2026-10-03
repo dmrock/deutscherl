@@ -1,0 +1,36 @@
+---
+/**
+ * `<Example id="e1" />` in MDX: the German example from german.yaml with its translation in the
+ * page locale (i18n/<locale>.yaml). Wrap consecutive examples in <Examples>.
+ */
+import { t } from '../../i18n/utils.ts';
+import { getPageTopicContent } from '../../lib/topic-content.ts';
+import GermanText from './GermanText.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const { locale, german, i18n } = await getPageTopicContent(Astro);
+const example = german.examples.find((item) => item.id === id);
+if (!example) throw new Error(`Unknown example id "${id}" on ${Astro.url.pathname}`);
+const translation = i18n?.examples[id];
+---
+
+<div id={`example-${id}`} class="px-3 py-2">
+  <div class="flex items-start gap-2">
+    <GermanText text={example.de} />
+    {example.region === 'AT' && (
+      <span class="mt-1.5 flex items-center">
+        <span class="flag" aria-hidden="true" />
+        <span class="sr-only">{t(locale, 'topic.austrianUsage')}</span>
+      </span>
+    )}
+  </div>
+  {translation && (
+    <p data-translation class="text-muted">
+      {translation}
+    </p>
+  )}
+</div>

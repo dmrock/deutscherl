@@ -1,10 +1,20 @@
 ---
 import { type CollectionEntry, getCollection, getEntry, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
+import AustrianNote from '../../../../components/content/AustrianNote.astro';
+import De from '../../../../components/content/De.astro';
+import Example from '../../../../components/content/Example.astro';
+import Examples from '../../../../components/content/Examples.astro';
+import InShort from '../../../../components/content/InShort.astro';
+import RuleTable from '../../../../components/content/RuleTable.astro';
+import SponsorSlot from '../../../../components/content/SponsorSlot.astro';
+import StatusBadges from '../../../../components/content/StatusBadges.astro';
 import { type LevelId, levels } from '../../../../config/site.ts';
 import { defaultLocale, isLocaleCode, type LocaleCode } from '../../../../i18n/locales.ts';
 import { t } from '../../../../i18n/utils.ts';
 import Base from '../../../../layouts/Base.astro';
+import { stripMarks } from '../../../../lib/marked-text.ts';
+import { getTopicContent } from '../../../../lib/topic-content.ts';
 
 // One page per topic MDX file: `a2/perfekt/ru.mdx` becomes `/ru/a2/perfekt/`.
 export const getStaticPaths = (async () => {
@@ -23,7 +33,7 @@ export const getStaticPaths = (async () => {
         level: meta.data.level,
         topic: slug,
       },
-      props: { locale, level: meta.data.level, slug, page },
+      props: { locale, level: meta.data.level, slug, page, meta },
     });
   }
   return paths;
@@ -34,43 +44,66 @@ interface Props {
   level: LevelId;
   slug: string;
   page: CollectionEntry<'topics'>;
+  meta: CollectionEntry<'topicMeta'>;
 }
 
-const { locale, level, slug, page } = Astro.props;
+const { locale, level, slug, page, meta } = Astro.props;
 const { Content } = await render(page);
-const meta = await getEntry('topicMeta', `${level}/${slug}`);
+const { review } = await getTopicContent(level, slug, locale);
 const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
 ---
 
 <Base
   locale={locale}
   title={page.data.title}
-  description={page.data.summary}
+  description={stripMarks(page.data.summary)}
   level={level}
   topic={slug}
 >
-  <article class="max-w-prose">
+  <article>
     <p class="eyebrow text-muted">
-      {levelLabel}
-      {meta && <> · {t(locale, `category.${meta.data.category}`)}</>}
+      {levelLabel} · {t(locale, `category.${meta.data.category}`)}
     </p>
-    <h1 class="mt-1 text-3xl sm:text-4xl">{page.data.title}</h1>
-    <aside class="mt-5 rounded-card bg-accent-soft px-4 py-3">
-      <p class="eyebrow text-accent">{t(locale, 'topic.inShort')}</p>
-      <p class="mt-0.5 text-lg">{page.data.summary}</p>
-    </aside>
-    <div class="mt-5 space-y-4">
-      <Content />
+    <h1 class="mt-0.5 text-2xl sm:text-3xl">{page.data.title}</h1>
+    <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs">
+      <StatusBadges locale={locale} review={review} />
+      <label class="ms-auto inline-flex cursor-pointer items-center gap-2 text-sm text-muted">
+        <input id="hide-translations" type="checkbox" class="size-4 accent-accent" />
+        {t(locale, 'topic.hideTranslations')}
+      </label>
     </div>
+    <InShort locale={locale} summary={page.data.summary} />
+    <div class="topic-prose mt-4">
+      <Content components={{ AustrianNote, De, Example, Examples, RuleTable }} />
+    </div>
+    <section class="mt-6 border-t border-border pt-3" aria-labelledby="sources-title">
+      <h2 id="sources-title" class="text-base">
+        {t(locale, 'topic.sources')}
+      </h2>
+      <ul class="mt-1 space-y-0.5 text-sm text-muted">
+        {meta.data.sources.map((source) => (
+          <li lang="de">
+            {source.url ? (
+              <a href={source.url} class="underline underline-offset-2 hover:text-accent">
+                {source.title}
+              </a>
+            ) : (
+              source.title
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
   </article>
+  <SponsorSlot />
   <section
     id="practice"
-    class="mt-10 max-w-prose scroll-mt-16 rounded-card border border-border bg-card p-4 shadow-card"
+    class="mt-6 scroll-mt-16 rounded-card border border-border bg-card px-3 py-2.5 shadow-card"
     aria-labelledby="practice-title"
   >
-    <h2 id="practice-title" class="text-2xl">
+    <h2 id="practice-title" class="text-xl">
       {t(locale, 'nav.practice')}
     </h2>
-    <p class="mt-2 text-muted">{t(locale, 'topic.practiceSoon')}</p>
+    <p class="mt-1 text-muted">{t(locale, 'topic.practiceSoon')}</p>
   </section>
 </Base>

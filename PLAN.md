@@ -89,8 +89,8 @@ Read CLAUDE.md, sections "Content model", "Review and verification", "Content ru
 - scripts/validate-content.ts for all cross-file rules, run in CI and before build.
 - scripts/i18n-coverage.ts: missing keys and files per locale (fails for ready locales).
 - scripts/review.ts implementing CLAUDE.md, "Review and verification" (base scope + translation scopes): review:sync (recompute hashes, reset changed scopes to draft, reset translations whose basedOn no longer matches, set basedOn when translation files change, append history), review:minor <topic> <base|locale> --reason, review:status, and a CI check that fails when review.yaml is out of sync. Add review:sync to the pre-commit hook.
-- MDX components: <InShort>, <RuleTable>, <Example id> (German from german.yaml with lang="de", translation from the locale file, audio placeholder, page-level "Hide translation" toggle), <AustrianNote id>, <SponsorSlot> (renders nothing for now).
-- Status badges exactly as described in CLAUDE.md (English: "Checked by a teacher"; other locales: "German checked by a teacher" + "Translation reviewed" + link to the English version; otherwise "Draft"); localized.
+- MDX components: <InShort>, <RuleTable>, <Example id> (German from german.yaml with lang="de", translation from the locale file, page-level "Hide translation" toggle), <AustrianNote id>, <SponsorSlot> (renders nothing for now).
+- Status badges exactly as described in CLAUDE.md (English: "Checked by a teacher"; other locales: "German checked by a teacher" + "Translation reviewed"; otherwise "Draft"); localized.
 - ONE sample topic: A2 "Perfekt: haben or sein?" with en.mdx, ru.mdx, i18n files, 5 examples, 10 choice items and 6 word-order items following the exercise rules in CLAUDE.md (neutral case, accept lists, alsoCorrect for real regional variants). Everything draft.
 Tests: Vitest for every validation rule with failing fixtures (missing ru key, unknown example id, answer not in options, capitalized sentence-initial part, stale hash), for review sync/minor/status, including: a change in german.yaml resets base and the ru translation; a change in ru.mdx resets only the ru translation; review:minor keeps the status. At the end tell me which German sentences you are least sure about, which items might have more than one correct answer or order, and where ru might differ in meaning from en.
 ```
@@ -129,7 +129,7 @@ Unit tests with small JSONL fixtures for both editions (ru fixtures under tests/
 ```
 Build dictionary pages from .cache/dictionary.sqlite at build time, for every ready locale:
 - /dictionary/ and /ru/dictionary/: list grouped by level, filter by level and part of speech (small Svelte island), article color coding for der/die/das.
-- /dictionary/<id>/ and /ru/dictionary/<id>/: article, plural, glosses in the page locale (fallback to English with a "no translation yet" hint), examples with translations, audio placeholder, Austrian variant badge, links to topics using the word.
+- /dictionary/<id>/ and /ru/dictionary/<id>/: article, plural, glosses in the page locale (fallback to English with a "no translation yet" hint), examples with translations, Austrian variant badge, links to topics using the word.
 - <Word id> MDX component linking to the entry in the same locale, with article and gloss on hover/focus.
 - /about/sources/ in both locales with Wiktionary attribution (English and Russian editions, CC BY-SA 4.0) and grammar references.
 No DB code in the client bundle. Add the static file count to the CI budget step. E2E on the preview deployment: entries with ä, ö, ü, ß in the URL open correctly.

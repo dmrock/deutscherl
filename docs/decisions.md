@@ -219,3 +219,77 @@ The owner saw the header and sidebar jump when switching levels. Causes: level p
 - The component sample page `/dev/design/` (#46), its `dev-pages` integration and its fixture were removed at the owner's request. Stage 3 builds the components from the design tokens (#45); the mock-ups stay in git history (commit 41cf8df, `src/dev/design.astro`).
 
 Rejected: keeping View Transitions with non-animated header and sidebar groups (content would still cross-fade; the owner asked for static navigation).
+
+## 48. Content schemas shared by Astro and the scripts; `yaml` for scripts — accepted
+
+The per-file Zod schemas live in `src/lib/content-schemas.ts` (with `z` from `astro/zod`, which also imports under plain `node`). `content.config.ts` uses them for the collections `topicMeta`, `topicGerman`, `topicI18n`, `topicReview` and `topics`, and `scripts/validate-content.ts` applies the same schemas to the files it reads from disk, so a shape is defined once. Scripts read topic folders through `scripts/lib/content.ts` and parse YAML with `yaml` 2.9.1 (new dependency: no dependencies of its own, about 35 KB gzipped on disk, build time and scripts only, never shipped to the browser; already in the tree transitively, but pnpm does not allow importing transitive packages). Rejected: `js-yaml` (no document API for writing `review.yaml` with a header comment), duplicate schemas in the scripts.
+
+## 49. Content validation rules — accepted
+
+`scripts/validate-content.ts` checks: schemas (strict objects, so typos in field names fail), folder level = `meta.level`, ids unique across the whole `german.yaml` (a report link carries a single item id), choice items (exactly one `___`, unique options, answer and `alsoCorrect` values in the options, `alsoCorrect` ≠ answer), word order (`accept` orders are permutations of `parts`, no repeated order, every order starts with the fixed part when `fixed`), MDX `<Example>`/`<AustrianNote>` ids exist, i18n keys have a German item, every ready locale has all files and keys, at least 10 choice items (the word-order minimum stays a guideline: "where it makes sense"), `review.yaml` in sync. `pnpm build` runs it before `astro build` (in the script itself, so it does not depend on pnpm's pre-script setting).
+Neutral case (decision #14) cannot be checked exactly without knowing which words are nouns, so a part fails when its first word is a capitalized closed-class word: pronouns (not `sie`, because of formal `Sie`), articles and determiners, auxiliaries and modals, prepositions, conjunctions, question words and common adverbs (not `morgen`, because of `der Morgen`). Rejected: requiring the first part to be lowercase (wrong for nouns and names), waiting for the dictionary (stage 5) to know parts of speech.
+
+## 50. Translation keys optional in the schema, required by coverage — accepted
+
+In `i18n/<locale>.yaml`, `why` and `translation` are optional in the Zod schema; `scripts/i18n-coverage.ts` lists every missing file and key per topic and locale and fails only for ready locales. A new locale (`ready: false`) can be translated step by step and still builds, and a missing key in a ready locale is reported as exactly that (`[ru] missing choice.c3.why`), not as a schema error. `validate-content` includes the coverage check for ready locales.
+
+## 51. Review hashes over normalized content — accepted
+
+Hashes are computed over normalized files: YAML is parsed and serialized as JSON with sorted keys (comments, quoting, indentation and key order do not count); MDX is the parsed frontmatter plus the body with normalized line endings, trailing spaces removed and runs of blank lines collapsed. `base` = meta + german + `<default locale>.mdx` + `i18n/<default locale>.yaml`; a translation = its MDX + i18n file. Stored as `sha256:` + the first 16 hex digits (short enough to read in diffs; collisions are irrelevant here). Rejected: parsing MDX into an AST for hashing (a dependency for little gain: the body is prose, and any wording change must reset the review anyway), hashing raw bytes (a reformat would reset reviews).
+
+## 52. Review sync details — accepted
+
+- A scope that is already `draft` only gets its new hash: no history entry, so drafting does not fill the history with noise. Resets of `reviewed`/`verified` scopes append `{ at, event: reset, from, by, reason, previousHash }`.
+- When the base changes and a translation does not, a non-draft translation is reset and keeps its old `basedOn`, so `review:status` keeps showing it as outdated until it is edited (then `basedOn` = current base) or reviewed again.
+- `review:minor base` moves translations whose `basedOn` was the previous base hash to the new one: a typo fix in English does not make the translations outdated.
+- Translation entries are created for every non-default locale that has a file and removed when its files are gone.
+- The pre-commit hook runs `review:sync` on the working tree (not the index) and stages `review.yaml`. With a partially staged content file the hash reflects the working tree; CI's `review:check` catches any mismatch in the pushed commit.
+
+## 53. `review:set` for status changes — accepted
+
+PLAN.md listed `review:sync`, `review:minor` and `review:status`, but nothing to move a scope to `reviewed`/`verified`; editing `review.yaml` by hand is ruled out. `pnpm review:set <topic> base reviewed|verified --by "Name"` and `pnpm review:set <topic> <locale> reviewed --by "Name"` set the status, reviewer and date, append `{ event: status, from, to, by }` and, for translations, set `basedOn` to the current base hash. It refuses while `review.yaml` is out of sync, so a status always refers to hashed content. Only the owner runs it; Claude never does.
+
+## 54. "Content checks" CI job — accepted
+
+A new parallel job `Content checks` runs `pnpm validate`, `pnpm i18n:coverage` and `pnpm review:check`; the deploy jobs need it. It must be added to the required status checks of `main`. The `Build` job validates too (through `pnpm build`), but a separate job gives a fast, clearly named failure. Rejected: steps inside `Build` (content errors would look like build failures).
+
+## 55. Badge "Translation not reviewed yet" — accepted
+
+CLAUDE.md lists "German checked by a teacher", "Translation reviewed" and "Draft". When the German is verified but the translation is not reviewed, showing only "German checked by a teacher" could be read as covering the whole page, so a muted "Translation not reviewed yet" badge is added in that case. Badges are computed by `src/lib/review-badges.ts` (unit-tested) from `review.yaml`; hash freshness is guaranteed because `validate-content` runs before every build. The link to the English version was removed in #61.
+
+## 56. Content components and markers — accepted
+
+- The topic page passes `Example`, `Examples`, `AustrianNote`, `RuleTable` and `De` to `<Content components={…}>`, so MDX files need no imports. `<Example>` and `<AustrianNote>` find the topic and locale of the page from `Astro.params` and the URL (`src/lib/topic-content.ts`) and read German from `german.yaml` and the translation from the locale's i18n file.
+- `<Examples>` groups examples into one card (`<Example>` is a row); the author wraps them.
+- `<AustrianNote id>` takes the explanation as children in the locale, then shows the German sentence and its translation. MDX does not repeat an "In Austria" heading (the note has its own label).
+- `<RuleTable>` wraps a GFM markdown table (styles in `global.css`, `.rule-table`), so authors write tables in markdown.
+- Markers: `**…**` in German examples highlights key words (here the verb forms); `*…*` in native-language text (`summary`, why texts) marks a German word, rendered as `<i lang="de">`. `<InShort>` renders the frontmatter `summary`, which stays the one source for "In short", the meta description and the level page.
+- `<SponsorSlot>` renders nothing and sits after the article.
+Rejected: `<InShort>` with children in MDX (a second copy of the summary), raw `<i lang="de">` in MDX (verbose and easy to forget).
+
+## 57. Hide translations without JS, Web Speech audio placeholder — accepted (audio superseded by #61)
+
+- "Hide translations" is a checkbox in the topic header; `html:has(#hide-translations:checked) [data-translation] { visibility: hidden }` hides every translation on the page (space is kept, so nothing jumps). No JS, not saved.
+- Audio buttons are rendered `hidden`; a small inline script (`SpeakScript.astro`, topic pages only) shows them when `speechSynthesis` exists and speaks the text with a `de-AT` voice, then `de-DE`, then any German voice. Topic pages stay at 1.1 KB of inline JS (budget 3 KB). Recorded audio can replace it later without changing the content.
+
+## 58. Dependency versions in stage 3 — accepted
+
+Bumped as promised in #41: `@biomejs/biome` 2.5.15 and `wrangler` 4.147.0 (both older than pnpm's one-day minimum release age). Added `yaml` 2.9.1 (#48). The `@pnpm/exe` lockfile entry is kept (#60).
+
+## 59. First topic: A2 "Perfekt: haben or sein?" — accepted (draft content)
+
+Written by Claude Code as `draft` (base and ru). 5 examples, 10 choice items, 6 word-order items, 1 Austrian note (`sitzen`/`liegen`/`stehen` with `sein`). Item `c10` (`Wir ___ lange im Café gesessen.`) accepts `sind` with `region: AT`; it has four options (`haben`, `sind`, `hat`, `ist`) so that it still has wrong answers. Sources: Duden Sprachratgeber, Variantengrammatik des Standarddeutschen (IDS) and grammis (IDS), URLs checked when added. The Variantengrammatik shows that in Austria `sein` is the majority form for these verbs but `haben` is also used; the note says "usually" for that reason. The teacher must verify the German and the English page before the badge changes.
+
+## 60. Commit the lockfile exactly as pnpm writes it — accepted (owner decision)
+
+pnpm 11+ records the pnpm build it runs as in the lockfile's `packageManagerDependencies`. The standalone pnpm from the official install script is `@pnpm/exe`, so every local pnpm command (install, run, `pnpm exec` in the git hooks) added an `@pnpm/exe` entry, which PR #4 and stage 3 deleted by hand before each commit, so the working tree was dirty again after the next command. Tested: with the entry committed, both the standalone pnpm and the npm `pnpm` package that CI installs (`pnpm/action-setup`) accept the lockfile with `--frozen-lockfile` and leave it unchanged (pnpm preserves the entry since pnpm/pnpm#14958). So the lockfile is committed as pnpm generates it and never edited by hand. Rejected: hand-editing the lockfile (it never stays clean), forcing one install method on every contributor (Corepack does not support pnpm 11's `devEngines.packageManager` and is no longer bundled with new Node versions), `standalone: true` in CI (not needed for a stable lockfile).
+
+## 61. Topic page: no audio, no reading time, no English link; smaller and denser — accepted (owner decision)
+
+After reviewing the stage 3 preview, the owner asked for:
+- **No audio.** The Web Speech API voices sounded bad, so the audio buttons and their inline script are removed (supersedes the audio part of #57). Topic pages now ship no JS of their own. Revisit only with recorded audio (e.g. Wikimedia Commons, licenses to check).
+- **No "min read"** on the topic page. `readingMinutes` stays in `meta.yaml` for now (stage 7 plans it for level pages); drop it there too if it is not wanted.
+- **No "Read in English" link** on translated pages (CLAUDE.md asked for it always; the badges already say what was checked, and the language picker leads to the English page).
+- **Smaller text:** body 15px instead of 16px (site-wide), German example text 16px instead of 18px (still slightly larger than the explanation), smaller topic headings (h1 `text-2xl`/`sm:text-3xl`, h2 1.25rem), "In short" at body size.
+- **Wider content:** the topic article and the practice box use the full width of the main column instead of `max-w-prose`.
+- **Less padding:** example rows, Austrian note, "In short", rule-table cells, badges and the spacing between blocks are tighter.

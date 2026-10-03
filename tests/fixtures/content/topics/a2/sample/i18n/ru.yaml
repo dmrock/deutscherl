@@ -1,0 +1,33 @@
+examples:
+  e1: Russian placeholder e1
+  e2: Russian placeholder e2
+choice:
+  c1:
+    why: Russian placeholder why c1
+  c2:
+    why: Russian placeholder why c2
+  c3:
+    why: Russian placeholder why c3
+  c4:
+    why: Russian placeholder why c4
+  c5:
+    why: Russian placeholder why c5
+  c6:
+    why: Russian placeholder why c6
+  c7:
+    why: Russian placeholder why c7
+  c8:
+    why: Russian placeholder why c8
+  c9:
+    why: Russian placeholder why c9
+  c10:
+    why: Russian placeholder why c10
+wordOrder:
+  w1:
+    translation: Russian placeholder w1
+    why: Russian placeholder why w1
+  w2:
+    translation: Russian placeholder w2
+    why: Russian placeholder why w2
+austrianNotes:
+  at1: Russian placeholder at1

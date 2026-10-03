@@ -1,26 +1,46 @@
 /**
- * Content collections (CLAUDE.md, "Content model"). Per-file shapes only; cross-file rules live in
- * scripts/validate-content.ts (stage 3). Stage 2 defines just the fields navigation needs.
+ * Content collections (CLAUDE.md, "Content model"). Per-file shapes come from
+ * src/lib/content-schemas.ts (shared with the scripts); cross-file rules live in
+ * scripts/validate-content.ts, which runs before every build.
  */
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { z } from 'astro/zod';
-import { categoryIds, levelIds } from './config/site.ts';
+import {
+  frontmatterSchema,
+  germanSchema,
+  i18nSchema,
+  metaSchema,
+  reviewSchema,
+} from './lib/content-schemas.ts';
 
 const base = './src/content/topics';
 
-/** `a2/perfekt/meta.yaml`, id `a2/perfekt` */
-const topicMeta = defineCollection({
-  loader: glob({
-    pattern: '*/*/meta.yaml',
+/** A collection of one file name per topic folder: `a2/perfekt/<file>` gets the id `a2/perfekt`. */
+function perTopic(file: string) {
+  return glob({
+    pattern: `*/*/${file}`,
     base,
-    generateId: ({ entry }) => entry.replace(/\/meta\.yaml$/, ''),
+    generateId: ({ entry }) => entry.slice(0, -(file.length + 1)),
+  });
+}
+
+/** `a2/perfekt/meta.yaml`, id `a2/perfekt` */
+const topicMeta = defineCollection({ loader: perTopic('meta.yaml'), schema: metaSchema });
+
+/** `a2/perfekt/german.yaml`, id `a2/perfekt` */
+const topicGerman = defineCollection({ loader: perTopic('german.yaml'), schema: germanSchema });
+
+/** `a2/perfekt/review.yaml`, id `a2/perfekt` */
+const topicReview = defineCollection({ loader: perTopic('review.yaml'), schema: reviewSchema });
+
+/** `a2/perfekt/i18n/ru.yaml`, id `a2/perfekt/ru` */
+const topicI18n = defineCollection({
+  loader: glob({
+    pattern: '*/*/i18n/*.yaml',
+    base,
+    generateId: ({ entry }) => entry.replace(/\/i18n\/([^/]+)\.yaml$/, '/$1'),
   }),
-  schema: z.object({
-    level: z.enum(levelIds),
-    category: z.enum(categoryIds),
-    order: z.number().int().positive(),
-  }),
+  schema: i18nSchema,
 });
 
 /** `a2/perfekt/en.mdx`, id `a2/perfekt/en` */
@@ -30,10 +50,7 @@ const topics = defineCollection({
     base,
     generateId: ({ entry }) => entry.replace(/\.mdx$/, ''),
   }),
-  schema: z.object({
-    title: z.string().min(1),
-    summary: z.string().min(1),
-  }),
+  schema: frontmatterSchema,
 });
 
-export const collections = { topicMeta, topics };
+export const collections = { topicMeta, topicGerman, topicReview, topicI18n, topics };
