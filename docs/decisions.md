@@ -255,7 +255,7 @@ A new parallel job `Content checks` runs `pnpm validate`, `pnpm i18n:coverage` a
 
 ## 55. Badge "Translation not reviewed yet" — accepted
 
-CLAUDE.md lists "German checked by a teacher", "Translation reviewed" and "Draft". When the German is verified but the translation is not reviewed, showing only "German checked by a teacher" could be read as covering the whole page, so a muted "Translation not reviewed yet" badge is added in that case. Badges are computed by `src/lib/review-badges.ts` (unit-tested) from `review.yaml`; hash freshness is guaranteed because `validate-content` runs before every build. The link to the English version is shown on every non-English topic page.
+CLAUDE.md lists "German checked by a teacher", "Translation reviewed" and "Draft". When the German is verified but the translation is not reviewed, showing only "German checked by a teacher" could be read as covering the whole page, so a muted "Translation not reviewed yet" badge is added in that case. Badges are computed by `src/lib/review-badges.ts` (unit-tested) from `review.yaml`; hash freshness is guaranteed because `validate-content` runs before every build. The link to the English version was removed in #61.
 
 ## 56. Content components and markers — accepted
 
@@ -267,7 +267,7 @@ CLAUDE.md lists "German checked by a teacher", "Translation reviewed" and "Draft
 - `<SponsorSlot>` renders nothing and sits after the article.
 Rejected: `<InShort>` with children in MDX (a second copy of the summary), raw `<i lang="de">` in MDX (verbose and easy to forget).
 
-## 57. Hide translations without JS, Web Speech audio placeholder — accepted
+## 57. Hide translations without JS, Web Speech audio placeholder — accepted (audio superseded by #61)
 
 - "Hide translations" is a checkbox in the topic header; `html:has(#hide-translations:checked) [data-translation] { visibility: hidden }` hides every translation on the page (space is kept, so nothing jumps). No JS, not saved.
 - Audio buttons are rendered `hidden`; a small inline script (`SpeakScript.astro`, topic pages only) shows them when `speechSynthesis` exists and speaks the text with a `de-AT` voice, then `de-DE`, then any German voice. Topic pages stay at 1.1 KB of inline JS (budget 3 KB). Recorded audio can replace it later without changing the content.
@@ -283,3 +283,13 @@ Written by Claude Code as `draft` (base and ru). 5 examples, 10 choice items, 6 
 ## 60. Commit the lockfile exactly as pnpm writes it — accepted (owner decision)
 
 pnpm 11+ records the pnpm build it runs as in the lockfile's `packageManagerDependencies`. The standalone pnpm from the official install script is `@pnpm/exe`, so every local pnpm command (install, run, `pnpm exec` in the git hooks) added an `@pnpm/exe` entry, which PR #4 and stage 3 deleted by hand before each commit, so the working tree was dirty again after the next command. Tested: with the entry committed, both the standalone pnpm and the npm `pnpm` package that CI installs (`pnpm/action-setup`) accept the lockfile with `--frozen-lockfile` and leave it unchanged (pnpm preserves the entry since pnpm/pnpm#14958). So the lockfile is committed as pnpm generates it and never edited by hand. Rejected: hand-editing the lockfile (it never stays clean), forcing one install method on every contributor (Corepack does not support pnpm 11's `devEngines.packageManager` and is no longer bundled with new Node versions), `standalone: true` in CI (not needed for a stable lockfile).
+
+## 61. Topic page: no audio, no reading time, no English link; smaller and denser — accepted (owner decision)
+
+After reviewing the stage 3 preview, the owner asked for:
+- **No audio.** The Web Speech API voices sounded bad, so the audio buttons and their inline script are removed (supersedes the audio part of #57). Topic pages now ship no JS of their own. Revisit only with recorded audio (e.g. Wikimedia Commons, licenses to check).
+- **No "min read"** on the topic page. `readingMinutes` stays in `meta.yaml` for now (stage 7 plans it for level pages); drop it there too if it is not wanted.
+- **No "Read in English" link** on translated pages (CLAUDE.md asked for it always; the badges already say what was checked, and the language picker leads to the English page).
+- **Smaller text:** body 15px instead of 16px (site-wide), German example text 16px instead of 18px (still slightly larger than the explanation), smaller topic headings (h1 `text-2xl`/`sm:text-3xl`, h2 1.25rem), "In short" at body size.
+- **Wider content:** the topic article and the practice box use the full width of the main column instead of `max-w-prose`.
+- **Less padding:** example rows, Austrian note, "In short", rule-table cells, badges and the spacing between blocks are tighter.

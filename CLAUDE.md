@@ -122,7 +122,7 @@ src/
   components/
     exercises/               # Svelte islands
     content/                 # InShort, RuleTable, Example(s), AustrianNote, De, StatusBadges,
-                             # SpeakButton + SpeakScript, SponsorSlot, Word (stage 6)
+                             # SponsorSlot, Word (stage 6)
     layout/                  # Header, LevelSwitcher, LanguagePicker, ThemeToggle, Sidebar,
                              # BottomBar, ThemeScript (inline JS)
   layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts), layout
@@ -158,14 +158,14 @@ tests/
 
 ## Content model
 
-- `meta.yaml`: level (must match the folder), category, order, readingMinutes, sources (`{title, url?}`, at least one).
+- `meta.yaml`: level (must match the folder), category, order, readingMinutes (not shown on the topic page, decision #61), sources (`{title, url?}`, at least one).
 - `german.yaml` (ids unique across the whole file):
-  - `examples`: `{ id, de, region?: AT }`; in `de`, `**…**` marks the key words the page highlights (e.g. the Perfekt verb forms); stripped for audio
+  - `examples`: `{ id, de, region?: AT }`; in `de`, `**…**` marks the key words the page highlights (e.g. the Perfekt verb forms)
   - `choice`: `{ id, text (with ___), answer, options, alsoCorrect?: [{ value, region }] }`
   - `wordOrder`: `{ id, parts, fixed?, accept?, punctuation }`
   - `austrianNotes`: `{ id, de }`
 - `<locale>.mdx` frontmatter: `title`, `summary` ("In short", rendered by the page with `<InShort>`; also the meta description and the level-page card). Body references German content by id. Never write German example sentences directly in MDX. Components (passed by the topic page, no imports in MDX):
-  - `<Examples>` around one or more `<Example id="e1" />` (a card with one row per example: audio button, German, translation);
+  - `<Examples>` around one or more `<Example id="e1" />` (a card with one row per example: German, translation);
   - `<AustrianNote id="at1">explanation in the locale</AustrianNote>` (flag + "In Austria", the children, then the German sentence and its translation);
   - `<RuleTable>` + blank line + a markdown (GFM) table + blank line;
   - `<De>haben</De>` for German words inside explanation text (`lang="de"`).
@@ -202,7 +202,7 @@ The teacher verifies German and the canonical English explanation. Other locales
 - Status changes: `pnpm review:set <topic> base reviewed|verified --by "Name"` and `pnpm review:set <topic> <locale> reviewed --by "Name"` (sets `basedOn` to the current base hash). Refuses when `review.yaml` is out of sync. Only the owner runs it.
 - Badges say exactly what was checked:
   - English page: "Checked by a teacher" when `base` is `verified` with a matching hash; otherwise "Draft".
-  - Other locales: "German checked by a teacher" when `base` is verified, plus "Translation reviewed" when the translation is reviewed and its `basedOn` matches, or "Translation not reviewed yet" when it is not (decision #55); a link to the English version is always shown. "Draft" when neither is checked. All texts localized (`review.*` UI strings).
+  - Other locales: "German checked by a teacher" when `base` is verified, plus "Translation reviewed" when the translation is reviewed and its `basedOn` matches, or "Translation not reviewed yet" when it is not (decision #55). No link to the English version (owner decision #61). "Draft" when neither is checked. All texts localized (`review.*` UI strings).
 - `pnpm review:status` prints every topic with base status, translation status per locale and outdated translations.
 - Dictionary entries have their own `status` (draft | verified) without hashing in the pilot; no badge on dictionary pages.
 
@@ -223,7 +223,8 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Word order UI: two zones built with `svelte-dnd-action`: the answer line and the word bank. Words are dragged from the bank into the line, reordered inside it, and back. Mouse: drag immediately. Touch: `delayTouchStart: 250` (a long press starts the drag, a swipe scrolls). Keyboard: the library's built-in support. A "Check" button becomes active when the bank is empty.
 - Exercise runner: rounds of 5 mixed items from the topic pool. Seen item IDs in `sessionStorage` under `seen:<level>/<slug>` (shared between locales); reset when the pool is exhausted. Shuffle options and word-bank order. "Try again" starts a new round with unseen items. All randomness goes through a seedable RNG so tests are deterministic. Storage access in try/catch with in-memory fallback.
 - After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link.
-- Examples: audio button (Web Speech API placeholder in the pilot, `de-AT` then `de-DE` voice; rendered `hidden`, shown by the inline `SpeakScript` only when the browser has `speechSynthesis`) and a page-level "Hide translations" checkbox in the topic header (CSS only via `:has()`, not saved; hides every `[data-translation]`).
+- Examples: a page-level "Hide translations" checkbox in the topic header (CSS only via `:has()`, not saved; hides every `[data-translation]`). No audio: the Web Speech API voices sounded bad and were removed (owner decision #61); revisit only with recorded audio.
+- Typography and density (owner decision #61): body text 15px, German example text 16px, compact cards (`px-3 py-2`), the topic content uses the full width of the main column (no `max-w-prose`).
 - Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
 - Visual design: "Paper" (owner's choice, decision #45): warm cream background, teal accent, soft cards, serif headings, compact spacing.
 - Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `card`, `fg`, `muted`, `border`, `control`, `accent`, `accent-soft`, `accent-fg`, `focus`, `success(-soft)`, `danger(-soft)`, `header`) defined per `[data-theme]`, plus radii (`rounded-ui`, `rounded-card`, `rounded-chip`) and shadows (`shadow-card`, `shadow-pop`), exposed to Tailwind (`bg-bg`, `text-muted`, `border-control`, …). `control` is the border of interactive controls (≥ 3:1). Use only these; no raw colors (exception: the Austrian `.flag`), no `dark:` variants except for swapping icons. Dark text is deliberately not pure white on black (about 13:1 instead of 18:1) and text uses grayscale antialiasing, so it does not glow.
@@ -265,7 +266,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 
 ## Legal pages (Austria)
 
-- `/impressum/` (Offenlegung according to § 25 Mediengesetz for a small private website: owner name, place of residence, purpose of the site) and `/privacy/` (hosting by Cloudflare, Cloudflare Web Analytics, browser storage used, Web Speech API, links to GitHub for reports). Both in every ready locale, linked in the footer.
+- `/impressum/` (Offenlegung according to § 25 Mediengesetz for a small private website: owner name, place of residence, purpose of the site) and `/privacy/` (hosting by Cloudflare, Cloudflare Web Analytics, browser storage used, links to GitHub for reports). Both in every ready locale, linked in the footer.
 - Write them as templates with clearly marked TODO placeholders; the owner fills in and checks the facts. Do not invent legal statements.
 - When sponsor banners arrive: label them as ads ("Anzeige" / localized) and extend the Impressum as required for commercial sites.
 
@@ -275,7 +276,7 @@ Functional tests run on the English site only: the code is the same for every lo
 
 - Vitest: schemas, `validate-content.ts` rules (with failing fixtures), review hashing/reset/minor-edit including translation reset via `basedOn`, `check-language.ts`, `t()` and path helpers, `src/lib` logic (pool selection with seeded RNG, choice check with `alsoCorrect`, word-order check with `accept`, duplicates, capitalization after check), dictionary import on small JSONL fixtures, slug uniqueness.
 - Data checks (not tests of wording): `i18n-coverage.ts` fails when a ready locale misses a key or file, so a missing translation can never break a page.
-- Playwright on English pages: topic page content (examples with `lang="de"`, hide translations, badges, Austrian note, audio button with a stubbed `speechSynthesis`), exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
+- Playwright on English pages: topic page content (examples with `lang="de"`, hide translations, badges, Austrian note), exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
 - Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
 - CI: DCO, language check, content checks (`pnpm validate`, `pnpm i18n:coverage`, `pnpm review:check`), lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add the dictionary build and file count (build job).
 - The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere).

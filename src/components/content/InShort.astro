@@ -12,9 +12,9 @@ interface Props {
 const { locale, summary } = Astro.props;
 ---
 
-<aside class="mt-5 rounded-card bg-accent-soft px-4 py-3">
+<aside class="mt-3 rounded-card bg-accent-soft px-3 py-2">
   <p class="eyebrow text-accent">{t(locale, 'topic.inShort')}</p>
-  <p class="mt-0.5 text-lg">
+  <p class="mt-0.5">
     <MarkedText text={summary} />
   </p>
 </aside>

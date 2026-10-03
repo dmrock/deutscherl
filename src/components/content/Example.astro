@@ -1,12 +1,11 @@
 ---
 /**
  * `<Example id="e1" />` in MDX: the German example from german.yaml with its translation in the
- * page locale (i18n/<locale>.yaml) and an audio button. Wrap consecutive examples in <Examples>.
+ * page locale (i18n/<locale>.yaml). Wrap consecutive examples in <Examples>.
  */
 import { t } from '../../i18n/utils.ts';
 import { getPageTopicContent } from '../../lib/topic-content.ts';
 import GermanText from './GermanText.astro';
-import SpeakButton from './SpeakButton.astro';
 
 interface Props {
   id: string;
@@ -19,22 +18,19 @@ if (!example) throw new Error(`Unknown example id "${id}" on ${Astro.url.pathnam
 const translation = i18n?.examples[id];
 ---
 
-<div id={`example-${id}`} class="flex items-start gap-3 px-4 py-3">
-  <SpeakButton locale={locale} text={example.de} />
-  <div class="min-w-0">
-    <div class="flex items-start gap-2">
-      <GermanText text={example.de} />
-      {example.region === 'AT' && (
-        <span class="mt-1.5 flex items-center">
-          <span class="flag" aria-hidden="true" />
-          <span class="sr-only">{t(locale, 'topic.austrianUsage')}</span>
-        </span>
-      )}
-    </div>
-    {translation && (
-      <p data-translation class="text-muted">
-        {translation}
-      </p>
+<div id={`example-${id}`} class="px-3 py-2">
+  <div class="flex items-start gap-2">
+    <GermanText text={example.de} />
+    {example.region === 'AT' && (
+      <span class="mt-1.5 flex items-center">
+        <span class="flag" aria-hidden="true" />
+        <span class="sr-only">{t(locale, 'topic.austrianUsage')}</span>
+      </span>
     )}
   </div>
+  {translation && (
+    <p data-translation class="text-muted">
+      {translation}
+    </p>
+  )}
 </div>

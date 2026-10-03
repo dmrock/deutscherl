@@ -26,12 +26,10 @@ test('"Hide translations" hides every translation and shows them again', async (
   for (const translation of await translations.all()) await expect(translation).toBeVisible();
 });
 
-test('shows the draft badge, the reading time and no English-version link', async ({ page }) => {
+test('shows the draft badge', async ({ page }) => {
   await page.goto(PATH);
   const badges = page.getByRole('list', { name: t('en', 'review.status') });
   await expect(badges.getByRole('listitem')).toHaveText([t('en', 'review.draft')]);
-  await expect(page.getByText(t('en', 'topic.readingTime', { minutes: 4 }))).toBeVisible();
-  await expect(page.getByRole('link', { name: t('en', 'review.englishVersion') })).toHaveCount(0);
 });
 
 test('the Austrian note shows its German sentence and translation', async ({ page }) => {
@@ -47,34 +45,4 @@ test('rule table and sources are rendered', async ({ page }) => {
   await expect(page.locator('.rule-table table')).toBeVisible();
   const sources = page.getByRole('region', { name: t('en', 'topic.sources') });
   await expect(sources.getByRole('link').first()).toHaveAttribute('href', /^https:\/\//);
-});
-
-test('audio buttons appear when the browser can speak', async ({ page }) => {
-  await page.addInitScript(() => {
-    const spoken: string[] = [];
-    Object.assign(window, { spoken });
-    Object.defineProperty(window, 'speechSynthesis', {
-      value: {
-        getVoices: () => [{ lang: 'de-DE', name: 'German' }],
-        cancel: () => {},
-        speak: (utterance: { text: string }) => spoken.push(utterance.text),
-      },
-    });
-    Object.defineProperty(window, 'SpeechSynthesisUtterance', {
-      value: class {
-        text: string;
-        lang = '';
-        voice: unknown = null;
-        constructor(text: string) {
-          this.text = text;
-        }
-      },
-    });
-  });
-  await page.goto(PATH);
-  const button = page.locator('#example-e2').getByRole('button', { name: t('en', 'topic.listen') });
-  await button.click();
-  expect(await page.evaluate(() => (window as unknown as { spoken: string[] }).spoken)).toEqual([
-    'Wir sind am Wochenende nach Graz gefahren.',
-  ]);
 });
