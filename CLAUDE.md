@@ -54,7 +54,7 @@ Components, pages and tests never contain native-language strings inline: they u
 - Astro (latest stable), fully static output, no SSR adapter. `build.format: 'directory'`, `trailingSlash: 'always'`: canonical URLs end with `/`.
 - Svelte 5 ONLY for islands that need real interactivity: exercises, dictionary filter. Everything else (theme toggle, closing the language picker) is a few lines of inline vanilla JS.
 - Drag and drop: `svelte-dnd-action` (Svelte 5 compatible, touch delay option, keyboard and screen-reader support). Do not hand-roll drag and drop.
-- Page transitions: native cross-document View Transitions in CSS (`@view-transition { navigation: auto; }`). Do NOT use Astro's `<ClientRouter />`: it adds JS to every page. Browsers without support navigate normally.
+- Page transitions: none. Navigation is static: header and sidebar stay exactly in place between pages (owner decision #47). Do NOT use Astro's `<ClientRouter />` or CSS `@view-transition`.
 - TypeScript, `strict` preset. TypeScript 6.x until Astro's tooling (`astro check`) supports TypeScript 7 (decision #23).
 - Scripts in `scripts/` run with plain `node` (built-in type stripping): erasable TypeScript only, local imports with the `.ts` extension, no tsx.
 - Tailwind CSS v4. Use logical properties/utilities (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`, `text-start`) everywhere, never left/right, so right-to-left languages work later.
@@ -97,6 +97,7 @@ Terminology: the "native language" (a.k.a. locale) is the language of the UI, ex
 - Choosing a font for a new locale: build a temporary comparison page on the PR (candidates at body and example size, light and dark, next to German blocks), let the owner choose on the preview, then remove the page and keep only the chosen package (as done for ru, decision #7).
 - A future locale in a script without a good match (Arabic, Hindi, …) simply gets its own font entry; nothing else changes.
 - German example text is slightly larger than explanation text.
+- Headings (`h1`–`h3`) use a system serif stack (`--heading-font`: Iowan Old Style / Charter on Apple, Georgia elsewhere), no font download (decision #45). Body text stays in the locale font.
 
 ## Project structure (target)
 
@@ -212,9 +213,10 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link.
 - Examples: audio button (Web Speech API placeholder in the pilot, `de-AT` then `de-DE` voice) and a "Hide translation" toggle.
 - Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
-- Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `fg`, `muted`, `border`, `accent`, `accent-fg`, `focus`) defined per `[data-theme]` and exposed to Tailwind (`bg-bg`, `text-muted`, …). Use only these; no raw colors, no `dark:` variants except for swapping icons. Dark text is deliberately not pure white on black (about 13:1 instead of 18:1) and text uses grayscale antialiasing, so it does not glow.
+- Visual design: "Paper" (owner's choice, decision #45): warm cream background, teal accent, soft cards, serif headings, compact spacing.
+- Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `card`, `fg`, `muted`, `border`, `control`, `accent`, `accent-soft`, `accent-fg`, `focus`, `success(-soft)`, `danger(-soft)`, `header`) defined per `[data-theme]`, plus radii (`rounded-ui`, `rounded-card`, `rounded-chip`) and shadows (`shadow-card`, `shadow-pop`), exposed to Tailwind (`bg-bg`, `text-muted`, `border-control`, …). `control` is the border of interactive controls (≥ 3:1). Use only these; no raw colors (exception: the Austrian `.flag`), no `dark:` variants except for swapping icons. Dark text is deliberately not pure white on black (about 13:1 instead of 18:1) and text uses grayscale antialiasing, so it does not glow.
 - Layout (variant A): header with level switcher, search, language picker, theme toggle; left sidebar with topics grouped by category (category order in `site.ts`, labels `category.<id>`); main column with the topic. On mobile the sidebar becomes a sheet (the same element with the `popover` attribute, opened by a `popovertarget` button: no JS) and a bottom bar shows Prev / Practice / Next. Russian strings are often 20–30% longer than English: layouts must not break.
-- Page transitions: `@view-transition { navigation: auto; }` inside `prefers-reduced-motion: no-preference`; named elements `site-header` and `sidebar`.
+- Static navigation (decision #47): no page transitions; `scrollbar-gutter: stable` on `<html>`, so pages with and without a scrollbar line up; the header is exactly 3rem (border included) and the sticky sidebar fills the rest of the viewport, so short pages do not scroll. An e2e test checks that the header and sidebar have the same boxes on every page type.
 - "Report a mistake": opens the GitHub issue form with page URL, locale and item id prefilled via query parameters. No email.
 - Pages that are not ready for search engines get `noindex`: coming-soon pages, `ready: false` locales, preview deployments.
 - Performance budgets, enforced by `scripts/check-js-budget.ts` in CI (gzipped JS loaded by the page, excluding the analytics beacon and other external scripts; each file gzipped separately, imported chunks followed):
@@ -275,7 +277,7 @@ Functional tests run on the English site only: the code is the same for every lo
 - No automatic language redirects.
 - No German text duplicated across locale files; no native-language text in `german.yaml`.
 - No native-language text outside localization files (see "Repository language").
-- No `<ClientRouter />`, no hand-rolled drag and drop.
+- No `<ClientRouter />`, no `@view-transition`, no hand-rolled drag and drop.
 - No visual snapshot (screenshot) tests; no functional tests duplicated per locale.
 - No left/right-specific CSS; use logical properties.
 - No new dependencies without a clear reason and size; mention them in the summary.

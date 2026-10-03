@@ -72,14 +72,14 @@ const { prev, next } =
   <body class="min-h-dvh">
     <a
       href="#main"
-      class="sr-only z-50 rounded-md bg-accent px-3 py-2 text-accent-fg focus:not-sr-only focus:fixed focus:start-2 focus:top-2"
+      class="sr-only z-50 rounded-ui bg-accent px-3 py-2 text-accent-fg focus:not-sr-only focus:fixed focus:start-2 focus:top-2"
     >
       {t(locale, 'site.skipToContent')}
     </a>
     <Header locale={locale} path={path} level={level} hasSidebar={Boolean(level)} />
     <div class="mx-auto flex max-w-6xl">
       {level && <Sidebar locale={locale} level={level} topics={topics} current={topic} />}
-      <main id="main" class:list={['min-w-0 flex-1 px-4 py-8 lg:px-8', topic && 'pb-24 lg:pb-8']}>
+      <main id="main" class:list={['min-w-0 flex-1 px-4 py-6 lg:px-6', topic && 'pb-20 lg:pb-6']}>
         <slot />
       </main>
     </div>

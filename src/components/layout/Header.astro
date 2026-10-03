@@ -17,14 +17,15 @@ interface Props {
 const { locale, path, level, hasSidebar } = Astro.props;
 ---
 
-<header class="site-header sticky top-0 z-30 border-b border-border bg-bg">
-  <div class="mx-auto flex h-14 max-w-6xl items-center gap-1 px-4">
+<!-- 3rem including the border: the sticky sidebar starts at 3rem and fills the rest exactly. -->
+<header class="sticky top-0 z-30 h-12 border-b border-border bg-header backdrop-blur-md">
+  <div class="mx-auto flex h-full max-w-6xl items-center gap-1 px-4">
     {hasSidebar && (
       <button
         type="button"
         popovertarget="sidebar"
         aria-label={t(locale, 'nav.menu')}
-        class="-ms-2 inline-flex size-10 items-center justify-center rounded-md hover:bg-surface lg:hidden"
+        class="-ms-2 inline-flex size-10 items-center justify-center rounded-ui hover:bg-surface lg:hidden"
       >
         <svg
           aria-hidden="true"
@@ -39,7 +40,11 @@ const { locale, path, level, hasSidebar } = Astro.props;
         </svg>
       </button>
     )}
-    <a href={localizePath('/', locale)} class="me-auto text-lg font-bold lg:me-4">
+    <a
+      href={localizePath('/', locale)}
+      class="me-auto inline-flex items-center gap-2 text-lg font-bold tracking-tight lg:me-5"
+    >
+      <span class="brand-mark" aria-hidden="true"></span>
       {site.name}
     </a>
     <LevelSwitcher locale={locale} active={level} class="me-auto hidden lg:block" />
@@ -48,7 +53,7 @@ const { locale, path, level, hasSidebar } = Astro.props;
       disabled
       aria-label={t(locale, 'search.soon')}
       title={t(locale, 'search.soon')}
-      class="inline-flex size-10 items-center justify-center rounded-md text-muted"
+      class="inline-flex size-10 items-center justify-center rounded-ui text-muted"
     >
       <svg
         aria-hidden="true"

@@ -4,60 +4,118 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /*
- * Design tokens. Components use only the semantic colors below (bg-bg, text-fg, border-border, ...),
- * so they never need `dark:` variants. Themes are selected with `data-theme` (set before first
- * paint by ThemeScript) and can be nested (the font specimen page shows both side by side).
- * Without JavaScript the system preference applies.
+ * Design tokens ("Paper", owner's choice from four options, decision #45): warm cream background,
+ * teal accent, soft cards, serif headings. Components use only the semantic tokens below (bg-bg,
+ * text-fg, rounded-card, shadow-card, ...), so they never need `dark:` variants. Themes are
+ * selected with `data-theme` (set before first paint by ThemeScript) and can be nested. Without
+ * JavaScript the system preference applies.
+ *
+ * Colors: bg page, surface (table heads, word bank, hover), card (raised blocks), fg text, muted
+ * secondary text, border (dividers), control (borders of interactive controls, >= 3:1),
+ * accent (links, primary buttons), success/danger (exercise feedback), header (translucent bar).
  */
 :root,
 [data-theme="light"] {
   color-scheme: light;
-  --bg: #ffffff;
-  --surface: #f5f5f4;
-  --fg: #1c1917;
-  --muted: #57534e;
-  --border: #d6d3d1;
-  --accent: #1d4ed8;
+  --bg: #fbf8f3;
+  --surface: #f3ece1;
+  --card: #fffdf9;
+  --fg: #2a2420;
+  --muted: #665b52;
+  --border: #e6dccf;
+  --control: #877a6b;
+  --accent: #0c6b5f;
+  --accent-soft: #e2efe9;
   --accent-fg: #ffffff;
-  --focus: #2563eb;
+  --focus: #0c6b5f;
+  --success: #1d7a3e;
+  --success-soft: #e8f4ea;
+  --danger: #b4332a;
+  --danger-soft: #fbeae6;
+  --header-bg: rgb(251 248 243 / 0.9);
+  --sh-card: 0 1px 2px rgb(60 40 20 / 0.06), 0 4px 12px rgb(60 40 20 / 0.05);
+  --sh-pop: 0 10px 30px rgb(60 40 20 / 0.14);
 }
 
 /* Dark: softened text and background (not pure white on black), so text does not glow. */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #161412;
-  --surface: #221f1d;
-  --fg: #dedad7;
-  --muted: #a39d98;
-  --border: #44403c;
-  --accent: #8fbcf0;
-  --accent-fg: #161412;
-  --focus: #60a5fa;
+  --bg: #1a1714;
+  --surface: #24201b;
+  --card: #201c18;
+  --fg: #e5ddd3;
+  --muted: #a99d90;
+  --border: #372f28;
+  --control: #7b7064;
+  --accent: #6ec7b5;
+  --accent-soft: #1b302b;
+  --accent-fg: #0f1f1b;
+  --focus: #6ec7b5;
+  --success: #7dcf95;
+  --success-soft: #1a2c1f;
+  --danger: #f39a8b;
+  --danger-soft: #3a1f1a;
+  --header-bg: rgb(26 23 20 / 0.9);
+  --sh-card: 0 0 #0000;
+  --sh-pop: 0 10px 30px rgb(0 0 0 / 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --bg: #161412;
-    --surface: #221f1d;
-    --fg: #dedad7;
-    --muted: #a39d98;
-    --border: #44403c;
-    --accent: #8fbcf0;
-    --accent-fg: #161412;
-    --focus: #60a5fa;
+    --bg: #1a1714;
+    --surface: #24201b;
+    --card: #201c18;
+    --fg: #e5ddd3;
+    --muted: #a99d90;
+    --border: #372f28;
+    --control: #7b7064;
+    --accent: #6ec7b5;
+    --accent-soft: #1b302b;
+    --accent-fg: #0f1f1b;
+    --focus: #6ec7b5;
+    --success: #7dcf95;
+    --success-soft: #1a2c1f;
+    --danger: #f39a8b;
+    --danger-soft: #3a1f1a;
+    --header-bg: rgb(26 23 20 / 0.9);
+    --sh-card: 0 0 #0000;
+    --sh-pop: 0 10px 30px rgb(0 0 0 / 0.5);
   }
+}
+
+/* Theme-independent tokens: shape and headings. */
+:root {
+  --r-ui: 0.5rem;
+  --r-card: 0.75rem;
+  --r-chip: 0.5rem;
+  /* System serif for headings, no font download: Iowan/Charter on Apple, Georgia elsewhere. */
+  --heading-font: "Iowan Old Style", Charter, "Bitstream Charter", Georgia, ui-serif, serif;
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
+  --color-card: var(--card);
   --color-fg: var(--fg);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-control: var(--control);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-accent-fg: var(--accent-fg);
   --color-focus: var(--focus);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-header: var(--header-bg);
+
+  --radius-ui: var(--r-ui);
+  --radius-card: var(--r-card);
+  --radius-chip: var(--r-chip);
+  --shadow-card: var(--sh-card);
+  --shadow-pop: var(--sh-pop);
 
   /* --font-body is the locale font, --font-de the German font (set in Base.astro). */
   --font-sans: var(--font-body, system-ui), system-ui, sans-serif;
@@ -75,20 +133,43 @@
   line-height: var(--text-german--line-height);
 }
 
-/* Native cross-document View Transitions (no ClientRouter); off for reduced motion. */
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition {
-    navigation: auto;
-  }
+/* Small label above a heading or block ("In short", category names). */
+@utility eyebrow {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
 }
 
-.site-header {
-  view-transition-name: site-header;
+/* Small accent dot before the site name. */
+.brand-mark {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* Austrian flag (red-white-red), marks Austrian notes. Fixed colors: it is a flag, not a theme. */
+.flag {
+  display: inline-block;
+  width: 1.25rem;
+  height: 0.875rem;
+  flex: none;
+  background: linear-gradient(to bottom, #c8102e 0 33.3%, #ffffff 33.3% 66.6%, #c8102e 66.6% 100%);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15);
 }
 
 @layer base {
   summary::-webkit-details-marker {
     display: none;
+  }
+
+  /*
+   * Navigation is static (decision #47): always reserve the scrollbar's space, so a page that
+   * scrolls and one that does not put the header and sidebar at the same x position.
+   */
+  html {
+    scrollbar-gutter: stable;
   }
 
   body {
@@ -99,6 +180,15 @@
     /* Grayscale antialiasing: thinner, less glowing light-on-dark text on macOS. */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    line-height: 1.25;
+    text-wrap: balance;
   }
 
   :focus-visible {

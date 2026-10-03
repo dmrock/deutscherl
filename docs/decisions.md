@@ -62,7 +62,7 @@ Word-order exercises use drag and keyboard input without a single-tap alternativ
 
 Parts stored in neutral case; first word capitalized only after checking. `accept` lists all valid orders; comparison by strings.
 
-## 15. Minimal JavaScript — accepted
+## 15. Minimal JavaScript — accepted (page transitions superseded by #47)
 
 Theme and language picker are inline vanilla JS. Page transitions via native CSS cross-document View Transitions (Chrome 126+, Safari 18.2+; others navigate normally). Rejected: Astro `<ClientRouter />` (JS on every page). Budgets enforced in CI: ≤ 3 KB on pages without exercises, ≤ 45 KB on topic pages.
 
@@ -191,3 +191,31 @@ After the ru font was chosen, `/dev/fonts/` (#38), its `dev-pages` integration a
 ## 44. No language hint, locale choice not stored — accepted (owner decision)
 
 The dismissible "This page is available in <language>" hint (from the original plan, #4 and #37) was removed after the owner questioned its value. Search engines already send visitors to the right locale through `hreflang`, and the language picker is always visible with language names in their own language; the hint only helped with shared links and direct visits. It cost about half of each page's inline JS, a hidden block per other locale on every page, three UI strings and six e2e tests, and would grow with every locale. With the hint gone, nothing reads a saved locale, so the picker no longer stores the choice. Rejected: keeping the hint (overhead for a small benefit), automatic redirects (still ruled out).
+
+## 45. Visual design "Paper", compact spacing — accepted (owner decision)
+
+Four designs were compared on the PR #4 preview with a temporary switcher: Clean (neutral grays, blue, flat), Paper (warm cream, teal, soft cards, serif headings), Friendly (violet, pill-shaped controls, tinted page) and Austria (red-white-red stripe, red accent, sharp corners). The owner chose Paper and asked for less padding. Its values became the only tokens; the other variants and the switcher were removed.
+
+- Tokens: the semantic colors gain `card`, `control` (borders of interactive controls, ≥ 3:1 for WCAG 1.4.11), `accent-soft`, `success`/`danger` with soft backgrounds (exercise feedback) and `header` (translucent bar with backdrop blur), plus radius (`ui` 0.5rem, `card` 0.75rem, `chip` 0.5rem) and shadow (`card`, `pop`) tokens. Every pair used for text meets AA in both themes; dark keeps the softened text (#35).
+- Headings use a system serif stack (Iowan Old Style, Charter, Georgia, ui-serif): no font download and no new dependency; Georgia and platform serifs cover Cyrillic. Trade-off: the serif differs slightly between Apple and other platforms. Rejected: a self-hosted serif (e.g. Literata or Source Serif with Cyrillic), one more font file per page for headings only.
+- Compact spacing: 48 px header and bottom bar, 15rem sidebar, less padding in main, cards, "In short" and the home hero; controls keep at least 36–40 px height.
+- Shared page changes made for the comparison stay: home page with hero and start buttons, level cards with CEFR level names, three feature blocks (with the Austrian flag); topic page with level/category label and an "In short" box. New UI strings in en and ru.
+- The red-white-red `.flag` marks Austrian content in every theme; its colors are fixed (a flag, not a theme color).
+
+Rejected: Clean (too generic), Friendly (playful shapes), Austria (the red accent collides with the red of wrong answers).
+
+## 46. Component sample page until stage 3 — superseded by #47
+
+`/dev/design/` (injected by the `dev-pages` integration, never in production, like #38) shows static mock-ups of the stage 3–4 components in the chosen design: In short, rule table, examples with audio button and a CSS-only "Hide translation" toggle, Austrian note, badges, sponsor slot, choice and word-order exercises and the round result. It stays as the visual reference while those components are built and is removed in stage 3, once a real topic page shows them. Its German samples live in `tests/fixtures/design/sample.json` (not content, not reviewed). Rejected: removing it with the switcher (stage 3 would rebuild the styles from memory).
+
+## 47. Static navigation, no page transitions; sample page removed — accepted (owner decision)
+
+The owner saw the header and sidebar jump when switching levels. Causes: level pages were 1 px taller than the viewport (a 49 px header with a sidebar of `100dvh - 3rem`), so they had a scrollbar and the home page did not, which shifted the centered layout sideways with classic (always visible) scrollbars; the cross-document View Transitions (#15) then animated the named `site-header` and `sidebar` elements between the old and new positions, and cross-faded everything else.
+
+- No page transitions: `@view-transition` and the `view-transition-name`s are removed. Pages swap in place (browsers keep the old page painted until the new one is ready, so there is no blank flash).
+- `scrollbar-gutter: stable` on `<html>`: the scrollbar's space is always reserved.
+- The header is exactly 3rem including its border, so the sticky sidebar (top 3rem, height `100dvh - 3rem`) fills the viewport exactly.
+- An e2e test checks that the header widgets and the sidebar have identical boxes on home, level, coming-soon and topic pages, and that a short level page does not scroll.
+- The component sample page `/dev/design/` (#46), its `dev-pages` integration and its fixture were removed at the owner's request. Stage 3 builds the components from the design tokens (#45); the mock-ups stay in git history (commit 41cf8df, `src/dev/design.astro`).
+
+Rejected: keeping View Transitions with non-animated header and sidebar groups (content would still cross-fade; the owner asked for static navigation).

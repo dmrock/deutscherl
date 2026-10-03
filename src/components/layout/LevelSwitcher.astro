@@ -21,8 +21,8 @@ const { locale, active, class: className } = Astro.props;
           href={localizePath(`/${level.id}/`, locale)}
           aria-current={level.id === active ? 'true' : undefined}
           class:list={[
-            'inline-flex rounded-md px-2 py-1 font-semibold hover:bg-surface',
-            level.id === active && 'bg-surface text-accent',
+            'inline-flex rounded-ui px-3 py-1 text-sm font-semibold',
+            level.id === active ? 'bg-surface' : 'hover:bg-surface',
             !level.available && 'font-normal text-muted',
           ]}
         >
