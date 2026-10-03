@@ -274,8 +274,12 @@ Rejected: `<InShort>` with children in MDX (a second copy of the summary), raw `
 
 ## 58. Dependency versions in stage 3 — accepted
 
-Bumped as promised in #41: `@biomejs/biome` 2.5.15 and `wrangler` 4.147.0 (both older than pnpm's one-day minimum release age). Added `yaml` 2.9.1 (#48). pnpm 12.6 adds a `@pnpm/exe` entry to `packageManagerDependencies` in the lockfile on every install; it is unrelated to this project and is removed from the committed lockfile, as in PR #4.
+Bumped as promised in #41: `@biomejs/biome` 2.5.15 and `wrangler` 4.147.0 (both older than pnpm's one-day minimum release age). Added `yaml` 2.9.1 (#48). The `@pnpm/exe` lockfile entry is kept (#60).
 
 ## 59. First topic: A2 "Perfekt: haben or sein?" — accepted (draft content)
 
 Written by Claude Code as `draft` (base and ru). 5 examples, 10 choice items, 6 word-order items, 1 Austrian note (`sitzen`/`liegen`/`stehen` with `sein`). Item `c10` (`Wir ___ lange im Café gesessen.`) accepts `sind` with `region: AT`; it has four options (`haben`, `sind`, `hat`, `ist`) so that it still has wrong answers. Sources: Duden Sprachratgeber, Variantengrammatik des Standarddeutschen (IDS) and grammis (IDS), URLs checked when added. The Variantengrammatik shows that in Austria `sein` is the majority form for these verbs but `haben` is also used; the note says "usually" for that reason. The teacher must verify the German and the English page before the badge changes.
+
+## 60. Commit the lockfile exactly as pnpm writes it — accepted (owner decision)
+
+pnpm 11+ records the pnpm build it runs as in the lockfile's `packageManagerDependencies`. The standalone pnpm from the official install script is `@pnpm/exe`, so every local pnpm command (install, run, `pnpm exec` in the git hooks) added an `@pnpm/exe` entry, which PR #4 and stage 3 deleted by hand before each commit, so the working tree was dirty again after the next command. Tested: with the entry committed, both the standalone pnpm and the npm `pnpm` package that CI installs (`pnpm/action-setup`) accept the lockfile with `--frozen-lockfile` and leave it unchanged (pnpm preserves the entry since pnpm/pnpm#14958). So the lockfile is committed as pnpm generates it and never edited by hand. Rejected: hand-editing the lockfile (it never stays clean), forcing one install method on every contributor (Corepack does not support pnpm 11's `devEngines.packageManager` and is no longer bundled with new Node versions), `standalone: true` in CI (not needed for a stable lockfile).
