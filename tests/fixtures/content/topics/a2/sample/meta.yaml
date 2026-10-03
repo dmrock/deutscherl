@@ -1,0 +1,8 @@
+# Test fixture: a small valid topic (tests/unit/validate-content.test.ts, review.test.ts).
+level: a2
+category: verbs
+order: 1
+readingMinutes: 2
+sources:
+  - title: Sample grammar
+    url: https://example.com/grammar
