@@ -59,6 +59,8 @@ export const ru = {
   'exercise.showResult': 'Посмотреть результат',
   'exercise.result': 'Правильных ответов: {correct} из {total}.',
   'exercise.resultTitle': 'Раунд завершён',
+  'exercise.toExplanation': 'Объяснение',
+  'exercise.backToExplanation': 'Назад к объяснению',
   'exercise.tryAgain': 'Ещё раз',
   'exercise.reportMistake': 'Сообщить об ошибке',
   'review.status': 'Статус проверки',

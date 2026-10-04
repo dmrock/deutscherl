@@ -61,6 +61,8 @@ export const en = {
   'exercise.showResult': 'See the result',
   'exercise.result': 'You got {correct} of {total} right.',
   'exercise.resultTitle': 'Round finished',
+  'exercise.toExplanation': 'Explanation',
+  'exercise.backToExplanation': 'Back to the explanation',
   'exercise.tryAgain': 'Try again',
   'exercise.reportMistake': 'Report a mistake',
   'review.status': 'Review status',

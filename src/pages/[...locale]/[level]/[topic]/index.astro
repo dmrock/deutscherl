@@ -65,7 +65,8 @@ const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
   level={level}
   topic={slug}
 >
-  <article>
+  <!-- Target of the "back to the explanation" links in the practice card (decision #82). -->
+  <article id="explanation" class="scroll-mt-16">
     <p class="eyebrow text-muted">
       {levelLabel} · {t(locale, `category.${meta.data.category}`)}
     </p>
@@ -87,9 +88,19 @@ const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
         class="mt-6 scroll-mt-16 rounded-card border border-border bg-card px-3 py-2.5 shadow-card"
         aria-labelledby="practice-title"
       >
-        <h2 id="practice-title" class="text-xl">
-          {t(locale, 'nav.practice')}
-        </h2>
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 id="practice-title" class="text-xl">
+            {t(locale, 'nav.practice')}
+          </h2>
+          <!-- Only while a round runs: before "Start" the explanation is right above. -->
+          <a
+            href="#explanation"
+            class="practice-only inline-flex items-center gap-1 text-sm text-muted hover:text-accent"
+          >
+            <span aria-hidden="true">↑</span>
+            {t(locale, 'exercise.toExplanation')}
+          </a>
+        </div>
         <noscript>
           <p class="mt-2">{t(locale, 'exercise.needsJs')}</p>
         </noscript>

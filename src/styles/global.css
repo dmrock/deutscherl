@@ -150,6 +150,11 @@
   }
 }
 
+/* Shown only while a round runs (the "↑ Explanation" link in the practice card header). */
+[data-practice-area]:not([data-practice-active]) .practice-only {
+  display: none;
+}
+
 [data-practice-area][data-practice-active] {
   min-height: max(var(--practice-reserve), var(--practice-tallest, 0px));
 }

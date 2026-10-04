@@ -359,13 +359,22 @@
           </li>
         {/each}
       </ol>
-      <button
-        type="button"
-        class="mt-3 inline-flex h-10 items-center rounded-ui bg-accent px-4 font-semibold text-accent-fg"
-        onclick={tryAgain}
-      >
-        {strings['exercise.tryAgain']}
-      </button>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <button
+          type="button"
+          class="inline-flex h-10 items-center rounded-ui bg-accent px-4 font-semibold text-accent-fg"
+          onclick={tryAgain}
+        >
+          {strings['exercise.tryAgain']}
+        </button>
+        <!-- Plain in-page link: the explanation is above the practice card (decision #82). -->
+        <a
+          href="#explanation"
+          class="inline-flex h-10 items-center rounded-ui border border-control bg-card px-4 font-semibold hover:bg-surface"
+        >
+          {strings['exercise.backToExplanation']}
+        </a>
+      </div>
     {/if}
   </div>
 </div>

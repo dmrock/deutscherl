@@ -428,6 +428,47 @@ test.describe('no layout jumps', () => {
   });
 });
 
+test.describe('back to the explanation', () => {
+  /** True when the top of the explanation (the article) sits just below the sticky header. */
+  async function explanationOnTop(page: Page) {
+    await scrollSettled(page);
+    const box = await page.locator('#explanation').boundingBox();
+    return Math.round(box?.y ?? -1);
+  }
+
+  test('the header link shows only during a round and keeps the round', async ({ page }) => {
+    await onlyUnseen(page, ['c1', 'c2', 'c3', 'c4', 'c5']);
+    await page.goto(TOPIC_PATH);
+    await page.locator('#practice').scrollIntoViewIfNeeded();
+    const link = page
+      .locator('#practice')
+      .getByRole('link', { name: t('en', 'exercise.toExplanation') });
+    await expect(page.getByRole('button', { name: t('en', 'exercise.start') })).toBeEnabled();
+    await expect(link).toBeHidden();
+
+    await openPractice(page);
+    const id = await currentItemId(page);
+    await link.click();
+    expect(await explanationOnTop(page)).toBe(64);
+
+    // The round is still there.
+    await page.locator('#practice').scrollIntoViewIfNeeded();
+    expect(await currentItemId(page)).toBe(id);
+  });
+
+  test('the result screen links to the explanation', async ({ page }) => {
+    await onlyUnseen(page, ['c1', 'c2', 'c3', 'c4', 'c5']);
+    await openPractice(page);
+    await playRound(page);
+    await page
+      .getByTestId('answers')
+      .locator('..')
+      .getByRole('link', { name: t('en', 'exercise.backToExplanation') })
+      .click();
+    expect(await explanationOnTop(page)).toBe(64);
+  });
+});
+
 test('the report link prefills the issue form', async ({ page }) => {
   await onlyUnseen(page, ['c1', 'c2', 'c3', 'c4', 'c5']);
   await openPractice(page);
