@@ -64,6 +64,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review; grammar references can be listed on `/about/sources/` (stage 6).
 - **#79** **owner** Choice items get 4 options: 2 forms of *haben* and 2 of *sein* (the right person plus another person), so guessing drops from 50% to 25% and the person form is practised too; the why texts name the right form. Distractors must be clearly wrong for the subject.
 - **#80** **owner** No intro sentence in the practice card: the heading, the Start button and "Question 1 of 5" say it already.
+- **#81** **owner** No visible "Question 3 of 5": the dots show progress. The text stays as the dots' accessible name (`role="img"`), and the dots are where focus goes after "Next".
 
 ## Content and review
 

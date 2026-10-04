@@ -192,18 +192,26 @@
         {strings['exercise.start']}
       </button>
     {:else if phase === 'question' && current}
-      <div class="flex items-center justify-between gap-3">
-        <p class="scroll-mt-16 text-sm text-muted" tabindex="-1" bind:this={progressEl}>
-          {format(strings['exercise.progress'], { current: index + 1, total: round.length })}
-        </p>
-        <ol class="flex gap-1.5" aria-hidden="true">
-          {#each round as item, position (item.id)}
-            <li class={['size-2.5 rounded-full', dotClass(position)]}></li>
-          {/each}
-        </ol>
+      <!--
+        Progress dots, floated so the prompt shares their line. "Question 3 of 5" is their
+        accessible name (no visible text, decision #81); they are the focus target after "Next".
+      -->
+      <div
+        role="img"
+        aria-label={format(strings['exercise.progress'], {
+          current: index + 1,
+          total: round.length,
+        })}
+        class="float-end ms-3 mt-1.5 flex scroll-mt-16 gap-1.5 rounded-full"
+        tabindex="-1"
+        bind:this={progressEl}
+      >
+        {#each round as item, position (item.id)}
+          <span class={['size-2.5 rounded-full', dotClass(position)]}></span>
+        {/each}
       </div>
 
-      <div class="mt-2" data-item-id={current.id} data-kind={current.kind}>
+      <div data-item-id={current.id} data-kind={current.kind}>
         {#key `${roundNumber}:${current.id}`}
           {#if current.kind === 'choice'}
             <ChoiceExercise item={current} {strings} {locale} {onanswer} />

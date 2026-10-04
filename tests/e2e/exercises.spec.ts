@@ -36,7 +36,7 @@ test.describe('choice', () => {
     await onlyUnseen(page, ['c1', 'c2', 'c3', 'c4', 'c5']);
     await openPractice(page);
     await expect(
-      page.getByText(t('en', 'exercise.progress', { current: 1, total: 5 })),
+      page.getByRole('img', { name: t('en', 'exercise.progress', { current: 1, total: 5 }) }),
     ).toBeVisible();
 
     const item = choiceItem(await currentItemId(page));
@@ -230,7 +230,9 @@ test.describe('word order', () => {
     const focusedLabel = () =>
       page.evaluate(() => document.activeElement?.getAttribute('aria-label') ?? '');
 
-    await page.getByText(t('en', 'exercise.progress', { current: 1, total: 5 })).focus();
+    await page
+      .getByRole('img', { name: t('en', 'exercise.progress', { current: 1, total: 5 }) })
+      .focus();
     for (const word of words) {
       // Tab to the word in the bank, pick it up, move it to the answer line, put it down.
       for (let i = 0; i < 20 && (await focusedLabel()) !== word; i++)
@@ -257,7 +259,7 @@ test.describe('word order', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await expect(
-      page.getByText(t('en', 'exercise.progress', { current: 2, total: 5 })),
+      page.getByRole('img', { name: t('en', 'exercise.progress', { current: 2, total: 5 }) }),
     ).toBeFocused();
   });
 
@@ -366,7 +368,7 @@ test.describe('rounds', () => {
     expect(first).toHaveLength(5);
     await page.getByRole('button', { name: t('en', 'exercise.tryAgain') }).click();
     await expect(
-      page.getByText(t('en', 'exercise.progress', { current: 1, total: 5 })),
+      page.getByRole('img', { name: t('en', 'exercise.progress', { current: 1, total: 5 }) }),
     ).toBeFocused();
     const second = await playRound(page);
     expect(second.filter((id) => first.includes(id))).toEqual([]);
