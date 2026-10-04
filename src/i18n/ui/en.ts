@@ -31,7 +31,6 @@ export const en = {
   'topic.inShort': 'In short',
   'topic.inAustria': 'In Austria',
   'topic.austrianUsage': 'Austrian usage',
-  'exercise.intro': 'Five questions on this topic. Every answer comes with an explanation.',
   'exercise.needsJs': 'The exercises need JavaScript. Please turn it on to practice.',
   'exercise.start': 'Start practice',
   'exercise.progress': 'Question {current} of {total}',

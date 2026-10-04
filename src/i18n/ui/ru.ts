@@ -29,7 +29,6 @@ export const ru = {
   'topic.inShort': 'Коротко',
   'topic.inAustria': 'В Австрии',
   'topic.austrianUsage': 'Австрийский вариант',
-  'exercise.intro': 'Пять вопросов по этой теме. К каждому ответу есть объяснение.',
   'exercise.needsJs': 'Для упражнений нужен JavaScript. Включи его, чтобы потренироваться.',
   'exercise.start': 'Начать практику',
   'exercise.progress': 'Вопрос {current} из {total}',
