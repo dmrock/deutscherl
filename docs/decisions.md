@@ -62,6 +62,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#76** **owner** Word order: a tap or click (Enter on the keyboard) moves a word to the end of the sentence or back to the bank; dragging stays for reordering. This is the single-pointer alternative, so WCAG 2.5.7 is met and the exception #12 is gone. Space alone starts the library's keyboard drag.
 - **#77** **owner** (request: no big empty gap) The screen-high reserve moved from the practice card to a wrapper around it: the card fits its content, the spare room is below it at the end of the page, and the wrapper never shrinks during a visit, so the page still does not move.
 - **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review; grammar references can be listed on `/about/sources/` (stage 6).
+- **#79** **owner** Choice items get 4 options: 2 forms of *haben* and 2 of *sein* (the right person plus another person), so guessing drops from 50% to 25% and the person form is practised too; the why texts name the right form. Distractors must be clearly wrong for the subject.
 
 ## Content and review
 

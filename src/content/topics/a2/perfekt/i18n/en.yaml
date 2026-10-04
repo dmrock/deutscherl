@@ -10,23 +10,23 @@ examples:
 
 choice:
   c1:
-    why: '*gehen* is a movement to another place, so the Perfekt uses *sein*: *ich bin gegangen*.'
+    why: '*gehen* is a movement to another place, so the Perfekt uses *sein*: *ich bin gegangen*. With *ich* the form is *bin*.'
   c2:
-    why: '*essen* has an accusative object (*Pizza*) and nobody moves, so the Perfekt uses *haben*: *wir haben gegessen*.'
+    why: '*essen* has an accusative object (*Pizza*) and nobody moves, so the Perfekt uses *haben*: *wir haben gegessen*. With *wir* the form is *haben*.'
   c3:
-    why: 'Anna goes to another place (*nach Salzburg*), so the Perfekt uses *sein*: *sie ist gefahren*.'
+    why: 'Anna goes to another place (*nach Salzburg*), so the Perfekt uses *sein*: *sie ist gefahren*. *Anna* is *sie* (one person), so the form is *ist*.'
   c4:
     why: '*machen* has an accusative object (*was*), so the Perfekt uses *haben*. With *ihr* the form is *habt*.'
   c5:
-    why: '*werden* is a change of state (he was not a father before), so the Perfekt uses *sein*: *er ist geworden*.'
+    why: '*werden* is a change of state (he was not a father before), so the Perfekt uses *sein*: *er ist geworden*. *Mein Bruder* is *er*, so the form is *ist*.'
   c6:
-    why: 'Sleeping is neither a movement nor a change of state, so the Perfekt uses *haben*: *sie haben geschlafen*.'
+    why: 'Sleeping is neither a movement nor a change of state, so the Perfekt uses *haben*: *sie haben geschlafen*. *Die Kinder* is plural (*sie*), so the form is *haben*.'
   c7:
     why: '*aufstehen* is a change of state (from lying to standing), so the Perfekt uses *sein*. With *du* the form is *bist*.'
   c8:
-    why: '*schreiben* has an accusative object (*eine Nachricht*), so the Perfekt uses *haben*: *ich habe geschrieben*.'
+    why: '*schreiben* has an accusative object (*eine Nachricht*), so the Perfekt uses *haben*: *ich habe geschrieben*. With *ich* the form is *habe*.'
   c9:
-    why: '*bleiben* always forms the Perfekt with *sein*, even though nothing moves: *wir sind geblieben*.'
+    why: '*bleiben* always forms the Perfekt with *sein*, even though nothing moves: *wir sind geblieben*. With *wir* the form is *sind*; *seid* goes with *ihr*.'
   c10:
     why: 'In Germany, *sitzen* forms the Perfekt with *haben*: *wir haben gesessen*. In Austria, *wir sind gesessen* is usual and also correct. With *wir*, *hat* and *ist* are the wrong forms.'
 

@@ -178,7 +178,7 @@ tests/
 
 ### Exercise rules
 
-- Choice: 2–4 options, exactly one correct answer, except for regional variants listed in `alsoCorrect` (e.g. `bin` with `region: AT` for "Ich ___ gesessen"). A regional answer is accepted as correct and the `why` explains the regional difference. Avoid such items unless the topic is about that difference.
+- Choice: 2–4 options (prefer 4 when the topic allows: e.g. two forms of each of two words, owner decision #79), exactly one correct answer, except for regional variants listed in `alsoCorrect` (e.g. `bin` with `region: AT` for "Ich ___ gesessen"). A regional answer is accepted as correct and the `why` explains the regional difference. Avoid such items unless the topic is about that difference.
 - Word order:
   - `parts` is the canonical order. `accept` lists every other valid full order. `fixed` (first element locked) may be combined with `accept`; it does not guarantee a unique answer by itself.
   - Parts are stored in neutral case: a sentence-initial word is lowercase unless it is always capitalized (nouns, names, formal "Sie"). The UI shows parts exactly as stored, so capitalization gives no hint. After checking, the first word of the displayed sentence is capitalized.
