@@ -28,7 +28,6 @@ export const ru = {
   'category.verbs': 'Глаголы',
   'topic.inShort': 'Коротко',
   'topic.practiceSoon': 'Упражнения по этой теме скоро появятся.',
-  'topic.hideTranslations': 'Скрыть перевод',
   'topic.inAustria': 'В Австрии',
   'topic.austrianUsage': 'Австрийский вариант',
   'topic.sources': 'Источники',

@@ -159,11 +159,6 @@
   box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15);
 }
 
-/* "Hide translations" on topic pages: a CSS-only, page-level toggle (no JS, not saved). */
-html:has(#hide-translations:checked) [data-translation] {
-  visibility: hidden;
-}
-
 /* Explanation text of a topic (MDX body). */
 @layer components {
   .topic-prose > * + * {

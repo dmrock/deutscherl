@@ -65,12 +65,8 @@ const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
       {levelLabel} · {t(locale, `category.${meta.data.category}`)}
     </p>
     <h1 class="mt-0.5 text-2xl sm:text-3xl">{page.data.title}</h1>
-    <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs">
+    <div class="mt-2 text-xs">
       <StatusBadges locale={locale} review={review} />
-      <label class="ms-auto inline-flex cursor-pointer items-center gap-2 text-sm text-muted">
-        <input id="hide-translations" type="checkbox" class="size-4 accent-accent" />
-        {t(locale, 'topic.hideTranslations')}
-      </label>
     </div>
     <InShort locale={locale} summary={page.data.summary} />
     <div class="topic-prose mt-4">

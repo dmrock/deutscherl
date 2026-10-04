@@ -223,7 +223,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Word order UI: two zones built with `svelte-dnd-action`: the answer line and the word bank. Words are dragged from the bank into the line, reordered inside it, and back. Mouse: drag immediately. Touch: `delayTouchStart: 250` (a long press starts the drag, a swipe scrolls). Keyboard: the library's built-in support. A "Check" button becomes active when the bank is empty.
 - Exercise runner: rounds of 5 mixed items from the topic pool. Seen item IDs in `sessionStorage` under `seen:<level>/<slug>` (shared between locales); reset when the pool is exhausted. Shuffle options and word-bank order. "Try again" starts a new round with unseen items. All randomness goes through a seedable RNG so tests are deterministic. Storage access in try/catch with in-memory fallback.
 - After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link.
-- Examples: a page-level "Hide translations" checkbox in the topic header (CSS only via `:has()`, not saved; hides every `[data-translation]`). No audio: the Web Speech API voices sounded bad and were removed (owner decision #61); revisit only with recorded audio.
+- Examples: German with its translation always visible (no "Hide translation" toggle, owner decision #62). Audio is wanted, but not from the browser's Web Speech API, whose voices sounded bad (removed in #61): it comes back with a better source (pending, decision #62).
 - Typography and density (owner decision #61): body text 15px, German example text 16px, compact cards (`px-3 py-2`), the topic content uses the full width of the main column (no `max-w-prose`).
 - Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
 - Visual design: "Paper" (owner's choice, decision #45): warm cream background, teal accent, soft cards, serif headings, compact spacing.
@@ -266,7 +266,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 
 ## Legal pages (Austria)
 
-- `/impressum/` (Offenlegung according to § 25 Mediengesetz for a small private website: owner name, place of residence, purpose of the site) and `/privacy/` (hosting by Cloudflare, Cloudflare Web Analytics, browser storage used, links to GitHub for reports). Both in every ready locale, linked in the footer.
+- `/impressum/` (Offenlegung according to § 25 Mediengesetz for a small private website: owner name, place of residence, purpose of the site) and `/privacy/` (hosting by Cloudflare, Cloudflare Web Analytics, browser storage used, audio source once chosen, links to GitHub for reports). Both in every ready locale, linked in the footer.
 - Write them as templates with clearly marked TODO placeholders; the owner fills in and checks the facts. Do not invent legal statements.
 - When sponsor banners arrive: label them as ads ("Anzeige" / localized) and extend the Impressum as required for commercial sites.
 
@@ -276,7 +276,7 @@ Functional tests run on the English site only: the code is the same for every lo
 
 - Vitest: schemas, `validate-content.ts` rules (with failing fixtures), review hashing/reset/minor-edit including translation reset via `basedOn`, `check-language.ts`, `t()` and path helpers, `src/lib` logic (pool selection with seeded RNG, choice check with `alsoCorrect`, word-order check with `accept`, duplicates, capitalization after check), dictionary import on small JSONL fixtures, slug uniqueness.
 - Data checks (not tests of wording): `i18n-coverage.ts` fails when a ready locale misses a key or file, so a missing translation can never break a page.
-- Playwright on English pages: topic page content (examples with `lang="de"`, hide translations, badges, Austrian note), exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
+- Playwright on English pages: topic page content (examples with `lang="de"`, badges, Austrian note), exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
 - Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
 - CI: DCO, language check, content checks (`pnpm validate`, `pnpm i18n:coverage`, `pnpm review:check`), lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add the dictionary build and file count (build job).
 - The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere).

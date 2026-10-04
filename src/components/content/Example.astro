@@ -28,9 +28,5 @@ const translation = i18n?.examples[id];
       </span>
     )}
   </div>
-  {translation && (
-    <p data-translation class="text-muted">
-      {translation}
-    </p>
-  )}
+  {translation && <p class="text-muted">{translation}</p>}
 </div>

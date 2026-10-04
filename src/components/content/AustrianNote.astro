@@ -31,10 +31,6 @@ const translation = i18n?.austrianNotes[id];
   </div>
   <div class="mt-2">
     <GermanText text={note.de} />
-    {translation && (
-      <p data-translation class="text-muted">
-        {translation}
-      </p>
-    )}
+    {translation && <p class="text-muted">{translation}</p>}
   </div>
 </div>

@@ -30,7 +30,6 @@ export const en = {
   'category.verbs': 'Verbs',
   'topic.inShort': 'In short',
   'topic.practiceSoon': 'Exercises for this topic are coming soon.',
-  'topic.hideTranslations': 'Hide translations',
   'topic.inAustria': 'In Austria',
   'topic.austrianUsage': 'Austrian usage',
   'topic.sources': 'Sources',

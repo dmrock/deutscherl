@@ -9,21 +9,7 @@ test('examples show German with lang="de" and a translation', async ({ page }) =
   const example = page.locator('#example-e1');
   await expect(example.locator('p[lang="de"]')).toHaveText('Ich habe gestern einen Film gesehen.');
   await expect(example.locator('strong')).toHaveText(['habe', 'gesehen']);
-  await expect(example.locator('[data-translation]')).toBeVisible();
-});
-
-test('"Hide translations" hides every translation and shows them again', async ({ page }) => {
-  await page.goto(PATH);
-  const translations = page.locator('[data-translation]');
-  const toggle = page.getByLabel(t('en', 'topic.hideTranslations'));
-  expect(await translations.count()).toBeGreaterThan(1);
-
-  await toggle.check();
-  for (const translation of await translations.all()) await expect(translation).toBeHidden();
-  await expect(page.locator('#example-e1 p[lang="de"]')).toBeVisible();
-
-  await toggle.uncheck();
-  for (const translation of await translations.all()) await expect(translation).toBeVisible();
+  await expect(example.locator('p:not([lang])')).toHaveText('I watched a film yesterday.');
 });
 
 test('shows the draft badge', async ({ page }) => {
@@ -37,7 +23,7 @@ test('the Austrian note shows its German sentence and translation', async ({ pag
   const note = page.locator('#note-at1');
   await expect(note).toContainText(t('en', 'topic.inAustria'));
   await expect(note.locator('p[lang="de"]')).toContainText('gesessen');
-  await expect(note.locator('[data-translation]')).toBeVisible();
+  await expect(note.locator('p:not([lang])').last()).toHaveText('I sat in the office all day.');
 });
 
 test('rule table and sources are rendered', async ({ page }) => {

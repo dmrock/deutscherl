@@ -267,7 +267,7 @@ CLAUDE.md lists "German checked by a teacher", "Translation reviewed" and "Draft
 - `<SponsorSlot>` renders nothing and sits after the article.
 Rejected: `<InShort>` with children in MDX (a second copy of the summary), raw `<i lang="de">` in MDX (verbose and easy to forget).
 
-## 57. Hide translations without JS, Web Speech audio placeholder — accepted (audio superseded by #61)
+## 57. Hide translations without JS, Web Speech audio placeholder — superseded by #61 (audio) and #62 (toggle)
 
 - "Hide translations" is a checkbox in the topic header; `html:has(#hide-translations:checked) [data-translation] { visibility: hidden }` hides every translation on the page (space is kept, so nothing jumps). No JS, not saved.
 - Audio buttons are rendered `hidden`; a small inline script (`SpeakScript.astro`, topic pages only) shows them when `speechSynthesis` exists and speaks the text with a `de-AT` voice, then `de-DE`, then any German voice. Topic pages stay at 1.1 KB of inline JS (budget 3 KB). Recorded audio can replace it later without changing the content.
@@ -287,9 +287,18 @@ pnpm 11+ records the pnpm build it runs as in the lockfile's `packageManagerDepe
 ## 61. Topic page: no audio, no reading time, no English link; smaller and denser — accepted (owner decision)
 
 After reviewing the stage 3 preview, the owner asked for:
-- **No audio.** The Web Speech API voices sounded bad, so the audio buttons and their inline script are removed (supersedes the audio part of #57). Topic pages now ship no JS of their own. Revisit only with recorded audio (e.g. Wikimedia Commons, licenses to check).
+- **No Web Speech audio.** The browser voices sounded bad, so the audio buttons and their inline script are removed (supersedes the audio part of #57). Topic pages now ship no JS of their own. Audio itself stays wanted with a better source (#62).
 - **No "min read"** on the topic page. `readingMinutes` stays in `meta.yaml` for now (stage 7 plans it for level pages); drop it there too if it is not wanted.
 - **No "Read in English" link** on translated pages (CLAUDE.md asked for it always; the badges already say what was checked, and the language picker leads to the English page).
 - **Smaller text:** body 15px instead of 16px (site-wide), German example text 16px instead of 18px (still slightly larger than the explanation), smaller topic headings (h1 `text-2xl`/`sm:text-3xl`, h2 1.25rem), "In short" at body size.
 - **Wider content:** the topic article and the practice box use the full width of the main column instead of `max-w-prose`.
 - **Less padding:** example rows, Austrian note, "In short", rule-table cells, badges and the spacing between blocks are tighter.
+
+## 62. No "Hide translation" toggle; audio from a better source — accepted (owner decision), audio source pending
+
+- The page-level "Hide translations" checkbox (#57) is removed. Examples on a topic page illustrate the rule, so the translation is part of the explanation; self-testing is the job of the exercises (stage 4), and a reader who wants to test themselves can simply not look. It also freed the topic header for the badges only.
+- Audio is still wanted, only not from the browser's Web Speech API (#61). Candidates for a better source, to be chosen by the owner:
+  - pre-generated neural TTS stored as static files (e.g. Azure AI Speech, which has Austrian voices `de-AT-IngridNeural` and `de-AT-JonasNeural`): generated once per German sentence by a script with the owner's key, committed or uploaded with the build, no runtime API call; needs a check of the provider's terms for publishing the output;
+  - human recordings (the teacher or a native Austrian speaker): best quality and authentic Austrian pronunciation, but slow and needs a recording workflow;
+  - Wikimedia Commons recordings: free, but mostly single words, not sentences (fits the dictionary in stage 6 better than examples).
+  Whatever is chosen, files are static (no runtime API), only German content gets audio, and the file count stays within the Cloudflare limit.
