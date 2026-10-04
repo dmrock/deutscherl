@@ -9,12 +9,12 @@
   when it is pressed, so the first paint never changes.
 
   No jumps (the page must not move under the learner, decisions #74, #77): "Start" marks the
-  practice area (the practice card plus the sources below it, `[data-practice-area]` on the topic
-  page) active and scrolls the card to the top once. The area is at least a screen tall
+  practice area (`[data-practice-area]` around the practice card on the topic page) active and
+  scrolls the card to the top once. The area is at least a screen tall
   (global.css) and never shrinks while the page is open (`--practice-tallest` = tallest content so
   far, reset when its width changes), so the page height stays the same when feedback opens or
-  closes: the card itself always fits its content, the sources move below it, and the spare room
-  is at the very end of the page. When a question with its feedback is taller than the screen,
+  closes: the card itself always fits its content, and the spare room is below it, at the very end
+  of the page. When a question with its feedback is taller than the screen,
   the page scrolls smoothly only as far as needed. Focus always moves without the browser's
   instant scroll.
 -->

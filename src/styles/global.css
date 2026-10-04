@@ -134,11 +134,11 @@
 }
 
 /*
- * Practice area (practice card + sources) while a round runs, set by ExerciseRunner on "Start
+ * Practice area (around the practice card) while a round runs, set by ExerciseRunner on "Start
  * practice" (decisions #74, #77): at least the screen below the sticky header (3rem + 1rem scroll
  * margin) and, below lg, above the bottom bar (3rem), and never less than its tallest content so
  * far (--practice-tallest, set by the runner). The page height stays the same while answering;
- * spare room ends up below the sources, at the end of the page, not inside the card.
+ * spare room ends up below the card, at the end of the page, not inside it.
  */
 [data-practice-area] {
   --practice-reserve: calc(100dvh - 5rem);
