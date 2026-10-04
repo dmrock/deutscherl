@@ -105,7 +105,7 @@ Read CLAUDE.md, sections "UX rules" and "Exercise rules". Build the exercise isl
 - WordOrderExercise.svelte with svelte-dnd-action: answer line and word bank as two zones of the same type, reorder inside the line, move back to the bank; delayTouchStart 250; built-in keyboard and screen-reader support; "Check" button active when the bank is empty; punctuation shown after the line; after checking, show the sentence with the first word capitalized and mark wrong positions. Check the library's current docs first.
 - ExerciseRunner.svelte: rounds of 5 mixed items, progress dots, feedback with why, "Report a mistake" link (GitHub issue form, prefilled), result screen, "Try again" = new round with unseen items; sessionStorage as in CLAUDE.md. A test-only way to set the RNG seed (e.g. a query parameter honored only in non-production builds).
 - Hydrate with client:visible. Run the JS budget check and report the sizes.
-- The WCAG 2.5.7 exception is already decision #12; mention it where the word-order exercise is documented.
+- ~~The WCAG 2.5.7 exception is already decision #12~~: superseded by decision #76 (tap/click/Enter moves a word, so 2.5.7 is met).
 Playwright tests on English pages only: choice flow including a regional answer; word order with mouse; with touch emulation (long press drags, quick swipe scrolls); keyboard-only; duplicate words; "Try again" shows different items with a fixed seed; report link URL. After merging I will test on a real iPhone and Android phone via the preview URL.
 ```
 
@@ -159,7 +159,7 @@ Build, for every ready locale:
 - Pagefind: one index per ready locale, topics and dictionary; UI loaded only when search is opened (button or Cmd/Ctrl+K). German words must be findable from any locale.
 - SEO: unique titles and descriptions per locale, canonical URLs, hreflang, sitemap with alternates, Open Graph with og:locale, structured data where it makes sense.
 - Legal pages from CLAUDE.md "Legal pages (Austria)": /impressum/ and /privacy/ in both locales, footer links, TODO placeholders for me to fill in.
-- /about/ with an accessibility statement (WCAG 2.2 AA target, the 2.5.7 exception for word order) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /privacy/ mentions it too.
+- /about/ with an accessibility statement (WCAG 2.2 AA target; word order can be done by tap, click or keyboard without dragging, decision #76) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /privacy/ mentions it too.
 - Analytics: Cloudflare Web Analytics beacon with `defer`, token from src/config/site.ts, only on production builds (not on previews or in dev), mentioned in /privacy/. Add an e2e check that preview builds contain no beacon.
 Add e2e tests on English pages for navigation and search (including finding a German word), and axe checks for all new page types. Extend the language-switching tests to the new page types (picker keeps the page, hreflang present).
 ```

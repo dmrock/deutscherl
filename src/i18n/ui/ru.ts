@@ -41,7 +41,7 @@ export const ru = {
   'exercise.wordOrder.meaning': 'Значение: {translation}',
   'exercise.wordOrder.answer': 'Твоё предложение',
   'exercise.wordOrder.bank': 'Слова',
-  'exercise.wordOrder.dropHere': 'Перетащи слова сюда',
+  'exercise.wordOrder.dropHere': 'Нажми на слова или перетащи их сюда',
   'exercise.wordOrder.locked': 'закреплено',
   'exercise.wordOrder.wrongPosition': 'не на своём месте',
   'exercise.wordOrder.dragStarted':
@@ -51,7 +51,7 @@ export const ru = {
   'exercise.wordOrder.movedToZoneStart': '{item}: в начале списка «{zone}»',
   'exercise.wordOrder.dropped': '{item} в списке «{zone}», позиция {position} из {count}',
   'exercise.wordOrder.instructions':
-    'Нажми Tab, чтобы перейти к слову, затем пробел или Enter, чтобы взять его.',
+    'Нажми Tab, чтобы перейти к слову. Enter переносит его в другой список, а пробел позволяет взять слово и поставить его на место стрелками.',
   'exercise.wordOrder.disabled': 'Слова больше нельзя перемещать.',
   'exercise.check': 'Проверить',
   'exercise.correct': 'Правильно!',

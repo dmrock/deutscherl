@@ -181,6 +181,47 @@ test.describe('word order', () => {
     await expect(bank(page).getByLabel(word, { exact: true })).toBeVisible();
   });
 
+  test('a click moves a word to the end of the sentence, another click moves it back', async ({
+    page,
+  }) => {
+    await onlyUnseen(page, ['w1', 'w2', 'w3', 'w4', 'w5']);
+    await openPractice(page);
+    const item = wordOrderItem(await currentItemId(page));
+    const words = item.fixed ? item.parts.slice(1) : item.parts;
+    const lineChips = answerLine(page).locator('.chip');
+
+    await bank(page)
+      .getByLabel(words[1] ?? '', { exact: true })
+      .click();
+    await expect(lineChips).toHaveText([words[1] ?? '']);
+    await answerLine(page)
+      .getByLabel(words[1] ?? '', { exact: true })
+      .click();
+    await expect(lineChips).toHaveCount(0);
+
+    for (const word of words) await bank(page).getByLabel(word, { exact: true }).click();
+    await expect(lineChips).toHaveText(words);
+    await check(page);
+    await expect(feedback(page)).toContainText(t('en', 'exercise.correct'));
+  });
+
+  test('Enter moves the focused word and keeps the keyboard in the bank', async ({ page }) => {
+    await onlyUnseen(page, ['w1', 'w2', 'w3', 'w4', 'w5']);
+    await openPractice(page);
+    const item = wordOrderItem(await currentItemId(page));
+    const words = item.fixed ? item.parts.slice(1) : item.parts;
+    for (const word of words) {
+      await bank(page).getByLabel(word, { exact: true }).focus();
+      await page.keyboard.press('Enter');
+      await expect(page.locator(':focus')).not.toHaveAttribute('aria-label', word);
+    }
+    await expect(answerLine(page).locator('.chip')).toHaveText(words);
+    // The bank is empty: focus is on Check.
+    await expect(page.getByRole('button', { name: t('en', 'exercise.check') })).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(feedback(page)).toContainText(t('en', 'exercise.correct'));
+  });
+
   test('keyboard only', async ({ page }) => {
     await onlyUnseen(page, ['w1', 'w2', 'w3', 'w4', 'w5']);
     await openPractice(page);
@@ -243,6 +284,33 @@ test.describe('word order', () => {
       if (!box) throw new Error(`No chip ${word}`);
       return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
     }
+
+    test('a tap moves exactly one word', async ({ page }) => {
+      await onlyUnseen(page, ['w1', 'w2', 'w3', 'w4', 'w5']);
+      await openPractice(page);
+      const item = wordOrderItem(await currentItemId(page));
+      const words = item.fixed ? item.parts.slice(1) : item.parts;
+      const cdp = await page.context().newCDPSession(page);
+      const before = await bank(page).locator('.chip').count();
+
+      const start = await chipCenter(page, words[0] ?? '');
+      await touch(cdp, 'touchStart', start.x, start.y);
+      await touch(cdp, 'touchEnd');
+      await expect(answerLine(page).locator('.chip')).toHaveText([words[0] ?? '']);
+      // The library's synthetic click must not move a second word.
+      await page.waitForTimeout(300);
+      await expect(bank(page).locator('.chip')).toHaveCount(before - 1);
+      await expect(answerLine(page).locator('.chip')).toHaveCount(1);
+
+      // A long press released without moving is a drag back to the same place, not a tap.
+      const held = await chipCenter(page, words[1] ?? '');
+      await touch(cdp, 'touchStart', held.x, held.y);
+      await page.waitForTimeout(400);
+      await touch(cdp, 'touchEnd');
+      await page.waitForTimeout(500);
+      await expect(answerLine(page).locator('.chip')).toHaveCount(1);
+      await expect(bank(page).locator('.chip')).toHaveCount(before - 1);
+    });
 
     test('a long press drags a word, a quick swipe scrolls', async ({ page }) => {
       await onlyUnseen(page, ['w1', 'w2', 'w3', 'w4', 'w5']);

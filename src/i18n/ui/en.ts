@@ -43,7 +43,7 @@ export const en = {
   'exercise.wordOrder.meaning': 'Meaning: {translation}',
   'exercise.wordOrder.answer': 'Your sentence',
   'exercise.wordOrder.bank': 'Words',
-  'exercise.wordOrder.dropHere': 'Drag the words here',
+  'exercise.wordOrder.dropHere': 'Tap or drag the words here',
   'exercise.wordOrder.locked': 'fixed',
   'exercise.wordOrder.wrongPosition': 'wrong position',
   'exercise.wordOrder.dragStarted':
@@ -53,7 +53,7 @@ export const en = {
   'exercise.wordOrder.movedToZoneStart': '{item} moved to the start of {zone}',
   'exercise.wordOrder.dropped': '{item} dropped in {zone}, position {position} of {count}',
   'exercise.wordOrder.instructions':
-    'Press Tab to reach a word, then Space or Enter to pick it up.',
+    'Press Tab to reach a word. Enter moves it to the other list; Space picks it up, so you can place it with the arrow keys.',
   'exercise.wordOrder.disabled': 'The words can no longer be moved.',
   'exercise.check': 'Check',
   'exercise.correct': 'Correct!',

@@ -567,7 +567,7 @@ flowchart TD
 <p>One correct answer, except established regional variants in <code>alsoCorrect</code>: Austrian "bin gesessen" counts as correct, and <code>why</code> explains the difference.</p>
 <h3>Rounds</h3>
 <p>A round is 5 mixed items. Seen ids live in sessionStorage; the pool resets when exhausted. All randomness goes through a seeded generator, so tests are deterministic.</p>
-<div class="note warn"><b>Accessibility.</b> The target is WCAG 2.2 AA with one deliberate exception: word-order items have no single-tap alternative to dragging (criterion 2.5.7). This is recorded in the decision log and in the accessibility statement.</div>
+<div class="note warn"><b>Accessibility.</b> The target is WCAG 2.2 AA without exceptions. Word-order items can be solved by tap, click or Enter as well as by dragging, which meets criterion 2.5.7 (decision #76).</div>
 </div>
 </section>
 

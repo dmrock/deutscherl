@@ -34,7 +34,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 ## Design and UX
 
 - **#11** `svelte-dnd-action` for drag and drop: touch delay, keyboard and screen-reader support. Rejected: hand-rolled pointer events, SortableJS (no keyboard).
-- **#12** **owner** WCAG 2.5.7 exception for word order (drag and keyboard, no single-tap alternative), stated in the accessibility statement.
+- ~~**#12** **owner** WCAG 2.5.7 exception for word order~~ → #76.
 - **#13** Regional answers (`alsoCorrect` with `region`) accepted with an explanation, e.g. Austrian "bin gesessen".
 - **#14** Word order: parts in neutral case, `accept` lists all valid orders, compared as strings (no capitalization hints, duplicates work).
 - **#15** Minimal JS: theme and language picker are inline vanilla JS; JS budgets in CI (3 KB without islands, 45 KB with). Rejected: `<ClientRouter />`. (Page transitions → #47.)
@@ -59,6 +59,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#73** **owner** The result screen lists every answer of the round (the learner's sentence, the correct one when wrong) instead of only coloured dots.
 - **#74** **owner** "Start practice" button: the practice section then fills the screen below the header and is scrolled to the top once, so answers grow inside reserved space and the page no longer moves (#72 alone still scrolled when feedback opened below the fold). The round is picked on Start, so the first paint never changes on hydration.
 - **#75** **owner** Sources moved below the practice section, to the bottom of the topic page.
+- **#76** **owner** Word order: a tap or click (Enter on the keyboard) moves a word to the end of the sentence or back to the bank; dragging stays for reordering. This is the single-pointer alternative, so WCAG 2.5.7 is met and the exception #12 is gone. Space alone starts the library's keyboard drag.
 
 ## Content and review
 
