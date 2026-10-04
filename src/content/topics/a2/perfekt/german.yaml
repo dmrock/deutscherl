@@ -1,0 +1,94 @@
+# German content of the topic, shared by every locale (CLAUDE.md, "Content model").
+# In examples, **…** marks the verb forms that the page highlights.
+
+examples:
+  - id: e1
+    de: 'Ich **habe** gestern einen Film **gesehen**.'
+  - id: e2
+    de: 'Wir **sind** am Wochenende nach Graz **gefahren**.'
+  - id: e3
+    de: 'Ich **bin** heute um sieben Uhr **aufgewacht**.'
+  - id: e4
+    de: 'Er **ist** den ganzen Tag zu Hause **geblieben**.'
+  - id: e5
+    de: '**Hast** du gut **geschlafen**?'
+
+choice:
+  - id: c1
+    text: Ich ___ gestern ins Kino gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c2
+    text: Wir ___ am Abend Pizza gegessen.
+    answer: haben
+    options: [sind, haben]
+  - id: c3
+    text: Anna ___ nach Salzburg gefahren.
+    answer: ist
+    options: [ist, hat]
+  - id: c4
+    text: Was ___ ihr am Wochenende gemacht?
+    answer: habt
+    options: [seid, habt]
+  - id: c5
+    text: Mein Bruder ___ letztes Jahr Vater geworden.
+    answer: ist
+    options: [ist, hat]
+  - id: c6
+    text: Die Kinder ___ sehr lange geschlafen.
+    answer: haben
+    options: [sind, haben]
+  - id: c7
+    text: Wann ___ du heute aufgestanden?
+    answer: bist
+    options: [bist, hast]
+  - id: c8
+    text: Ich ___ dir eine Nachricht geschrieben.
+    answer: habe
+    options: [bin, habe]
+  - id: c9
+    text: Wir ___ den ganzen Tag zu Hause geblieben.
+    answer: sind
+    options: [sind, haben]
+  - id: c10
+    text: Wir ___ lange im Café gesessen.
+    answer: haben
+    options: [haben, sind, hat, ist]
+    alsoCorrect:
+      - value: sind
+        region: AT
+
+wordOrder:
+  - id: w1
+    parts: [ich, habe, gestern, einen Film, gesehen]
+    accept:
+      - [gestern, habe, ich, einen Film, gesehen]
+      - [einen Film, habe, ich, gestern, gesehen]
+    punctuation: '.'
+  - id: w2
+    parts: [wir, sind, nach Wien, gefahren]
+    accept:
+      - [nach Wien, sind, wir, gefahren]
+    punctuation: '.'
+  - id: w3
+    parts: [bist, du, gut, nach Hause, gekommen]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [wann, bist, du, aufgestanden]
+    fixed: true
+    punctuation: '?'
+  - id: w5
+    parts: [er, ist, zu Hause, geblieben]
+    accept:
+      - [zu Hause, ist, er, geblieben]
+    punctuation: '.'
+  - id: w6
+    parts: [die, Kinder, haben, die, Pizza, gegessen]
+    accept:
+      - [die, Pizza, haben, die, Kinder, gegessen]
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: 'Ich **bin** den ganzen Tag im Büro **gesessen**.'

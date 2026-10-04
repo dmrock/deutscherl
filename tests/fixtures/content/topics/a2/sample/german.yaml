@@ -1,0 +1,60 @@
+# Test fixture (not reviewed content).
+examples:
+  - id: e1
+    de: 'Ich **bin** gegangen.'
+  - id: e2
+    de: 'Ich **habe** gegessen.'
+choice:
+  - id: c1
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c2
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c3
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c4
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c5
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c6
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c7
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c8
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c9
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+  - id: c10
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe]
+wordOrder:
+  - id: w1
+    parts: [ich, habe, einen Kaffee, getrunken]
+    accept:
+      - [einen Kaffee, habe, ich, getrunken]
+    punctuation: '.'
+  - id: w2
+    parts: [wann, bist, du, gekommen]
+    fixed: true
+    punctuation: '?'
+austrianNotes:
+  - id: at1
+    de: 'Ich **bin** gesessen.'

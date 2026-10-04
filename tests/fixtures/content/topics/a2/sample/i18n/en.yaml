@@ -1,0 +1,33 @@
+examples:
+  e1: English e1
+  e2: English e2
+choice:
+  c1:
+    why: English why c1
+  c2:
+    why: English why c2
+  c3:
+    why: English why c3
+  c4:
+    why: English why c4
+  c5:
+    why: English why c5
+  c6:
+    why: English why c6
+  c7:
+    why: English why c7
+  c8:
+    why: English why c8
+  c9:
+    why: English why c9
+  c10:
+    why: English why c10
+wordOrder:
+  w1:
+    translation: English w1
+    why: English why w1
+  w2:
+    translation: English w2
+    why: English why w2
+austrianNotes:
+  at1: English at1

@@ -1,0 +1,54 @@
+# Russian translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: Вчера я посмотрел фильм.
+  e2: На выходных мы ездили в Грац.
+  e3: Сегодня я проснулся в семь часов.
+  e4: Он весь день оставался дома.
+  e5: Ты хорошо спал?
+
+choice:
+  c1:
+    why: '*gehen* — движение в другое место, поэтому перфект с *sein*: *ich bin gegangen*.'
+  c2:
+    why: 'У *essen* есть дополнение в винительном падеже (*Pizza*), и никто никуда не движется, поэтому перфект с *haben*: *wir haben gegessen*.'
+  c3:
+    why: 'Анна перемещается в другое место (*nach Salzburg*), поэтому перфект с *sein*: *sie ist gefahren*.'
+  c4:
+    why: 'У *machen* есть дополнение в винительном падеже (*was*), поэтому перфект с *haben*. С *ihr* форма — *habt*.'
+  c5:
+    why: '*werden* — изменение состояния (раньше он не был отцом), поэтому перфект с *sein*: *er ist geworden*.'
+  c6:
+    why: 'Сон — это не движение и не изменение состояния, поэтому перфект с *haben*: *sie haben geschlafen*.'
+  c7:
+    why: '*aufstehen* — изменение состояния (лежал, а теперь стоит), поэтому перфект с *sein*. С *du* форма — *bist*.'
+  c8:
+    why: 'У *schreiben* есть дополнение в винительном падеже (*eine Nachricht*), поэтому перфект с *haben*: *ich habe geschrieben*.'
+  c9:
+    why: '*bleiben* всегда образует перфект с *sein*, хотя ничего не движется: *wir sind geblieben*.'
+  c10:
+    why: 'В Германии *sitzen* образует перфект с *haben*: *wir haben gesessen*. В Австрии обычно говорят *wir sind gesessen* — это тоже правильно. С *wir* формы *hat* и *ist* неверны.'
+
+wordOrder:
+  w1:
+    translation: Вчера я посмотрел фильм.
+    why: '*haben* (здесь *habe*) стоит на втором месте, причастие *gesehen* — в конце. На первое место можно поставить и *gestern* или *einen Film*; тогда подлежащее *ich* встаёт после глагола.'
+  w2:
+    translation: Мы поехали в Вену.
+    why: 'Движение в другое место, поэтому *sein* (*sind*) на втором месте и *gefahren* в конце.'
+  w3:
+    translation: Ты хорошо добрался до дома?
+    why: 'В вопросе без вопросительного слова глагол *bist* стоит первым, подлежащее *du* — вторым, а причастие *gekommen* остаётся в конце.'
+  w4:
+    translation: Когда ты встал?
+    why: 'В вопросе с вопросительным словом сначала идёт *wann*, потом глагол *bist*, потом подлежащее. Причастие *aufgestanden* — в конце.'
+  w5:
+    translation: Он остался дома.
+    why: '*bleiben* образует перфект с *sein*: *ist* на втором месте, *geblieben* в конце. *zu Hause* тоже может стоять на первом месте.'
+  w6:
+    translation: Дети съели пиццу.
+    why: '*haben* стоит на втором месте, *gegessen* — в конце. Дополнение *die Pizza* тоже может стоять первым: *die Pizza haben die Kinder gegessen*. Смысл не меняется, потому что *haben* (множественное число) относится к *die Kinder*.'
+
+austrianNotes:
+  at1: Я весь день просидел в офисе.
