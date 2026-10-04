@@ -212,6 +212,9 @@ importers:
       svelte:
         specifier: ^5.57.1
         version: 5.57.1
+      svelte-dnd-action:
+        specifier: 0.9.79
+        version: 0.9.79(svelte@5.57.1)
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -2582,6 +2585,11 @@ packages:
   supports-color@10.2.2:
     resolution: {integrity: sha512-SS+jx45GF1QjgEXQx4NJZV9ImqmO2NPz5FNsIHrsDjh2YsHnawpan7SNQ1o8NuhrbHZy9AZhIoCUiCeaW/C80g==}
     engines: {node: '>=18'}
+
+  svelte-dnd-action@0.9.79:
+    resolution: {integrity: sha512-zCKaG1Q9hVgfJFyZXhY+uIpo9+cjsG03CqwNz8yBlWCRBphC8U2zli9FzIcrL4rhXEs8yV+asS4rV0RHDuQqQQ==}
+    peerDependencies:
+      svelte: '>=3.23.0 || ^5.0.0-next.0'
 
   svelte2tsx@0.7.61:
     resolution: {integrity: sha512-EpQ/+UHITBULeUojx/LLD3uTYasZXcX1BrqlrzfLUnT9vdUhaOWK59a3ryWcFU8L0sY1SP+gRhJ2Beiis98+qw==}
@@ -5091,6 +5099,10 @@ snapshots:
       s.color: 0.0.15
 
   supports-color@10.2.2: {}
+
+  svelte-dnd-action@0.9.79(svelte@5.57.1):
+    dependencies:
+      svelte: 5.57.1
 
   svelte2tsx@0.7.61(svelte@5.57.1)(typescript@6.0.3):
     dependencies:

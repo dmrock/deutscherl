@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, getEntry, render } from 'astro:content';
+import { PUBLIC_DEPLOY_ENV } from 'astro:env/client';
 import type { GetStaticPaths } from 'astro';
 import AustrianNote from '../../../../components/content/AustrianNote.astro';
 import De from '../../../../components/content/De.astro';
@@ -9,10 +10,13 @@ import InShort from '../../../../components/content/InShort.astro';
 import RuleTable from '../../../../components/content/RuleTable.astro';
 import SponsorSlot from '../../../../components/content/SponsorSlot.astro';
 import StatusBadges from '../../../../components/content/StatusBadges.astro';
-import { type LevelId, levels } from '../../../../config/site.ts';
+import ExerciseRunner from '../../../../components/exercises/ExerciseRunner.svelte';
+import { type LevelId, levels, site } from '../../../../config/site.ts';
 import { defaultLocale, isLocaleCode, type LocaleCode } from '../../../../i18n/locales.ts';
-import { t } from '../../../../i18n/utils.ts';
+import { localizePath, t } from '../../../../i18n/utils.ts';
 import Base from '../../../../layouts/Base.astro';
+import { exerciseStrings } from '../../../../lib/exercise-strings.ts';
+import { resolveExercises, seenKey } from '../../../../lib/exercises.ts';
 import { stripMarks } from '../../../../lib/marked-text.ts';
 import { getTopicContent } from '../../../../lib/topic-content.ts';
 
@@ -49,7 +53,8 @@ interface Props {
 
 const { locale, level, slug, page, meta } = Astro.props;
 const { Content } = await render(page);
-const { review } = await getTopicContent(level, slug, locale);
+const { german, i18n, review } = await getTopicContent(level, slug, locale);
+const pageUrl = new URL(localizePath(Astro.url.pathname, locale), site.url).href;
 const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
 ---
 
@@ -100,6 +105,21 @@ const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
     <h2 id="practice-title" class="text-xl">
       {t(locale, 'nav.practice')}
     </h2>
-    <p class="mt-1 text-muted">{t(locale, 'topic.practiceSoon')}</p>
+    <p class="mt-1 text-muted">{t(locale, 'exercise.intro')}</p>
+    <noscript>
+      <p class="mt-2">{t(locale, 'exercise.needsJs')}</p>
+    </noscript>
+    <div class="mt-3">
+      <ExerciseRunner
+        client:visible
+        items={resolveExercises(german, i18n)}
+        strings={exerciseStrings(locale)}
+        storageKey={seenKey(level, slug)}
+        locale={locale}
+        pageUrl={pageUrl}
+        repo={site.repo}
+        allowSeed={PUBLIC_DEPLOY_ENV !== 'production'}
+      />
+    </div>
   </section>
 </Base>
