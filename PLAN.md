@@ -6,7 +6,7 @@ Each stage has manual steps for the owner and a prompt for Claude Code.
 
 1. Put `CLAUDE.md`, `PLAN.md`, `decisions.md` and `architecture.html` into one folder (for example `~/Downloads/deutscherl-docs`), start Claude Code in the parent folder where the project should live (for example `~/Projects`), and paste the stage 1 prompt with both paths filled in. Claude Code clones the repository, adds the files and commits them.
 2. Before each stage, switch Claude Code to plan mode (Shift+Tab), review the plan, then let it implement.
-3. One stage = one branch = one PR. Run `/clear` between stages. Everything important lives in `CLAUDE.md` and `docs/decisions.md`, and Claude Code updates both at the end of every stage.
+3. One stage = one branch = one PR. Run `/clear` between stages. Everything important lives in `CLAUDE.md` (the rules) and `docs/decisions.md` (one line per decision with its reason), and Claude Code updates both at the end of every stage.
 4. After each stage, open the PR's preview URL on a computer and on a phone and click through it in both languages. Deployment is set up in stage 1 for exactly this reason.
 
 ---
@@ -105,8 +105,23 @@ Read CLAUDE.md, sections "UX rules" and "Exercise rules". Build the exercise isl
 - WordOrderExercise.svelte with svelte-dnd-action: answer line and word bank as two zones of the same type, reorder inside the line, move back to the bank; delayTouchStart 250; built-in keyboard and screen-reader support; "Check" button active when the bank is empty; punctuation shown after the line; after checking, show the sentence with the first word capitalized and mark wrong positions. Check the library's current docs first.
 - ExerciseRunner.svelte: rounds of 5 mixed items, progress dots, feedback with why, "Report a mistake" link (GitHub issue form, prefilled), result screen, "Try again" = new round with unseen items; sessionStorage as in CLAUDE.md. A test-only way to set the RNG seed (e.g. a query parameter honored only in non-production builds).
 - Hydrate with client:visible. Run the JS budget check and report the sizes.
-- Record the WCAG 2.5.7 exception in docs/decisions.md.
+- The WCAG 2.5.7 exception is already decision #12; mention it where the word-order exercise is documented.
 Playwright tests on English pages only: choice flow including a regional answer; word order with mouse; with touch emulation (long press drags, quick swipe scrolls); keyboard-only; duplicate words; "Try again" shows different items with a fixed seed; report link URL. After merging I will test on a real iPhone and Android phone via the preview URL.
+```
+
+## Stage 4b. Audio for German sentences
+
+Before this stage: create an Azure account and a Speech resource on the **paid Standard (S0) tier**. Output of the free tier may not be used commercially, and the site will carry sponsor banners. Keep the key and the region; they never go into the repository. Cost: about $16 per 1 million characters; a topic has about 1,000 characters of German, so the whole pilot costs cents. Microsoft requires a note that the voice is computer-generated.
+
+```
+Read CLAUDE.md, sections "UX rules", "Content model", "Deployment" and "Don'ts". Add pre-generated audio for German content (decision #63):
+- scripts/generate-audio.ts (run by the owner locally, key and region from environment variables): for every German sentence (examples, Austrian notes, the full correct sentence of every choice and word-order item), synthesize speech with Azure AI Speech, voice de-AT-IngridNeural (configurable; de-AT-JonasNeural as a second voice). Check the current Azure REST API docs first. Small files (Opus or MP3 at a low bitrate). File name = hash of the normalized text, voice and settings, so only new or changed sentences are generated and paid for; report unused files and remove them with a flag.
+- Where the files live: compare committing them (public/audio/) with an R2 bucket (repo size, the 20,000-file limit per deployment, cache headers) and recommend one before implementing.
+- Audio button for examples, Austrian notes and exercise feedback: a native <audio> element or a few lines of inline JS, no autoplay, shown only when a file exists; a missing file never breaks a page. Keep the JS budgets.
+- Disclosure: a short "computer-generated voice" note (UI string) next to the first button on a page. Stage 7 mentions the audio on /privacy/ and /about/.
+- validate-content: report German content without audio as a warning, not an error.
+- Tests: unit tests for text normalization and file naming; e2e on English pages: the button plays the expected file (media mocked), no button when the file is missing.
+Report the number of characters synthesized, the total file size and the JS budget impact. Stage 6 may reuse the pipeline for dictionary headwords.
 ```
 
 ## Stage 5. Dictionary data
@@ -144,7 +159,7 @@ Build, for every ready locale:
 - Pagefind: one index per ready locale, topics and dictionary; UI loaded only when search is opened (button or Cmd/Ctrl+K). German words must be findable from any locale.
 - SEO: unique titles and descriptions per locale, canonical URLs, hreflang, sitemap with alternates, Open Graph with og:locale, structured data where it makes sense.
 - Legal pages from CLAUDE.md "Legal pages (Austria)": /impressum/ and /privacy/ in both locales, footer links, TODO placeholders for me to fill in.
-- /about/ with an accessibility statement (WCAG 2.2 AA target, the 2.5.7 exception for word order).
+- /about/ with an accessibility statement (WCAG 2.2 AA target, the 2.5.7 exception for word order) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /privacy/ mentions it too.
 - Analytics: Cloudflare Web Analytics beacon with `defer`, token from src/config/site.ts, only on production builds (not on previews or in dev), mentioned in /privacy/. Add an e2e check that preview builds contain no beacon.
 Add e2e tests on English pages for navigation and search (including finding a German word), and axe checks for all new page types. Extend the language-switching tests to the new page types (picker keeps the page, hreflang present).
 ```

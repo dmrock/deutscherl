@@ -18,7 +18,7 @@ A free website for learning German grammar. Explanations in the learner's native
 
 - Always commit with sign-off: `git commit -s` (DCO is enforced in CI).
 - Content you generate is ALWAYS `draft` (base and translations). Never set `reviewed` or `verified`, never edit `review.yaml` by hand, never run the minor-edit command unless the owner asks for it explicitly.
-- At the end of every stage: update this file if a rule or structure changed, and add an entry to `docs/decisions.md` for every decision made during the stage (what, why, alternatives). Decisions that are not written down are lost after `/clear`.
+- At the end of every stage: update this file if a rule or structure changed, and add ONE line to `docs/decisions.md` for every decision made during the stage: next free ID, what, a short why, and the main rejected alternative only if it matters. Put it in the matching section; mark owner decisions and superseded entries as the file explains. Details belong in this file, code comments and the PR description, not in the log. Decisions that are not written down are lost after `/clear`.
 - Before adding a dependency, check its current docs (Context7 or the official site), state its gzipped size and why it is needed.
 - If you are not sure a German sentence is correct, say so in the summary instead of guessing.
 
@@ -223,7 +223,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Word order UI: two zones built with `svelte-dnd-action`: the answer line and the word bank. Words are dragged from the bank into the line, reordered inside it, and back. Mouse: drag immediately. Touch: `delayTouchStart: 250` (a long press starts the drag, a swipe scrolls). Keyboard: the library's built-in support. A "Check" button becomes active when the bank is empty.
 - Exercise runner: rounds of 5 mixed items from the topic pool. Seen item IDs in `sessionStorage` under `seen:<level>/<slug>` (shared between locales); reset when the pool is exhausted. Shuffle options and word-bank order. "Try again" starts a new round with unseen items. All randomness goes through a seedable RNG so tests are deterministic. Storage access in try/catch with in-memory fallback.
 - After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link.
-- Examples: German with its translation always visible (no "Hide translation" toggle, owner decision #62). Audio is wanted, but not from the browser's Web Speech API, whose voices sounded bad (removed in #61): it comes back with a better source (pending, decision #62).
+- Examples: German with its translation always visible (no "Hide translation" toggle, owner decision #62). Audio is wanted, but not from the browser's Web Speech API, whose voices sounded bad (#61): it comes back as pre-generated Azure AI Speech files with an Austrian voice (stage 4b, decision #63, pending the owner's Azure account). No runtime TTS calls.
 - Typography and density (owner decision #61): body text 15px, German example text 16px, compact cards (`px-3 py-2`), the topic content uses the full width of the main column (no `max-w-prose`).
 - Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
 - Visual design: "Paper" (owner's choice, decision #45): warm cream background, teal accent, soft cards, serif headings, compact spacing.
@@ -266,7 +266,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 
 ## Legal pages (Austria)
 
-- `/impressum/` (Offenlegung according to § 25 Mediengesetz for a small private website: owner name, place of residence, purpose of the site) and `/privacy/` (hosting by Cloudflare, Cloudflare Web Analytics, browser storage used, audio source once chosen, links to GitHub for reports). Both in every ready locale, linked in the footer.
+- `/impressum/` (Offenlegung according to § 25 Mediengesetz for a small private website: owner name, place of residence, purpose of the site) and `/privacy/` (hosting by Cloudflare, Cloudflare Web Analytics, browser storage used, computer-generated audio (stage 4b), links to GitHub for reports). Both in every ready locale, linked in the footer.
 - Write them as templates with clearly marked TODO placeholders; the owner fills in and checks the facts. Do not invent legal statements.
 - When sponsor banners arrive: label them as ads ("Anzeige" / localized) and extend the Impressum as required for commercial sites.
 

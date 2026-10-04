@@ -121,7 +121,7 @@
   --font-sans: var(--font-body, system-ui), system-ui, sans-serif;
   --font-german: var(--font-de, system-ui), system-ui, sans-serif;
 
-  /* German example text is slightly larger than explanation text (15px, owner decision #61). */
+  /* German example text (16px) is slightly larger than explanation text (15px, owner decision #61). */
   --text-german: 1rem;
   --text-german--line-height: 1.6;
 }
