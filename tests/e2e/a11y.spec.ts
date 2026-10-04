@@ -36,6 +36,8 @@ for (const colorScheme of ['light', 'dark'] as const) {
 
     test('exercises: questions and feedback have no axe violations', async ({ page }) => {
       const check = async () => {
+        // The feedback fades in; axe would measure contrast mid-fade.
+        await page.waitForFunction(() => document.getAnimations().length === 0);
         const results = await new AxeBuilder({ page })
           .include('#practice')
           .withTags(WCAG_TAGS)

@@ -28,7 +28,12 @@
     if (chosen !== undefined) return;
     chosen = option;
     const { correct, region } = checkChoice(item, option);
-    onanswer({ correct, region, solution: fillGap(item.text, item.answer) });
+    onanswer({
+      correct,
+      region,
+      given: fillGap(item.text, option),
+      solution: fillGap(item.text, item.answer),
+    });
   }
 
   function optionState(option: string): 'right' | 'wrong' | 'idle' {
@@ -41,11 +46,18 @@
 
 <p class="text-muted">{strings['exercise.choice.prompt']}</p>
 <p lang="de" class="german mt-1 text-lg" data-testid="choice-sentence">
-  {gap[0]}{#if chosen === undefined}<span
-      class="inline-block w-14 border-b-2 border-control align-baseline"
-      >&nbsp;<span class="sr-only" lang={locale}>{strings['exercise.choice.blank']}</span></span
-    >{:else}<strong class={result?.correct ? 'text-success' : 'text-danger'}>{chosen}</strong
-    >{/if}{gap[1]}
+  <!-- The gap keeps its width when it is filled, so the sentence does not reflow. -->
+  {gap[0]}<span
+    class={[
+      'inline-block min-w-14 border-b-2 text-center align-baseline',
+      chosen === undefined && 'border-control',
+      result?.correct === true && 'border-success font-semibold text-success',
+      result?.correct === false && 'border-danger font-semibold text-danger',
+    ]}
+    >{#if chosen === undefined}&nbsp;<span class="sr-only" lang={locale}
+        >{strings['exercise.choice.blank']}</span
+      >{:else}{chosen}{/if}</span
+  >{gap[1]}
 </p>
 <div role="group" aria-label={strings['exercise.choice.options']} class="mt-3 flex flex-wrap gap-2">
   {#each item.shuffledOptions as option (option)}
@@ -54,7 +66,7 @@
       type="button"
       lang="de"
       class={[
-        'german inline-flex min-h-11 min-w-16 items-center justify-center gap-1.5 rounded-ui border px-4 font-semibold',
+        'german relative inline-flex min-h-11 min-w-16 items-center justify-center rounded-ui border px-4 font-semibold',
         state === 'idle' && 'border-control bg-card',
         state === 'idle' && chosen === undefined && 'hover:bg-surface',
         state === 'idle' && chosen !== undefined && 'text-muted',
@@ -65,9 +77,17 @@
       aria-pressed={chosen === option}
       onclick={() => choose(option)}
     >
-      {#if state === 'right'}<span aria-hidden="true">✓</span>{/if}
-      {#if state === 'wrong'}<span aria-hidden="true">✗</span>{/if}
       {option}
+      <!-- A corner badge instead of an inline mark, so the button keeps its width. -->
+      {#if state !== 'idle'}
+        <span
+          aria-hidden="true"
+          class={[
+            'absolute -end-1.5 -top-1.5 grid size-5 place-items-center rounded-full text-xs leading-none text-card',
+            state === 'right' ? 'bg-success' : 'bg-danger',
+          ]}>{state === 'right' ? '✓' : '✗'}</span
+        >
+      {/if}
     </button>
   {/each}
 </div>

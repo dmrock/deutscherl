@@ -133,6 +133,18 @@
   line-height: var(--text-german--line-height);
 }
 
+/* Exercise feedback fades in instead of popping up (use with `motion-safe:`). */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+}
+
+@utility animate-appear {
+  animation: appear 160ms ease-out;
+}
+
 /* Small label above a heading or block ("In short", category names). */
 @utility eyebrow {
   font-size: 0.75rem;

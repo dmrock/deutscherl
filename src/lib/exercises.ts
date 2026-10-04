@@ -216,6 +216,8 @@ export function prepareExercise(item: Exercise, rng: Rng): PreparedExercise {
 export interface Answer {
   correct: boolean;
   region: Region | undefined;
+  /** The learner's German sentence (the gap filled, or the words in their order) */
+  given: string;
   /** The correct German sentence, shown when the answer was wrong */
   solution: string;
 }

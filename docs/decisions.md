@@ -54,6 +54,9 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#66** One click answers a choice item (no confirm button); focus moves to the feedback, then to the next question, so keyboard and screen-reader users follow the round.
 - **#67** Word order: a `fixed` part is a locked chip outside the drag zones; the bank is reshuffled when it starts in a valid order; wrong positions and the shown solution use the valid order closest to the answer, so a near-miss of an `accept` order is not judged against `parts`.
 - **#68** The report link opens in a new tab, so the round is not lost; the issue title carries the page path and item id for triage.
+- **#71** **owner** "Report a mistake" in the feedback is a small flag icon at the end of the header with a tooltip, not a text link: it should not compete with the explanation.
+- **#72** **owner** (request) No layout jumps when answering: fixed-width gap and corner badges, a box that only grows, focus without scroll plus smooth `nearest` scrolling, fade-in. Rejected: reserving the feedback's space up front (its height depends on the explanation).
+- **#73** **owner** The result screen lists every answer of the round (the learner's sentence, the correct one when wrong) instead of only coloured dots.
 
 ## Content and review
 

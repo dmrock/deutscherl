@@ -90,6 +90,7 @@
     onanswer({
       correct: result.correct,
       region: undefined,
+      given: formatSentence(answer, item.punctuation),
       solution: formatSentence(result.expected, item.punctuation),
     });
   }

@@ -53,19 +53,33 @@ test.describe('choice', () => {
     }
   });
 
-  test('a full round ends with the score', async ({ page }) => {
+  test('a full round ends with the score and every answer', async ({ page }) => {
     await onlyUnseen(page, ['c1', 'c2', 'c3', 'c4', 'c5']);
     await openPractice(page);
-    await answerCurrent(page, false);
+    const ids = [await answerCurrent(page, false)];
     await goOn(page);
     for (let i = 0; i < 4; i++) {
-      await answerCurrent(page);
+      ids.push(await answerCurrent(page));
       await expect(feedback(page)).toContainText(t('en', 'exercise.correct'));
       await goOn(page);
     }
     await expect(page.getByTestId('score')).toHaveText(
       t('en', 'exercise.result', { correct: 4, total: 5 }),
     );
+
+    // The list shows each answer in order; the wrong one with the correct sentence below.
+    const rows = page.getByTestId('answers').getByRole('listitem');
+    await expect(rows).toHaveCount(5);
+    const wrongItem = choiceItem(ids[0] ?? '');
+    const wrongOption = wrongItem.options.find((option) => option !== wrongItem.answer) ?? '';
+    await expect(rows.first()).toContainText(t('en', 'exercise.incorrect'));
+    await expect(rows.first()).toContainText(fillGap(wrongItem.text, wrongOption));
+    await expect(rows.first()).toContainText(fillGap(wrongItem.text, wrongItem.answer));
+    for (const [position, id] of ids.slice(1).entries()) {
+      const item = choiceItem(id);
+      await expect(rows.nth(position + 1)).toContainText(t('en', 'exercise.correct'));
+      await expect(rows.nth(position + 1)).toContainText(fillGap(item.text, item.answer));
+    }
     await expect(
       page.getByRole('heading', { name: t('en', 'exercise.resultTitle') }),
     ).toBeFocused();
