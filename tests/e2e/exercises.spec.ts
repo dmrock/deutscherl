@@ -23,6 +23,7 @@ import {
   openPractice,
   playRound,
   SEEN_KEY,
+  scrollSettled,
   TOPIC_PATH,
   wordOrderItem,
 } from './helpers/exercises.ts';
@@ -234,19 +235,6 @@ test.describe('word order', () => {
       });
     }
 
-    /** Waits until a swipe's momentum scrolling has stopped, so measured positions stay valid. */
-    async function scrollSettled(page: Page) {
-      let last = -1;
-      await expect
-        .poll(async () => {
-          const y = await page.evaluate(() => window.scrollY);
-          const settled = y === last;
-          last = y;
-          return settled;
-        })
-        .toBe(true);
-    }
-
     /** Centre of a bank word, scrolled to the middle of the screen (clear of the bottom bar). */
     async function chipCenter(page: Page, word: string) {
       await bank(page).evaluate((element) => element.scrollIntoView({ block: 'center' }));
@@ -325,6 +313,48 @@ test.describe('rounds', () => {
     await openPractice(other, '?seed=7');
     expect(await currentItemId(other)).toBe(first[0]);
     await other.close();
+  });
+});
+
+test.describe('no layout jumps', () => {
+  /** Where the practice section is and how far the page is scrolled, after any scrolling stopped. */
+  async function position(page: Page) {
+    await page.waitForFunction(() => document.getAnimations().length === 0);
+    await scrollSettled(page);
+    const box = await page.locator('#practice').boundingBox();
+    return {
+      scrollY: await page.evaluate(() => Math.round(window.scrollY)),
+      top: Math.round(box?.y ?? -1),
+    };
+  }
+
+  for (const viewport of [
+    { width: 1280, height: 720 },
+    { width: 390, height: 740 },
+  ]) {
+    test(`"Start practice" moves the section to the top, answering moves nothing (${viewport.width}px)`, async ({
+      page,
+    }) => {
+      await page.setViewportSize(viewport);
+      await onlyUnseen(page, ['c1', 'c2', 'c3', 'c4', 'c5']);
+      await openPractice(page);
+      const start = await position(page);
+      // Below the 3rem sticky header plus the 1rem scroll margin.
+      expect(start.top).toBe(64);
+
+      await answerCurrent(page, false);
+      expect(await position(page)).toEqual(start);
+      await goOn(page);
+      expect(await position(page)).toEqual(start);
+    });
+  }
+
+  test('word order with feedback fits on a desktop screen', async ({ page }) => {
+    await onlyUnseen(page, ['w1', 'w2', 'w3', 'w4', 'w5']);
+    await openPractice(page);
+    const start = await position(page);
+    await answerCurrent(page, false);
+    expect(await position(page)).toEqual(start);
   });
 });
 

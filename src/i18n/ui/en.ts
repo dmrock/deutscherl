@@ -34,6 +34,7 @@ export const en = {
   'topic.sources': 'Sources',
   'exercise.intro': 'Five questions on this topic. Every answer comes with an explanation.',
   'exercise.needsJs': 'The exercises need JavaScript. Please turn it on to practice.',
+  'exercise.start': 'Start practice',
   'exercise.progress': 'Question {current} of {total}',
   'exercise.choice.prompt': 'Choose the right word.',
   'exercise.choice.blank': 'blank',

@@ -5,12 +5,15 @@
   shared between locales. All randomness goes through one seeded RNG; `?seed=<n>` fixes the seed
   in non-production builds (`allowSeed`), so e2e tests are deterministic.
 
-  The server renders an empty placeholder: the round is picked in the browser.
+  The server renders the "Start practice" button (disabled until hydrated); the round is picked
+  when it is pressed, so the first paint never changes.
 
-  No jumps (the page must not move under the learner): the box only grows while the page is open
-  (min-height = tallest content so far, reset when its width changes), focus moves without
-  scrolling, and the page scrolls smoothly only when the feedback or the next question is out of
-  view.
+  No jumps (the page must not move under the learner, decision #74): "Start" marks the practice
+  section active, which makes it fill the screen below the header (global.css), and scrolls it to
+  the top once. Questions and feedback then grow inside that space. On screens too small for a
+  question with its feedback, the box only grows (min-height = tallest content so far, reset when
+  its width changes) and the page scrolls smoothly only when the feedback or the next question is
+  out of view. Focus always moves without the browser's instant scroll.
 -->
 <script lang="ts">
   import { onMount, tick } from 'svelte';
@@ -49,7 +52,8 @@
 
   let { items, strings, storageKey, locale, pageUrl, repo, allowSeed }: Props = $props();
 
-  let phase = $state<'loading' | 'question' | 'result'>('loading');
+  let phase = $state<'intro' | 'question' | 'result'>('intro');
+  let ready = $state(false);
   let round = $state.raw<PreparedExercise[]>([]);
   let roundNumber = $state(0);
   let index = $state(0);
@@ -60,6 +64,7 @@
   let feedbackEl = $state<HTMLElement>();
   let resultEl = $state<HTMLElement>();
   let afterAnswerEl = $state<HTMLElement>();
+  let rootEl = $state<HTMLElement>();
   let contentEl = $state<HTMLElement>();
   let minHeight = $state(0);
   let tooltipDismissed = $state(false);
@@ -92,7 +97,7 @@
       : undefined;
     rng = createRng(requested ?? randomSeed());
     seen = createSeenStore(storageKey, () => window.sessionStorage);
-    startRound();
+    ready = true;
 
     let width = -1;
     const observer = new ResizeObserver(([entry]) => {
@@ -105,11 +110,24 @@
     return () => observer.disconnect();
   });
 
+  function scrollBehavior(): ScrollBehavior {
+    return matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  }
+
   /** Moves focus without the browser's instant scroll; scrolls smoothly only if `target` is out of view. */
   function moveFocus(element: HTMLElement | undefined, target = element) {
     element?.focus({ preventScroll: true });
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    target?.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+    target?.scrollIntoView({ block: 'nearest', behavior: scrollBehavior() });
+  }
+
+  /** "Start practice": the section takes the whole screen and moves to the top, once. */
+  async function start() {
+    const section = rootEl?.closest('section');
+    section?.setAttribute('data-practice-active', '');
+    startRound();
+    await tick();
+    section?.scrollIntoView({ block: 'start', behavior: scrollBehavior() });
+    progressEl?.focus({ preventScroll: true });
   }
 
   async function onanswer(answer: Answer) {
@@ -148,14 +166,22 @@
   }
 </script>
 
-<!-- Before hydration: reserve about the height of a question, so the page does not jump. -->
 <div
-  class={['flex flex-col', phase === 'loading' && 'min-h-64']}
   style:min-height={minHeight > 0 ? `${minHeight}px` : undefined}
   data-phase={phase}
+  bind:this={rootEl}
 >
   <div bind:this={contentEl}>
-    {#if phase === 'question' && current}
+    {#if phase === 'intro'}
+      <button
+        type="button"
+        class="inline-flex h-10 items-center rounded-ui bg-accent px-4 font-semibold text-accent-fg disabled:opacity-50"
+        disabled={!ready}
+        onclick={start}
+      >
+        {strings['exercise.start']}
+      </button>
+    {:else if phase === 'question' && current}
       <div class="flex items-center justify-between gap-3">
         <p class="scroll-mt-16 text-sm text-muted" tabindex="-1" bind:this={progressEl}>
           {format(strings['exercise.progress'], { current: index + 1, total: round.length })}

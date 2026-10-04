@@ -32,6 +32,7 @@ export const ru = {
   'topic.sources': 'Источники',
   'exercise.intro': 'Пять вопросов по этой теме. К каждому ответу есть объяснение.',
   'exercise.needsJs': 'Для упражнений нужен JavaScript. Включи его, чтобы потренироваться.',
+  'exercise.start': 'Начать практику',
   'exercise.progress': 'Вопрос {current} из {total}',
   'exercise.choice.prompt': 'Выбери правильное слово.',
   'exercise.choice.blank': 'пропуск',

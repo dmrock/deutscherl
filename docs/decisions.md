@@ -57,6 +57,8 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#71** **owner** "Report a mistake" in the feedback is a small flag icon at the end of the header with a tooltip, not a text link: it should not compete with the explanation.
 - **#72** **owner** (request) No layout jumps when answering: fixed-width gap and corner badges, a box that only grows, focus without scroll plus smooth `nearest` scrolling, fade-in. Rejected: reserving the feedback's space up front (its height depends on the explanation).
 - **#73** **owner** The result screen lists every answer of the round (the learner's sentence, the correct one when wrong) instead of only coloured dots.
+- **#74** **owner** "Start practice" button: the practice section then fills the screen below the header and is scrolled to the top once, so answers grow inside reserved space and the page no longer moves (#72 alone still scrolled when feedback opened below the fold). The round is picked on Start, so the first paint never changes on hydration.
+- **#75** **owner** Sources moved below the practice section, to the bottom of the topic page.
 
 ## Content and review
 

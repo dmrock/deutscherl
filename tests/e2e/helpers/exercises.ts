@@ -46,13 +46,33 @@ export async function onlyUnseen(page: Page, ids: string[]): Promise<void> {
   ] as const);
 }
 
-/** Opens the topic page and scrolls to the exercises, so the island hydrates (client:visible). */
+/** Waits until (smooth or momentum) scrolling has stopped, so measured positions stay valid. */
+export async function scrollSettled(page: Page): Promise<void> {
+  let last = -1;
+  await expect
+    .poll(async () => {
+      const y = await page.evaluate(() => window.scrollY);
+      const settled = y === last;
+      last = y;
+      return settled;
+    })
+    .toBe(true);
+}
+
+/**
+ * Opens the topic page, scrolls to the exercises (the island hydrates when visible) and presses
+ * "Start practice", which scrolls the section to the top.
+ */
 export async function openPractice(page: Page, query = ''): Promise<void> {
   await page.goto(`${TOPIC_PATH}${query}`);
   await page.locator('#practice').scrollIntoViewIfNeeded();
+  const start = page.getByRole('button', { name: t('en', 'exercise.start') });
+  await expect(start).toBeEnabled();
+  await start.click();
   await expect(page.locator('[data-phase="question"]')).toBeVisible();
-  // The font swap moves the words a little; measure positions only after it.
+  // The font swap moves the words a little; measure positions only after it and the scroll.
   await page.evaluate(() => document.fonts.ready);
+  await scrollSettled(page);
 }
 
 export async function currentItemId(page: Page): Promise<string> {
@@ -97,6 +117,8 @@ export async function dragToLine(page: Page, word: string, nth = 0): Promise<voi
 
 /** Builds `order` (the full sentence, including a fixed first part) with the mouse. */
 export async function buildWithMouse(page: Page, item: WordOrderItem, order: string[]) {
+  // Positions are measured once per word: wait for "Next" or "Try again" to finish scrolling.
+  await scrollSettled(page);
   for (const word of item.fixed ? order.slice(1) : order) await dragToLine(page, word);
   await expect(answerLine(page).locator('.chip')).toHaveText(item.fixed ? order.slice(1) : order);
 }

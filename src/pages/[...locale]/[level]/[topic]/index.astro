@@ -77,24 +77,6 @@ const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
     <div class="topic-prose mt-4">
       <Content components={{ AustrianNote, De, Example, Examples, RuleTable }} />
     </div>
-    <section class="mt-6 border-t border-border pt-3" aria-labelledby="sources-title">
-      <h2 id="sources-title" class="text-base">
-        {t(locale, 'topic.sources')}
-      </h2>
-      <ul class="mt-1 space-y-0.5 text-sm text-muted">
-        {meta.data.sources.map((source) => (
-          <li lang="de">
-            {source.url ? (
-              <a href={source.url} class="underline underline-offset-2 hover:text-accent">
-                {source.title}
-              </a>
-            ) : (
-              source.title
-            )}
-          </li>
-        ))}
-      </ul>
-    </section>
   </article>
   <SponsorSlot />
   <section
@@ -121,5 +103,23 @@ const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
         allowSeed={PUBLIC_DEPLOY_ENV !== 'production'}
       />
     </div>
+  </section>
+  <section class="mt-6 border-t border-border pt-3" aria-labelledby="sources-title">
+    <h2 id="sources-title" class="text-base">
+      {t(locale, 'topic.sources')}
+    </h2>
+    <ul class="mt-1 space-y-0.5 text-sm text-muted">
+      {meta.data.sources.map((source) => (
+        <li lang="de">
+          {source.url ? (
+            <a href={source.url} class="underline underline-offset-2 hover:text-accent">
+              {source.title}
+            </a>
+          ) : (
+            source.title
+          )}
+        </li>
+      ))}
+    </ul>
   </section>
 </Base>

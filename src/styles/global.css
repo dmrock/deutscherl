@@ -133,6 +133,21 @@
   line-height: var(--text-german--line-height);
 }
 
+/*
+ * Practice section while a round runs (set by ExerciseRunner on "Start practice"): it fills the
+ * screen below the sticky header (3rem + 1rem scroll margin) and, below lg, above the bottom bar
+ * (3rem), so questions and feedback grow inside it and the page never moves (decision #74).
+ */
+[data-practice-active] {
+  min-height: calc(100dvh - 5rem);
+}
+
+@media (width < 64rem) {
+  [data-practice-active] {
+    min-height: calc(100dvh - 8rem);
+  }
+}
+
 /* Exercise feedback fades in instead of popping up (use with `motion-safe:`). */
 @keyframes appear {
   from {
