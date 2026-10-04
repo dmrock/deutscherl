@@ -8,12 +8,15 @@
   The server renders the "Start practice" button (disabled until hydrated); the round is picked
   when it is pressed, so the first paint never changes.
 
-  No jumps (the page must not move under the learner, decision #74): "Start" marks the practice
-  section active, which makes it fill the screen below the header (global.css), and scrolls it to
-  the top once. Questions and feedback then grow inside that space. On screens too small for a
-  question with its feedback, the box only grows (min-height = tallest content so far, reset when
-  its width changes) and the page scrolls smoothly only when the feedback or the next question is
-  out of view. Focus always moves without the browser's instant scroll.
+  No jumps (the page must not move under the learner, decisions #74, #77): "Start" marks the
+  practice area (the practice card plus the sources below it, `[data-practice-area]` on the topic
+  page) active and scrolls the card to the top once. The area is at least a screen tall
+  (global.css) and never shrinks while the page is open (`--practice-tallest` = tallest content so
+  far, reset when its width changes), so the page height stays the same when feedback opens or
+  closes: the card itself always fits its content, the sources move below it, and the spare room
+  is at the very end of the page. When a question with its feedback is taller than the screen,
+  the page scrolls smoothly only as far as needed. Focus always moves without the browser's
+  instant scroll.
 -->
 <script lang="ts">
   import { onMount, tick } from 'svelte';
@@ -65,8 +68,6 @@
   let resultEl = $state<HTMLElement>();
   let afterAnswerEl = $state<HTMLElement>();
   let rootEl = $state<HTMLElement>();
-  let contentEl = $state<HTMLElement>();
-  let minHeight = $state(0);
   let tooltipDismissed = $state(false);
 
   let rng: Rng;
@@ -98,17 +99,26 @@
     rng = createRng(requested ?? randomSeed());
     seen = createSeenStore(storageKey, () => window.sessionStorage);
     ready = true;
+    return () => observer?.disconnect();
+  });
 
+  let observer: ResizeObserver | undefined;
+
+  /** Keeps the practice area at least as tall as its tallest content so far (see the top comment). */
+  function reserveHeight(area: HTMLElement) {
+    const content = area.firstElementChild;
+    if (!content || observer) return;
     let width = -1;
-    const observer = new ResizeObserver(([entry]) => {
+    let tallest = 0;
+    observer = new ResizeObserver(([entry]) => {
       if (!entry) return;
       const size = entry.contentRect;
-      minHeight = size.width === width ? Math.max(minHeight, size.height) : size.height;
+      tallest = size.width === width ? Math.max(tallest, size.height) : size.height;
       width = size.width;
+      area.style.setProperty('--practice-tallest', `${Math.ceil(tallest)}px`);
     });
-    if (contentEl) observer.observe(contentEl);
-    return () => observer.disconnect();
-  });
+    observer.observe(content);
+  }
 
   function scrollBehavior(): ScrollBehavior {
     return matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
@@ -120,10 +130,14 @@
     target?.scrollIntoView({ block: 'nearest', behavior: scrollBehavior() });
   }
 
-  /** "Start practice": the section takes the whole screen and moves to the top, once. */
+  /** "Start practice": the practice area reserves a screen and the card moves to the top, once. */
   async function start() {
     const section = rootEl?.closest('section');
-    section?.setAttribute('data-practice-active', '');
+    const area = rootEl?.closest<HTMLElement>('[data-practice-area]');
+    if (area) {
+      area.setAttribute('data-practice-active', '');
+      reserveHeight(area);
+    }
     startRound();
     await tick();
     section?.scrollIntoView({ block: 'start', behavior: scrollBehavior() });
@@ -166,12 +180,8 @@
   }
 </script>
 
-<div
-  style:min-height={minHeight > 0 ? `${minHeight}px` : undefined}
-  data-phase={phase}
-  bind:this={rootEl}
->
-  <div bind:this={contentEl}>
+<div data-phase={phase} bind:this={rootEl}>
+  <div>
     {#if phase === 'intro'}
       <button
         type="button"
