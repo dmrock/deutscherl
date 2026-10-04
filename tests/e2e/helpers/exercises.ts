@@ -99,6 +99,8 @@ export async function dropFinished(page: Page): Promise<void> {
 
 /** Drags a bank word to the end of the answer line with the mouse (in steps, like a person). */
 export async function dragToLine(page: Page, word: string, nth = 0): Promise<void> {
+  // Positions are measured before moving: wait for "Next" or "Try again" to finish scrolling.
+  await scrollSettled(page);
   const chip = bank(page).getByLabel(word, { exact: true }).nth(nth);
   const from = await chip.boundingBox();
   const to = await answerLine(page).boundingBox();
@@ -117,8 +119,6 @@ export async function dragToLine(page: Page, word: string, nth = 0): Promise<voi
 
 /** Builds `order` (the full sentence, including a fixed first part) with the mouse. */
 export async function buildWithMouse(page: Page, item: WordOrderItem, order: string[]) {
-  // Positions are measured once per word: wait for "Next" or "Try again" to finish scrolling.
-  await scrollSettled(page);
   for (const word of item.fixed ? order.slice(1) : order) await dragToLine(page, word);
   await expect(answerLine(page).locator('.chip')).toHaveText(item.fixed ? order.slice(1) : order);
 }
