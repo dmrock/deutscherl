@@ -120,14 +120,16 @@ src/
     review.yaml              # review state: base + translations (tool-managed)
   content.config.ts          # per-file Zod schemas
   components/
-    exercises/               # Svelte islands
+    exercises/               # Svelte islands: ExerciseRunner, ChoiceExercise, WordOrderExercise,
+                             # MarkedText
     content/                 # InShort, RuleTable, Example(s), AustrianNote, De, StatusBadges,
                              # SponsorSlot, Word (stage 6)
     layout/                  # Header, LevelSwitcher, LanguagePicker, ThemeToggle, Sidebar,
                              # BottomBar, ThemeScript (inline JS)
   layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts), layout
   lib/                       # pure TS logic — unit-tested (navigation, content-schemas,
-                             # marked-text, review-badges); topics.ts and topic-content.ts read collections
+                             # marked-text, review-badges, exercises, exercise-strings);
+                             # topics.ts and topic-content.ts read collections
   pages/[...locale]/         # index, [level]/index, [level]/[topic]/index
 db/
   schema.ts                  # Drizzle schema
@@ -158,7 +160,7 @@ tests/
 
 ## Content model
 
-- `meta.yaml`: level (must match the folder), category, order, readingMinutes (not shown on the topic page, decision #61), sources (`{title, url?}`, at least one).
+- `meta.yaml`: level (must match the folder), category, order, readingMinutes (not shown on the topic page, decision #61), sources (`{title, url?}`, at least one; for review, not shown on the topic page, owner decision #78).
 - `german.yaml` (ids unique across the whole file):
   - `examples`: `{ id, de, region?: AT }`; in `de`, `**…**` marks the key words the page highlights (e.g. the Perfekt verb forms)
   - `choice`: `{ id, text (with ___), answer, options, alsoCorrect?: [{ value, region }] }`
@@ -176,7 +178,7 @@ tests/
 
 ### Exercise rules
 
-- Choice: 2–4 options, exactly one correct answer, except for regional variants listed in `alsoCorrect` (e.g. `bin` with `region: AT` for "Ich ___ gesessen"). A regional answer is accepted as correct and the `why` explains the regional difference. Avoid such items unless the topic is about that difference.
+- Choice: 2–4 options (prefer 4 when the topic allows: e.g. two forms of each of two words, owner decision #79), exactly one correct answer, except for regional variants listed in `alsoCorrect` (e.g. `bin` with `region: AT` for "Ich ___ gesessen"). A regional answer is accepted as correct and the `why` explains the regional difference. Avoid such items unless the topic is about that difference.
 - Word order:
   - `parts` is the canonical order. `accept` lists every other valid full order. `fixed` (first element locked) may be combined with `accept`; it does not guarantee a unique answer by itself.
   - Parts are stored in neutral case: a sentence-initial word is lowercase unless it is always capitalized (nouns, names, formal "Sie"). The UI shows parts exactly as stored, so capitalization gives no hint. After checking, the first word of the displayed sentence is capitalized.
@@ -220,9 +222,15 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 
 - Zero JavaScript by default. Islands hydrate with `client:visible`. Islands receive already-localized strings as props; do not ship other locales to the client.
 - Exercise types: multiple choice and word order by drag and drop. NO free-text input.
-- Word order UI: two zones built with `svelte-dnd-action`: the answer line and the word bank. Words are dragged from the bank into the line, reordered inside it, and back. Mouse: drag immediately. Touch: `delayTouchStart: 250` (a long press starts the drag, a swipe scrolls). Keyboard: the library's built-in support. A "Check" button becomes active when the bank is empty.
-- Exercise runner: rounds of 5 mixed items from the topic pool. Seen item IDs in `sessionStorage` under `seen:<level>/<slug>` (shared between locales); reset when the pool is exhausted. Shuffle options and word-bank order. "Try again" starts a new round with unseen items. All randomness goes through a seedable RNG so tests are deterministic. Storage access in try/catch with in-memory fallback.
-- After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link.
+- Word order UI: two zones built with `svelte-dnd-action`: the answer line and the word bank. Words are dragged from the bank into the line, reordered inside it, and back. Mouse: drag immediately. Touch: `delayTouchStart: 250` (a long press starts the drag, a swipe scrolls). Keyboard: the library's built-in support (Tab to a word, Space/Enter picks it up, arrows move it, Tab/Shift+Tab moves it to the other zone); its screen-reader messages are localized (`exercise.wordOrder.*`, `setAriaStrings`). Tap or click (and Enter on a focused word) moves a word without dragging: from the bank to the end of the line, from the line back to the bank (owner decision #76); only trusted clicks count (the library dispatches a synthetic click after a touch tap), the listener is attached per word (iOS may not deliver Svelte's delegated clicks on plain elements), the keyboard drag trigger is Space only, and after Enter the focus stays in the same zone (Check when the bank is empty). A "Check" button becomes active when the bank is empty. A `fixed` first part is a locked chip before the line, not draggable. The bank never starts in a valid order. After checking, wrong positions are marked against the closest valid order, and the feedback shows that order.
+- Exercise runner: rounds of 5 mixed items from the topic pool (3 choice + 2 word order, `ROUND_COUNTS`; a kind without unseen items is filled with the other). Seen item IDs in `sessionStorage` under `seen:<level>/<slug>` (shared between locales), stored when a round starts; when fewer unseen items are left than a round needs, those are kept and the seen list starts over. Shuffle options and word-bank order. "Try again" starts a new round with unseen items. All randomness goes through a seedable RNG (`createRng`); `?seed=<n>` fixes the seed only in non-production builds (`allowSeed`), so tests are deterministic. Storage access in try/catch with in-memory fallback. Logic lives in `src/lib/exercises.ts` (pure, shipped to the client: no UI strings or collections there).
+- The practice section starts with a "Start practice" button (server-rendered, disabled until the island hydrates; `exercise.needsJs` in `<noscript>`). The round is picked when it is pressed, so items count as seen only when someone practises. A choice item is answered with one click. Focus moves to the feedback after an answer, then to the progress dots of the next question (no visible "Question 3 of 5"; it is the dots' accessible name, `role="img"`, owner decision #81).
+- No layout jumps in exercises (owner request, decisions #72, #74, #77): the practice card has a wrapper (`[data-practice-area]` on the topic page). "Start practice" marks it active and scrolls the card to the top once; the wrapper is then at least a screen tall (below the sticky header, above the mobile bottom bar, `global.css`) and never shrinks while the page is open (`--practice-tallest`, set by the runner, reset when its width changes). The card always fits its content (no empty space inside it) and grows into the spare room below it at the end of the page, so the page height and scroll position stay the same (an e2e test checks scroll position and section top at desktop and phone width). Answering never changes the size of what is already on screen (fixed-width gap, ✓/✗ as corner badges on the option buttons). When a question with its feedback is taller than the screen, the page scrolls smoothly (`block: 'nearest'`) only as far as needed. Focus always moves with `preventScroll`; the feedback fades in (`motion-safe:animate-appear`).
+- Topic page order: article (explanation), sponsor slot, practice. No sources block on topic pages (owner decision #78).
+- Back to the explanation (owner decision #82): the article has `id="explanation"`; the practice card header shows "↑ Explanation" (`exercise.toExplanation`, `.practice-only`: hidden until a round starts) and the result screen shows "Back to the explanation" (`exercise.backToExplanation`) next to "Try again". Both are plain in-page links, so the round is kept.
+- The result screen shows the score and every answer of the round in order: the learner's German sentence, struck through with the correct sentence below when it was wrong, and the Austrian label for regional answers (owner request, decision #73).
+- Exercise UI strings are the `exercise.*` keys (plus `topic.austrianUsage`), resolved on the server by `src/lib/exercise-strings.ts` and passed as one `strings` prop, placeholders filled on the client with `format()`.
+- After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link: a quiet flag icon at the end of the feedback header with a tooltip on hover and keyboard focus (Escape hides it), the label also as screen-reader text (owner decision #71).
 - Examples: German with its translation always visible (no "Hide translation" toggle, owner decision #62). Audio is wanted, but not from the browser's Web Speech API, whose voices sounded bad (#61): it comes back as pre-generated Azure AI Speech files with an Austrian voice (stage 4b, decision #63, pending the owner's Azure account). No runtime TTS calls.
 - Typography and density (owner decision #61): body text 15px, German example text 16px, compact cards (`px-3 py-2`), the topic content uses the full width of the main column (no `max-w-prose`).
 - Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
@@ -230,13 +238,13 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `card`, `fg`, `muted`, `border`, `control`, `accent`, `accent-soft`, `accent-fg`, `focus`, `success(-soft)`, `danger(-soft)`, `header`) defined per `[data-theme]`, plus radii (`rounded-ui`, `rounded-card`, `rounded-chip`) and shadows (`shadow-card`, `shadow-pop`), exposed to Tailwind (`bg-bg`, `text-muted`, `border-control`, …). `control` is the border of interactive controls (≥ 3:1). Use only these; no raw colors (exception: the Austrian `.flag`), no `dark:` variants except for swapping icons. Dark text is deliberately not pure white on black (about 13:1 instead of 18:1) and text uses grayscale antialiasing, so it does not glow.
 - Layout (variant A): header with level switcher, search, language picker, theme toggle; left sidebar with topics grouped by category (category order in `site.ts`, labels `category.<id>`); main column with the topic. On mobile the sidebar becomes a sheet (the same element with the `popover` attribute, opened by a `popovertarget` button: no JS) and a bottom bar shows Prev / Practice / Next. Russian strings are often 20–30% longer than English: layouts must not break.
 - Static navigation (decision #47): no page transitions; `scrollbar-gutter: stable` on `<html>`, so pages with and without a scrollbar line up; the header is exactly 3rem (border included) and the sticky sidebar fills the rest of the viewport, so short pages do not scroll. An e2e test checks that the header and sidebar have the same boxes on every page type.
-- "Report a mistake": opens the GitHub issue form with page URL, locale and item id prefilled via query parameters. No email.
+- "Report a mistake": opens the GitHub issue form with page URL, locale and item id prefilled via query parameters (`reportMistakeUrl`; the page URL is canonical, the title `[Mistake] <path> <item id>`), in a new tab so the round is kept. No email.
 - Pages that are not ready for search engines get `noindex`: coming-soon pages, `ready: false` locales, preview deployments.
 - Performance budgets, enforced by `scripts/check-js-budget.ts` in CI (gzipped JS loaded by the page, excluding the analytics beacon and other external scripts; each file gzipped separately, imported chunks followed):
   - pages without islands: ≤ 3 KB (inline scripts only)
   - pages with islands (topic pages with exercises): ≤ 45 KB (Svelte + svelte-dnd-action ≈ 13.5 KB + our code)
   - Lighthouse ≥ 95 in all categories, checked before launch.
-- Accessibility: WCAG 2.2 AA, with one documented exception decided by the owner: success criterion 2.5.7 (Dragging Movements) for word-order exercises, which have drag and keyboard input but no single-tap alternative. Record it in `docs/decisions.md` and on the accessibility statement in `/about`.
+- Accessibility: WCAG 2.2 AA without exceptions. Word order meets 2.5.7 (Dragging Movements) through tap/click and Enter, which move a word without dragging (owner decision #76, superseding the exception #12).
 
 ## Dictionary
 
@@ -280,6 +288,7 @@ Functional tests run on the English site only: the code is the same for every lo
 - Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
 - CI: DCO, language check, content checks (`pnpm validate`, `pnpm i18n:coverage`, `pnpm review:check`), lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add the dictionary build and file count (build job).
 - The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere).
+- Exercise e2e tests steer a round through the seen ids in `sessionStorage` (`onlyUnseen` in `tests/e2e/helpers/exercises.ts`), so they run on production builds too; only the "Try again" seed test needs `?seed=` and is skipped on production builds. Drags move in steps and hold 250 ms before release (svelte-dnd-action checks the zone under the word every 200 ms); touch uses CDP `Input.dispatchTouchEvent` with the bank scrolled to the middle (the mobile bottom bar covers the bottom of the screen). `<noscript>` is checked in the served HTML (Playwright's disabled JavaScript still parses it as scripted).
 - Local e2e: `pnpm build && pnpm test:e2e` (the tests run against `dist/`). Playwright runs on the build output. Deploy jobs need every check (decision #30).
 - Playwright's web server runs `astro preview --ignore-lock`: Astro 7 moves `astro preview` to the background when it detects an AI agent, and `--ignore-lock` keeps it in the foreground.
 

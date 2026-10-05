@@ -37,6 +37,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "svelte": "^5.57.1",
+    "svelte-dnd-action": "0.9.79",
     "tailwindcss": "^4.3.3",
     "yaml": "^2.9.1"
   },

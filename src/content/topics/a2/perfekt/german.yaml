@@ -17,39 +17,39 @@ choice:
   - id: c1
     text: Ich ___ gestern ins Kino gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, ist, habe, hat]
   - id: c2
     text: Wir ___ am Abend Pizza gegessen.
     answer: haben
-    options: [sind, haben]
+    options: [haben, hat, sind, ist]
   - id: c3
     text: Anna ___ nach Salzburg gefahren.
     answer: ist
-    options: [ist, hat]
+    options: [ist, sind, hat, haben]
   - id: c4
     text: Was ___ ihr am Wochenende gemacht?
     answer: habt
-    options: [seid, habt]
+    options: [habt, haben, seid, sind]
   - id: c5
     text: Mein Bruder ___ letztes Jahr Vater geworden.
     answer: ist
-    options: [ist, hat]
+    options: [ist, sind, hat, haben]
   - id: c6
     text: Die Kinder ___ sehr lange geschlafen.
     answer: haben
-    options: [sind, haben]
+    options: [haben, hat, sind, ist]
   - id: c7
     text: Wann ___ du heute aufgestanden?
     answer: bist
-    options: [bist, hast]
+    options: [bist, ist, hast, hat]
   - id: c8
     text: Ich ___ dir eine Nachricht geschrieben.
     answer: habe
-    options: [bin, habe]
+    options: [habe, hat, bin, ist]
   - id: c9
     text: Wir ___ den ganzen Tag zu Hause geblieben.
     answer: sind
-    options: [sind, haben]
+    options: [sind, seid, haben, habt]
   - id: c10
     text: Wir ___ lange im Café gesessen.
     answer: haben

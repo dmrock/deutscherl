@@ -133,6 +133,44 @@
   line-height: var(--text-german--line-height);
 }
 
+/*
+ * Practice area (around the practice card) while a round runs, set by ExerciseRunner on "Start
+ * practice" (decisions #74, #77): at least the screen below the sticky header (3rem + 1rem scroll
+ * margin) and, below lg, above the bottom bar (3rem), and never less than its tallest content so
+ * far (--practice-tallest, set by the runner). The page height stays the same while answering;
+ * spare room ends up below the card, at the end of the page, not inside it.
+ */
+[data-practice-area] {
+  --practice-reserve: calc(100dvh - 5rem);
+}
+
+@media (width < 64rem) {
+  [data-practice-area] {
+    --practice-reserve: calc(100dvh - 8rem);
+  }
+}
+
+/* Shown only while a round runs (the "↑ Explanation" link in the practice card header). */
+[data-practice-area]:not([data-practice-active]) .practice-only {
+  display: none;
+}
+
+[data-practice-area][data-practice-active] {
+  min-height: max(var(--practice-reserve), var(--practice-tallest, 0px));
+}
+
+/* Exercise feedback fades in instead of popping up (use with `motion-safe:`). */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+}
+
+@utility animate-appear {
+  animation: appear 160ms ease-out;
+}
+
 /* Small label above a heading or block ("In short", category names). */
 @utility eyebrow {
   font-size: 0.75rem;
@@ -189,6 +227,54 @@
 
   .topic-prose strong {
     font-weight: 600;
+  }
+
+  /* Word chips of word-order exercises. Global, because the dragged copy lives outside the island. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    padding: 0.125rem 0.625rem;
+    border: 1px solid var(--color-control);
+    border-radius: var(--radius-chip);
+    background-color: var(--color-card);
+    box-shadow: var(--shadow-card);
+    font-family: var(--font-german);
+    font-size: var(--text-german);
+    line-height: 1.5;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  .chip-static {
+    cursor: default;
+    box-shadow: none;
+  }
+
+  /* The fixed first word: not draggable. */
+  .chip-locked {
+    border-style: dashed;
+    background-color: var(--color-surface);
+  }
+
+  .chip-right {
+    border-color: var(--color-success);
+    background-color: var(--color-success-soft);
+  }
+
+  .chip-wrong {
+    border-color: var(--color-danger);
+    background-color: var(--color-danger-soft);
+    text-decoration: underline wavy var(--color-danger);
+    text-underline-offset: 0.25em;
+  }
+
+  /* A zone the dragged word can be dropped into (svelte-dnd-action `dropTargetClasses`). */
+  .dnd-target {
+    outline: 2px dashed var(--color-accent);
+    outline-offset: 2px;
   }
 
   /* Rule tables (<RuleTable> around a markdown table). */

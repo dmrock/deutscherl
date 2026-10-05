@@ -34,7 +34,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 ## Design and UX
 
 - **#11** `svelte-dnd-action` for drag and drop: touch delay, keyboard and screen-reader support. Rejected: hand-rolled pointer events, SortableJS (no keyboard).
-- **#12** **owner** WCAG 2.5.7 exception for word order (drag and keyboard, no single-tap alternative), stated in the accessibility statement.
+- ~~**#12** **owner** WCAG 2.5.7 exception for word order~~ → #76.
 - **#13** Regional answers (`alsoCorrect` with `region`) accepted with an explanation, e.g. Austrian "bin gesessen".
 - **#14** Word order: parts in neutral case, `accept` lists all valid orders, compared as strings (no capitalization hints, duplicates work).
 - **#15** Minimal JS: theme and language picker are inline vanilla JS; JS budgets in CI (3 KB without islands, 45 KB with). Rejected: `<ClientRouter />`. (Page transitions → #47.)
@@ -49,6 +49,23 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#61** **owner** Simpler topic page: no browser-voice audio (sounded bad), no "min read", no "Read in English" link; body text 15px, German examples 16px, full-width content, less padding.
 - **#62** **owner** No "Hide translation" toggle: examples illustrate the rule, self-testing is the exercises' job.
 - **#63** **pending** (owner: Azure account) Audio from pre-generated Azure AI Speech files with the Austrian voices `de-AT-IngridNeural` / `de-AT-JonasNeural` (stage 4b). The paid S0 tier is required to publish the output (the free tier is not licensed for commercial use); about $16 per 1M characters, cents for the pilot; label it as a computer-generated voice. Rejected for now: human recordings (best, but slow; can replace files later), Wikimedia Commons (mostly single words, may suit the dictionary).
+- **#64** Rounds of 3 choice + 2 word-order items, a missing kind filled with the other; seen ids are stored when a round starts, and an exhausted pool keeps its last unseen items before starting over, so nothing is skipped.
+- **#65** The round is picked in the browser; the server renders a placeholder plus a `<noscript>` note. Rejected: a server-rendered first round (random on every visit, so hydration would replace it).
+- **#66** One click answers a choice item (no confirm button); focus moves to the feedback, then to the next question, so keyboard and screen-reader users follow the round.
+- **#67** Word order: a `fixed` part is a locked chip outside the drag zones; the bank is reshuffled when it starts in a valid order; wrong positions and the shown solution use the valid order closest to the answer, so a near-miss of an `accept` order is not judged against `parts`.
+- **#68** The report link opens in a new tab, so the round is not lost; the issue title carries the page path and item id for triage.
+- **#71** **owner** "Report a mistake" in the feedback is a small flag icon at the end of the header with a tooltip, not a text link: it should not compete with the explanation.
+- **#72** **owner** (request) No layout jumps when answering: fixed-width gap and corner badges, a box that only grows, focus without scroll plus smooth `nearest` scrolling, fade-in. Rejected: reserving the feedback's space up front (its height depends on the explanation).
+- **#73** **owner** The result screen lists every answer of the round (the learner's sentence, the correct one when wrong) instead of only coloured dots.
+- **#74** **owner** "Start practice" button: the practice section then fills the screen below the header and is scrolled to the top once, so answers grow inside reserved space and the page no longer moves (#72 alone still scrolled when feedback opened below the fold). The round is picked on Start, so the first paint never changes on hydration.
+- ~~**#75** **owner** Sources moved below the practice section~~ → #78.
+- **#76** **owner** Word order: a tap or click (Enter on the keyboard) moves a word to the end of the sentence or back to the bank; dragging stays for reordering. This is the single-pointer alternative, so WCAG 2.5.7 is met and the exception #12 is gone. Space alone starts the library's keyboard drag.
+- **#77** **owner** (request: no big empty gap) The screen-high reserve moved from the practice card to a wrapper around it: the card fits its content, the spare room is below it at the end of the page, and the wrapper never shrinks during a visit, so the page still does not move.
+- **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review; grammar references can be listed on `/about/sources/` (stage 6).
+- **#79** **owner** Choice items get 4 options: 2 forms of *haben* and 2 of *sein* (the right person plus another person), so guessing drops from 50% to 25% and the person form is practised too; the why texts name the right form. Distractors must be clearly wrong for the subject.
+- **#80** **owner** No intro sentence in the practice card: the heading, the Start button and "Question 1 of 5" say it already.
+- **#81** **owner** No visible "Question 3 of 5": the dots show progress. The text stays as the dots' accessible name (`role="img"`), and the dots are where focus goes after "Next".
+- **#82** **owner** Links back to the explanation: a quiet "↑ Explanation" in the practice card header while a round runs, and "Back to the explanation" next to "Try again". Plain in-page links to `#explanation`, so the round is kept. Rejected for now: linking each wrong answer to its rule section (needs a section tag per item).
 
 ## Content and review
 
@@ -74,6 +91,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#21** **owner** No screenshot tests: flaky and constant updates; functional tests and axe catch real breakage.
 - **#22** **owner** Functional tests on English pages only (same code everywhere); other locales get language-switching tests and the coverage check.
 - **#40** JS budget counts everything a page loads (inline, local scripts, imported chunks), gzipped per file; pages with an island get the 45 KB budget.
+- **#69** `?seed=` works only in non-production builds; exercise e2e tests steer rounds through the seen ids in `sessionStorage` instead, so they also run on production builds (only the seed test is skipped there).
 
 ## Tooling and dependencies
 
@@ -87,3 +105,4 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#41** Stage 2 added the Fontsource font packages and `@axe-core/playwright`.
 - **#58** Stage 3 bumped Biome to 2.5.15 and Wrangler to 4.147.0 and added `yaml` 2.9.1.
 - **#60** **owner** The lockfile is committed exactly as pnpm writes it (including the `@pnpm/exe` entry the standalone pnpm records); both pnpm builds accept it, so it is never edited by hand.
+- **#70** Stage 4 added `svelte-dnd-action` 0.9.79 (decision #11). Topic pages load 35.6 KB of gzipped JS (budget 45 KB): Svelte runtime 15.9 KB, exercise island with svelte-dnd-action 17.3 KB, island loader and inline scripts the rest.

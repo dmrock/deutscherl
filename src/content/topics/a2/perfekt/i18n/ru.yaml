@@ -10,23 +10,23 @@ examples:
 
 choice:
   c1:
-    why: '*gehen* — движение в другое место, поэтому перфект с *sein*: *ich bin gegangen*.'
+    why: '*gehen* — движение в другое место, поэтому перфект с *sein*: *ich bin gegangen*. С *ich* форма — *bin*.'
   c2:
-    why: 'У *essen* есть дополнение в винительном падеже (*Pizza*), и никто никуда не движется, поэтому перфект с *haben*: *wir haben gegessen*.'
+    why: 'У *essen* есть дополнение в винительном падеже (*Pizza*), и никто никуда не движется, поэтому перфект с *haben*: *wir haben gegessen*. С *wir* форма — *haben*.'
   c3:
-    why: 'Анна перемещается в другое место (*nach Salzburg*), поэтому перфект с *sein*: *sie ist gefahren*.'
+    why: 'Анна перемещается в другое место (*nach Salzburg*), поэтому перфект с *sein*: *sie ist gefahren*. *Anna* — это *sie* (один человек), поэтому форма — *ist*.'
   c4:
     why: 'У *machen* есть дополнение в винительном падеже (*was*), поэтому перфект с *haben*. С *ihr* форма — *habt*.'
   c5:
-    why: '*werden* — изменение состояния (раньше он не был отцом), поэтому перфект с *sein*: *er ist geworden*.'
+    why: '*werden* — изменение состояния (раньше он не был отцом), поэтому перфект с *sein*: *er ist geworden*. *Mein Bruder* — это *er*, поэтому форма — *ist*.'
   c6:
-    why: 'Сон — это не движение и не изменение состояния, поэтому перфект с *haben*: *sie haben geschlafen*.'
+    why: 'Сон — это не движение и не изменение состояния, поэтому перфект с *haben*: *sie haben geschlafen*. *Die Kinder* — множественное число (*sie*), поэтому форма — *haben*.'
   c7:
     why: '*aufstehen* — изменение состояния (лежал, а теперь стоит), поэтому перфект с *sein*. С *du* форма — *bist*.'
   c8:
-    why: 'У *schreiben* есть дополнение в винительном падеже (*eine Nachricht*), поэтому перфект с *haben*: *ich habe geschrieben*.'
+    why: 'У *schreiben* есть дополнение в винительном падеже (*eine Nachricht*), поэтому перфект с *haben*: *ich habe geschrieben*. С *ich* форма — *habe*.'
   c9:
-    why: '*bleiben* всегда образует перфект с *sein*, хотя ничего не движется: *wir sind geblieben*.'
+    why: '*bleiben* всегда образует перфект с *sein*, хотя ничего не движется: *wir sind geblieben*. С *wir* форма — *sind*, а *seid* — это форма для *ihr*.'
   c10:
     why: 'В Германии *sitzen* образует перфект с *haben*: *wir haben gesessen*. В Австрии обычно говорят *wir sind gesessen* — это тоже правильно. С *wir* формы *hat* и *ist* неверны.'
 

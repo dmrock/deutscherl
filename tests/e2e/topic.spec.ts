@@ -26,9 +26,7 @@ test('the Austrian note shows its German sentence and translation', async ({ pag
   await expect(note.locator('p:not([lang])').last()).toHaveText('I sat in the office all day.');
 });
 
-test('rule table and sources are rendered', async ({ page }) => {
+test('the rule table is rendered', async ({ page }) => {
   await page.goto(PATH);
   await expect(page.locator('.rule-table table')).toBeVisible();
-  const sources = page.getByRole('region', { name: t('en', 'topic.sources') });
-  await expect(sources.getByRole('link').first()).toHaveAttribute('href', /^https:\/\//);
 });

@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, getEntry, render } from 'astro:content';
+import { PUBLIC_DEPLOY_ENV } from 'astro:env/client';
 import type { GetStaticPaths } from 'astro';
 import AustrianNote from '../../../../components/content/AustrianNote.astro';
 import De from '../../../../components/content/De.astro';
@@ -9,10 +10,13 @@ import InShort from '../../../../components/content/InShort.astro';
 import RuleTable from '../../../../components/content/RuleTable.astro';
 import SponsorSlot from '../../../../components/content/SponsorSlot.astro';
 import StatusBadges from '../../../../components/content/StatusBadges.astro';
-import { type LevelId, levels } from '../../../../config/site.ts';
+import ExerciseRunner from '../../../../components/exercises/ExerciseRunner.svelte';
+import { type LevelId, levels, site } from '../../../../config/site.ts';
 import { defaultLocale, isLocaleCode, type LocaleCode } from '../../../../i18n/locales.ts';
-import { t } from '../../../../i18n/utils.ts';
+import { localizePath, t } from '../../../../i18n/utils.ts';
 import Base from '../../../../layouts/Base.astro';
+import { exerciseStrings } from '../../../../lib/exercise-strings.ts';
+import { resolveExercises, seenKey } from '../../../../lib/exercises.ts';
 import { stripMarks } from '../../../../lib/marked-text.ts';
 import { getTopicContent } from '../../../../lib/topic-content.ts';
 
@@ -49,7 +53,8 @@ interface Props {
 
 const { locale, level, slug, page, meta } = Astro.props;
 const { Content } = await render(page);
-const { review } = await getTopicContent(level, slug, locale);
+const { german, i18n, review } = await getTopicContent(level, slug, locale);
+const pageUrl = new URL(localizePath(Astro.url.pathname, locale), site.url).href;
 const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
 ---
 
@@ -60,7 +65,8 @@ const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
   level={level}
   topic={slug}
 >
-  <article>
+  <!-- Target of the "back to the explanation" links in the practice card (decision #82). -->
+  <article id="explanation" class="scroll-mt-16">
     <p class="eyebrow text-muted">
       {levelLabel} · {t(locale, `category.${meta.data.category}`)}
     </p>
@@ -72,34 +78,45 @@ const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
     <div class="topic-prose mt-4">
       <Content components={{ AustrianNote, De, Example, Examples, RuleTable }} />
     </div>
-    <section class="mt-6 border-t border-border pt-3" aria-labelledby="sources-title">
-      <h2 id="sources-title" class="text-base">
-        {t(locale, 'topic.sources')}
-      </h2>
-      <ul class="mt-1 space-y-0.5 text-sm text-muted">
-        {meta.data.sources.map((source) => (
-          <li lang="de">
-            {source.url ? (
-              <a href={source.url} class="underline underline-offset-2 hover:text-accent">
-                {source.title}
-              </a>
-            ) : (
-              source.title
-            )}
-          </li>
-        ))}
-      </ul>
-    </section>
   </article>
   <SponsorSlot />
-  <section
-    id="practice"
-    class="mt-6 scroll-mt-16 rounded-card border border-border bg-card px-3 py-2.5 shadow-card"
-    aria-labelledby="practice-title"
-  >
-    <h2 id="practice-title" class="text-xl">
-      {t(locale, 'nav.practice')}
-    </h2>
-    <p class="mt-1 text-muted">{t(locale, 'topic.practiceSoon')}</p>
-  </section>
+  <!-- Practice: reserves the screen while a round runs (ExerciseRunner, global.css). Sources stay in meta.yaml for review, not shown (decision #78). -->
+  <div data-practice-area>
+    <div>
+      <section
+        id="practice"
+        class="mt-6 scroll-mt-16 rounded-card border border-border bg-card px-3 py-2.5 shadow-card"
+        aria-labelledby="practice-title"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 id="practice-title" class="text-xl">
+            {t(locale, 'nav.practice')}
+          </h2>
+          <!-- Only while a round runs: before "Start" the explanation is right above. -->
+          <a
+            href="#explanation"
+            class="practice-only inline-flex items-center gap-1 text-sm text-muted hover:text-accent"
+          >
+            <span aria-hidden="true">↑</span>
+            {t(locale, 'exercise.toExplanation')}
+          </a>
+        </div>
+        <noscript>
+          <p class="mt-2">{t(locale, 'exercise.needsJs')}</p>
+        </noscript>
+        <div class="mt-3">
+          <ExerciseRunner
+            client:visible
+            items={resolveExercises(german, i18n)}
+            strings={exerciseStrings(locale)}
+            storageKey={seenKey(level, slug)}
+            locale={locale}
+            pageUrl={pageUrl}
+            repo={site.repo}
+            allowSeed={PUBLIC_DEPLOY_ENV !== 'production'}
+          />
+        </div>
+      </section>
+    </div>
+  </div>
 </Base>
