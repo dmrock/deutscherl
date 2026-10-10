@@ -85,6 +85,12 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 
 - **#9** Dictionary source of truth = text files in git (`words.jsonl` + overrides); SQLite is generated at build: binary files cannot be reviewed in PRs.
 - **#10** Word ids = lemma + article or part of speech, umlauts kept: transliteration would create collisions.
+- **#85** Each import edition replaces only its own data (`en`: entries from the seed list; `ru`: Russian glosses and example translations) and writes sorted entries with a fixed key order: re-runs are idempotent and diffs stay readable. Rejected: one file per edition (the language check allows only `words.jsonl`).
+- **#86** Plural-only nouns get gender `pl` (article `die`, id `eltern-die`): `Eltern`, `Leute`, `Ferien` have no singular gender.
+- **#87** Homonyms with one identity (`Bank`: bench / bank) are merged: plural and first glosses from Wiktionary's first record, the rest reported for an override. Rejected: taking glosses in turns from every record (brought in noise such as `schicken` "to chew tobacco").
+- **#88** Austrian variants only from the main sense or the whole word, tagged `Austria` or confirmed by the synonym's own Austrian sense with the same meaning; colloquial, dated and regional-only ones are left out (CLAUDE.md, "Content rules"). Rejected: any synonym with some Austrian sense (gave `heiß` → `geil`, `Geld` → `Knödel`).
+- **#89** Russian edition: usage labels are detected by shape (leading abbreviations ending in a dot), so the script holds no Russian text; a single `pos: unknown` record is used for non-nouns and reported (Wiktextract leaves `aber`, `um`, `schwimmen` unclassified).
+- **#90** Raw kaikki.org downloads (`raw-wiktextract-data.jsonl.gz`, `ru-extract.jsonl.gz`), read compressed: the per-language files are marked deprecated. The English import streams 24 GB in about 3.5 minutes (two passes; the second checks synonyms).
 
 ## Testing
 
@@ -106,3 +112,5 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#58** Stage 3 bumped Biome to 2.5.15 and Wrangler to 4.147.0 and added `yaml` 2.9.1.
 - **#60** **owner** The lockfile is committed exactly as pnpm writes it (including the `@pnpm/exe` entry the standalone pnpm records); both pnpm builds accept it, so it is never edited by hand.
 - **#70** Stage 4 added `svelte-dnd-action` 0.9.79 (decision #11). Topic pages load 35.6 KB of gzipped JS (budget 45 KB): Svelte runtime 15.9 KB, exercise island with svelte-dnd-action 17.3 KB, island loader and inline scripts the rest.
+- **#83** Dictionary driver `@libsql/client` 0.18 (20 KB gz plus a 4 MB gz prebuilt binary per platform, no install script, so `allowBuilds` stays closed; Drizzle Studio supports it) with `drizzle-orm` 0.45.3 (1.2 MB gz), build time only. Rejected: `node:sqlite` (only in the Drizzle 1.0 RC, not in stable Drizzle or Studio), better-sqlite3 (needs a native install script).
+- **#84** Tables are created from `db/schema.ts` with `drizzle-kit/api` on every build (`drizzle-kit` 0.31.11, dev only, 1.6 MB gz): the database is rebuilt from scratch each time, so committed migrations would only be noise.
