@@ -29,7 +29,7 @@ No Claude Code needed.
 - Set up rules for `main` after stage 1, once CI checks exist: block direct pushes, require a PR, require the checks, **0 required approvals** (otherwise you cannot merge your own PRs).
 - If spam ever becomes a problem: Settings → Moderation options → Interaction limits.
 
-**Dictionary data** (needed in stage 5): download from kaikki.org the German JSONL of the English Wiktionary edition and the German entries of the Russian Wiktionary edition into the project's `.data/` folder. The files are large and stay out of git.
+**Dictionary data** (needed in stage 5): download from kaikki.org the raw Wiktextract data of the English edition (`https://kaikki.org/dictionary/raw-wiktextract-data.jsonl.gz`, about 3 GB) and of the Russian edition (`https://kaikki.org/dictionary/downloads/ru/ru-extract.jsonl.gz`, about 300 MB) into the project's `.data/` folder and keep them compressed (see `db/README.md`). The files stay out of git.
 
 ---
 
