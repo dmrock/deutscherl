@@ -22,8 +22,6 @@ describe('check-language', () => {
       'src/i18n/ui/ru.ts',
       'src/content/topics/a2/perfekt/ru.mdx',
       'src/content/topics/a2/perfekt/i18n/ru.yaml',
-      'db/data/words.jsonl',
-      'db/overrides/nouns.yaml',
       'tests/fixtures/i18n/ru/paragraph.md',
     ];
     for (const path of paths) {

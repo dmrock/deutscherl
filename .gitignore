@@ -5,10 +5,6 @@ node_modules/
 dist/
 .astro/
 
-# raw downloads (kaikki.org) and generated files
-.data/
-.cache/
-
 # Cloudflare
 .wrangler/
 

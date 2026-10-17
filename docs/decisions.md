@@ -48,7 +48,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - ~~**#57** Hide-translation toggle and Web Speech audio~~ → #61, #62.
 - **#61** **owner** Simpler topic page: no browser-voice audio (sounded bad), no "min read", no "Read in English" link; body text 15px, German examples 16px, full-width content, less padding.
 - **#62** **owner** No "Hide translation" toggle: examples illustrate the rule, self-testing is the exercises' job.
-- **#63** **pending** (owner: Azure account) Audio from pre-generated Azure AI Speech files with the Austrian voices `de-AT-IngridNeural` / `de-AT-JonasNeural` (stage 4b). The paid S0 tier is required to publish the output (the free tier is not licensed for commercial use); about $16 per 1M characters, cents for the pilot; label it as a computer-generated voice. Rejected for now: human recordings (best, but slow; can replace files later), Wikimedia Commons (mostly single words, may suit the dictionary).
+- **#63** **pending** (owner: Azure account) Audio from pre-generated Azure AI Speech files with the Austrian voices `de-AT-IngridNeural` / `de-AT-JonasNeural` (stage 4b). The paid S0 tier is required to publish the output (the free tier is not licensed for commercial use); about $16 per 1M characters, cents for the pilot; label it as a computer-generated voice. Rejected for now: human recordings (best, but slow; can replace files later), Wikimedia Commons (mostly single words).
 - **#64** Rounds of 3 choice + 2 word-order items, a missing kind filled with the other; seen ids are stored when a round starts, and an exhausted pool keeps its last unseen items before starting over, so nothing is skipped.
 - **#65** The round is picked in the browser; the server renders a placeholder plus a `<noscript>` note. Rejected: a server-rendered first round (random on every visit, so hydration would replace it).
 - **#66** One click answers a choice item (no confirm button); focus moves to the feedback, then to the next question, so keyboard and screen-reader users follow the round.
@@ -61,7 +61,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - ~~**#75** **owner** Sources moved below the practice section~~ → #78.
 - **#76** **owner** Word order: a tap or click (Enter on the keyboard) moves a word to the end of the sentence or back to the bank; dragging stays for reordering. This is the single-pointer alternative, so WCAG 2.5.7 is met and the exception #12 is gone. Space alone starts the library's keyboard drag.
 - **#77** **owner** (request: no big empty gap) The screen-high reserve moved from the practice card to a wrapper around it: the card fits its content, the spare room is below it at the end of the page, and the wrapper never shrinks during a visit, so the page still does not move.
-- **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review; grammar references can be listed on `/about/sources/` (stage 6).
+- **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review; grammar references are listed on `/about/sources/` (stage 7).
 - **#79** **owner** Choice items get 4 options: 2 forms of *haben* and 2 of *sein* (the right person plus another person), so guessing drops from 50% to 25% and the person form is practised too; the why texts name the right form. Distractors must be clearly wrong for the subject.
 - **#80** **owner** No intro sentence in the practice card: the heading, the Start button and "Question 1 of 5" say it already.
 - **#81** **owner** No visible "Question 3 of 5": the dots show progress. The text stays as the dots' accessible name (`role="img"`), and the dots are where focus goes after "Next".
@@ -73,7 +73,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#20** **owner** Split review: a teacher verifies German + English (`base`), a fluent speaker reviews each translation against English; scopes are hashed and reset automatically. Rejected: one teacher badge on translated pages (misleading), English-only launch.
 - **#39** A minimal content collection already in stage 2, so navigation used real topic data.
 - **#48** Content schemas shared by Astro and the scripts (`src/lib/content-schemas.ts`); `yaml` parses YAML in scripts (build only, never shipped).
-- **#49** Validation rules in `validate-content.ts` (list in CLAUDE.md), run before every build. Neutral case is checked with a list of closed-class words, because nouns cannot be detected without the dictionary.
+- **#49** Validation rules in `validate-content.ts` (list in CLAUDE.md), run before every build. Neutral case is checked with a list of closed-class words, because nouns cannot be detected without a dictionary.
 - **#50** Translation keys are optional in the schema and required by `i18n-coverage` for ready locales, so a new locale can be translated step by step.
 - **#51** Review hashes over normalized content (YAML as sorted JSON, MDX with normalized whitespace): formatting and comments do not reset a review.
 - **#52** Review sync: draft → draft adds no history; an outdated translation keeps its old `basedOn` (stays listed as outdated); `review:minor base` moves `basedOn` along; the hook hashes the working tree, CI checks the commit.
@@ -83,14 +83,9 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 
 ## Dictionary
 
-- **#9** Dictionary source of truth = text files in git (`words.jsonl` + overrides); SQLite is generated at build: binary files cannot be reviewed in PRs.
-- **#10** Word ids = lemma + article or part of speech, umlauts kept: transliteration would create collisions.
-- **#85** Each import edition replaces only its own data (`en`: entries from the seed list; `ru`: Russian glosses and example translations) and writes sorted entries with a fixed key order: re-runs are idempotent and diffs stay readable. Rejected: one file per edition (the language check allows only `words.jsonl`).
-- **#86** Plural-only nouns get gender `pl` (article `die`, id `eltern-die`): `Eltern`, `Leute`, `Ferien` have no singular gender.
-- **#87** Homonyms with one identity (`Bank`: bench / bank) are merged: plural and first glosses from Wiktionary's first record, the rest reported for an override. Rejected: taking glosses in turns from every record (brought in noise such as `schicken` "to chew tobacco").
-- **#88** Austrian variants only from the main sense or the whole word, tagged `Austria` or confirmed by the synonym's own Austrian sense with the same meaning; colloquial, dated and regional-only ones are left out (CLAUDE.md, "Content rules"). Rejected: any synonym with some Austrian sense (gave `heiß` → `geil`, `Geld` → `Knödel`).
-- **#89** Russian edition: usage labels are detected by shape (leading abbreviations ending in a dot), so the script holds no Russian text; a single `pos: unknown` record is used for non-nouns and reported (Wiktextract leaves `aber`, `um`, `schwimmen` unclassified).
-- **#90** Raw kaikki.org downloads (`raw-wiktextract-data.jsonl.gz`, `ru-extract.jsonl.gz`), read compressed: the per-language files are marked deprecated. The English import streams 24 GB in about 3.5 minutes (two passes; the second checks synonyms).
+- ~~**#9** Dictionary in text files, SQLite generated at build~~ → #83.
+- ~~**#10** Word ids from lemma + article or part of speech~~ → #83.
+- **#83** **owner** No dictionary: no Wiktionary import, no vocabulary database, no dictionary pages, no `<Word>` component. It would copy what Wiktionary, DWDS and Leo do better, add hundreds of entries nobody can verify, and does not serve the goal (grammar in the learner's language with exercises). Austrian vocabulary stays in the topics. The import pipeline was built in PR #7 and dropped before merging. Rejected: the full dictionary (stages 5–6), a smaller curated word list later.
 
 ## Testing
 
@@ -112,5 +107,3 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#58** Stage 3 bumped Biome to 2.5.15 and Wrangler to 4.147.0 and added `yaml` 2.9.1.
 - **#60** **owner** The lockfile is committed exactly as pnpm writes it (including the `@pnpm/exe` entry the standalone pnpm records); both pnpm builds accept it, so it is never edited by hand.
 - **#70** Stage 4 added `svelte-dnd-action` 0.9.79 (decision #11). Topic pages load 35.6 KB of gzipped JS (budget 45 KB): Svelte runtime 15.9 KB, exercise island with svelte-dnd-action 17.3 KB, island loader and inline scripts the rest.
-- **#83** Dictionary driver `@libsql/client` 0.18 (20 KB gz plus a 4 MB gz prebuilt binary per platform, no install script, so `allowBuilds` stays closed; Drizzle Studio supports it) with `drizzle-orm` 0.45.3 (1.2 MB gz), build time only. Rejected: `node:sqlite` (only in the Drizzle 1.0 RC, not in stable Drizzle or Studio), better-sqlite3 (needs a native install script).
-- **#84** Tables are created from `db/schema.ts` with `drizzle-kit/api` on every build (`drizzle-kit` 0.31.11, dev only, 1.6 MB gz): the database is rebuilt from scratch each time, so committed migrations would only be noise.

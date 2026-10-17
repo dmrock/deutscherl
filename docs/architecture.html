@@ -166,7 +166,6 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
     <li><a href="#content">Content model</a></li>
     <li><a href="#i18n">Native language and fonts</a></li>
     <li><a href="#review">Content review</a></li>
-    <li><a href="#dictionary">Dictionary</a></li>
     <li><a href="#page">Life of a page</a></li>
     <li><a href="#exercises">Exercises</a></li>
     <li><a href="#routes">Routes</a></li>
@@ -180,26 +179,26 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 <main>
 <div class="prose">
 <h1>Deutscherl architecture</h1>
-<p class="lead">A website for learning German grammar with an Austrian angle. Explanations in the learner's native language: English and Russian in the pilot. Levels A1 and A2 with five topics each, a dictionary, multiple-choice and word-order exercises. No accounts, no server code, no cookies.</p>
+<p class="lead">A website for learning German grammar with an Austrian angle. Explanations in the learner's native language: English and Russian in the pilot. Levels A1 and A2 with five topics each, multiple-choice and word-order exercises. No accounts, no server code, no cookies.</p>
 <div class="note info">The source of truth is <code>CLAUDE.md</code> in the repository; the decision history is in <code>docs/decisions.md</code>. This page is an illustrated snapshot from the planning phase.</div>
 </div>
 
 <section id="idea">
 <div class="prose">
 <h2>Core idea: everything is built ahead of time</h2>
-<p>The whole site is turned into static files at build time: content validation, dictionary queries, rendering pages in every language and the search index. Visitors get finished HTML from the CDN. Regular pages carry only a couple of tiny inline scripts; exercises load when the visitor scrolls to them.</p>
+<p>The whole site is turned into static files at build time: content validation, rendering pages in every language and the search index. Visitors get finished HTML from the CDN. Regular pages carry only a couple of tiny inline scripts; exercises load when the visitor scrolls to them.</p>
 </div>
 <figure class="fig">
 <svg class="hero-svg" viewBox="0 0 1040 390" role="img" aria-labelledby="heroT heroD">
 <title id="heroT">Flow from sources to the browser</title>
-<desc id="heroD">Content, dictionary and components are built in GitHub Actions into static files that Cloudflare serves to the browser. There is no server code.</desc>
+<desc id="heroD">Content, translations and components are built in GitHub Actions into static files that Cloudflare serves to the browser. There is no server code.</desc>
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" style="color:var(--ink-2)"/></marker></defs>
 <text x="20" y="28" class="zone blue">Build: GitHub Actions</text>
 <text x="700" y="28" class="zone red">Runtime: CDN and browser</text>
 <rect x="20" y="58" width="190" height="66" rx="10" class="box"/>
 <text x="36" y="86" class="ttl">Content</text><text x="36" y="108" class="t2">MDX + YAML</text>
 <rect x="20" y="148" width="190" height="66" rx="10" class="box"/>
-<text x="36" y="176" class="ttl">Dictionary</text><text x="36" y="198" class="t2">JSONL + overrides</text>
+<text x="36" y="176" class="ttl">Translations</text><text x="36" y="198" class="t2">UI strings, i18n YAML</text>
 <rect x="20" y="238" width="190" height="66" rx="10" class="box"/>
 <text x="36" y="266" class="ttl">Components</text><text x="36" y="288" class="t2">Astro + Svelte</text>
 <path d="M210,91 L256,120" class="arrow" marker-end="url(#ah)"/>
@@ -209,7 +208,7 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 <text x="280" y="82" class="ttl blue">checks and build</text>
 <text x="280" y="116" class="t2">schemas, cross-file links</text>
 <text x="280" y="144" class="t2">review status</text>
-<text x="280" y="172" class="t2">SQLite from JSONL</text>
+<text x="280" y="172" class="t2">translation coverage</text>
 <text x="280" y="200" class="t2">HTML in every language</text>
 <text x="280" y="228" class="t2">Pagefind indexes</text>
 <text x="280" y="268" class="t3">any error means</text>
@@ -251,11 +250,11 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 <p>Each layer only knows about the one below it, so layers can change independently.</p>
 </div>
 <div class="layers">
-  <div class="layer l4"><div><b>Interaction</b><span>Svelte islands and inline JS</span></div><p>Svelte only where real interactivity is needed: exercises and the dictionary filter. Theme and language picker are a few lines of plain inline JavaScript. Search loads when opened.</p></div>
-  <div class="layer l3"><div><b>Presentation</b><span>Astro components</span></div><p>Layout variant A and MDX components: <code>&lt;InShort&gt;</code>, <code>&lt;RuleTable&gt;</code>, <code>&lt;Example id&gt;</code>, <code>&lt;AustrianNote id&gt;</code>, <code>&lt;Word id&gt;</code>, <code>&lt;SponsorSlot&gt;</code>. Page transitions use native CSS View Transitions.</p></div>
+  <div class="layer l4"><div><b>Interaction</b><span>Svelte islands and inline JS</span></div><p>Svelte only where real interactivity is needed: the exercises. Theme and language picker are a few lines of plain inline JavaScript. Search loads when opened.</p></div>
+  <div class="layer l3"><div><b>Presentation</b><span>Astro components</span></div><p>Layout variant A and MDX components: <code>&lt;InShort&gt;</code>, <code>&lt;RuleTable&gt;</code>, <code>&lt;Example id&gt;</code>, <code>&lt;AustrianNote id&gt;</code>, <code>&lt;SponsorSlot&gt;</code>. No page transitions: header and sidebar stay in place.</p></div>
   <div class="layer l2"><div><b>Logic</b><span>src/lib, plain TypeScript</span></div><p>Item selection with seeded randomness, answer checking with regional variants and alternative word orders, hashes for content review. No DOM, fully unit-tested.</p></div>
-  <div class="layer l1"><div><b>Data</b><span>text files in git</span></div><p>Topics (MDX and YAML), per-language translations, review state, the dictionary as JSONL with manual override files. SQLite is generated from them at build time.</p></div>
-  <div class="layer l5"><div><b>Quality</b><span>cross-cutting</span></div><p>Language check, Biome, <code>astro check</code>, content and review checks, translation coverage, Vitest, Playwright with axe and snapshots, JS budget. Deployment only after every check passes.</p></div>
+  <div class="layer l1"><div><b>Data</b><span>text files in git</span></div><p>Topics (MDX and YAML), per-language translations and review state. No database: the site has no dictionary (decision #83).</p></div>
+  <div class="layer l5"><div><b>Quality</b><span>cross-cutting</span></div><p>Language check, Biome, <code>astro check</code>, content and review checks, translation coverage, Vitest, Playwright with axe (no screenshot tests), JS budget. Deployment only after every check passes.</p></div>
 </div>
 </section>
 
@@ -287,15 +286,8 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 │   ├── components/               <span class="c">layout, content, exercises</span>
 │   ├── lib/                      <span class="c">pure logic</span>
 │   └── pages/
-├── db/
-│   ├── schema.ts                 <span class="c">Drizzle schema</span>
-│   ├── data/words.jsonl          <span class="c">import output</span>
-│   ├── <span class="k">overrides/*.yaml</span>          <span class="c">manual edits, never touched by import</span>
-│   └── seed/lemmas-a1-a2.txt     <span class="c">lemmas and levels</span>
-├── scripts/                      <span class="c">import, dictionary build, checks, review</span>
-├── tests/unit, tests/e2e, tests/fixtures
-├── .data/                        <span class="c">raw kaikki.org files, not in git</span>
-└── .cache/dictionary.sqlite      <span class="c">generated, not in git</span></pre>
+├── scripts/                      <span class="c">checks, review, JS budget</span>
+└── tests/unit, tests/e2e, tests/fixtures</pre>
 </section>
 
 <section id="content">
@@ -354,14 +346,12 @@ flowchart LR
     MDX["en.mdx, ru.mdx&lt;br/&gt;explanation"]
     TR["i18n/en.yaml, ru.yaml&lt;br/&gt;translations and why"]
     UI["ui/en.ts, ui/ru.ts&lt;br/&gt;interface"]
-    GL["dictionary&lt;br/&gt;glosses"]
   end
   DE --> B["build"]
   META --> B
   MDX --> B
   TR --> B
   UI --> B
-  GL --> B
   B --> EN["/a2/perfekt/"]
   B --> RU["/ru/a2/perfekt/"]
 </pre>
@@ -426,89 +416,6 @@ flowchart TD
 <li><b>Typo without reset.</b> <code>pnpm review:minor a2/perfekt ru --reason "typo in why c3"</code> updates the hash, keeps the status and adds a history entry. Only the owner runs it.</li>
 <li><b>Overview.</b> <code>pnpm review:status</code> lists every topic with base status, translation status per language and outdated translations.</li>
 </ul>
-</div>
-</section>
-
-<section id="dictionary">
-<div class="prose">
-<h2>Dictionary</h2>
-<p>Text files are the source of truth. SQLite exists only for convenient queries at build time and is regenerated every time. A binary file in git can neither be merged nor reviewed in a PR.</p>
-</div>
-<figure class="fig">
-<pre class="mermaid">
-flowchart LR
-  KE[".data/ kaikki.org&lt;br/&gt;en edition"] --> I["import-wiktionary.ts"]
-  KR[".data/ kaikki.org&lt;br/&gt;ru edition"] --> I
-  S["seed/lemmas-a1-a2.txt"] --> I
-  I --> J["data/words.jsonl&lt;br/&gt;in git"]
-  O["overrides/*.yaml&lt;br/&gt;manual edits, in git"] --> BD["build-dictionary.ts"]
-  J --> BD
-  BD --> DB[(".cache/dictionary.sqlite&lt;br/&gt;not in git")]
-  DB --> B["astro build"]
-  DB -.-> ST["Drizzle Studio&lt;br/&gt;browse only"]
-</pre>
-<figcaption>Re-running the import fully rewrites <code>words.jsonl</code> but never touches <code>overrides</code>. At build time manual edits always win.</figcaption>
-</figure>
-<figure class="fig">
-<pre class="mermaid">
-erDiagram
-  WORDS ||--o{ SENSES : has
-  WORDS ||--o{ EXAMPLES : has
-  EXAMPLES ||--o{ EXAMPLE_TRANSLATIONS : "translated as"
-  WORDS ||--o{ REGIONAL_VARIANTS : has
-  WORDS ||--o{ TOPIC_WORDS : "used in"
-  WORDS {
-    string id PK "see-die"
-    string lemma
-    string pos
-    string gender
-    string plural
-    string level
-    string status
-    string source
-    string license
-  }
-  SENSES {
-    string wordId FK
-    string lang
-    string gloss
-    int position
-  }
-  EXAMPLES {
-    string id PK
-    string wordId FK
-    string de
-  }
-  EXAMPLE_TRANSLATIONS {
-    string exampleId FK
-    string lang
-    string text
-  }
-  REGIONAL_VARIANTS {
-    string wordId FK
-    string region
-    string variant
-    string note
-  }
-  TOPIC_WORDS {
-    string topicSlug
-    string wordId FK
-  }
-</pre>
-</figure>
-<div class="prose">
-<h3>Homonyms and URLs</h3>
-<p>A word is identified by lemma, part of speech and gender. The id and URL are built from them; umlauts and ß are kept, otherwise <code>Maße</code> and <code>Masse</code> would collide.</p>
-</div>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Word</th><th>Id and URL</th></tr></thead>
-<tbody>
-<tr><td>der See (lake) / die See (sea)</td><td><code>see-der</code> / <code>see-die</code></td></tr>
-<tr><td>essen / das Essen</td><td><code>essen-verb</code> / <code>essen-das</code></td></tr>
-<tr><td>die Maße / die Masse</td><td><code>maße-die</code> / <code>masse-die</code></td></tr>
-</tbody></table></div>
-<div class="prose">
-<p>MDX references words by id only: <code>&lt;Word id="see-der" /&gt;</code>. Russian glosses come from the Russian Wiktionary and are matched by the same triple; ambiguous cases go to the import report instead of being guessed.</p>
 </div>
 </section>
 
@@ -583,8 +490,6 @@ flowchart TD
 <tr><td><code>/a2/</code></td><td><code>/ru/a2/</code></td><td>Level topics</td><td>yes</td></tr>
 <tr><td><code>/b1/</code></td><td><code>/ru/b1/</code></td><td>Coming soon</td><td>noindex</td></tr>
 <tr><td><code>/a2/perfekt/</code></td><td><code>/ru/a2/perfekt/</code></td><td>Topic with exercises</td><td>yes</td></tr>
-<tr><td><code>/dictionary/</code></td><td><code>/ru/dictionary/</code></td><td>Word list</td><td>yes</td></tr>
-<tr><td><code>/dictionary/see-die/</code></td><td><code>/ru/dictionary/see-die/</code></td><td>Word</td><td>yes</td></tr>
 <tr><td><code>/about/</code>, <code>/about/sources/</code></td><td><code>/ru/about/…</code></td><td>About, accessibility, sources</td><td>yes</td></tr>
 <tr><td><code>/impressum/</code>, <code>/privacy/</code></td><td><code>/ru/impressum/…</code></td><td>Legal pages</td><td>yes</td></tr>
 </tbody></table></div>
@@ -603,8 +508,8 @@ flowchart TD
   LG --> L["biome, astro check"]
   L --> U["vitest"]
   U --> CT["content: links,&lt;br/&gt;review, translations"]
-  CT --> BD["build dictionary&lt;br/&gt;and site"]
-  BD --> BG["JS budget,&lt;br/&gt;file count"]
+  CT --> BD["build site"]
+  BD --> BG["JS budget"]
   BG --> E["playwright&lt;br/&gt;English pages"]
   E --> P{"branch"}
   P -->|"PR"| PV["preview pr-N&lt;br/&gt;noindex, URL in PR"]
@@ -618,11 +523,10 @@ flowchart TD
 <tr><td>Content</td><td>File shape, cross-file links, answer among options, neutral case, <code>review.yaml</code> in sync</td><td>Zod, validate-content, review script</td></tr>
 <tr><td>Languages</td><td>All keys present, outdated translations, UI strings by type</td><td>TypeScript, i18n-coverage</td></tr>
 <tr><td>Logic</td><td>Seeded item selection, regional answers, word order with <code>accept</code> and duplicates, capitalization after checking</td><td>Vitest</td></tr>
-<tr><td>Dictionary</td><td>Import on fixtures, overrides win, unique ids</td><td>Vitest</td></tr>
 <tr><td>Behavior</td><td>On English pages: exercises with mouse, touch long press and keyboard, navigation, search, noindex, analytics only in production</td><td>Playwright</td></tr>
 <tr><td>Language switching</td><td>The only tests on Russian pages: picker keeps the page, lang/dir/hreflang/canonical, no horizontal scrolling at mobile width</td><td>Playwright</td></tr>
 <tr><td>Accessibility</td><td>axe on every page type. No screenshot tests</td><td>Playwright, axe</td></tr>
-<tr><td>Speed</td><td>JS per page, file count; Lighthouse before launch</td><td>check-js-budget, Lighthouse</td></tr>
+<tr><td>Speed</td><td>JS per page; Lighthouse before launch</td><td>check-js-budget, Lighthouse</td></tr>
 </tbody></table></div>
 <div class="prose">
 <ul>
@@ -673,16 +577,16 @@ flowchart TD
 <details><summary>German stored once, translations in per-language files</summary><p>The teacher checks German once, translators never touch German files, and adding a translation doesn't reset the German review.</p></details>
 <details><summary>Split review with automatic reset</summary><p>The teacher verifies German and the English explanation; each translation is reviewed against the verified English page by a fluent speaker. Hashes record exactly what was checked; any edit returns the affected part to draft, except logged typo fixes. Badges say exactly what was checked.</p></details>
 <details><summary>Functional tests on English only, no screenshot tests</summary><p>All languages share the same code, so functional tests run on English pages; other languages get language-switching tests only. Screenshot comparisons are not used: they are costly to maintain and flaky, and functional tests plus axe catch the relevant breakage.</p></details>
-<details><summary>Dictionary in text files, SQLite generated</summary><p>A binary file can't be merged or reviewed. Import output and manual edits are separate, so re-importing breaks nothing.</p></details>
+<details><summary>No dictionary</summary><p>A dictionary built from Wiktionary would copy what Wiktionary, DWDS and Leo already do better and add hundreds of entries nobody can verify. The site teaches grammar; Austrian vocabulary stays in the topics.</p></details>
 <details><summary>A font per language</summary><p>The main font has no Cyrillic, and other scripts will come later. German blocks use one font everywhere, explanations use the language's font.</p></details>
 <details><summary>A proven drag-and-drop library</summary><p>Long press versus scrolling on iOS is hard to get right by hand. svelte-dnd-action already solves it and adds keyboard and screen-reader support.</p></details>
-<details><summary>Minimal JavaScript</summary><p>Theme and language are inline scripts; transitions are CSS. Astro's ClientRouter is not used because it adds JS to every page.</p></details>
+<details><summary>Minimal JavaScript</summary><p>Theme and language are inline scripts; there are no page transitions. Astro's ClientRouter is not used because it adds JS to every page.</p></details>
 <details><summary>Deployment from GitHub Actions to Cloudflare</summary><p>One build, deployment only after checks, a preview URL for every PR. Cloudflare's free plan allows commercial use.</p></details>
 <details><summary>Cloudflare Web Analytics instead of PostHog</summary><p>Visits, referrers and speed are enough for the pilot. Cloudflare Web Analytics is free, cookieless and light. PostHog is postponed because of its size; it can come back for exercise-level events.</p></details>
 <details><summary>English-only repository except localization</summary><p>Code, docs, templates, commit messages and tests are in English. Native-language text lives only in localization files, enforced by a CI check.</p></details>
 <details><summary>Open repository, PRs from collaborators only</summary><p>Code under MIT, content under CC BY-SA 4.0, DCO sign-off. Mistakes are reported through GitHub issue forms.</p></details>
 </div>
-<footer>Deutscherl is a working name. Pilot: levels A1 and A2, five topics each, English and Russian, dictionary from Wiktionary.</footer>
+<footer>Deutscherl is a working name. Pilot: levels A1 and A2, five topics each, English and Russian.</footer>
 </section>
 </main>
 </div>

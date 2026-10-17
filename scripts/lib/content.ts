@@ -25,8 +25,8 @@ export interface ParsedFile {
 
 export interface MdxFile extends ParsedFile {
   body: string;
-  /** Ids used by `<Example id>`, `<AustrianNote id>` and `<Word id>` (dictionary) in the body */
-  refs: { examples: string[]; austrianNotes: string[]; words: string[] };
+  /** Ids used by `<Example id>` and `<AustrianNote id>` in the body */
+  refs: { examples: string[]; austrianNotes: string[] };
 }
 
 export interface TopicFiles {
@@ -56,17 +56,16 @@ function readYaml(dir: string, name: string): ParsedFile {
 }
 
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/;
-const REFERENCE = /<(Example|AustrianNote|Word)\s[^>]*?\bid=["']([^"']+)["']/g;
-const REF_LISTS = { Example: 'examples', AustrianNote: 'austrianNotes', Word: 'words' } as const;
+const REFERENCE = /<(Example|AustrianNote)\s[^>]*?\bid=["']([^"']+)["']/g;
 
 /** Splits MDX into parsed frontmatter and body, and collects the content references. */
 export function parseMdx(name: string, raw: string): MdxFile {
   const match = FRONTMATTER.exec(raw);
   const body = match ? raw.slice(match[0].length) : raw;
-  const refs: MdxFile['refs'] = { examples: [], austrianNotes: [], words: [] };
+  const refs = { examples: [] as string[], austrianNotes: [] as string[] };
   for (const [, component, id] of body.matchAll(REFERENCE)) {
-    if (!id || !component) continue;
-    refs[REF_LISTS[component as keyof typeof REF_LISTS]].push(id);
+    if (!id) continue;
+    (component === 'Example' ? refs.examples : refs.austrianNotes).push(id);
   }
   if (!match) return { name, raw, body, refs, data: undefined, error: 'missing frontmatter' };
   try {
