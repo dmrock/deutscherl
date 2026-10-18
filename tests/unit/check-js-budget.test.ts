@@ -76,7 +76,7 @@ describe('measurePage()', () => {
     );
   });
 
-  it('has the budgets from CLAUDE.md', () => {
+  it('has the budgets from the UI rules', () => {
     expect(BUDGETS).toEqual({ static: 3072, islands: 46080 });
   });
 });

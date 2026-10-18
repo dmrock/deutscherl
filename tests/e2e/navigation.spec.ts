@@ -1,4 +1,4 @@
-/** Navigation between page types and the new site pages, English pages (CLAUDE.md, "Testing"). */
+/** Navigation between page types and site pages, English pages (`.claude/rules/testing.md`). */
 import { expect, test } from '@playwright/test';
 import { levels, plannedTopicsOf, site } from '../../src/config/site.ts';
 import { t } from '../../src/i18n/utils.ts';
@@ -72,7 +72,7 @@ test.describe('footer', () => {
   }
 });
 
-test('the legal page names the owner and links the contact email', async ({ page }) => {
+test('the legal page names the Medieninhaber and links the contact email', async ({ page }) => {
   await page.goto('/legal/');
   await expect(page.getByRole('main').getByRole('link', { name: site.email })).toHaveAttribute(
     'href',

@@ -172,7 +172,6 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
     <li><a href="#quality">Tests, CI and deployment</a></li>
     <li><a href="#budgets">Budgets</a></li>
     <li><a href="#ops">Analytics and legal</a></li>
-    <li><a href="#decisions">Decisions</a></li>
   </ol>
 </nav>
 
@@ -180,7 +179,7 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 <div class="prose">
 <h1>Deutscherl architecture</h1>
 <p class="lead">A website for learning German grammar with an Austrian angle. Explanations in the learner's native language: English and Russian in the pilot. Levels A1 and A2 with five topics each, multiple-choice and word-order exercises. No accounts, no server code, no cookies.</p>
-<div class="note info">The source of truth is <code>CLAUDE.md</code> in the repository; the decision history is in <code>docs/decisions.md</code>. This page is an illustrated snapshot from the planning phase.</div>
+<div class="note info">The source of truth is <code>CLAUDE.md</code> with <code>.claude/rules/</code> in the repository. This page is an illustrated snapshot from the planning phase.</div>
 </div>
 
 <section id="idea">
@@ -253,7 +252,7 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
   <div class="layer l4"><div><b>Interaction</b><span>Svelte islands and inline JS</span></div><p>Svelte only where real interactivity is needed: the exercises. Theme and language picker are a few lines of plain inline JavaScript. Search loads when opened.</p></div>
   <div class="layer l3"><div><b>Presentation</b><span>Astro components</span></div><p>Layout variant A and MDX components: <code>&lt;InShort&gt;</code>, <code>&lt;RuleTable&gt;</code>, <code>&lt;Example id&gt;</code>, <code>&lt;AustrianNote id&gt;</code>, <code>&lt;SponsorSlot&gt;</code>. No page transitions: header and sidebar stay in place.</p></div>
   <div class="layer l2"><div><b>Logic</b><span>src/lib, plain TypeScript</span></div><p>Item selection with seeded randomness, answer checking with regional variants and alternative word orders, hashes for content review. No DOM, fully unit-tested.</p></div>
-  <div class="layer l1"><div><b>Data</b><span>text files in git</span></div><p>Topics (MDX and YAML), per-language translations and review state. No database: the site has no dictionary (decision #83).</p></div>
+  <div class="layer l1"><div><b>Data</b><span>text files in git</span></div><p>Topics (MDX and YAML), per-language translations and review state. No database: the site has no dictionary.</p></div>
   <div class="layer l5"><div><b>Quality</b><span>cross-cutting</span></div><p>Language check, Biome, <code>astro check</code>, content and review checks, translation coverage, Vitest, Playwright with axe (no screenshot tests), JS budget. Deployment only after every check passes.</p></div>
 </div>
 </section>
@@ -271,7 +270,6 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 ├── wrangler.jsonc                <span class="c">static-assets Worker</span>
 ├── .github/                      <span class="c">CI and deployment, issue forms</span>
 ├── docs/
-│   ├── decisions.md              <span class="c">decision log</span>
 │   └── adding-a-language.md
 ├── src/
 │   ├── i18n/
@@ -382,12 +380,12 @@ flowchart LR
 <section id="review">
 <div class="prose">
 <h2>Content review</h2>
-<p>Each topic is reviewed in two parts, so every part is checked by someone who can actually judge it. The German teacher verifies the German content and the canonical English explanation. Each translation is reviewed by a fluent speaker of that language against the verified English page; for Russian, that is the owner. Nobody needs to know German and Russian at the same time.</p>
+<p>Each topic is reviewed in two parts, so every part is checked by someone who can actually judge it. The German teacher verifies the German content and the canonical English explanation. Each translation is reviewed by a fluent speaker of that language against the verified English page. Nobody needs to know German and Russian at the same time.</p>
 </div>
 <div class="tbl-wrap"><table>
 <thead><tr><th>Scope</th><th>Files</th><th>Statuses</th><th>Checked by</th></tr></thead>
 <tbody>
-<tr><td><b>base</b></td><td><code>meta.yaml</code>, <code>german.yaml</code>, <code>en.mdx</code>, <code>i18n/en.yaml</code></td><td>draft → reviewed → verified</td><td>Owner reads, German teacher verifies</td></tr>
+<tr><td><b>base</b></td><td><code>meta.yaml</code>, <code>german.yaml</code>, <code>en.mdx</code>, <code>i18n/en.yaml</code></td><td>draft → reviewed → verified</td><td>A maintainer reads, German teacher verifies</td></tr>
 <tr><td><b>translation</b> (per locale)</td><td><code>ru.mdx</code>, <code>i18n/ru.yaml</code></td><td>draft → reviewed</td><td>Fluent speaker, compared with English</td></tr>
 </tbody></table></div>
 <figure class="fig">
@@ -413,7 +411,7 @@ flowchart TD
 </tbody></table></div>
 <div class="prose">
 <ul>
-<li><b>Typo without reset.</b> <code>pnpm review:minor a2/perfekt ru --reason "typo in why c3"</code> updates the hash, keeps the status and adds a history entry. Only the owner runs it.</li>
+<li><b>Typo without reset.</b> <code>pnpm review:minor a2/perfekt ru --reason "typo in why c3"</code> updates the hash, keeps the status and adds a history entry. Only maintainers run it.</li>
 <li><b>Overview.</b> <code>pnpm review:status</code> lists every topic with base status, translation status per language and outdated translations.</li>
 </ul>
 </div>
@@ -474,7 +472,7 @@ flowchart TD
 <p>One correct answer, except established regional variants in <code>alsoCorrect</code>: Austrian "bin gesessen" counts as correct, and <code>why</code> explains the difference.</p>
 <h3>Rounds</h3>
 <p>A round is 5 mixed items. Seen ids live in sessionStorage; the pool resets when exhausted. All randomness goes through a seeded generator, so tests are deterministic.</p>
-<div class="note warn"><b>Accessibility.</b> The target is WCAG 2.2 AA without exceptions. Word-order items can be solved by tap, click or Enter as well as by dragging, which meets criterion 2.5.7 (decision #76).</div>
+<div class="note warn"><b>Accessibility.</b> The target is WCAG 2.2 AA without exceptions. Word-order items can be solved by tap, click or Enter as well as by dragging, which meets criterion 2.5.7.</div>
 </div>
 </section>
 
@@ -559,34 +557,14 @@ flowchart TD
 <div class="note info"><b>PostHog is postponed.</b> The full library is about 98 KB gzipped, three times the JS of a whole exercise page. Worth revisiting if exercise-level events matter, e.g. which items people get wrong most often; it could then load after the first interaction.</div>
 <h3>Legal pages (Austria)</h3>
 <ul>
-<li><b><code>/legal/</code></b> — one short page: disclosure under § 25 Mediengesetz for a small private website (owner's name, town, email, purpose of the site), then privacy: Cloudflare hosting, analytics, what is stored in the browser, links to GitHub.</li>
+<li><b><code>/legal/</code></b> — one short page: disclosure under § 25 Mediengesetz for a small private website (name and town of the Medieninhaber, email, purpose of the site), then privacy: Cloudflare hosting, analytics, what is stored in the browser, links to GitHub.</li>
 <li><b>When ads arrive:</b> banners are labeled as ads, and the legal notice is extended to the requirements for commercial sites.</li>
 </ul>
-<p>The owner checks the facts on the page.</p>
+<p>A maintainer checks the facts on the page.</p>
 </div>
 </section>
 
-<section id="decisions">
-<div class="prose">
-<h2>Key decisions</h2>
-<p>The full list with reasons and rejected alternatives is in <code>docs/decisions.md</code>. The highlights:</p>
-</div>
-<div class="adr">
-<details><summary>Astro with Svelte islands</summary><p>Almost every page is static. Astro ships no JavaScript by default, and Svelte compiles to small islands. Svelte is used only where it is truly needed.</p></details>
-<details><summary>German stored once, translations in per-language files</summary><p>The teacher checks German once, translators never touch German files, and adding a translation doesn't reset the German review.</p></details>
-<details><summary>Split review with automatic reset</summary><p>The teacher verifies German and the English explanation; each translation is reviewed against the verified English page by a fluent speaker. Hashes record exactly what was checked; any edit returns the affected part to draft, except logged typo fixes. Badges say exactly what was checked.</p></details>
-<details><summary>Functional tests on English only, no screenshot tests</summary><p>All languages share the same code, so functional tests run on English pages; other languages get language-switching tests only. Screenshot comparisons are not used: they are costly to maintain and flaky, and functional tests plus axe catch the relevant breakage.</p></details>
-<details><summary>No dictionary</summary><p>A dictionary built from Wiktionary would copy what Wiktionary, DWDS and Leo already do better and add hundreds of entries nobody can verify. The site teaches grammar; Austrian vocabulary stays in the topics.</p></details>
-<details><summary>A font per language</summary><p>The main font has no Cyrillic, and other scripts will come later. German blocks use one font everywhere, explanations use the language's font.</p></details>
-<details><summary>A proven drag-and-drop library</summary><p>Long press versus scrolling on iOS is hard to get right by hand. svelte-dnd-action already solves it and adds keyboard and screen-reader support.</p></details>
-<details><summary>Minimal JavaScript</summary><p>Theme and language are inline scripts; there are no page transitions. Astro's ClientRouter is not used because it adds JS to every page.</p></details>
-<details><summary>Deployment from GitHub Actions to Cloudflare</summary><p>One build, deployment only after checks, a preview URL for every PR. Cloudflare's free plan allows commercial use.</p></details>
-<details><summary>Cloudflare Web Analytics instead of PostHog</summary><p>Visits, referrers and speed are enough for the pilot. Cloudflare Web Analytics is free, cookieless and light. PostHog is postponed because of its size; it can come back for exercise-level events.</p></details>
-<details><summary>English-only repository except localization</summary><p>Code, docs, templates, commit messages and tests are in English. Native-language text lives only in localization files, enforced by a CI check.</p></details>
-<details><summary>Open repository, PRs from collaborators only</summary><p>Code under MIT, content under CC BY-SA 4.0, DCO sign-off. Mistakes are reported through GitHub issue forms.</p></details>
-</div>
 <footer>Deutscherl is a working name. Pilot: levels A1 and A2, five topics each, English and Russian.</footer>
-</section>
 </main>
 </div>
 <script>

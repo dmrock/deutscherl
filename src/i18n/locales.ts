@@ -52,7 +52,7 @@ export const locales = [
     ready: true,
     dir: 'ltr',
     ogLocale: 'ru_RU',
-    // Owner's choice after the specimen comparison (docs/decisions.md #7).
+    // Chosen after a specimen comparison.
     font: {
       family: 'Golos Text',
       package: '@fontsource-variable/golos-text',

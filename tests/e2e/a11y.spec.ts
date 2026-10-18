@@ -1,4 +1,4 @@
-/** axe checks on every page type, English pages, both themes (CLAUDE.md, "Testing"). */
+/** axe checks on every page type, English pages, both themes (`.claude/rules/testing.md`). */
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { t } from '../../src/i18n/utils.ts';

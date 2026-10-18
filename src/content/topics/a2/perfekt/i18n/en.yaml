@@ -7,6 +7,9 @@ examples:
   e3: I woke up at seven o'clock today.
   e4: He stayed at home all day.
   e5: Did you sleep well?
+  e6: She went to Linz by train.
+  e7: I baked a cake today.
+  e8: We were very pleased.
 
 choice:
   c1:

@@ -4,7 +4,7 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /*
- * Design tokens ("Paper", owner's choice from four options, decision #45): warm cream background,
+ * Design tokens ("Paper"): warm cream background,
  * teal accent, soft cards, serif headings. Components use only the semantic tokens below (bg-bg,
  * text-fg, rounded-card, shadow-card, ...), so they never need `dark:` variants. Themes are
  * selected with `data-theme` (set before first paint by ThemeScript) and can be nested. Without
@@ -121,7 +121,7 @@
   --font-sans: var(--font-body, system-ui), system-ui, sans-serif;
   --font-german: var(--font-de, system-ui), system-ui, sans-serif;
 
-  /* German example text (16px) is slightly larger than explanation text (15px, owner decision #61). */
+  /* German example text (16px) is slightly larger than explanation text (15px). */
   --text-german: 1rem;
   --text-german--line-height: 1.6;
 }
@@ -315,11 +315,36 @@ html:root {
     outline-offset: 2px;
   }
 
-  /* Rule tables (<RuleTable> around a markdown table). */
+  /*
+   * Example cards (<Examples>): 1px gaps on the border color draw the dividers. Two columns when
+   * the card is at least 40rem wide; an odd last example spans both.
+   */
+  .examples {
+    display: grid;
+    gap: 1px;
+    overflow: hidden;
+    background-color: var(--color-border);
+  }
+
+  @container (min-width: 40rem) {
+    .examples {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .examples > :last-child:nth-child(odd) {
+      grid-column: span 2;
+    }
+  }
+
+  /* Rule tables (<RuleTable> around a markdown table): as wide as their content. */
   .rule-table table {
-    width: 100%;
     border-collapse: collapse;
     font-size: 0.875rem;
+  }
+
+  .rule-table-equal table {
+    width: 100%;
+    table-layout: fixed;
   }
 
   .rule-table th,
@@ -349,7 +374,7 @@ html:root {
   }
 
   /*
-   * Navigation is static (decision #47): always reserve the scrollbar's space, so a page that
+   * Navigation is static: always reserve the scrollbar's space, so a page that
    * scrolls and one that does not put the header and sidebar at the same x position.
    */
   html {

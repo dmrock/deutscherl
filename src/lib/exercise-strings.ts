@@ -1,6 +1,6 @@
 /**
  * UI strings for the exercise island, resolved on the server for one locale: the island gets
- * them as props, so other locales are never shipped to the client (CLAUDE.md, "UX rules").
+ * them as props, so other locales are never shipped to the client (`.claude/rules/exercises.md`).
  */
 import type { LocaleCode } from '../i18n/locales.ts';
 import { en, type UiKey } from '../i18n/ui/en.ts';

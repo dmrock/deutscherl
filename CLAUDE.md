@@ -1,295 +1,97 @@
-# Deutscherl — project context
+# Deutscherl
 
-Working name, may change. Keep the name in one place: `src/config/site.ts`.
+A free website for learning German grammar: explanations in the learner's native language, German examples with translations, interactive exercises. Working name; it lives only in `src/config/site.ts`.
 
-This file is the source of truth for how the project works. `docs/architecture.html` is an illustrated snapshot and may lag behind; if they disagree, this file wins.
+- Pilot: levels A1 and A2 with 5 topics each; B1, B2 and C1 show as "coming soon".
+- Native languages: English (default) and Russian. More will follow, possibly in other scripts or right to left, so everything language-specific is data, not code.
+- Signature feature: notes on Austrian German (usage that differs from Germany).
+- The site teaches grammar only: no dictionary or vocabulary database; Austrian vocabulary goes into the topics.
+- No accounts, no progress tracking, no cookies, no ad trackers, no runtime API or database calls.
+- Sponsor banners later: static, labeled as ads. The topic layout keeps a sponsor slot.
 
-## What this is
+This file and `.claude/rules/` are the source of truth. `docs/architecture.html` is an illustrated snapshot and may lag behind.
 
-A free website for learning German grammar. Explanations in the learner's native language (simple wording), examples in German with translations into the native language, interactive exercises.
+## Commands
 
-- Pilot scope: levels A1 and A2, 5 topics each. Levels B1, B2, C1 are visible in navigation as "coming soon".
-- Native languages in the pilot: English (default) and Russian. More languages will be added later, possibly with other scripts or right-to-left writing, so language support must be data-driven, not hard-coded.
-- No accounts, no progress tracking, no cookies. Anyone can use it without barriers.
-- Signature feature: notes about Austrian German (usage that differs from Germany).
-- No dictionary or vocabulary database (owner decision #83): the site teaches grammar. Austrian vocabulary belongs in the topics (Austrian notes, or a topic of its own built with the normal content model).
-- Monetization later: static sponsor banners, clearly labeled as ads, no ad trackers. Keep a sponsor slot in the topic layout.
+```sh
+pnpm install            # also installs the git hooks (lefthook)
+pnpm dev                # http://localhost:4321
+pnpm build              # validate content, astro build, Pagefind index
+pnpm lint               # Biome + Prettier (.astro, .svelte); pnpm format fixes
+pnpm check              # astro check
+pnpm test               # Vitest
+pnpm test:e2e           # Playwright against dist/: run pnpm build first, stop astro dev first
+pnpm validate           # cross-file content checks
+pnpm i18n:coverage      # missing translations of ready locales
+pnpm check:language     # native-language text outside localization files
+pnpm review:status      # review state of every topic
+pnpm budget             # JS budget per page (after a build)
+```
 
-## Working agreements (for Claude Code)
+## Working agreements
 
-- Always commit with sign-off: `git commit -s` (DCO is enforced in CI).
-- Content you generate is ALWAYS `draft` (base and translations). Never set `reviewed` or `verified`, never edit `review.yaml` by hand, never run the minor-edit command unless the owner asks for it explicitly.
-- At the end of every stage: update this file if a rule or structure changed, and add ONE line to `docs/decisions.md` for every decision made during the stage: next free ID, what, a short why, and the main rejected alternative only if it matters. Put it in the matching section; mark owner decisions and superseded entries as the file explains. Details belong in this file, code comments and the PR description, not in the log. Decisions that are not written down are lost after `/clear`.
-- Before adding a dependency, check its current docs (Context7 or the official site), state its gzipped size and why it is needed.
-- If you are not sure a German sentence is correct, say so in the summary instead of guessing.
+- Commit with sign-off: `git commit -s` (DCO is enforced in CI).
+- Content you generate stays `draft` (base and translations). Never set `reviewed` or `verified`, never edit `review.yaml` by hand, and run `review:minor` or `review:set` only when asked to explicitly.
+- If you are not sure a German sentence is correct, say so in your summary instead of guessing.
+- Before adding a dependency, check its current docs (Context7 or the official site) and state its gzipped size and why it is needed, also in your summary.
+- At the end of every stage, update this file or the matching file in `.claude/rules/` when a rule or the structure changed. There is no decision log: a decision that matters becomes a rule, and background that helps contributors goes into `README.md`.
+- The repository is public. Commit messages, PR descriptions, docs and comments describe what the code does; they never mention who decided something or why someone asked for it.
 
 ## Repository language
 
-Everything committed is in English: code, identifiers, comments, docs, README, CONTRIBUTING, issue and PR templates, commit messages, branch names, PR titles and descriptions, script output, test names, `review.yaml` reasons and history.
+Everything committed is in English: code, identifiers, comments, docs, templates, commit messages, branch names, PRs, script output, test names, `review.yaml` reasons and history.
 
-Native-language text is allowed ONLY in localization files:
+Native-language text is allowed only in localization files:
+
 - `src/i18n/ui/<locale>.ts` (UI strings)
-- `src/i18n/locales.ts` — only the `name` field (language name in its own language)
+- `src/i18n/locales.ts`, only the `name` field
 - `src/content/topics/**/<locale>.mdx` and `src/content/topics/**/i18n/<locale>.yaml`
-- `src/content/pages/<page>/<locale>.mdx` (about and legal pages)
+- `src/content/pages/<page>/<locale>.mdx`
 - test fixtures under `tests/fixtures/i18n/<locale>/`
 
-Components, pages and tests never contain native-language strings inline: they use `t(locale, key)` or read content files. E2E tests assert localized text through `t()` too.
-
-`scripts/check-language.ts` runs in CI and in the pre-commit hook: it fails when non-Latin letters (Cyrillic, Greek, Arabic, Hebrew, CJK, Devanagari, …) appear in any tracked file outside the allowed localization paths. German letters (ä ö ü ß) are allowed everywhere because German is the subject matter. German sentences belong in `german.yaml`, not in code.
-
-## Open source
-
-- Public GitHub repository. Pull requests are limited to collaborators (repository setting); issues are open to everyone, but only through issue forms (blank issues disabled). Ideas go to GitHub Discussions.
-- Licenses:
-  - Code: MIT → `LICENSE`
-  - Content (explanations, examples, exercises, translations): CC BY-SA 4.0 → `LICENSE-CONTENT`.
-  - Use the official license texts verbatim; never write or paraphrase them from memory.
-- Contributions require DCO sign-off (`Signed-off-by` in each commit), checked in CI. By signing off, contributors agree to MIT for code and CC BY-SA 4.0 for content.
-- Rule in `CONTRIBUTING.md`: open an issue first; PRs without an agreed issue may be closed. Exception: one-line typo fixes. External contributors become collaborators after agreeing on the work in an issue.
-- Never commit secrets. The only secrets are the Cloudflare API token and account ID, stored in GitHub Actions secrets/variables.
-- Do not add the `hacktoberfest` topic or label.
+Components, pages and tests use `t(locale, key)` or read content files instead of inline native-language strings. German sentences belong in `german.yaml`, not in code. `scripts/check-language.ts` (CI and pre-commit) fails on non-Latin letters (Cyrillic, Greek, Arabic, CJK, …) in any other tracked file; German letters (ä ö ü ß) are allowed everywhere.
 
 ## Stack
 
-- Astro (latest stable), fully static output, no SSR adapter. `build.format: 'directory'`, `trailingSlash: 'always'`: canonical URLs end with `/`.
-- Svelte 5 ONLY for islands that need real interactivity: exercises. Everything else (theme toggle, closing the language picker) is a few lines of inline vanilla JS.
-- Drag and drop: `svelte-dnd-action` (Svelte 5 compatible, touch delay option, keyboard and screen-reader support). Do not hand-roll drag and drop.
-- Page transitions: none. Navigation is static: header and sidebar stay exactly in place between pages (owner decision #47). Do NOT use Astro's `<ClientRouter />` or CSS `@view-transition`.
-- TypeScript, `strict` preset. TypeScript 6.x until Astro's tooling (`astro check`) supports TypeScript 7 (decision #23).
-- Scripts in `scripts/` run with plain `node` (built-in type stripping): erasable TypeScript only, local imports with the `.ts` extension, no tsx.
-- Tailwind CSS v4. Use logical properties/utilities (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`, `text-start`) everywhere, never left/right, so right-to-left languages work later.
-- Content: MDX for explanations, YAML for German content and translations, via Astro Content Collections with Zod schemas. The schemas live in `src/lib/content-schemas.ts`, shared by `content.config.ts` and the scripts. Scripts parse YAML with `yaml`.
-- i18n: Astro built-in i18n routing
-- Search: Pagefind (`pnpm build` runs `pagefind --site dist` after `astro build`). Only topic pages of ready locales are indexed (`data-pagefind-body` on the article; badges are `data-pagefind-ignore`); Pagefind builds one index per language from `<html lang>`, and German examples are on every locale's page, so German words are found from any locale. The header button (`Search.astro`) and Cmd/Ctrl+K load the Component UI (`/pagefind/pagefind-component-ui.js` + CSS) on first use and open its `<pagefind-modal>` (a native `<dialog>`; Pagefind translates its own strings from `<html lang>`); nothing is loaded before (decision #84). It is themed only through `--pf-*` variables mapped to our tokens (`global.css`, `html:root` to beat Pagefind's `:root` defaults).
-- Sitemap: `@astrojs/sitemap` with alternates for ready locales; `inSitemap` (`src/lib/seo.ts`) leaves out noindex pages. `robots.txt` (`src/pages/robots.txt.ts`) allows everything and names the sitemap.
-- Lint/format: Biome for TS/JS/JSON/CSS (lints the script part of `.astro`/`.svelte`); Prettier with astro/svelte plugins formats only `.astro` and `.svelte` (Biome's support for them is experimental, decision #25)
-- Git hooks: lefthook (`lefthook.yml`), installed by `pnpm install`. Pre-commit: Biome, Prettier, language check, `review:sync` (stages the updated `review.yaml`)
-- Tests: Vitest, Playwright, @axe-core/playwright
-- Package manager: pnpm, version pinned in `package.json` → `packageManager`; dependency build scripts are denied by default (`pnpm-workspace.yaml` → `allowBuilds`). Node LTS, pinned in `.nvmrc`
-- Versions: latest stable release of every dependency and GitHub Action (check npm / GitHub, not memory); exceptions are recorded in `docs/decisions.md`. GitHub Actions are pinned to commit SHAs with the version in a comment.
-- Hosting: Cloudflare Workers with static assets, deployed from GitHub Actions with Wrangler (see "Deployment")
-- Analytics: Cloudflare Web Analytics (free, cookieless) with automatic setup: Cloudflare injects the beacon into HTML pages on the production domain (Web Analytics → the site → "Manage site" → "Enable"). Preview URLs (workers.dev) are not part of the zone. The build adds no beacon and holds no token; adding one would count every visit twice (decision #87, checked by an e2e test). No other analytics or tracking SDKs (PostHog was considered and postponed, see `docs/decisions.md`). Google Search Console is verified via a DNS record, no code.
+- Astro (latest stable), fully static (`build.format: 'directory'`, `trailingSlash: 'always'`), no SSR adapter, no page transitions.
+- Svelte 5 only for the exercise islands; `svelte-dnd-action` for drag and drop.
+- TypeScript `strict`, 6.x until `astro check` supports TypeScript 7. Pure logic lives in `src/lib/` and is unit-tested.
+- Scripts in `scripts/` run with plain `node` (built-in type stripping): erasable TypeScript only, local imports with the `.ts` extension, no tsx. They parse YAML with `yaml`.
+- Tailwind CSS v4 with logical utilities only (`ms-`, `pe-`, `start-`, `text-start`, …), never left/right.
+- Content: MDX explanations and YAML German content/translations in Astro content collections with Zod schemas (`src/lib/content-schemas.ts`).
+- Astro i18n routing; Pagefind search; `@astrojs/sitemap`.
+- Biome for TS/JS/JSON/CSS; Prettier only for `.astro` and `.svelte`. lefthook pre-commit: Biome, Prettier, language check, `review:sync`.
+- Vitest, Playwright, @axe-core/playwright.
+- pnpm (version in `package.json` → `packageManager`), dependency build scripts denied by default (`allowBuilds`), minimum release age kept as a supply-chain safeguard. The lockfile is committed exactly as pnpm writes it. Node LTS from `.nvmrc`.
+- Latest stable versions of every dependency and GitHub Action (check npm / GitHub, not memory); exceptions: Node LTS and TypeScript 6.
+- Hosting: Cloudflare Workers static assets, deployed from GitHub Actions with Wrangler. Analytics: Cloudflare Web Analytics, injected by Cloudflare, nothing in the build.
 
-## Languages (i18n)
+## Core principles
 
-Terminology: the "native language" (a.k.a. locale) is the language of the UI, explanations and translations. German is always the language being learned and is never a locale.
+- Locales are defined once in `src/i18n/locales.ts`; adding a language needs no code changes elsewhere.
+- German is single-sourced: each German sentence exists once in `german.yaml` and is shared by all locales; everything in a native language lives in per-locale files.
+- Every German fragment on a page carries `lang="de"`.
+- Zero JavaScript by default; islands hydrate with `client:visible` and get already-localized strings.
+- WCAG 2.2 AA without exceptions.
 
-- Locales are defined in ONE place: `src/i18n/locales.ts`. Each entry: `code`, `name` (in its own language), `default`, `ready`, `dir` (`ltr` | `rtl`), `ogLocale` (`og:locale`, e.g. `en_US`), `font` (see "Fonts"). Adding a language = adding an entry + translations; no code changes elsewhere.
-- Pages are built from `[...locale]` rest-parameter routes (`src/pages/[...locale]/…`) over `locales.ts`, so a new locale needs no new page files.
-- `ready: false` locales are built for preview but hidden from the picker, sitemap and search, and pages get `noindex`.
-- Routing: default locale without prefix (`/a2/perfekt/`), others with prefix (`/ru/a2/perfekt/`). Same slugs in every locale.
-- `<html lang dir>` come from the locale. Every German fragment is wrapped with `lang="de"` (screen readers, TTS, hyphenation, search).
-- Language picker in the header: plain links, language names in their own language (the `name` field of each locale, e.g. Russian written in Cyrillic), no flags. It links to the SAME page in the other locale. The choice is not stored. Markup: a `<details>` disclosure (opens without JS; a small inline script in `LanguagePicker.astro` closes it on an outside click or Escape).
-- No automatic redirects and no language hint or banner (owner decision #44): search engines route visitors through `hreflang`, and the picker is always visible.
-- UI strings: `src/i18n/ui/en.ts` is the source of truth; every other locale file is typed against it (`satisfies UiStrings`), so a missing key is a type error. Access via `t(locale, key)`; no inline strings in components.
-- German is single-sourced: German sentences exist ONCE and are shared by all locales. Everything written in a native language lives in per-locale files, so translators never touch German files and translations never trigger German re-verification.
-- Translation freshness: `review.yaml` records for each translation the `base` hash it was last written or reviewed against (`basedOn`). If English or German changes afterwards, the translation is outdated: it is reset to `draft` and listed by `review:status` (see "Review and verification").
-- SEO: `hreflang` alternates for all ready locales plus `x-default` → English; canonical per locale; sitemap with alternates; Open Graph (`og:locale` + `og:locale:alternate`, `og:type` `article` on topic pages, no image yet); JSON-LD from `src/lib/seo.ts`: `WebSite` on the home page, `BreadcrumbList` on level pages, `LearningResource` + `BreadcrumbList` on topic pages. Every page has its own title and description (`Base.astro` props).
-- Russian explanations: simple, friendly Russian (informal "you" form), grammar terms in Russian with the German term in parentheses the first time (e.g. the Russian term for "dative case" followed by "(Dativ)").
+## Open source
 
-## Fonts
+- Code MIT (`LICENSE`), content CC BY-SA 4.0 (`LICENSE-CONTENT`). Use the official license texts verbatim, never from memory.
+- DCO sign-off on every commit, checked in CI; by signing off, contributors agree to both licenses.
+- PRs only from collaborators; issues only through issue forms; ideas in GitHub Discussions. `CONTRIBUTING.md`: open an issue first (except one-line typo fixes).
+- Never commit secrets. The only secrets are the Cloudflare API token and account ID, in GitHub Actions secrets/variables.
+- Do not add the `hacktoberfest` topic or label.
 
-- Fonts are configured per locale in `locales.ts` (`family`, Fontsource variable-font `package`, `subsets`, `preload`), self-hosted, `font-display: swap`. Only the listed subsets get `@font-face` rules; `preload` lists the subsets every page of that locale uses right away.
-- Implementation: Astro's built-in Fonts API. `src/config/fonts.ts` builds the `fonts` config from `locales.ts` + `germanFont` with a small provider that reads the files of the installed Fontsource packages (`metadata.json`, `unicode.json`, `files/`): versions pinned by the lockfile, no network at build time, metric-adjusted fallbacks. Each family gets a CSS variable derived from its name (`--font-golos-text`). `Base.astro` renders `<Font>` for the locale font (preloaded) and the German font, and sets `--font-body` / `--font-de`.
-- German content blocks (examples, exercises) use one German font on every locale for consistent umlauts and ß: Atkinson Hyperlegible Next (Latin only), via the `german` utility (German font, slightly larger size). Inline German terms inside explanation text inherit the locale font.
-- `en`: Atkinson Hyperlegible Next.
-- `ru`: Golos Text (owner's choice after the specimen comparison, decision #7).
-- Choosing a font for a new locale: build a temporary comparison page on the PR (candidates at body and example size, light and dark, next to German blocks), let the owner choose on the preview, then remove the page and keep only the chosen package (as done for ru, decision #7).
-- A future locale in a script without a good match (Arabic, Hindi, …) simply gets its own font entry; nothing else changes.
-- German example text is slightly larger than explanation text.
-- Headings (`h1`–`h3`) use a system serif stack (`--heading-font`: Iowan Old Style / Charter on Apple, Georgia elsewhere), no font download (decision #45). Body text stays in the locale font.
+## Detailed rules
 
-## Project structure (target)
+Path-scoped files in `.claude/rules/` load when you work on matching files:
 
-```
-src/
-  config/site.ts             # name, levels, categories, planned topics, audio flag
-  config/fonts.ts            # Fonts API config from locales.ts + German font
-  i18n/
-    locales.ts               # locales: code, name, default, ready, dir, font
-    ui/en.ts                 # UI strings, source of truth
-    ui/ru.ts                 # satisfies UiStrings
-    utils.ts                 # t(), localized paths, hreflang helpers
-  content/topics/a2/perfekt/
-    meta.yaml                # level, category, order, readingMinutes, sources
-    german.yaml              # German examples, exercises, Austrian notes (German part)
-    en.mdx                   # explanation in English (canonical)
-    ru.mdx                   # explanation in Russian
-    i18n/en.yaml             # translations + why texts in English, keyed by item id
-    i18n/ru.yaml             # same in Russian
-    review.yaml              # review state: base + translations (tool-managed)
-  content/pages/about/       # site pages: en.mdx, ru.mdx (also legal/)
-  content.config.ts          # per-file Zod schemas
-  components/
-    exercises/               # Svelte islands: ExerciseRunner, ChoiceExercise, WordOrderExercise,
-                             # MarkedText
-    content/                 # InShort, RuleTable, Example(s), AustrianNote, De, StatusBadges,
-                             # SponsorSlot
-    pages/                   # MDX components of site pages: Email, AudioOnly
-    layout/                  # Header, LevelSwitcher, Search, LanguagePicker, ThemeToggle, Sidebar,
-                             # BottomBar, Footer, ThemeScript (inline JS)
-  layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts, Open
-                             # Graph, JSON-LD, analytics), header, sidebar, footer
-  layouts/ProsePage.astro    # a site page from src/content/pages
-  lib/                       # pure TS logic — unit-tested (navigation, content-schemas,
-                             # marked-text, review-badges, exercises, exercise-strings, seo);
-                             # topics.ts, topic-content.ts and pages.ts read collections
-  pages/[...locale]/         # index, [level]/index, [level]/[topic]/index, about/index,
-                             # legal/index
-  pages/robots.txt.ts
-scripts/
-  lib/content.ts             # reads topic folders from disk for the content scripts
-  validate-content.ts        # cross-file checks
-  i18n-coverage.ts           # missing translation keys and files
-  check-language.ts          # no native-language text outside localization files
-  review.ts                  # review sync/check, status, minor-edit and set commands
-  check-js-budget.ts         # gzipped JS per page (islands vs. none), CI build job
-  ci/                        # CI-only helpers (wrangler bootstrap config)
-docs/
-  decisions.md               # decision log
-  architecture.html          # illustrated snapshot
-  adding-a-language.md
-tests/
-  unit/
-  e2e/
-  fixtures/content/          # a small valid topic; unit tests copy it and change one file
-```
-
-## Content model
-
-- `meta.yaml`: level (must match the folder), category, order, readingMinutes (not shown on the topic page, decision #61), sources (`{title, url?}`, at least one; for review, not shown on the topic page, owner decision #78).
-- `german.yaml` (ids unique across the whole file):
-  - `examples`: `{ id, de, region?: AT }`; in `de`, `**…**` marks the key words the page highlights (e.g. the Perfekt verb forms)
-  - `choice`: `{ id, text (with ___), answer, options, alsoCorrect?: [{ value, region }] }`
-  - `wordOrder`: `{ id, parts, fixed?, accept?, punctuation }`
-  - `austrianNotes`: `{ id, de }`
-- `<locale>.mdx` frontmatter: `title`, `summary` ("In short", rendered by the page with `<InShort>`; also the meta description and the level-page card). Body references German content by id. Never write German example sentences directly in MDX. Components (passed by the topic page, no imports in MDX):
-  - `<Examples>` around one or more `<Example id="e1" />` (a card with one row per example: German, translation);
-  - `<AustrianNote id="at1">explanation in the locale</AustrianNote>` (flag + "In Austria", the children, then the German sentence and its translation);
-  - `<RuleTable>` + blank line + a markdown (GFM) table + blank line;
-  - `<De>haben</De>` for German words inside explanation text (`lang="de"`).
-- `i18n/<locale>.yaml`: `examples.<id>`, `choice.<id>.why`, `wordOrder.<id>.translation`, `wordOrder.<id>.why`, `austrianNotes.<id>` (translation of the note's German sentence). Fields are optional in the schema so a not-ready locale can be translated step by step; `i18n-coverage` requires all of them for ready locales.
-- In native-language text (`summary`, why texts), `*word*` marks a German word (rendered with `lang="de"`, stripped for meta tags).
-- `review.yaml`: see "Review and verification". Managed only by `scripts/review.ts`.
-- Site pages (about, legal): `src/content/pages/<slug>/<locale>.mdx` with frontmatter `title` and `description`, routed by `src/pages/[...locale]/<slug>/index.astro` through `ProsePage.astro`. Components: `<De>`, `<Email />` (the contact `site.email` as a link), `<AudioOnly>` (shown once `site.audio` is true, stage 4b). `i18n-coverage` requires every page in every ready locale; a locale that is not ready falls back to the English text. Not part of the review scopes and not indexed by search.
-- Planned topics of levels that are not available (`plannedTopics` in `site.ts`, labels `planned.<id>`) are listed on the home page and the coming-soon pages.
-- Validation: per-file shape with Zod (`src/lib/content-schemas.ts`); everything that spans files in `scripts/validate-content.ts` (`pnpm validate`), run in CI and by `pnpm build` before `astro build`. Zod alone cannot do cross-file checks. Rules: schemas, folder level, unique ids, choice (one `___`, answer and `alsoCorrect` in options), word order (`accept` orders are permutations of `parts`, distinct, start with the fixed part; neutral case via a list of closed-class words such as `Ich`, `Gestern`), MDX and i18n ids exist in `german.yaml`, coverage of ready locales, at least 10 choice items, `review.yaml` in sync.
-
-### Exercise rules
-
-- Choice: 2–4 options (prefer 4 when the topic allows: e.g. two forms of each of two words, owner decision #79), exactly one correct answer, except for regional variants listed in `alsoCorrect` (e.g. `bin` with `region: AT` for "Ich ___ gesessen"). A regional answer is accepted as correct and the `why` explains the regional difference. Avoid such items unless the topic is about that difference.
-- Word order:
-  - `parts` is the canonical order. `accept` lists every other valid full order. `fixed` (first element locked) may be combined with `accept`; it does not guarantee a unique answer by itself.
-  - Parts are stored in neutral case: a sentence-initial word is lowercase unless it is always capitalized (nouns, names, formal "Sie"). The UI shows parts exactly as stored, so capitalization gives no hint. After checking, the first word of the displayed sentence is capitalized.
-  - Checking compares sequences of strings, not chip identities, so duplicate words ("die … die") work.
-  - Punctuation (`.`, `?`, `!`) is part of the item, shown after the answer line, not a draggable chip.
-- Each topic has at least 10 choice items and, where it makes sense, at least 6 word-order items. Every item has `why` (and word-order items `translation`) in every ready locale.
-
-## Review and verification
-
-The teacher verifies German and the canonical English explanation. Other locales are translations of verified English, reviewed by a fluent speaker of that locale (for Russian: the owner). Nobody needs to read German and Russian at the same time.
-
-- Two scopes per topic, both stored in `review.yaml` and managed only by `scripts/review.ts`:
-  1. `base` = the topic's German content plus the English page: `meta.yaml`, `german.yaml`, `en.mdx`, `i18n/en.yaml`. Status `draft` → `reviewed` (owner read it) → `verified` (a German teacher checked all of it). Stores `verifiedBy`, `verifiedAt`, `contentHash`, `history`.
-  2. `translations.<locale>` for every non-English locale = `<locale>.mdx` and `i18n/<locale>.yaml`. Status `draft` → `reviewed` (a fluent speaker confirmed it says the same as English). Stores `reviewedBy`, `reviewedAt`, `contentHash`, `basedOn` (the `base` hash the translation was last written or reviewed against; `review:sync` sets it whenever translation files change), `history`.
-- Hashes use normalized content (parsed and re-serialized), so formatting-only changes don't count.
-- Automatic reset:
-  - any change in `base` files → `base` goes back to `draft`, and every translation whose `basedOn` no longer matches goes back to `draft` too (the translation must be re-checked against the new English/German);
-  - any change in a translation file → that translation goes back to `draft`.
-  Each reset appends a history entry with the previous status and reviewer. A pre-commit hook (`review:sync`) performs the reset so it shows up in the PR diff; CI fails if `review.yaml` is out of sync.
-- Hashing: YAML is parsed and re-serialized with sorted keys (comments do not count); MDX = parsed frontmatter + body with normalized line endings, trailing spaces and blank-line runs. Stored as `sha256:<16 hex>`. A reset of a `draft` scope only updates the hash (no history entry). After a base change, an unchanged translation keeps its old `basedOn`, so it stays listed as outdated until it is edited or reviewed again.
-- `review:sync` reads the working tree; `pnpm review:check` (CI) fails without writing when anything is out of sync.
-- Minor edit without reset: `pnpm review:minor <topic> <base|locale> --reason "typo in c3 why"` updates the hash, keeps the status and appends `{ at, event: minor, reason, previousHash }` to history; for `base`, translations based on the previous hash move to the new one. Only the owner runs it.
-- Status changes: `pnpm review:set <topic> base reviewed|verified --by "Name"` and `pnpm review:set <topic> <locale> reviewed --by "Name"` (sets `basedOn` to the current base hash). Refuses when `review.yaml` is out of sync. Only the owner runs it.
-- Badges say exactly what was checked:
-  - English page: "Checked by a teacher" when `base` is `verified` with a matching hash; otherwise "Draft".
-  - Other locales: "German checked by a teacher" when `base` is verified, plus "Translation reviewed" when the translation is reviewed and its `basedOn` matches, or "Translation not reviewed yet" when it is not (decision #55). No link to the English version (owner decision #61). "Draft" when neither is checked. All texts localized (`review.*` UI strings).
-- `pnpm review:status` prints every topic with base status, translation status per locale and outdated translations.
-
-## Content rules (critical)
-
-The site owner is an A2 learner. German correctness cannot be assumed — neither the owner's nor yours.
-
-- Write the English explanation first; it is the canonical explanation the teacher verifies. Other locales are translated from its meaning (not word-for-word) and must describe the same rule, same exceptions, same examples.
-- Every topic lists `sources` (e.g. Duden grammar, Goethe-Institut / ÖSD level descriptions). Do not copy text from books or other websites. Do not copy Goethe/ÖSD word lists wholesale.
-- Explanations: short sentences, no jargon without a one-line definition.
-- Examples: natural, everyday German.
-- Austrian notes only for real, established Austrian usage (reference: Österreichisches Wörterbuch). Mark with `region: AT`. When unsure, leave it out and name it in the summary for the owner (no TODOs in content).
-
-## UX rules
-
-- Zero JavaScript by default. Islands hydrate with `client:visible`. Islands receive already-localized strings as props; do not ship other locales to the client.
-- Exercise types: multiple choice and word order by drag and drop. NO free-text input.
-- Word order UI: two zones built with `svelte-dnd-action`: the answer line and the word bank. Words are dragged from the bank into the line, reordered inside it, and back. Mouse: drag immediately. Touch: `delayTouchStart: 250` (a long press starts the drag, a swipe scrolls). Keyboard: the library's built-in support (Tab to a word, Space/Enter picks it up, arrows move it, Tab/Shift+Tab moves it to the other zone); its screen-reader messages are localized (`exercise.wordOrder.*`, `setAriaStrings`). Tap or click (and Enter on a focused word) moves a word without dragging: from the bank to the end of the line, from the line back to the bank (owner decision #76); only trusted clicks count (the library dispatches a synthetic click after a touch tap), the listener is attached per word (iOS may not deliver Svelte's delegated clicks on plain elements), the keyboard drag trigger is Space only, and after Enter the focus stays in the same zone (Check when the bank is empty). A "Check" button becomes active when the bank is empty. A `fixed` first part is a locked chip before the line, not draggable. The bank never starts in a valid order. After checking, wrong positions are marked against the closest valid order, and the feedback shows that order.
-- Exercise runner: rounds of 5 mixed items from the topic pool (3 choice + 2 word order, `ROUND_COUNTS`; a kind without unseen items is filled with the other). Seen item IDs in `sessionStorage` under `seen:<level>/<slug>` (shared between locales), stored when a round starts; when fewer unseen items are left than a round needs, those are kept and the seen list starts over. Shuffle options and word-bank order. "Try again" starts a new round with unseen items. All randomness goes through a seedable RNG (`createRng`); `?seed=<n>` fixes the seed only in non-production builds (`allowSeed`), so tests are deterministic. Storage access in try/catch with in-memory fallback. Logic lives in `src/lib/exercises.ts` (pure, shipped to the client: no UI strings or collections there).
-- The practice section starts with a "Start practice" button (server-rendered, disabled until the island hydrates; `exercise.needsJs` in `<noscript>`). The round is picked when it is pressed, so items count as seen only when someone practises. A choice item is answered with one click. Focus moves to the feedback after an answer, then to the progress dots of the next question (no visible "Question 3 of 5"; it is the dots' accessible name, `role="img"`, owner decision #81).
-- No layout jumps in exercises (owner request, decisions #72, #74, #77): the practice card has a wrapper (`[data-practice-area]` on the topic page). "Start practice" marks it active and scrolls the card to the top once; the wrapper is then at least a screen tall (below the sticky header, above the mobile bottom bar, `global.css`) and never shrinks while the page is open (`--practice-tallest`, set by the runner, reset when its width changes). The card always fits its content (no empty space inside it) and grows into the spare room below it at the end of the page, so the page height and scroll position stay the same (an e2e test checks scroll position and section top at desktop and phone width). Answering never changes the size of what is already on screen (fixed-width gap, ✓/✗ as corner badges on the option buttons). When a question with its feedback is taller than the screen, the page scrolls smoothly (`block: 'nearest'`) only as far as needed. Focus always moves with `preventScroll`; the feedback fades in (`motion-safe:animate-appear`).
-- Topic page order: article (explanation), sponsor slot, practice. No sources block on topic pages (owner decision #78) and no sources page anywhere (owner decision #95): `sources` are for review only.
-- Home page: intro, level cards (available levels list their topics, the others their planned topics under "Coming soon"), features. Level pages: topic cards by category with summary and reading time (`readingMinutes`). Coming-soon pages: planned topics, `noindex`.
-- Footer on every page, across the whole width under the sidebar and content (the `contentinfo` landmark, owner decision #89): About, Legal notice and privacy, source code, licenses. On topic pages below lg it keeps clear of the bottom bar.
-- Back to the explanation (owner decision #82): the article has `id="explanation"`; the practice card header shows "↑ Explanation" (`exercise.toExplanation`, `.practice-only`: hidden until a round starts) and the result screen shows "Back to the explanation" (`exercise.backToExplanation`) next to "Try again". Both are plain in-page links, so the round is kept.
-- The result screen shows the score and every answer of the round in order: the learner's German sentence, struck through with the correct sentence below when it was wrong, and the Austrian label for regional answers (owner request, decision #73).
-- Exercise UI strings are the `exercise.*` keys (plus `topic.austrianUsage`), resolved on the server by `src/lib/exercise-strings.ts` and passed as one `strings` prop, placeholders filled on the client with `format()`.
-- After each answer show whether it was right and the `why` in the current locale, plus a "Report a mistake" link: a quiet flag icon at the end of the feedback header with a tooltip on hover and keyboard focus (Escape hides it), the label also as screen-reader text (owner decision #71).
-- Examples: German with its translation always visible (no "Hide translation" toggle, owner decision #62). Audio is wanted, but not from the browser's Web Speech API, whose voices sounded bad (#61): it comes back as pre-generated Azure AI Speech files with an Austrian voice (stage 4b, decision #63, pending the owner's Azure account). No runtime TTS calls.
-- Typography and density (owner decision #61): body text 15px, German example text 16px, compact cards (`px-3 py-2`), all page content uses the full width of the main column (no `max-w-prose` or other text-width limits; owner decision #99).
-- Theme: follow `prefers-color-scheme`, manual toggle saved in `localStorage` (`theme`), applied by a tiny inline script in `<head>` before first paint (`ThemeScript.astro` sets `data-theme` on `<html>`). Without JS, CSS follows the system preference.
-- Visual design: "Paper" (owner's choice, decision #45): warm cream background, teal accent, soft cards, serif headings, compact spacing.
-- Design tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `card`, `fg`, `muted`, `border`, `control`, `accent`, `accent-soft`, `accent-fg`, `focus`, `success(-soft)`, `danger(-soft)`, `header`) defined per `[data-theme]`, plus radii (`rounded-ui`, `rounded-card`, `rounded-chip`) and shadows (`shadow-card`, `shadow-pop`), exposed to Tailwind (`bg-bg`, `text-muted`, `border-control`, …). `control` is the border of interactive controls (≥ 3:1). Use only these; no raw colors (exception: the Austrian `.flag`), no `dark:` variants except for swapping icons. Dark text is deliberately not pure white on black (about 13:1 instead of 18:1) and text uses grayscale antialiasing, so it does not glow.
-- Layout (variant A): header with level switcher, search, language picker, theme toggle; left sidebar with topics grouped by category (category order in `site.ts`, labels `category.<id>`); main column with the topic. On mobile the sidebar becomes a sheet (the same element with the `popover` attribute, opened by a `popovertarget` button: no JS) and a bottom bar shows Prev / Practice / Next. Russian strings are often 20–30% longer than English: layouts must not break.
-- Static navigation (decision #47): no page transitions; `scrollbar-gutter: stable` on `<html>`, so pages with and without a scrollbar line up; the header is exactly 3rem (border included); `<body>` is a flex column of at least the screen height (header, content row, footer), so short pages do not scroll and the footer sits at the bottom. The sticky sidebar is as tall as its topics (at most the screen below the header, then it scrolls); the divider is the content column's `border-s`. An e2e test checks that the header widgets keep their boxes and the sidebar its position and width on every page type.
-- "Report a mistake": opens the GitHub issue form with page URL, locale and item id prefilled via query parameters (`reportMistakeUrl`; the page URL is canonical, the title `[Mistake] <path> <item id>`), in a new tab so the round is kept. No email.
-- Pages that are not ready for search engines get `noindex`: coming-soon pages, `ready: false` locales, preview deployments.
-- Performance budgets, enforced by `scripts/check-js-budget.ts` in CI (gzipped JS loaded by the page, excluding the analytics beacon and other external scripts; each file gzipped separately, imported chunks followed):
-  - pages without islands: ≤ 3 KB (inline scripts only; the search UI is not counted because no page loads it until the user opens search)
-  - pages with islands (topic pages with exercises): ≤ 45 KB (Svelte + svelte-dnd-action ≈ 13.5 KB + our code)
-  - Lighthouse ≥ 95 in all categories, checked before launch.
-- Accessibility: WCAG 2.2 AA without exceptions. Word order meets 2.5.7 (Dragging Movements) through tap/click and Enter, which move a word without dragging (owner decision #76, superseding the exception #12).
-
-## Deployment
-
-- One GitHub Actions workflow. Deploy jobs run only after all checks pass.
-- Pull requests: `wrangler versions upload --preview-alias pr-<number>`, then a PR comment with the preview URL. Preview builds set `PUBLIC_DEPLOY_ENV=preview`, which adds `noindex` to every page.
-- Push to `main`: `wrangler deploy` in a GitHub Environment `production`. `concurrency` prevents overlapping deploys.
-- Only run deploy jobs for branches of this repository, never for forks.
-- First deploy: if the Worker does not exist yet, the preview job deploys once without `routes` (`scripts/ci/wrangler-bootstrap-config.ts`), so the custom domain is attached only by the first production deploy.
-- Required status checks (job names): `DCO`, `Language check`, `Content checks`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`.
-- `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"`, default HTML handling (trailing slash, matching Astro), production only on the custom domain, preview URLs enabled. Check the current Wrangler docs for the exact keys.
-- Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account), variable `CLOUDFLARE_ACCOUNT_ID`.
-- Hosting limit to remember: Cloudflare allows 20,000 static files per deployment on the free plan (100,000 on paid). Pagefind adds many files; watch the count as topics and locales grow.
-- Preview URLs live on the account's workers.dev subdomain (`pr-<n>-deutscherl.<subdomain>.workers.dev`), so the Cloudflare account must have one: opening Workers & Pages in the dashboard once creates it. Production does not use workers.dev (`workers_dev: false`).
-
-## Legal pages (Austria)
-
-- One short page, "Legal notice and privacy" at `/legal/` (owner decision #96): the Offenlegung according to § 25 Mediengesetz for a small private website (owner name, town of residence, email, purpose of the site; no postal address), then plain privacy paragraphs (hosting by Cloudflare with the legal basis, Cloudflare Web Analytics, browser storage, search in the browser, GitHub links, computer-generated audio once it exists, rights and the Datenschutzbehörde). In every ready locale, linked in the footer.
-- The owner's name and town are written in the page, the email comes from `site.email`. No placeholders or TODOs on live pages. Keep it short and plain; do not add legal claims the owner has not confirmed.
-- `/about/` holds the accessibility statement (WCAG 2.2 AA target, word order without dragging) and, once audio exists, the computer-generated voice note.
-- When sponsor banners arrive: label them as ads ("Anzeige" / localized) and extend the legal notice as required for commercial sites (§ 5 ECG may require a postal address).
-
-## Testing
-
-Functional tests run on the English site only: the code is the same for every locale. Other locales are covered by data checks and a small set of language-switching tests. No visual snapshot (screenshot) tests.
-
-- Vitest: schemas, `validate-content.ts` rules (with failing fixtures), review hashing/reset/minor-edit including translation reset via `basedOn`, `check-language.ts`, `t()` and path helpers, `src/lib` logic (pool selection with seeded RNG, choice check with `alsoCorrect`, word-order check with `accept`, duplicates, capitalization after check).
-- Data checks (not tests of wording): `i18n-coverage.ts` fails when a ready locale misses a key or file, so a missing translation can never break a page.
-- Playwright on English pages: topic page content (examples with `lang="de"`, badges, Austrian note), exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation (home → level → topic, footer pages, full-width footer), search (lazy loading, a German word, Cmd/Ctrl+K, focus return; needs the Pagefind index from `pnpm build`), SEO (Open Graph, JSON-LD, robots.txt, sitemap), report-mistake URL, noindex rules, no analytics beacon in the build, axe checks on every page type and the open search modal.
-- Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale on every page type; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
-- CI: DCO, language check, content checks (`pnpm validate`, `pnpm i18n:coverage`, `pnpm review:check`), lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`).
-- The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere).
-- Exercise e2e tests steer a round through the seen ids in `sessionStorage` (`onlyUnseen` in `tests/e2e/helpers/exercises.ts`), so they run on production builds too; only the "Try again" seed test needs `?seed=` and is skipped on production builds. Drags move in steps and hold 250 ms before release (svelte-dnd-action checks the zone under the word every 200 ms); touch uses CDP `Input.dispatchTouchEvent` with the bank scrolled to the middle (the mobile bottom bar covers the bottom of the screen). `<noscript>` is checked in the served HTML (Playwright's disabled JavaScript still parses it as scripted).
-- Local e2e: `pnpm build && pnpm test:e2e` (the tests run against `dist/`). Playwright runs on the build output. Deploy jobs need every check (decision #30).
-- Playwright's web server runs `astro preview --ignore-lock`: Astro 7 moves `astro preview` to the background when it detects an AI agent, and `--ignore-lock` keeps it in the foreground.
-
-## Don'ts
-
-- No accounts, no cookies, no ad trackers.
-- No runtime API or DB calls.
-- No automatic language redirects.
-- No German text duplicated across locale files; no native-language text in `german.yaml`.
-- No native-language text outside localization files (see "Repository language").
-- No `<ClientRouter />`, no `@view-transition`, no hand-rolled drag and drop.
-- No visual snapshot (screenshot) tests; no functional tests duplicated per locale.
-- No left/right-specific CSS; use logical properties.
-- No new dependencies without a clear reason and size; mention them in the summary.
-- Do not mark content as reviewed or verified.
+- `content.md`: writing topics, the content model, MDX components, lesson formatting, exercise items, validation
+- `review.md`: review scopes, hashes, automatic reset, badges
+- `exercises.md`: exercise runner, practice section, word-order UI
+- `ui.md`: JS budgets, page types, layout, design tokens, accessibility
+- `i18n.md`: locales, routing, language picker, SEO, search
+- `fonts.md`: per-locale and German fonts
+- `site-pages.md`: about and legal pages
+- `testing.md`: what is tested where, e2e mechanics
+- `deployment.md`: CI, Cloudflare deployment, analytics

@@ -1,4 +1,4 @@
-# One pipeline for checks and deploys (CLAUDE.md, "Deployment" and "Testing").
+# One pipeline for checks and deploys (`.claude/rules/deployment.md`, `.claude/rules/testing.md`).
 # Checks run in parallel; e2e tests run on the build output; deploy jobs run only after every
 # check passed and never for forks.
 name: CI

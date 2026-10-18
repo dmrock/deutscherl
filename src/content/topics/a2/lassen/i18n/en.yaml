@@ -1,0 +1,62 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: At the weekend, I leave the laptop at the office.
+  e2: We have to leave the dog with the neighbours today.
+  e3: My parents let me sleep late at the weekend.
+  e4: Let me do that!
+  e5: I'm having my trousers shortened.
+  e6: We're having our kitchen renovated.
+  e7: We left the children with their grandparents.
+  e8: We had the kitchen renovated.
+
+choice:
+  c1:
+    why: 'With *du*, the a changes to ä: *du lässt*. *lasst* is the form for *ihr*.'
+  c2:
+    why: 'With *ihr* there is no ä: *ihr lasst*. *lässt* goes with *du* and *er / sie / es*.'
+  c3:
+    why: 'Meaning 2, "let": the boss allows it. *Meine Chefin* is *sie* (one person), so the form is *lässt*.'
+  c4:
+    why: 'Meaning 3, "have something done": a painter paints the flat, not us. With *wir* the form is *lassen*.'
+  c5:
+    why: 'Meaning 1, "leave something somewhere": I do not take the money with me. With *ich* the form is *lasse*.'
+  c6:
+    why: 'You talk to Paul with *du*, so the command is *lass*. *lasst* is for several people (*ihr*), and *lässt* is not a command.'
+  c7:
+    why: 'There is no second verb here (meaning 1, "leave"), so the Perfekt uses the participle *gelassen*.'
+  c8:
+    why: 'There is a second verb (*waschen*), so the Perfekt keeps *lassen* at the end: *er hat sein Auto waschen lassen*. *gelassen* is used only without a second verb.'
+  c9:
+    why: 'Someone else cleans the windows, so this is meaning 3: *lassen* + infinitive. *machen* cannot be used for this.'
+  c10:
+    why: 'Meaning 1, "leave": the dog stays at home without him. *Er* takes *lässt*.'
+  c11:
+    why: 'A question to one person you call *du*: *lässt du …?* In a yes/no question the verb comes first.'
+
+wordOrder:
+  w1:
+    translation: I'm having the TV repaired.
+    why: '*lasse* is in position 2 and the second verb *reparieren* is at the end. *den Fernseher* can also come first; then *ich* moves after the verb.'
+  w2:
+    translation: My parents let me sleep late.
+    why: '*lassen* is in position 2, *mich* (the person who is allowed) comes right after it, and *schlafen* is at the end.'
+  w3:
+    translation: Let me do that!
+    why: 'A command starts with the verb: *lass*. The second verb *machen* is at the end.'
+  w4:
+    translation: Where do you have your photos printed?
+    why: 'The question word *wo* comes first, then the verb *lässt*, then the subject *du*. The second verb *drucken* is at the end.'
+  w5:
+    translation: I left my passport at the hotel.
+    why: 'No second verb, so the Perfekt uses *gelassen* at the end, and *habe* is in position 2. *meinen Pass* and *im Hotel* can swap places, and either one can come first.'
+  w6:
+    translation: He had his bike repaired.
+    why: 'With a second verb, the Perfekt ends with both verbs: *reparieren lassen* (not *gelassen*). *hat* is in position 2.'
+  w7:
+    translation: You can leave the windows open.
+    why: 'With a modal verb (*kannst*) in position 2, *lassen* goes to the very end. *offen lassen* means "leave open".'
+
+austrianNotes:
+  at1: I'm having the car inspection done next week.

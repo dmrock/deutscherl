@@ -1,5 +1,5 @@
 /**
- * Per-file content schemas (CLAUDE.md, "Content model"). Pure: used by the content collections
+ * Per-file content schemas (`.claude/rules/content.md`). Pure: used by the content collections
  * (src/content.config.ts) and by the scripts that run on plain node (validate-content, review).
  * Rules that span files live in scripts/validate-content.ts.
  */

@@ -1,5 +1,5 @@
 /**
- * Review badges of a topic page (CLAUDE.md, "Review and verification"), pure and unit-tested.
+ * Review badges of a topic page (`.claude/rules/review.md`), pure and unit-tested.
  * They say exactly what was checked:
  * - canonical (English) page: "Checked by a teacher" when base is verified, otherwise "Draft";
  * - other locales: "German checked by a teacher" when base is verified, "Translation reviewed" when

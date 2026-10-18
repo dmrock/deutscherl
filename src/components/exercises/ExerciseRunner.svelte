@@ -1,8 +1,8 @@
 <!--
-  Exercise runner (CLAUDE.md, "UX rules"): rounds of 5 mixed items from the topic pool, progress
-  dots, feedback with the `why` text and a "Report a mistake" link, a result screen and "Try again"
-  (a new round with unseen items). Seen ids live in sessionStorage under `seen:<level>/<slug>`,
-  shared between locales. All randomness goes through one seeded RNG; `?seed=<n>` fixes the seed
+  Exercise runner (`.claude/rules/exercises.md`): rounds of 5 mixed items from the topic pool,
+  progress dots, feedback with the `why` text and a "Report a mistake" link, a result screen and
+  "Try again" (a new round with unseen items). Seen ids live in sessionStorage under
+  `seen:<level>/<slug>`, shared between locales. All randomness goes through one seeded RNG; `?seed=<n>` fixes the seed
   in non-production builds (`allowSeed`), so e2e tests are deterministic.
 
   The server renders the "Start practice" button (disabled until hydrated); the round is picked
@@ -194,7 +194,7 @@
     {:else if phase === 'question' && current}
       <!--
         Progress dots, floated so the prompt shares their line. "Question 3 of 5" is their
-        accessible name (no visible text, decision #81); they are the focus target after "Next".
+        accessible name (no visible text); they are the focus target after "Next".
       -->
       <div
         role="img"
@@ -367,7 +367,7 @@
         >
           {strings['exercise.tryAgain']}
         </button>
-        <!-- Plain in-page link: the explanation is above the practice card (decision #82). -->
+        <!-- Plain in-page link: the explanation is above the practice card. -->
         <a
           href="#explanation"
           class="inline-flex h-10 items-center rounded-ui border border-control bg-card px-4 font-semibold hover:bg-surface"

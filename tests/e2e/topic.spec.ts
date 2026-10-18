@@ -1,4 +1,4 @@
-/** Topic page content components, English page (CLAUDE.md, "Testing"). */
+/** Topic page content components, English page (`.claude/rules/testing.md`). */
 import { expect, test } from '@playwright/test';
 import { t } from '../../src/i18n/utils.ts';
 

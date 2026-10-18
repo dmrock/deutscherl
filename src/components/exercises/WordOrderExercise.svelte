@@ -1,10 +1,10 @@
 <!--
-  Word order with svelte-dnd-action (decision #11): the answer line and the word bank are two
+  Word order with svelte-dnd-action: the answer line and the word bank are two
   zones of the same type. Words move from the bank into the line, inside it and back. Mouse drags
   immediately; touch needs a long press (`delayTouchStart: 250`), so a swipe still scrolls.
 
-  Tap or click a word to move it without dragging (owner decision #76, the single-pointer
-  alternative of WCAG 2.5.7): from the bank to the end of the line, from the line back to the bank.
+  Tap or click a word to move it without dragging (the single-pointer alternative
+  of WCAG 2.5.7): from the bank to the end of the line, from the line back to the bank.
   Enter does the same from the keyboard; Space picks a word up for the library's keyboard dragging
   (arrows, Tab to the other zone).
 

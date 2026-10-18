@@ -1,4 +1,4 @@
-/** Layout, theme and indexing rules, on English pages (CLAUDE.md, "Testing"). */
+/** Layout, theme and indexing rules, on English pages (`.claude/rules/testing.md`). */
 import { expect, type Page, test } from '@playwright/test';
 import { t } from '../../src/i18n/utils.ts';
 
@@ -151,7 +151,7 @@ test.describe('static navigation', () => {
     await page.goto('/a2/perfekt/');
     const footer = await page.getByRole('contentinfo').boundingBox();
     const sidebar = await page.locator('#sidebar').boundingBox();
-    // The body is the page width without the reserved scrollbar gutter (decision #47).
+    // The body is the page width without the reserved scrollbar gutter.
     const width = await page.evaluate(() =>
       Math.round(document.body.getBoundingClientRect().width),
     );
