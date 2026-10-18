@@ -31,14 +31,6 @@ export default defineConfig({
         values: ['development', 'preview', 'production'],
         default: 'development',
       }),
-      // Cloudflare Web Analytics site token, from the GitHub Actions variable of the same name.
-      // Public (the beacon prints it into every page), but kept out of the repository so forks
-      // never report into this site's account. Used only by production builds.
-      PUBLIC_CF_ANALYTICS_TOKEN: envField.string({
-        context: 'server',
-        access: 'public',
-        optional: true,
-      }),
     },
   },
   fonts: fontFamilies(),

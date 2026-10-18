@@ -1,7 +1,6 @@
 ---
 import { Font } from 'astro:assets';
 import { PUBLIC_DEPLOY_ENV } from 'astro:env/client';
-import { PUBLIC_CF_ANALYTICS_TOKEN } from 'astro:env/server';
 import BottomBar from '../components/layout/BottomBar.astro';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
@@ -53,8 +52,6 @@ const metaDescription = description ?? t(locale, 'site.tagline');
 const ogLocaleAlternates = localeConfig.ready
   ? readyLocales.filter((code) => code !== locale).map((code) => getLocaleConfig(code).ogLocale)
   : [];
-// Cloudflare Web Analytics (decisions #18, #87): production builds with the token from CI only.
-const analyticsToken = PUBLIC_DEPLOY_ENV === 'production' ? PUBLIC_CF_ANALYTICS_TOKEN : undefined;
 
 const bodyFont = cssVariableOf(localeConfig.font.family) as CssVariable;
 const germanFontVar = cssVariableOf(germanFont.family) as CssVariable;
@@ -102,14 +99,6 @@ const { prev, next } =
     {structuredData && <script type="application/ld+json" set:html={jsonLd(structuredData)} />}
     <Font cssVariable={bodyFont} preload={fontPreload} />
     {germanFontVar !== bodyFont && <Font cssVariable={germanFontVar} />}
-    {analyticsToken && (
-      <script
-        is:inline
-        defer
-        src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon={JSON.stringify({ token: analyticsToken })}
-      ></script>
-    )}
   </head>
   <body class="min-h-dvh">
     <a
