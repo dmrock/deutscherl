@@ -1,7 +1,22 @@
 ---
-/** A German word inside explanation text: `<De>haben</De>`. Inherits the locale font. */
+/**
+ * A German word inside explanation text: `<De>haben</De>`, bold in the locale font. `plain` drops
+ * the bold for text that is German throughout (cells of a forms table); `**…**` inside then marks
+ * what to notice (`<De plain>du **lässt**</De>`).
+ */
+interface Props {
+  plain?: boolean;
+}
+
+const { plain = false } = Astro.props;
 ---
 
-<i lang="de">
-  <slot />
-</i>
+{plain ? (
+  <span lang="de">
+    <slot />
+  </span>
+) : (
+  <b lang="de" class="font-semibold">
+    <slot />
+  </b>
+)}

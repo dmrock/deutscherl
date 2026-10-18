@@ -1,7 +1,12 @@
 ---
-/** A card that groups consecutive <Example> rows in MDX. */
+/**
+ * A card that groups consecutive <Example> rows in MDX: two columns when the main column is wide
+ * enough (`.examples` in global.css).
+ */
 ---
 
-<div class="my-3 divide-y divide-border rounded-card border border-border bg-card shadow-card">
-  <slot />
+<div class="my-3 @container">
+  <div class="examples rounded-card border border-border shadow-card">
+    <slot />
+  </div>
 </div>

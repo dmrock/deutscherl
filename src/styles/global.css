@@ -315,9 +315,29 @@ html:root {
     outline-offset: 2px;
   }
 
-  /* Rule tables (<RuleTable> around a markdown table). */
+  /*
+   * Example cards (<Examples>): 1px gaps on the border color draw the dividers. Two columns when
+   * the card is at least 40rem wide; an odd last example spans both.
+   */
+  .examples {
+    display: grid;
+    gap: 1px;
+    overflow: hidden;
+    background-color: var(--color-border);
+  }
+
+  @container (min-width: 40rem) {
+    .examples {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .examples > :last-child:nth-child(odd) {
+      grid-column: span 2;
+    }
+  }
+
+  /* Rule tables (<RuleTable> around a markdown table): as wide as their content. */
   .rule-table table {
-    width: 100%;
     border-collapse: collapse;
     font-size: 0.875rem;
   }

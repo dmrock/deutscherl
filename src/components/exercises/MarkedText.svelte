@@ -13,5 +13,6 @@
   const segments = $derived(splitMarked(text, '*'));
 </script>
 
-{#each segments as segment, index (index)}{#if segment.marked}<i lang="de">{segment.text}</i
+{#each segments as segment, index (index)}{#if segment.marked}<b lang="de" class="font-semibold"
+      >{segment.text}</b
     >{:else}{segment.text}{/if}{/each}

@@ -93,6 +93,9 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#96** **owner** One short legal page, "Legal notice and privacy" (`/legal/`): the Offenlegung (name, town, email, purpose) and a few plain privacy paragraphs instead of two long templates with open legal questions. No postal address (the Mediengesetz asks for the place of residence); a commercial site may need one later (§ 5 ECG). Rejected: separate `/impressum/` and `/privacy/` pages.
 - **#98** **owner** Contact email `hallo@deutscherl.com` in `site.email` (shown with `<Email />`; also in CODE_OF_CONDUCT.md), forwarded to the owner by Cloudflare Email Routing (free, receive only), so the personal address is not on the site. Rejected: the owner's Gmail on the page (spam).
 - **#99** **owner** Every page uses the full width of the main column, like topic pages (#61): no narrower text measure on the home intro, coming-soon, about and legal pages.
+- **#100** **owner** German words in explanations, summaries and why texts are bold, not italic (`<De>`, `*word*`); `<De plain>` for cells that are German throughout.
+- **#101** **owner** Example cards show two columns when the card is at least 40rem wide (container query), so short examples do not leave half the card empty; an odd last example spans both.
+- **#102** **owner** Rule tables are as wide as their content; verb forms go in a compact singular | plural table with the irregular forms in bold.
 - **#93** Planned topics for B1–C1 (`plannedTopics` in `site.ts`) are a draft list for the coming-soon pages; the owner may change them.
 
 ## Dictionary

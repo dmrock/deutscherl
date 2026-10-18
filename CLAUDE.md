@@ -165,16 +165,23 @@ tests/
   - `wordOrder`: `{ id, parts, fixed?, accept?, punctuation }`
   - `austrianNotes`: `{ id, de }`
 - `<locale>.mdx` frontmatter: `title`, `summary` ("In short", rendered by the page with `<InShort>`; also the meta description and the level-page card). Body references German content by id. Never write German example sentences directly in MDX. Components (passed by the topic page, no imports in MDX):
-  - `<Examples>` around one or more `<Example id="e1" />` (a card with one row per example: German, translation);
+  - `<Examples>` around one or more `<Example id="e1" />` (a card, one cell per example: German, translation; two columns when the card is at least 40rem wide);
   - `<AustrianNote id="at1">explanation in the locale</AustrianNote>` (flag + "In Austria", the children, then the German sentence and its translation);
   - `<RuleTable>` + blank line + a markdown (GFM) table + blank line;
-  - `<De>haben</De>` for German words inside explanation text (`lang="de"`).
+  - `<De>haben</De>` for German words inside explanation text (`lang="de"`, bold); `<De plain>` for text that is German throughout (cells of a forms table), with `**…**` inside for what to notice.
 - `i18n/<locale>.yaml`: `examples.<id>`, `choice.<id>.why`, `wordOrder.<id>.translation`, `wordOrder.<id>.why`, `austrianNotes.<id>` (translation of the note's German sentence). Fields are optional in the schema so a not-ready locale can be translated step by step; `i18n-coverage` requires all of them for ready locales.
-- In native-language text (`summary`, why texts), `*word*` marks a German word (rendered with `lang="de"`, stripped for meta tags).
+- In native-language text (`summary`, why texts), `*word*` marks a German word (rendered bold with `lang="de"`, stripped for meta tags).
 - `review.yaml`: see "Review and verification". Managed only by `scripts/review.ts`.
 - Site pages (about, legal): `src/content/pages/<slug>/<locale>.mdx` with frontmatter `title` and `description`, routed by `src/pages/[...locale]/<slug>/index.astro` through `ProsePage.astro`. Components: `<De>`, `<Email />` (the contact `site.email` as a link), `<AudioOnly>` (shown once `site.audio` is true, stage 4b). `i18n-coverage` requires every page in every ready locale; a locale that is not ready falls back to the English text. Not part of the review scopes and not indexed by search.
 - Planned topics of levels that are not available (`plannedTopics` in `site.ts`, labels `planned.<id>`) are listed on the home page and the coming-soon pages.
 - Validation: per-file shape with Zod (`src/lib/content-schemas.ts`); everything that spans files in `scripts/validate-content.ts` (`pnpm validate`), run in CI and by `pnpm build` before `astro build`. Zod alone cannot do cross-file checks. Rules: schemas, folder level, unique ids, choice (one `___`, answer and `alsoCorrect` in options), word order (`accept` orders are permutations of `parts`, distinct, start with the fixed part; neutral case via a list of closed-class words such as `Ich`, `Gestern`), MDX and i18n ids exist in `german.yaml`, coverage of ready locales, at least 10 choice items, `review.yaml` in sync.
+
+### Lesson formatting
+
+- German words in native-language text are bold (`<De>`, `*word*`), never italic (owner decision #100).
+- A rule with several meanings or cases: one paragraph per case, starting with a bold lead-in (`**1. Leave something somewhere.**`), then its `<Examples>`. Two examples per case fill one row of the two-column card; an odd last example spans both columns (owner decision #101).
+- Tables are as wide as their content, not the full column (owner decision #102). Keep them compact: few columns, short cells.
+- Verb forms: a two-column table, singular | plural (rows `ich`/`wir`, `du`/`ihr`, `er / sie / es`/`sie / Sie`), each cell `<De plain>pronoun form</De>`, irregular forms in `**…**` (e.g. `<De plain>du **lässt**</De>`). Headers are in the locale.
 
 ### Exercise rules
 

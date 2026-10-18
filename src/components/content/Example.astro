@@ -18,7 +18,7 @@ if (!example) throw new Error(`Unknown example id "${id}" on ${Astro.url.pathnam
 const translation = i18n?.examples[id];
 ---
 
-<div id={`example-${id}`} class="px-3 py-2">
+<div id={`example-${id}`} class="bg-card px-3 py-2">
   <div class="flex items-start gap-2">
     <GermanText text={example.de} />
     {example.region === 'AT' && (
