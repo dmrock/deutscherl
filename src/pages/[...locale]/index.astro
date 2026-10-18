@@ -36,8 +36,8 @@ const structuredData = websiteData({
 <Base locale={locale} description={description} structuredData={structuredData}>
   <section class="pt-2 sm:pt-6">
     <p class="eyebrow text-muted">{t(locale, 'site.tagline')}</p>
-    <h1 class="mt-2 max-w-2xl text-4xl sm:text-5xl">{t(locale, 'home.title')}</h1>
-    <p class="mt-4 max-w-xl text-lg text-muted">{t(locale, 'home.intro')}</p>
+    <h1 class="mt-2 text-4xl sm:text-5xl">{t(locale, 'home.title')}</h1>
+    <p class="mt-4 text-lg text-muted">{t(locale, 'home.intro')}</p>
     <div class="mt-6 flex flex-wrap gap-3">
       {available.map((level, index) => (
         <a
