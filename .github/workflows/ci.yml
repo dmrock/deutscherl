@@ -126,6 +126,8 @@ jobs:
         env:
           # `preview` adds noindex to every page.
           PUBLIC_DEPLOY_ENV: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
+          # Public Cloudflare Web Analytics token (repository variable); only production builds use it.
+          PUBLIC_CF_ANALYTICS_TOKEN: ${{ vars.PUBLIC_CF_ANALYTICS_TOKEN }}
         run: pnpm build
       - name: JS budget
         run: pnpm budget
@@ -144,6 +146,7 @@ jobs:
     env:
       # Same value the build used, so the noindex tests know which build they are testing.
       PUBLIC_DEPLOY_ENV: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
+      PUBLIC_CF_ANALYTICS_TOKEN: ${{ vars.PUBLIC_CF_ANALYTICS_TOKEN }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/setup

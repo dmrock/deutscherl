@@ -69,7 +69,7 @@ Components, pages and tests never contain native-language strings inline: they u
 - Package manager: pnpm, version pinned in `package.json` → `packageManager`; dependency build scripts are denied by default (`pnpm-workspace.yaml` → `allowBuilds`). Node LTS, pinned in `.nvmrc`
 - Versions: latest stable release of every dependency and GitHub Action (check npm / GitHub, not memory); exceptions are recorded in `docs/decisions.md`. GitHub Actions are pinned to commit SHAs with the version in a comment.
 - Hosting: Cloudflare Workers with static assets, deployed from GitHub Actions with Wrangler (see "Deployment")
-- Analytics: Cloudflare Web Analytics (free, cookieless). The beacon script is added with `defer` only on production builds and only once `analyticsToken` in `src/config/site.ts` is set (public token; empty until the owner adds it). No other analytics or tracking SDKs (PostHog was considered and postponed, see `docs/decisions.md`). Google Search Console is verified via a DNS record, no code.
+- Analytics: Cloudflare Web Analytics (free, cookieless). The beacon script is added with `defer` only on production builds, with the site token from the GitHub Actions variable `PUBLIC_CF_ANALYTICS_TOKEN` (read through `astro:env` like `PUBLIC_DEPLOY_ENV`; the build and E2E jobs get it). The token is public but not committed, so forks never report into this site's account; without it no beacon is added. No other analytics or tracking SDKs (PostHog was considered and postponed, see `docs/decisions.md`). Google Search Console is verified via a DNS record, no code.
 
 ## Languages (i18n)
 
@@ -104,7 +104,7 @@ Terminology: the "native language" (a.k.a. locale) is the language of the UI, ex
 
 ```
 src/
-  config/site.ts             # name, levels, categories, planned topics, analytics token, audio flag
+  config/site.ts             # name, levels, categories, planned topics, audio flag
   config/fonts.ts            # Fonts API config from locales.ts + German font
   i18n/
     locales.ts               # locales: code, name, default, ready, dir, font
@@ -256,7 +256,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - First deploy: if the Worker does not exist yet, the preview job deploys once without `routes` (`scripts/ci/wrangler-bootstrap-config.ts`), so the custom domain is attached only by the first production deploy.
 - Required status checks (job names): `DCO`, `Language check`, `Content checks`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`.
 - `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"`, default HTML handling (trailing slash, matching Astro), production only on the custom domain, preview URLs enabled. Check the current Wrangler docs for the exact keys.
-- Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account), variable `CLOUDFLARE_ACCOUNT_ID`.
+- Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account), variables `CLOUDFLARE_ACCOUNT_ID` and `PUBLIC_CF_ANALYTICS_TOKEN` (Web Analytics site token, public).
 - Hosting limit to remember: Cloudflare allows 20,000 static files per deployment on the free plan (100,000 on paid). Pagefind adds many files; watch the count as topics and locales grow.
 - Preview URLs live on the account's workers.dev subdomain (`pr-<n>-deutscherl.<subdomain>.workers.dev`), so the Cloudflare account must have one: opening Workers & Pages in the dashboard once creates it. Production does not use workers.dev (`workers_dev: false`).
 

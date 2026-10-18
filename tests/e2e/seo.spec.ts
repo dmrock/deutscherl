@@ -4,8 +4,9 @@ import { site } from '../../src/config/site.ts';
 import { t } from '../../src/i18n/utils.ts';
 import { topicTitle } from './helpers/pages.ts';
 
-// Same value the tested build used (set in CI; local builds default to development).
+// Same values the tested build used (set in CI; local builds default to development, no token).
 const deployEnv = process.env.PUBLIC_DEPLOY_ENV ?? 'development';
+const analyticsToken = process.env.PUBLIC_CF_ANALYTICS_TOKEN ?? '';
 
 test('a topic page has Open Graph tags and structured data', async ({ page }) => {
   await page.goto('/a2/perfekt/');
@@ -57,7 +58,11 @@ test('the sitemap lists indexable pages with their alternates, no coming-soon pa
 test('the analytics beacon is only on production builds', async ({ page }) => {
   await page.goto('/');
   const beacon = page.locator('script[src*="cloudflareinsights.com"]');
-  const expected = deployEnv === 'production' && site.analyticsToken !== '' ? 1 : 0;
-  await expect(beacon).toHaveCount(expected);
-  if (deployEnv === 'preview') await expect(beacon).toHaveCount(0);
+  await expect(beacon).toHaveCount(deployEnv === 'production' && analyticsToken !== '' ? 1 : 0);
+  if (analyticsToken !== '' && deployEnv === 'production') {
+    await expect(beacon).toHaveAttribute(
+      'data-cf-beacon',
+      JSON.stringify({ token: analyticsToken }),
+    );
+  }
 });

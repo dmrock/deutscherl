@@ -17,7 +17,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#33** **owner** First deploy bootstrapped from CI without routes, so the domain is attached only by the first production deploy.
 - **#54** "Content checks" CI job (validate, i18n coverage, review check): fast, clearly named failure; a required check.
 - **#86** Sitemap from `@astrojs/sitemap` (alternates from the locale prefixes), noindex pages filtered out by `inSitemap`; `robots.txt` allows everything, because a crawler blocked by robots.txt never sees `noindex`.
-- **#87** **pending** (owner: token) The analytics beacon needs a production build and `analyticsToken` in `site.ts`, which stays empty until the owner pastes the public token from Cloudflare, so no build loads a beacon with a guessed token.
+- **#87** **owner** The analytics beacon needs a production build and the GitHub Actions variable `PUBLIC_CF_ANALYTICS_TOKEN`: the token is public, but kept out of the repository so forks never report into this site's account. Rejected: committing it in `site.ts`.
 
 ## Languages and fonts
 

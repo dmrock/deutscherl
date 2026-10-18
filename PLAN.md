@@ -18,7 +18,7 @@ No Claude Code needed.
 **Cloudflare and domain**
 - Buy the domain with Cloudflare Registrar, so it lands in your Cloudflare account right away.
 - Create an API token that can edit Workers for your account (least privilege). Keep the token and your Account ID.
-- Web Analytics → Add a site: add your domain and keep the site token. It is not a secret; it is needed in stage 7.
+- Web Analytics → Add a site: add your domain and keep the site token. It is not a secret; stage 7 reads it from the Actions variable `PUBLIC_CF_ANALYTICS_TOKEN`.
 
 **GitHub**
 - Create a **public** repository. Do not add the `hacktoberfest` topic.
@@ -137,7 +137,7 @@ Build, for every ready locale:
 - Legal pages from CLAUDE.md "Legal pages (Austria)": /impressum/ and /privacy/ in both locales, footer links, TODO placeholders for me to fill in.
 - /about/sources/ in both locales: the grammar references listed in the topics' `meta.yaml` (`sources`), grouped and de-duplicated (decision #78).
 - /about/ with an accessibility statement (WCAG 2.2 AA target; word order can be done by tap, click or keyboard without dragging, decision #76) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /privacy/ mentions it too.
-- Analytics: Cloudflare Web Analytics beacon with `defer`, token from src/config/site.ts, only on production builds (not on previews or in dev), mentioned in /privacy/. Add an e2e check that preview builds contain no beacon.
+- Analytics: Cloudflare Web Analytics beacon with `defer`, token from the Actions variable PUBLIC_CF_ANALYTICS_TOKEN (decision #87), only on production builds (not on previews or in dev), mentioned in /privacy/. Add an e2e check that preview builds contain no beacon.
 Add e2e tests on English pages for navigation and search (including finding a German word), and axe checks for all new page types. Extend the language-switching tests to the new page types (picker keeps the page, hreflang present).
 ```
 
