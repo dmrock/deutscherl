@@ -72,7 +72,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#84** Search: Pagefind Component UI, loaded by a small inline script on the first click or Cmd/Ctrl+K and opened as its modal. Pages load no search code, so the 3 KB budget holds (opening search loads about 130 KB, mostly the WASM). Pagefind's own translations from `<html lang>`. Rejected: the legacy Default UI, an own UI over the JS API (more code to maintain).
 - **#85** Only topic pages of ready locales are indexed (`data-pagefind-body`); German examples are on every locale's page, so a German word is found from any locale without a separate German index.
 - **#89** **owner** (request) Footer across the whole page width, under the sidebar too (a top-level `contentinfo` landmark): About, legal page, source code, licenses. The body is a column that fills the screen, so short pages still do not scroll (#47); the sidebar is as tall as its topics (at most the screen) and the divider is the content column's border.
-- **#95** **owner** No sources page: learners do not need it. `sources` stays in `meta.yaml` for review only. Rejected: `/about/sources/` (built in stage 7 and removed before merging).
+- **#95** **owner** No sources page: learners do not need it. `sources` stays in `meta.yaml` for review only. Rejected: an `/about/sources/` page.
 - **#90** Home page level cards list each level's topics, or its planned topics under "Coming soon"; level pages show the reading time (kept off topic pages, #61).
 
 ## Content and review
@@ -89,8 +89,9 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#56** Content components are passed by the topic page (MDX needs no imports) and find their topic from the page URL; `**…**` highlights German key words, `*…*` marks German words in native text.
 - **#59** First topic A2 "Perfekt: haben or sein?", draft. The Austrian note says "usually": in Austria `sein` is the majority form for sitzen/liegen/stehen, but `haben` is used too (Variantengrammatik).
 - **#91** Site pages (about, legal) are MDX in `src/content/pages/<slug>/<locale>.mdx`, an allowed localization path; `i18n-coverage` requires them for ready locales, and a locale that is not ready shows the English text. Rejected: long UI strings.
-- **#92** Legal placeholders are visible `<Todo>` marks, so nothing unfinished goes unnoticed; audio paragraphs on /about/ and /legal/ are written but shown only once `site.audio` is true (stage 4b), so the pages never describe audio that does not exist.
+- **#92** Audio paragraphs on /about/ and /legal/ are written but shown only once `site.audio` is true (stage 4b), so the pages never describe audio that does not exist.
 - **#96** **owner** One short legal page, "Legal notice and privacy" (`/legal/`): the Offenlegung (name, town, email, purpose) and a few plain privacy paragraphs instead of two long templates with open legal questions. No postal address (the Mediengesetz asks for the place of residence); a commercial site may need one later (§ 5 ECG). Rejected: separate `/impressum/` and `/privacy/` pages.
+- **#98** **owner** Contact email in `site.email` (one place, shown with `<Email />`; also in CODE_OF_CONDUCT.md). It is the owner's Gmail, already public in the git history; a forwarding alias on the domain would only need this one line changed.
 - **#93** Planned topics for B1–C1 (`plannedTopics` in `site.ts`) are a draft list for the coming-soon pages; the owner may change them.
 
 ## Dictionary
@@ -109,6 +110,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 ## Tooling and dependencies
 
 - **#16** Open source: code MIT, content CC BY-SA 4.0, DCO sign-off, PRs only from collaborators, issues via forms.
+- **#97** **owner** Content stays CC BY-SA 4.0 after dropping the dictionary (no longer required by Wiktionary): adapted versions must stay open. Rejected: CC BY 4.0 (easier reuse, but closed copies allowed).
 - **#18** **owner** Cloudflare Web Analytics (free, cookieless, production only). PostHog postponed: 24–98 KB of JS.
 - **#23** **owner** Latest stable versions, except Node (current LTS, 24) and TypeScript 6 (Astro's tooling does not support 7 yet); pnpm's 1-day minimum release age is kept as a supply-chain safeguard.
 - **#24** pnpm 12 pinned via `packageManager`; dependency build scripts denied by default (`allowBuilds`).

@@ -69,7 +69,8 @@ const { locale } = Astro.props;
       if (event.target.closest?.('[data-search-open]')) open();
     });
     document.addEventListener('keydown', (event) => {
-      if (event.key.toLowerCase() !== 'k' || !(event.metaKey || event.ctrlKey)) return;
+      // `key` is missing on some synthetic keydown events (Chrome autofill).
+      if (event.key?.toLowerCase() !== 'k' || !(event.metaKey || event.ctrlKey)) return;
       if (event.altKey || event.shiftKey) return;
       event.preventDefault();
       open();

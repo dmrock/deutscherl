@@ -126,7 +126,7 @@ src/
                              # MarkedText
     content/                 # InShort, RuleTable, Example(s), AustrianNote, De, StatusBadges,
                              # SponsorSlot
-    pages/                   # MDX components of site pages: Todo, AudioOnly, PageLink
+    pages/                   # MDX components of site pages: Email, AudioOnly
     layout/                  # Header, LevelSwitcher, Search, LanguagePicker, ThemeToggle, Sidebar,
                              # BottomBar, Footer, ThemeScript (inline JS)
   layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts, Open
@@ -172,7 +172,7 @@ tests/
 - `i18n/<locale>.yaml`: `examples.<id>`, `choice.<id>.why`, `wordOrder.<id>.translation`, `wordOrder.<id>.why`, `austrianNotes.<id>` (translation of the note's German sentence). Fields are optional in the schema so a not-ready locale can be translated step by step; `i18n-coverage` requires all of them for ready locales.
 - In native-language text (`summary`, why texts), `*word*` marks a German word (rendered with `lang="de"`, stripped for meta tags).
 - `review.yaml`: see "Review and verification". Managed only by `scripts/review.ts`.
-- Site pages (about, legal): `src/content/pages/<slug>/<locale>.mdx` with frontmatter `title` and `description`, routed by `src/pages/[...locale]/<slug>/index.astro` through `ProsePage.astro`. Components: `<De>`, `<PageLink href="/legal/">` (link in the current locale), `<Todo>…</Todo>` (visible placeholder for the owner), `<AudioOnly>` (shown once `site.audio` is true, stage 4b). `i18n-coverage` requires every page in every ready locale; a locale that is not ready falls back to the English text. Not part of the review scopes and not indexed by search.
+- Site pages (about, legal): `src/content/pages/<slug>/<locale>.mdx` with frontmatter `title` and `description`, routed by `src/pages/[...locale]/<slug>/index.astro` through `ProsePage.astro`. Components: `<De>`, `<Email />` (the contact `site.email` as a link), `<AudioOnly>` (shown once `site.audio` is true, stage 4b). `i18n-coverage` requires every page in every ready locale; a locale that is not ready falls back to the English text. Not part of the review scopes and not indexed by search.
 - Planned topics of levels that are not available (`plannedTopics` in `site.ts`, labels `planned.<id>`) are listed on the home page and the coming-soon pages.
 - Validation: per-file shape with Zod (`src/lib/content-schemas.ts`); everything that spans files in `scripts/validate-content.ts` (`pnpm validate`), run in CI and by `pnpm build` before `astro build`. Zod alone cannot do cross-file checks. Rules: schemas, folder level, unique ids, choice (one `___`, answer and `alsoCorrect` in options), word order (`accept` orders are permutations of `parts`, distinct, start with the fixed part; neutral case via a list of closed-class words such as `Ich`, `Gestern`), MDX and i18n ids exist in `german.yaml`, coverage of ready locales, at least 10 choice items, `review.yaml` in sync.
 
@@ -215,7 +215,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Every topic lists `sources` (e.g. Duden grammar, Goethe-Institut / ÖSD level descriptions). Do not copy text from books or other websites. Do not copy Goethe/ÖSD word lists wholesale.
 - Explanations: short sentences, no jargon without a one-line definition.
 - Examples: natural, everyday German.
-- Austrian notes only for real, established Austrian usage (reference: Österreichisches Wörterbuch). Mark with `region: AT`. When unsure, leave it out and add a TODO for the owner.
+- Austrian notes only for real, established Austrian usage (reference: Österreichisches Wörterbuch). Mark with `region: AT`. When unsure, leave it out and name it in the summary for the owner (no TODOs in content).
 
 ## UX rules
 
@@ -263,7 +263,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 ## Legal pages (Austria)
 
 - One short page, "Legal notice and privacy" at `/legal/` (owner decision #96): the Offenlegung according to § 25 Mediengesetz for a small private website (owner name, town of residence, email, purpose of the site; no postal address), then plain privacy paragraphs (hosting by Cloudflare with the legal basis, Cloudflare Web Analytics, browser storage, search in the browser, GitHub links, computer-generated audio once it exists, rights and the Datenschutzbehörde). In every ready locale, linked in the footer.
-- Personal facts are visible `<Todo>` placeholders (find them with `grep -rn "<Todo" src/content/pages`); the owner fills them in and checks every statement. Keep it short and plain; do not add legal claims the owner has not confirmed.
+- The owner's name and town are written in the page, the email comes from `site.email`. No placeholders or TODOs on live pages. Keep it short and plain; do not add legal claims the owner has not confirmed.
 - `/about/` holds the accessibility statement (WCAG 2.2 AA target, word order without dragging) and, once audio exists, the computer-generated voice note.
 - When sponsor banners arrive: label them as ads ("Anzeige" / localized) and extend the legal notice as required for commercial sites (§ 5 ECG may require a postal address).
 

@@ -1,6 +1,6 @@
 /** Navigation between page types and the new site pages, English pages (CLAUDE.md, "Testing"). */
 import { expect, test } from '@playwright/test';
-import { levels, plannedTopicsOf } from '../../src/config/site.ts';
+import { levels, plannedTopicsOf, site } from '../../src/config/site.ts';
 import { t } from '../../src/i18n/utils.ts';
 import { stripMarks } from '../../src/lib/marked-text.ts';
 import { pageTitle, topicTitle } from './helpers/pages.ts';
@@ -72,7 +72,10 @@ test.describe('footer', () => {
   }
 });
 
-test('the legal page marks the placeholders the owner still has to fill in', async ({ page }) => {
+test('the legal page names the owner and links the contact email', async ({ page }) => {
   await page.goto('/legal/');
-  await expect(page.locator('[data-todo]').first()).toBeVisible();
+  await expect(page.getByRole('main').getByRole('link', { name: site.email })).toHaveAttribute(
+    'href',
+    `mailto:${site.email}`,
+  );
 });

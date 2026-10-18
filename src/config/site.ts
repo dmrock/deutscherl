@@ -51,6 +51,8 @@ export const site = {
   url: 'https://deutscherl.com',
   repo: 'https://github.com/dmrock/deutscherl',
   discussionsUrl: 'https://github.com/dmrock/deutscherl/discussions',
+  /** Contact on /legal/ and /about/ (decision #98) */
+  email: 'denis.rork@gmail.com',
   /**
    * Pre-generated audio for German sentences (stage 4b, decision #63). While false, the audio
    * notes on /about/ and /legal/ are not shown (<AudioOnly> in the page MDX).

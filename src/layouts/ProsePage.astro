@@ -3,8 +3,7 @@
 import { render } from 'astro:content';
 import De from '../components/content/De.astro';
 import AudioOnly from '../components/pages/AudioOnly.astro';
-import PageLink from '../components/pages/PageLink.astro';
-import Todo from '../components/pages/Todo.astro';
+import Email from '../components/pages/Email.astro';
 import { getPage, type PageProps } from '../lib/pages.ts';
 import Base from './Base.astro';
 
@@ -19,7 +18,7 @@ const { Content } = await render(entry);
   <article lang={lang === locale ? undefined : lang} class="max-w-prose">
     <h1 class="text-2xl sm:text-3xl">{entry.data.title}</h1>
     <div class="topic-prose mt-4">
-      <Content components={{ AudioOnly, De, PageLink, Todo }} />
+      <Content components={{ AudioOnly, De, Email }} />
     </div>
   </article>
 </Base>

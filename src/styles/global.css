@@ -257,12 +257,6 @@ html:root {
     font-weight: 600;
   }
 
-  /* A <Todo> placeholder on its own line (site pages). */
-  .topic-prose > mark {
-    display: block;
-    width: fit-content;
-  }
-
   .topic-prose a {
     color: var(--color-accent);
     text-decoration: underline;

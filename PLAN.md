@@ -134,7 +134,7 @@ Build, for every ready locale:
 - Level pages /a1/ and /a2/: topics by category with summary and reading time. Coming-soon pages for B1, B2, C1 with planned topics, noindex.
 - Pagefind: one index per ready locale, topic pages; UI loaded only when search is opened (button or Cmd/Ctrl+K). German words in examples must be findable from any locale.
 - SEO: unique titles and descriptions per locale, canonical URLs, hreflang, sitemap with alternates, Open Graph with og:locale, structured data where it makes sense.
-- Legal page from CLAUDE.md "Legal pages (Austria)": one short /legal/ page (legal notice and privacy, decision #96) in both locales, footer link, TODO placeholders for me to fill in.
+- Legal page from CLAUDE.md "Legal pages (Austria)": one short /legal/ page (legal notice and privacy, decision #96) in both locales, footer link, with my name, town and contact email.
 - ~~/about/sources/~~: dropped (owner decision #95).
 - /about/ with an accessibility statement (WCAG 2.2 AA target; word order can be done by tap, click or keyboard without dragging, decision #76) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /legal/ mentions it too.
 - Analytics: Cloudflare Web Analytics, injected by Cloudflare on the production domain (decision #87, no beacon in the build), mentioned in /legal/. Add an e2e check that the build contains no beacon.
@@ -170,7 +170,7 @@ Prepare the pilot for launch:
 ## Manual checks before launch
 
 - Read every English page and move it to `reviewed`; the teacher checks every English page (German + explanation) for `verified`; you review every Russian translation against the English page.
-- Fill in `/legal/` and compare it with the WKO or USP templates (this is not legal advice).
+- Compare `/legal/` with the WKO or USP templates (this is not legal advice).
 - Verify the domain in Google Search Console via a DNS record in Cloudflare and submit the sitemap.
 - Test the exercises on a real iPhone and Android phone via the preview URL.
 - Mark the CI checks as required in the rules for `main`.
