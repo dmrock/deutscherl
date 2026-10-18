@@ -1,5 +1,5 @@
 /**
- * Content collections (CLAUDE.md, "Content model"). Per-file shapes come from
+ * Content collections (`.claude/rules/content.md`). Per-file shapes come from
  * src/lib/content-schemas.ts (shared with the scripts); cross-file rules live in
  * scripts/validate-content.ts, which runs before every build.
  */

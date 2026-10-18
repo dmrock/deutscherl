@@ -1,4 +1,4 @@
-/** Layout, theme and indexing rules, on English pages (CLAUDE.md, "Testing"). */
+/** Layout, theme and indexing rules, on English pages (`.claude/rules/testing.md`). */
 import { expect, type Page, test } from '@playwright/test';
 import { t } from '../../src/i18n/utils.ts';
 

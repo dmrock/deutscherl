@@ -1,8 +1,8 @@
 <!--
-  Exercise runner (CLAUDE.md, "UX rules"): rounds of 5 mixed items from the topic pool, progress
-  dots, feedback with the `why` text and a "Report a mistake" link, a result screen and "Try again"
-  (a new round with unseen items). Seen ids live in sessionStorage under `seen:<level>/<slug>`,
-  shared between locales. All randomness goes through one seeded RNG; `?seed=<n>` fixes the seed
+  Exercise runner (`.claude/rules/exercises.md`): rounds of 5 mixed items from the topic pool,
+  progress dots, feedback with the `why` text and a "Report a mistake" link, a result screen and
+  "Try again" (a new round with unseen items). Seen ids live in sessionStorage under
+  `seen:<level>/<slug>`, shared between locales. All randomness goes through one seeded RNG; `?seed=<n>` fixes the seed
   in non-production builds (`allowSeed`), so e2e tests are deterministic.
 
   The server renders the "Start practice" button (disabled until hydrated); the round is picked

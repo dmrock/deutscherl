@@ -1,5 +1,5 @@
 /**
- * Language switching: the only e2e tests on non-English pages (CLAUDE.md, "Testing").
+ * Language switching: the only e2e tests on non-English pages (`.claude/rules/testing.md`).
  */
 import { expect, test } from '@playwright/test';
 import { site } from '../../src/config/site.ts';

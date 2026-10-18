@@ -1,5 +1,5 @@
 /**
- * Translation coverage (CLAUDE.md, "Testing": data checks). For every topic and locale: the
+ * Translation coverage (`.claude/rules/testing.md`: data checks). For every topic and locale: the
  * missing files (`<locale>.mdx`, `i18n/<locale>.yaml`) and missing keys (every German item needs a
  * translation or explanation). For every site page (`src/content/pages/<slug>/`): the missing
  * `<locale>.mdx`. Fails only for ready locales; others are reported for information, so a language

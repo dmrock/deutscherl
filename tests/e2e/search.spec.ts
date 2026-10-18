@@ -1,4 +1,7 @@
-/** Search (Pagefind), English pages (CLAUDE.md, "Testing"). Needs `pnpm build`, which indexes dist/. */
+/**
+ * Search (Pagefind), English pages (`.claude/rules/testing.md`). Needs `pnpm build`, which indexes
+ * dist/.
+ */
 import { expect, test } from '@playwright/test';
 import { t } from '../../src/i18n/utils.ts';
 import { topicTitle } from './helpers/pages.ts';

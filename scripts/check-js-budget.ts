@@ -1,5 +1,5 @@
 /**
- * JS budget check (CLAUDE.md, "UX rules"): gzipped JavaScript that each built page loads.
+ * JS budget check (`.claude/rules/ui.md`): gzipped JavaScript that each built page loads.
  *
  * Counted per page: inline scripts, local `<script src>`, `modulepreload` links and island
  * component/renderer URLs, plus every local chunk they import (static and dynamic, so the number
@@ -182,7 +182,7 @@ function main(): void {
   for (const page of failures) {
     console.error(`${page.page}: ${kb(page.bytes)} > ${kb(BUDGETS[page.type])} (${page.type})`);
   }
-  console.error(`\nJS budget exceeded on ${failures.length} page(s) (CLAUDE.md, "UX rules").`);
+  console.error(`\nJS budget exceeded on ${failures.length} page(s) (.claude/rules/ui.md).`);
   process.exitCode = 1;
 }
 

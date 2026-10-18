@@ -2,7 +2,7 @@
  * Reads topic folders from disk for the content scripts (validate-content, i18n-coverage, review).
  * Files are parsed but not validated: callers apply the schemas from src/lib/content-schemas.ts.
  *
- * Layout (CLAUDE.md, "Project structure"): <root>/<level>/<slug>/{meta.yaml, german.yaml,
+ * Layout (`.claude/rules/content.md`): <root>/<level>/<slug>/{meta.yaml, german.yaml,
  * review.yaml, <locale>.mdx, i18n/<locale>.yaml}
  */
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';

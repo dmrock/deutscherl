@@ -1,5 +1,5 @@
 /**
- * Review state of topics (CLAUDE.md, "Review and verification"). `review.yaml` in each topic folder
+ * Review state of topics (`.claude/rules/review.md`). `review.yaml` in each topic folder
  * is managed only by this script.
  *
  * Two scopes per topic, each with a content hash:

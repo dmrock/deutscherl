@@ -1,5 +1,5 @@
 /**
- * Content validation (CLAUDE.md, "Content model" and "Exercise rules"): per-file schemas plus every
+ * Content validation (`.claude/rules/content.md`): per-file schemas plus every
  * rule that spans files, which Zod alone cannot check. Runs before every build and in CI.
  *
  * Usage: node scripts/validate-content.ts
@@ -29,12 +29,12 @@ export interface Issue {
   message: string;
 }
 
-/** Each choice topic needs at least this many items (CLAUDE.md, "Exercise rules"). */
+/** Each choice topic needs at least this many items (`.claude/rules/content.md`). */
 export const MIN_CHOICE_ITEMS = 10;
 
 /**
  * Closed-class words that are never capitalized inside a sentence. A word-order part starting with
- * one of them in uppercase gives away the first position (CLAUDE.md, "Exercise rules": neutral
+ * one of them in uppercase gives away the first position (`.claude/rules/content.md`: neutral
  * case). Nouns cannot be recognized without a dictionary, so this is a list, not a rule for every
  * word. Left out on purpose: `sie` (formal `Sie` is always capitalized), `ihnen` (`Ihnen`),
  * `morgen` (`der Morgen`).

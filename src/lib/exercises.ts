@@ -2,8 +2,9 @@
  * Exercise logic (pure, unit-tested in tests/unit/exercises.test.ts). Shipped to the browser by
  * the exercise islands, so it must not import UI strings or content collections.
  *
- * CLAUDE.md, "Exercise rules" and "UX rules": rounds of mixed items, seen ids per topic, regional
- * answers (`alsoCorrect`), word order compared as string sequences (`parts` + `accept`).
+ * `.claude/rules/content.md` and `.claude/rules/exercises.md`: rounds of mixed items, seen ids
+ * per topic, regional answers (`alsoCorrect`), word order compared as string sequences
+ * (`parts` + `accept`).
  */
 import type { ChoiceItem, GermanContent, TopicI18n, WordOrderItem } from './content-schemas.ts';
 

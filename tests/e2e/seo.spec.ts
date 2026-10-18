@@ -1,4 +1,4 @@
-/** SEO and analytics in the built pages, English pages (CLAUDE.md, "Testing"). */
+/** SEO and analytics in the built pages, English pages (`.claude/rules/testing.md`). */
 import { expect, test } from '@playwright/test';
 import { site } from '../../src/config/site.ts';
 import { t } from '../../src/i18n/utils.ts';

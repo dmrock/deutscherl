@@ -3,7 +3,8 @@ import { defineConfig, devices } from '@playwright/test';
 const PORT = 4321;
 const isCI = Boolean(process.env.CI);
 
-// Tests run against the built site (`pnpm build` first). No screenshot tests (CLAUDE.md, "Testing").
+// Tests run against the built site (`pnpm build` first). No screenshot tests
+// (`.claude/rules/testing.md`).
 export default defineConfig({
   testDir: 'tests/e2e',
   fullyParallel: true,

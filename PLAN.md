@@ -112,7 +112,7 @@ Playwright tests on English pages only: choice flow including a regional answer;
 Before this stage: create an Azure account and a Speech resource on the **paid Standard (S0) tier**. Output of the free tier may not be used commercially, and the site will carry sponsor banners. Keep the key and the region; they never go into the repository. Cost: about $16 per 1 million characters; a topic has about 1,000 characters of German, so the whole pilot costs cents. Microsoft requires a note that the voice is computer-generated.
 
 ```
-Read CLAUDE.md, sections "UX rules", "Content model", "Deployment" and "Don'ts". Add pre-generated audio for German content 
+Read CLAUDE.md and `.claude/rules/` (ui.md, content.md, exercises.md, deployment.md). Add pre-generated audio for German content 
 - scripts/generate-audio.ts (run locally by a maintainer, key and region from environment variables): for every German sentence (examples, Austrian notes, the full correct sentence of every choice and word-order item), synthesize speech with Azure AI Speech, voice de-AT-IngridNeural (configurable; de-AT-JonasNeural as a second voice). Check the current Azure REST API docs first. Small files (Opus or MP3 at a low bitrate). File name = hash of the normalized text, voice and settings, so only new or changed sentences are generated and paid for; report unused files and remove them with a flag.
 - Where the files live: compare committing them (public/audio/) with an R2 bucket (repo size, the 20,000-file limit per deployment, cache headers) and recommend one before implementing.
 - Audio button for examples, Austrian notes and exercise feedback: a native <audio> element or a few lines of inline JS, no autoplay, shown only when a file exists; a missing file never breaks a page. Keep the JS budgets.
@@ -148,7 +148,7 @@ Do 2–3 topics per session. After each batch: read the English pages and move t
 - A2: Perfekt: haben or sein (already done) · Dative case · Two-way prepositions (Wechselpräpositionen) · Subordinate clauses with weil, dass, wenn · Comparative and superlative
 
 ```
-Read CLAUDE.md, sections "Content model", "Exercise rules" and "Content rules". Write the topics: <LIST 2–3 TOPICS>.
+Read CLAUDE.md and `.claude/rules/content.md`. Write the topics: <LIST 2–3 TOPICS>.
 For each topic: meta.yaml with sources; german.yaml with 4–6 examples, 10+ choice items, 6+ word-order items, Austrian notes only for real established differences; en.mdx first (In short, rule explanation, rule table, <Example> references), then ru.mdx from its meaning in simple Russian; i18n/en.yaml and i18n/ru.yaml with all translations and why texts. Everything draft; run review:sync.
 At the end, list: (1) German sentences you are not fully sure about, (2) Austrian notes and your confidence, (3) items that might have more than one correct answer or order, (4) places where ru might differ in meaning from en.
 ```

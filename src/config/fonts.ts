@@ -1,5 +1,5 @@
 /**
- * Fonts (CLAUDE.md, "Fonts"). Every locale font from `locales.ts` plus the German font is
+ * Fonts (`.claude/rules/fonts.md`). Every locale font from `locales.ts` plus the German font is
  * self-hosted from its Fontsource package through Astro's Fonts API. Only the subsets listed in the
  * config get `@font-face` rules. Build-time only: imported by astro.config.ts and Base.astro.
  */

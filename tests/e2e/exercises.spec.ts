@@ -1,7 +1,7 @@
 /**
- * Exercise flows on the English topic page (CLAUDE.md, "Testing"). Rounds are steered through the
- * seen ids in sessionStorage (`onlyUnseen`), which works in every build; only the seed test needs
- * `?seed=`, which production builds ignore.
+ * Exercise flows on the English topic page (`.claude/rules/testing.md`). Rounds are steered
+ * through the seen ids in sessionStorage (`onlyUnseen`), which works in every build; only the
+ * seed test needs `?seed=`, which production builds ignore.
  */
 import { type CDPSession, expect, type Page, test } from '@playwright/test';
 import { t } from '../../src/i18n/utils.ts';
