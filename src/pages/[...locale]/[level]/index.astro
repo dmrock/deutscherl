@@ -1,10 +1,12 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import { categoryIds, type Level, levels } from '../../../config/site.ts';
+import MarkedText from '../../../components/content/MarkedText.astro';
+import { categoryIds, type Level, levels, plannedTopicsOf, site } from '../../../config/site.ts';
 import { defaultLocale, type LocaleCode, localeCodes } from '../../../i18n/locales.ts';
 import { localizePath, t } from '../../../i18n/utils.ts';
 import Base from '../../../layouts/Base.astro';
 import { groupByCategory, topicPath } from '../../../lib/navigation.ts';
+import { breadcrumbData } from '../../../lib/seo.ts';
 import { getTopicLinks } from '../../../lib/topics.ts';
 
 // Every level in every locale; levels that are not available yet are coming-soon pages (noindex).
@@ -26,9 +28,26 @@ const title = t(locale, 'level.title', { level: level.label });
 const groups = level.available
   ? groupByCategory(await getTopicLinks(locale), level.id, categoryIds)
   : [];
+const planned = plannedTopicsOf(level.id);
+const description = level.available
+  ? t(locale, 'level.description', { level: level.label })
+  : t(locale, 'level.comingSoonText');
+const structuredData = level.available
+  ? breadcrumbData([
+      { name: site.name, url: new URL(localizePath('/', locale), site.url).href },
+      { name: title, url: new URL(localizePath(`/${level.id}/`, locale), site.url).href },
+    ])
+  : undefined;
 ---
 
-<Base locale={locale} title={title} level={level.id} noindex={!level.available}>
+<Base
+  locale={locale}
+  title={title}
+  description={description}
+  level={level.id}
+  noindex={!level.available}
+  structuredData={structuredData}
+>
   <p class="eyebrow text-muted">{t(locale, `level.${level.id}.name`)}</p>
   <h1 class="mt-1 text-3xl sm:text-4xl">{title}</h1>
   {!level.available && (
@@ -36,6 +55,20 @@ const groups = level.available
       <span class="font-semibold">{t(locale, 'level.comingSoon')}.</span>{' '}
       {t(locale, 'level.comingSoonText')}
     </p>
+  )}
+  {!level.available && planned.length > 0 && (
+    <section class="mt-8" aria-labelledby="planned-title">
+      <h2 id="planned-title" class="text-xl">
+        {t(locale, 'level.planned')}
+      </h2>
+      <ul class="mt-3 list-disc space-y-1 ps-5">
+        {planned.map((id) => (
+          <li>
+            <MarkedText text={t(locale, `planned.${id}`)} />
+          </li>
+        ))}
+      </ul>
+    </section>
   )}
   {level.available && groups.length === 0 && (
     <p class="mt-4 text-lg text-muted">{t(locale, 'level.noTopics')}</p>
@@ -52,6 +85,9 @@ const groups = level.available
             >
               <span class="font-semibold group-hover:text-accent">{topic.title}</span>
               <span class="mt-1 text-sm text-muted">{topic.summary}</span>
+              <span class="mt-auto pt-2 text-xs text-muted">
+                {t(locale, 'level.readingTime', { minutes: topic.readingMinutes })}
+              </span>
             </a>
           </li>
         ))}

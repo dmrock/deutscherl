@@ -1,0 +1,78 @@
+---
+/**
+ * Search (Pagefind Component UI, CLAUDE.md "Stack"). The page loads no search code: the first
+ * click on the button or Cmd/Ctrl+K loads the UI from /pagefind/ (built by `pagefind` after
+ * `astro build`) and opens its modal. Pagefind picks the index and UI language from <html lang>.
+ * The modal is a native <dialog>, so focus returns to the button when it closes.
+ */
+import type { LocaleCode } from '../../i18n/locales.ts';
+import { t } from '../../i18n/utils.ts';
+
+interface Props {
+  locale: LocaleCode;
+}
+
+const { locale } = Astro.props;
+---
+
+<button
+  type="button"
+  data-search-open
+  aria-label={t(locale, 'search.open')}
+  aria-keyshortcuts="Control+K Meta+K"
+  title={t(locale, 'search.open')}
+  class="inline-flex size-10 items-center justify-center rounded-ui hover:bg-surface"
+>
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    class="size-5"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+  >
+    <circle cx="11" cy="11" r="7"></circle>
+    <path d="m20 20-3.5-3.5"></path>
+  </svg>
+</button>
+
+<script is:inline>
+  (() => {
+    let ready;
+    const load = () => {
+      ready ??= (async () => {
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = '/pagefind/pagefind-component-ui.css';
+        const cssLoaded = new Promise((done) => {
+          css.onload = css.onerror = done;
+        });
+        document.head.append(css);
+        await Promise.all([import('/pagefind/pagefind-component-ui.js'), cssLoaded]);
+        const modal = document.createElement('pagefind-modal');
+        modal.setAttribute('reset-on-close', '');
+        document.body.append(modal);
+        await customElements.whenDefined('pagefind-modal');
+        return modal;
+      })();
+      ready.catch(() => {
+        ready = undefined;
+      });
+      return ready;
+    };
+    const open = () =>
+      load()
+        .then((modal) => requestAnimationFrame(() => modal.open()))
+        .catch((error) => console.error('Search is not available:', error));
+    document.addEventListener('click', (event) => {
+      if (event.target.closest?.('[data-search-open]')) open();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key.toLowerCase() !== 'k' || !(event.metaKey || event.ctrlKey)) return;
+      if (event.altKey || event.shiftKey) return;
+      event.preventDefault();
+      open();
+    });
+  })();
+</script>

@@ -197,7 +197,35 @@
   box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15);
 }
 
-/* Explanation text of a topic (MDX body). */
+/*
+ * Search modal (Pagefind Component UI, loaded on demand by Search.astro). Its components reset
+ * inherited styles, so only these variables theme it; they follow data-theme through the tokens.
+ * `html:root` outranks the `:root` defaults in Pagefind's stylesheet, which loads later.
+ */
+html:root {
+  --pf-text: var(--fg);
+  --pf-text-secondary: var(--muted);
+  --pf-text-muted: var(--muted);
+  --pf-background: var(--card);
+  --pf-border: var(--border);
+  --pf-border-focus: var(--control);
+  --pf-skeleton: var(--surface);
+  --pf-skeleton-shine: var(--bg);
+  --pf-hover: var(--surface);
+  --pf-mark: var(--accent);
+  --pf-outline-focus: var(--focus);
+  --pf-shadow-lg: var(--sh-pop);
+  --pf-error-bg: var(--danger-soft);
+  --pf-error-border: var(--danger);
+  --pf-error-text: var(--danger);
+  --pf-error-text-secondary: var(--danger);
+  --pf-border-radius: var(--r-ui);
+  --pf-font: var(--font-body, system-ui), system-ui, sans-serif;
+  --pf-result-title-font-size: 15px;
+  --pf-result-excerpt-font-size: 14px;
+}
+
+/* Explanation text of a topic (MDX body) and of the site pages (about, legal). */
 @layer components {
   .topic-prose > * + * {
     margin-top: 0.75rem;
@@ -227,6 +255,22 @@
 
   .topic-prose strong {
     font-weight: 600;
+  }
+
+  /* A <Todo> placeholder on its own line (site pages). */
+  .topic-prose > mark {
+    display: block;
+    width: fit-content;
+  }
+
+  .topic-prose a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .topic-prose h3 {
+    margin-top: 1.25rem;
+    font-size: 1.0625rem;
   }
 
   /* Word chips of word-order exercises. Global, because the dragged copy lives outside the island. */

@@ -1,0 +1,11 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ProsePage from '../../../layouts/ProsePage.astro';
+import { type PageProps, pagePaths } from '../../../lib/pages.ts';
+
+export const getStaticPaths = (() => pagePaths('impressum')) satisfies GetStaticPaths;
+
+type Props = PageProps;
+---
+
+<ProsePage {...Astro.props} />

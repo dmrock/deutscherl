@@ -10,6 +10,7 @@ import {
   germanSchema,
   i18nSchema,
   metaSchema,
+  pageFrontmatterSchema,
   reviewSchema,
 } from './lib/content-schemas.ts';
 
@@ -53,4 +54,14 @@ const topics = defineCollection({
   schema: frontmatterSchema,
 });
 
-export const collections = { topicMeta, topicGerman, topicReview, topicI18n, topics };
+/** Site pages (about, legal): `src/content/pages/about/en.mdx`, id `about/en` */
+const pages = defineCollection({
+  loader: glob({
+    pattern: '*/*.mdx',
+    base: './src/content/pages',
+    generateId: ({ entry }) => entry.replace(/\.mdx$/, ''),
+  }),
+  schema: pageFrontmatterSchema,
+});
+
+export const collections = { topicMeta, topicGerman, topicReview, topicI18n, topics, pages };

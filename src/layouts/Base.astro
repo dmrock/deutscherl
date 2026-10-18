@@ -2,14 +2,16 @@
 import { Font } from 'astro:assets';
 import { PUBLIC_DEPLOY_ENV } from 'astro:env/client';
 import BottomBar from '../components/layout/BottomBar.astro';
+import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 import Sidebar from '../components/layout/Sidebar.astro';
 import ThemeScript from '../components/layout/ThemeScript.astro';
 import { cssVariableOf, germanFont } from '../config/fonts.ts';
 import { categoryIds, type LevelId, site } from '../config/site.ts';
-import { getLocaleConfig, type LocaleCode } from '../i18n/locales.ts';
+import { getLocaleConfig, type LocaleCode, readyLocales } from '../i18n/locales.ts';
 import { alternates, localizePath, t } from '../i18n/utils.ts';
 import { neighbours } from '../lib/navigation.ts';
+import { jsonLd, type StructuredData } from '../lib/seo.ts';
 import { getTopicLinks } from '../lib/topics.ts';
 import '../styles/global.css';
 
@@ -25,14 +27,33 @@ interface Props {
   level?: LevelId | undefined;
   /** Slug of the topic page: marks it in the sidebar and adds the bottom bar. */
   topic?: string | undefined;
+  /** Open Graph type: `article` for topic pages */
+  ogType?: 'website' | 'article';
+  /** schema.org data, rendered as JSON-LD */
+  structuredData?: StructuredData | readonly StructuredData[] | undefined;
 }
 
-const { locale, title, description, noindex = false, level, topic } = Astro.props;
+const {
+  locale,
+  title,
+  description,
+  noindex = false,
+  level,
+  topic,
+  ogType = 'website',
+  structuredData,
+} = Astro.props;
 const localeConfig = getLocaleConfig(locale);
 const path = Astro.url.pathname;
 const pageTitle = title ? `${title} · ${site.name}` : site.name;
 const robotsNoindex = noindex || !localeConfig.ready || PUBLIC_DEPLOY_ENV === 'preview';
 const canonical = new URL(localizePath(path, locale), site.url).href;
+const metaDescription = description ?? t(locale, 'site.tagline');
+const ogLocaleAlternates = localeConfig.ready
+  ? readyLocales.filter((code) => code !== locale).map((code) => getLocaleConfig(code).ogLocale)
+  : [];
+// Cloudflare Web Analytics (decision #18): production builds only, once the token is set.
+const analytics = PUBLIC_DEPLOY_ENV === 'production' && site.analyticsToken !== '';
 
 const bodyFont = cssVariableOf(localeConfig.font.family) as CssVariable;
 const germanFontVar = cssVariableOf(germanFont.family) as CssVariable;
@@ -60,14 +81,34 @@ const { prev, next } =
     <meta name="color-scheme" content="light dark" />
     <ThemeScript />
     <title>{pageTitle}</title>
-    <meta name="description" content={description ?? t(locale, 'site.tagline')} />
+    <meta name="description" content={metaDescription} />
     {robotsNoindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     {alternates(path, site.url).map(({ hreflang, href }) => (
       <link rel="alternate" hreflang={hreflang} href={href} />
     ))}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title ?? site.name} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={localeConfig.ogLocale} />
+    {ogLocaleAlternates.map((ogLocale) => (
+      <meta property="og:locale:alternate" content={ogLocale} />
+    ))}
+    <meta name="twitter:card" content="summary" />
+    {structuredData && <script type="application/ld+json" set:html={jsonLd(structuredData)} />}
     <Font cssVariable={bodyFont} preload={fontPreload} />
     {germanFontVar !== bodyFont && <Font cssVariable={germanFontVar} />}
+    {analytics && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: site.analyticsToken })}
+      ></script>
+    )}
   </head>
   <body class="min-h-dvh">
     <a
@@ -79,9 +120,14 @@ const { prev, next } =
     <Header locale={locale} path={path} level={level} hasSidebar={Boolean(level)} />
     <div class="mx-auto flex max-w-6xl">
       {level && <Sidebar locale={locale} level={level} topics={topics} current={topic} />}
-      <main id="main" class:list={['min-w-0 flex-1 px-4 py-6 lg:px-6', topic && 'pb-20 lg:pb-6']}>
-        <slot />
-      </main>
+      <!-- At least the screen below the header, so the footer sits at the bottom of short pages. -->
+      <div class="flex min-h-[calc(100dvh-3rem)] min-w-0 flex-1 flex-col">
+        <main id="main" class="flex-1 px-4 py-6 lg:px-6">
+          <slot />
+        </main>
+        <!-- Below lg, topic pages keep the footer above the bottom bar. -->
+        <Footer locale={locale} class={topic && 'pb-20 lg:pb-5'} />
+      </div>
     </div>
     {topic && <BottomBar locale={locale} prev={prev} next={next} />}
   </body>

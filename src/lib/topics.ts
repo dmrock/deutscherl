@@ -20,6 +20,7 @@ export async function getTopicLinks(locale: LocaleCode): Promise<TopicLink[]> {
       order: meta.data.order,
       title: page.data.title,
       summary: stripMarks(page.data.summary),
+      readingMinutes: meta.data.readingMinutes,
     });
   }
   return links;

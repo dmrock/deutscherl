@@ -1,5 +1,8 @@
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { coverage, requiredKeys } from '../../scripts/i18n-coverage.ts';
+import { coverage, pageCoverage, requiredKeys } from '../../scripts/i18n-coverage.ts';
 import { type ContentFixture, contentFixture } from './helpers/content-fixture.ts';
 
 let fixture: ContentFixture;
@@ -50,5 +53,30 @@ describe('i18n-coverage', () => {
         missing: ['examples.e2', 'wordOrder.w2.translation'],
       },
     ]);
+  });
+});
+
+describe('page coverage', () => {
+  it('lists site pages without an MDX file in a locale', () => {
+    const root = mkdtempSync(join(tmpdir(), 'pages-'));
+    try {
+      for (const [slug, files] of [
+        ['about', ['en.mdx', 'ru.mdx', 'xx.mdx']],
+        ['privacy', ['en.mdx']],
+      ] as const) {
+        mkdirSync(join(root, slug));
+        for (const file of files) writeFileSync(join(root, slug, file), '---\n---\n');
+      }
+      expect(pageCoverage(root, locales)).toEqual([
+        { topic: 'pages/privacy', locale: 'ru', ready: true, missing: ['ru.mdx'] },
+        { topic: 'pages/privacy', locale: 'xx', ready: false, missing: ['xx.mdx'] },
+      ]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('has no gaps when the folder does not exist', () => {
+    expect(pageCoverage(join(tmpdir(), 'does-not-exist-pages'), locales)).toEqual([]);
   });
 });

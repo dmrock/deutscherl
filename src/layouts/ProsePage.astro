@@ -1,0 +1,25 @@
+---
+/** A site page written in MDX (src/lib/pages.ts): about, legal pages. */
+import { render } from 'astro:content';
+import De from '../components/content/De.astro';
+import AudioOnly from '../components/pages/AudioOnly.astro';
+import PageLink from '../components/pages/PageLink.astro';
+import Todo from '../components/pages/Todo.astro';
+import { getPage, type PageProps } from '../lib/pages.ts';
+import Base from './Base.astro';
+
+type Props = PageProps;
+
+const { locale, slug } = Astro.props;
+const { entry, lang } = await getPage(slug, locale);
+const { Content } = await render(entry);
+---
+
+<Base locale={locale} title={entry.data.title} description={entry.data.description}>
+  <article lang={lang === locale ? undefined : lang} class="max-w-prose">
+    <h1 class="text-2xl sm:text-3xl">{entry.data.title}</h1>
+    <div class="topic-prose mt-4">
+      <Content components={{ AudioOnly, De, PageLink, Todo }} />
+    </div>
+  </article>
+</Base>
