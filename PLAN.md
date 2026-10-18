@@ -29,8 +29,6 @@ No Claude Code needed.
 - Set up rules for `main` after stage 1, once CI checks exist: block direct pushes, require a PR, require the checks, **0 required approvals** (otherwise you cannot merge your own PRs).
 - If spam ever becomes a problem: Settings → Moderation options → Interaction limits.
 
-**Dictionary data** (needed in stage 5): download from kaikki.org the German JSONL of the English Wiktionary edition and the German entries of the Russian Wiktionary edition into the project's `.data/` folder. The files are large and stay out of git.
-
 ---
 
 ## Stage 1. Scaffold, open-source files, deployment
@@ -44,7 +42,7 @@ Set up the repository first:
 - Create a branch for this stage (e.g. stage-1-scaffold) and continue there.
 Then read CLAUDE.md and docs/decisions.md. Scaffold the project:
 - Astro (latest stable) with TypeScript strict, Svelte integration, MDX integration, Tailwind CSS v4; build.format 'directory', trailingSlash 'always'.
-- pnpm, .nvmrc with current Node LTS, .gitignore including .data/ and .cache/.
+- pnpm, .nvmrc with current Node LTS, .gitignore.
 - Biome for TS/JS/JSON; check what Biome supports for .astro and .svelte files today and add Prettier with plugins only for what Biome can't handle.
 - A git hooks tool (lightweight, e.g. simple-git-hooks or lefthook; justify the choice) with a pre-commit hook running biome and the language check on staged files. The review sync hook is added in stage 3.
 - scripts/check-language.ts as described in CLAUDE.md, "Repository language", with unit tests (allowed paths pass, Cyrillic in a component fails, German umlauts pass everywhere).
@@ -121,44 +119,23 @@ Read CLAUDE.md, sections "UX rules", "Content model", "Deployment" and "Don'ts".
 - Disclosure: a short "computer-generated voice" note (UI string) next to the first button on a page. Stage 7 mentions the audio on /privacy/ and /about/.
 - validate-content: report German content without audio as a warning, not an error.
 - Tests: unit tests for text normalization and file naming; e2e on English pages: the button plays the expected file (media mocked), no button when the file is missing.
-Report the number of characters synthesized, the total file size and the JS budget impact. Stage 6 may reuse the pipeline for dictionary headwords.
+Report the number of characters synthesized, the total file size and the JS budget impact.
 ```
 
-## Stage 5. Dictionary data
+## ~~Stage 5. Dictionary data~~ and ~~Stage 6. Dictionary pages~~: dropped
 
-Before this stage, download the kaikki.org files into `.data/` (see stage 0). Claude Code generates a first draft of the lemma list; review it yourself: the choice of words and their A1/A2 levels are your call.
-
-```
-Read CLAUDE.md, sections "Dictionary" and "Languages". Implement the dictionary data pipeline:
-- Drizzle schema (SQLite): words (id/slug, lemma, pos, gender, plural, level, status, source, sourceUrl, license), senses (wordId, lang, gloss, position, source), examples (id, wordId, de, source), exampleTranslations (exampleId, lang, text), regionalVariants (wordId, region, variant, note), topicWords (topicSlug, wordId).
-- db/seed/lemmas-a1-a2.txt: "lemma<TAB>pos<TAB>gender<TAB>level", about 300 common A1–A2 entries including homonyms where relevant; header marks it as a draft for my review. Build it from general knowledge, do not copy an official word list.
-- scripts/import-wiktionary.ts <file> --edition en|ru: writes db/data/words.jsonl (sorted, deterministic). en: pos, gender, plural, first 3 English glosses, examples with English translations, Austria-tagged forms and senses. ru: Russian glosses matched by (lemma, pos, gender), never overwriting grammar fields; ambiguous matches reported. Report per edition: imported, not found, ambiguous, missing glosses per locale. Before writing the ru parser, show me the structure of a few real ru-edition records.
-- db/overrides/*.yaml format (field patches by word id, new words), documented in db/README.md with examples.
-- scripts/build-dictionary.ts: words.jsonl + overrides → .cache/dictionary.sqlite, run before astro build (locally and in CI). Slug generation and uniqueness check as in CLAUDE.md; fail on collisions without a suffix rule.
-- pnpm script for Drizzle Studio to browse the generated DB (read-only use).
-Unit tests with small JSONL fixtures for both editions (ru fixtures under tests/fixtures/i18n/ru/), overrides merging (override wins, re-import keeps overrides), and slugs (see-der / see-die, essen-verb / essen-das, maße-die / masse-die).
-```
-
-## Stage 6. Dictionary pages
-
-```
-Build dictionary pages from .cache/dictionary.sqlite at build time, for every ready locale:
-- /dictionary/ and /ru/dictionary/: list grouped by level, filter by level and part of speech (small Svelte island), article color coding for der/die/das.
-- /dictionary/<id>/ and /ru/dictionary/<id>/: article, plural, glosses in the page locale (fallback to English with a "no translation yet" hint), examples with translations, Austrian variant badge, links to topics using the word.
-- <Word id> MDX component linking to the entry in the same locale, with article and gloss on hover/focus.
-- /about/sources/ in both locales with Wiktionary attribution (English and Russian editions, CC BY-SA 4.0) and grammar references.
-No DB code in the client bundle. Add the static file count to the CI budget step. E2E on the preview deployment: entries with ä, ö, ü, ß in the URL open correctly.
-```
+Owner decision #83: no dictionary. The site teaches grammar; a Wiktionary-based dictionary would copy what Wiktionary, DWDS and Leo do better and add hundreds of entries nobody can verify. Austrian vocabulary stays in the topics. The stage 5 import pipeline was built in PR #7 and dropped before merging. The stage numbers are kept, because the decision log and CLAUDE.md refer to them.
 
 ## Stage 7. Home, levels, search, SEO, legal pages, analytics
 
 ```
 Build, for every ready locale:
-- Home page: short intro, level cards (A1, A2 available; B1–C1 coming soon with planned topic titles), link to the dictionary.
+- Home page: short intro, level cards (A1, A2 available; B1–C1 coming soon with planned topic titles).
 - Level pages /a1/ and /a2/: topics by category with summary and reading time. Coming-soon pages for B1, B2, C1 with planned topics, noindex.
-- Pagefind: one index per ready locale, topics and dictionary; UI loaded only when search is opened (button or Cmd/Ctrl+K). German words must be findable from any locale.
+- Pagefind: one index per ready locale, topic pages; UI loaded only when search is opened (button or Cmd/Ctrl+K). German words in examples must be findable from any locale.
 - SEO: unique titles and descriptions per locale, canonical URLs, hreflang, sitemap with alternates, Open Graph with og:locale, structured data where it makes sense.
 - Legal pages from CLAUDE.md "Legal pages (Austria)": /impressum/ and /privacy/ in both locales, footer links, TODO placeholders for me to fill in.
+- /about/sources/ in both locales: the grammar references listed in the topics' `meta.yaml` (`sources`), grouped and de-duplicated (decision #78).
 - /about/ with an accessibility statement (WCAG 2.2 AA target; word order can be done by tap, click or keyboard without dragging, decision #76) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /privacy/ mentions it too.
 - Analytics: Cloudflare Web Analytics beacon with `defer`, token from src/config/site.ts, only on production builds (not on previews or in dev), mentioned in /privacy/. Add an e2e check that preview builds contain no beacon.
 Add e2e tests on English pages for navigation and search (including finding a German word), and axe checks for all new page types. Extend the language-switching tests to the new page types (picker keeps the page, hreflang present).
@@ -173,7 +150,7 @@ Do 2–3 topics per session. After each batch: read the English pages and move t
 
 ```
 Read CLAUDE.md, sections "Content model", "Exercise rules" and "Content rules". Write the topics: <LIST 2–3 TOPICS>.
-For each topic: meta.yaml with sources; german.yaml with 4–6 examples, 10+ choice items, 6+ word-order items, Austrian notes only for real established differences; en.mdx first (In short, rule explanation, rule table, <Example> references), then ru.mdx from its meaning in simple Russian; i18n/en.yaml and i18n/ru.yaml with all translations and why texts. Link words with <Word id> when they exist in the dictionary. Everything draft; run review:sync.
+For each topic: meta.yaml with sources; german.yaml with 4–6 examples, 10+ choice items, 6+ word-order items, Austrian notes only for real established differences; en.mdx first (In short, rule explanation, rule table, <Example> references), then ru.mdx from its meaning in simple Russian; i18n/en.yaml and i18n/ru.yaml with all translations and why texts. Everything draft; run review:sync.
 At the end, list: (1) German sentences you are not fully sure about, (2) Austrian notes and your confidence, (3) items that might have more than one correct answer or order, (4) places where ru might differ in meaning from en.
 ```
 
@@ -181,9 +158,9 @@ At the end, list: (1) German sentences you are not fully sure about, (2) Austria
 
 ```
 Prepare the pilot for launch:
-- Lighthouse on home, level, topic and dictionary pages, en and ru, mobile and desktop; fix anything below 95; report JS sizes per page type.
+- Lighthouse on home, level and topic pages, en and ru, mobile and desktop; fix anything below 95; report JS sizes per page type.
 - 404 page per locale (served by Cloudflare's nearest 404.html).
-- docs/adding-a-language.md: exact steps (locales.ts entry with ready: false, dir and font, UI strings, i18n-coverage, explanations and i18n files, dictionary glosses, language check allowlist, review, switching ready: true).
+- docs/adding-a-language.md: exact steps (locales.ts entry with ready: false, dir and font, UI strings, i18n-coverage, explanations and i18n files, language check allowlist, review, switching ready: true).
 - Check docs/decisions.md and CLAUDE.md are up to date with everything built.
 - README: production URL, badges for CI and licenses.
 ```
@@ -198,4 +175,4 @@ Prepare the pilot for launch:
 - Test the exercises on a real iPhone and Android phone via the preview URL.
 - Mark the CI checks as required in the rules for `main`.
 - Agree with the teacher: they verify German content and the English explanation of each topic, and any text they write is contributed under CC BY-SA 4.0.
-- Check licenses: Wiktionary (CC BY-SA 4.0, both editions), and Wikimedia Commons audio if you decide to use it.
+- Check licenses: the Azure AI Speech terms for publishing the generated audio (paid S0 tier, decision #63).

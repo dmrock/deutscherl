@@ -12,6 +12,7 @@ A free website for learning German grammar. Explanations in the learner's native
 - Native languages in the pilot: English (default) and Russian. More languages will be added later, possibly with other scripts or right-to-left writing, so language support must be data-driven, not hard-coded.
 - No accounts, no progress tracking, no cookies. Anyone can use it without barriers.
 - Signature feature: notes about Austrian German (usage that differs from Germany).
+- No dictionary or vocabulary database (owner decision #83): the site teaches grammar. Austrian vocabulary belongs in the topics (Austrian notes, or a topic of its own built with the normal content model).
 - Monetization later: static sponsor banners, clearly labeled as ads, no ad trackers. Keep a sponsor slot in the topic layout.
 
 ## Working agreements (for Claude Code)
@@ -30,7 +31,6 @@ Native-language text is allowed ONLY in localization files:
 - `src/i18n/ui/<locale>.ts` (UI strings)
 - `src/i18n/locales.ts` — only the `name` field (language name in its own language)
 - `src/content/topics/**/<locale>.mdx` and `src/content/topics/**/i18n/<locale>.yaml`
-- dictionary glosses and translations for that locale in `db/data/words.jsonl` and `db/overrides/*.yaml`
 - test fixtures under `tests/fixtures/i18n/<locale>/`
 
 Components, pages and tests never contain native-language strings inline: they use `t(locale, key)` or read content files. E2E tests assert localized text through `t()` too.
@@ -42,7 +42,7 @@ Components, pages and tests never contain native-language strings inline: they u
 - Public GitHub repository. Pull requests are limited to collaborators (repository setting); issues are open to everyone, but only through issue forms (blank issues disabled). Ideas go to GitHub Discussions.
 - Licenses:
   - Code: MIT → `LICENSE`
-  - Content (explanations, examples, exercises, translations, dictionary data): CC BY-SA 4.0 → `LICENSE-CONTENT`. Wiktionary-derived dictionary data must stay CC BY-SA 4.0 anyway.
+  - Content (explanations, examples, exercises, translations): CC BY-SA 4.0 → `LICENSE-CONTENT`.
   - Use the official license texts verbatim; never write or paraphrase them from memory.
 - Contributions require DCO sign-off (`Signed-off-by` in each commit), checked in CI. By signing off, contributors agree to MIT for code and CC BY-SA 4.0 for content.
 - Rule in `CONTRIBUTING.md`: open an issue first; PRs without an agreed issue may be closed. Exception: one-line typo fixes. External contributors become collaborators after agreeing on the work in an issue.
@@ -52,7 +52,7 @@ Components, pages and tests never contain native-language strings inline: they u
 ## Stack
 
 - Astro (latest stable), fully static output, no SSR adapter. `build.format: 'directory'`, `trailingSlash: 'always'`: canonical URLs end with `/`.
-- Svelte 5 ONLY for islands that need real interactivity: exercises, dictionary filter. Everything else (theme toggle, closing the language picker) is a few lines of inline vanilla JS.
+- Svelte 5 ONLY for islands that need real interactivity: exercises. Everything else (theme toggle, closing the language picker) is a few lines of inline vanilla JS.
 - Drag and drop: `svelte-dnd-action` (Svelte 5 compatible, touch delay option, keyboard and screen-reader support). Do not hand-roll drag and drop.
 - Page transitions: none. Navigation is static: header and sidebar stay exactly in place between pages (owner decision #47). Do NOT use Astro's `<ClientRouter />` or CSS `@view-transition`.
 - TypeScript, `strict` preset. TypeScript 6.x until Astro's tooling (`astro check`) supports TypeScript 7 (decision #23).
@@ -60,7 +60,6 @@ Components, pages and tests never contain native-language strings inline: they u
 - Tailwind CSS v4. Use logical properties/utilities (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`, `text-start`) everywhere, never left/right, so right-to-left languages work later.
 - Content: MDX for explanations, YAML for German content and translations, via Astro Content Collections with Zod schemas. The schemas live in `src/lib/content-schemas.ts`, shared by `content.config.ts` and the scripts. Scripts parse YAML with `yaml`.
 - i18n: Astro built-in i18n routing
-- Dictionary: text files in git are the source of truth; a SQLite file is generated from them at build time and queried with Drizzle ORM (build time only, no runtime DB)
 - Search: Pagefind, one index per ready locale, UI loaded only when the user opens search
 - Lint/format: Biome for TS/JS/JSON/CSS (lints the script part of `.astro`/`.svelte`); Prettier with astro/svelte plugins formats only `.astro` and `.svelte` (Biome's support for them is experimental, decision #25)
 - Git hooks: lefthook (`lefthook.yml`), installed by `pnpm install`. Pre-commit: Biome, Prettier, language check, `review:sync` (stages the updated `review.yaml`)
@@ -91,7 +90,7 @@ Terminology: the "native language" (a.k.a. locale) is the language of the UI, ex
 
 - Fonts are configured per locale in `locales.ts` (`family`, Fontsource variable-font `package`, `subsets`, `preload`), self-hosted, `font-display: swap`. Only the listed subsets get `@font-face` rules; `preload` lists the subsets every page of that locale uses right away.
 - Implementation: Astro's built-in Fonts API. `src/config/fonts.ts` builds the `fonts` config from `locales.ts` + `germanFont` with a small provider that reads the files of the installed Fontsource packages (`metadata.json`, `unicode.json`, `files/`): versions pinned by the lockfile, no network at build time, metric-adjusted fallbacks. Each family gets a CSS variable derived from its name (`--font-golos-text`). `Base.astro` renders `<Font>` for the locale font (preloaded) and the German font, and sets `--font-body` / `--font-de`.
-- German content blocks (examples, exercises, dictionary headwords) use one German font on every locale for consistent umlauts and ß: Atkinson Hyperlegible Next (Latin only), via the `german` utility (German font, slightly larger size). Inline German terms inside explanation text inherit the locale font.
+- German content blocks (examples, exercises) use one German font on every locale for consistent umlauts and ß: Atkinson Hyperlegible Next (Latin only), via the `german` utility (German font, slightly larger size). Inline German terms inside explanation text inherit the locale font.
 - `en`: Atkinson Hyperlegible Next.
 - `ru`: Golos Text (owner's choice after the specimen comparison, decision #7).
 - Choosing a font for a new locale: build a temporary comparison page on the PR (candidates at body and example size, light and dark, next to German blocks), let the owner choose on the preview, then remove the page and keep only the chosen package (as done for ru, decision #7).
@@ -123,7 +122,7 @@ src/
     exercises/               # Svelte islands: ExerciseRunner, ChoiceExercise, WordOrderExercise,
                              # MarkedText
     content/                 # InShort, RuleTable, Example(s), AustrianNote, De, StatusBadges,
-                             # SponsorSlot, Word (stage 6)
+                             # SponsorSlot
     layout/                  # Header, LevelSwitcher, LanguagePicker, ThemeToggle, Sidebar,
                              # BottomBar, ThemeScript (inline JS)
   layouts/Base.astro         # <html lang dir>, head (canonical, hreflang, noindex, fonts), layout
@@ -131,15 +130,8 @@ src/
                              # marked-text, review-badges, exercises, exercise-strings);
                              # topics.ts and topic-content.ts read collections
   pages/[...locale]/         # index, [level]/index, [level]/[topic]/index
-db/
-  schema.ts                  # Drizzle schema
-  data/words.jsonl           # imported data (generated by import, committed)
-  overrides/*.yaml           # manual edits and additions (never touched by import)
-  seed/lemmas-a1-a2.txt      # lemma list with levels
 scripts/
   lib/content.ts             # reads topic folders from disk for the content scripts
-  import-wiktionary.ts       # .data/*.jsonl → db/data/words.jsonl
-  build-dictionary.ts        # words.jsonl + overrides → .cache/dictionary.sqlite
   validate-content.ts        # cross-file checks
   i18n-coverage.ts           # missing translation keys and files
   check-language.ts          # no native-language text outside localization files
@@ -150,8 +142,6 @@ docs/
   decisions.md               # decision log
   architecture.html          # illustrated snapshot
   adding-a-language.md
-.data/                       # raw downloads (kaikki.org), gitignored
-.cache/                      # generated SQLite, gitignored
 tests/
   unit/
   e2e/
@@ -206,7 +196,6 @@ The teacher verifies German and the canonical English explanation. Other locales
   - English page: "Checked by a teacher" when `base` is `verified` with a matching hash; otherwise "Draft".
   - Other locales: "German checked by a teacher" when `base` is verified, plus "Translation reviewed" when the translation is reviewed and its `basedOn` matches, or "Translation not reviewed yet" when it is not (decision #55). No link to the English version (owner decision #61). "Draft" when neither is checked. All texts localized (`review.*` UI strings).
 - `pnpm review:status` prints every topic with base status, translation status per locale and outdated translations.
-- Dictionary entries have their own `status` (draft | verified) without hashing in the pilot; no badge on dictionary pages.
 
 ## Content rules (critical)
 
@@ -246,20 +235,6 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
   - Lighthouse ≥ 95 in all categories, checked before launch.
 - Accessibility: WCAG 2.2 AA without exceptions. Word order meets 2.5.7 (Dragging Movements) through tap/click and Enter, which move a word without dragging (owner decision #76, superseding the exception #12).
 
-## Dictionary
-
-- Raw data: kaikki.org Wiktextract JSONL, English edition (grammar + English glosses) and Russian edition (Russian glosses). The owner downloads the files manually into `.data/` (gitignored); scripts take the path as an argument.
-- `scripts/import-wiktionary.ts` writes normalized entries for lemmas in `db/seed/lemmas-a1-a2.txt` to `db/data/words.jsonl` (sorted, one entry per line). Re-running it replaces this file completely; it never reads or writes overrides.
-- Manual edits go to `db/overrides/*.yaml` (field-level patches by word id, or new words). `scripts/build-dictionary.ts` merges `words.jsonl` + overrides into `.cache/dictionary.sqlite` before the Astro build. Overrides always win. Drizzle Studio may be used to browse the generated DB, never to edit it.
-- Word identity: `(lemma, pos, gender)`. Homonyms are separate entries (der See / die See, essen / das Essen).
-- Word id and URL slug: NFC-normalized lowercase lemma + `-` + article for nouns (`see-der`, `see-die`, `essen-das`, `maße-die`, `masse-die`) or part of speech otherwise (`essen-verb`, `schnell-adj`). Umlauts and ß stay as they are. Any remaining collision gets `-2`. Uniqueness is checked in CI; an e2e test on the preview deployment opens entries with ä/ö/ü/ß.
-- `<Word id="see-der">` in MDX references entries by id, never by bare lemma.
-- Glosses and example translations are stored per locale (`lang`). Missing gloss → English with a visible "no translation yet" hint.
-- Russian glosses are matched by `(lemma, pos, gender)`; ambiguous matches are reported, not guessed.
-- Every entry keeps `source`, `sourceUrl`, `license`; `/about/sources` shows attribution in every locale.
-- Wiktionary has no CEFR levels: levels come from `db/seed/lemmas-a1-a2.txt`, maintained by the owner. No frequency data in the pilot.
-- Hosting limit to remember: Cloudflare allows 20,000 static files per deployment on the free plan (100,000 on paid). Pagefind adds many files. Watch the count in CI when the dictionary grows.
-
 ## Deployment
 
 - One GitHub Actions workflow. Deploy jobs run only after all checks pass.
@@ -270,6 +245,7 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 - Required status checks (job names): `DCO`, `Language check`, `Content checks`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`.
 - `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"`, default HTML handling (trailing slash, matching Astro), production only on the custom domain, preview URLs enabled. Check the current Wrangler docs for the exact keys.
 - Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account), variable `CLOUDFLARE_ACCOUNT_ID`.
+- Hosting limit to remember: Cloudflare allows 20,000 static files per deployment on the free plan (100,000 on paid). Pagefind adds many files; watch the count as topics and locales grow.
 - Preview URLs live on the account's workers.dev subdomain (`pr-<n>-deutscherl.<subdomain>.workers.dev`), so the Cloudflare account must have one: opening Workers & Pages in the dashboard once creates it. Production does not use workers.dev (`workers_dev: false`).
 
 ## Legal pages (Austria)
@@ -282,11 +258,11 @@ The site owner is an A2 learner. German correctness cannot be assumed — neithe
 
 Functional tests run on the English site only: the code is the same for every locale. Other locales are covered by data checks and a small set of language-switching tests. No visual snapshot (screenshot) tests.
 
-- Vitest: schemas, `validate-content.ts` rules (with failing fixtures), review hashing/reset/minor-edit including translation reset via `basedOn`, `check-language.ts`, `t()` and path helpers, `src/lib` logic (pool selection with seeded RNG, choice check with `alsoCorrect`, word-order check with `accept`, duplicates, capitalization after check), dictionary import on small JSONL fixtures, slug uniqueness.
+- Vitest: schemas, `validate-content.ts` rules (with failing fixtures), review hashing/reset/minor-edit including translation reset via `basedOn`, `check-language.ts`, `t()` and path helpers, `src/lib` logic (pool selection with seeded RNG, choice check with `alsoCorrect`, word-order check with `accept`, duplicates, capitalization after check).
 - Data checks (not tests of wording): `i18n-coverage.ts` fails when a ready locale misses a key or file, so a missing translation can never break a page.
 - Playwright on English pages: topic page content (examples with `lang="de"`, badges, Austrian note), exercise flows (choice incl. a regional answer, word order with mouse, touch long press vs swipe, keyboard-only, duplicates, "Try again" with a fixed seed), navigation, search, report-mistake URL, noindex rules, analytics beacon only in production, axe checks on every page type.
 - Playwright language switching (the only tests on non-English pages): the picker opens the same page in the other locale; `lang`, `dir`, `hreflang` and canonical are correct; no horizontal scrolling on a Russian topic page at mobile width.
-- CI: DCO, language check, content checks (`pnpm validate`, `pnpm i18n:coverage`, `pnpm review:check`), lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`); later stages add the dictionary build and file count (build job).
+- CI: DCO, language check, content checks (`pnpm validate`, `pnpm i18n:coverage`, `pnpm review:check`), lint (`biome ci` + Prettier), `astro check`, Vitest and the build run as parallel jobs; the build job also runs the JS budget (`pnpm budget`).
 - The E2E job gets the same `PUBLIC_DEPLOY_ENV` as the build, so the noindex tests know what they test (preview builds: noindex everywhere).
 - Exercise e2e tests steer a round through the seen ids in `sessionStorage` (`onlyUnseen` in `tests/e2e/helpers/exercises.ts`), so they run on production builds too; only the "Try again" seed test needs `?seed=` and is skipped on production builds. Drags move in steps and hold 250 ms before release (svelte-dnd-action checks the zone under the word every 200 ms); touch uses CDP `Input.dispatchTouchEvent` with the bank scrolled to the middle (the mobile bottom bar covers the bottom of the screen). `<noscript>` is checked in the served HTML (Playwright's disabled JavaScript still parses it as scripted).
 - Local e2e: `pnpm build && pnpm test:e2e` (the tests run against `dist/`). Playwright runs on the build output. Deploy jobs need every check (decision #30).

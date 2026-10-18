@@ -40,7 +40,7 @@ Other commands:
 ## Licenses
 
 - **Code** (everything that is not content): [MIT](LICENSE).
-- **Content** (explanations, examples, exercises, translations and dictionary data, for example `src/content/`, `src/i18n/ui/`, `db/data/`, `db/overrides/`): [CC BY-SA 4.0](LICENSE-CONTENT). Dictionary data derived from Wiktionary is CC BY-SA 4.0 as well.
+- **Content** (explanations, examples, exercises and translations, for example `src/content/`, `src/i18n/ui/`): [CC BY-SA 4.0](LICENSE-CONTENT).
 
 ## Report a mistake
 

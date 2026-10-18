@@ -126,7 +126,7 @@
   --text-german--line-height: 1.6;
 }
 
-/* German content blocks (examples, exercises, dictionary headwords): same font on every locale. */
+/* German content blocks (examples, exercises): same font on every locale. */
 @utility german {
   font-family: var(--font-german);
   font-size: var(--text-german);
