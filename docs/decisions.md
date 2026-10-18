@@ -91,7 +91,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#91** Site pages (about, legal) are MDX in `src/content/pages/<slug>/<locale>.mdx`, an allowed localization path; `i18n-coverage` requires them for ready locales, and a locale that is not ready shows the English text. Rejected: long UI strings.
 - **#92** Audio paragraphs on /about/ and /legal/ are written but shown only once `site.audio` is true (stage 4b), so the pages never describe audio that does not exist.
 - **#96** **owner** One short legal page, "Legal notice and privacy" (`/legal/`): the Offenlegung (name, town, email, purpose) and a few plain privacy paragraphs instead of two long templates with open legal questions. No postal address (the Mediengesetz asks for the place of residence); a commercial site may need one later (§ 5 ECG). Rejected: separate `/impressum/` and `/privacy/` pages.
-- **#98** **owner** Contact email in `site.email` (one place, shown with `<Email />`; also in CODE_OF_CONDUCT.md). It is the owner's Gmail, already public in the git history; a forwarding alias on the domain would only need this one line changed.
+- **#98** **owner** Contact email `hallo@deutscherl.com` in `site.email` (shown with `<Email />`; also in CODE_OF_CONDUCT.md), forwarded to the owner by Cloudflare Email Routing (free, receive only), so the personal address is not on the site. Rejected: the owner's Gmail on the page (spam).
 - **#93** Planned topics for B1–C1 (`plannedTopics` in `site.ts`) are a draft list for the coming-soon pages; the owner may change them.
 
 ## Dictionary
