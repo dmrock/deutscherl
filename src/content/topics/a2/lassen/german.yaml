@@ -1,0 +1,106 @@
+# German content of the topic, shared by every locale (CLAUDE.md, "Content model").
+# In examples, **…** marks the verb forms that the page highlights.
+
+examples:
+  - id: e1
+    de: 'Am Wochenende **lasse** ich den Laptop im Büro.'
+  - id: e2
+    de: 'Wir **müssen** den Hund heute bei den Nachbarn **lassen**.'
+  - id: e3
+    de: 'Meine Eltern **lassen** mich am Wochenende lange **schlafen**.'
+  - id: e4
+    de: '**Lass** mich das **machen**!'
+  - id: e5
+    de: 'Ich **lasse** meine Hose **kürzen**.'
+  - id: e6
+    de: 'Wir **lassen** unsere Küche **renovieren**.'
+  - id: e7
+    de: 'Wir **haben** die Kinder bei den Großeltern **gelassen**.'
+  - id: e8
+    de: 'Wir **haben** die Küche **renovieren lassen**.'
+
+choice:
+  - id: c1
+    text: Warum ___ du dein Handy immer in der Küche?
+    answer: lässt
+    options: [lässt, lasst, lasse, lassen]
+  - id: c2
+    text: Ihr ___ die Kinder heute lange spielen.
+    answer: lasst
+    options: [lasst, lässt, lassen, lasse]
+  - id: c3
+    text: Meine Chefin ___ mich manchmal von zu Hause arbeiten.
+    answer: lässt
+    options: [lässt, lasst, lassen, lasse]
+  - id: c4
+    text: Wir ___ unsere Wohnung streichen.
+    answer: lassen
+    options: [lassen, lasst, lässt, lasse]
+  - id: c5
+    text: Ich ___ das Geld lieber im Hotel.
+    answer: lasse
+    options: [lasse, lässt, lasst, lassen]
+  - id: c6
+    text: Paul, ___ mich bitte schlafen!
+    answer: lass
+    options: [lass, lässt, lasst, lassen]
+  - id: c7
+    text: Ich habe mein Fahrrad am Bahnhof ___.
+    answer: gelassen
+    options: [gelassen, lassen, lasse, lässt]
+  - id: c8
+    text: Er hat sein Auto waschen ___.
+    answer: lassen
+    options: [lassen, gelassen, lässt, lasst]
+  - id: c9
+    text: Ich putze die Fenster nicht selbst, ich ___ sie putzen.
+    answer: lasse
+    options: [lasse, mache, habe, bin]
+  - id: c10
+    text: Er ___ seinen Hund nie allein zu Hause.
+    answer: lässt
+    options: [lässt, lasst, lasse, lassen]
+  - id: c11
+    text: ___ du mich mal kurz telefonieren?
+    answer: Lässt
+    options: [Lässt, Lasst, Lasse, Lassen]
+
+wordOrder:
+  - id: w1
+    parts: [ich, lasse, den Fernseher, reparieren]
+    accept:
+      - [den Fernseher, lasse, ich, reparieren]
+    punctuation: '.'
+  - id: w2
+    parts: [meine Eltern, lassen, mich, lange, schlafen]
+    fixed: true
+    punctuation: '.'
+  - id: w3
+    parts: [lass, mich, das, machen]
+    fixed: true
+    punctuation: '!'
+  - id: w4
+    parts: [wo, lässt, du, deine Fotos, drucken]
+    fixed: true
+    punctuation: '?'
+  - id: w5
+    parts: [ich, habe, meinen Pass, im Hotel, gelassen]
+    accept:
+      - [ich, habe, im Hotel, meinen Pass, gelassen]
+      - [meinen Pass, habe, ich, im Hotel, gelassen]
+      - [im Hotel, habe, ich, meinen Pass, gelassen]
+    punctuation: '.'
+  - id: w6
+    parts: [er, hat, sein Fahrrad, reparieren, lassen]
+    accept:
+      - [sein Fahrrad, hat, er, reparieren, lassen]
+    punctuation: '.'
+  - id: w7
+    parts: [du, kannst, die Fenster, offen, lassen]
+    accept:
+      - [die Fenster, kannst, du, offen, lassen]
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: 'Ich **lasse** nächste Woche das Pickerl **machen**.'
