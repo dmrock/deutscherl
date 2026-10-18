@@ -22,9 +22,7 @@ const pages = [
   { name: 'coming soon', path: '/b1/' },
   { name: 'topic', path: '/a2/perfekt/' },
   { name: 'about', path: '/about/' },
-  { name: 'sources', path: '/about/sources/' },
-  { name: 'impressum', path: '/impressum/' },
-  { name: 'privacy', path: '/privacy/' },
+  { name: 'legal', path: '/legal/' },
 ];
 
 for (const colorScheme of ['light', 'dark'] as const) {

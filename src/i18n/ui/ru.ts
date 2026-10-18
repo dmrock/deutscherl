@@ -102,19 +102,10 @@ export const ru = {
   'theme.dark': 'Тёмная тема',
   'footer.nav': 'О сайте',
   'footer.about': 'О проекте',
-  'footer.sources': 'Источники',
-  'footer.impressum': 'Выходные данные',
-  'footer.privacy': 'Конфиденциальность',
+  'footer.legal': 'Выходные данные и конфиденциальность',
   'footer.github': 'Исходный код',
   'footer.contentLicense': 'Тексты и упражнения:',
   'footer.codeLicense': 'Код:',
-  'sources.title': 'Источники',
-  'sources.description':
-    'Справочники по грамматике, по которым мы пишем и проверяем темы, по издателям.',
-  'sources.intro':
-    'Каждую тему мы пишем сами и сверяем с этими справочниками по грамматике. Текст из них мы не копируем.',
-  'sources.usedIn': 'Используется в темах:',
-  'sources.noUrl': 'Книги и другие источники',
   'notFound.title': 'Страница не найдена',
   'notFound.backHome': 'На главную',
 } satisfies UiStrings;

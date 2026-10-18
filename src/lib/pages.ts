@@ -7,7 +7,7 @@
 import { type CollectionEntry, getEntry } from 'astro:content';
 import { defaultLocale, getLocaleConfig, type LocaleCode, localeCodes } from '../i18n/locales.ts';
 
-export const pageSlugs = ['about', 'impressum', 'privacy'] as const;
+export const pageSlugs = ['about', 'legal'] as const;
 export type PageSlug = (typeof pageSlugs)[number];
 
 export interface PageProps {

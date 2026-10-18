@@ -64,14 +64,15 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - ~~**#75** **owner** Sources moved below the practice section~~ → #78.
 - **#76** **owner** Word order: a tap or click (Enter on the keyboard) moves a word to the end of the sentence or back to the bank; dragging stays for reordering. This is the single-pointer alternative, so WCAG 2.5.7 is met and the exception #12 is gone. Space alone starts the library's keyboard drag.
 - **#77** **owner** (request: no big empty gap) The screen-high reserve moved from the practice card to a wrapper around it: the card fits its content, the spare room is below it at the end of the page, and the wrapper never shrinks during a visit, so the page still does not move.
-- **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review; grammar references are listed on `/about/sources/` (stage 7).
+- **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review. (A `/about/sources/` page was planned → #95.)
 - **#79** **owner** Choice items get 4 options: 2 forms of *haben* and 2 of *sein* (the right person plus another person), so guessing drops from 50% to 25% and the person form is practised too; the why texts name the right form. Distractors must be clearly wrong for the subject.
 - **#80** **owner** No intro sentence in the practice card: the heading, the Start button and "Question 1 of 5" say it already.
 - **#81** **owner** No visible "Question 3 of 5": the dots show progress. The text stays as the dots' accessible name (`role="img"`), and the dots are where focus goes after "Next".
 - **#82** **owner** Links back to the explanation: a quiet "↑ Explanation" in the practice card header while a round runs, and "Back to the explanation" next to "Try again". Plain in-page links to `#explanation`, so the round is kept. Rejected for now: linking each wrong answer to its rule section (needs a section tag per item).
 - **#84** Search: Pagefind Component UI, loaded by a small inline script on the first click or Cmd/Ctrl+K and opened as its modal. Pages load no search code, so the 3 KB budget holds (opening search loads about 130 KB, mostly the WASM). Pagefind's own translations from `<html lang>`. Rejected: the legacy Default UI, an own UI over the JS API (more code to maintain).
 - **#85** Only topic pages of ready locales are indexed (`data-pagefind-body`); German examples are on every locale's page, so a German word is found from any locale without a separate German index.
-- **#89** Footer below the main column (a top-level `contentinfo` landmark) with About, Sources, legal pages, source code and licenses; the column fills the screen, so short pages still do not scroll (#47).
+- **#89** **owner** (request) Footer across the whole page width, under the sidebar too (a top-level `contentinfo` landmark): About, legal page, source code, licenses. The body is a column that fills the screen, so short pages still do not scroll (#47); the sidebar is as tall as its topics (at most the screen) and the divider is the content column's border.
+- **#95** **owner** No sources page: learners do not need it. `sources` stays in `meta.yaml` for review only. Rejected: `/about/sources/` (built in stage 7 and removed before merging).
 - **#90** Home page level cards list each level's topics, or its planned topics under "Coming soon"; level pages show the reading time (kept off topic pages, #61).
 
 ## Content and review
@@ -87,8 +88,9 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#53** `review:set` for status changes, owner only: nobody edits `review.yaml` by hand.
 - **#56** Content components are passed by the topic page (MDX needs no imports) and find their topic from the page URL; `**…**` highlights German key words, `*…*` marks German words in native text.
 - **#59** First topic A2 "Perfekt: haben or sein?", draft. The Austrian note says "usually": in Austria `sein` is the majority form for sitzen/liegen/stehen, but `haben` is used too (Variantengrammatik).
-- **#91** Site pages (about, Impressum, privacy) are MDX in `src/content/pages/<slug>/<locale>.mdx`, an allowed localization path; `i18n-coverage` requires them for ready locales, and a locale that is not ready shows the English text. Rejected: long UI strings.
-- **#92** Legal placeholders are visible `<Todo>` marks, so nothing unfinished goes unnoticed; audio paragraphs on /about/ and /privacy/ are written but shown only once `site.audio` is true (stage 4b), so the pages never describe audio that does not exist.
+- **#91** Site pages (about, legal) are MDX in `src/content/pages/<slug>/<locale>.mdx`, an allowed localization path; `i18n-coverage` requires them for ready locales, and a locale that is not ready shows the English text. Rejected: long UI strings.
+- **#92** Legal placeholders are visible `<Todo>` marks, so nothing unfinished goes unnoticed; audio paragraphs on /about/ and /legal/ are written but shown only once `site.audio` is true (stage 4b), so the pages never describe audio that does not exist.
+- **#96** **owner** One short legal page, "Legal notice and privacy" (`/legal/`): the Offenlegung (name, town, email, purpose) and a few plain privacy paragraphs instead of two long templates with open legal questions. No postal address (the Mediengesetz asks for the place of residence); a commercial site may need one later (§ 5 ECG). Rejected: separate `/impressum/` and `/privacy/` pages.
 - **#93** Planned topics for B1–C1 (`plannedTopics` in `site.ts`) are a draft list for the coming-soon pages; the owner may change them.
 
 ## Dictionary

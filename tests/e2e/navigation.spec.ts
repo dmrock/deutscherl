@@ -58,9 +58,7 @@ test('a coming-soon page lists the planned topics', async ({ page }) => {
 test.describe('footer', () => {
   const links = [
     { key: 'footer.about', path: '/about/', title: pageTitle('about') },
-    { key: 'footer.sources', path: '/about/sources/', title: t('en', 'sources.title') },
-    { key: 'footer.impressum', path: '/impressum/', title: pageTitle('impressum') },
-    { key: 'footer.privacy', path: '/privacy/', title: pageTitle('privacy') },
+    { key: 'footer.legal', path: '/legal/', title: pageTitle('legal') },
   ] as const;
 
   for (const { key, path, title } of links) {
@@ -74,17 +72,7 @@ test.describe('footer', () => {
   }
 });
 
-test('the sources page lists the grammar references with links back to the topics', async ({
-  page,
-}) => {
-  await page.goto('/about/sources/');
-  const duden = page.getByRole('heading', { level: 2, name: 'duden.de' });
-  await expect(duden).toBeVisible();
-  const usedIn = page.getByRole('main').getByRole('link', { name: perfekt });
-  await expect(usedIn.first()).toHaveAttribute('href', '/a2/perfekt/');
-});
-
-test('legal pages mark the placeholders the owner still has to fill in', async ({ page }) => {
-  await page.goto('/impressum/');
+test('the legal page marks the placeholders the owner still has to fill in', async ({ page }) => {
+  await page.goto('/legal/');
   await expect(page.locator('[data-todo]').first()).toBeVisible();
 });

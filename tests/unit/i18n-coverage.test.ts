@@ -62,14 +62,14 @@ describe('page coverage', () => {
     try {
       for (const [slug, files] of [
         ['about', ['en.mdx', 'ru.mdx', 'xx.mdx']],
-        ['privacy', ['en.mdx']],
+        ['legal', ['en.mdx']],
       ] as const) {
         mkdirSync(join(root, slug));
         for (const file of files) writeFileSync(join(root, slug, file), '---\n---\n');
       }
       expect(pageCoverage(root, locales)).toEqual([
-        { topic: 'pages/privacy', locale: 'ru', ready: true, missing: ['ru.mdx'] },
-        { topic: 'pages/privacy', locale: 'xx', ready: false, missing: ['xx.mdx'] },
+        { topic: 'pages/legal', locale: 'ru', ready: true, missing: ['ru.mdx'] },
+        { topic: 'pages/legal', locale: 'xx', ready: false, missing: ['xx.mdx'] },
       ]);
     } finally {
       rmSync(root, { recursive: true, force: true });

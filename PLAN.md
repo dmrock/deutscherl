@@ -116,7 +116,7 @@ Read CLAUDE.md, sections "UX rules", "Content model", "Deployment" and "Don'ts".
 - scripts/generate-audio.ts (run by the owner locally, key and region from environment variables): for every German sentence (examples, Austrian notes, the full correct sentence of every choice and word-order item), synthesize speech with Azure AI Speech, voice de-AT-IngridNeural (configurable; de-AT-JonasNeural as a second voice). Check the current Azure REST API docs first. Small files (Opus or MP3 at a low bitrate). File name = hash of the normalized text, voice and settings, so only new or changed sentences are generated and paid for; report unused files and remove them with a flag.
 - Where the files live: compare committing them (public/audio/) with an R2 bucket (repo size, the 20,000-file limit per deployment, cache headers) and recommend one before implementing.
 - Audio button for examples, Austrian notes and exercise feedback: a native <audio> element or a few lines of inline JS, no autoplay, shown only when a file exists; a missing file never breaks a page. Keep the JS budgets.
-- Disclosure: a short "computer-generated voice" note (UI string) next to the first button on a page. /about/ and /privacy/ already describe the audio behind `<AudioOnly>`: set `audio: true` in src/config/site.ts and check those paragraphs.
+- Disclosure: a short "computer-generated voice" note (UI string) next to the first button on a page. /about/ and /legal/ already describe the audio behind `<AudioOnly>`: set `audio: true` in src/config/site.ts and check those paragraphs.
 - validate-content: report German content without audio as a warning, not an error.
 - Tests: unit tests for text normalization and file naming; e2e on English pages: the button plays the expected file (media mocked), no button when the file is missing.
 Report the number of characters synthesized, the total file size and the JS budget impact.
@@ -134,10 +134,10 @@ Build, for every ready locale:
 - Level pages /a1/ and /a2/: topics by category with summary and reading time. Coming-soon pages for B1, B2, C1 with planned topics, noindex.
 - Pagefind: one index per ready locale, topic pages; UI loaded only when search is opened (button or Cmd/Ctrl+K). German words in examples must be findable from any locale.
 - SEO: unique titles and descriptions per locale, canonical URLs, hreflang, sitemap with alternates, Open Graph with og:locale, structured data where it makes sense.
-- Legal pages from CLAUDE.md "Legal pages (Austria)": /impressum/ and /privacy/ in both locales, footer links, TODO placeholders for me to fill in.
-- /about/sources/ in both locales: the grammar references listed in the topics' `meta.yaml` (`sources`), grouped and de-duplicated (decision #78).
-- /about/ with an accessibility statement (WCAG 2.2 AA target; word order can be done by tap, click or keyboard without dragging, decision #76) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /privacy/ mentions it too.
-- Analytics: Cloudflare Web Analytics, injected by Cloudflare on the production domain (decision #87, no beacon in the build), mentioned in /privacy/. Add an e2e check that the build contains no beacon.
+- Legal page from CLAUDE.md "Legal pages (Austria)": one short /legal/ page (legal notice and privacy, decision #96) in both locales, footer link, TODO placeholders for me to fill in.
+- ~~/about/sources/~~: dropped (owner decision #95).
+- /about/ with an accessibility statement (WCAG 2.2 AA target; word order can be done by tap, click or keyboard without dragging, decision #76) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /legal/ mentions it too.
+- Analytics: Cloudflare Web Analytics, injected by Cloudflare on the production domain (decision #87, no beacon in the build), mentioned in /legal/. Add an e2e check that the build contains no beacon.
 Add e2e tests on English pages for navigation and search (including finding a German word), and axe checks for all new page types. Extend the language-switching tests to the new page types (picker keeps the page, hreflang present).
 ```
 
@@ -170,7 +170,7 @@ Prepare the pilot for launch:
 ## Manual checks before launch
 
 - Read every English page and move it to `reviewed`; the teacher checks every English page (German + explanation) for `verified`; you review every Russian translation against the English page.
-- Fill in `/impressum/` and `/privacy/` and compare them with the WKO or USP templates (this is not legal advice).
+- Fill in `/legal/` and compare it with the WKO or USP templates (this is not legal advice).
 - Verify the domain in Google Search Console via a DNS record in Cloudflare and submit the sitemap.
 - Test the exercises on a real iPhone and Android phone via the preview URL.
 - Mark the CI checks as required in the rules for `main`.

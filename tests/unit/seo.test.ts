@@ -54,15 +54,7 @@ describe('structured data', () => {
 
 describe('inSitemap', () => {
   it('keeps indexable pages in every ready locale', () => {
-    for (const path of [
-      '/',
-      '/a1/',
-      '/a2/perfekt/',
-      '/about/sources/',
-      '/ru/',
-      '/ru/a2/',
-      '/ru/privacy/',
-    ]) {
+    for (const path of ['/', '/a1/', '/a2/perfekt/', '/ru/', '/ru/a2/', '/ru/legal/']) {
       expect(inSitemap(`${origin}${path}`), path).toBe(true);
     }
   });

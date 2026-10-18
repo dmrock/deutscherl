@@ -53,7 +53,7 @@ export const site = {
   discussionsUrl: 'https://github.com/dmrock/deutscherl/discussions',
   /**
    * Pre-generated audio for German sentences (stage 4b, decision #63). While false, the audio
-   * notes on /about/ and /privacy/ are not shown (<AudioOnly> in the page MDX).
+   * notes on /about/ and /legal/ are not shown (<AudioOnly> in the page MDX).
    */
   audio: false as boolean,
 } as const;

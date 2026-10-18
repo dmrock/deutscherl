@@ -1,5 +1,5 @@
 ---
-/** Site footer: about and legal pages (CLAUDE.md, "Legal pages"), source code and licenses. */
+/** Site footer, full width: about and legal page (CLAUDE.md, "Legal pages"), source code, licenses. */
 import { site } from '../../config/site.ts';
 import type { LocaleCode } from '../../i18n/locales.ts';
 import { localizePath, t } from '../../i18n/utils.ts';
@@ -13,33 +13,33 @@ interface Props {
 const { locale, class: className } = Astro.props;
 const links = [
   { href: localizePath('/about/', locale), label: t(locale, 'footer.about') },
-  { href: localizePath('/about/sources/', locale), label: t(locale, 'footer.sources') },
-  { href: localizePath('/impressum/', locale), label: t(locale, 'footer.impressum') },
-  { href: localizePath('/privacy/', locale), label: t(locale, 'footer.privacy') },
+  { href: localizePath('/legal/', locale), label: t(locale, 'footer.legal') },
   { href: site.repo, label: t(locale, 'footer.github') },
 ];
 ---
 
-<footer class:list={['border-t border-border px-4 py-5 text-sm text-muted lg:px-6', className]}>
-  <nav aria-label={t(locale, 'footer.nav')}>
-    <ul class="flex flex-wrap gap-x-4 gap-y-1">
-      {links.map(({ href, label }) => (
-        <li>
-          <a href={href} class="hover:text-accent hover:underline">
-            {label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-  <p class="mt-2">
-    {site.name} · {t(locale, 'footer.contentLicense')}{' '}
-    <a href={CONTENT_LICENSE_URL} rel="license" class="underline hover:text-accent">
-      CC BY-SA 4.0
-    </a>{' '}
-    · {t(locale, 'footer.codeLicense')}{' '}
-    <a href={CODE_LICENSE_URL} class="underline hover:text-accent">
-      MIT
-    </a>
-  </p>
+<footer class:list={['border-t border-border text-sm text-muted', className]}>
+  <div class="mx-auto max-w-6xl px-4 py-5 lg:px-6">
+    <nav aria-label={t(locale, 'footer.nav')}>
+      <ul class="flex flex-wrap gap-x-4 gap-y-1">
+        {links.map(({ href, label }) => (
+          <li>
+            <a href={href} class="hover:text-accent hover:underline">
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <p class="mt-2">
+      {site.name} · {t(locale, 'footer.contentLicense')}{' '}
+      <a href={CONTENT_LICENSE_URL} rel="license" class="underline hover:text-accent">
+        CC BY-SA 4.0
+      </a>{' '}
+      · {t(locale, 'footer.codeLicense')}{' '}
+      <a href={CODE_LICENSE_URL} class="underline hover:text-accent">
+        MIT
+      </a>
+    </p>
+  </div>
 </footer>

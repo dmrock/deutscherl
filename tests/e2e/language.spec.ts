@@ -36,15 +36,7 @@ test.describe('language picker', () => {
 });
 
 test.describe('the picker keeps the page on every page type', () => {
-  for (const path of [
-    '/',
-    '/a2/',
-    '/b1/',
-    '/about/',
-    '/about/sources/',
-    '/impressum/',
-    '/privacy/',
-  ]) {
+  for (const path of ['/', '/a2/', '/b1/', '/about/', '/legal/']) {
     test(path, async ({ page }) => {
       await page.goto(path);
       const picker = page.locator('[data-language-picker]');

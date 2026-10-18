@@ -103,19 +103,10 @@ export const en = {
   'theme.dark': 'Dark theme',
   'footer.nav': 'About this site',
   'footer.about': 'About',
-  'footer.sources': 'Sources',
-  'footer.impressum': 'Legal notice',
-  'footer.privacy': 'Privacy',
+  'footer.legal': 'Legal notice and privacy',
   'footer.github': 'Source code',
   'footer.contentLicense': 'Texts and exercises:',
   'footer.codeLicense': 'Code:',
-  'sources.title': 'Sources',
-  'sources.description':
-    'The grammar references we use to write and check the topics, grouped by publisher.',
-  'sources.intro':
-    'We write every topic ourselves and check it against these grammar references. We do not copy text from them.',
-  'sources.usedIn': 'Used in:',
-  'sources.noUrl': 'Books and other sources',
   'notFound.title': 'Page not found',
   'notFound.backHome': 'Go to the home page',
 } as const;
