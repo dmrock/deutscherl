@@ -106,16 +106,23 @@ const levelInfo = levels.find((entry) => entry.id === level);
     background: rgb(0 0 0 / 0.5);
   }
 
-  /* lg and up: a static column next to the content. */
+  /*
+   * lg and up: a static column next to the content, as tall as its topics (at most the screen
+   * below the header, then it scrolls). The divider is the content column's border, so it runs
+   * down to the footer.
+   */
   @media (width >= 64rem) {
     .sidebar {
       display: block;
       position: sticky;
       inset-block: 3rem auto;
+      align-self: flex-start;
       flex: none;
       width: 15rem;
-      height: calc(100dvh - 3rem);
+      height: auto;
+      max-height: calc(100dvh - 3rem);
       padding: 1.25rem 0.75rem;
+      border-inline-end: 0;
     }
   }
 </style>

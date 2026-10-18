@@ -24,7 +24,7 @@ Other commands:
 
 | Command | What it does |
 |---|---|
-| `pnpm build` | Validates the content, then builds the static site into `dist/` |
+| `pnpm build` | Validates the content, builds the static site into `dist/` and indexes it for search (Pagefind) |
 | `pnpm preview` | Serves `dist/` locally |
 | `pnpm check` | Type check (`astro check`) |
 | `pnpm lint` | Biome (TS/JS/JSON/CSS) and Prettier (`.astro`, `.svelte`) |

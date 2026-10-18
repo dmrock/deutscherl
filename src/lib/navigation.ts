@@ -10,7 +10,9 @@ export interface TopicLink {
   category: CategoryId;
   order: number;
   title: string;
+  /** Without `*` markers */
   summary: string;
+  readingMinutes: number;
 }
 
 export interface CategoryGroup {

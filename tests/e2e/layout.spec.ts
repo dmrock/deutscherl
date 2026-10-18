@@ -13,7 +13,7 @@ test.describe('noindex', () => {
     });
   }
 
-  for (const path of ['/', '/a1/', '/a2/', '/a2/perfekt/']) {
+  for (const path of ['/', '/a1/', '/a2/', '/a2/perfekt/', '/about/', '/legal/']) {
     test(`${path} is noindex only in preview builds`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator('meta[name="robots"][content="noindex"]')).toHaveCount(
@@ -102,14 +102,18 @@ test.describe('navigation on desktop', () => {
 test.describe('static navigation', () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
-  /** Boxes of the header widgets and the sidebar, rounded to whole pixels. */
+  /**
+   * Boxes of the header widgets and the sidebar, rounded to whole pixels. The sidebar is as tall
+   * as its topics, so only its position and width count.
+   */
   const chromeBoxes = (page: Page) =>
     page.evaluate(() =>
       ['header a', 'header nav', 'header [data-theme-toggle]', '#sidebar'].map((selector) => {
         const element = document.querySelector(selector);
         if (!element) return null;
         const { x, y, width, height } = element.getBoundingClientRect();
-        return [x, y, width, height].map(Math.round);
+        const box = selector === '#sidebar' ? [x, y, width] : [x, y, width, height];
+        return box.map(Math.round);
       }),
     );
 
@@ -124,14 +128,36 @@ test.describe('static navigation', () => {
       await page.goto(path);
       expect(await chromeBoxes(page), path).toEqual([brand, levels, toggle, sidebar]);
     }
+    // Pages without a sidebar: the header stays in place too.
+    for (const path of ['/about/', '/legal/']) {
+      await page.goto(path);
+      expect(await chromeBoxes(page), path).toEqual([brand, levels, toggle, null]);
+    }
   });
 
-  test('a level page without much content does not scroll', async ({ page }) => {
+  test('a level page without much content does not scroll; the footer is at the bottom', async ({
+    page,
+  }) => {
     await page.goto('/a1/');
     const overflow = await page.evaluate(
       () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
     );
     expect(overflow).toBe(0);
+    const footer = await page.getByRole('contentinfo').boundingBox();
+    expect(Math.round((footer?.y ?? 0) + (footer?.height ?? 0))).toBe(800);
+  });
+
+  test('the footer spans the whole page, under the sidebar too', async ({ page }) => {
+    await page.goto('/a2/perfekt/');
+    const footer = await page.getByRole('contentinfo').boundingBox();
+    const sidebar = await page.locator('#sidebar').boundingBox();
+    // The body is the page width without the reserved scrollbar gutter (decision #47).
+    const width = await page.evaluate(() =>
+      Math.round(document.body.getBoundingClientRect().width),
+    );
+    expect(footer?.x).toBe(0);
+    expect(Math.round(footer?.width ?? 0)).toBe(width);
+    expect(footer?.y ?? 0).toBeGreaterThan((sidebar?.y ?? 0) + (sidebar?.height ?? 0));
   });
 });
 

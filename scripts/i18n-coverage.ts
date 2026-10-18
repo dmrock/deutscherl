@@ -1,18 +1,24 @@
 /**
  * Translation coverage (CLAUDE.md, "Testing": data checks). For every topic and locale: the
  * missing files (`<locale>.mdx`, `i18n/<locale>.yaml`) and missing keys (every German item needs a
- * translation or explanation). Fails only for ready locales; others are reported for information,
- * so a language can be translated step by step before it goes live.
+ * translation or explanation). For every site page (`src/content/pages/<slug>/`): the missing
+ * `<locale>.mdx`. Fails only for ready locales; others are reported for information, so a language
+ * can be translated step by step before it goes live.
  *
  * Usage: node scripts/i18n-coverage.ts
  */
-import { resolve } from 'node:path';
+import { existsSync, readdirSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { type LocaleConfig, locales } from '../src/i18n/locales.ts';
 import { germanSchema, i18nSchema, type TopicI18n } from '../src/lib/content-schemas.ts';
 import { CONTENT_ROOT, readTopics, type TopicFiles } from './lib/content.ts';
 
+/** Site pages (about, legal): one folder per page, one MDX file per locale. */
+export const PAGES_ROOT = resolve(fileURLToPath(import.meta.url), '../../src/content/pages');
+
 export interface CoverageGap {
+  /** Topic key (`a2/perfekt`) or site page (`pages/about`) */
   topic: string;
   locale: string;
   ready: boolean;
@@ -68,9 +74,31 @@ export function coverage(
   return gaps;
 }
 
+/** Site pages without an MDX file in a locale. */
+export function pageCoverage(
+  root: string,
+  localeList: readonly Pick<LocaleConfig, 'code' | 'ready'>[] = locales,
+): CoverageGap[] {
+  if (!existsSync(root)) return [];
+  const slugs = readdirSync(root, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  return slugs.flatMap((slug) =>
+    localeList
+      .filter(({ code }) => !existsSync(join(root, slug, `${code}.mdx`)))
+      .map(({ code, ready }) => ({
+        topic: `pages/${slug}`,
+        locale: code,
+        ready,
+        missing: [`${code}.mdx`],
+      })),
+  );
+}
+
 function main(): number {
   const topics = readTopics(CONTENT_ROOT);
-  const gaps = coverage(topics);
+  const gaps = [...coverage(topics), ...pageCoverage(PAGES_ROOT)];
   for (const gap of gaps) {
     const label = gap.ready ? 'error' : 'info (not ready)';
     console.log(`${gap.topic} [${gap.locale}] ${label}: missing ${gap.missing.join(', ')}`);

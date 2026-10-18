@@ -1,0 +1,6 @@
+---
+/** The contact email as a mailto link (`site.email`): `<Email />` in site pages. */
+import { site } from '../../config/site.ts';
+---
+
+<a href={`mailto:${site.email}`}>{site.email}</a>

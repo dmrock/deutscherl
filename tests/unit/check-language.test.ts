@@ -22,6 +22,7 @@ describe('check-language', () => {
       'src/i18n/ui/ru.ts',
       'src/content/topics/a2/perfekt/ru.mdx',
       'src/content/topics/a2/perfekt/i18n/ru.yaml',
+      'src/content/pages/legal/ru.mdx',
       'tests/fixtures/i18n/ru/paragraph.md',
     ];
     for (const path of paths) {
@@ -63,6 +64,8 @@ describe('check-language', () => {
     expect(isAllowedPath('src/i18n/ui/xx.ts')).toBe(false);
     expect(isAllowedPath('src/content/topics/a2/perfekt/german.yaml')).toBe(false);
     expect(isAllowedPath('tests/fixtures/other/ru.txt')).toBe(false);
+    expect(isAllowedPath('src/content/pages/legal/notes.md')).toBe(false);
+    expect(isAllowedPath('src/content/pages/about/sources/ru.mdx')).toBe(false);
     expect(allowedPathPatterns(['xx']).some((p) => p.test('src/i18n/ui/xx.ts'))).toBe(true);
   });
 

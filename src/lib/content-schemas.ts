@@ -65,6 +65,13 @@ export const frontmatterSchema = z.strictObject({
   summary: text,
 });
 
+/** Frontmatter of a site page (`src/content/pages/<slug>/<locale>.mdx`: about, legal pages). */
+export const pageFrontmatterSchema = z.strictObject({
+  title: text,
+  /** Meta description */
+  description: text,
+});
+
 /**
  * `i18n/<locale>.yaml`: translations and explanations keyed by German item id. Fields are optional
  * here, so a locale that is not ready yet can be translated step by step; scripts/i18n-coverage.ts
@@ -122,6 +129,7 @@ export type GermanContent = z.infer<typeof germanSchema>;
 export type ChoiceItem = z.infer<typeof choiceSchema>;
 export type WordOrderItem = z.infer<typeof wordOrderSchema>;
 export type Frontmatter = z.infer<typeof frontmatterSchema>;
+export type PageFrontmatter = z.infer<typeof pageFrontmatterSchema>;
 export type TopicI18n = z.infer<typeof i18nSchema>;
 export type Review = z.infer<typeof reviewSchema>;
 export type BaseReview = Review['base'];

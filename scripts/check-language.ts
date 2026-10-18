@@ -62,6 +62,7 @@ export function allowedPathPatterns(locales: readonly string[] = localeCodes): R
     new RegExp(`^src/i18n/ui/${locale}\\.ts$`),
     new RegExp(`^src/content/topics/.+/${locale}\\.mdx$`),
     new RegExp(`^src/content/topics/.+/i18n/${locale}\\.yaml$`),
+    new RegExp(`^src/content/pages/[^/]+/${locale}\\.mdx$`),
     new RegExp(`^tests/fixtures/i18n/${locale}/.+`),
   ];
 }

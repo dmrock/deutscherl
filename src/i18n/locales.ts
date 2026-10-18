@@ -25,6 +25,8 @@ export interface LocaleConfig {
   /** false = built for preview, but hidden from picker, sitemap and search, and pages get noindex */
   ready: boolean;
   dir: 'ltr' | 'rtl';
+  /** Open Graph locale (`og:locale`), language_TERRITORY */
+  ogLocale: string;
   font: LocaleFont;
 }
 
@@ -35,6 +37,7 @@ export const locales = [
     default: true,
     ready: true,
     dir: 'ltr',
+    ogLocale: 'en_US',
     font: {
       family: 'Atkinson Hyperlegible Next',
       package: '@fontsource-variable/atkinson-hyperlegible-next',
@@ -48,6 +51,7 @@ export const locales = [
     default: false,
     ready: true,
     dir: 'ltr',
+    ogLocale: 'ru_RU',
     // Owner's choice after the specimen comparison (docs/decisions.md #7).
     font: {
       family: 'Golos Text',

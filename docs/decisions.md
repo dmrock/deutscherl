@@ -16,6 +16,8 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#32** Wrangler: custom domain only, `workers_dev: false`, preview URLs on. Open: redirect `www` to the apex.
 - **#33** **owner** First deploy bootstrapped from CI without routes, so the domain is attached only by the first production deploy.
 - **#54** "Content checks" CI job (validate, i18n coverage, review check): fast, clearly named failure; a required check.
+- **#86** Sitemap from `@astrojs/sitemap` (alternates from the locale prefixes), noindex pages filtered out by `inSitemap`; `robots.txt` allows everything, because a crawler blocked by robots.txt never sees `noindex`.
+- **#87** **owner** Cloudflare injects the Web Analytics beacon on the production domain (automatic setup); the build adds none and holds no token, so there is nothing to configure in the repository or CI, and previews (workers.dev) are not counted. Rejected: a beacon in `Base.astro` with the token in `site.ts` or a GitHub Actions variable.
 
 ## Languages and fonts
 
@@ -30,6 +32,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - ~~**#38** Font specimen page~~ → #43.
 - **#43** **owner** Font specimen page removed after the choice; quick to rebuild for a new locale.
 - **#44** **owner** No language hint and no stored locale: `hreflang` and the always-visible picker are enough.
+- **#88** `ogLocale` per locale in `locales.ts` (`og:locale` needs language_TERRITORY); structured data: `WebSite`, `BreadcrumbList`, `LearningResource` (topics). No social image yet.
 
 ## Design and UX
 
@@ -61,11 +64,16 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - ~~**#75** **owner** Sources moved below the practice section~~ → #78.
 - **#76** **owner** Word order: a tap or click (Enter on the keyboard) moves a word to the end of the sentence or back to the bank; dragging stays for reordering. This is the single-pointer alternative, so WCAG 2.5.7 is met and the exception #12 is gone. Space alone starts the library's keyboard drag.
 - **#77** **owner** (request: no big empty gap) The screen-high reserve moved from the practice card to a wrapper around it: the card fits its content, the spare room is below it at the end of the page, and the wrapper never shrinks during a visit, so the page still does not move.
-- **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review; grammar references are listed on `/about/sources/` (stage 7).
+- **#78** **owner** No sources block on topic pages: it keeps the page clean and playful, and learners do not use it. `sources` stays required in `meta.yaml` for review. (A `/about/sources/` page was planned → #95.)
 - **#79** **owner** Choice items get 4 options: 2 forms of *haben* and 2 of *sein* (the right person plus another person), so guessing drops from 50% to 25% and the person form is practised too; the why texts name the right form. Distractors must be clearly wrong for the subject.
 - **#80** **owner** No intro sentence in the practice card: the heading, the Start button and "Question 1 of 5" say it already.
 - **#81** **owner** No visible "Question 3 of 5": the dots show progress. The text stays as the dots' accessible name (`role="img"`), and the dots are where focus goes after "Next".
 - **#82** **owner** Links back to the explanation: a quiet "↑ Explanation" in the practice card header while a round runs, and "Back to the explanation" next to "Try again". Plain in-page links to `#explanation`, so the round is kept. Rejected for now: linking each wrong answer to its rule section (needs a section tag per item).
+- **#84** Search: Pagefind Component UI, loaded by a small inline script on the first click or Cmd/Ctrl+K and opened as its modal. Pages load no search code, so the 3 KB budget holds (opening search loads about 130 KB, mostly the WASM). Pagefind's own translations from `<html lang>`. Rejected: the legacy Default UI, an own UI over the JS API (more code to maintain).
+- **#85** Only topic pages of ready locales are indexed (`data-pagefind-body`); German examples are on every locale's page, so a German word is found from any locale without a separate German index.
+- **#89** **owner** (request) Footer across the whole page width, under the sidebar too (a top-level `contentinfo` landmark): About, legal page, source code, licenses. The body is a column that fills the screen, so short pages still do not scroll (#47); the sidebar is as tall as its topics (at most the screen) and the divider is the content column's border.
+- **#95** **owner** No sources page: learners do not need it. `sources` stays in `meta.yaml` for review only. Rejected: an `/about/sources/` page.
+- **#90** Home page level cards list each level's topics, or its planned topics under "Coming soon"; level pages show the reading time (kept off topic pages, #61).
 
 ## Content and review
 
@@ -80,6 +88,12 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#53** `review:set` for status changes, owner only: nobody edits `review.yaml` by hand.
 - **#56** Content components are passed by the topic page (MDX needs no imports) and find their topic from the page URL; `**…**` highlights German key words, `*…*` marks German words in native text.
 - **#59** First topic A2 "Perfekt: haben or sein?", draft. The Austrian note says "usually": in Austria `sein` is the majority form for sitzen/liegen/stehen, but `haben` is used too (Variantengrammatik).
+- **#91** Site pages (about, legal) are MDX in `src/content/pages/<slug>/<locale>.mdx`, an allowed localization path; `i18n-coverage` requires them for ready locales, and a locale that is not ready shows the English text. Rejected: long UI strings.
+- **#92** Audio paragraphs on /about/ and /legal/ are written but shown only once `site.audio` is true (stage 4b), so the pages never describe audio that does not exist.
+- **#96** **owner** One short legal page, "Legal notice and privacy" (`/legal/`): the Offenlegung (name, town, email, purpose) and a few plain privacy paragraphs instead of two long templates with open legal questions. No postal address (the Mediengesetz asks for the place of residence); a commercial site may need one later (§ 5 ECG). Rejected: separate `/impressum/` and `/privacy/` pages.
+- **#98** **owner** Contact email `hallo@deutscherl.com` in `site.email` (shown with `<Email />`; also in CODE_OF_CONDUCT.md), forwarded to the owner by Cloudflare Email Routing (free, receive only), so the personal address is not on the site. Rejected: the owner's Gmail on the page (spam).
+- **#99** **owner** Every page uses the full width of the main column, like topic pages (#61): no narrower text measure on the home intro, coming-soon, about and legal pages.
+- **#93** Planned topics for B1–C1 (`plannedTopics` in `site.ts`) are a draft list for the coming-soon pages; the owner may change them.
 
 ## Dictionary
 
@@ -97,6 +111,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 ## Tooling and dependencies
 
 - **#16** Open source: code MIT, content CC BY-SA 4.0, DCO sign-off, PRs only from collaborators, issues via forms.
+- **#97** **owner** Content stays CC BY-SA 4.0 after dropping the dictionary (no longer required by Wiktionary): adapted versions must stay open. Rejected: CC BY 4.0 (easier reuse, but closed copies allowed).
 - **#18** **owner** Cloudflare Web Analytics (free, cookieless, production only). PostHog postponed: 24–98 KB of JS.
 - **#23** **owner** Latest stable versions, except Node (current LTS, 24) and TypeScript 6 (Astro's tooling does not support 7 yet); pnpm's 1-day minimum release age is kept as a supply-chain safeguard.
 - **#24** pnpm 12 pinned via `packageManager`; dependency build scripts denied by default (`allowBuilds`).
@@ -107,3 +122,4 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#58** Stage 3 bumped Biome to 2.5.15 and Wrangler to 4.147.0 and added `yaml` 2.9.1.
 - **#60** **owner** The lockfile is committed exactly as pnpm writes it (including the `@pnpm/exe` entry the standalone pnpm records); both pnpm builds accept it, so it is never edited by hand.
 - **#70** Stage 4 added `svelte-dnd-action` 0.9.79 (decision #11). Topic pages load 35.6 KB of gzipped JS (budget 45 KB): Svelte runtime 15.9 KB, exercise island with svelte-dnd-action 17.3 KB, island loader and inline scripts the rest.
+- **#94** Stage 7 added `@astrojs/sitemap` 3.7.4 (build only, no client JS) and `pagefind` 1.5.2 (dev dependency, a CLI run after `astro build`; the browser loads its 39 KB UI + 7 KB CSS + 13 KB loader + 73 KB WASM, gzipped, only when search is opened). Static pages load at most 1.2 KB of JS, topic pages 37.8 KB.

@@ -35,6 +35,23 @@ test.describe('language picker', () => {
   });
 });
 
+test.describe('the picker keeps the page on every page type', () => {
+  for (const path of ['/', '/a2/', '/b1/', '/about/', '/legal/']) {
+    test(path, async ({ page }) => {
+      await page.goto(path);
+      const picker = page.locator('[data-language-picker]');
+      await picker.locator('summary').click();
+      await picker.getByRole('link', { name: ruName }).click();
+      await expect(page).toHaveURL(`/ru${path}`);
+      await expect(page.locator('html')).toHaveAttribute('lang', 'ru');
+      await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute(
+        'href',
+        `${site.url}${path}`,
+      );
+    });
+  }
+});
+
 test.describe('localized head', () => {
   for (const { path, lang } of [
     { path: '/a2/perfekt/', lang: 'en' },

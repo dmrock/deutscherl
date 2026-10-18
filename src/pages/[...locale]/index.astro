@@ -1,9 +1,13 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import { levels } from '../../config/site.ts';
+import MarkedText from '../../components/content/MarkedText.astro';
+import { categoryIds, levels, plannedTopicsOf, site } from '../../config/site.ts';
 import { defaultLocale, type LocaleCode, localeCodes } from '../../i18n/locales.ts';
 import { localizePath, t } from '../../i18n/utils.ts';
 import Base from '../../layouts/Base.astro';
+import { topicPath, topicsInOrder } from '../../lib/navigation.ts';
+import { websiteData } from '../../lib/seo.ts';
+import { getTopicLinks } from '../../lib/topics.ts';
 
 // One page per locale: the default locale at `/`, the others at `/<code>/`.
 export const getStaticPaths = (() =>
@@ -19,13 +23,21 @@ interface Props {
 const { locale } = Astro.props;
 const available = levels.filter((level) => level.available);
 const features = ['language', 'practice', 'austria'] as const;
+const topicLinks = await getTopicLinks(locale);
+const description = t(locale, 'home.intro');
+const structuredData = websiteData({
+  name: site.name,
+  url: new URL(localizePath('/', locale), site.url).href,
+  description,
+  locale,
+});
 ---
 
-<Base locale={locale}>
+<Base locale={locale} description={description} structuredData={structuredData}>
   <section class="pt-2 sm:pt-6">
     <p class="eyebrow text-muted">{t(locale, 'site.tagline')}</p>
-    <h1 class="mt-2 max-w-2xl text-4xl sm:text-5xl">{t(locale, 'home.title')}</h1>
-    <p class="mt-4 max-w-xl text-lg text-muted">{t(locale, 'home.intro')}</p>
+    <h1 class="mt-2 text-4xl sm:text-5xl">{t(locale, 'home.title')}</h1>
+    <p class="mt-4 text-lg text-muted">{t(locale, 'home.intro')}</p>
     <div class="mt-6 flex flex-wrap gap-3">
       {available.map((level, index) => (
         <a
@@ -47,28 +59,61 @@ const features = ['language', 'practice', 'austria'] as const;
     <h2 id="levels-title" class="text-xl">
       {t(locale, 'nav.levels')}
     </h2>
-    <ul class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-      {levels.map((level) => (
-        <li>
-          <a
-            href={localizePath(`/${level.id}/`, locale)}
+    <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {levels.map((level) => {
+        const topics = level.available ? topicsInOrder(topicLinks, level.id, categoryIds) : [];
+        return (
+          <li
             class:list={[
-              'flex h-full flex-col rounded-card border px-4 py-3',
-              level.available
-                ? 'border-border bg-card shadow-card hover:border-accent'
-                : 'border-dashed border-border text-muted',
+              'flex flex-col rounded-card border px-4 py-3',
+              level.available ? 'border-border bg-card shadow-card' : 'border-dashed border-border',
             ]}
           >
-            <span class:list={['text-3xl font-bold', level.available && 'text-accent']}>
-              {level.label}
-            </span>
-            <span class="mt-1 text-sm">{t(locale, `level.${level.id}.name`)}</span>
-            {!level.available && (
-              <span class="mt-2 text-xs font-semibold">{t(locale, 'level.comingSoon')}</span>
+            <h3 class="text-base">
+              <a
+                href={localizePath(`/${level.id}/`, locale)}
+                class="inline-flex items-baseline gap-2 hover:text-accent"
+              >
+                <span
+                  class:list={[
+                    'text-2xl font-bold',
+                    level.available ? 'text-accent' : 'text-muted',
+                  ]}
+                >
+                  {level.label}
+                </span>
+                {t(locale, `level.${level.id}.name`)}
+              </a>
+            </h3>
+            {level.available && topics.length > 0 && (
+              <ul class="mt-1.5 space-y-0.5 text-sm">
+                {topics.map((topic) => (
+                  <li>
+                    <a href={localizePath(topicPath(topic), locale)} class="hover:text-accent">
+                      {topic.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             )}
-          </a>
-        </li>
-      ))}
+            {level.available && topics.length === 0 && (
+              <p class="mt-1.5 text-sm text-muted">{t(locale, 'level.noTopics')}</p>
+            )}
+            {!level.available && (
+              <>
+                <p class="eyebrow mt-1.5 text-muted">{t(locale, 'level.comingSoon')}</p>
+                <ul class="mt-1 space-y-0.5 text-sm text-muted">
+                  {plannedTopicsOf(level.id).map((id) => (
+                    <li>
+                      <MarkedText text={t(locale, `planned.${id}`)} />
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </li>
+        );
+      })}
     </ul>
   </section>
 

@@ -31,6 +31,7 @@ Native-language text (for example Russian) is allowed only in localization files
 - `src/i18n/ui/<locale>.ts` (UI strings)
 - `src/i18n/locales.ts`, only the `name` field (the language name in its own language)
 - `src/content/topics/**/<locale>.mdx` and `src/content/topics/**/i18n/<locale>.yaml`
+- `src/content/pages/<page>/<locale>.mdx` (about and legal pages)
 - test fixtures under `tests/fixtures/i18n/<locale>/`
 
 German letters (ä ö ü ß) are fine everywhere. `pnpm check:language` checks this in the pre-commit hook and in CI.

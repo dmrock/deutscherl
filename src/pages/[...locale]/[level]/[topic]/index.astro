@@ -12,12 +12,18 @@ import SponsorSlot from '../../../../components/content/SponsorSlot.astro';
 import StatusBadges from '../../../../components/content/StatusBadges.astro';
 import ExerciseRunner from '../../../../components/exercises/ExerciseRunner.svelte';
 import { type LevelId, levels, site } from '../../../../config/site.ts';
-import { defaultLocale, isLocaleCode, type LocaleCode } from '../../../../i18n/locales.ts';
+import {
+  defaultLocale,
+  getLocaleConfig,
+  isLocaleCode,
+  type LocaleCode,
+} from '../../../../i18n/locales.ts';
 import { localizePath, t } from '../../../../i18n/utils.ts';
 import Base from '../../../../layouts/Base.astro';
 import { exerciseStrings } from '../../../../lib/exercise-strings.ts';
 import { resolveExercises, seenKey } from '../../../../lib/exercises.ts';
 import { stripMarks } from '../../../../lib/marked-text.ts';
+import { breadcrumbData, topicData } from '../../../../lib/seo.ts';
 import { getTopicContent } from '../../../../lib/topic-content.ts';
 
 // One page per topic MDX file: `a2/perfekt/ru.mdx` becomes `/ru/a2/perfekt/`.
@@ -56,22 +62,38 @@ const { Content } = await render(page);
 const { german, i18n, review } = await getTopicContent(level, slug, locale);
 const pageUrl = new URL(localizePath(Astro.url.pathname, locale), site.url).href;
 const levelLabel = levels.find((entry) => entry.id === level)?.label ?? level;
+const description = stripMarks(page.data.summary);
+const structuredData = [
+  topicData({ title: page.data.title, description, url: pageUrl, locale, level: levelLabel }),
+  breadcrumbData([
+    { name: site.name, url: new URL(localizePath('/', locale), site.url).href },
+    {
+      name: t(locale, 'level.title', { level: levelLabel }),
+      url: new URL(localizePath(`/${level}/`, locale), site.url).href,
+    },
+    { name: page.data.title, url: pageUrl },
+  ]),
+];
+// Search indexes topic pages of ready locales only (Pagefind indexes only pages with this attribute).
+const searchable = getLocaleConfig(locale).ready;
 ---
 
 <Base
   locale={locale}
   title={page.data.title}
-  description={stripMarks(page.data.summary)}
+  description={description}
   level={level}
   topic={slug}
+  ogType="article"
+  structuredData={structuredData}
 >
   <!-- Target of the "back to the explanation" links in the practice card (decision #82). -->
-  <article id="explanation" class="scroll-mt-16">
+  <article id="explanation" class="scroll-mt-16" data-pagefind-body={searchable ? '' : undefined}>
     <p class="eyebrow text-muted">
       {levelLabel} · {t(locale, `category.${meta.data.category}`)}
     </p>
     <h1 class="mt-0.5 text-2xl sm:text-3xl">{page.data.title}</h1>
-    <div class="mt-2 text-xs">
+    <div class="mt-2 text-xs" data-pagefind-ignore>
       <StatusBadges locale={locale} review={review} />
     </div>
     <InShort locale={locale} summary={page.data.summary} />

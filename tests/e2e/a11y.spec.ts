@@ -11,6 +11,7 @@ import {
   onlyUnseen,
   openPractice,
 } from './helpers/exercises.ts';
+import { openSearch, searchModal } from './helpers/search.ts';
 
 const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
@@ -20,6 +21,8 @@ const pages = [
   { name: 'level without topics', path: '/a1/' },
   { name: 'coming soon', path: '/b1/' },
   { name: 'topic', path: '/a2/perfekt/' },
+  { name: 'about', path: '/about/' },
+  { name: 'legal', path: '/legal/' },
 ];
 
 for (const colorScheme of ['light', 'dark'] as const) {
@@ -33,6 +36,16 @@ for (const colorScheme of ['light', 'dark'] as const) {
         expect(results.violations).toEqual([]);
       });
     }
+
+    test('search with results has no axe violations', async ({ page }) => {
+      await page.goto('/');
+      await openSearch(page);
+      await page.keyboard.type('gesessen');
+      await expect(searchModal(page).getByRole('link').first()).toBeVisible();
+      await page.waitForFunction(() => document.getAnimations().length === 0);
+      const results = await new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();
+      expect(results.violations).toEqual([]);
+    });
 
     test('exercises: questions and feedback have no axe violations', async ({ page }) => {
       const check = async () => {
