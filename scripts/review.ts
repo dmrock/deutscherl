@@ -11,8 +11,8 @@
  * Usage:
  *   node scripts/review.ts sync [--check]                     # pre-commit; --check in CI
  *   node scripts/review.ts status
- *   node scripts/review.ts minor <topic> <base|locale> --reason "typo in c3 why"   # owner only
- *   node scripts/review.ts set <topic> <base|locale> <status> --by "Name"          # owner only
+ *   node scripts/review.ts minor <topic> <base|locale> --reason "typo in c3 why"   # maintainers only
+ *   node scripts/review.ts set <topic> <base|locale> <status> --by "Name"          # maintainers only
  */
 import { createHash } from 'node:crypto';
 import { writeFileSync } from 'node:fs';
@@ -259,7 +259,7 @@ export function isInSync(topic: TopicFiles): boolean {
   return existing !== undefined && syncReview(topic, existing).changes.length === 0;
 }
 
-// --- Owner commands --------------------------------------------------------------------------
+// --- Maintainer commands ----------------------------------------------------------------------
 
 /** A scope is `base` or a non-default locale code. */
 export type Scope = string;
@@ -305,7 +305,7 @@ export function minorEdit(
   return review;
 }
 
-/** Sets the review status of a scope (owner command). The topic must be in sync first. */
+/** Sets the review status of a scope (maintainer command). The topic must be in sync first. */
 export function setStatus(
   topic: TopicFiles,
   existing: Review,

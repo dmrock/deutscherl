@@ -72,7 +72,7 @@ test.describe('footer', () => {
   }
 });
 
-test('the legal page names the owner and links the contact email', async ({ page }) => {
+test('the legal page names the Medieninhaber and links the contact email', async ({ page }) => {
   await page.goto('/legal/');
   await expect(page.getByRole('main').getByRole('link', { name: site.email })).toHaveAttribute(
     'href',

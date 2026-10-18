@@ -194,7 +194,7 @@
     {:else if phase === 'question' && current}
       <!--
         Progress dots, floated so the prompt shares their line. "Question 3 of 5" is their
-        accessible name (no visible text, decision #81); they are the focus target after "Next".
+        accessible name (no visible text); they are the focus target after "Next".
       -->
       <div
         role="img"
@@ -367,7 +367,7 @@
         >
           {strings['exercise.tryAgain']}
         </button>
-        <!-- Plain in-page link: the explanation is above the practice card (decision #82). -->
+        <!-- Plain in-page link: the explanation is above the practice card. -->
         <a
           href="#explanation"
           class="inline-flex h-10 items-center rounded-ui border border-control bg-card px-4 font-semibold hover:bg-surface"

@@ -40,10 +40,10 @@ function save(value: Review): void {
   fixture.write('review.yaml', serializeReview(value));
 }
 
-/** Marks base verified and ru reviewed through the owner command. */
+/** Marks base verified and ru reviewed through the maintainer command. */
 function verifyAll(): void {
   save(setStatus(fixture.topic(), review(), 'base', 'verified', 'Teacher', clock));
-  save(setStatus(fixture.topic(), review(), 'ru', 'reviewed', 'Owner', clock));
+  save(setStatus(fixture.topic(), review(), 'ru', 'reviewed', 'Maintainer', clock));
 }
 
 function syncNow(): string[] {
@@ -119,7 +119,7 @@ describe('review:sync', () => {
     expect(after.translations.ru?.history.at(-1)).toMatchObject({
       event: 'reset',
       from: 'reviewed',
-      by: 'Owner',
+      by: 'Maintainer',
       reason: 'base changed',
     });
     // basedOn keeps the base the translation was checked against: it is outdated now.
@@ -162,7 +162,7 @@ describe('review:sync', () => {
     expect(after.translations.ru?.history.at(-1)).toMatchObject({
       event: 'reset',
       from: 'reviewed',
-      by: 'Owner',
+      by: 'Maintainer',
       reason: 'translation changed',
     });
   });
@@ -238,7 +238,7 @@ describe('review:set', () => {
 
   it('refuses when review.yaml is out of sync', () => {
     fixture.edit('german.yaml', (c) => c.replace('Ich **bin** gegangen.', 'Ich **bin** gelaufen.'));
-    expect(() => setStatus(fixture.topic(), review(), 'base', 'reviewed', 'Owner')).toThrow(
+    expect(() => setStatus(fixture.topic(), review(), 'base', 'reviewed', 'Maintainer')).toThrow(
       /out of sync/,
     );
   });
@@ -256,7 +256,7 @@ describe('review:set', () => {
     ]);
     expect(value.translations.ru).toMatchObject({
       status: 'reviewed',
-      reviewedBy: 'Owner',
+      reviewedBy: 'Maintainer',
       basedOn: value.base.contentHash,
     });
   });

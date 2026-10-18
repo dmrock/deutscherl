@@ -151,7 +151,7 @@ test.describe('static navigation', () => {
     await page.goto('/a2/perfekt/');
     const footer = await page.getByRole('contentinfo').boundingBox();
     const sidebar = await page.locator('#sidebar').boundingBox();
-    // The body is the page width without the reserved scrollbar gutter (decision #47).
+    // The body is the page width without the reserved scrollbar gutter.
     const width = await page.evaluate(() =>
       Math.round(document.body.getBoundingClientRect().width),
     );

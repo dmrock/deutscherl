@@ -87,7 +87,7 @@ const searchable = getLocaleConfig(locale).ready;
   ogType="article"
   structuredData={structuredData}
 >
-  <!-- Target of the "back to the explanation" links in the practice card (decision #82). -->
+  <!-- Target of the "back to the explanation" links in the practice card. -->
   <article id="explanation" class="scroll-mt-16" data-pagefind-body={searchable ? '' : undefined}>
     <p class="eyebrow text-muted">
       {levelLabel} · {t(locale, `category.${meta.data.category}`)}
@@ -102,7 +102,7 @@ const searchable = getLocaleConfig(locale).ready;
     </div>
   </article>
   <SponsorSlot />
-  <!-- Practice: reserves the screen while a round runs (ExerciseRunner, global.css). Sources stay in meta.yaml for review, not shown (decision #78). -->
+  <!-- Practice: reserves the screen while a round runs (ExerciseRunner, global.css). Sources stay in meta.yaml for review, not shown. -->
   <div data-practice-area>
     <div>
       <section

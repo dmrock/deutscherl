@@ -51,10 +51,10 @@ export const site = {
   url: 'https://deutscherl.com',
   repo: 'https://github.com/dmrock/deutscherl',
   discussionsUrl: 'https://github.com/dmrock/deutscherl/discussions',
-  /** Contact on /legal/ and /about/; Cloudflare Email Routing forwards it to the owner (decision #98) */
+  /** Contact on /legal/ and /about/; Cloudflare Email Routing forwards it to the maintainers */
   email: 'hallo@deutscherl.com',
   /**
-   * Pre-generated audio for German sentences (stage 4b, decision #63). While false, the audio
+   * Pre-generated audio for German sentences (stage 4b). While false, the audio
    * notes on /about/ and /legal/ are not shown (<AudioOnly> in the page MDX).
    */
   audio: false as boolean,

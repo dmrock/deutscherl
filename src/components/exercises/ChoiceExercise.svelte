@@ -1,6 +1,6 @@
 <!--
   Multiple choice: a German sentence with one gap and 2–4 options (already shuffled). One click
-  answers; regional variants (`alsoCorrect`) count as correct (decision #13).
+  answers; regional variants (`alsoCorrect`) count as correct.
 -->
 <script lang="ts">
   import type { ExerciseStrings } from '../../lib/exercise-strings.ts';

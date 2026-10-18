@@ -51,7 +51,7 @@ test('the sitemap lists indexable pages with their alternates, no coming-soon pa
   expect(sitemap).not.toContain('404');
 });
 
-// Cloudflare injects the analytics beacon on the production domain (decision #87); a second one
+// Cloudflare injects the analytics beacon on the production domain; a second one
 // from the build would count every visit twice.
 test('the build adds no analytics beacon', async ({ page }) => {
   await page.goto('/');

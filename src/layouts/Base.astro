@@ -108,7 +108,7 @@ const { prev, next } =
       {t(locale, 'site.skipToContent')}
     </a>
     <Header locale={locale} path={path} level={level} hasSidebar={Boolean(level)} />
-    <!-- Fills the screen between header and footer, so short pages do not scroll (decision #47). -->
+    <!-- Fills the screen between header and footer, so short pages do not scroll. -->
     <div class="mx-auto flex w-full max-w-6xl flex-1">
       {level && <Sidebar locale={locale} level={level} topics={topics} current={topic} />}
       <main
