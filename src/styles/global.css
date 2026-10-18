@@ -342,6 +342,11 @@ html:root {
     font-size: 0.875rem;
   }
 
+  .rule-table-equal table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
   .rule-table th,
   .rule-table td {
     padding: 0.375rem 0.75rem;

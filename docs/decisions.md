@@ -96,6 +96,7 @@ Marks: **owner** = the owner's call; **pending** = waiting for the owner; ~~stru
 - **#100** **owner** German words in explanations, summaries and why texts are bold, not italic (`<De>`, `*word*`); `<De plain>` for cells that are German throughout.
 - **#101** **owner** Example cards show two columns when the card is at least 40rem wide (container query), so short examples do not leave half the card empty; an odd last example spans both.
 - **#102** **owner** Rule tables are as wide as their content; verb forms go in a compact singular | plural table with the irregular forms in bold.
+- **#103** **owner** Examples under a two-column rule table mirror it: one example per cell in the same order, and the table uses equal columns (`<RuleTable equal>`), so each example sits under its column.
 - **#93** Planned topics for B1–C1 (`plannedTopics` in `site.ts`) are a draft list for the coming-soon pages; the owner may change them.
 
 ## Dictionary

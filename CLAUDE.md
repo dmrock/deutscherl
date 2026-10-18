@@ -167,7 +167,7 @@ tests/
 - `<locale>.mdx` frontmatter: `title`, `summary` ("In short", rendered by the page with `<InShort>`; also the meta description and the level-page card). Body references German content by id. Never write German example sentences directly in MDX. Components (passed by the topic page, no imports in MDX):
   - `<Examples>` around one or more `<Example id="e1" />` (a card, one cell per example: German, translation; two columns when the card is at least 40rem wide);
   - `<AustrianNote id="at1">explanation in the locale</AustrianNote>` (flag + "In Austria", the children, then the German sentence and its translation);
-  - `<RuleTable>` + blank line + a markdown (GFM) table + blank line;
+  - `<RuleTable>` + blank line + a markdown (GFM) table + blank line (`<RuleTable equal>`: full width, equal columns);
   - `<De>haben</De>` for German words inside explanation text (`lang="de"`, bold); `<De plain>` for text that is German throughout (cells of a forms table), with `**…**` inside for what to notice.
 - `i18n/<locale>.yaml`: `examples.<id>`, `choice.<id>.why`, `wordOrder.<id>.translation`, `wordOrder.<id>.why`, `austrianNotes.<id>` (translation of the note's German sentence). Fields are optional in the schema so a not-ready locale can be translated step by step; `i18n-coverage` requires all of them for ready locales.
 - In native-language text (`summary`, why texts), `*word*` marks a German word (rendered bold with `lang="de"`, stripped for meta tags).
@@ -181,6 +181,7 @@ tests/
 - German words in native-language text are bold (`<De>`, `*word*`), never italic (owner decision #100).
 - A rule with several meanings or cases: one paragraph per case, starting with a bold lead-in (`**1. Leave something somewhere.**`), then its `<Examples>`. Two examples per case fill one row of the two-column card; an odd last example spans both columns (owner decision #101).
 - Tables are as wide as their content, not the full column (owner decision #102). Keep them compact: few columns, short cells.
+- Examples under a two-column rule table mirror it (owner decision #103): `<RuleTable equal>` (full width, equal columns), then one example per table cell in reading order (left, right, next row), so each example sits under its column and the dividers line up. Every case in the table gets an example.
 - Verb forms: a two-column table, singular | plural (rows `ich`/`wir`, `du`/`ihr`, `er / sie / es`/`sie / Sie`), each cell `<De plain>pronoun form</De>`, irregular forms in `**…**` (e.g. `<De plain>du **lässt**</De>`). Headers are in the locale.
 
 ### Exercise rules

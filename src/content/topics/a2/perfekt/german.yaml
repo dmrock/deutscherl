@@ -12,6 +12,12 @@ examples:
     de: 'Er **ist** den ganzen Tag zu Hause **geblieben**.'
   - id: e5
     de: '**Hast** du gut **geschlafen**?'
+  - id: e6
+    de: 'Sie **ist** mit dem Zug nach Linz **gefahren**.'
+  - id: e7
+    de: 'Ich **habe** heute einen Kuchen **gebacken**.'
+  - id: e8
+    de: 'Wir **haben** uns sehr **gefreut**.'
 
 choice:
   - id: c1
