@@ -140,12 +140,12 @@ Build, for every ready locale:
 Add e2e tests on English pages for navigation and search (including finding a German word), and axe checks for all new page types. Extend the language-switching tests to the new page types (picker keeps the page, hreflang present).
 ```
 
-## Stage 8. Content: 10 topics
+## Stage 8. Content: 13 topics
 
 Do 2–3 topics per session. After each batch: read the English pages and move them to `reviewed`; send the English pages (German content + English explanation) to the teacher, who moves them to `verified`; compare the Russian explanations with the English ones yourself and mark the translations `reviewed`.
 
-- A1: Personal pronouns and sein/haben · Present tense of regular verbs · Articles and gender (der/die/das) · Word order: verb in position 2 and questions · Negation: nicht and kein
-- A2: Perfekt: haben or sein (already done) · Dative case · Two-way prepositions (Wechselpräpositionen) · Subordinate clauses with weil, dass, wenn · Comparative and superlative
+- A1: Personal pronouns and sein/haben · Present tense of regular verbs · Articles and gender (der/die/das) · Word order: verb in position 2 and questions · Negation: nicht and kein · Accusative case (done) · Dative case (done)
+- A2: Perfekt: haben or sein (done) · The verb lassen (done) · Genitive case (done) · Two-way prepositions (Wechselpräpositionen) · Subordinate clauses with weil, dass, wenn · Comparative and superlative
 
 ```
 Read CLAUDE.md and `.claude/rules/content.md`. Write the topics: <LIST 2–3 TOPICS>.

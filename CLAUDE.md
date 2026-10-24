@@ -2,7 +2,7 @@
 
 A free website for learning German grammar: explanations in the learner's native language, German examples with translations, interactive exercises. Working name; it lives only in `src/config/site.ts`.
 
-- Pilot: levels A1 and A2 with 5 topics each; B1, B2 and C1 show as "coming soon".
+- Pilot: levels A1 and A2 (7 and 6 topics, listed in `PLAN.md` stage 8); B1, B2 and C1 show as "coming soon".
 - Native languages: English (default) and Russian. More will follow, possibly in other scripts or right to left, so everything language-specific is data, not code.
 - Signature feature: notes on Austrian German (usage that differs from Germany).
 - The site teaches grammar only: no dictionary or vocabulary database; Austrian vocabulary goes into the topics.
