@@ -24,6 +24,7 @@ paths:
 - `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"`, default HTML handling (trailing slash, matching Astro), production only on the custom domain (`workers_dev: false`), preview URLs enabled. Check the current Wrangler docs for exact keys.
 - Preview URLs live on the account's workers.dev subdomain (`pr-<n>-deutscherl.<subdomain>.workers.dev`); opening Workers & Pages in the dashboard once creates it.
 - Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account) and the variable `CLOUDFLARE_ACCOUNT_ID`. Nothing else is secret.
+- Cloudflare "Always Use HTTPS" is on for the zone: http redirects to https (301) at the edge; HSTS is off.
 
 ## Analytics
 
