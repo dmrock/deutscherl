@@ -1,0 +1,77 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: That's my father's phone.
+  e2: The name of the street is very long.
+  e3: Whose key is this?
+  e4: The boss's office is on the second floor.
+  e5: The kitchen door is open.
+  e6: She is a doctor's daughter.
+  e7: I live in a friend's flat.
+  e8: Do you know my brother's girlfriend?
+  e9: My parents' car is very old.
+  e10: The garden of the house is very big.
+  e11: I like the colour of the car.
+  e12: Anna's brother lives in Linz.
+  e13: Is that Max's backpack?
+  e14: At the end of the month I don't have much money.
+  e15: Is there a pharmacy near the station?
+  e16: That's my brother's bike.
+  e17: The end of the film was sad.
+
+choice:
+  c1:
+    why: '*Bruder* is masculine, and the noun has the genitive ending *-s* (*Bruders*), so the possessive is *meines*. *meinem* and *meinen* are dative or accusative forms.'
+  c2:
+    why: '*die Jacke* is feminine. In the genitive, feminine nouns take *der*: *die Farbe der Jacke*. *des* is only for masculine and neuter nouns.'
+  c3:
+    why: '*das Geschäft* is neuter, so the genitive is *des Geschäfts*: the article is *des* and the noun adds *-s*.'
+  c4:
+    why: '*das Jahr* is neuter: *am Anfang des Jahres*. Masculine and neuter nouns take *des* in the genitive.'
+  c5:
+    why: 'Masculine nouns need both parts in the genitive: *meines* and the ending *-s* on the noun: *meines Chefs*. *meines Chef* is missing the *-s*.'
+  c6:
+    why: '*eine Lehrerin* is feminine, so the genitive is *einer Lehrerin*. Feminine nouns get no ending.'
+  c7:
+    why: 'With a name, add *-s* with no apostrophe: *Annas Schwester*. *Anna’s* with an apostrophe is not correct in a normal sentence.'
+  c8:
+    why: '*Max* ends in *x*, so it gets only an apostrophe in the genitive: *Max’ Zimmer*. No extra *-s*.'
+  c9:
+    why: '*wessen* asks "whose?" and comes right before the noun: *Wessen Tasche ist das?* *wer*, *wen* and *wem* cannot stand before a noun like this.'
+  c10:
+    why: '*die Stadt* is feminine, so the genitive article is *der*: *in der Mitte der Stadt*.'
+  c11:
+    why: '*von* always takes the dative, not the genitive. *der Vater* is masculine, so the dative is *meinem Vater*.'
+  c12:
+    why: '*Eltern* is plural. In the genitive, plural nouns take *der*, so the possessive is *meiner*: *die Wohnung meiner Eltern*.'
+  c13:
+    why: '*das Hotel* is neuter, so the genitive is *eines Hotels*: a room of a hotel. *einer* is for feminine nouns.'
+  c14:
+    why: '*die Schwester* is feminine, so the genitive possessive is *deiner*: *der Freund deiner Schwester*.'
+
+wordOrder:
+  w1:
+    translation: My neighbour's dog is very loud.
+    why: 'The genitive *meiner Nachbarin* comes right after the noun it belongs to: *der Hund meiner Nachbarin*. Then the verb *ist* is in position 2.'
+  w2:
+    translation: We live near the station.
+    why: '*in der Nähe des Bahnhofs* is one phrase: the genitive *des Bahnhofs* follows *in der Nähe*. The whole phrase can also come first; then *wir* moves after the verb.'
+  w3:
+    translation: Whose idea was that?
+    why: '*wessen* stands right before its noun: *wessen Idee*. Together they are the question word in position 1, and the verb *war* follows.'
+  w4:
+    translation: Anna's brother works in a hotel.
+    why: 'A name in the genitive comes before the noun: *Annas Bruder*. *in einem Hotel* can also come first; then *Annas Bruder* moves after the verb.'
+  w5:
+    translation: At the end of the course, we're having a party.
+    why: 'The genitive *des Kurses* follows *am Ende*. The whole phrase is in position 1, so the verb *machen* comes next and the subject *wir* after it.'
+  w6:
+    translation: That's my uncle's car.
+    why: 'Here *von* + dative replaces the genitive: *das Auto von meinem Onkel*. It is very common in speech.'
+  w7:
+    translation: Do you know Hans's sister?
+    why: '*Hans* ends in *s*, so it gets only an apostrophe: *Hans’ Schwester*. The name comes before the noun. In a yes/no question the verb comes first.'
+
+austrianNotes:
+  at1: That's Dad's car.

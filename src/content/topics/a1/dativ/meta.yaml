@@ -1,0 +1,27 @@
+level: a1
+category: cases
+order: 2
+readingMinutes: 6
+sources:
+  - title: 'grammis (IDS Mannheim): Kasus'
+    url: https://grammis.ids-mannheim.de/terminologie/117
+  - title: 'grammis (IDS Mannheim): Präposition'
+    url: https://grammis.ids-mannheim.de/terminologie/206
+  - title: 'Duden: Dativ'
+    url: https://www.duden.de/rechtschreibung/Dativ
+  - title: 'Duden: helfen (mit Dativ)'
+    url: https://www.duden.de/rechtschreibung/helfen
+  - title: 'Duden: gehören (mit Dativ)'
+    url: https://www.duden.de/rechtschreibung/gehoeren
+  - title: 'DWDS: gefallen'
+    url: https://www.dwds.de/wb/gefallen
+  - title: 'DWDS: geben'
+    url: https://www.dwds.de/wb/geben
+  - title: 'DWDS: mit'
+    url: https://www.dwds.de/wb/mit
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'Duden: Bim (österreichisch umgangssprachlich: Straßenbahn)'
+    url: https://www.duden.de/rechtschreibung/Bim
+  - title: 'Duden: Heuriger (besonders österreichisch)'
+    url: https://www.duden.de/rechtschreibung/Heuriger

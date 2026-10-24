@@ -46,6 +46,7 @@ export const ru = {
     'Причастные обороты перед существительным (*Partizipialattribute*)',
   'planned.konnektoren': 'Связующие слова в тексте (*Konnektoren*)',
   'category.verbs': 'Глаголы',
+  'category.cases': 'Падежи',
   'topic.inShort': 'Коротко',
   'topic.inAustria': 'В Австрии',
   'topic.austrianUsage': 'Австрийский вариант',

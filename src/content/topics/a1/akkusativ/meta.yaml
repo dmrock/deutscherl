@@ -1,0 +1,21 @@
+level: a1
+category: cases
+order: 1
+readingMinutes: 5
+sources:
+  - title: 'grammis (IDS Mannheim): Kasus'
+    url: https://grammis.ids-mannheim.de/progr@mm/6915
+  - title: 'grammis (IDS Mannheim): Objekte'
+    url: https://grammis.ids-mannheim.de/progr@mm/6876
+  - title: 'grammis (IDS Mannheim): Definite und indefinite Artikel'
+    url: https://grammis.ids-mannheim.de/progr@mm/6857
+  - title: 'grammis (IDS Mannheim): Personalpronomen'
+    url: https://grammis.ids-mannheim.de/progr@mm/6855
+  - title: 'Duden: Akkusativ'
+    url: https://www.duden.de/rechtschreibung/Akkusativ
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'Duden: Joghurt (der oder, besonders österreichisch und schweizerisch, das)'
+    url: https://www.duden.de/rechtschreibung/Joghurt
+  - title: 'Duden: Keks (österreichisch: das Keks)'
+    url: https://www.duden.de/rechtschreibung/Keks
