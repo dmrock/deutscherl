@@ -1,0 +1,132 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the genitive forms that the page highlights.
+
+examples:
+  - id: e1
+    de: 'Das ist das Handy **meines Vaters**.'
+  - id: e2
+    de: 'Der Name **der Straße** ist sehr lang.'
+  - id: e3
+    de: '**Wessen** Schlüssel ist das?'
+  - id: e4
+    de: 'Das Büro **des Chefs** ist im zweiten Stock.'
+  - id: e5
+    de: 'Die Tür **der Küche** ist offen.'
+  - id: e6
+    de: 'Sie ist die Tochter **eines Arztes**.'
+  - id: e7
+    de: 'Ich wohne in der Wohnung **einer Freundin**.'
+  - id: e8
+    de: 'Kennst du die Freundin **meines Bruders**?'
+  - id: e9
+    de: 'Das Auto **meiner Eltern** ist sehr alt.'
+  - id: e10
+    de: 'Der Garten **des Hauses** ist sehr groß.'
+  - id: e11
+    de: 'Die Farbe **des Autos** gefällt mir.'
+  - id: e12
+    de: '**Annas** Bruder wohnt in Linz.'
+  - id: e13
+    de: 'Ist das **Max’** Rucksack?'
+  - id: e14
+    de: '**Am Ende des Monats** habe ich wenig Geld.'
+  - id: e15
+    de: 'Gibt es **in der Nähe des Bahnhofs** eine Apotheke?'
+  - id: e16
+    de: 'Das ist das Fahrrad **von meinem Bruder**.'
+  - id: e17
+    de: 'Das Ende **vom Film** war traurig.'
+
+choice:
+  - id: c1
+    text: Das ist das Zimmer ___ Bruders.
+    answer: meines
+    options: [meines, meiner, meinem, meinen]
+  - id: c2
+    text: Die Farbe ___ Jacke gefällt mir.
+    answer: der
+    options: [der, des, die, dem]
+  - id: c3
+    text: Wie ist die Adresse ___ Geschäfts?
+    answer: des
+    options: [des, der, dem, das]
+  - id: c4
+    text: Am Anfang ___ Jahres ist es im Büro immer ruhig.
+    answer: des
+    options: [des, der, dem, den]
+  - id: c5
+    text: Das Büro ___ ist im dritten Stock.
+    answer: meines Chefs
+    options: [meines Chefs, meines Chef, meinem Chef, mein Chef]
+  - id: c6
+    text: Sie ist die Tochter ___ Lehrerin.
+    answer: einer
+    options: [einer, eines, einem, eine]
+  - id: c7
+    text: ___ Schwester studiert in Graz.
+    answer: Annas
+    options: [Annas, Anna’s, Anna]
+  - id: c8
+    text: Ist das ___ Zimmer?
+    answer: Max’
+    options: [Max’, Maxs, Max’s, Maxes]
+  - id: c9
+    text: ___ Tasche ist das? – Die Tasche von Lisa.
+    answer: Wessen
+    options: [Wessen, Wem, Wer, Wen]
+  - id: c10
+    text: In der Mitte ___ Stadt gibt es einen schönen Park.
+    answer: der
+    options: [der, des, die, dem]
+  - id: c11
+    text: Das ist das Auto von ___ Vater.
+    answer: meinem
+    options: [meinem, meines, meinen, meiner]
+  - id: c12
+    text: Die Wohnung ___ Eltern ist sehr groß.
+    answer: meiner
+    options: [meiner, meines, meinen, meinem]
+  - id: c13
+    text: Ein Hotelzimmer ist ein Zimmer ___ Hotels.
+    answer: eines
+    options: [eines, einer, einem, ein]
+  - id: c14
+    text: Wie heißt der Freund ___ Schwester?
+    answer: deiner
+    options: [deiner, deines, deinem, deine]
+
+wordOrder:
+  - id: w1
+    parts: [der Hund, meiner, Nachbarin, ist, sehr laut]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: [wir, wohnen, in der Nähe, des, Bahnhofs]
+    accept:
+      - [in der Nähe, des, Bahnhofs, wohnen, wir]
+    punctuation: '.'
+  - id: w3
+    parts: [wessen, Idee, war, das]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [Annas, Bruder, arbeitet, in einem Hotel]
+    accept:
+      - [in einem Hotel, arbeitet, Annas, Bruder]
+    punctuation: '.'
+  - id: w5
+    parts: [am Ende, des, Kurses, machen, wir, eine Party]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: [das, ist, das Auto, von, meinem, Onkel]
+    fixed: true
+    punctuation: '.'
+  - id: w7
+    parts: [kennst, du, Hans’, Schwester]
+    fixed: true
+    punctuation: '?'
+
+austrianNotes:
+  - id: at1
+    de: 'Das ist **dem Papa sein** Auto.'
