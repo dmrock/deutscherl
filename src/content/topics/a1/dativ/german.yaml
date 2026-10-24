@@ -1,0 +1,168 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the dative forms (and in the verb section, the verb) that the page highlights.
+
+examples:
+  # wem?
+  - id: e1
+    de: '**Wem** schreibst du? – **Meiner Oma**.'
+  # articles: masculine, feminine, neuter, plural
+  - id: e2
+    de: 'Ich gehe mit **dem Hund** spazieren.'
+  - id: e3
+    de: 'Heute schlafe ich bei **einer Freundin**.'
+  - id: e4
+    de: 'Ich spreche mit **meinem Kind** Deutsch.'
+  - id: e5
+    de: 'Ich spiele mit **den Kindern** Fußball.'
+  # plural without an extra -n
+  - id: e6
+    de: 'Das Haus gehört **meinen Eltern**.'
+  - id: e7
+    de: 'Meine Mutter spielt gern mit **den Babys**.'
+  # prepositions: mit, bei, zu, nach, von, aus
+  - id: e8
+    de: 'Fährst du mit **dem Rad** oder mit **dem Bus**?'
+  - id: e9
+    de: 'Mein Sohn ist heute bei **seinem Freund**.'
+  - id: e10
+    de: 'Ich fahre morgen zu **meinen Eltern**.'
+  - id: e11
+    de: 'Nach **dem Frühstück** lese ich die Zeitung.'
+  - id: e12
+    de: 'Das Geschenk ist von **meiner Tante**.'
+  - id: e13
+    de: 'Nimm bitte die Milch aus **dem Kühlschrank**.'
+  # short forms: zum, zur, beim, vom
+  - id: e14
+    de: 'Wie komme ich **zum** Bahnhof?'
+  - id: e15
+    de: 'Ich fahre mit dem Rad **zur** Arbeit.'
+  - id: e16
+    de: 'Ich bin gerade **beim** Bäcker.'
+  - id: e17
+    de: 'Ich hole dich **vom** Bahnhof ab.'
+  # verbs with the dative
+  - id: e18
+    de: 'Heute **helfe** ich **meiner Oma**.'
+  - id: e19
+    de: 'Ich **danke dir** für die Hilfe.'
+  - id: e20
+    de: 'Wir **gratulieren unserer Lehrerin** zum Geburtstag.'
+  - id: e21
+    de: 'Der Pullover **gefällt meinem Vater** nicht.'
+  - id: e22
+    de: 'Das Fahrrad **gehört meiner Schwester**.'
+  - id: e23
+    de: 'Die Suppe **schmeckt den Kindern**.'
+  # giving someone something: person in the dative, thing in the accusative
+  - id: e24
+    de: 'Ich gebe **dem Kellner** das Geld.'
+  - id: e25
+    de: 'Wir schenken **unserer Mutter** Blumen.'
+  - id: e26
+    de: 'Die Lehrerin zeigt **den Schülern** ein Bild.'
+  - id: e27
+    de: 'Kannst du **mir** bitte das Salz geben?'
+
+choice:
+  - id: c1
+    text: Ich fahre jeden Tag mit ___ Zug nach Linz.
+    answer: dem
+    options: [dem, der, den, das]
+  - id: c2
+    text: Nach ___ Kurs trinken wir zusammen einen Kaffee.
+    answer: dem
+    options: [dem, den, der, das]
+  - id: c3
+    text: Paul wohnt noch bei ___ Mutter.
+    answer: seiner
+    options: [seiner, seinem, seinen, seine]
+  - id: c4
+    text: Die Lehrerin spricht mit den ___.
+    answer: Kindern
+    options: [Kindern, Kinder, Kind]
+  - id: c5
+    text: Das Handy gehört ___ Lehrerin.
+    answer: der
+    options: [der, die, dem, den]
+  - id: c6
+    text: Kannst du ___ bitte helfen?
+    answer: mir
+    options: [mir, mich, ich]
+  - id: c7
+    text: Ich gratuliere ___ Bruder zum Geburtstag.
+    answer: meinem
+    options: [meinem, meinen, meiner, mein]
+  - id: c8
+    text: Morgen gehe ich ___ Zahnarzt.
+    answer: zum
+    options: [zum, zur, beim, vom]
+  - id: c9
+    text: Lena kommt um sechs ___ Arbeit nach Hause.
+    answer: von der
+    options: [von der, vom, zur, bei der]
+  - id: c10
+    text: Das Essen schmeckt ___ Gästen sehr gut.
+    answer: den
+    options: [den, dem, der, die]
+  - id: c11
+    text: Ich schenke ___ Freundin ein Buch.
+    answer: meiner
+    options: [meiner, meine, meinem, meinen]
+  - id: c12
+    text: Die Suppe ist zu scharf, sie schmeckt ___ Kind.
+    answer: keinem
+    options: [keinem, keiner, keinen, kein]
+  - id: c13
+    text: ___ gehört die Jacke?
+    answer: Wem
+    options: [Wem, Wen, Wer, Was]
+  - id: c14
+    text: Mein Kollege kommt aus ___ Schweiz.
+    answer: der
+    options: [der, dem, den, die]
+  - id: c15
+    text: Morgens bringe ich meine Tochter ___ Schule.
+    answer: zur
+    options: [zur, zum, beim, vom]
+
+wordOrder:
+  - id: w1
+    parts: [wir, schenken, unserer Oma, einen Kalender]
+    accept:
+      - [unserer Oma, schenken, wir, einen Kalender]
+      - [einen Kalender, schenken, wir, unserer Oma]
+    punctuation: '.'
+  - id: w2
+    parts: [wem, schenkst, du, die Blumen]
+    fixed: true
+    punctuation: '?'
+  - id: w3
+    parts: [die Jacke, gefällt, mir, sehr]
+    accept:
+      - [mir, gefällt, die Jacke, sehr]
+    punctuation: '.'
+  - id: w4
+    parts: [nach dem Essen, trinken, wir, einen Kaffee]
+    fixed: true
+    punctuation: '.'
+  - id: w5
+    parts: [gibst, du, mir, deine Telefonnummer]
+    fixed: true
+    punctuation: '?'
+  - id: w6
+    parts: [ich, zeige, meinen Freunden, ein Video]
+    accept:
+      - [meinen Freunden, zeige, ich, ein Video]
+      - [ein Video, zeige, ich, meinen Freunden]
+    punctuation: '.'
+  - id: w7
+    parts: [ich, gratuliere, dir, zum Geburtstag]
+    fixed: true
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: 'Wir fahren **mit der Bim** zum Rathaus.'
+  - id: at2
+    de: 'Heute Abend gehen wir **zum Heurigen**.'
