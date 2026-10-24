@@ -1,0 +1,98 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: Lena is reading a book.
+  e2: On Sunday, Lena visits her grandad.
+  e3: The coffee is hot.
+  e4: I'd like a coffee.
+  e5: The flat is big.
+  e6: We're looking for a flat.
+  e7: The hotel is expensive.
+  e8: We're booking a hotel.
+  e9: The tomatoes are fresh.
+  e10: I'm buying tomatoes.
+  e11: We don't have a TV.
+  e12: I can't find my key.
+  e13: The teacher asks the student.
+  e14: The teacher asks the student. (The student is stressed.)
+  e15: This is my friend Tom.
+  e16: Who is coming this evening?
+  e17: Who are you calling?
+  e18: What else is missing?
+  e19: What do you like to eat?
+  e20: I have a brother and a sister.
+  e21: Do you like winter?
+  e22: Is there a park here?
+  e23: There are no parking spaces here.
+  e24: Where's my key? I can't find it.
+  e25: Are you visiting us on Sunday?
+
+choice:
+  c1:
+    why: '*Bus* is masculine (*der Bus*) and it is what I take, so it is the direct object: *der* becomes *den*.'
+  c2:
+    why: '*Bleistift* is masculine (*der Bleistift*) and it is the direct object of *haben*, so *ein* becomes *einen*.'
+  c3:
+    why: '*Tee* is masculine (*der Tee*) and it is what Anna orders, so the accusative is *einen Tee*.'
+  c4:
+    why: '*Fahrrad* is neuter (*das Fahrrad*). Neuter words do not change in the accusative, so it stays *ein Fahrrad*.'
+  c5:
+    why: '*Apotheke* is feminine (*die Apotheke*). Feminine words do not change in the accusative, so it stays *eine Apotheke*.'
+  c6:
+    why: 'The coffee is the subject here (it "is good"), not an object. The subject is in the nominative: *der Kaffee*.'
+  c7:
+    why: 'The subject is *ich*, so *Film* is the object, even though it comes first. Masculine object: *den Film*.'
+  c8:
+    why: '*Hunger* is masculine (*der Hunger*) and the direct object of *haben*. *kein* changes like *ein*: *keinen Hunger*.'
+  c9:
+    why: '*Vater* is masculine and he is the person I call, so he is the direct object. *mein* changes like *ein*: *meinen Vater*.'
+  c10:
+    why: 'After *es gibt*, the accusative follows. *Supermarkt* is masculine, so the form is *einen Supermarkt*.'
+  c11:
+    why: 'The answer is a person (*meine Tante*), and *du* does the visiting, so the aunt is the object. A person as object: *wen*.'
+  c12:
+    why: 'The answer is a person (*mein Mann*) who does the cooking, so he is the subject. A person as subject: *wer*.'
+  c13:
+    why: 'The answer is a thing (*Kaffee*), so the question word is *was*. *wer* and *wen* ask only for people.'
+  c14:
+    why: '*Pullover* is masculine (*der Pullover*), so the pronoun is *er*. As a direct object, *er* becomes *ihn*.'
+  c15:
+    why: '*sein* (here *ist*) has no direct object, so *Computer* stays in the nominative: *mein Computer*, not *meinen*.'
+  c16:
+    why: '*Tomaten* is plural. The plural does not change in the accusative: *die Tomaten*.'
+  c17:
+    why: '*Licht* is neuter (*das Licht*). Neuter words do not change in the accusative, so it stays *das Licht*.'
+  c18:
+    why: '*Mann* is masculine and he is the person *du* knows, so he is the direct object: *den Mann*.'
+  c19:
+    why: 'The bus is the subject: it is the one that comes. The subject stays in the nominative even after the verb: *der Bus*.'
+
+wordOrder:
+  w1:
+    translation: I drink a tea in the morning.
+    why: 'The verb *trinke* is in position 2. *einen Tee* is the direct object. *morgens* or *einen Tee* can also come first; then *ich* moves after the verb.'
+  w2:
+    translation: The teacher asks the student.
+    why: '*der Lehrer* is the subject and *den Schüler* is the object, so either one can come first. The verb *fragt* stays in position 2, and the meaning does not change.'
+  w3:
+    translation: Who are you meeting today?
+    why: 'The question asks for a person who is the object, so it starts with *wen*. The verb *triffst* comes next, then the subject *du*.'
+  w4:
+    translation: There are no lessons today.
+    why: '*heute* comes first, so the verb *gibt* is in position 2 and *es* comes after it. After *es gibt* comes the accusative: *keinen Unterricht*.'
+  w5:
+    translation: I always forget my umbrella.
+    why: 'The verb *vergesse* is in position 2. *Schirm* is masculine, so the object is *meinen Schirm*. *immer* or *meinen Schirm* can also come first.'
+  w6:
+    translation: Would you like a coffee?
+    why: 'In a yes/no question the verb *möchtest* comes first, then the subject *du*, then the object *einen Kaffee*.'
+  w7:
+    translation: What are you cooking today?
+    why: 'The question word *was* comes first, then the verb *kochst*, then the subject *du*.'
+  w8:
+    translation: Do you know him?
+    why: 'In a yes/no question the verb *kennst* comes first, then the subject *du*. The object *ihn* (the accusative of *er*) comes after the subject.'
+
+austrianNotes:
+  at1: I eat a yoghurt every morning.
