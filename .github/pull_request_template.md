@@ -1,6 +1,8 @@
 ## Linked issue
 
-Closes #<!-- issue number; every PR needs an agreed issue, except one-line typo fixes -->
+<!-- Contributors: link the agreed issue (every PR needs one, except one-line typo fixes). Maintainers can write "None" instead. -->
+
+Closes #
 
 ## What changed
 
