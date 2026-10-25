@@ -27,6 +27,7 @@ examples:
   e23: There are no parking spaces here.
   e24: Where's my key? I can't find it.
   e25: Are you visiting us on Sunday?
+  e26: The man over there is my neighbour.
 
 choice:
   c1:

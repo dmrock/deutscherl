@@ -37,6 +37,9 @@ examples:
   - id: e17
     de: 'Das Ende **vom Film** war traurig.'
 
+  - id: e18
+    de: '**Wem gehört** der Schlüssel?'
+
 choice:
   - id: c1
     text: Das ist das Zimmer ___ Bruders.

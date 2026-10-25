@@ -61,6 +61,9 @@ examples:
   - id: e25
     de: 'Besuchst du **uns** am Sonntag?'
 
+  - id: e26
+    de: 'Der Mann dort ist **mein Nachbar**.'
+
 choice:
   - id: c1
     text: Ich nehme heute ___ Bus.

@@ -64,6 +64,15 @@ examples:
   - id: e27
     de: 'Kannst du **mir** bitte das Salz geben?'
 
+  - id: e28
+    de: '**Wem** hilfst du? – **Meinem Bruder**.'
+
+  - id: e29
+    de: 'Die Kinder **helfen ihrer Mutter** in der Küche.'
+
+  - id: e30
+    de: 'Die Stadt **gefällt unseren Gästen** sehr.'
+
 choice:
   - id: c1
     text: Ich fahre jeden Tag mit ___ Zug nach Linz.
