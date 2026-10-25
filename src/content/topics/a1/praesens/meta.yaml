@@ -1,0 +1,17 @@
+level: a1
+category: verbs
+order: 2
+readingMinutes: 5
+sources:
+  - title: 'Duden: Präsens'
+    url: https://www.duden.de/rechtschreibung/Praesens
+  - title: 'DWDS: arbeiten (Konjugation)'
+    url: https://www.dwds.de/wb/arbeiten
+  - title: 'DWDS: heißen (Konjugation)'
+    url: https://www.dwds.de/wb/hei%C3%9Fen
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'Duden: raunzen (bayrisch, österreichisch umgangssprachlich)'
+    url: https://www.duden.de/rechtschreibung/raunzen
+  - title: 'DWDS: raunzen'
+    url: https://www.dwds.de/wb/raunzen

@@ -1,0 +1,150 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the verb forms that the page highlights.
+
+examples:
+  # Endings: one example per cell of the forms table
+  - id: e1
+    de: 'Ich **wohne** in Salzburg.'
+  - id: e2
+    de: 'Wir **lernen** zusammen Deutsch.'
+  - id: e3
+    de: 'Was **machst** du am Wochenende?'
+  - id: e4
+    de: 'Ihr **spielt** sehr gut Tennis.'
+  - id: e5
+    de: 'Mein Opa **kocht** jeden Sonntag.'
+  - id: e6
+    de: 'Wo **wohnen** Sie?'
+  # Stems ending in -t or -d: one example per cell of the forms table
+  - id: e7
+    de: 'Ich **arbeite** heute von zu Hause.'
+  - id: e8
+    de: 'Wir **warten** auf den Bus.'
+  - id: e9
+    de: 'Wie **findest** du die Stadt?'
+  - id: e10
+    de: '**Wartet** ihr schon lange?'
+  - id: e11
+    de: 'Meine Schwester **arbeitet** in einem Hotel.'
+  - id: e12
+    de: 'Die Kinder **antworten** sehr schnell.'
+  # Stems like regn-, öffn-
+  - id: e13
+    de: 'Es **regnet** schon wieder.'
+  - id: e14
+    de: 'Der Supermarkt **öffnet** um acht.'
+  # Stems ending in -s, -ß, -z
+  - id: e15
+    de: 'Wie **heißt** du?'
+  - id: e16
+    de: 'Du **tanzt** sehr gut!'
+  # What the present tense is used for
+  - id: e17
+    de: 'Was machst du gerade? – Ich **koche**.'
+  - id: e18
+    de: 'Er **trinkt** jeden Morgen Tee.'
+  - id: e19
+    de: 'Morgen **besuchen** wir unsere Oma.'
+  - id: e20
+    de: 'Der Kurs **beginnt** nächste Woche.'
+
+choice:
+  - id: c1
+    text: Ich ___ in Wien.
+    answer: wohne
+    options: [wohne, wohnst, wohnt, wohnen]
+  - id: c2
+    text: Was ___ du heute Abend?
+    answer: machst
+    options: [machst, macht, mache, machen]
+  - id: c3
+    text: Lisa ___ sehr gut Klavier.
+    answer: spielt
+    options: [spielt, spielst, spiele, spielen]
+  - id: c4
+    text: Wir ___ jeden Tag Deutsch.
+    answer: lernen
+    options: [lernen, lernt, lernst, lerne]
+  - id: c5
+    text: ___ ihr gern?
+    answer: Kocht
+    options: [Kocht, Kochst, Kochen, Koche]
+  - id: c6
+    text: Mein Vater ___ in einer Bank.
+    answer: arbeitet
+    options: [arbeitet, arbeitest, arbeite, arbeiten]
+  - id: c7
+    text: Wie ___ du? – Ich heiße Mia.
+    answer: heißt
+    options: [heißt, heißst, heiße, heißen]
+  - id: c8
+    text: Warum ___ du heute so lange?
+    answer: arbeitest
+    options: [arbeitest, arbeitst, arbeitet, arbeiten]
+  - id: c9
+    text: Es ___ heute den ganzen Tag.
+    answer: regnet
+    options: [regnet, regnt, regnen, regnest]
+  - id: c10
+    text: Woher ___ Sie?
+    answer: kommen
+    options: [kommen, kommt, kommst, komme]
+  - id: c11
+    text: Du ___ sehr gut!
+    answer: tanzt
+    options: [tanzt, tanzst, tanze, tanzen]
+  - id: c12
+    text: Paul und Emma ___ heute Abend ins Kino.
+    answer: gehen
+    options: [gehen, geht, gehst, gehe]
+  - id: c13
+    text: Wann ___ der Film?
+    answer: beginnt
+    options: [beginnt, beginnst, beginnen, beginne]
+  - id: c14
+    text: Ihr ___ schon lange hier, oder?
+    answer: wartet
+    options: [wartet, wartest, warten, warte]
+
+wordOrder:
+  - id: w1
+    parts: [wo, wohnst, du]
+    fixed: true
+    punctuation: '?'
+  - id: w2
+    parts: [morgen, besuchen, wir, unsere Oma]
+    accept:
+      - [wir, besuchen, morgen, unsere Oma]
+      - [wir, besuchen, unsere Oma, morgen]
+      - [unsere Oma, besuchen, wir, morgen]
+    punctuation: '.'
+  - id: w3
+    parts: [kocht, ihr, gern]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [mein Bruder, arbeitet, in Linz]
+    accept:
+      - [in Linz, arbeitet, mein Bruder]
+    punctuation: '.'
+  - id: w5
+    parts: [wie, heißt, du]
+    fixed: true
+    punctuation: '?'
+  - id: w6
+    parts: [es, regnet, heute]
+    accept:
+      - [heute, regnet, es]
+    punctuation: '.'
+  - id: w7
+    parts: [lernst, du, Deutsch]
+    fixed: true
+    punctuation: '?'
+  - id: w8
+    parts: [was, machst, du, am Wochenende]
+    fixed: true
+    punctuation: '?'
+
+austrianNotes:
+  - id: at1
+    de: 'Warum **raunzt** du schon wieder?'
