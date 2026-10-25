@@ -1,0 +1,93 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: Who are you writing to? – My grandma.
+  e2: I'm taking the dog for a walk.
+  e3: Tonight I'm sleeping at a friend's place.
+  e4: I speak German with my child.
+  e5: I play football with the children.
+  e6: The house belongs to my parents.
+  e7: My mother likes playing with the babies.
+  e8: Are you going by bike or by bus?
+  e9: My son is at his friend's place today.
+  e10: I'm going to my parents' tomorrow.
+  e11: After breakfast, I read the newspaper.
+  e12: The present is from my aunt.
+  e13: Please take the milk out of the fridge.
+  e14: How do I get to the station?
+  e15: I go to work by bike.
+  e16: I'm at the baker's right now.
+  e17: I'll pick you up from the station.
+  e18: Today I'm helping my grandma.
+  e19: Thank you for your help.
+  e20: We congratulate our teacher on her birthday.
+  e21: My father doesn't like the jumper.
+  e22: The bike belongs to my sister.
+  e23: The children like the soup.
+  e24: I give the waiter the money.
+  e25: We're giving our mother flowers.
+  e26: The teacher shows the pupils a picture.
+  e27: Can you pass me the salt, please?
+  e28: Who are you helping? – My brother.
+  e29: The children help their mother in the kitchen.
+  e30: Our guests like the city a lot.
+
+choice:
+  c1:
+    why: 'After *mit* comes the dative. *der Zug* is masculine, so it is *mit dem Zug*.'
+  c2:
+    why: 'After *nach* comes the dative. *der Kurs* is masculine, so it is *nach dem Kurs*. *den* is the accusative.'
+  c3:
+    why: 'After *bei* comes the dative. *die Mutter* is feminine, so *seine* becomes *seiner*.'
+  c4:
+    why: 'In the dative plural, the noun gets an extra -n: *die Kinder* → *mit den Kindern*.'
+  c5:
+    why: '*gehören* takes the dative. *die Lehrerin* is feminine, so the dative article is *der*.'
+  c6:
+    why: '*helfen* takes the dative, so *ich* becomes *mir*. *mich* is the accusative.'
+  c7:
+    why: '*gratulieren* takes the dative. *der Bruder* is masculine, so it is *meinem Bruder*. *meinen* would be the accusative.'
+  c8:
+    why: '*der Zahnarzt* is masculine, and *zu dem* becomes *zum*. *zu* is for going to a place; *beim* means you are already there.'
+  c9:
+    why: '*von* means "from" here. *die Arbeit* is feminine, and *von der* has no short form. *vom* is only for masculine and neuter.'
+  c10:
+    why: '*schmecken* takes the dative. *die Gäste* is plural: *den Gästen*, with the extra -n on the noun.'
+  c11:
+    why: 'The friend gets the book, so she is in the dative. *die Freundin* is feminine: *meiner Freundin*.'
+  c12:
+    why: '*schmecken* takes the dative. *das Kind* is neuter, so *kein* becomes *keinem*.'
+  c13:
+    why: '*gehören* takes the dative, so the question word for the person is *Wem?*. *Wen?* is for the accusative, *Wer?* for the subject.'
+  c14:
+    why: 'After *aus* comes the dative. *die Schweiz* is feminine and always has an article: *aus der Schweiz*.'
+  c15:
+    why: '*die Schule* is feminine, and *zu der* becomes *zur*. *zum* is for masculine and neuter nouns.'
+
+wordOrder:
+  w1:
+    translation: We're giving our grandma a calendar.
+    why: 'The verb *schenken* is in position 2. The person (*unserer Oma*, dative) comes before the thing (*einen Kalender*, accusative). Either object can also come first; then *wir* moves after the verb.'
+  w2:
+    translation: Who are you giving the flowers to?
+    why: 'The question word *wem* comes first, then the verb *schenkst*, then the subject *du*, then the thing.'
+  w3:
+    translation: I really like the jacket.
+    why: 'With *gefallen*, the thing (*die Jacke*) is the subject and the person (*mir*) is in the dative. *mir* can also come first: *mir gefällt die Jacke sehr*.'
+  w4:
+    translation: After the meal, we have a coffee.
+    why: '*nach dem Essen* is in position 1, so the verb *trinken* comes next and the subject *wir* moves after it.'
+  w5:
+    translation: Will you give me your phone number?
+    why: 'In a yes/no question, the verb *gibst* comes first and the subject *du* second. The person (*mir*) comes before the thing.'
+  w6:
+    translation: I'm showing my friends a video.
+    why: '*zeige* is in position 2. The person (*meinen Freunden*, dative plural with -n) comes before the thing (*ein Video*). Either object can also come first; then *ich* moves after the verb.'
+  w7:
+    translation: Happy birthday! (I congratulate you on your birthday.)
+    why: '*gratulieren* takes the dative: *dir*. The reason follows with *zum* (*zu dem*): *zum Geburtstag*.'
+
+austrianNotes:
+  at1: We're taking the tram to the town hall.
+  at2: Tonight we're going to the wine tavern.

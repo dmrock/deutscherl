@@ -3,19 +3,21 @@
  * Wrapper for a markdown table in MDX (`<RuleTable>` + blank line + GFM table). Styles live in
  * global.css (`.rule-table`); the box is as wide as the table needs, and the table scrolls inside
  * it on narrow screens. `equal`: full width with equal columns, so a two-column table lines up
- * with the two-column example card below it.
+ * with the two-column example card below it. `wide`: full width, columns sized by their content and
+ * cells never wrap, so a table with many columns scrolls on narrow screens instead of squeezing.
  */
 interface Props {
   equal?: boolean;
+  wide?: boolean;
 }
 
-const { equal = false } = Astro.props;
+const { equal = false, wide = false } = Astro.props;
 ---
 
 <div
   class:list={[
     'rule-table my-3 max-w-full overflow-x-auto rounded-card border border-border bg-card',
-    equal ? 'rule-table-equal' : 'w-fit',
+    equal ? 'rule-table-equal' : wide ? 'rule-table-wide' : 'w-fit',
   ]}
 >
   <slot />

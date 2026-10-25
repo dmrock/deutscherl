@@ -47,6 +47,7 @@ export const en = {
   'planned.partizipialattribute': 'Participle phrases before nouns (*Partizipialattribute*)',
   'planned.konnektoren': 'Linking words in texts (*Konnektoren*)',
   'category.verbs': 'Verbs',
+  'category.cases': 'Cases',
   'topic.inShort': 'In short',
   'topic.inAustria': 'In Austria',
   'topic.austrianUsage': 'Austrian usage',

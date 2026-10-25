@@ -86,10 +86,13 @@ const structuredData = websiteData({
               </a>
             </h3>
             {level.available && topics.length > 0 && (
-              <ul class="mt-1.5 space-y-0.5 text-sm">
+              <ul class="mt-1 text-sm">
                 {topics.map((topic) => (
                   <li>
-                    <a href={localizePath(topicPath(topic), locale)} class="hover:text-accent">
+                    <a
+                      href={localizePath(topicPath(topic), locale)}
+                      class="inline-block py-0.5 hover:text-accent"
+                    >
                       {topic.title}
                     </a>
                   </li>
