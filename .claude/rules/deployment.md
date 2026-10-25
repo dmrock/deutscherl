@@ -5,6 +5,7 @@ paths:
   - "scripts/ci/**"
   - "astro.config.ts"
   - "lefthook.yml"
+  - ".coderabbit.yaml"
 ---
 
 # CI and deployment
@@ -14,6 +15,7 @@ paths:
 - One GitHub Actions workflow. Checks run as parallel jobs: DCO, language check, content checks (`pnpm validate`, `pnpm i18n:coverage`, `pnpm review:check`), lint (`biome ci` + Prettier), `astro check`, Vitest, build (also runs `pnpm budget`), E2E on the build output.
 - Required status checks (job names): `DCO`, `Language check`, `Content checks`, `Lint`, `Astro check`, `Unit tests`, `Build`, `E2E tests`. Deploy jobs need every check.
 - GitHub Actions are pinned to commit SHAs with the version in a comment.
+- CodeRabbit (GitHub app, free for public repositories) reviews pull requests; settings in `.coderabbit.yaml`. Its check is not required. Project rules reach it through `CLAUDE.md` and `.claude/rules/`, so the config only holds what the rule files cannot say: the German-content checks and the ignored generated files.
 
 ## Deployment (Cloudflare Workers static assets, Wrangler)
 
