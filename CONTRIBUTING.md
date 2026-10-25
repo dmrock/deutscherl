@@ -8,7 +8,7 @@ Thank you for helping! This project is small and run by one person, so a few rul
 2. Wait until we agree on the change in the issue.
 3. Pull requests are limited to collaborators. Once we have agreed on the work in an issue, you are added as a collaborator and can open a pull request that links the issue.
 
-Pull requests without an agreed issue may be closed. The only exception is a one-line typo fix.
+Pull requests without an agreed issue may be closed. The only exceptions are one-line typo fixes and changes by the maintainer.
 
 ## Sign off your commits (DCO)
 
