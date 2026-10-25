@@ -347,6 +347,15 @@ html:root {
     table-layout: fixed;
   }
 
+  /* Many columns: full width, columns sized by content; scrolls inside the box on narrow screens. */
+  .rule-table-wide table {
+    width: 100%;
+  }
+
+  .rule-table-wide :is(th, td) {
+    white-space: nowrap;
+  }
+
   .rule-table th,
   .rule-table td {
     padding: 0.375rem 0.75rem;
