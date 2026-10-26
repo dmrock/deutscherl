@@ -1,0 +1,82 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: That's no problem.
+  e2: I don't have time today.
+  e3: We don't have a car.
+  e4: My neighbours don't have any children.
+  e5: I'm not hungry.
+  e6: He doesn't drink coffee.
+  e7: I'm not coming today.
+  e8: I don't know the man.
+  e9: The water isn't cold.
+  e10: He doesn't live in Vienna.
+  e11: Unfortunately I can't come today.
+  e12: I'm not coming today, but tomorrow.
+  e13: We're not going to Vienna, but to Graz.
+  e14: That's not a phone, it's a camera.
+  e15: I can't find the key.
+  e16: I don't have any money on me.
+  e17: That's not my phone.
+  e18: Aren't you hungry? – Yes, I am.
+  e19: Aren't you coming along? – No, I'm staying at home.
+
+choice:
+  c1:
+    why: 'The positive is *ein Auto*, so the negative is *kein Auto*. *Auto* is neuter.'
+  c2:
+    why: 'The positive is *ein Problem*, so the negative is *kein Problem*. After *das ist* there is no object, so no *-en*.'
+  c3:
+    why: '*Zeit* has no article in the positive (*Zeit haben*), so it takes *kein*. *Zeit* is feminine: *keine Zeit*.'
+  c4:
+    why: '*Hunger* is masculine and the direct object of *haben*, so *kein* becomes *keinen*.'
+  c5:
+    why: 'Here you negate the verb, so you need *nicht*. It goes at the end, after the object *das*.'
+  c6:
+    why: '*teuer* is an adjective. Adjectives take *nicht*, never *kein*.'
+  c7:
+    why: '*mein Fahrrad* has *mein*, not *ein*, so it takes *nicht*: *nicht mein Fahrrad*.'
+  c8:
+    why: '*Geschwister* (brothers and sisters) is plural and has no article in the positive, so it takes *keine*.'
+  c9:
+    why: '*meinen Schlüssel* has *mein*, so you negate with *nicht*. It goes at the end, after the object.'
+  c10:
+    why: '*Alkohol* has no article in the positive and is masculine. As the direct object it takes *keinen*.'
+  c11:
+    why: 'The question is negative, and the answer says "yes, I have time". That "yes" is *doch*.'
+  c12:
+    why: 'The answer agrees with the negative question: I am not coming. That is *nein*.'
+  c13:
+    why: 'Only the place is negated, and *sondern* gives the correct one. A place takes *nicht*.'
+  c14:
+    why: 'After *es gibt* comes the accusative. *Supermarkt* is masculine, so *ein* → *einen* → *keinen*.'
+
+wordOrder:
+  w1:
+    translation: I'm not coming today.
+    why: '*nicht* negates the whole sentence, so it goes at the end, after the time word *heute*. *heute* can also come first.'
+  w2:
+    translation: I don't know the man.
+    why: '*nicht* goes at the end, after the object *den Mann*. *den Mann* can also come first.'
+  w3:
+    translation: That's not expensive.
+    why: '*nicht* comes right before the adjective *teuer*. When *teuer* comes first to stress it, *nicht* stays at the end.'
+  w4:
+    translation: He doesn't live in Vienna.
+    why: '*nicht* comes before the place *in Wien*. When *in Wien* comes first, *nicht* stays at the end.'
+  w5:
+    translation: We don't have time.
+    why: '*Zeit* has no article in the positive, so the negative is *keine Zeit*. *keine Zeit* can also come first to stress it.'
+  w6:
+    translation: Unfortunately I can't come.
+    why: '*nicht* comes before the second verb *kommen* at the end. *leider* (unfortunately) can also come first.'
+  w7:
+    translation: Aren't you hungry?
+    why: 'A yes/no question starts with the verb *hast*, then the subject *du*. *Hunger* is masculine: *keinen Hunger*.'
+  w8:
+    translation: That's not my phone.
+    why: '*mein Handy* has *mein*, so it takes *nicht*, right before it. When *mein Handy* comes first, *nicht* goes to the end.'
+
+austrianNotes:
+  at1: We're not going on holiday this year.

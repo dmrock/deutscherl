@@ -1,0 +1,152 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks nicht, the forms of kein and the answer words that the page highlights.
+
+examples:
+  # kein: masculine | feminine | neuter | plural
+  - id: e1
+    de: 'Das ist **kein** Problem.'
+  - id: e2
+    de: 'Ich habe heute **keine** Zeit.'
+  - id: e3
+    de: 'Wir haben **kein** Auto.'
+  - id: e4
+    de: 'Meine Nachbarn haben **keine** Kinder.'
+  # keinen for a masculine direct object
+  - id: e5
+    de: 'Ich habe **keinen** Hunger.'
+  - id: e6
+    de: 'Er trinkt **keinen** Kaffee.'
+  # nicht at the end
+  - id: e7
+    de: 'Ich komme heute **nicht**.'
+  - id: e8
+    de: 'Ich kenne den Mann **nicht**.'
+  # nicht before adjectives, places and the second verb
+  - id: e9
+    de: 'Das Wasser ist **nicht** kalt.'
+  - id: e10
+    de: 'Er wohnt **nicht** in Wien.'
+  - id: e11
+    de: 'Ich kann heute leider **nicht** kommen.'
+  # nicht for one part only, with sondern
+  - id: e12
+    de: 'Ich komme **nicht** heute, sondern morgen.'
+  - id: e13
+    de: 'Wir fahren **nicht** nach Wien, sondern nach Graz.'
+  # kein or nicht: one example per cell of the table
+  - id: e14
+    de: 'Das ist **kein** Handy, das ist eine Kamera.'
+  - id: e15
+    de: 'Ich finde den Schlüssel **nicht**.'
+  - id: e16
+    de: 'Ich habe **kein** Geld dabei.'
+  - id: e17
+    de: 'Das ist **nicht** mein Handy.'
+  # Answering negative questions
+  - id: e18
+    de: 'Hast du keinen Hunger? – **Doch**, ich habe Hunger.'
+  - id: e19
+    de: 'Kommst du nicht mit? – **Nein**, ich bleibe zu Hause.'
+
+choice:
+  - id: c1
+    text: Ich habe ___ Auto.
+    answer: kein
+    options: [kein, keine, keinen, nicht]
+  - id: c2
+    text: Das ist ___ Problem.
+    answer: kein
+    options: [kein, keine, keinen, nicht]
+  - id: c3
+    text: Wir haben heute ___ Zeit.
+    answer: keine
+    options: [keine, kein, keinen, nicht]
+  - id: c4
+    text: Er hat ___ Hunger.
+    answer: keinen
+    options: [keinen, kein, keine, nicht]
+  - id: c5
+    text: Ich verstehe das ___.
+    answer: nicht
+    options: [nicht, kein, keine]
+  - id: c6
+    text: Das Hotel ist ___ teuer.
+    answer: nicht
+    options: [nicht, kein, keine]
+  - id: c7
+    text: Das ist ___ mein Fahrrad.
+    answer: nicht
+    options: [nicht, kein, keine]
+  - id: c8
+    text: Sie hat ___ Geschwister.
+    answer: keine
+    options: [keine, kein, keinen, nicht]
+  - id: c9
+    text: Ich finde meinen Schlüssel ___.
+    answer: nicht
+    options: [nicht, kein, keinen]
+  - id: c10
+    text: Wir trinken ___ Alkohol.
+    answer: keinen
+    options: [keinen, kein, keine, nicht]
+  - id: c11
+    text: Hast du keine Zeit? – ___, ich habe Zeit.
+    answer: Doch
+    options: [Doch, Nein]
+  - id: c12
+    text: Kommst du nicht mit? – ___, ich bleibe zu Hause.
+    answer: Nein
+    options: [Nein, Doch]
+  - id: c13
+    text: Ich wohne ___ in Wien, sondern in Linz.
+    answer: nicht
+    options: [nicht, kein, keine]
+  - id: c14
+    text: Hier gibt es ___ Supermarkt.
+    answer: keinen
+    options: [keinen, kein, keine, nicht]
+
+wordOrder:
+  - id: w1
+    parts: [ich, komme, heute, nicht]
+    accept:
+      - [heute, komme, ich, nicht]
+    punctuation: '.'
+  - id: w2
+    parts: [ich, kenne, den Mann, nicht]
+    accept:
+      - [den Mann, kenne, ich, nicht]
+    punctuation: '.'
+  - id: w3
+    parts: [das, ist, nicht, teuer]
+    accept:
+      - [teuer, ist, das, nicht]
+    punctuation: '.'
+  - id: w4
+    parts: [er, wohnt, nicht, in Wien]
+    accept:
+      - [in Wien, wohnt, er, nicht]
+    punctuation: '.'
+  - id: w5
+    parts: [wir, haben, keine Zeit]
+    accept:
+      - [keine Zeit, haben, wir]
+    punctuation: '.'
+  - id: w6
+    parts: [ich, kann, leider, nicht, kommen]
+    accept:
+      - [leider, kann, ich, nicht, kommen]
+    punctuation: '.'
+  - id: w7
+    parts: [hast, du, keinen Hunger]
+    fixed: true
+    punctuation: '?'
+  - id: w8
+    parts: [das, ist, nicht, mein Handy]
+    accept:
+      - [mein Handy, ist, das, nicht]
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: '**Heuer** fahren wir nicht in den Urlaub.'

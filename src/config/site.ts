@@ -7,9 +7,9 @@ export type LevelId = (typeof levelIds)[number];
 
 /**
  * Topic categories in sidebar order. Labels are UI strings (`category.<id>`); topics reference a
- * category in meta.yaml. Stage 8 adds the rest.
+ * category in meta.yaml.
  */
-export const categoryIds = ['verbs', 'cases'] as const;
+export const categoryIds = ['verbs', 'nouns', 'cases', 'sentences'] as const;
 export type CategoryId = (typeof categoryIds)[number];
 
 export interface Level {
