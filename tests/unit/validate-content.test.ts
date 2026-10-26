@@ -35,8 +35,8 @@ describe('validate-content', () => {
   });
 
   it('reports a schema error with its path', () => {
-    change('meta.yaml', 'readingMinutes: 2', 'readingMinutes: two');
-    expect(issues()).toEqual([expect.stringMatching(/^meta\.yaml: readingMinutes: /)]);
+    change('meta.yaml', 'order: 1', 'order: one');
+    expect(issues()).toEqual([expect.stringMatching(/^meta\.yaml: order: /)]);
   });
 
   it('reports a YAML syntax error', () => {

@@ -30,7 +30,6 @@ export const en = {
   'level.description':
     'German grammar for level {level}: short explanations, examples with translations and exercises.',
   'level.planned': 'Planned topics',
-  'level.readingTime': '{minutes} min read',
   'planned.praeteritum': 'Simple past (*Präteritum*)',
   'planned.konjunktiv-ii': 'Wishes and polite requests (*Konjunktiv II*)',
   'planned.passiv': 'The passive (*Passiv*)',

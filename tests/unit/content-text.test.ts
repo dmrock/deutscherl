@@ -29,7 +29,6 @@ describe('content schemas', () => {
       level: 'a2',
       category: 'verbs',
       order: 1,
-      readingMinutes: 3,
       sources: [{ title: 'Book' }],
     };
     expect(metaSchema.safeParse(meta).success).toBe(true);

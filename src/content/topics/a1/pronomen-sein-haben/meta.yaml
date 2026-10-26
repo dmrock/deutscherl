@@ -1,7 +1,6 @@
 level: a1
 category: verbs
 order: 1
-readingMinutes: 5
 sources:
   - title: 'grammis (IDS Mannheim): Personalpronomen'
     url: https://grammis.ids-mannheim.de/progr@mm/6855

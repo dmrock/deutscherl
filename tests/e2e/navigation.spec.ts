@@ -40,13 +40,6 @@ test('the home page lists the topics of available levels and the planned ones of
   }
 });
 
-test('a level page shows the reading time of each topic', async ({ page }) => {
-  await page.goto('/a2/');
-  await expect(page.getByRole('main').getByRole('link', { name: perfekt })).toContainText(
-    t('en', 'level.readingTime', { minutes: 4 }),
-  );
-});
-
 test('a coming-soon page lists the planned topics', async ({ page }) => {
   await page.goto('/b1/');
   const planned = page.getByRole('region', { name: t('en', 'level.planned') });

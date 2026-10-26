@@ -175,7 +175,7 @@ describe('review:sync', () => {
 
   it('--check reports drift without writing', () => {
     const before = fixture.read('review.yaml');
-    fixture.edit('meta.yaml', (c) => c.replace('readingMinutes: 2', 'readingMinutes: 3'));
+    fixture.edit('meta.yaml', (c) => c.replace('order: 1', 'order: 2'));
     expect(main(['sync', '--check'], fixture.root)).toBe(1);
     expect(fixture.read('review.yaml')).toBe(before);
     expect(main(['sync'], fixture.root)).toBe(0);

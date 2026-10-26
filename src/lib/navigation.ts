@@ -12,7 +12,6 @@ export interface TopicLink {
   title: string;
   /** Without `*` markers */
   summary: string;
-  readingMinutes: number;
 }
 
 export interface CategoryGroup {

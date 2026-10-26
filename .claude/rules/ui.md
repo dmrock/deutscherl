@@ -22,7 +22,7 @@ paths:
 ## Page types
 
 - Home: intro, level cards (available levels list their topics, the others their planned topics under "Coming soon"), features.
-- Level pages: topic cards by category with summary and reading time (`readingMinutes`). Coming-soon pages: planned topics (`plannedTopics` in `site.ts`, labels `planned.<id>`), `noindex`.
+- Level pages: topic cards by category with title and summary. Coming-soon pages: planned topics (`plannedTopics` in `site.ts`, labels `planned.<id>`), `noindex`.
 - Topic page order: article (explanation), sponsor slot, practice. No sources on the site.
 - Footer on every page, across the whole width under sidebar and content (the `contentinfo` landmark): About, Legal notice and privacy, source code, licenses. On topic pages below lg it keeps clear of the bottom bar.
 - `noindex`: coming-soon pages, `ready: false` locales, preview deployments.

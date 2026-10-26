@@ -131,7 +131,7 @@ No dictionary: the site teaches grammar; a Wiktionary-based dictionary would cop
 ```
 Build, for every ready locale:
 - Home page: short intro, level cards (A1, A2 available; B1–C1 coming soon with planned topic titles).
-- Level pages /a1/ and /a2/: topics by category with summary and reading time. Coming-soon pages for B1, B2, C1 with planned topics, noindex.
+- Level pages /a1/ and /a2/: topics by category with summary. Coming-soon pages for B1, B2, C1 with planned topics, noindex.
 - Pagefind: one index per ready locale, topic pages; UI loaded only when search is opened (button or Cmd/Ctrl+K). German words in examples must be findable from any locale.
 - SEO: unique titles and descriptions per locale, canonical URLs, hreflang, sitemap with alternates, Open Graph with og:locale, structured data where it makes sense.
 - Legal page from CLAUDE.md "Legal pages (Austria)": one short /legal/ page (legal notice and privacy) in both locales, footer link, with my name, town and contact email.
@@ -144,8 +144,8 @@ Add e2e tests on English pages for navigation and search (including finding a Ge
 
 Do 2–3 topics per session. After each batch: read the English pages and move them to `reviewed`; send the English pages (German content + English explanation) to the teacher, who moves them to `verified`; compare the Russian explanations with the English ones yourself and mark the translations `reviewed`.
 
-- A1: Personal pronouns and sein/haben (done) · Present tense of regular verbs (done) · Articles and gender (der/die/das) (done) · Word order: verb in position 2 and questions · Negation: nicht and kein (done) · Accusative case (done) · Dative case (done)
-- A2: Perfekt: haben or sein (done) · The verb lassen (done) · Genitive case (done) · Two-way prepositions (Wechselpräpositionen) · Subordinate clauses with weil, dass, wenn · Comparative and superlative
+- A1: Personal pronouns and sein/haben (done) · Present tense of regular verbs (done) · Articles and gender (der/die/das) (done) · Word order: verb in position 2 and questions (done) · Negation: nicht and kein (done) · Accusative case (done) · Dative case (done)
+- A2: Perfekt: haben or sein (done) · The verb lassen (done) · Genitive case (done) · Two-way prepositions (Wechselpräpositionen) · Subordinate clauses with weil, dass, wenn (done) · Comparative and superlative
 
 ```
 Read CLAUDE.md and `.claude/rules/content.md`. Write the topics: <LIST 2–3 TOPICS>.
