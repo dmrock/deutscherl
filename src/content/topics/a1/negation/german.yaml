@@ -114,10 +114,9 @@ wordOrder:
       - [ich, komme, nicht, heute]
     punctuation: '.'
   - id: w2
-    parts: [ich, kenne, den Mann, nicht]
+    parts: [ich, weiß, das, nicht]
     accept:
-      - [den Mann, kenne, ich, nicht]
-      - [ich, kenne, nicht, den Mann]
+      - [das, weiß, ich, nicht]
     punctuation: '.'
   - id: w3
     parts: [das, ist, nicht, teuer]
