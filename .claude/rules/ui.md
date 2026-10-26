@@ -42,6 +42,7 @@ paths:
 - Theme: follows `prefers-color-scheme`; the toggle saves `theme` in `localStorage`, applied before first paint by the inline script in `ThemeScript.astro` (`data-theme` on `<html>`). Without JS, CSS follows the system preference.
 - Tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `card`, `fg`, `muted`, `border`, `control`, `accent`, `accent-soft`, `accent-fg`, `focus`, `success(-soft)`, `danger(-soft)`, `header`) per `[data-theme]`, radii (`rounded-ui`, `rounded-card`, `rounded-chip`) and shadows (`shadow-card`, `shadow-pop`), exposed to Tailwind (`bg-bg`, `text-muted`, …). `control` is the border of interactive controls (≥ 3:1).
 - Use only these tokens: no raw colors (exception: the Austrian `.flag`), no `dark:` variants except for swapping icons. Dark text is deliberately not pure white (about 13:1) and uses grayscale antialiasing, so it does not glow.
+- Favicon: a golden pretzel (Brezel) on the teal tile, `public/favicon.svg`. `favicon.ico` (32 px, one embedded PNG) and `apple-touch-icon.png` (180 px, full-bleed square, since iOS rounds the corners itself) are rendered from it: regenerate both when the SVG changes. No web manifest.
 - Examples always show German with its translation (no "Hide translation" toggle). Audio comes later as pre-generated Azure AI Speech files with an Austrian voice (stage 4b); no browser speech API and no runtime TTS calls.
 
 ## Accessibility

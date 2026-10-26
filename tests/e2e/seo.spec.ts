@@ -33,6 +33,17 @@ test('the home page describes the website', async ({ page }) => {
   expect(data).toMatchObject({ '@type': 'WebSite', name: site.name, inLanguage: 'en' });
 });
 
+test('every icon the page links to is served', async ({ page, request }) => {
+  await page.goto('/');
+  const hrefs = await page
+    .locator('link[rel="icon"], link[rel="apple-touch-icon"]')
+    .evaluateAll((links) => links.map((link) => link.getAttribute('href') ?? ''));
+  expect(hrefs).toEqual(['/favicon.ico', '/favicon.svg', '/apple-touch-icon.png']);
+  for (const href of hrefs) {
+    expect((await request.get(href)).status(), href).toBe(200);
+  }
+});
+
 test('robots.txt points to the sitemap', async ({ request }) => {
   const robots = await (await request.get('/robots.txt')).text();
   expect(robots).toContain(`Sitemap: ${site.url}/sitemap-index.xml`);
