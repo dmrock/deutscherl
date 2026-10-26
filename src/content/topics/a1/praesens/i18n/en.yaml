@@ -1,0 +1,83 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I live in Salzburg.
+  e2: We're learning German together.
+  e3: What are you doing at the weekend?
+  e4: You play tennis really well.
+  e5: My grandad cooks every Sunday.
+  e6: Where do you live?
+  e7: I'm working from home today.
+  e8: We're waiting for the bus.
+  e9: What do you think of the city?
+  e10: Have you been waiting long?
+  e11: My sister works in a hotel.
+  e12: The children answer very quickly.
+  e13: It's raining again.
+  e14: The supermarket opens at eight.
+  e15: What's your name?
+  e16: You dance really well!
+  e17: What are you doing right now? – I'm cooking.
+  e18: He drinks tea every morning.
+  e19: Tomorrow we're visiting our grandma.
+  e20: The course starts next week.
+
+choice:
+  c1:
+    why: 'With *ich*, the ending is *-e*: *ich wohne*.'
+  c2:
+    why: 'With *du*, the ending is *-st*: *du machst*.'
+  c3:
+    why: '*Lisa* is *sie* (one person), and the ending is *-t*: *sie spielt*.'
+  c4:
+    why: 'With *wir*, the form is the same as the infinitive: *wir lernen*.'
+  c5:
+    why: 'With *ihr*, the ending is *-t*: *ihr kocht*. In a yes/no question the verb comes first.'
+  c6:
+    why: 'The stem *arbeit-* ends in *-t*, so an extra *-e-* comes before the ending: *er arbeitet*.'
+  c7:
+    why: 'The stem *heiß-* already ends in an s sound, so *du* adds only *-t*: *du heißt*.'
+  c8:
+    why: 'The stem *arbeit-* ends in *-t*, so *du* gets *-est*: *du arbeitest*. *arbeitst* does not exist.'
+  c9:
+    why: '*regnen* gets an extra *-e-* like the verbs with *-t* and *-d*: *es regnet*.'
+  c10:
+    why: 'Polite *Sie* has the same form as the infinitive: *Sie kommen*.'
+  c11:
+    why: 'The stem *tanz-* ends in *-z*, so *du* adds only *-t*: *du tanzt*.'
+  c12:
+    why: '*Paul und Emma* are two people (*sie*), so the form is the same as the infinitive: *gehen*.'
+  c13:
+    why: '*der Film* is *er*, and the ending is *-t*: *er beginnt*.'
+  c14:
+    why: 'The stem *wart-* ends in *-t*, so *ihr* gets *-et*: *ihr wartet*. *wartest* is the form for *du*.'
+
+wordOrder:
+  w1:
+    translation: Where do you live?
+    why: 'The question word *wo* comes first, then the verb *wohnst*, then the subject *du*.'
+  w2:
+    translation: Tomorrow we're visiting our grandma.
+    why: 'The verb *besuchen* is in position 2. *morgen*, *wir* or *unsere Oma* can come first. The present tense with *morgen* talks about the future.'
+  w3:
+    translation: Do you like cooking?
+    why: 'A yes/no question starts with the verb *kocht*, then the subject *ihr*. *gern* (gladly) means you like doing it.'
+  w4:
+    translation: My brother works in Linz.
+    why: 'The verb *arbeitet* is in position 2. *in Linz* can also come first; then *mein Bruder* moves after the verb.'
+  w5:
+    translation: What's your name?
+    why: 'The question word *wie* comes first, then the verb *heißt*, then the subject *du*.'
+  w6:
+    translation: It's raining today.
+    why: 'The verb *regnet* is in position 2. *heute* can also come first; then *es* moves after the verb.'
+  w7:
+    translation: Are you learning German?
+    why: 'A yes/no question starts with the verb *lernst*, then the subject *du*.'
+  w8:
+    translation: What are you doing at the weekend?
+    why: 'The question word *was* comes first, then the verb *machst*, then the subject *du*. The time *am Wochenende* goes at the end.'
+
+austrianNotes:
+  at1: Why are you moaning again?

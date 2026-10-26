@@ -1,0 +1,156 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the pronouns or the forms of sein and haben that the page highlights.
+
+examples:
+  # du, ihr, Sie
+  - id: e1
+    de: 'Max, bist **du** müde?'
+  - id: e2
+    de: 'Kinder, seid **ihr** fertig?'
+  - id: e3
+    de: 'Frau Berger, haben **Sie** kurz Zeit?'
+  - id: e4
+    de: 'Herr und Frau Novak, sind **Sie** zum ersten Mal in Wien?'
+  # er, sie, es for things: masculine | feminine | neuter | plural
+  - id: e5
+    de: 'Wo ist der Schlüssel? – **Er** ist in der Tasche.'
+  - id: e6
+    de: 'Wie ist die Suppe? – **Sie** ist sehr gut.'
+  - id: e7
+    de: 'Ist das Zimmer frei? – Ja, **es** ist frei.'
+  - id: e8
+    de: 'Wo sind die Kinder? – **Sie** sind im Garten.'
+  # sein: one example per cell of the forms table
+  - id: e9
+    de: 'Ich **bin** Lehrerin.'
+  - id: e10
+    de: 'Wir **sind** aus Graz.'
+  - id: e11
+    de: 'Du **bist** sehr nett.'
+  - id: e12
+    de: 'Ihr **seid** heute so ruhig.'
+  - id: e13
+    de: 'Das Wetter **ist** heute schön.'
+  - id: e14
+    de: 'Meine Eltern **sind** im Urlaub.'
+  # What you say with sein
+  - id: e15
+    de: 'Das **ist** Paul. Er **ist** Student.'
+  - id: e16
+    de: 'Mein Sohn **ist** sieben Jahre alt.'
+  # haben: one example per cell of the forms table
+  - id: e17
+    de: 'Ich **habe** eine Schwester.'
+  - id: e18
+    de: 'Wir **haben** heute keine Zeit.'
+  - id: e19
+    de: '**Hast** du ein Fahrrad?'
+  - id: e20
+    de: 'Ihr **habt** eine schöne Wohnung.'
+  - id: e21
+    de: 'Er **hat** heute Geburtstag.'
+  - id: e22
+    de: '**Haben** Sie noch ein Zimmer frei?'
+  # haben where English uses "be"
+  - id: e23
+    de: 'Ich **habe** Hunger. Du auch?'
+  - id: e24
+    de: 'Die Kinder **haben** Angst vor dem Hund.'
+
+choice:
+  - id: c1
+    text: Ich ___ heute sehr müde.
+    answer: bin
+    options: [bin, bist, ist, sind]
+  - id: c2
+    text: ___ ihr heute Abend zu Hause?
+    answer: Seid
+    options: [Seid, Sind, Bist, Ist]
+  - id: c3
+    text: Paul ___ ein neues Handy.
+    answer: hat
+    options: [hat, hast, habt, haben]
+  - id: c4
+    text: ___ du Geschwister?
+    answer: Hast
+    options: [Hast, Hat, Habt, Haben]
+  - id: c5
+    text: Wir ___ aus Österreich.
+    answer: sind
+    options: [sind, seid, ist, bin]
+  - id: c6
+    text: Frau Huber, ___ Sie morgen Zeit?
+    answer: haben
+    options: [haben, hat, habt, hast]
+  - id: c7
+    text: Der Tisch ist neu. ___ ist aus Holz.
+    answer: Er
+    options: [Er, Sie, Es]
+  - id: c8
+    text: Die Lampe ist schön, aber ___ ist sehr teuer.
+    answer: sie
+    options: [sie, er, es]
+  - id: c9
+    text: Das Fahrrad ist neu. ___ ist rot.
+    answer: Es
+    options: [Es, Er, Sie]
+  - id: c10
+    text: Ich ___ Durst.
+    answer: habe
+    options: [habe, bin, hat, ist]
+  - id: c11
+    text: Meine Tochter ___ zehn Jahre alt.
+    answer: ist
+    options: [ist, hat, sind, habt]
+  - id: c12
+    text: Wo sind Tom und Lisa? – ___ sind im Kino.
+    answer: Sie
+    options: [Sie, Er, Ihr, Du]
+  - id: c13
+    text: Hallo Anna, hallo Ben! ___ ihr schon fertig?
+    answer: Seid
+    options: [Seid, Sind, Bist, Ist]
+  - id: c14
+    text: Das Kind ___ Angst.
+    answer: hat
+    options: [hat, ist, hast, habt]
+  - id: c15
+    text: Entschuldigung, ___ Sie Herr Gruber?
+    answer: sind
+    options: [sind, seid, ist, bist]
+
+wordOrder:
+  - id: w1
+    parts: [ich, habe, Hunger]
+    accept:
+      - [Hunger, habe, ich]
+    punctuation: '.'
+  - id: w2
+    parts: [bist, du, heute, zu Hause]
+    fixed: true
+    punctuation: '?'
+  - id: w3
+    parts: [haben, Sie, ein Zimmer, frei]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [wo, seid, ihr]
+    fixed: true
+    punctuation: '?'
+  - id: w5
+    parts: [meine Mutter, hat, heute, Geburtstag]
+    accept:
+      - [heute, hat, meine Mutter, Geburtstag]
+    punctuation: '.'
+  - id: w6
+    parts: [sind, Sie, Frau Berger]
+    fixed: true
+    punctuation: '?'
+  - id: w7
+    parts: [wie alt, bist, du]
+    fixed: true
+    punctuation: '?'
+
+austrianNotes:
+  - id: at1
+    de: '**Servus**, Martin! Hast du kurz Zeit?'

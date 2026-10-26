@@ -1,0 +1,21 @@
+level: a1
+category: verbs
+order: 1
+readingMinutes: 5
+sources:
+  - title: 'grammis (IDS Mannheim): Personalpronomen'
+    url: https://grammis.ids-mannheim.de/progr@mm/6855
+  - title: 'DWDS: sein'
+    url: https://www.dwds.de/wb/sein
+  - title: 'DWDS: haben'
+    url: https://www.dwds.de/wb/haben
+  - title: 'Duden: duzen'
+    url: https://www.duden.de/rechtschreibung/duzen
+  - title: 'Duden: siezen'
+    url: https://www.duden.de/rechtschreibung/siezen
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'Duden: Servus (besonders bayrisch, österreichisch)'
+    url: https://www.duden.de/rechtschreibung/Servus
+  - title: 'DWDS: grüß Gott (Österreich, Südostdeutschland)'
+    url: https://www.dwds.de/wb/gr%C3%BC%C3%9F%20Gott
