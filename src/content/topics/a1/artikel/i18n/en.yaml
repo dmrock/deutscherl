@@ -1,0 +1,81 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: The man over there is my boss.
+  e2: The woman over there is my boss.
+  e3: The child is three years old.
+  e4: The girl's name is Lea.
+  e5: The table is new.
+  e6: The lamp is beautiful.
+  e7: The book is exciting.
+  e8: The chairs are comfortable.
+  e9: There's a café over there. The café is very good.
+  e10: The sun is shining today.
+  e11: Children are playing in the park.
+  e12: The newspaper is on the table.
+  e13: The teacher is very nice.
+  e14: The roll is still warm.
+  e15: The food is ready.
+  e16: Summer in Vienna is hot.
+  e17: The driver is already waiting.
+  e18: The front door is open.
+  e19: The fridge is empty.
+
+choice:
+  c1:
+    why: '*Tisch* is masculine: *der Tisch*. Its gender has nothing to do with the meaning, so learn it with the article.'
+  c2:
+    why: 'Nouns ending in *-ung* are feminine: *die Zeitung*.'
+  c3:
+    why: 'The ending *-chen* always gives *das*, also in *das Mädchen*, although it means a girl.'
+  c4:
+    why: 'The verb *sind* shows that this is the plural. In the plural every noun takes *die*: *die Brötchen*.'
+  c5:
+    why: '*Wohnung* ends in *-ung*, so it is feminine: *die Wohnung*.'
+  c6:
+    why: 'A woman''s job with *-in* is feminine: *die Lehrerin*.'
+  c7:
+    why: 'Seasons are masculine: *der Winter*, *der Sommer*.'
+  c8:
+    why: 'Nouns ending in *-ion* are feminine: *die Information*.'
+  c9:
+    why: '*Bäckerei* is feminine (*die Bäckerei*), so "a" is *eine*.'
+  c10:
+    why: '*Fahrrad* is neuter (*das Fahrrad*), so "a" is *ein*. *einen* is only for masculine objects.'
+  c11:
+    why: '*Stuhl* is masculine (*der Stuhl*). After *das ist* it is not an object, so "a" stays *ein*.'
+  c12:
+    why: 'In a compound noun the last part decides: *der Schrank*, so *der Kühlschrank*.'
+  c13:
+    why: '*Handy* (mobile phone) is neuter: *das Handy*.'
+  c14:
+    why: '*Schlüssel* is masculine: *der Schlüssel*.'
+  c15:
+    why: 'A verb used as a noun is neuter: *essen* → *das Essen*.'
+
+wordOrder:
+  w1:
+    translation: Where's the newspaper?
+    why: 'The question word *wo* comes first, then the verb *ist*, then the subject *die Zeitung*.'
+  w2:
+    translation: Is that a dog?
+    why: 'A yes/no question starts with the verb *ist*. *das* (that) is the subject, and *ein Hund* comes after it.'
+  w3:
+    translation: What's the girl's name?
+    why: 'The question word *wie* comes first, then the verb *heißt*, then the subject *das Mädchen*.'
+  w4:
+    translation: Where are the children?
+    why: 'The question word *wo* comes first, then the verb *sind*, then the subject *die Kinder*.'
+  w5:
+    translation: Is the fridge empty?
+    why: 'A yes/no question starts with the verb *ist*, then the subject *der Kühlschrank*. *leer* goes at the end.'
+  w6:
+    translation: How much is the roll?
+    why: 'The question word *was* comes first, then the verb *kostet*, then the subject *das Brötchen*.'
+  w7:
+    translation: Is the flat big?
+    why: 'A yes/no question starts with the verb *ist*, then the subject *die Wohnung*. *groß* goes at the end.'
+
+austrianNotes:
+  at1: I'll write you an email later.

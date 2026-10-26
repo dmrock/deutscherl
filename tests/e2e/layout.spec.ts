@@ -135,10 +135,11 @@ test.describe('static navigation', () => {
     }
   });
 
-  test('a level page without much content does not scroll; the footer is at the bottom', async ({
+  test('a page without much content does not scroll; the footer is at the bottom', async ({
     page,
   }) => {
-    await page.goto('/a1/');
+    // The coming-soon page stays short while the level pages grow with new topics.
+    await page.goto('/b1/');
     const overflow = await page.evaluate(
       () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
     );

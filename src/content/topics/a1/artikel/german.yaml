@@ -1,0 +1,143 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the articles that the page highlights.
+
+examples:
+  # People: gender usually matches, with das Kind and das Mädchen as exceptions
+  - id: e1
+    de: '**Der** Mann dort ist mein Chef.'
+  - id: e2
+    de: '**Die** Frau dort ist meine Chefin.'
+  - id: e3
+    de: '**Das** Kind ist drei Jahre alt.'
+  - id: e4
+    de: '**Das** Mädchen heißt Lea.'
+  # Things: masculine | feminine | neuter | plural
+  - id: e5
+    de: '**Der** Tisch ist neu.'
+  - id: e6
+    de: '**Die** Lampe ist schön.'
+  - id: e7
+    de: '**Das** Buch ist spannend.'
+  - id: e8
+    de: '**Die** Stühle sind bequem.'
+  # ein or der
+  - id: e9
+    de: 'Dort ist **ein** Café. **Das** Café ist sehr gut.'
+  - id: e10
+    de: 'Heute scheint **die** Sonne.'
+  - id: e11
+    de: 'Im Park spielen Kinder.'
+  # Clues for the gender
+  - id: e12
+    de: '**Die** Zeitung liegt auf dem Tisch.'
+  - id: e13
+    de: '**Die** Lehrerin ist sehr nett.'
+  - id: e14
+    de: '**Das** Brötchen ist noch warm.'
+  - id: e15
+    de: '**Das** Essen ist fertig.'
+  - id: e16
+    de: '**Der** Sommer in Wien ist heiß.'
+  - id: e17
+    de: '**Der** Fahrer wartet schon.'
+  # Compound nouns: the last part decides
+  - id: e18
+    de: '**Die** Haustür ist offen.'
+  - id: e19
+    de: '**Der** Kühlschrank ist leer.'
+
+choice:
+  - id: c1
+    text: ___ Tisch ist sehr groß.
+    answer: Der
+    options: [Der, Die, Das]
+  - id: c2
+    text: ___ Zeitung ist von heute.
+    answer: Die
+    options: [Die, Der, Das]
+  - id: c3
+    text: ___ Mädchen spielt im Garten.
+    answer: Das
+    options: [Das, Die, Der]
+  - id: c4
+    text: ___ Brötchen sind frisch.
+    answer: Die
+    options: [Die, Das, Der]
+  - id: c5
+    text: ___ Wohnung ist klein, aber schön.
+    answer: Die
+    options: [Die, Der, Das]
+  - id: c6
+    text: Wie heißt ___ Lehrerin?
+    answer: die
+    options: [die, der, das]
+  - id: c7
+    text: ___ Winter in Österreich ist kalt.
+    answer: Der
+    options: [Der, Die, Das]
+  - id: c8
+    text: ___ Information ist sehr wichtig.
+    answer: Die
+    options: [Die, Der, Das]
+  - id: c9
+    text: Das ist ___ Bäckerei.
+    answer: eine
+    options: [eine, ein, einen]
+  - id: c10
+    text: Das ist ___ Fahrrad.
+    answer: ein
+    options: [ein, eine, einen]
+  - id: c11
+    text: Das ist ___ Stuhl.
+    answer: ein
+    options: [ein, eine, einen]
+  - id: c12
+    text: ___ Kühlschrank ist leer.
+    answer: Der
+    options: [Der, Die, Das]
+  - id: c13
+    text: ___ Handy ist kaputt.
+    answer: Das
+    options: [Das, Der, Die]
+  - id: c14
+    text: Wo ist ___ Schlüssel?
+    answer: der
+    options: [der, die, das]
+  - id: c15
+    text: ___ Essen ist fertig!
+    answer: Das
+    options: [Das, Der, Die]
+
+wordOrder:
+  - id: w1
+    parts: [wo, ist, die Zeitung]
+    fixed: true
+    punctuation: '?'
+  - id: w2
+    parts: [ist, das, ein Hund]
+    fixed: true
+    punctuation: '?'
+  - id: w3
+    parts: [wie, heißt, das Mädchen]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [wo, sind, die Kinder]
+    fixed: true
+    punctuation: '?'
+  - id: w5
+    parts: [ist, der Kühlschrank, leer]
+    fixed: true
+    punctuation: '?'
+  - id: w6
+    parts: [was, kostet, das Brötchen]
+    fixed: true
+    punctuation: '?'
+  - id: w7
+    parts: [ist, die Wohnung, groß]
+    fixed: true
+    punctuation: '?'
+
+austrianNotes:
+  - id: at1
+    de: 'Ich schreibe dir später **ein E-Mail**.'
