@@ -55,10 +55,10 @@ choice:
 wordOrder:
   w1:
     translation: I'm not coming today.
-    why: '*nicht* negates the whole sentence, so it goes at the end, after the time word *heute*. *heute* can also come first.'
+    why: '*nicht* negates the whole sentence, so it goes at the end, after the time word *heute*. *heute* can also come first. *nicht heute* is correct too, but then it negates only the day (*nicht heute, sondern morgen*).'
   w2:
     translation: I don't know the man.
-    why: '*nicht* goes at the end, after the object *den Mann*. *den Mann* can also come first.'
+    why: '*nicht* goes at the end, after the object *den Mann*. *den Mann* can also come first. *nicht den Mann* is correct too, but then it negates only the person (*nicht den Mann, sondern die Frau*).'
   w3:
     translation: That's not expensive.
     why: '*nicht* comes right before the adjective *teuer*. When *teuer* comes first to stress it, *nicht* stays at the end.'

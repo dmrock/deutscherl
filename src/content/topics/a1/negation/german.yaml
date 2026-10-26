@@ -111,11 +111,13 @@ wordOrder:
     parts: [ich, komme, heute, nicht]
     accept:
       - [heute, komme, ich, nicht]
+      - [ich, komme, nicht, heute]
     punctuation: '.'
   - id: w2
     parts: [ich, kenne, den Mann, nicht]
     accept:
       - [den Mann, kenne, ich, nicht]
+      - [ich, kenne, nicht, den Mann]
     punctuation: '.'
   - id: w3
     parts: [das, ist, nicht, teuer]
