@@ -1,0 +1,77 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I'm staying at home because I'm ill.
+  e2: I'm staying at home, as I'm ill.
+  e3: Why are you learning German? – Because I work in Vienna.
+  e4: Why aren't you coming along? – Because I don't have time.
+  e5: I think he isn't coming today.
+  e6: I hope you'll be well again soon.
+  e7: We're having a barbecue on Sunday if it doesn't rain.
+  e8: I'm happy to help you if you need help.
+  e9: I always drink tea when I'm ill.
+  e10: My dog barks when the doorbell rings.
+  e11: I study every day because I want to pass the exam.
+  e12: I think she has already gone home.
+  e13: Call me when you arrive.
+  e14: I have to go now because my train leaves at seven.
+  e15: Because I'm ill, I'm staying at home.
+  e16: If you have time, let's go for a coffee.
+
+choice:
+  c1:
+    why: 'After *dass*, the verb goes to the end: *dass er recht hat*.'
+  c2:
+    why: 'After *wenn*, the verb goes to the end: *wenn das Wetter schön ist*.'
+  c3:
+    why: 'The *wenn* clause is position 1, so the rest of the sentence starts with the verb: *besuche ich dich*.'
+  c4:
+    why: 'The *weil* clause is position 1, so the verb *nehme* comes next, then *ich*.'
+  c5:
+    why: 'The verb *bin* is at the end, so you need *weil*. After *denn*, the verb would stay in position 2.'
+  c6:
+    why: 'The verb *bin* is in position 2, so you need *denn*. After *weil*, *wenn* or *dass*, it would go to the end.'
+  c7:
+    why: '*hoffen* is a verb of thinking and feeling, and what you hope comes after *dass*.'
+  c8:
+    why: 'This is a condition or something that happens every time, so you need *wenn*.'
+  c9:
+    why: 'What she says comes after *dass*. The verb *hat* is at the end.'
+  c10:
+    why: 'With a modal verb in the clause, *will* comes last, after the infinitive *schaffen*.'
+  c11:
+    why: 'In the Perfekt, *ist* comes last, after the participle *gegangen*.'
+  c12:
+    why: 'At the end of the clause, the separable verb is one word again: *ankommst*.'
+  c13:
+    why: 'The verb *arbeite* is at the end, and the answer gives a reason, so you need *weil*.'
+
+wordOrder:
+  w1:
+    translation: I'm not coming today because I don't have time.
+    why: '*weil* starts the clause, then the subject *ich*. The verb *habe* goes to the end.'
+  w2:
+    translation: I think he's coming today.
+    why: '*dass* starts the clause, then *er* and *heute*. The verb *kommt* goes to the end.'
+  w3:
+    translation: We'll go to the cinema if it rains tomorrow.
+    why: '*wenn* starts the clause, then *es* and *morgen*. The verb *regnet* goes to the end.'
+  w4:
+    translation: Because it's raining, I'm taking the bus.
+    why: 'The *weil* clause is position 1, so the verb *nehme* comes right after the comma, then *ich*.'
+  w5:
+    translation: It's nice that you can come along.
+    why: 'With a modal verb, *kannst* comes last, after the infinitive *mitkommen*.'
+  w6:
+    translation: He says he has lost the key.
+    why: 'In the Perfekt, *hat* comes last, after the participle *verloren*.'
+  w7:
+    translation: Please tell me when you're ready.
+    why: '*wenn* starts the clause, then *du* and *fertig*. The verb *bist* goes to the end.'
+  w8:
+    translation: When I have time, I'll visit you.
+    why: 'The *wenn* clause is position 1, so the verb *besuche* comes right after the comma, then *ich* and *dich*.'
+
+austrianNotes:
+  at1: I'm staying at home today because I've caught a cold.

@@ -1,0 +1,137 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks weil, dass, wenn or denn and the verb that changes with the person.
+# In the last section it marks the two verbs around the comma.
+
+examples:
+  # weil | denn
+  - id: e1
+    de: 'Ich bleibe zu Hause, **weil** ich krank **bin**.'
+  - id: e2
+    de: 'Ich bleibe zu Hause, **denn** ich **bin** krank.'
+  # weil as an answer to warum
+  - id: e3
+    de: 'Warum lernst du Deutsch? – **Weil** ich in Wien **arbeite**.'
+  - id: e4
+    de: 'Warum kommst du nicht mit? – **Weil** ich keine Zeit **habe**.'
+  # dass
+  - id: e5
+    de: 'Ich glaube, **dass** er heute nicht **kommt**.'
+  - id: e6
+    de: 'Ich hoffe, **dass** du bald wieder gesund **bist**.'
+  # wenn: if
+  - id: e7
+    de: 'Wir grillen am Sonntag, **wenn** es nicht **regnet**.'
+  - id: e8
+    de: 'Ich helfe dir gern, **wenn** du Hilfe **brauchst**.'
+  # wenn: every time
+  - id: e9
+    de: 'Ich trinke immer Tee, **wenn** ich krank **bin**.'
+  - id: e10
+    de: 'Mein Hund bellt, **wenn** es an der Tür **klingelt**.'
+  # Two verbs: modal verbs and the Perfekt
+  - id: e11
+    de: 'Ich lerne jeden Tag, **weil** ich die Prüfung schaffen **will**.'
+  - id: e12
+    de: 'Ich glaube, **dass** sie schon nach Hause gegangen **ist**.'
+  # Two verbs: separable verbs
+  - id: e13
+    de: 'Ruf mich an, **wenn** du **ankommst**.'
+  - id: e14
+    de: 'Ich muss jetzt gehen, **weil** mein Zug um sieben Uhr **abfährt**.'
+  # The clause first: verb, comma, verb
+  - id: e15
+    de: 'Weil ich krank **bin**, **bleibe** ich zu Hause.'
+  - id: e16
+    de: 'Wenn du Zeit **hast**, **gehen** wir einen Kaffee trinken.'
+
+choice:
+  - id: c1
+    text: Ich glaube, ___.
+    answer: dass er recht hat
+    options: [dass er recht hat, dass er hat recht]
+  - id: c2
+    text: Wir gehen spazieren, wenn ___.
+    answer: das Wetter schön ist
+    options: [das Wetter schön ist, das Wetter ist schön]
+  - id: c3
+    text: Wenn ich Zeit habe, ___.
+    answer: besuche ich dich
+    options: [besuche ich dich, ich besuche dich]
+  - id: c4
+    text: Weil es regnet, ___.
+    answer: nehme ich den Bus
+    options: [nehme ich den Bus, ich nehme den Bus]
+  - id: c5
+    text: Ich bleibe zu Hause, ___ ich krank bin.
+    answer: weil
+    options: [weil, denn, dass]
+  - id: c6
+    text: Ich bleibe zu Hause, ___ ich bin krank.
+    answer: denn
+    options: [denn, wenn, dass]
+  - id: c7
+    text: Ich hoffe, ___ du bald kommst.
+    answer: dass
+    options: [dass, wenn, weil]
+  - id: c8
+    text: ___ ich Zeit habe, lese ich gern.
+    answer: Wenn
+    options: [Wenn, Dass, Denn]
+  - id: c9
+    text: Sie sagt, ___ der Zug Verspätung hat.
+    answer: dass
+    options: [dass, wenn, denn]
+  - id: c10
+    text: Ich lerne viel, weil ich die Prüfung ___.
+    answer: schaffen will
+    options: [schaffen will, will schaffen]
+  - id: c11
+    text: Ich glaube, dass er schon ___.
+    answer: gegangen ist
+    options: [gegangen ist, ist gegangen]
+  - id: c12
+    text: Ruf mich an, wenn du ___.
+    answer: ankommst
+    options: [ankommst, kommst an]
+  - id: c13
+    text: Warum lernst du Deutsch? – ___ ich in Wien arbeite.
+    answer: Weil
+    options: [Weil, Denn, Dass]
+
+wordOrder:
+  - id: w1
+    parts: ['ich komme heute nicht,', weil, ich, keine Zeit, habe]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: ['ich glaube,', dass, er, heute, kommt]
+    fixed: true
+    punctuation: '.'
+  - id: w3
+    parts: ['wir gehen ins Kino,', wenn, es, morgen, regnet]
+    fixed: true
+    punctuation: '.'
+  - id: w4
+    parts: ['weil es regnet,', nehme, ich, den Bus]
+    fixed: true
+    punctuation: '.'
+  - id: w5
+    parts: ['es ist schön,', dass, du, mitkommen, kannst]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: ['er sagt,', dass, er, den Schlüssel, verloren, hat]
+    fixed: true
+    punctuation: '.'
+  - id: w7
+    parts: ['sag mir bitte,', wenn, du, fertig, bist]
+    fixed: true
+    punctuation: '.'
+  - id: w8
+    parts: ['wenn ich Zeit habe,', besuche, ich, dich]
+    fixed: true
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: 'Ich bleibe heute zu Hause, weil ich mich **verkühlt** habe.'

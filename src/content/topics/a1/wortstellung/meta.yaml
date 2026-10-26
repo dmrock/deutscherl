@@ -1,0 +1,12 @@
+level: a1
+category: sentences
+order: 1
+sources:
+  - title: 'Duden: Fachausdrücke (Verbzweitsatz, Verberstsatz, Vorfeld)'
+    url: https://www.duden.de/Fachausdr%C3%BCcke-Buchstabe-T-V
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'DWDS: denn'
+    url: https://www.dwds.de/wb/denn
+  - title: 'Duden: Jänner (österreichisch)'
+    url: https://www.duden.de/rechtschreibung/Jaenner

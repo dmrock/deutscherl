@@ -1,0 +1,18 @@
+level: a2
+category: sentences
+order: 1
+sources:
+  - title: 'Duden: Fachausdrücke (Verbletztsatz, Nebensatz, Subjunktion)'
+    url: https://www.duden.de/Fachausdr%C3%BCcke-Buchstabe-T-V
+  - title: 'DWDS: weil'
+    url: https://www.dwds.de/wb/weil
+  - title: 'DWDS: dass'
+    url: https://www.dwds.de/wb/dass
+  - title: 'DWDS: wenn'
+    url: https://www.dwds.de/wb/wenn
+  - title: 'DWDS: denn'
+    url: https://www.dwds.de/wb/denn
+  - title: 'Universität Oldenburg, Zweifelsfälle: Wissenschaftliche Analyse Verbzweit (weil mit Verbzweitstellung in gesprochener Sprache)'
+    url: https://wp.uni-oldenburg.de/zweifelsfaelle/wissenschaftliche-analyse-verbzweit/
+  - title: 'Duden: verkühlen (besonders österreichisch)'
+    url: https://www.duden.de/rechtschreibung/verkuehlen
