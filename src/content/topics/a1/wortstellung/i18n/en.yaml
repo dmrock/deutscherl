@@ -62,8 +62,8 @@ wordOrder:
     translation: Tomorrow I have to work late.
     why: '*muss* is in position 2 after *morgen*, then *ich*. The second verb *arbeiten* goes to the end.'
   w4:
-    translation: The film starts at eight.
-    why: '*fängt* is in position 2, and *an* from *anfangen* goes to the end. *um acht Uhr* can also come first.'
+    translation: When does the film start?
+    why: 'The question word *wann* comes first and the verb *fängt* second, then the subject *der Film*. *an* from *anfangen* goes to the end.'
   w5:
     translation: Do you speak English?
     why: 'A yes/no question starts with the verb *sprechen*, then the subject *Sie*.'

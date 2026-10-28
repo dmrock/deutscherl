@@ -119,10 +119,9 @@ wordOrder:
     fixed: true
     punctuation: '.'
   - id: w4
-    parts: [der Film, fängt, um acht Uhr, an]
-    accept:
-      - [um acht Uhr, fängt, der Film, an]
-    punctuation: '.'
+    parts: [wann, fängt, der Film, an]
+    fixed: true
+    punctuation: '?'
   - id: w5
     parts: [sprechen, Sie, Englisch]
     fixed: true
