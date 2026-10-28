@@ -4,15 +4,27 @@ order: 1
 sources:
   - title: 'Duden: Fachausdrücke (Verbletztsatz, Nebensatz, Subjunktion)'
     url: https://www.duden.de/Fachausdr%C3%BCcke-Buchstabe-T-V
+  - title: 'Duden: weil (Verbzweitstellung nicht standardsprachlich)'
+    url: https://www.duden.de/rechtschreibung/weil
   - title: 'DWDS: weil'
     url: https://www.dwds.de/wb/weil
   - title: 'DWDS: dass'
     url: https://www.dwds.de/wb/dass
   - title: 'DWDS: wenn'
     url: https://www.dwds.de/wb/wenn
+  - title: 'DWDS: als (Konjunktion)'
+    url: https://www.dwds.de/wb/als
+  - title: 'Lingoda: Wenn oder als'
+    url: https://www.lingoda.com/blog/de/wenn-oder-als/
   - title: 'DWDS: denn'
     url: https://www.dwds.de/wb/denn
+  - title: 'Wiktionary: Hilfe:Haupt- und Nebensatzkonjugation'
+    url: https://de.wiktionary.org/wiki/Hilfe:Nebensatzkonjugation
   - title: 'Universität Oldenburg, Zweifelsfälle: Wissenschaftliche Analyse Verbzweit (weil mit Verbzweitstellung in gesprochener Sprache)'
     url: https://wp.uni-oldenburg.de/zweifelsfaelle/wissenschaftliche-analyse-verbzweit/
   - title: 'Duden: verkühlen (besonders österreichisch)'
     url: https://www.duden.de/rechtschreibung/verkuehlen
+  - title: 'DWDS: verkühlen (landschaftlich)'
+    url: https://www.dwds.de/wb/verk%C3%BChlen
+  - title: 'Austria-Forum: Liste von Austriazismen (Verkühlung, Jänner; nach ÖWB)'
+    url: https://austria-forum.org/af/AustriaWiki/Liste_von_Austriazismen

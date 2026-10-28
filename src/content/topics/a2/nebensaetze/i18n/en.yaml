@@ -37,7 +37,7 @@ choice:
   c8:
     why: 'This is a condition or something that happens every time, so you need *wenn*.'
   c9:
-    why: 'What she says comes after *dass*. The verb *hat* is at the end.'
+    why: 'What she says comes after *dass*, and the verb *hat* is at the end. After *denn*, the verb would stay in position 2.'
   c10:
     why: 'With a modal verb in the clause, *will* comes last, after the infinitive *schaffen*.'
   c11:

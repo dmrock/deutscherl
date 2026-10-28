@@ -80,7 +80,7 @@ choice:
   - id: c9
     text: Sie sagt, ___ der Zug Verspätung hat.
     answer: dass
-    options: [dass, wenn, denn]
+    options: [dass, denn]
   - id: c10
     text: Ich lerne viel, weil ich die Prüfung ___.
     answer: schaffen will
