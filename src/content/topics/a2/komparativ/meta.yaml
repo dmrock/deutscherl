@@ -38,8 +38,12 @@ sources:
     url: https://www.dwds.de/wb/nah
   - title: 'Wiktionary: nah (näher, nächsten)'
     url: https://de.wiktionary.org/wiki/nah
-  - title: 'DWDS: jung, lang, warm, kurz, kalt (with umlaut)'
+  - title: 'DWDS: jung (jünger, am jüngsten)'
     url: https://www.dwds.de/wb/jung
+  - title: 'DWDS: kalt (kälter, am kältesten)'
+    url: https://www.dwds.de/wb/kalt
+  - title: 'Duden: kalt (Steigerungsformen kälter, kälteste)'
+    url: https://www.duden.de/rechtschreibung/kalt
   - title: 'Duden: jung (Steigerungsformen jünger, jüngste)'
     url: https://www.duden.de/rechtschreibung/jung
   - title: 'Duden: kurz (Steigerungsformen kürzer, kürzeste)'
