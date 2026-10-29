@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const PORT = 4321;
+// E2E_PORT: another port when 4321 is busy, e.g. a preview running in another worktree.
+const PORT = Number(process.env.E2E_PORT ?? 4321);
 const isCI = Boolean(process.env.CI);
 
 // Tests run against the built site (`pnpm build` first). No screenshot tests

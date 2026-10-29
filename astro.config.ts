@@ -4,6 +4,7 @@ import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, envField } from 'astro/config';
 import { fontFamilies } from './src/config/fonts.ts';
+import { notFoundPages } from './src/config/not-found-pages.ts';
 import { site } from './src/config/site.ts';
 import { defaultLocale, localeCodes, readyLocales } from './src/i18n/locales.ts';
 import { inSitemap } from './src/lib/seo.ts';
@@ -45,6 +46,7 @@ export default defineConfig({
         locales: Object.fromEntries(readyLocales.map((code) => [code, code])),
       },
     }),
+    notFoundPages(),
   ],
   vite: {
     plugins: [tailwindcss()],

@@ -23,6 +23,7 @@ const pages = [
   { name: 'topic', path: '/a2/perfekt/' },
   { name: 'about', path: '/about/' },
   { name: 'legal', path: '/legal/' },
+  { name: '404', path: '/404.html' },
 ];
 
 for (const colorScheme of ['light', 'dark'] as const) {
