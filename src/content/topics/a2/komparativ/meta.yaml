@@ -1,0 +1,62 @@
+level: a2
+category: adjectives
+order: 1
+sources:
+  - title: 'DWDS: als (im Vergleich, nach dem Komparativ)'
+    url: https://www.dwds.de/wb/als
+  - title: 'DWDS: wie (im Vergleich, Gleichheit)'
+    url: https://www.dwds.de/wb/wie
+  - title: 'DWDS: alt (älter, am ältesten)'
+    url: https://www.dwds.de/wb/alt
+  - title: 'Duden: alt (Steigerungsformen älter, älteste)'
+    url: https://www.duden.de/rechtschreibung/alt
+  - title: 'Duden: gut (Steigerungsformen besser, best…)'
+    url: https://www.duden.de/rechtschreibung/gut
+  - title: 'DWDS: gut (besser, am besten)'
+    url: https://www.dwds.de/wb/gut
+  - title: 'DWDS: gern (lieber, am liebsten)'
+    url: https://www.dwds.de/wb/gern
+  - title: 'Duden: gern (lieber, am liebsten)'
+    url: https://www.duden.de/rechtschreibung/gern
+  - title: 'DWDS: viel (mehr, am meisten)'
+    url: https://www.dwds.de/wb/viel
+  - title: 'Wiktionary: viel (mehr, meisten)'
+    url: https://de.wiktionary.org/wiki/viel
+  - title: 'DWDS: teuer (teurer, am teuersten)'
+    url: https://www.dwds.de/wb/teuer
+  - title: 'Duden: teuer (Steigerungsformen teurer, teuerste)'
+    url: https://www.duden.de/rechtschreibung/teuer
+  - title: 'DWDS: groß (größer, am größten)'
+    url: https://www.dwds.de/wb/gro%C3%9F
+  - title: 'Wiktionary: groß (größer, größten)'
+    url: https://de.wiktionary.org/wiki/gro%C3%9F
+  - title: 'DWDS: hoch (höher, am höchsten)'
+    url: https://www.dwds.de/wb/hoch
+  - title: 'Wiktionary: hoch (höher, höchsten)'
+    url: https://de.wiktionary.org/wiki/hoch
+  - title: 'DWDS: nah (näher, am nächsten)'
+    url: https://www.dwds.de/wb/nah
+  - title: 'Wiktionary: nah (näher, nächsten)'
+    url: https://de.wiktionary.org/wiki/nah
+  - title: 'DWDS: jung (jünger, am jüngsten)'
+    url: https://www.dwds.de/wb/jung
+  - title: 'DWDS: kalt (kälter, am kältesten)'
+    url: https://www.dwds.de/wb/kalt
+  - title: 'Duden: kalt (Steigerungsformen kälter, kälteste)'
+    url: https://www.duden.de/rechtschreibung/kalt
+  - title: 'Duden: jung (Steigerungsformen jünger, jüngste)'
+    url: https://www.duden.de/rechtschreibung/jung
+  - title: 'Duden: kurz (Steigerungsformen kürzer, kürzeste)'
+    url: https://www.duden.de/rechtschreibung/kurz
+  - title: 'Duden: warm (Steigerungsformen wärmer, wärmste)'
+    url: https://www.duden.de/rechtschreibung/warm
+  - title: 'Wiktionary: lang (länger, längsten)'
+    url: https://de.wiktionary.org/wiki/lang
+  - title: 'DWDS: heiß (heißer, am heißesten)'
+    url: https://www.dwds.de/wb/hei%C3%9F
+  - title: 'Wiktionary: heiß (heißer, heißesten)'
+    url: https://de.wiktionary.org/wiki/hei%C3%9F
+  - title: 'Duden: Marille (österreichisch)'
+    url: https://www.duden.de/rechtschreibung/Marille
+  - title: 'Austria-Forum: Liste von Austriazismen (Marille)'
+    url: https://austria-forum.org/af/AustriaWiki/Liste_von_Austriazismen

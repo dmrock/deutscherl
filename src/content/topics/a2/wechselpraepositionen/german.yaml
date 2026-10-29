@@ -1,0 +1,142 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the preposition with its article or pronoun.
+
+examples:
+  # Wo? (dative) | Wohin? (accusative)
+  - id: e1
+    de: 'Ich bin **in der** Küche.'
+  - id: e2
+    de: 'Ich gehe **in die** Küche.'
+  # More pairs
+  - id: e3
+    de: 'Die Katze schläft **unter dem** Bett.'
+  - id: e4
+    de: 'Die Katze läuft **unter das** Bett.'
+  - id: e5
+    de: 'Er sitzt **neben mir**.'
+  - id: e6
+    de: 'Setz dich **neben mich**!'
+  - id: e7
+    de: 'Das Taxi wartet **vor dem** Hotel.'
+  - id: e8
+    de: 'Das Taxi fährt **vor das** Hotel.'
+  # Short forms
+  - id: e9
+    de: 'Wir gehen heute Abend **ins** Kino.'
+  - id: e10
+    de: 'Wir treffen uns **am** Bahnhof.'
+  # Verb pairs: putting (Wohin?) | being somewhere (Wo?)
+  - id: e11
+    de: 'Ich stelle die Flasche **in den** Kühlschrank.'
+  - id: e12
+    de: 'Die Flasche steht **im** Kühlschrank.'
+  - id: e13
+    de: 'Ich lege das Handy **auf den** Tisch.'
+  - id: e14
+    de: 'Das Handy liegt **auf dem** Tisch.'
+  - id: e15
+    de: 'Ich setze mich **auf das** Sofa.'
+  - id: e16
+    de: 'Ich sitze **auf dem** Sofa.'
+  - id: e17
+    de: 'Ich hänge die Jacke **an den** Haken.'
+  - id: e18
+    de: 'Die Jacke hängt **am** Haken.'
+
+choice:
+  - id: c1
+    text: Das Buch liegt auf ___ Tisch.
+    answer: dem
+    options: [dem, den, der, das]
+  - id: c2
+    text: Ich lege das Buch auf ___ Tisch.
+    answer: den
+    options: [den, dem, der, das]
+  - id: c3
+    text: Stell die Milch bitte ___ Kühlschrank.
+    answer: in den
+    options: [in den, im]
+  - id: c4
+    text: Die Milch steht ___ Kühlschrank.
+    answer: im
+    options: [im, in den]
+  - id: c5
+    text: Das Bild hängt ___ Wand.
+    answer: an der
+    options: [an der, an die]
+  - id: c6
+    text: Ich hänge das Bild ___ Wand.
+    answer: an die
+    options: [an die, an der]
+  - id: c7
+    text: Setz dich bitte neben ___!
+    answer: mich
+    options: [mich, mir]
+  - id: c8
+    text: Er sitzt neben ___.
+    answer: mir
+    options: [mir, mich]
+  - id: c9
+    text: Ich ___ die Tasche auf den Stuhl.
+    answer: stelle
+    options: [stelle, stehe]
+  - id: c10
+    text: Die Schlüssel ___ auf dem Tisch.
+    answer: liegen
+    options: [liegen, legen]
+  - id: c11
+    text: Wir gehen heute Abend ___ Kino.
+    answer: ins
+    options: [ins, im]
+  - id: c12
+    text: Die Katze schläft auf ___ Sofa.
+    answer: dem
+    options: [dem, das, den, der]
+  - id: c13
+    text: Zwischen ___ Bank und der Post ist ein Café.
+    answer: der
+    options: [der, die]
+
+wordOrder:
+  - id: w1
+    parts: [das Handy, liegt, auf dem Tisch]
+    accept:
+      - [auf dem Tisch, liegt, das Handy]
+    punctuation: '.'
+  - id: w2
+    parts: [die Flasche, steht, im Kühlschrank]
+    accept:
+      - [im Kühlschrank, steht, die Flasche]
+    punctuation: '.'
+  - id: w3
+    parts: [wohin, gehst, du]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [stell, die Milch, bitte, in den Kühlschrank]
+    fixed: true
+    accept:
+      - [stell, bitte, die Milch, in den Kühlschrank]
+    punctuation: '!'
+  - id: w5
+    parts: [wir, treffen, uns, am Bahnhof]
+    accept:
+      - [am Bahnhof, treffen, wir, uns]
+    punctuation: '.'
+  - id: w6
+    parts: [die Kinder, sitzen, auf dem Sofa]
+    accept:
+      - [auf dem Sofa, sitzen, die Kinder]
+    punctuation: '.'
+  - id: w7
+    parts: [wo, hängt, meine Jacke]
+    fixed: true
+    punctuation: '?'
+  - id: w8
+    parts: [setz, dich, neben mich]
+    fixed: true
+    punctuation: '!'
+
+austrianNotes:
+  - id: at1
+    de: 'Die Kinder sitzen auf der **Stiege**.'

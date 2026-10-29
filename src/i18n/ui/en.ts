@@ -48,6 +48,7 @@ export const en = {
   'category.verbs': 'Verbs',
   'category.nouns': 'Nouns and articles',
   'category.cases': 'Cases',
+  'category.adjectives': 'Adjectives',
   'category.sentences': 'Sentences',
   'topic.inShort': 'In short',
   'topic.inAustria': 'In Austria',

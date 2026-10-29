@@ -1,0 +1,136 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the comparison: the adjective form with als, so … wie or am.
+
+examples:
+  # Comparative with als
+  - id: e1
+    de: 'Der Zug ist **schneller als** das Auto.'
+  - id: e2
+    de: 'Mein Bruder ist **kleiner als** ich.'
+  # so … wie
+  - id: e3
+    de: 'Anna ist **so groß wie** ihre Mutter.'
+  - id: e4
+    de: 'Das Wetter ist heute **nicht so schön wie** gestern.'
+  # Superlative with am
+  - id: e5
+    de: 'Im Frühling ist es hier **am schönsten**.'
+  - id: e6
+    de: 'Welcher Zug fährt **am schnellsten**?'
+  # -esten
+  - id: e7
+    de: 'Im Juli ist es **am heißesten**.'
+  - id: e8
+    de: 'Der Weg durch den Park ist **am kürzesten**.'
+  # Umlaut
+  - id: e9
+    de: 'Meine Schwester ist **jünger als** ich.'
+  - id: e10
+    de: 'Im Winter sind die Nächte **am längsten**.'
+  # Irregular forms
+  - id: e11
+    de: 'Ich trinke **lieber** Tee **als** Kaffee.'
+  - id: e12
+    de: 'Das Essen hier ist **besser als** im Hotel.'
+  - id: e13
+    de: 'Wer hat **am meisten** gegessen?'
+  - id: e14
+    de: 'Diese Jacke ist **teurer als** die andere.'
+
+choice:
+  - id: c1
+    text: Der Bus ist langsam, aber das Fahrrad ist noch ___.
+    answer: langsamer
+    options: [langsamer, langsam, am langsamsten]
+  - id: c2
+    text: Mein Bruder ist zwei Jahre ___ als ich.
+    answer: älter
+    options: [älter, alter, am ältesten]
+  - id: c3
+    text: Heute ist es ___ als gestern.
+    answer: kälter
+    options: [kälter, kalter, am kältesten]
+  - id: c4
+    text: Anna ist so groß ___ ihre Schwester.
+    answer: wie
+    options: [wie, als]
+  - id: c5
+    text: Paul ist ___ als sein Vater.
+    answer: größer
+    options: [größer, groß, am größten]
+  - id: c6
+    text: Welcher Berg ist am ___?
+    answer: höchsten
+    options: [höchsten, hochsten, höhesten]
+  - id: c7
+    text: Ich trinke ___ Tee als Kaffee.
+    answer: lieber
+    options: [lieber, gerner, am liebsten]
+  - id: c8
+    text: Das Essen hier ist ___ als im Hotel.
+    answer: besser
+    options: [besser, guter, am besten]
+  - id: c9
+    text: Wer hat am ___ gegessen?
+    answer: meisten
+    options: [meisten, vielsten, mehr]
+  - id: c10
+    text: Im Juli ist es am ___.
+    answer: heißesten
+    options: [heißesten, heißsten]
+  - id: c11
+    text: Diese Jacke ist ___ als die andere.
+    answer: teurer
+    options: [teurer, teuer, am teuersten]
+  - id: c12
+    text: Meine Schwester ist ___ als ich.
+    answer: jünger
+    options: [jünger, junger, am jüngsten]
+  - id: c13
+    text: Unser Haus ist nicht so groß ___ eures.
+    answer: wie
+    options: [wie, als]
+  - id: c14
+    text: Wo ist es im Frühling am ___?
+    answer: schönsten
+    options: [schönsten, schöner, schönesten]
+
+wordOrder:
+  - id: w1
+    parts: [der Zug, ist, schneller, als, das Auto]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: [ich, trinke, lieber, Tee, als, Kaffee]
+    fixed: true
+    accept:
+      - [ich, trinke, Tee, lieber, als, Kaffee]
+    punctuation: '.'
+  - id: w3
+    parts: [Anna, ist, so groß, wie, ihre Mutter]
+    fixed: true
+    punctuation: '.'
+  - id: w4
+    parts: [im Sommer, ist, es, am schönsten]
+    fixed: true
+    punctuation: '.'
+  - id: w5
+    parts: [welcher Berg, ist, am höchsten]
+    fixed: true
+    punctuation: '?'
+  - id: w6
+    parts: [meine Schwester, ist, jünger, als, ich]
+    fixed: true
+    punctuation: '.'
+  - id: w7
+    parts: [das Wetter, ist, heute, nicht so schön, wie, gestern]
+    fixed: true
+    punctuation: '.'
+  - id: w8
+    parts: [wer, läuft, am schnellsten]
+    fixed: true
+    punctuation: '?'
+
+austrianNotes:
+  - id: at1
+    de: 'Ich esse **Marillen** lieber als Pfirsiche.'
