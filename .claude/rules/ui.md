@@ -16,7 +16,7 @@ paths:
 - No page transitions: no `<ClientRouter />`, no CSS `@view-transition`.
 - Budgets, enforced by `scripts/check-js-budget.ts` in CI (gzipped JS the page loads, each file separately, imported chunks followed, external scripts excluded):
   - pages without islands: ≤ 3 KB (the search UI is not counted: no page loads it until search is opened);
-  - pages with islands: ≤ 45 KB (Svelte + svelte-dnd-action ≈ 13.5 KB + our code);
+  - pages with islands: ≤ 45 KB (Svelte, svelte-dnd-action and the exercise code; `pnpm budget` prints the current sizes);
   - Lighthouse ≥ 95 in all categories, checked before launch.
 
 ## Page types
@@ -25,7 +25,7 @@ paths:
 - Level pages: topic cards by category with title and summary. Coming-soon pages: planned topics (`plannedTopics` in `site.ts`, labels `planned.<id>`), `noindex`.
 - Topic page order: article (explanation), sponsor slot, practice. No sources on the site.
 - Footer on every page, across the whole width under sidebar and content (the `contentinfo` landmark): About, Legal notice and privacy, source code, licenses. On topic pages below lg it keeps clear of the bottom bar.
-- `noindex`: coming-soon pages, `ready: false` locales, preview deployments.
+- `noindex`: coming-soon pages, 404 pages, `ready: false` locales, preview deployments.
 
 ## Layout
 
