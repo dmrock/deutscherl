@@ -1,0 +1,22 @@
+level: a2
+category: cases
+order: 1
+sources:
+  - title: 'Lingoda: Wie man Wechselpräpositionen richtig verwendet'
+    url: https://www.lingoda.com/blog/de/wechselpraepositionen/
+  - title: 'DWDS: in (mit Dativ: Lage; mit Akkusativ: Richtung)'
+    url: https://www.dwds.de/wb/in
+  - title: 'DWDS: auf'
+    url: https://www.dwds.de/wb/auf
+  - title: 'Duden: ins (in das)'
+    url: https://www.duden.de/rechtschreibung/ins
+  - title: 'Duden: ans (an das)'
+    url: https://www.duden.de/rechtschreibung/ans
+  - title: 'Duden: im (in dem)'
+    url: https://www.duden.de/rechtschreibung/im
+  - title: 'Duden: am (an dem)'
+    url: https://www.duden.de/rechtschreibung/am
+  - title: 'DWDS: Stiege (meist Österreich: Treppe)'
+    url: https://www.dwds.de/wb/Stiege
+  - title: 'Austria-Forum: Liste von Austriazismen (Stiege, auch süddeutsch)'
+    url: https://austria-forum.org/af/AustriaWiki/Liste_von_Austriazismen

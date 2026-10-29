@@ -47,6 +47,7 @@ export const ru = {
   'category.verbs': 'Глаголы',
   'category.nouns': 'Существительные и артикли',
   'category.cases': 'Падежи',
+  'category.adjectives': 'Прилагательные',
   'category.sentences': 'Предложения',
   'topic.inShort': 'Коротко',
   'topic.inAustria': 'В Австрии',
