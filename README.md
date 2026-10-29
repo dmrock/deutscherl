@@ -1,5 +1,9 @@
 # Deutscherl
 
+[![CI](https://github.com/dmrock/deutscherl/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/dmrock/deutscherl/actions/workflows/ci.yml?query=branch%3Amain)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+[![Content: CC BY-SA 4.0](https://img.shields.io/badge/content-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE-CONTENT)
+
 A free website for learning German grammar. Each topic has a short explanation in your native language, examples in German with translations, and exercises to practice.
 
 - Levels A1 and A2 first; B1, B2 and C1 will follow.
@@ -7,7 +11,7 @@ A free website for learning German grammar. Each topic has a short explanation i
 - Notes on Austrian German where usage differs from Germany.
 - No accounts, no cookies, no tracking.
 
-Production: https://deutscherl.com (not launched yet)
+Website: https://deutscherl.com
 
 ## Run it locally
 
@@ -36,6 +40,7 @@ Other commands:
 | `pnpm i18n:coverage` | Lists missing translation files and keys per language |
 | `pnpm review:sync` | Updates `review.yaml` after content changes (the git hook runs it for you) |
 | `pnpm review:status` | Shows the review status of every topic and its translations |
+| `pnpm budget` | Checks the JavaScript size of every built page against its budget (after `pnpm build`) |
 
 ## Licenses
 
@@ -54,4 +59,4 @@ https://github.com/dmrock/deutscherl/issues/new?template=report-mistake.yml&page
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). In short: open an issue first, sign off your commits (`git commit -s`), and write everything in English except localization files.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). In short: open an issue first, sign off your commits (`git commit -s`), and write everything in English except localization files. Adding a native language is described step by step in [docs/adding-a-language.md](docs/adding-a-language.md).
