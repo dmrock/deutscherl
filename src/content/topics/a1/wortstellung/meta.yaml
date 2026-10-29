@@ -1,0 +1,20 @@
+level: a1
+category: sentences
+order: 1
+sources:
+  - title: 'Duden: Fachausdrücke (Verbzweitsatz, Verberstsatz, Vorfeld)'
+    url: https://www.duden.de/Fachausdr%C3%BCcke-Buchstabe-T-V
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'Duden Learnattack, Lernhelfer: Satzklammer'
+    url: https://www.lernhelfer.de/schuelerlexikon/deutsch/artikel/satzklammer
+  - title: 'Lernlaterne: Connectors und, aber, oder, denn'
+    url: https://www.lernlaterne.de/en/german/grammar/connectors-und-aber-oder-denn
+  - title: 'Wiktionary: Hilfe:Haupt- und Nebensatzkonjugation (trennbare Verben)'
+    url: https://de.wiktionary.org/wiki/Hilfe:Nebensatzkonjugation
+  - title: 'DWDS: denn'
+    url: https://www.dwds.de/wb/denn
+  - title: 'Duden: Jänner (österreichisch)'
+    url: https://www.duden.de/rechtschreibung/Jaenner
+  - title: 'DWDS: Jänner (standardsprachlich nur in Österreich)'
+    url: https://www.dwds.de/wb/J%C3%A4nner

@@ -28,7 +28,6 @@ export const ru = {
   'level.description':
     'Грамматика немецкого языка для уровня {level}: короткие объяснения, примеры с переводом и упражнения.',
   'level.planned': 'Темы в планах',
-  'level.readingTime': '{minutes} мин чтения',
   'planned.praeteritum': 'Простое прошедшее время (*Präteritum*)',
   'planned.konjunktiv-ii': 'Желания и вежливые просьбы (*Konjunktiv II*)',
   'planned.passiv': 'Страдательный залог (*Passiv*)',

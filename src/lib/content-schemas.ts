@@ -14,7 +14,6 @@ export const metaSchema = z.strictObject({
   level: z.enum(levelIds),
   category: z.enum(categoryIds),
   order: z.number().int().positive(),
-  readingMinutes: z.number().int().positive(),
   sources: z.array(z.strictObject({ title: text, url: z.url().optional() })).min(1),
 });
 

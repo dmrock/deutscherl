@@ -25,7 +25,7 @@ German correctness cannot be assumed, neither the maintainers' nor yours. German
 
 ## Files of a topic (`src/content/topics/<level>/<slug>/`)
 
-- `meta.yaml`: `level` (matches the folder), `category`, `order`, `readingMinutes` (shown on level pages only), `sources` (`{title, url?}`, at least one; for review only, never shown on the site).
+- `meta.yaml`: `level` (matches the folder), `category`, `order`, `sources` (`{title, url?}`, at least one; for review only, never shown on the site).
 - `german.yaml`, the only place for German sentences, shared by all locales; ids unique across the file:
   - `examples`: `{ id, de, region?: AT }`; in `de`, `**…**` marks the key words the page highlights.
   - `choice`: `{ id, text (with ___), answer, options, alsoCorrect?: [{ value, region }] }`

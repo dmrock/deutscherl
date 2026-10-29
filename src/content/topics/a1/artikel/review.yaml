@@ -2,7 +2,7 @@
 
 base:
   status: draft
-  contentHash: sha256:83979156b63d5e52
+  contentHash: sha256:8b22c478253086ff
   verifiedBy: null
   verifiedAt: null
   history: []

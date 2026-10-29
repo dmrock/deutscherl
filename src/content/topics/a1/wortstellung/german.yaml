@@ -1,0 +1,144 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the verb that changes with the person and, with two verbs, the part at the end.
+
+examples:
+  # The verb in position 2
+  - id: e1
+    de: 'Ich **wohne** in Graz.'
+  - id: e2
+    de: 'Mein Bruder **arbeitet** in einem Hotel.'
+  # Something else in position 1
+  - id: e3
+    de: 'Heute **arbeite** ich zu Hause.'
+  - id: e4
+    de: 'Am Wochenende **fahren** wir nach Salzburg.'
+  - id: e5
+    de: 'In Wien **wohnt** meine Schwester.'
+  - id: e6
+    de: 'Den Film **kenne** ich schon.'
+  # Two verbs: modal verbs
+  - id: e7
+    de: 'Ich **möchte** einen Kaffee **trinken**.'
+  - id: e8
+    de: 'Morgen **muss** ich lange **arbeiten**.'
+  # Two verbs: separable verbs
+  - id: e9
+    de: 'Ich **stehe** jeden Tag um sieben Uhr **auf**.'
+  - id: e10
+    de: 'Der Kurs **fängt** um neun Uhr **an**.'
+  # und, aber, oder, denn
+  - id: e11
+    de: 'Ich **habe** Hunger, aber der Kühlschrank **ist** leer.'
+  - id: e12
+    de: 'Wir **bleiben** heute zu Hause, denn es **regnet**.'
+  # Yes/no questions
+  - id: e13
+    de: '**Sprechen** Sie Englisch?'
+  - id: e14
+    de: '**Wohnst** du schon lange in Wien?'
+  # Questions with a question word
+  - id: e15
+    de: 'Wo **wohnst** du?'
+  - id: e16
+    de: 'Woher **kommen** Sie?'
+  - id: e17
+    de: 'Wohin **fährst** du im Sommer?'
+  - id: e18
+    de: 'Wann **beginnt** der Kurs?'
+  - id: e19
+    de: 'Was **machst** du am Wochenende?'
+  - id: e20
+    de: 'Warum **lernst** du Deutsch?'
+
+choice:
+  - id: c1
+    text: Heute ___ ins Kino.
+    answer: gehe ich
+    options: [gehe ich, ich gehe]
+  - id: c2
+    text: Am Wochenende ___ meine Eltern.
+    answer: besuche ich
+    options: [besuche ich, ich besuche]
+  - id: c3
+    text: Deutsch ___ seit einem Jahr.
+    answer: lerne ich
+    options: [lerne ich, ich lerne]
+  - id: c4
+    text: Wo ___?
+    answer: wohnst du
+    options: [wohnst du, du wohnst]
+  - id: c5
+    text: Was ___ am Abend?
+    answer: machst du
+    options: [machst du, du machst]
+  - id: c6
+    text: ___ kommst du? – Aus Polen.
+    answer: Woher
+    options: [Woher, Wo, Wohin, Wann]
+  - id: c7
+    text: ___ wohnst du? – In Linz.
+    answer: Wo
+    options: [Wo, Woher, Wohin, Wer]
+  - id: c8
+    text: ___ fährst du im Sommer? – Nach Italien.
+    answer: Wohin
+    options: [Wohin, Wo, Woher, Wie]
+  - id: c9
+    text: ___ beginnt der Film? – Um acht Uhr.
+    answer: Wann
+    options: [Wann, Wo, Wer, Was]
+  - id: c10
+    text: ___ heißt du? – Anna.
+    answer: Wie
+    options: [Wie, Was, Wer, Wo]
+  - id: c11
+    text: Ich möchte heute Pizza ___.
+    answer: essen
+    options: [essen, esse, isst]
+  - id: c12
+    text: Der Zug ___ um zehn Uhr ab.
+    answer: fährt
+    options: [fährt, abfährt, fahren]
+  - id: c13
+    text: Wir gehen heute nicht spazieren, denn ___.
+    answer: es regnet
+    options: [es regnet, regnet es]
+
+wordOrder:
+  - id: w1
+    parts: [ich, wohne, in Graz]
+    accept:
+      - [in Graz, wohne, ich]
+    punctuation: '.'
+  - id: w2
+    parts: [am Montag, habe, ich, frei]
+    fixed: true
+    punctuation: '.'
+  - id: w3
+    parts: [morgen, muss, ich, lange, arbeiten]
+    fixed: true
+    punctuation: '.'
+  - id: w4
+    parts: [wann, fängt, der Film, an]
+    fixed: true
+    punctuation: '?'
+  - id: w5
+    parts: [sprechen, Sie, Englisch]
+    fixed: true
+    punctuation: '?'
+  - id: w6
+    parts: [wo, wohnst, du]
+    fixed: true
+    punctuation: '?'
+  - id: w7
+    parts: [was, machst, du, am Wochenende]
+    fixed: true
+    punctuation: '?'
+  - id: w8
+    parts: [kannst, du, mir, helfen]
+    fixed: true
+    punctuation: '?'
+
+austrianNotes:
+  - id: at1
+    de: 'Im **Jänner** beginnt der neue Kurs.'

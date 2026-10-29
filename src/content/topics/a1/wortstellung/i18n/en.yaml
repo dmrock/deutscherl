@@ -1,0 +1,81 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I live in Graz.
+  e2: My brother works in a hotel.
+  e3: Today I'm working at home.
+  e4: At the weekend we're going to Salzburg.
+  e5: My sister lives in Vienna.
+  e6: I already know the film.
+  e7: I'd like to drink a coffee.
+  e8: Tomorrow I have to work late.
+  e9: I get up at seven every day.
+  e10: The course starts at nine.
+  e11: I'm hungry, but the fridge is empty.
+  e12: We're staying at home today, because it's raining.
+  e13: Do you speak English?
+  e14: Have you lived in Vienna for long?
+  e15: Where do you live?
+  e16: Where are you from?
+  e17: Where are you going in the summer?
+  e18: When does the course start?
+  e19: What are you doing at the weekend?
+  e20: Why are you learning German?
+
+choice:
+  c1:
+    why: '*heute* is in position 1, so the verb *gehe* comes second and the subject *ich* after it.'
+  c2:
+    why: '*am Wochenende* is one part in position 1. The verb *besuche* comes second, then *ich*.'
+  c3:
+    why: 'The object *Deutsch* is in position 1 to stress it. The verb still comes second, then *ich*.'
+  c4:
+    why: 'In a question, the question word comes first and the verb second: *wo wohnst du*.'
+  c5:
+    why: 'The question word *was* is in position 1, so the verb *machst* comes second, then *du*.'
+  c6:
+    why: 'The answer is a place someone comes from (*aus Polen*), so you ask with *woher*.'
+  c7:
+    why: 'The answer is a place where someone is (*in Linz*), so you ask with *wo*.'
+  c8:
+    why: 'The answer is a place someone goes to (*nach Italien*), so you ask with *wohin*.'
+  c9:
+    why: 'The answer is a time (*um acht Uhr*), so you ask with *wann*.'
+  c10:
+    why: 'You ask for a name with *wie*: *Wie heißt du?*'
+  c11:
+    why: 'With the modal verb *möchte* in position 2, the second verb goes to the end in its basic form: *essen*.'
+  c12:
+    why: '*abfahren* is a separable verb. *fährt* is in position 2, and *ab* is already at the end.'
+  c13:
+    why: '*denn* does not take a position. The sentence after it starts with *es*, and the verb *regnet* comes second.'
+
+wordOrder:
+  w1:
+    translation: I live in Graz.
+    why: 'The verb *wohne* comes second. *in Graz* can also come first, and then *ich* goes after the verb.'
+  w2:
+    translation: I'm off on Monday.
+    why: '*am Montag* is in position 1, so the verb *habe* comes second and *ich* right after it.'
+  w3:
+    translation: Tomorrow I have to work late.
+    why: '*muss* is in position 2 after *morgen*, then *ich*. The second verb *arbeiten* goes to the end.'
+  w4:
+    translation: When does the film start?
+    why: 'The question word *wann* comes first and the verb *fängt* second, then the subject *der Film*. *an* from *anfangen* goes to the end.'
+  w5:
+    translation: Do you speak English?
+    why: 'A yes/no question starts with the verb *sprechen*, then the subject *Sie*.'
+  w6:
+    translation: Where do you live?
+    why: 'The question word *wo* comes first, the verb *wohnst* second, then *du*.'
+  w7:
+    translation: What are you doing at the weekend?
+    why: 'The question word *was* comes first, then the verb *machst* and the subject *du*. *am Wochenende* goes after them.'
+  w8:
+    translation: Can you help me?
+    why: 'A yes/no question starts with the verb *kannst*, then *du*. The second verb *helfen* goes to the end.'
+
+austrianNotes:
+  at1: The new course starts in January.

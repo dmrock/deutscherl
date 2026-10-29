@@ -24,7 +24,6 @@ const topic = (
   order: rank,
   title: slug,
   summary: '',
-  readingMinutes: 3,
 });
 
 const topics = [
