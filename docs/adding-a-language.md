@@ -88,7 +88,7 @@ pnpm check:language
 Open a pull request: CI builds a preview at `pr-<number>-deutscherl.<subdomain>.workers.dev`. Check on the preview, at phone and desktop width:
 
 - the home, level, topic, about, legal and 404 pages under `/xx/`;
-- long strings: headers, buttons, the bottom bar and the practice card must not break (translations are often longer than English);
+- long strings: headers, buttons, the previous/next topic cards and the practice card must not break (translations are often longer than English);
 - for `dir: 'rtl'`: the page mirrors (sidebar, tables, the word-order line and the word bank, the progress dots), German blocks stay left-to-right (`lang="de"`);
 - search (Pagefind takes its UI language and stemming from `<html lang>`) once the locale is ready, since only ready locales are indexed.
 

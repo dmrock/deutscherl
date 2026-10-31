@@ -78,15 +78,12 @@ test.describe('theme', () => {
 });
 
 test.describe('navigation on desktop', () => {
-  test('the sidebar is shown and marks the current topic; no bottom bar', async ({ page }) => {
+  test('the sidebar is shown and marks the current topic', async ({ page }) => {
     await page.goto('/a2/perfekt/');
     const sidebar = page.getByRole('navigation', { name: t('en', 'nav.topics') });
     await expect(sidebar).toBeVisible();
     await expect(sidebar.locator('a[aria-current="page"]')).toHaveAttribute('href', '/a2/perfekt/');
     await expect(page.getByRole('button', { name: t('en', 'nav.menu') })).toBeHidden();
-    await expect(
-      page.getByRole('navigation', { name: t('en', 'nav.topicNavigation') }),
-    ).toBeHidden();
   });
 
   test('the level switcher links to levels and marks the current one', async ({ page }) => {
@@ -182,11 +179,50 @@ test.describe('navigation on mobile', () => {
     await expect(sheet).toBeHidden();
   });
 
-  test('the topic page has a bottom bar with Practice', async ({ page }) => {
+  test('the Practice link under the title jumps to the practice card', async ({ page }) => {
     await page.goto('/a2/perfekt/');
-    const bar = page.getByRole('navigation', { name: t('en', 'nav.topicNavigation') });
-    await expect(bar).toBeVisible();
-    await bar.getByRole('link', { name: t('en', 'nav.practice') }).click();
+    await page
+      .getByRole('main')
+      .getByRole('link', { name: t('en', 'nav.practice') })
+      .click();
     await expect(page).toHaveURL(/#practice$/);
+    await expect(page.getByRole('heading', { name: t('en', 'nav.practice') })).toBeInViewport();
+  });
+});
+
+test.describe('previous and next topic', () => {
+  /** Topic paths of a level in reading order, from the sidebar of its level page. */
+  async function readingOrder(page: Page, level: string): Promise<string[]> {
+    await page.goto(`/${level}/`);
+    return page
+      .locator('#sidebar section li a')
+      .evaluateAll((links) => links.map((link) => link.getAttribute('href') ?? ''));
+  }
+
+  const pager = (page: Page) =>
+    page.getByRole('navigation', { name: t('en', 'nav.topicNavigation') });
+
+  test('cards at the end of the topic name the previous and next topic', async ({ page }) => {
+    const order = await readingOrder(page, 'a1');
+    await page.goto(order[1] ?? '');
+    const prev = pager(page).locator('a[rel="prev"]');
+    const next = pager(page).locator('a[rel="next"]');
+    await expect(prev).toHaveAttribute('href', order[0] ?? '');
+    await expect(prev).toContainText(t('en', 'nav.prev'));
+    await expect(next).toHaveAttribute('href', order[2] ?? '');
+    await expect(next).toContainText(t('en', 'nav.next'));
+  });
+
+  test('the first topic has no previous card; the last of a level leads to the next level', async ({
+    page,
+  }) => {
+    const order = await readingOrder(page, 'a1');
+    await page.goto(order[0] ?? '');
+    await expect(pager(page).locator('a[rel="prev"]')).toHaveCount(0);
+
+    await page.goto(order.at(-1) ?? '');
+    const next = pager(page).locator('a[rel="next"]');
+    await expect(next).toHaveAttribute('href', /^\/a2\//);
+    await expect(next).toContainText('A2');
   });
 });

@@ -1,16 +1,14 @@
 ---
 import { Font } from 'astro:assets';
 import { PUBLIC_DEPLOY_ENV } from 'astro:env/client';
-import BottomBar from '../components/layout/BottomBar.astro';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 import Sidebar from '../components/layout/Sidebar.astro';
 import ThemeScript from '../components/layout/ThemeScript.astro';
 import { cssVariableOf, germanFont } from '../config/fonts.ts';
-import { categoryIds, type LevelId, site } from '../config/site.ts';
+import { type LevelId, site } from '../config/site.ts';
 import { getLocaleConfig, type LocaleCode, readyLocales } from '../i18n/locales.ts';
 import { alternates, localizePath, t } from '../i18n/utils.ts';
-import { neighbours } from '../lib/navigation.ts';
 import { jsonLd, type StructuredData } from '../lib/seo.ts';
 import { getTopicLinks } from '../lib/topics.ts';
 import '../styles/global.css';
@@ -30,7 +28,7 @@ interface Props {
   notFound?: boolean;
   /** Level of the page: shows the sidebar with that level's topics. */
   level?: LevelId | undefined;
-  /** Slug of the topic page: marks it in the sidebar and adds the bottom bar. */
+  /** Slug of the topic page: marks it in the sidebar. */
   topic?: string | undefined;
   /** Open Graph type: `article` for topic pages */
   ogType?: 'website' | 'article';
@@ -67,10 +65,6 @@ const fontPreload = localeConfig.font.preload.map((subset) => ({
 }));
 
 const topics = level ? await getTopicLinks(locale) : [];
-const { prev, next } =
-  level && topic
-    ? neighbours(topics, level, topic, categoryIds)
-    : { prev: undefined, next: undefined };
 ---
 
 <!doctype html>
@@ -128,8 +122,7 @@ const { prev, next } =
         <slot />
       </main>
     </div>
-    <!-- Full width under sidebar and content; below lg, topic pages keep it above the bottom bar. -->
-    <Footer locale={locale} class={topic && 'pb-20 lg:pb-5'} />
-    {topic && <BottomBar locale={locale} prev={prev} next={next} />}
+    <!-- Full width under sidebar and content. -->
+    <Footer locale={locale} />
   </body>
 </html>

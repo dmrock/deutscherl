@@ -278,7 +278,7 @@ test.describe('word order', () => {
       });
     }
 
-    /** Centre of a bank word, scrolled to the middle of the screen (clear of the bottom bar). */
+    /** Centre of a bank word, scrolled to the middle of the screen. */
     async function chipCenter(page: Page, word: string) {
       await bank(page).evaluate((element) => element.scrollIntoView({ block: 'center' }));
       await scrollSettled(page);

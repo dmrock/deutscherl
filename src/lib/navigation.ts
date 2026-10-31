@@ -1,6 +1,7 @@
 /**
- * Topic navigation (pure, unit-tested): sidebar groups and prev/next inside a level.
- * Reading order = category order from site.ts, then `order` from meta.yaml, then slug.
+ * Topic navigation (pure, unit-tested): sidebar groups and prev/next topic.
+ * Reading order = level order, then category order from site.ts, then `order` from meta.yaml, then
+ * slug.
  */
 import type { CategoryId, LevelId } from '../config/site.ts';
 
@@ -49,15 +50,16 @@ export function groupByCategory(
     .filter((group) => group.topics.length > 0);
 }
 
-/** Previous and next topic in reading order within the same level. */
+/** Previous and next topic in reading order; the last topic of a level leads to the next level. */
 export function neighbours(
   topics: readonly TopicLink[],
   level: LevelId,
   slug: string,
   categoryOrder: readonly CategoryId[],
+  levelOrder: readonly LevelId[],
 ): { prev: TopicLink | undefined; next: TopicLink | undefined } {
-  const ordered = topicsInOrder(topics, level, categoryOrder);
-  const index = ordered.findIndex((topic) => topic.slug === slug);
+  const ordered = levelOrder.flatMap((id) => topicsInOrder(topics, id, categoryOrder));
+  const index = ordered.findIndex((topic) => topic.level === level && topic.slug === slug);
   if (index === -1) return { prev: undefined, next: undefined };
   return { prev: ordered[index - 1], next: ordered[index + 1] };
 }
