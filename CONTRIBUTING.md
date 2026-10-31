@@ -63,6 +63,8 @@ The pre-commit hook (installed by `pnpm install`) formats staged files and runs 
 3. Translate the UI strings (`src/i18n/ui/<locale>.ts`), then the topics (`<locale>.mdx` and `i18n/<locale>.yaml`), always from the English version.
 4. When every page is translated and reviewed, the maintainer switches the language to `ready: true`.
 
+The exact steps, from the `locales.ts` entry to the switch, are in [docs/adding-a-language.md](docs/adding-a-language.md).
+
 ## Code of Conduct
 
 Everyone taking part follows the [Code of Conduct](CODE_OF_CONDUCT.md).

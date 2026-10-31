@@ -1,0 +1,29 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { defaultLocale, type LocaleCode, localeCodes } from '../../i18n/locales.ts';
+import { localizePath, t } from '../../i18n/utils.ts';
+import Base from '../../layouts/Base.astro';
+
+// One 404 page per locale: `/404.html` and `/<code>/404.html` (moved there after the build by
+// `notFoundPages` in astro.config.ts), so Cloudflare serves the nearest one for unknown paths.
+export const getStaticPaths = (() =>
+  localeCodes.map((code) => ({
+    params: { locale: code === defaultLocale ? undefined : code },
+    props: { locale: code },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  locale: LocaleCode;
+}
+
+const { locale } = Astro.props;
+---
+
+<Base locale={locale} title={t(locale, 'notFound.title')} notFound>
+  <h1 class="text-3xl font-bold">{t(locale, 'notFound.title')}</h1>
+  <p class="mt-4">
+    <a href={localizePath('/', locale)} class="underline">
+      {t(locale, 'notFound.backHome')}
+    </a>
+  </p>
+</Base>

@@ -59,8 +59,16 @@ describe('inSitemap', () => {
     }
   });
 
-  it('leaves out coming-soon levels and the 404 page', () => {
-    for (const path of ['/b1/', '/c1/', '/ru/b2/', '/404/', '/404.html']) {
+  it('leaves out coming-soon levels and the 404 pages', () => {
+    for (const path of [
+      '/b1/',
+      '/c1/',
+      '/ru/b2/',
+      '/404/',
+      '/404.html',
+      '/ru/404/',
+      '/ru/404.html',
+    ]) {
       expect(inSitemap(`${origin}${path}`), path).toBe(false);
     }
   });
