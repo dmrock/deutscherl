@@ -54,7 +54,7 @@ export const site = {
   /** Contact on /legal/ and /about/; Cloudflare Email Routing forwards it to the maintainers */
   email: 'hallo@deutscherl.com',
   /**
-   * Pre-generated audio for German sentences (stage 4b). While false, the audio
+   * Pre-generated audio for German sentences (a later feature). While false, the audio
    * notes on /about/ and /legal/ are not shown (<AudioOnly> in the page MDX).
    */
   audio: false as boolean,

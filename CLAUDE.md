@@ -8,6 +8,7 @@ A free website for learning German grammar: explanations in the learner's native
 - The site teaches grammar only: no dictionary or vocabulary database; Austrian vocabulary goes into the topics.
 - No accounts, no progress tracking, no cookies, no ad trackers, no runtime API or database calls.
 - Sponsor banners later: static, labeled as ads. The topic layout keeps a sponsor slot.
+- Audio for German sentences comes later, once there is enough content.
 
 This file and `.claude/rules/` are the source of truth. `docs/architecture.html` is an illustrated snapshot and may lag behind.
 
