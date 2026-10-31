@@ -10,7 +10,7 @@ paths:
 # Site pages (about, legal)
 
 - `src/content/pages/<slug>/<locale>.mdx` with frontmatter `title` and `description`, routed by `src/pages/[...locale]/<slug>/index.astro` through `ProsePage.astro`.
-- MDX components: `<De>`, `<Email />` (the contact `site.email` as a link), `<AudioOnly>` (shown once `site.audio` is true, stage 4b).
+- MDX components: `<De>`, `<Email />` (the contact `site.email` as a link), `<AudioOnly>` (shown once `site.audio` is true).
 - `i18n-coverage` requires every page in every ready locale; a locale that is not ready shows the English text. Not part of the review scopes and not indexed by search.
 
 ## Legal (Austria)

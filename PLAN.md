@@ -107,21 +107,6 @@ Read CLAUDE.md, sections "UX rules" and "Exercise rules". Build the exercise isl
 Playwright tests on English pages only: choice flow including a regional answer; word order with mouse; with touch emulation (long press drags, quick swipe scrolls); keyboard-only; duplicate words; "Try again" shows different items with a fixed seed; report link URL. After merging I will test on a real iPhone and Android phone via the preview URL.
 ```
 
-## Stage 4b. Audio for German sentences
-
-Before this stage: create an Azure account and a Speech resource on the **paid Standard (S0) tier**. Output of the free tier may not be used commercially, and the site will carry sponsor banners. Keep the key and the region; they never go into the repository. Cost: about $16 per 1 million characters; a topic has about 1,000 characters of German, so the whole pilot costs cents. Microsoft requires a note that the voice is computer-generated.
-
-```
-Read CLAUDE.md and `.claude/rules/` (ui.md, content.md, exercises.md, deployment.md). Add pre-generated audio for German content 
-- scripts/generate-audio.ts (run locally by a maintainer, key and region from environment variables): for every German sentence (examples, Austrian notes, the full correct sentence of every choice and word-order item), synthesize speech with Azure AI Speech, voice de-AT-IngridNeural (configurable; de-AT-JonasNeural as a second voice). Check the current Azure REST API docs first. Small files (Opus or MP3 at a low bitrate). File name = hash of the normalized text, voice and settings, so only new or changed sentences are generated and paid for; report unused files and remove them with a flag.
-- Where the files live: compare committing them (public/audio/) with an R2 bucket (repo size, the 20,000-file limit per deployment, cache headers) and recommend one before implementing.
-- Audio button for examples, Austrian notes and exercise feedback: a native <audio> element or a few lines of inline JS, no autoplay, shown only when a file exists; a missing file never breaks a page. Keep the JS budgets.
-- Disclosure: a short "computer-generated voice" note (UI string) next to the first button on a page. /about/ and /legal/ already describe the audio behind `<AudioOnly>`: set `audio: true` in src/config/site.ts and check those paragraphs.
-- validate-content: report German content without audio as a warning, not an error.
-- Tests: unit tests for text normalization and file naming; e2e on English pages: the button plays the expected file (media mocked), no button when the file is missing.
-Report the number of characters synthesized, the total file size and the JS budget impact.
-```
-
 ## ~~Stage 5. Dictionary data~~ and ~~Stage 6. Dictionary pages~~: dropped
 
 No dictionary: the site teaches grammar; a Wiktionary-based dictionary would copy what Wiktionary, DWDS and Leo do better and add hundreds of entries nobody can verify. Austrian vocabulary stays in the topics. The stage 5 import pipeline was built in PR #7 and dropped before merging. The stage numbers are kept, because CLAUDE.md refers to them.
@@ -135,7 +120,7 @@ Build, for every ready locale:
 - Pagefind: one index per ready locale, topic pages; UI loaded only when search is opened (button or Cmd/Ctrl+K). German words in examples must be findable from any locale.
 - SEO: unique titles and descriptions per locale, canonical URLs, hreflang, sitemap with alternates, Open Graph with og:locale, structured data where it makes sense.
 - Legal page from CLAUDE.md "Legal pages (Austria)": one short /legal/ page (legal notice and privacy) in both locales, footer link, with my name, town and contact email.
-- /about/ with an accessibility statement (WCAG 2.2 AA target; word order can be done by tap, click or keyboard without dragging) and a note that the audio is computer-generated (Azure AI Speech, stage 4b); /legal/ mentions it too.
+- /about/ with an accessibility statement (WCAG 2.2 AA target; word order can be done by tap, click or keyboard without dragging) and a note that the audio is computer-generated (Azure AI Speech); /legal/ mentions it too.
 - Analytics: Cloudflare Web Analytics, injected by Cloudflare on the production domain (no beacon in the build), mentioned in /legal/. Add an e2e check that the build contains no beacon.
 Add e2e tests on English pages for navigation and search (including finding a German word), and axe checks for all new page types. Extend the language-switching tests to the new page types (picker keeps the page, hreflang present).
 ```
@@ -174,4 +159,3 @@ Prepare the pilot for launch:
 - Test the exercises on a real iPhone and Android phone via the preview URL.
 - Mark the CI checks as required in the rules for `main`.
 - Agree with the teacher: they verify German content and the English explanation of each topic, and any text they write is contributed under CC BY-SA 4.0.
-- Check licenses: the Azure AI Speech terms for publishing the generated audio (paid S0 tier).
