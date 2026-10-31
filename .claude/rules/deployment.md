@@ -23,7 +23,7 @@ paths:
 - Push to `main`: `wrangler deploy` in the GitHub Environment `production`; `concurrency` prevents overlapping deploys.
 - Deploy jobs run only for branches of this repository, never for forks.
 - First deploy: if the Worker does not exist yet, the preview job deploys once without `routes` (`scripts/ci/wrangler-bootstrap-config.ts`), so the custom domain is attached only by the first production deploy.
-- `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"`, default HTML handling (trailing slash, matching Astro), production only on the custom domain (`workers_dev: false`), preview URLs enabled. Check the current Wrangler docs for exact keys.
+- `wrangler.jsonc`: `assets.directory: "./dist"`, `assets.not_found_handling: "404-page"` (the nearest `404.html` up the path: `/ru/…` gets `/ru/404.html`; `pnpm exec wrangler dev --local` emulates it, `astro preview` does not), default HTML handling (trailing slash, matching Astro), production only on the custom domain (`workers_dev: false`), preview URLs enabled. Check the current Wrangler docs for exact keys.
 - Preview URLs live on the account's workers.dev subdomain (`pr-<n>-deutscherl.<subdomain>.workers.dev`); opening Workers & Pages in the dashboard once creates it.
 - Secrets: `CLOUDFLARE_API_TOKEN` (least privilege: edit Workers for this account) and the variable `CLOUDFLARE_ACCOUNT_ID`. Nothing else is secret.
 - Cloudflare "Always Use HTTPS" is on for the zone: http redirects to https (301) at the edge; HSTS is off.

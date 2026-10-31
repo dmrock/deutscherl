@@ -4,6 +4,7 @@
 import { expect, test } from '@playwright/test';
 import { site } from '../../src/config/site.ts';
 import { getLocaleConfig } from '../../src/i18n/locales.ts';
+import { t } from '../../src/i18n/utils.ts';
 
 const ruName = getLocaleConfig('ru').name;
 
@@ -90,4 +91,31 @@ test.describe('mobile width', () => {
     );
     expect(overflow).toBeLessThanOrEqual(0);
   });
+});
+
+test.describe('404 page per locale', () => {
+  // Cloudflare serves the nearest 404.html for unknown paths; `astro preview` does not, so the
+  // pages are opened directly.
+  for (const { file, lang, home } of [
+    { file: '/404.html', lang: 'en', home: '/' },
+    { file: '/ru/404.html', lang: 'ru', home: '/ru/' },
+  ] as const) {
+    test(file, async ({ page }) => {
+      await page.goto(file);
+      await expect(page.locator('html')).toHaveAttribute('lang', lang);
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText(t(lang, 'notFound.title'));
+      await expect(page.getByRole('link', { name: t(lang, 'notFound.backHome') })).toHaveAttribute(
+        'href',
+        home,
+      );
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
+      await expect(
+        page.locator('link[rel="canonical"], link[rel="alternate"][hreflang]'),
+      ).toHaveCount(0);
+
+      const picker = page.locator('[data-language-picker]');
+      await picker.locator('summary').click();
+      await expect(picker.getByRole('link', { name: ruName })).toHaveAttribute('href', '/ru/');
+    });
+  }
 });
