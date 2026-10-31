@@ -1,0 +1,79 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I'm in the kitchen.
+  e2: I'm going into the kitchen.
+  e3: The cat is sleeping under the bed.
+  e4: The cat runs under the bed.
+  e5: He's sitting next to me.
+  e6: Sit down next to me!
+  e7: The taxi is waiting in front of the hotel.
+  e8: The taxi drives up in front of the hotel.
+  e9: We're going to the cinema tonight.
+  e10: We're meeting at the station.
+  e11: I put the bottle in the fridge.
+  e12: The bottle is in the fridge.
+  e13: I put the phone on the table.
+  e14: The phone is on the table.
+  e15: I sit down on the sofa.
+  e16: I'm sitting on the sofa.
+  e17: I hang the jacket on the hook.
+  e18: The jacket is hanging on the hook.
+
+choice:
+  c1:
+    why: 'The book is somewhere (*Wo?*), so *auf* takes the dative. *Tisch* is masculine: *dem Tisch*.'
+  c2:
+    why: 'You put the book somewhere (*Wohin?*), so *auf* takes the accusative. *Tisch* is masculine: *den Tisch*.'
+  c3:
+    why: 'You put the milk somewhere (*Wohin?*): accusative. *Kühlschrank* is masculine: *in den*.'
+  c4:
+    why: 'The milk is somewhere (*Wo?*): dative. *in dem* becomes *im*.'
+  c5:
+    why: 'The picture is somewhere (*Wo?*): dative. *Wand* is feminine: *an der Wand*.'
+  c6:
+    why: 'You put the picture somewhere (*Wohin?*): accusative. *Wand* is feminine: *an die Wand*.'
+  c7:
+    why: 'Sitting down is a movement to a place (*Wohin?*), so *neben* takes the accusative: *mich*.'
+  c8:
+    why: 'He is somewhere (*Wo?*), so *neben* takes the dative: *mir*.'
+  c9:
+    why: 'You put the bag somewhere, so you need *stellen*. *stehen* means that something is standing somewhere.'
+  c10:
+    why: 'The keys are somewhere, so you need *liegen*. *legen* means that you put something down.'
+  c11:
+    why: 'You go somewhere (*Wohin?*): accusative. *in das* becomes *ins*.'
+  c12:
+    why: 'The cat is somewhere (*Wo?*): dative. *Sofa* is neuter: *dem Sofa*.'
+  c13:
+    why: 'The café is somewhere (*Wo?*), so *zwischen* takes the dative. *Bank* is feminine: *der Bank*.'
+
+wordOrder:
+  w1:
+    translation: The phone is on the table.
+    why: 'The verb *liegt* comes second. *auf dem Tisch* can also come first, and then *das Handy* goes after the verb.'
+  w2:
+    translation: The bottle is in the fridge.
+    why: 'The verb *steht* comes second. *im Kühlschrank* can also come first.'
+  w3:
+    translation: Where are you going?
+    why: 'The question word *wohin* comes first, then the verb *gehst* and *du*.'
+  w4:
+    translation: Please put the milk in the fridge!
+    why: 'The verb *stell* starts the request. *bitte* can come before or after *die Milch*.'
+  w5:
+    translation: We're meeting at the station.
+    why: 'The verb *treffen* comes second, and *uns* right after the subject. *am Bahnhof* can also come first.'
+  w6:
+    translation: The children are sitting on the sofa.
+    why: 'The verb *sitzen* comes second. *auf dem Sofa* can also come first.'
+  w7:
+    translation: Where is my jacket hanging?
+    why: 'The question word *wo* comes first, then the verb *hängt* and the subject *meine Jacke*.'
+  w8:
+    translation: Sit down next to me!
+    why: 'The verb *setz* starts the request, then *dich*, then *neben mich*.'
+
+austrianNotes:
+  at1: The children are sitting on the stairs.
