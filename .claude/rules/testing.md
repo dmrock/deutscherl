@@ -21,5 +21,5 @@ Functional tests run on English pages only: the code is the same for every local
 - Tests run against `dist/` (`pnpm build && pnpm test:e2e`); search tests need the Pagefind index from the build.
 - Playwright's web server is `astro preview --ignore-lock` on port 4321 and reuses a server already running there outside CI. Stop `astro dev` (`pnpm astro dev stop`) before running e2e, or the tests hit the dev server and fail in unrelated places. `--ignore-lock` keeps `astro preview` in the foreground (Astro 7 backgrounds it when it detects an AI agent).
 - Exercise tests steer a round through the seen ids in `sessionStorage` (`onlyUnseen` in `tests/e2e/helpers/exercises.ts`), so they run on production builds; only the "Try again" seed test needs `?seed=` and is skipped there.
-- Drags move in steps and hold 250 ms before release (svelte-dnd-action checks the zone under the word every 200 ms). Touch uses CDP `Input.dispatchTouchEvent` with the bank scrolled to the middle (the mobile bottom bar covers the bottom of the screen).
+- Drags move in steps and hold 250 ms before release (svelte-dnd-action checks the zone under the word every 200 ms). Touch uses CDP `Input.dispatchTouchEvent` with the bank scrolled to the middle of the screen.
 - `<noscript>` is checked in the served HTML: Playwright with JavaScript disabled still parses it as scripted.

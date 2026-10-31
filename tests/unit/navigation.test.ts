@@ -11,6 +11,7 @@ type Category = TopicLink['category'];
 // Navigation only compares category ids, so fixtures may use ids that site.ts does not define yet.
 const cat = (id: string) => id as Category;
 const order = [cat('verbs'), cat('cases'), cat('sentences')];
+const levelOrder = ['a1', 'a2'] as const;
 
 const topic = (
   slug: string,
@@ -59,18 +60,23 @@ describe('groupByCategory()', () => {
 
 describe('neighbours()', () => {
   it('returns previous and next topic across categories', () => {
-    const { prev, next } = neighbours(topics, 'a2', 'perfekt', order);
+    const { prev, next } = neighbours(topics, 'a2', 'perfekt', order, levelOrder);
     expect(prev?.slug).toBe('modal-verbs');
     expect(next?.slug).toBe('dative');
   });
 
+  it('crosses from the last topic of a level to the first of the next', () => {
+    expect(neighbours(topics, 'a1', 'present', order, levelOrder).next?.slug).toBe('modal-verbs');
+    expect(neighbours(topics, 'a2', 'modal-verbs', order, levelOrder).prev?.slug).toBe('present');
+  });
+
   it('has no previous at the start and no next at the end', () => {
-    expect(neighbours(topics, 'a2', 'modal-verbs', order).prev).toBeUndefined();
-    expect(neighbours(topics, 'a2', 'weil-dass', order).next).toBeUndefined();
+    expect(neighbours(topics, 'a1', 'present', order, levelOrder).prev).toBeUndefined();
+    expect(neighbours(topics, 'a2', 'weil-dass', order, levelOrder).next).toBeUndefined();
   });
 
   it('returns nothing for an unknown topic', () => {
-    expect(neighbours(topics, 'a2', 'missing', order)).toEqual({
+    expect(neighbours(topics, 'a2', 'missing', order, levelOrder)).toEqual({
       prev: undefined,
       next: undefined,
     });

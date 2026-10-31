@@ -11,7 +11,8 @@ import RuleTable from '../../../../components/content/RuleTable.astro';
 import SponsorSlot from '../../../../components/content/SponsorSlot.astro';
 import StatusBadges from '../../../../components/content/StatusBadges.astro';
 import ExerciseRunner from '../../../../components/exercises/ExerciseRunner.svelte';
-import { type LevelId, levels, site } from '../../../../config/site.ts';
+import TopicPager from '../../../../components/layout/TopicPager.astro';
+import { categoryIds, type LevelId, levelIds, levels, site } from '../../../../config/site.ts';
 import {
   defaultLocale,
   getLocaleConfig,
@@ -23,8 +24,10 @@ import Base from '../../../../layouts/Base.astro';
 import { exerciseStrings } from '../../../../lib/exercise-strings.ts';
 import { resolveExercises, seenKey } from '../../../../lib/exercises.ts';
 import { stripMarks } from '../../../../lib/marked-text.ts';
+import { neighbours } from '../../../../lib/navigation.ts';
 import { breadcrumbData, topicData } from '../../../../lib/seo.ts';
 import { getTopicContent } from '../../../../lib/topic-content.ts';
+import { getTopicLinks } from '../../../../lib/topics.ts';
 
 // One page per topic MDX file: `a2/perfekt/ru.mdx` becomes `/ru/a2/perfekt/`.
 export const getStaticPaths = (async () => {
@@ -76,6 +79,7 @@ const structuredData = [
 ];
 // Search indexes topic pages of ready locales only (Pagefind indexes only pages with this attribute).
 const searchable = getLocaleConfig(locale).ready;
+const { prev, next } = neighbours(await getTopicLinks(locale), level, slug, categoryIds, levelIds);
 ---
 
 <Base
@@ -93,8 +97,18 @@ const searchable = getLocaleConfig(locale).ready;
       {levelLabel} · {t(locale, `category.${meta.data.category}`)}
     </p>
     <h1 class="mt-0.5 text-2xl sm:text-3xl">{page.data.title}</h1>
-    <div class="mt-2 text-xs" data-pagefind-ignore>
-      <StatusBadges locale={locale} review={review} />
+    <div class="mt-2 flex items-center justify-between gap-3" data-pagefind-ignore>
+      <div class="text-xs">
+        <StatusBadges locale={locale} review={review} />
+      </div>
+      <!-- Jump to the practice card at the end of the page; the card links back with "↑ Explanation". -->
+      <a
+        href="#practice"
+        class="inline-flex shrink-0 items-center gap-1 text-sm text-muted hover:text-accent"
+      >
+        <span aria-hidden="true">↓</span>
+        {t(locale, 'nav.practice')}
+      </a>
     </div>
     <InShort locale={locale} summary={page.data.summary} />
     <div class="topic-prose mt-4">
@@ -141,4 +155,5 @@ const searchable = getLocaleConfig(locale).ready;
       </section>
     </div>
   </div>
+  <TopicPager locale={locale} level={level} prev={prev} next={next} />
 </Base>

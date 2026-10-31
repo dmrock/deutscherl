@@ -32,7 +32,7 @@ Exercise types are multiple choice and word order by drag and drop; there is no 
 ## No layout jumps
 
 - The practice card has a wrapper (`[data-practice-area]` on the topic page). "Start practice" marks it active and scrolls the card to the top once.
-- The wrapper is then at least a screen tall (below the sticky header, above the mobile bottom bar, `global.css`) and never shrinks while the page is open (`--practice-tallest`, set by the runner, reset when its width changes).
+- The wrapper is then at least a screen tall (below the sticky header, `global.css`) and never shrinks while the page is open (`--practice-tallest`, set by the runner, reset when its width changes).
 - The card always fits its content and grows into the spare room below it, so page height and scroll position stay the same (an e2e test checks this at desktop and phone width).
 - Answering never changes the size of what is already on screen: fixed-width gap, ✓/✗ as corner badges on the option buttons.
 - When a question with its feedback is taller than the screen, the page scrolls smoothly (`block: 'nearest'`) only as far as needed. Focus always moves with `preventScroll`; the feedback fades in (`motion-safe:animate-appear`).

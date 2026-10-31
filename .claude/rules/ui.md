@@ -23,14 +23,16 @@ paths:
 
 - Home: intro, level cards (available levels list their topics, the others their planned topics under "Coming soon"), features.
 - Level pages: topic cards by category with title and summary. Coming-soon pages: planned topics (`plannedTopics` in `site.ts`, labels `planned.<id>`), `noindex`.
-- Topic page order: article (explanation), sponsor slot, practice. No sources on the site.
-- Footer on every page, across the whole width under sidebar and content (the `contentinfo` landmark): About, Legal notice and privacy, source code, licenses. On topic pages below lg it keeps clear of the bottom bar.
+- Topic page order: article (explanation), sponsor slot, practice, previous/next topic. No sources on the site.
+- Under the topic title, next to the badges, "↓ Practice" jumps to the practice card (the card links back with "↑ Explanation").
+- Previous/next topic (`TopicPager.astro`): two cards at the end of the topic page with the topic titles, on every screen size, in reading order across levels (the last A1 topic leads to the first A2 topic, and the card names the level). No fixed bottom bar.
+- Footer on every page, across the whole width under sidebar and content (the `contentinfo` landmark): About, Legal notice and privacy, source code, licenses.
 - `noindex`: coming-soon pages, `ready: false` locales, preview deployments.
 
 ## Layout
 
 - Header: level switcher, search, language picker, theme toggle. Left sidebar: topics grouped by category (order in `site.ts`, labels `category.<id>`). Main column: the content.
-- Mobile: the sidebar becomes a sheet (the same element with `popover`, opened by a `popovertarget` button, no JS); a bottom bar shows Prev / Practice / Next.
+- Mobile: the sidebar becomes a sheet (the same element with `popover`, opened by a `popovertarget` button, no JS).
 - Static navigation: `scrollbar-gutter: stable` on `<html>`; the header is exactly 3rem (border included); `<body>` is a flex column at least the screen height (header, content row, footer), so short pages do not scroll. The sticky sidebar is as tall as its topics (at most the screen below the header, then it scrolls); the divider is the content column's `border-s`. An e2e test checks header widgets and sidebar position on every page type.
 - Russian strings are often 20–30% longer than English: layouts must not break.
 - Use logical properties and utilities (`ms-`, `pe-`, `start-`, `text-start`, …), never left/right, so right-to-left locales work.

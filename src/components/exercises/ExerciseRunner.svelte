@@ -222,11 +222,8 @@
       </div>
 
       {#if feedback}
-        <!-- scroll-mb: clear of the mobile bottom bar when scrolled into view. -->
-        <div
-          class="scroll-mb-16 lg:scroll-mb-4 motion-safe:animate-appear"
-          bind:this={afterAnswerEl}
-        >
+        <!-- scroll-mb: a little room below the feedback when scrolled into view. -->
+        <div class="scroll-mb-4 motion-safe:animate-appear" bind:this={afterAnswerEl}>
           <div
             class={[
               'mt-3 rounded-ui border px-3 py-2',

@@ -1,0 +1,60 @@
+---
+/**
+ * End of a topic page: cards for the previous and next topic in reading order, with their titles.
+ * The next topic may be in the next level; its card then names the level.
+ */
+import { type LevelId, levels } from '../../config/site.ts';
+import type { LocaleCode } from '../../i18n/locales.ts';
+import { localizePath, t } from '../../i18n/utils.ts';
+import { type TopicLink, topicPath } from '../../lib/navigation.ts';
+
+interface Props {
+  locale: LocaleCode;
+  level: LevelId;
+  prev: TopicLink | undefined;
+  next: TopicLink | undefined;
+}
+
+const { locale, level, prev, next } = Astro.props;
+const card =
+  'flex flex-col gap-0.5 rounded-card border border-border bg-card px-3 py-2.5 shadow-card hover:border-accent';
+const otherLevel = (topic: TopicLink) =>
+  topic.level === level ? '' : ` · ${levels.find((entry) => entry.id === topic.level)?.label}`;
+---
+
+{(prev || next) && (
+  <nav
+    aria-label={t(locale, 'nav.topicNavigation')}
+    class="mt-6 grid gap-3 sm:grid-cols-2"
+    data-pagefind-ignore
+  >
+    {prev && (
+      <a href={localizePath(topicPath(prev), locale)} rel="prev" class={card}>
+        <span class="text-sm text-muted">
+          <span aria-hidden="true" class="inline-block rtl:-scale-x-100">
+            ←
+          </span>{' '}
+          {t(locale, 'nav.prev')}
+          {otherLevel(prev)}
+        </span>
+        <span class="font-semibold">{prev.title}</span>
+      </a>
+    )}
+    {next && (
+      <a
+        href={localizePath(topicPath(next), locale)}
+        rel="next"
+        class:list={[card, 'sm:col-start-2 sm:text-end']}
+      >
+        <span class="text-sm text-muted">
+          {t(locale, 'nav.next')}
+          {otherLevel(next)}{' '}
+          <span aria-hidden="true" class="inline-block rtl:-scale-x-100">
+            →
+          </span>
+        </span>
+        <span class="font-semibold">{next.title}</span>
+      </a>
+    )}
+  </nav>
+)}
