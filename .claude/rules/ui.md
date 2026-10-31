@@ -16,7 +16,7 @@ paths:
 - No page transitions: no `<ClientRouter />`, no CSS `@view-transition`.
 - Budgets, enforced by `scripts/check-js-budget.ts` in CI (gzipped JS the page loads, each file separately, imported chunks followed, external scripts excluded):
   - pages without islands: ≤ 3 KB (the search UI is not counted: no page loads it until search is opened);
-  - pages with islands: ≤ 45 KB (Svelte + svelte-dnd-action ≈ 13.5 KB + our code);
+  - pages with islands: ≤ 45 KB (Svelte, svelte-dnd-action and the exercise code; `pnpm budget` prints the current sizes);
   - Lighthouse ≥ 95 in all categories, checked before launch.
 
 ## Page types
@@ -27,7 +27,7 @@ paths:
 - Under the topic title, next to the badges, "↓ Practice" jumps to the practice card (the card links back with "↑ Explanation").
 - Previous/next topic (`TopicPager.astro`): two cards at the end of the topic page with the topic titles, on every screen size, in reading order across levels (the last A1 topic leads to the first A2 topic, and the card names the level). No fixed bottom bar.
 - Footer on every page, across the whole width under sidebar and content (the `contentinfo` landmark): About, Legal notice and privacy, source code, licenses.
-- `noindex`: coming-soon pages, `ready: false` locales, preview deployments.
+- `noindex`: coming-soon pages, 404 pages, `ready: false` locales, preview deployments.
 
 ## Layout
 
@@ -45,7 +45,7 @@ paths:
 - Tokens (`src/styles/global.css`): semantic colors (`bg`, `surface`, `card`, `fg`, `muted`, `border`, `control`, `accent`, `accent-soft`, `accent-fg`, `focus`, `success(-soft)`, `danger(-soft)`, `header`) per `[data-theme]`, radii (`rounded-ui`, `rounded-card`, `rounded-chip`) and shadows (`shadow-card`, `shadow-pop`), exposed to Tailwind (`bg-bg`, `text-muted`, …). `control` is the border of interactive controls (≥ 3:1).
 - Use only these tokens: no raw colors (exception: the Austrian `.flag`), no `dark:` variants except for swapping icons. Dark text is deliberately not pure white (about 13:1) and uses grayscale antialiasing, so it does not glow.
 - Favicon: a golden pretzel (Brezel) on the teal tile, `public/favicon.svg`. `favicon.ico` (32 px, one embedded PNG) and `apple-touch-icon.png` (180 px, full-bleed square, since iOS rounds the corners itself) are rendered from it: regenerate both when the SVG changes. No web manifest.
-- Examples always show German with its translation (no "Hide translation" toggle). Audio comes later as pre-generated Azure AI Speech files with an Austrian voice (stage 4b); no browser speech API and no runtime TTS calls.
+- Examples always show German with its translation (no "Hide translation" toggle). Audio comes later, once there is enough content: pre-generated files with an Austrian voice; no browser speech API and no runtime TTS calls.
 
 ## Accessibility
 

@@ -21,6 +21,11 @@ interface Props {
   description?: string | undefined;
   /** Force noindex for this page (e.g. coming-soon pages). */
   noindex?: boolean;
+  /**
+   * 404 page: served for any unknown URL, so noindex, no canonical, hreflang or `og:url`, and the
+   * language picker links to the home page of each locale.
+   */
+  notFound?: boolean;
   /** Level of the page: shows the sidebar with that level's topics. */
   level?: LevelId | undefined;
   /** Slug of the topic page: marks it in the sidebar. */
@@ -36,15 +41,16 @@ const {
   title,
   description,
   noindex = false,
+  notFound = false,
   level,
   topic,
   ogType = 'website',
   structuredData,
 } = Astro.props;
 const localeConfig = getLocaleConfig(locale);
-const path = Astro.url.pathname;
+const path = notFound ? '/' : Astro.url.pathname;
 const pageTitle = title ? `${title} · ${site.name}` : site.name;
-const robotsNoindex = noindex || !localeConfig.ready || PUBLIC_DEPLOY_ENV === 'preview';
+const robotsNoindex = noindex || notFound || !localeConfig.ready || PUBLIC_DEPLOY_ENV === 'preview';
 const canonical = new URL(localizePath(path, locale), site.url).href;
 const metaDescription = description ?? t(locale, 'site.tagline');
 const ogLocaleAlternates = localeConfig.ready
@@ -75,10 +81,11 @@ const topics = level ? await getTopicLinks(locale) : [];
     <title>{pageTitle}</title>
     <meta name="description" content={metaDescription} />
     {robotsNoindex && <meta name="robots" content="noindex" />}
-    <link rel="canonical" href={canonical} />
-    {alternates(path, site.url).map(({ hreflang, href }) => (
-      <link rel="alternate" hreflang={hreflang} href={href} />
-    ))}
+    {!notFound && <link rel="canonical" href={canonical} />}
+    {!notFound &&
+      alternates(path, site.url).map(({ hreflang, href }) => (
+        <link rel="alternate" hreflang={hreflang} href={href} />
+      ))}
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -87,7 +94,7 @@ const topics = level ? await getTopicLinks(locale) : [];
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title ?? site.name} />
     <meta property="og:description" content={metaDescription} />
-    <meta property="og:url" content={canonical} />
+    {!notFound && <meta property="og:url" content={canonical} />}
     <meta property="og:locale" content={localeConfig.ogLocale} />
     {ogLocaleAlternates.map((ogLocale) => (
       <meta property="og:locale:alternate" content={ogLocale} />

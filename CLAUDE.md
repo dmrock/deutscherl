@@ -8,6 +8,7 @@ A free website for learning German grammar: explanations in the learner's native
 - The site teaches grammar only: no dictionary or vocabulary database; Austrian vocabulary goes into the topics.
 - No accounts, no progress tracking, no cookies, no ad trackers, no runtime API or database calls.
 - Sponsor banners later: static, labeled as ads. The topic layout keeps a sponsor slot.
+- Audio for German sentences comes later, once there is enough content.
 
 This file and `.claude/rules/` are the source of truth. `docs/architecture.html` is an illustrated snapshot and may lag behind.
 
@@ -68,7 +69,7 @@ Components, pages and tests use `t(locale, key)` or read content files instead o
 
 ## Core principles
 
-- Locales are defined once in `src/i18n/locales.ts`; adding a language needs no code changes elsewhere.
+- Locales are defined once in `src/i18n/locales.ts`; adding a language needs no code changes elsewhere besides registering its UI strings (steps: `docs/adding-a-language.md`).
 - German is single-sourced: each German sentence exists once in `german.yaml` and is shared by all locales; everything in a native language lives in per-locale files.
 - Every German fragment on a page carries `lang="de"`.
 - Zero JavaScript by default; islands hydrate with `client:visible` and get already-localized strings.

@@ -1,7 +1,7 @@
 /**
  * SEO helpers (pure, unit-tested): structured data (JSON-LD) and the sitemap filter.
  * Pages that are noindex never go into the sitemap: coming-soon levels, locales that are not
- * ready, the 404 page.
+ * ready, the 404 pages.
  */
 import { levels } from '../config/site.ts';
 import { defaultLocale, type LocaleCode, locales } from '../i18n/locales.ts';
@@ -81,7 +81,7 @@ export function topicData(options: {
 /** Whether a built page (absolute URL) belongs in the sitemap. */
 export function inSitemap(url: string): boolean {
   const path = new URL(url).pathname;
-  if (path === '/404/' || path.endsWith('/404.html')) return false;
+  if (stripLocale(path) === '/404/' || path.endsWith('/404.html')) return false;
   const first = path.split('/')[1] ?? '';
   const locale = locales.find((entry) => entry.code === first && entry.code !== defaultLocale);
   if (locale && !locale.ready) return false;
