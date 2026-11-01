@@ -1,6 +1,6 @@
 examples:
   - id: e1
-    de: 'Er **fährt** jeden Tag mit dem Rad zur Arbeit.'
+    de: 'Er **fährt** jeden Tag mit dem Rad ins Büro.'
   - id: e2
     de: 'Du **liest** sehr schnell.'
   - id: e3
@@ -11,6 +11,8 @@ examples:
     de: 'Gestern **war** ich sehr müde.'
   - id: e6
     de: 'Als Kind **konnte** ich nicht schwimmen.'
+  - id: e7
+    de: 'Ich **habe** das Auto in die Garage **gefahren**.'
 tables:
   - id: a-ae
     columns: [infinitive, present, perfekt]

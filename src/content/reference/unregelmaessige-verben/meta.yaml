@@ -4,9 +4,25 @@ sources:
   - title: 'Duden: Die Grammatik (Duden Band 4), starke, unregelmäßige und Modalverben'
   - title: 'Duden Sprachratgeber: Perfektbildung mit „haben“ oder „sein“'
     url: https://www.duden.de/sprachwissen/sprachratgeber/Perfektbildung-mit-haben-oder-sein
-  - title: 'Variantengrammatik des Standarddeutschen: Bildung des Perfekts'
-    url: https://mediawiki.ids-mannheim.de/VarGra/index.php/Bildung_des_Perfekts
   - title: 'grammis (IDS Mannheim): Ich bin gesessen oder ich habe gesessen? Regionale Varianten beim Perfekt mit sein oder haben'
     url: https://grammis.ids-mannheim.de/fragen/87
   - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
     url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'Duden: sitzen (hat / süddeutsch, österreichisch, schweizerisch: ist gesessen)'
+    url: https://www.duden.de/rechtschreibung/sitzen
+  - title: 'Duden: fahren (Fahrzeug steuern, befördern: Perfekt mit hat)'
+    url: https://www.duden.de/rechtschreibung/fahren
+  - title: 'DWDS: fahren (transitiv: Perfektbildung mit haben)'
+    url: https://www.dwds.de/wb/fahren
+  - title: 'Duden: fliegen (Luftfahrzeug steuern, befördern: Perfekt mit hat)'
+    url: https://www.duden.de/rechtschreibung/fliegen
+  - title: 'DWDS: fliegen (Luftfahrzeug steuern: Perfektbildung mit haben)'
+    url: https://www.dwds.de/wb/fliegen
+  - title: 'DWDS: schwimmen (ohne Ziel: sein bzw. haben; mit Richtung: sein)'
+    url: https://www.dwds.de/wb/schwimmen
+  - title: 'Duden Sprachratgeber: Perfekt vs. Präteritum (gesprochene Sprache überwiegend Perfekt; Modalverben auch mündlich im Präteritum)'
+    url: https://www.duden.de/sprachwissen/sprachratgeber/Perfekt-vs-Pr%C3%A4teritum
+  - title: 'grammis (IDS Mannheim): Präteritum versus Präsensperfekt'
+    url: https://grammis.ids-mannheim.de/systematische-grammatik/1442
+  - title: 'André Meinunger: Sick of Sick? (2008), Auszug bei Klett (sein, haben und Modalverben auch in der gesprochenen Sprache sehr häufig im Präteritum)'
+    url: https://www2.klett.de/sixcms/media.php/229/350470_0097_Meinunger_Sick.pdf

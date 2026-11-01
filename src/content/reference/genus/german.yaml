@@ -2,7 +2,7 @@ examples:
   - id: e1
     de: '**Die Zeitung** liegt auf dem Tisch.'
   - id: e2
-    de: '**Das Brötchen** ist noch warm.'
+    de: '**Das Kätzchen** schläft auf dem Sofa.'
   - id: e3
     de: '**Das Essen** ist fertig.'
   - id: e4
@@ -45,9 +45,7 @@ tables:
     gloss: true
     rows:
       - id: chen
-        cells: ['-chen', 'das Mädchen, das Brötchen']
-      - id: lein
-        cells: ['-lein', 'das Büchlein, das Tischlein']
+        cells: ['-chen', 'das Mädchen, das Kätzchen']
       - id: ment
         cells: ['-ment', 'das Dokument, das Instrument']
       - id: um
@@ -55,7 +53,7 @@ tables:
       - id: ma
         cells: ['-ma', 'das Thema, das Klima']
       - id: ge
-        cells: ['Ge-', 'das Gemüse, das Getränk']
+        cells: ['Ge-', 'das Gebirge, das Gemüse']
   - id: masculine
     columns: [clue, examples]
     gloss: true
@@ -77,3 +75,5 @@ tables:
 austrianNotes:
   - id: at1
     de: 'Ich schreibe dir später **ein E-Mail**.'
+  - id: at2
+    de: 'Brauchen Sie ein **Sackerl**?'
