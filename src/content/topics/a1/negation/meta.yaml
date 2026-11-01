@@ -14,3 +14,5 @@ sources:
     url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
   - title: 'Duden: heuer (süddeutsch, österreichisch, schweizerisch)'
     url: https://www.duden.de/rechtschreibung/heuer
+  - title: 'DWDS: heuer (meist D-Südost, A, CH)'
+    url: https://www.dwds.de/wb/heuer

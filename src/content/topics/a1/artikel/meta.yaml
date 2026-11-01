@@ -12,3 +12,7 @@ sources:
     url: https://www.duden.de/rechtschreibung/E_Mail
   - title: 'Duden: Cola (süddeutsch, österreichisch, schweizerisch nur: das Cola)'
     url: https://www.duden.de/rechtschreibung/Cola
+  - title: 'DWDS: E-Mail (Neutrum besonders A, CH)'
+    url: https://www.dwds.de/wb/E-Mail
+  - title: 'Wiktionary: Cola (das Cola in Süddeutschland, der Schweiz und Österreich)'
+    url: https://de.wiktionary.org/wiki/Cola

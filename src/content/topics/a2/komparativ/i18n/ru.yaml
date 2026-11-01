@@ -29,13 +29,13 @@ choice:
   c5:
     why: 'Дальше идёт *als*, значит, нужна сравнительная степень. *groß* получает умлаут: *größer*.'
   c6:
-    why: '*hoch* — неправильная форма: *höher*, *am höchsten*.'
+    why: 'У *hoch* неправильные формы: *höher*, *am höchsten*.'
   c7:
-    why: '*gern* — неправильная форма: *lieber*, *am liebsten*. *lieber … als* значит «больше люблю …, чем».'
+    why: 'У *gern* неправильные формы: *lieber*, *am liebsten*. *lieber … als* значит «больше люблю …, чем».'
   c8:
-    why: '*gut* — неправильная форма: *besser*, *am besten*. Дальше идёт *als*, поэтому нужно *besser*.'
+    why: 'У *gut* неправильные формы: *besser*, *am besten*. Дальше идёт *als*, поэтому нужно *besser*.'
   c9:
-    why: '*viel* — неправильная форма: *mehr*, *am meisten*.'
+    why: 'У *viel* неправильные формы: *mehr*, *am meisten*.'
   c10:
     why: '*heiß* оканчивается на *-ß*, поэтому в превосходной степени добавляется ещё одно *e*: *am heißesten*.'
   c11:

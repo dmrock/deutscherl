@@ -35,7 +35,7 @@ choice:
 
 wordOrder:
   w1:
-    translation: I saw a film yesterday.
+    translation: I watched a film yesterday.
     why: '*haben* (here *habe*) is in position 2 and the participle *gesehen* is at the end. *gestern* or *einen Film* can also come first; then the subject *ich* moves after the verb.'
   w2:
     translation: We went to Vienna.

@@ -18,3 +18,7 @@ sources:
     url: https://www.duden.de/rechtschreibung/Joghurt
   - title: 'Duden: Keks (österreichisch: das Keks)'
     url: https://www.duden.de/rechtschreibung/Keks
+  - title: 'DWDS: Joghurt (Neutrum besonders A, CH)'
+    url: https://www.dwds.de/wb/Joghurt
+  - title: 'DWDS: Keks (Neutrum A)'
+    url: https://www.dwds.de/wb/Keks
