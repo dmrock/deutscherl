@@ -11,18 +11,37 @@ paths:
   - "tests/fixtures/**"
 ---
 
-# Topic content
+# Content: topics and reference pages
 
 ## Writing content
 
-German correctness cannot be assumed, neither the maintainers' nor yours. German content counts as correct only after a teacher has verified it, so everything you write stays `draft`, and you name every sentence you are unsure about in your summary.
+German correctness cannot be assumed, neither the maintainers' nor yours. Check every German sentence, form and rule against reliable sources and fix what is wrong yourself:
+
+- A fact (a form, a gender, an auxiliary, a rule, an exception, a regional usage) needs two independent sources. Phrase it no stronger than the sources do ("usually", "often", "informal").
+- Accepted sources: Duden (dictionary, grammar, Sprachratgeber), DWDS, grammis (IDS Mannheim), the Österreichisches Wörterbuch, the Variantengrammatik des Standarddeutschen, the Variantenwörterbuch des Deutschen; grammars and course material from established publishers and universities. Wiktionary counts only as a second source.
+- Add every source you used to `meta.yaml` `sources`, with what it confirms in the title.
+- Replace sentences that are correct but awkward with natural ones.
+- Leave out what no two sources settle, and report it with what you checked.
+
+Everything you write stays `draft`: content counts as correct only after a teacher has verified it.
 
 - Write the English explanation first: it is the canonical explanation the teacher verifies. Other locales are translated from its meaning (not word for word) and describe the same rule, exceptions and examples.
-- Every topic lists `sources` (e.g. Duden grammar, Goethe-Institut / ÖSD level descriptions). Write your own text and examples: never copy from books, course material or other websites, and never copy Goethe/ÖSD word lists wholesale.
+- Every topic and reference page lists `sources` (e.g. Duden grammar, Goethe-Institut / ÖSD level descriptions). Write your own text and examples: never copy from books, course material or other websites, and never copy Goethe/ÖSD word lists wholesale.
 - Explanations: short sentences, no jargon without a one-line definition.
 - Examples: natural, everyday German.
-- Austrian notes only for real, established Austrian usage (reference: Österreichisches Wörterbuch), marked with `region: AT`. When unsure, leave the note out and name it in your summary (no TODOs in content).
+- Austrian notes only for real, established Austrian usage (reference: Österreichisches Wörterbuch), marked with `region: AT`. Every note needs two sources (the Österreichisches Wörterbuch, the Variantengrammatik or the Variantenwörterbuch, Duden or DWDS with an Austrian label); without them, leave the note out and report it (no TODOs in content).
 - Russian explanations: simple, friendly Russian (informal "you"), grammar terms in Russian with the German term in parentheses the first time (e.g. the Russian term for "dative case" followed by "(Dativ)").
+
+## Content checklist
+
+Before a pull request with new or changed German content, a separate review pass runs this checklist on all of that content (topics and reference pages) and fixes what it finds, following the source rules above:
+
+1. Every German sentence is correct and natural.
+2. Rules name the main exceptions an A1/A2 learner meets, and the examples use common words.
+3. Exercise items have exactly one correct answer, or complete `accept` lists.
+4. Austrian usage: every note is confirmed by two sources, and Austrian usage that matters for the page is not missing.
+5. Every translation says the same as the English page.
+6. Terms are the same across pages (e.g. the German term in parentheses the first time, the same translation of a grammar term everywhere).
 
 ## Files of a topic (`src/content/topics/<level>/<slug>/`)
 

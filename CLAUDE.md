@@ -34,7 +34,7 @@ pnpm budget             # JS budget per page (after a build)
 
 - Commit with sign-off: `git commit -s` (DCO is enforced in CI).
 - Content you generate stays `draft` (base and translations). Never set `reviewed` or `verified`, never edit `review.yaml` by hand, and run `review:minor` or `review:set` only when asked to explicitly.
-- If you are not sure a German sentence is correct, say so in your summary instead of guessing.
+- Check German against reliable sources and fix it yourself (sources and checklist in `.claude/rules/content.md`). A fact needs two independent sources. Replace sentences that are correct but awkward with natural ones. Report only what no source settles, and say what you checked. Content still stays `draft` until a teacher verifies it.
 - Before adding a dependency, check its current docs (Context7 or the official site) and state its gzipped size and why it is needed, also in your summary.
 - At the end of every stage, update this file or the matching file in `.claude/rules/` when a rule or the structure changed. There is no decision log: a decision that matters becomes a rule, and background that helps contributors goes into `README.md`.
 - The repository is public. Commit messages, PR descriptions, docs and comments describe what the code does; they never mention who decided something or why someone asked for it.

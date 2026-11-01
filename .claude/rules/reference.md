@@ -21,6 +21,8 @@ Reference pages are curated grammar tables, not a dictionary:
 - No full inventories, no lookup of arbitrary words, no generated paradigms, no data imported from dictionaries or word lists.
 - One page holds at most about 80 rows. Split long lists into tables by pattern (`a` → `ä`, `e` → `i`, Perfekt with `sein`), 20 rows or fewer each.
 
+The writing rules, the source rules and the content checklist in `.claude/rules/content.md` apply to reference pages too.
+
 ## Files (`src/content/reference/<slug>/`)
 
 The same files as a topic (`.claude/rules/content.md`), with these differences:
