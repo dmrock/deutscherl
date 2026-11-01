@@ -10,6 +10,8 @@ Thank you for helping! This project is small and run by one person, so a few rul
 
 Pull requests without an agreed issue may be closed. The only exceptions are one-line typo fixes and changes by the maintainer.
 
+Every pull request gets an automated review by Claude Code: inline comments and a summary. It is advisory; the maintainer decides what to merge.
+
 ## Sign off your commits (DCO)
 
 Every commit needs a `Signed-off-by` line ([Developer Certificate of Origin](https://developercertificate.org/)). CI checks this.
