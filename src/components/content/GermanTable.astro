@@ -1,0 +1,106 @@
+---
+/**
+ * `<GermanTable id="t1">caption in the locale</GermanTable>` in MDX: a table of German forms from
+ * german.yaml (`tables`), with column labels and meanings from i18n/<locale>.yaml. The first column
+ * is the row header and stays in view while the table scrolls inside its box (global.css,
+ * `.german-table`); the box is focusable, so the table can be scrolled with the keyboard.
+ * German text gets lang="de" on its own span, so the screen-reader label of a regional variant is
+ * read in the page locale. Column labels and meanings are native-language text, where `*word*`
+ * marks a German word.
+ */
+import { t } from '../../i18n/utils.ts';
+import { splitMarked } from '../../lib/marked-text.ts';
+import { getPageTopicContent } from '../../lib/topic-content.ts';
+import MarkedText from './MarkedText.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const { locale, german, i18n } = await getPageTopicContent(Astro);
+const table = german.tables.find((item) => item.id === id);
+if (!table) throw new Error(`Unknown table id "${id}" on ${Astro.url.pathname}`);
+const captionId = `table-${id}`;
+const label = (column: string) => i18n?.columns[column] ?? column;
+const rows = table.rows.map((row) => ({
+  id: row.id,
+  cells: row.cells.map((de, index) => ({
+    de,
+    variants: (row.variants ?? []).filter((variant) => variant.column === table.columns[index]),
+  })),
+  gloss: i18n?.glosses[row.id],
+}));
+const [firstColumn, ...otherColumns] = table.columns;
+---
+
+<div
+  id={`german-table-${id}`}
+  class="german-table my-3 max-w-full overflow-x-auto rounded-card border border-border bg-card"
+  role="region"
+  aria-labelledby={captionId}
+  tabindex="0"
+>
+  <table>
+    <caption id={captionId}>
+      <slot />
+    </caption>
+    <thead>
+      <tr>
+        {firstColumn && (
+          <th scope="col">
+            <MarkedText text={label(firstColumn)} />
+          </th>
+        )}
+        {otherColumns.map((column) => (
+          <th scope="col">
+            <MarkedText text={label(column)} />
+          </th>
+        ))}
+        {table.gloss && <th scope="col">{t(locale, 'table.meaning')}</th>}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => {
+        const [first, ...others] = row.cells;
+        const cell = (content: (typeof row.cells)[number]) => (
+          <>
+            <span lang="de">
+              {splitMarked(content.de, '**').map((segment) =>
+                segment.marked ? (
+                  <strong class="font-semibold">{segment.text}</strong>
+                ) : (
+                  segment.text
+                ),
+              )}
+            </span>
+            {content.variants.map((variant) => (
+              <span class="mt-0.5 flex items-center gap-1.5">
+                <span class="flag" aria-hidden="true" />
+                <span class="sr-only">{t(locale, 'topic.austrianUsage')}:</span>
+                <span lang="de">
+                  {splitMarked(variant.de, '**').map((segment) =>
+                    segment.marked ? (
+                      <strong class="font-semibold">{segment.text}</strong>
+                    ) : (
+                      segment.text
+                    ),
+                  )}
+                </span>
+              </span>
+            ))}
+          </>
+        );
+        return (
+          <tr id={`row-${row.id}`}>
+            {first && <th scope="row">{cell(first)}</th>}
+            {others.map((content) => (
+              <td>{cell(content)}</td>
+            ))}
+            {table.gloss && <td class="gloss">{row.gloss && <MarkedText text={row.gloss} />}</td>}
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>

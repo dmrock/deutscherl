@@ -1,0 +1,25 @@
+# Test fixture (not reviewed content).
+examples:
+  - id: e1
+    de: 'Er **fährt** nach Wien.'
+tables:
+  - id: t1
+    columns: [infinitive, present, perfekt]
+    gloss: true
+    rows:
+      - id: fahren
+        cells: [fahren, 'er **fährt**', 'ist **gefahren**']
+      - id: sitzen
+        cells: [sitzen, 'er sitzt', 'hat **gesessen**']
+        variants:
+          - column: perfekt
+            de: 'ist **gesessen**'
+            region: AT
+  - id: t2
+    columns: [infinitive, present]
+    rows:
+      - id: lesen
+        cells: [lesen, 'er **liest**']
+austrianNotes:
+  - id: at1
+    de: 'Ich **bin** gesessen.'

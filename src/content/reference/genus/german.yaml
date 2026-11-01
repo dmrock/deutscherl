@@ -1,0 +1,79 @@
+examples:
+  - id: e1
+    de: '**Die Zeitung** liegt auf dem Tisch.'
+  - id: e2
+    de: '**Das Brötchen** ist noch warm.'
+  - id: e3
+    de: '**Das Essen** ist fertig.'
+  - id: e4
+    de: '**Der Winter** war sehr kalt.'
+  - id: e5
+    de: 'Wo ist **die Bushaltestelle**?'
+  - id: e6
+    de: '**Der Kühlschrank** ist leer.'
+tables:
+  - id: feminine
+    columns: [clue, examples]
+    gloss: true
+    rows:
+      - id: ung
+        cells: ['-ung', 'die Zeitung, die Wohnung']
+      - id: heit
+        cells: ['-heit', 'die Freiheit, die Gesundheit']
+      - id: keit
+        cells: ['-keit', 'die Möglichkeit, die Sehenswürdigkeit']
+      - id: schaft
+        cells: ['-schaft', 'die Freundschaft, die Mannschaft']
+      - id: ion
+        cells: ['-ion', 'die Information, die Situation']
+      - id: taet
+        cells: ['-tät', 'die Universität, die Qualität']
+      - id: ei
+        cells: ['-ei', 'die Bäckerei, die Polizei']
+      - id: ik
+        cells: ['-ik', 'die Musik, die Politik']
+      - id: ur
+        cells: ['-ur', 'die Kultur, die Natur']
+      - id: ie
+        cells: ['-ie', 'die Familie, die Energie']
+      - id: in
+        cells: ['-in', 'die Lehrerin, die Ärztin']
+      - id: e
+        cells: ['-e', 'die Lampe, die Straße']
+  - id: neuter
+    columns: [clue, examples]
+    gloss: true
+    rows:
+      - id: chen
+        cells: ['-chen', 'das Mädchen, das Brötchen']
+      - id: lein
+        cells: ['-lein', 'das Büchlein, das Tischlein']
+      - id: ment
+        cells: ['-ment', 'das Dokument, das Instrument']
+      - id: um
+        cells: ['-um', 'das Museum, das Zentrum']
+      - id: ma
+        cells: ['-ma', 'das Thema, das Klima']
+      - id: ge
+        cells: ['Ge-', 'das Gemüse, das Getränk']
+  - id: masculine
+    columns: [clue, examples]
+    gloss: true
+    rows:
+      - id: er
+        cells: ['-er', 'der Lehrer, der Wecker']
+      - id: ling
+        cells: ['-ling', 'der Frühling, der Schmetterling']
+      - id: ismus
+        cells: ['-ismus', 'der Tourismus, der Optimismus']
+      - id: ig
+        cells: ['-ig', 'der Honig, der König']
+      - id: or
+        cells: ['-or', 'der Motor, der Doktor']
+      - id: ist
+        cells: ['-ist', 'der Tourist, der Polizist']
+      - id: ent
+        cells: ['-ent', 'der Student, der Patient']
+austrianNotes:
+  - id: at1
+    de: 'Ich schreibe dir später **ein E-Mail**.'

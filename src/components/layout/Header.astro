@@ -10,12 +10,13 @@ import ThemeToggle from './ThemeToggle.astro';
 interface Props {
   locale: LocaleCode;
   path: string;
-  level?: LevelId | undefined;
+  /** Level of the page, or `reference` on reference pages: marks its tab */
+  active?: LevelId | 'reference' | undefined;
   /** Show the menu button that opens the sidebar sheet (below lg) */
   hasSidebar: boolean;
 }
 
-const { locale, path, level, hasSidebar } = Astro.props;
+const { locale, path, active, hasSidebar } = Astro.props;
 ---
 
 <!-- 3rem including the border: the sticky sidebar starts at 3rem and fills the rest exactly. -->
@@ -48,7 +49,7 @@ const { locale, path, level, hasSidebar } = Astro.props;
       <span class="brand-mark" aria-hidden="true"></span>
       {site.name}
     </a>
-    <LevelSwitcher locale={locale} active={level} class="me-auto hidden lg:block" />
+    <LevelSwitcher locale={locale} active={active} class="me-auto hidden lg:flex" />
     <Search locale={locale} />
     <LanguagePicker locale={locale} path={path} />
     <ThemeToggle locale={locale} />

@@ -1,0 +1,14 @@
+order: 1
+levels: [a1, a2]
+sources:
+  - title: 'Duden: Genus'
+    url: https://www.duden.de/rechtschreibung/Genus
+  - title: 'grammis (IDS Mannheim): Definite und indefinite Artikel'
+    url: https://grammis.ids-mannheim.de/progr@mm/6857
+  - title: 'Duden: Die Grammatik (Duden Band 4), Genus des Substantivs'
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'Duden: E-Mail (besonders süddeutsch, österreichisch, schweizerisch: das E-Mail)'
+    url: https://www.duden.de/rechtschreibung/E_Mail
+  - title: 'Duden: Cola (süddeutsch, österreichisch, schweizerisch nur: das Cola)'
+    url: https://www.duden.de/rechtschreibung/Cola

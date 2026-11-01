@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { breadcrumbData, inSitemap, jsonLd, topicData, websiteData } from '../../src/lib/seo.ts';
+import {
+  breadcrumbData,
+  inSitemap,
+  jsonLd,
+  referenceData,
+  topicData,
+  websiteData,
+} from '../../src/lib/seo.ts';
 
 const origin = 'https://example.com';
 
@@ -49,6 +56,30 @@ describe('structured data', () => {
       inLanguage: 'en',
       isAccessibleForFree: true,
     });
+  });
+});
+
+describe('referenceData', () => {
+  it('describes a reference page for several levels', () => {
+    expect(
+      referenceData({
+        title: 'Genus',
+        description: 'd',
+        url: `${origin}/reference/genus/`,
+        locale: 'en',
+        levels: ['A1', 'A2'],
+      }),
+    ).toMatchObject({
+      '@type': 'LearningResource',
+      educationalLevel: 'A1, A2',
+      learningResourceType: ['reference'],
+      inLanguage: 'en',
+    });
+  });
+
+  it('keeps reference pages in the sitemap', () => {
+    expect(inSitemap(`${origin}/reference/`)).toBe(true);
+    expect(inSitemap(`${origin}/ru/reference/genus/`)).toBe(true);
   });
 });
 

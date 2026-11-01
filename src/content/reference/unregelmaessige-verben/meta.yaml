@@ -1,0 +1,12 @@
+order: 2
+levels: [a1, a2]
+sources:
+  - title: 'Duden: Die Grammatik (Duden Band 4), starke, unregelmäßige und Modalverben'
+  - title: 'Duden Sprachratgeber: Perfektbildung mit „haben“ oder „sein“'
+    url: https://www.duden.de/sprachwissen/sprachratgeber/Perfektbildung-mit-haben-oder-sein
+  - title: 'Variantengrammatik des Standarddeutschen: Bildung des Perfekts'
+    url: https://mediawiki.ids-mannheim.de/VarGra/index.php/Bildung_des_Perfekts
+  - title: 'grammis (IDS Mannheim): Ich bin gesessen oder ich habe gesessen? Regionale Varianten beim Perfekt mit sein oder haben'
+    url: https://grammis.ids-mannheim.de/fragen/87
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
