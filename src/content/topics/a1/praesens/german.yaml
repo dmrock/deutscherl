@@ -17,7 +17,7 @@ examples:
     de: 'Wo **wohnen** Sie?'
   # Stems ending in -t or -d: one example per cell of the forms table
   - id: e7
-    de: 'Ich **arbeite** heute von zu Hause.'
+    de: 'Ich **arbeite** heute von zu Hause aus.'
   - id: e8
     de: 'Wir **warten** auf den Bus.'
   - id: e9
