@@ -35,7 +35,7 @@ choice:
   c6:
     why: '*eine Lehrerin* is feminine, so the genitive is *einer Lehrerin*. Feminine nouns get no ending.'
   c7:
-    why: 'With a name, add *-s* with no apostrophe: *Annas Schwester*. *Anna’s* with an apostrophe is not correct in a normal sentence.'
+    why: 'With a name, add *-s* with no apostrophe: *Annas Schwester*. *Anna’s* with an apostrophe is the English spelling, not the standard German one.'
   c8:
     why: '*Max* ends in *x*, so it gets only an apostrophe in the genitive: *Max’ Zimmer*. No extra *-s*.'
   c9:
