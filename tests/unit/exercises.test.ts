@@ -299,12 +299,15 @@ describe('resolveExercises()', () => {
       { id: 'w1', parts: ['wann', 'bist', 'du', 'gekommen'], fixed: true, punctuation: '?' },
     ],
     austrianNotes: [],
+    tables: [],
   };
   const i18n: TopicI18n = {
     examples: {},
     choice: { c1: { why: 'why c1' } },
     wordOrder: { w1: { translation: 'When did you come?', why: 'why w1' } },
     austrianNotes: {},
+    columns: {},
+    glosses: {},
   };
 
   it('joins German items with the locale texts', () => {

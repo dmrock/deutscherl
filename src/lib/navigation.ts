@@ -68,3 +68,23 @@ export function neighbours(
 export function topicPath(topic: Pick<TopicLink, 'level' | 'slug'>): string {
   return `/${topic.level}/${topic.slug}/`;
 }
+
+/** A reference page (`src/content/reference/<slug>/`) in navigation. */
+export interface ReferenceLink {
+  slug: string;
+  order: number;
+  levels: readonly LevelId[];
+  title: string;
+  /** Without `*` markers */
+  summary: string;
+}
+
+/** Reference pages in reading order: `order` from meta.yaml, then slug. */
+export function referenceInOrder(pages: readonly ReferenceLink[]): ReferenceLink[] {
+  return [...pages].sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug));
+}
+
+/** URL path of the reference index (no slug) or of a reference page, without locale prefix. */
+export function referencePath(slug?: string): string {
+  return slug ? `/reference/${slug}/` : '/reference/';
+}

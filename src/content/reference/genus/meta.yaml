@@ -1,0 +1,76 @@
+order: 1
+levels: [a1, a2]
+sources:
+  - title: 'Duden: Genus'
+    url: https://www.duden.de/rechtschreibung/Genus
+  - title: 'grammis (IDS Mannheim): Definite und indefinite Artikel'
+    url: https://grammis.ids-mannheim.de/progr@mm/6857
+  - title: 'Duden: Die Grammatik (Duden Band 4), Genus des Substantivs'
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
+  - title: 'Duden: E-Mail (besonders süddeutsch, österreichisch, schweizerisch: das E-Mail)'
+    url: https://www.duden.de/rechtschreibung/E_Mail
+  - title: 'Duden: Cola (süddeutsch, österreichisch, schweizerisch nur: das Cola)'
+    url: https://www.duden.de/rechtschreibung/Cola
+  - title: 'DWDS: Tor (Neutrum)'
+    url: https://www.dwds.de/wb/Tor
+  - title: 'Duden: Tor [Eingang; Einfahrt] (Neutrum)'
+    url: https://www.duden.de/suchen/dudenonline/Tor%20%5BEingang;%20Einfahrt%5D
+  - title: 'DWDS: Labor (Neutrum)'
+    url: https://www.dwds.de/wb/Labor
+  - title: 'Duden: Labor (Neutrum)'
+    url: https://www.duden.de/rechtschreibung/Labor
+  - title: 'Wiktionary: -or (Suffix für männliche Nomen: Handelnde, technische Produkte)'
+    url: https://de.wiktionary.org/wiki/-or
+  - title: 'Masaryk-Universität, Seminarunterlage Derivationssuffixe (-or: der Direktor, der Motor)'
+    url: https://is.muni.cz/el/ped/jaro2016/NJ_G200/um/Derivationssuffixe.pdf
+  - title: 'Duden: -lein (Neutrum; Bildungen zum Teil dichterisch, altertümelnd, landschaftlich)'
+    url: https://www.duden.de/rechtschreibung/_lein
+  - title: 'DWDS: -lein (Neutrum; Bildungen zum Teil dichterisch, altertümelnd, landschaftlich)'
+    url: https://www.dwds.de/wb/-lein
+  - title: 'DWDS: Kätzchen (Neutrum)'
+    url: https://www.dwds.de/wb/Kätzchen
+  - title: 'DWDS: ge- (Kollektivbildungen mit Substantiven im Neutrum)'
+    url: https://www.dwds.de/wb/Ge-
+  - title: 'Duden: Gebirge (Kollektivbildung zu Berg, Neutrum)'
+    url: https://www.duden.de/rechtschreibung/Gebirge
+  - title: 'DWDS: Gebirge (Kollektivbildung, Neutrum)'
+    url: https://www.dwds.de/wb/Gebirge
+  - title: 'Duden: Gemüse (Kollektivbildung zu Mus, Neutrum)'
+    url: https://www.duden.de/rechtschreibung/Gemuese
+  - title: 'DWDS: Gemüse (Kollektivbildung zu Mus, Neutrum)'
+    url: https://www.dwds.de/wb/Gemüse
+  - title: 'DWDS: Gefahr (Femininum)'
+    url: https://www.dwds.de/wb/Gefahr
+  - title: 'DWDS: Geschmack (Maskulinum)'
+    url: https://www.dwds.de/wb/Geschmack
+  - title: 'DWDS: Knie (Neutrum)'
+    url: https://www.dwds.de/wb/Knie
+  - title: 'Duden: Knie (Neutrum)'
+    url: https://www.duden.de/rechtschreibung/Knie
+  - title: 'DWDS: Abitur (Neutrum)'
+    url: https://www.dwds.de/wb/Abitur
+  - title: 'Duden: Abitur (Neutrum; österreichisch, schweizerisch: Matura)'
+    url: https://www.duden.de/rechtschreibung/Abitur
+  - title: 'Duden: Matura (feminin; österreichisch, schweizerisch)'
+    url: https://www.duden.de/rechtschreibung/Matura
+  - title: 'DWDS: Matura (Femininum; in Österreich und der Schweiz)'
+    url: https://www.dwds.de/wb/Matura
+  - title: 'Duden: Sackerl (Neutrum; bayrisch, österreichisch)'
+    url: https://www.duden.de/rechtschreibung/Sackerl
+  - title: 'DWDS: Sackerl (Neutrum; A, umgangssprachlich)'
+    url: https://www.dwds.de/wb/Sackerl
+  - title: 'Duden: Pickerl (Neutrum; österreichisch umgangssprachlich)'
+    url: https://www.duden.de/rechtschreibung/Pickerl
+  - title: 'DWDS: Pickerl (Neutrum; A, umgangssprachlich)'
+    url: https://www.dwds.de/wb/Pickerl
+  - title: 'Duden: Kipferl (Neutrum; österreichisch)'
+    url: https://www.duden.de/rechtschreibung/Kipferl
+  - title: 'DWDS: Kipferl (Neutrum; A, D-Südost)'
+    url: https://www.dwds.de/wb/Kipferl
+  - title: 'Ransmayr, Dressler, Schwaiger: -chen- und -erl-Diminutive im geschriebenen österreichischen Standarddeutsch (ZDL 2022)'
+    url: https://www.uni-marburg.de/de/fb09/dsa/publikationen/zdl/jahrgaenge/jahrgaenge/2022-1/ransmayr-dressler-schwaiger
+  - title: 'Humboldt-Universität zu Berlin, Vorlesung Typologie: Genus (semantische Regeln nach Köpcke und Zubin: Tage, Monate, Jahreszeiten, Winde, Niederschläge maskulin)'
+    url: https://amor.cms.hu-berlin.de/~h2816i3x/Lehre/2006_VL_Typologie/Typologie_02_Genus.pdf
+  - title: 'Masaryk-Universität, Seminarunterlage Genus der Substantive (Tage, Monate, Jahreszeiten, Winde, Niederschläge maskulin)'
+    url: https://is.muni.cz/el/phil/jaro2013/NJII_3343/um/genus.pdf

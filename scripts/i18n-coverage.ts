@@ -1,7 +1,8 @@
 /**
- * Translation coverage (`.claude/rules/testing.md`: data checks). For every topic and locale: the
- * missing files (`<locale>.mdx`, `i18n/<locale>.yaml`) and missing keys (every German item needs a
- * translation or explanation). For every site page (`src/content/pages/<slug>/`): the missing
+ * Translation coverage (`.claude/rules/testing.md`: data checks). For every topic, reference page
+ * and locale: the missing files (`<locale>.mdx`, `i18n/<locale>.yaml`) and missing keys (every
+ * German item needs a translation or explanation, every table column a label, every row of a gloss
+ * table its meaning). For every site page (`src/content/pages/<slug>/`): the missing
  * `<locale>.mdx`. Fails only for ready locales; others are reported for information, so a language
  * can be translated step by step before it goes live.
  *
@@ -12,13 +13,13 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { type LocaleConfig, locales } from '../src/i18n/locales.ts';
 import { germanSchema, i18nSchema, type TopicI18n } from '../src/lib/content-schemas.ts';
-import { CONTENT_ROOT, readTopics, type TopicFiles } from './lib/content.ts';
+import { readContent, type TopicFiles } from './lib/content.ts';
 
 /** Site pages (about, legal): one folder per page, one MDX file per locale. */
 export const PAGES_ROOT = resolve(fileURLToPath(import.meta.url), '../../src/content/pages');
 
 export interface CoverageGap {
-  /** Topic key (`a2/perfekt`) or site page (`pages/about`) */
+  /** Topic key (`a2/perfekt`), reference page (`reference/genus`) or site page (`pages/about`) */
   topic: string;
   locale: string;
   ready: boolean;
@@ -39,6 +40,10 @@ export function requiredKeys(topic: TopicFiles): string[] {
       `wordOrder.${item.id}.why`,
     ]),
     ...german.austrianNotes.map((item) => `austrianNotes.${item.id}`),
+    ...[...new Set(german.tables.flatMap((table) => table.columns))].map((id) => `columns.${id}`),
+    ...german.tables
+      .filter((table) => table.gloss)
+      .flatMap((table) => table.rows.map((row) => `glosses.${row.id}`)),
   ];
 }
 
@@ -97,7 +102,7 @@ export function pageCoverage(
 }
 
 function main(): number {
-  const topics = readTopics(CONTENT_ROOT);
+  const topics = readContent();
   const gaps = [...coverage(topics), ...pageCoverage(PAGES_ROOT)];
   for (const gap of gaps) {
     const label = gap.ready ? 'error' : 'info (not ready)';
@@ -108,7 +113,9 @@ function main(): number {
     console.error(`\ni18n coverage failed: ${failing.length} gap(s) in ready locales.`);
     return 1;
   }
-  console.log(`i18n coverage complete for ready locales (${topics.length} topics).`);
+  console.log(
+    `i18n coverage complete for ready locales (${topics.length} topics and reference pages).`,
+  );
   return 0;
 }
 

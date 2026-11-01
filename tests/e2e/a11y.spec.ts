@@ -21,6 +21,8 @@ const pages = [
   { name: 'level without topics', path: '/a1/' },
   { name: 'coming soon', path: '/b1/' },
   { name: 'topic', path: '/a2/perfekt/' },
+  { name: 'reference index', path: '/reference/' },
+  { name: 'reference', path: '/reference/unregelmaessige-verben/' },
   { name: 'about', path: '/about/' },
   { name: 'legal', path: '/legal/' },
   { name: '404', path: '/404.html' },

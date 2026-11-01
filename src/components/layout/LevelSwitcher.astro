@@ -1,36 +1,54 @@
 ---
+/**
+ * The levels and, after a divider, the Reference tab (`.claude/rules/reference.md`). In the header
+ * from lg up and in the sidebar sheet below lg.
+ */
 import { type LevelId, levels } from '../../config/site.ts';
 import type { LocaleCode } from '../../i18n/locales.ts';
 import { localizePath, t } from '../../i18n/utils.ts';
+import { referencePath } from '../../lib/navigation.ts';
 
 interface Props {
   locale: LocaleCode;
-  /** Level of the current page, if any */
-  active?: LevelId | undefined;
+  /** Level of the current page, or `reference` on reference pages */
+  active?: LevelId | 'reference' | undefined;
   class?: string;
 }
 
 const { locale, active, class: className } = Astro.props;
 ---
 
-<nav aria-label={t(locale, 'nav.levels')} class={className}>
-  <ul class="flex flex-wrap items-center gap-1">
-    {levels.map((level) => (
-      <li>
-        <a
-          href={localizePath(`/${level.id}/`, locale)}
-          aria-current={level.id === active ? 'true' : undefined}
-          class:list={[
-            'inline-flex rounded-ui px-3 py-1 text-sm font-semibold',
-            level.id === active ? 'bg-surface' : 'hover:bg-surface',
-            !level.available && 'font-normal text-muted',
-          ]}
-        >
-          {level.label}
-          {/* Muted color shows "coming soon"; screen readers get it as text (WCAG 1.4.1). */}
-          {!level.available && <span class="sr-only"> ({t(locale, 'level.soon')})</span>}
-        </a>
-      </li>
-    ))}
-  </ul>
-</nav>
+<div class:list={['flex flex-wrap items-center gap-1', className]}>
+  <nav aria-label={t(locale, 'nav.levels')}>
+    <ul class="flex flex-wrap items-center gap-1">
+      {levels.map((level) => (
+        <li>
+          <a
+            href={localizePath(`/${level.id}/`, locale)}
+            aria-current={level.id === active ? 'true' : undefined}
+            class:list={[
+              'inline-flex rounded-ui px-3 py-1 text-sm font-semibold',
+              level.id === active ? 'bg-surface' : 'hover:bg-surface',
+              !level.available && 'font-normal text-muted',
+            ]}
+          >
+            {level.label}
+            {/* Muted color shows "coming soon"; screen readers get it as text (WCAG 1.4.1). */}
+            {!level.available && <span class="sr-only"> ({t(locale, 'level.soon')})</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+  <span class="mx-1 h-5 border-s border-border" aria-hidden="true"></span>
+  <a
+    href={localizePath(referencePath(), locale)}
+    aria-current={active === 'reference' ? 'true' : undefined}
+    class:list={[
+      'inline-flex rounded-ui px-3 py-1 text-sm font-semibold',
+      active === 'reference' ? 'bg-surface' : 'hover:bg-surface',
+    ]}
+  >
+    {t(locale, 'nav.reference')}
+  </a>
+</div>

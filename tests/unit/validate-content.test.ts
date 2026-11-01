@@ -14,7 +14,7 @@ afterEach(() => {
 
 /** Messages of all issues, as `file: message`. */
 function issues(): string[] {
-  return validateContent(fixture.root).map((issue) =>
+  return validateContent(fixture.roots).map((issue) =>
     issue.file ? `${issue.file}: ${issue.message}` : issue.message,
   );
 }
@@ -188,6 +188,100 @@ describe('validate-content', () => {
         'notes.txt: unknown file in a topic folder',
       ]),
     );
+  });
+});
+
+describe('validate-content: reference pages', () => {
+  let page: ContentFixture;
+
+  beforeEach(() => {
+    page = contentFixture('reference');
+  });
+
+  afterEach(() => {
+    page.cleanup();
+  });
+
+  function pageIssues(): string[] {
+    return validateContent(page.roots).map((issue) =>
+      issue.file
+        ? `${issue.topic}/${issue.file}: ${issue.message}`
+        : `${issue.topic}: ${issue.message}`,
+    );
+  }
+
+  function changePage(file: string, from: string | RegExp, to: string): void {
+    page.edit(file, (content) => {
+      const next = content.replace(from, to);
+      if (next === content) throw new Error(`fixture change did not apply to ${file}: ${from}`);
+      return next;
+    });
+    page.sync();
+  }
+
+  it('accepts the valid reference fixture without practice items', () => {
+    expect(pageIssues()).toEqual([]);
+  });
+
+  it('uses the reference meta schema: levels instead of level and category', () => {
+    changePage('meta.yaml', 'levels: [a1, a2]', 'level: a2');
+    expect(pageIssues()).toEqual(
+      expect.arrayContaining([expect.stringMatching(/^reference\/sample\/meta\.yaml: /)]),
+    );
+  });
+
+  it('fails on practice items in a reference page', () => {
+    changePage(
+      'german.yaml',
+      'tables:',
+      'choice:\n  - id: c1\n    text: Er ___ nach Wien.\n    answer: fährt\n    options: [fährt, fahrt]\ntables:',
+    );
+    expect(pageIssues()).toContain(
+      'reference/sample/german.yaml: reference pages have no practice: remove choice and wordOrder',
+    );
+  });
+
+  it('fails when a row has the wrong number of cells', () => {
+    changePage('german.yaml', "cells: [lesen, 'er **liest**']", 'cells: [lesen]');
+    expect(pageIssues()).toEqual([
+      'reference/sample/german.yaml: table t2: row lesen has 1 cells for 2 columns',
+    ]);
+  });
+
+  it('fails on a variant for an unknown column', () => {
+    changePage('german.yaml', 'column: perfekt', 'column: future');
+    expect(pageIssues()).toEqual([
+      'reference/sample/german.yaml: table t1: row sitzen has a variant for unknown column "future"',
+    ]);
+  });
+
+  it('fails on a row id used twice across tables', () => {
+    changePage('german.yaml', '- id: lesen', '- id: fahren');
+    expect(pageIssues()).toContain(
+      'reference/sample/german.yaml: table t2: duplicate row id "fahren" (row ids are unique across tables)',
+    );
+  });
+
+  it('fails on an unknown table id in MDX', () => {
+    changePage('en.mdx', '<GermanTable id="t2">', '<GermanTable id="t3">');
+    expect(pageIssues()).toEqual([
+      'reference/sample/en.mdx: <GermanTable id="t3"> is not a table in german.yaml',
+    ]);
+  });
+
+  it('fails on a missing gloss or column label in a ready locale', () => {
+    changePage('i18n/ru.yaml', / {2}fahren: .*\n/, '');
+    changePage('i18n/ru.yaml', / {2}present: .*\n/, '');
+    expect(pageIssues()).toEqual([
+      'reference/sample: [ru] missing columns.present, glosses.fahren',
+    ]);
+  });
+
+  it('fails on a gloss for a row of a table without gloss', () => {
+    changePage('i18n/en.yaml', 'glosses:', 'glosses:\n  lesen: to read');
+    expect(pageIssues()).toEqual([
+      'reference/sample/i18n/en.yaml: key "glosses.lesen" has no item in german.yaml',
+    ]);
   });
 });
 

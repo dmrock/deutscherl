@@ -1,0 +1,6 @@
+# Test fixture: a small valid reference page (tests/unit/validate-content.test.ts, review.test.ts).
+order: 1
+levels: [a1, a2]
+sources:
+  - title: Sample grammar
+    url: https://example.com/grammar

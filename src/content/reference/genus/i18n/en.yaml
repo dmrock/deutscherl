@@ -1,0 +1,38 @@
+examples:
+  e1: The newspaper is on the table.
+  e2: The kitten is sleeping on the sofa.
+  e3: The food is ready.
+  e4: The winter was very cold.
+  e5: Where is the bus stop?
+  e6: The fridge is empty.
+austrianNotes:
+  at1: I'll write you an email later.
+  at2: Do you need a bag?
+columns:
+  clue: Clue
+  examples: Examples
+glosses:
+  ung: newspaper, flat
+  heit: freedom, health
+  keit: possibility, sight (place to visit)
+  schaft: friendship, team
+  ion: information, situation
+  taet: university, quality
+  ei: bakery, police
+  ik: music, politics
+  ur: culture, nature
+  ie: family, energy
+  in: (female) teacher, (female) doctor
+  e: lamp, street
+  chen: girl, kitten
+  ment: document, instrument
+  um: museum, centre
+  ma: topic, climate
+  ge: mountains, vegetables
+  er: teacher, alarm clock
+  ling: spring, butterfly
+  ismus: tourism, optimism
+  ig: honey, king
+  or: engine, doctor
+  ist: tourist, police officer
+  ent: student, patient

@@ -11,6 +11,7 @@ import {
   i18nSchema,
   metaSchema,
   pageFrontmatterSchema,
+  referenceMetaSchema,
   reviewSchema,
 } from './lib/content-schemas.ts';
 
@@ -54,6 +55,51 @@ const topics = defineCollection({
   schema: frontmatterSchema,
 });
 
+const referenceBase = './src/content/reference';
+
+/** A collection of one file name per reference page folder: `genus/<file>` gets the id `genus`. */
+function perReferencePage(file: string) {
+  return glob({
+    pattern: `*/${file}`,
+    base: referenceBase,
+    generateId: ({ entry }) => entry.slice(0, -(file.length + 1)),
+  });
+}
+
+/** Reference pages (`.claude/rules/reference.md`): the topic files without level and practice. */
+const referenceMeta = defineCollection({
+  loader: perReferencePage('meta.yaml'),
+  schema: referenceMetaSchema,
+});
+const referenceGerman = defineCollection({
+  loader: perReferencePage('german.yaml'),
+  schema: germanSchema,
+});
+const referenceReview = defineCollection({
+  loader: perReferencePage('review.yaml'),
+  schema: reviewSchema,
+});
+
+/** `genus/i18n/ru.yaml`, id `genus/ru` */
+const referenceI18n = defineCollection({
+  loader: glob({
+    pattern: '*/i18n/*.yaml',
+    base: referenceBase,
+    generateId: ({ entry }) => entry.replace(/\/i18n\/([^/]+)\.yaml$/, '/$1'),
+  }),
+  schema: i18nSchema,
+});
+
+/** `genus/en.mdx`, id `genus/en` */
+const reference = defineCollection({
+  loader: glob({
+    pattern: '*/*.mdx',
+    base: referenceBase,
+    generateId: ({ entry }) => entry.replace(/\.mdx$/, ''),
+  }),
+  schema: frontmatterSchema,
+});
+
 /** Site pages (about, legal): `src/content/pages/about/en.mdx`, id `about/en` */
 const pages = defineCollection({
   loader: glob({
@@ -64,4 +110,16 @@ const pages = defineCollection({
   schema: pageFrontmatterSchema,
 });
 
-export const collections = { topicMeta, topicGerman, topicReview, topicI18n, topics, pages };
+export const collections = {
+  topicMeta,
+  topicGerman,
+  topicReview,
+  topicI18n,
+  topics,
+  referenceMeta,
+  referenceGerman,
+  referenceReview,
+  referenceI18n,
+  reference,
+  pages,
+};

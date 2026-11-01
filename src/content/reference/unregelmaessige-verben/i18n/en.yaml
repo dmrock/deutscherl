@@ -1,0 +1,74 @@
+examples:
+  e1: He cycles to the office every day.
+  e2: You read very fast.
+  e3: We went to Salzburg at the weekend.
+  e4: I've lost my key.
+  e5: Yesterday I was very tired.
+  e6: As a child, I couldn't swim.
+  e7: I drove the car into the garage.
+austrianNotes:
+  at1: We sat in the garden for a long time in the evening.
+columns:
+  infinitive: Infinitive
+  present: Present (*er / sie / es*)
+  perfekt: Perfekt (*er / sie / es*)
+  praeteritum: Präteritum (*er / sie / es*)
+glosses:
+  fahren: to drive, to go (by vehicle)
+  fallen: to fall
+  gefallen: to please, to be liked
+  halten: to hold, to stop
+  lassen: to let, to leave
+  laufen: to run, to walk
+  schlafen: to sleep
+  tragen: to carry, to wear
+  waschen: to wash
+  essen: to eat
+  geben: to give
+  helfen: to help
+  nehmen: to take
+  sprechen: to speak
+  sterben: to die
+  treffen: to meet
+  vergessen: to forget
+  werfen: to throw
+  empfehlen: to recommend
+  lesen: to read
+  sehen: to see
+  bleiben: to stay
+  fliegen: to fly
+  gehen: to go, to walk
+  kommen: to come
+  schwimmen: to swim
+  beginnen: to begin
+  bekommen: to get, to receive
+  bitten: to ask (for something)
+  finden: to find
+  gewinnen: to win
+  heissen: to be called
+  liegen: to lie (be lying)
+  rufen: to call
+  scheinen: to shine, to seem
+  schliessen: to close
+  schreiben: to write
+  singen: to sing
+  sitzen: to sit (be sitting)
+  stehen: to stand
+  trinken: to drink
+  tun: to do
+  verlieren: to lose
+  verstehen: to understand
+  bringen: to bring
+  denken: to think
+  kennen: to know (a person, a place)
+  rennen: to run
+  wissen: to know (a fact)
+  sein: to be
+  haben: to have
+  werden: to become
+  koennen: can, to be able to
+  muessen: must, to have to
+  wollen: to want
+  duerfen: may, to be allowed to
+  sollen: should, to be supposed to
+  moegen: to like

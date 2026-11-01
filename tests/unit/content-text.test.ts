@@ -59,10 +59,10 @@ describe('parseMdx', () => {
   it('reads frontmatter and content references', () => {
     const file = parseMdx(
       'en.mdx',
-      '---\ntitle: T\nsummary: S\n---\n<Example id="e1" />\n<AustrianNote id=\'at1\'>x</AustrianNote>\n',
+      '---\ntitle: T\nsummary: S\n---\n<Example id="e1" />\n<AustrianNote id=\'at1\'>x</AustrianNote>\n<GermanTable id="t1">x</GermanTable>\n',
     );
     expect(file.data).toEqual({ title: 'T', summary: 'S' });
-    expect(file.refs).toEqual({ examples: ['e1'], austrianNotes: ['at1'] });
+    expect(file.refs).toEqual({ examples: ['e1'], austrianNotes: ['at1'], tables: ['t1'] });
   });
 
   it('reports missing frontmatter', () => {

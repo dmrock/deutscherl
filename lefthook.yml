@@ -18,5 +18,5 @@ pre-commit:
     # Recomputes review hashes and resets changed scopes to draft (`.claude/rules/review.md`),
     # then stages review.yaml so the reset shows up in the same commit.
     - name: review
-      glob: 'src/content/topics/**'
-      run: node scripts/review.ts sync && git add src/content/topics/*/*/review.yaml
+      glob: 'src/content/{topics,reference}/**'
+      run: node scripts/review.ts sync && git add src/content/topics/*/*/review.yaml src/content/reference/*/review.yaml

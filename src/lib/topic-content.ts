@@ -1,6 +1,7 @@
 /**
- * Content of one topic for the current page (Astro-only: reads content collections). MDX
- * components (<Example>, <AustrianNote>) use it with the page's level, slug and locale.
+ * Content of one topic or reference page for the current page (Astro-only: reads content
+ * collections). MDX components (<Example>, <AustrianNote>, <GermanTable>) use it with the page's
+ * route params and locale.
  */
 import { getEntry } from 'astro:content';
 import type { LocaleCode } from '../i18n/locales.ts';
@@ -30,12 +31,27 @@ export async function getTopicContent(
   return { locale, german: german.data, i18n: i18n?.data, review: review?.data };
 }
 
-/** Topic content of the page being rendered (topic routes have `level` and `topic` params). */
+export async function getReferenceContent(slug: string, locale: LocaleCode): Promise<TopicContent> {
+  const [german, i18n, review] = await Promise.all([
+    getEntry('referenceGerman', slug),
+    getEntry('referenceI18n', `${slug}/${locale}`),
+    getEntry('referenceReview', slug),
+  ]);
+  if (!german) throw new Error(`Missing german.yaml for reference/${slug}`);
+  return { locale, german: german.data, i18n: i18n?.data, review: review?.data };
+}
+
+/**
+ * Content of the page being rendered: topic routes have `level` and `topic` params, reference
+ * routes a `reference` param.
+ */
 export function getPageTopicContent(astro: {
   params: Record<string, string | undefined>;
   url: URL;
 }): Promise<TopicContent> {
-  const { level, topic } = astro.params;
-  if (!level || !topic) throw new Error(`Not a topic page: ${astro.url.pathname}`);
-  return getTopicContent(level, topic, getLocaleFromPath(astro.url.pathname));
+  const { level, topic, reference } = astro.params;
+  const locale = getLocaleFromPath(astro.url.pathname);
+  if (reference) return getReferenceContent(reference, locale);
+  if (!level || !topic) throw new Error(`Not a topic or reference page: ${astro.url.pathname}`);
+  return getTopicContent(level, topic, locale);
 }

@@ -1,26 +1,40 @@
 ---
 /**
- * Topics of the current level grouped by category. Static column from lg up; below lg the same
- * element is a sheet opened by the header's menu button (Popover API: no JavaScript, light dismiss,
- * Esc closes it).
+ * Topics of the current level grouped by category, or on reference pages the list of reference
+ * pages. Static column from lg up; below lg the same element is a sheet opened by the header's
+ * menu button (Popover API: no JavaScript, light dismiss, Esc closes it).
  */
 import { categoryIds, type LevelId, levels } from '../../config/site.ts';
 import type { LocaleCode } from '../../i18n/locales.ts';
 import { localizePath, t } from '../../i18n/utils.ts';
-import { groupByCategory, type TopicLink, topicPath } from '../../lib/navigation.ts';
+import {
+  groupByCategory,
+  type ReferenceLink,
+  referencePath,
+  type TopicLink,
+  topicPath,
+} from '../../lib/navigation.ts';
 import LevelSwitcher from './LevelSwitcher.astro';
 
-interface Props {
+type Props = {
   locale: LocaleCode;
-  level: LevelId;
-  topics: readonly TopicLink[];
-  /** Slug of the current topic page */
+  /** Slug of the current topic or reference page */
   current?: string | undefined;
-}
+} & (
+  | { level: LevelId; topics: readonly TopicLink[] }
+  | { level?: undefined; references: readonly ReferenceLink[] }
+);
 
-const { locale, level, topics, current } = Astro.props;
-const groups = groupByCategory(topics, level, categoryIds);
+const props = Astro.props;
+const { locale, current } = props;
+const level = props.level;
+const groups = props.level ? groupByCategory(props.topics, props.level, categoryIds) : [];
+const references = props.level ? [] : props.references;
 const levelInfo = levels.find((entry) => entry.id === level);
+const linkClass = (active: boolean) => [
+  'block rounded-e-ui border-s-2 px-3 py-1 text-[0.9375rem]',
+  active ? 'border-accent bg-surface font-semibold' : 'border-transparent hover:bg-surface',
+];
 ---
 
 <div id="sidebar" popover class="sidebar">
@@ -46,42 +60,60 @@ const levelInfo = levels.find((entry) => entry.id === level);
       </svg>
     </button>
   </div>
-  <LevelSwitcher locale={locale} active={level} class="mt-2 mb-4 lg:hidden" />
-  <nav aria-label={t(locale, 'nav.topics')}>
-    <p class="px-3 font-bold">
-      <a href={localizePath(`/${level}/`, locale)} class="hover:text-accent">
-        {t(locale, 'level.title', { level: levelInfo?.label ?? level })}
-      </a>
-    </p>
-    {groups.map((group) => (
-      <section class="mt-4">
-        <h2 class="eyebrow text-muted px-3">{t(locale, `category.${group.category}`)}</h2>
-        <ul class="mt-1">
-          {group.topics.map((topic) => (
-            <li>
-              <a
-                href={localizePath(topicPath(topic), locale)}
-                aria-current={topic.slug === current ? 'page' : undefined}
-                class:list={[
-                  'block rounded-e-ui border-s-2 px-3 py-1 text-[0.9375rem]',
-                  topic.slug === current
-                    ? 'border-accent bg-surface font-semibold'
-                    : 'border-transparent hover:bg-surface',
-                ]}
-              >
-                {topic.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))}
-    {groups.length === 0 && (
-      <p class="mt-2 px-3 text-sm text-muted">
-        {t(locale, levelInfo?.available ? 'level.noTopics' : 'level.comingSoon')}
+  <LevelSwitcher locale={locale} active={level ?? 'reference'} class="mt-2 mb-4 lg:hidden" />
+  {level ? (
+    <nav aria-label={t(locale, 'nav.topics')}>
+      <p class="px-3 font-bold">
+        <a href={localizePath(`/${level}/`, locale)} class="hover:text-accent">
+          {t(locale, 'level.title', { level: levelInfo?.label ?? level })}
+        </a>
       </p>
-    )}
-  </nav>
+      {groups.map((group) => (
+        <section class="mt-4">
+          <h2 class="eyebrow text-muted px-3">{t(locale, `category.${group.category}`)}</h2>
+          <ul class="mt-1">
+            {group.topics.map((topic) => (
+              <li>
+                <a
+                  href={localizePath(topicPath(topic), locale)}
+                  aria-current={topic.slug === current ? 'page' : undefined}
+                  class:list={linkClass(topic.slug === current)}
+                >
+                  {topic.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+      {groups.length === 0 && (
+        <p class="mt-2 px-3 text-sm text-muted">
+          {t(locale, levelInfo?.available ? 'level.noTopics' : 'level.comingSoon')}
+        </p>
+      )}
+    </nav>
+  ) : (
+    <nav aria-label={t(locale, 'nav.referencePages')}>
+      <p class="px-3 font-bold">
+        <a href={localizePath(referencePath(), locale)} class="hover:text-accent">
+          {t(locale, 'reference.title')}
+        </a>
+      </p>
+      <ul class="mt-2">
+        {references.map((page) => (
+          <li>
+            <a
+              href={localizePath(referencePath(page.slug), locale)}
+              aria-current={page.slug === current ? 'page' : undefined}
+              class:list={linkClass(page.slug === current)}
+            >
+              {page.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )}
 </div>
 
 <style>

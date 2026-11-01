@@ -1,0 +1,56 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { levels, site } from '../../../config/site.ts';
+import { defaultLocale, type LocaleCode, localeCodes } from '../../../i18n/locales.ts';
+import { localizePath, t } from '../../../i18n/utils.ts';
+import Base from '../../../layouts/Base.astro';
+import { referencePath } from '../../../lib/navigation.ts';
+import { getReferenceLinks } from '../../../lib/reference.ts';
+import { breadcrumbData } from '../../../lib/seo.ts';
+
+// The reference index in every locale: one card per reference page.
+export const getStaticPaths = (() =>
+  localeCodes.map((code) => ({
+    params: { locale: code === defaultLocale ? undefined : code },
+    props: { locale: code },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  locale: LocaleCode;
+}
+
+const { locale } = Astro.props;
+const title = t(locale, 'reference.title');
+const description = t(locale, 'reference.description');
+const pages = await getReferenceLinks(locale);
+const levelLabel = (id: string) => levels.find((level) => level.id === id)?.label ?? id;
+const structuredData = breadcrumbData([
+  { name: site.name, url: new URL(localizePath('/', locale), site.url).href },
+  { name: title, url: new URL(localizePath(referencePath(), locale), site.url).href },
+]);
+---
+
+<Base
+  locale={locale}
+  title={title}
+  description={description}
+  reference
+  structuredData={structuredData}
+>
+  <h1 class="text-3xl sm:text-4xl">{title}</h1>
+  <p class="mt-4 text-lg text-muted">{description}</p>
+  <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+    {pages.map((page) => (
+      <li>
+        <a
+          href={localizePath(referencePath(page.slug), locale)}
+          class="group flex h-full flex-col rounded-card border border-border bg-card px-4 py-3 shadow-card hover:border-accent"
+        >
+          <span class="eyebrow text-muted">{page.levels.map(levelLabel).join(', ')}</span>
+          <span class="mt-0.5 font-semibold group-hover:text-accent">{page.title}</span>
+          <span class="mt-1 text-sm text-muted">{page.summary}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -1,0 +1,127 @@
+---
+import { type CollectionEntry, getCollection, getEntry, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import AustrianNote from '../../../../components/content/AustrianNote.astro';
+import De from '../../../../components/content/De.astro';
+import Example from '../../../../components/content/Example.astro';
+import Examples from '../../../../components/content/Examples.astro';
+import GermanTable from '../../../../components/content/GermanTable.astro';
+import InShort from '../../../../components/content/InShort.astro';
+import RuleTable from '../../../../components/content/RuleTable.astro';
+import SponsorSlot from '../../../../components/content/SponsorSlot.astro';
+import StatusBadges from '../../../../components/content/StatusBadges.astro';
+import { levels, site } from '../../../../config/site.ts';
+import {
+  defaultLocale,
+  getLocaleConfig,
+  isLocaleCode,
+  type LocaleCode,
+} from '../../../../i18n/locales.ts';
+import { localizePath, t } from '../../../../i18n/utils.ts';
+import Base from '../../../../layouts/Base.astro';
+import { stripMarks } from '../../../../lib/marked-text.ts';
+import { referencePath } from '../../../../lib/navigation.ts';
+import { breadcrumbData, referenceData } from '../../../../lib/seo.ts';
+import { getReferenceContent } from '../../../../lib/topic-content.ts';
+
+// One page per reference MDX file: `genus/ru.mdx` becomes `/ru/reference/genus/`.
+export const getStaticPaths = (async () => {
+  const pages = await getCollection('reference');
+  const paths = [];
+  for (const page of pages) {
+    const [slug, locale] = page.id.split('/');
+    if (!slug || !locale || !isLocaleCode(locale)) {
+      throw new Error(`Unexpected reference file: ${page.id}`);
+    }
+    const meta = await getEntry('referenceMeta', slug);
+    if (!meta) throw new Error(`Missing meta.yaml for reference/${slug}`);
+    paths.push({
+      params: { locale: locale === defaultLocale ? undefined : locale, reference: slug },
+      props: { locale, slug, page, meta },
+    });
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+interface Props {
+  locale: LocaleCode;
+  slug: string;
+  page: CollectionEntry<'reference'>;
+  meta: CollectionEntry<'referenceMeta'>;
+}
+
+const { locale, slug, page, meta } = Astro.props;
+const { Content, headings } = await render(page);
+const { review } = await getReferenceContent(slug, locale);
+const pageUrl = new URL(localizePath(Astro.url.pathname, locale), site.url).href;
+const levelLabels = meta.data.levels.map(
+  (id) => levels.find((level) => level.id === id)?.label ?? id,
+);
+const description = stripMarks(page.data.summary);
+const sectionTitle = t(locale, 'reference.title');
+const structuredData = [
+  referenceData({
+    title: page.data.title,
+    description,
+    url: pageUrl,
+    locale,
+    levels: levelLabels,
+  }),
+  breadcrumbData([
+    { name: site.name, url: new URL(localizePath('/', locale), site.url).href },
+    {
+      name: sectionTitle,
+      url: new URL(localizePath(referencePath(), locale), site.url).href,
+    },
+    { name: page.data.title, url: pageUrl },
+  ]),
+];
+// Search indexes reference pages of ready locales only, like topic pages.
+const searchable = getLocaleConfig(locale).ready;
+const sections = headings.filter((heading) => heading.depth === 2);
+---
+
+<Base
+  locale={locale}
+  title={page.data.title}
+  description={description}
+  reference
+  topic={slug}
+  ogType="article"
+  structuredData={structuredData}
+>
+  <article data-pagefind-body={searchable ? '' : undefined}>
+    <p class="eyebrow text-muted">
+      {sectionTitle} · {levelLabels.join(', ')}
+    </p>
+    <h1 class="mt-0.5 text-2xl sm:text-3xl">{page.data.title}</h1>
+    <div class="mt-2 text-xs" data-pagefind-ignore>
+      <StatusBadges locale={locale} review={review} />
+    </div>
+    <InShort locale={locale} summary={page.data.summary} />
+    {sections.length > 1 && (
+      <nav
+        aria-labelledby="on-this-page"
+        class="mt-4 rounded-card border border-border px-3 py-2"
+        data-pagefind-ignore
+      >
+        <p id="on-this-page" class="eyebrow text-muted">
+          {t(locale, 'reference.onThisPage')}
+        </p>
+        <ul class="mt-1 grid gap-x-4 sm:grid-cols-2">
+          {sections.map((heading) => (
+            <li>
+              <a href={`#${heading.slug}`} class="inline-block py-0.5 hover:text-accent">
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+    <div class="topic-prose mt-4">
+      <Content components={{ AustrianNote, De, Example, Examples, GermanTable, RuleTable }} />
+    </div>
+  </article>
+  <SponsorSlot />
+</Base>
