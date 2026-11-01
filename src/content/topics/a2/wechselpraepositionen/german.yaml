@@ -17,9 +17,9 @@ examples:
   - id: e6
     de: 'Setz dich **neben mich**!'
   - id: e7
-    de: 'Das Taxi wartet **vor dem** Hotel.'
+    de: 'Das Auto steht **vor der** Garage.'
   - id: e8
-    de: 'Das Taxi fährt **vor das** Hotel.'
+    de: 'Ich stelle das Auto **vor die** Garage.'
   # Short forms
   - id: e9
     de: 'Wir gehen heute Abend **ins** Kino.'
