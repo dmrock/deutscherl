@@ -1,0 +1,75 @@
+# Advisory review of pull requests by Claude Code with the /pr-review skill
+# (`.claude/skills/pr-review/`, `.claude/rules/deployment.md`). It runs on pull_request_target,
+# so the workflow, the skill and the rules always come from main. The subscription token is a
+# secret of the `claude-review` environment, which only main may use. Nothing from the pull
+# request is executed: its files are only read.
+name: Review
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review, labeled]
+
+permissions: {}
+
+concurrency:
+  group: review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: Claude review
+    # Branches of this repository only, never forks or bots; drafts are reviewed once they are
+    # ready. Adding the `review` label runs the review again.
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.type != 'Bot' &&
+      !github.event.pull_request.draft &&
+      (github.event.action != 'labeled' || github.event.label.name == 'review')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: claude-review
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      # Strips credentials such as the subscription token from the commands Claude runs;
+      # GitHub tokens stay, so `gh` works.
+      CLAUDE_CODE_SUBPROCESS_ENV_SCRUB: 1
+    steps:
+      # main at the root: CLAUDE.md, .claude/rules and the skill.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # The pull request's files, read by the review. Its Claude config is removed so that
+      # nothing from the pull request is loaded as instructions.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: pr-head
+          persist-credentials: false
+
+      - name: Remove Claude config from the pull request checkout
+        run: |
+          find pr-head -name .claude -type d -prune -exec rm -rf {} +
+          find pr-head -type f \( -name CLAUDE.md -o -name CLAUDE.local.md -o -name .mcp.json -o -name .claude.json \) -delete
+
+      - name: Review
+        uses: anthropics/claude-code-action@d535f5172dec02b204866b393d6b20b9b2aaf98d # v1.0.266
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # The workflow token instead of the Claude GitHub App: comments come from
+          # github-actions[bot] and need no app installation.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: /pr-review ${{ github.event.pull_request.number }} --comment
+          claude_args: >-
+            --max-turns 40
+            --allowedTools "Read,Grep,Glob,Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr comment:*),Bash(gh issue view:*),mcp__github_inline_comment__create_inline_comment"
+            --disallowedTools "Edit,Write,NotebookEdit,WebFetch,WebSearch"
+
+      - name: Remove the review label
+        if: always() && github.event.action == 'labeled'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method DELETE "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels/review" --silent

@@ -82,7 +82,7 @@ Components, pages and tests use `t(locale, key)` or read content files instead o
 - Code MIT (`LICENSE`), content CC BY-SA 4.0 (`LICENSE-CONTENT`). Use the official license texts verbatim, never from memory.
 - DCO sign-off on every commit, checked in CI; by signing off, contributors agree to both licenses.
 - PRs only from collaborators; issues only through issue forms; ideas in GitHub Discussions. `CONTRIBUTING.md`: open an issue first (except one-line typo fixes).
-- Never commit secrets. The only secrets are the Cloudflare API token and account ID, in GitHub Actions secrets/variables.
+- Never commit secrets. The only secrets are the Cloudflare API token and account ID (GitHub Actions secrets/variables) and the Claude subscription token for the pull request review (environment `claude-review`).
 - Do not add the `hacktoberfest` topic or label.
 
 ## Detailed rules
@@ -98,4 +98,4 @@ Path-scoped files in `.claude/rules/` load when you work on matching files:
 - `fonts.md`: per-locale and German fonts
 - `site-pages.md`: about and legal pages
 - `testing.md`: what is tested where, e2e mechanics
-- `deployment.md`: CI, Cloudflare deployment, analytics
+- `deployment.md`: CI, pull request review, Cloudflare deployment, analytics
