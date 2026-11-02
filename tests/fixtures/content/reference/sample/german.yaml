@@ -17,9 +17,11 @@ tables:
             region: AT
   - id: t2
     columns: [infinitive, present]
-    rows:
-      - id: lesen
-        cells: [lesen, 'er **liest**']
+    groups:
+      - id: g1
+        rows:
+          - id: lesen
+            cells: [lesen, 'er **liest**']
 austrianNotes:
   - id: at1
     de: 'Ich **bin** gesessen.'

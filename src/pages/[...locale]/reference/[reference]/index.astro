@@ -51,7 +51,7 @@ interface Props {
 }
 
 const { locale, slug, page, meta } = Astro.props;
-const { Content, headings } = await render(page);
+const { Content } = await render(page);
 const { review } = await getReferenceContent(slug, locale);
 const pageUrl = new URL(localizePath(Astro.url.pathname, locale), site.url).href;
 const levelLabels = meta.data.levels.map(
@@ -78,7 +78,6 @@ const structuredData = [
 ];
 // Search indexes reference pages of ready locales only, like topic pages.
 const searchable = getLocaleConfig(locale).ready;
-const sections = headings.filter((heading) => heading.depth === 2);
 ---
 
 <Base
@@ -99,26 +98,6 @@ const sections = headings.filter((heading) => heading.depth === 2);
       <StatusBadges locale={locale} review={review} />
     </div>
     <InShort locale={locale} summary={page.data.summary} />
-    {sections.length > 1 && (
-      <nav
-        aria-labelledby="on-this-page"
-        class="mt-4 rounded-card border border-border px-3 py-2"
-        data-pagefind-ignore
-      >
-        <p id="on-this-page" class="eyebrow text-muted">
-          {t(locale, 'reference.onThisPage')}
-        </p>
-        <ul class="mt-1 grid gap-x-4 sm:grid-cols-2">
-          {sections.map((heading) => (
-            <li>
-              <a href={`#${heading.slug}`} class="inline-block py-0.5 hover:text-accent">
-                {heading.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    )}
     <div class="topic-prose mt-4">
       <Content components={{ AustrianNote, De, Example, Examples, GermanTable, RuleTable }} />
     </div>

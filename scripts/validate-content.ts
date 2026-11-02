@@ -16,6 +16,7 @@ import {
   i18nSchema,
   metaSchema,
   referenceMetaSchema,
+  tableRows,
   type WordOrderItem,
 } from '../src/lib/content-schemas.ts';
 import { coverage } from './i18n-coverage.ts';
@@ -129,18 +130,28 @@ function checkWordOrder(item: WordOrderItem, add: (message: string) => void): vo
   }
 }
 
-/** Table rows: one cell per column, variants of known columns, row ids unique across tables. */
+/**
+ * Tables: unique columns, one cell per column, variants of known columns, row ids unique within a
+ * table. A row id used in several tables is the same word (it keys one gloss), so its first cell
+ * must match.
+ */
 function checkTables(german: GermanContent, add: (message: string) => void): void {
-  const rowIds = new Set<string>();
+  const firstCells = new Map<string, string | undefined>();
   for (const table of german.tables) {
     if (new Set(table.columns).size !== table.columns.length) {
       add(`table ${table.id}: columns must be unique`);
     }
-    for (const row of table.rows) {
-      if (rowIds.has(row.id)) {
-        add(`table ${table.id}: duplicate row id "${row.id}" (row ids are unique across tables)`);
-      }
+    const rowIds = new Set<string>();
+    for (const row of tableRows(table)) {
+      if (rowIds.has(row.id)) add(`table ${table.id}: duplicate row id "${row.id}"`);
       rowIds.add(row.id);
+      const first = firstCells.get(row.id);
+      if (firstCells.has(row.id) && first !== row.cells[0]) {
+        add(
+          `table ${table.id}: row ${row.id} starts with "${row.cells[0]}" but another table has "${first}" for the same id`,
+        );
+      }
+      firstCells.set(row.id, row.cells[0]);
       if (row.cells.length !== table.columns.length) {
         add(
           `table ${table.id}: row ${row.id} has ${row.cells.length} cells for ${table.columns.length} columns`,
@@ -169,6 +180,7 @@ function checkGerman(
     ...german.wordOrder,
     ...german.austrianNotes,
     ...german.tables,
+    ...german.tables.flatMap((table) => table.groups ?? []),
   ];
   for (const { id } of all) {
     if (ids.has(id)) add(`duplicate id "${id}" (ids are unique across the whole file)`);
@@ -211,10 +223,13 @@ function unknownI18nKeys(i18n: z.infer<typeof i18nSchema>, german: GermanContent
     wordOrder: new Set(german.wordOrder.map((item) => item.id)),
     austrianNotes: new Set(german.austrianNotes.map((item) => item.id)),
     columns: new Set(german.tables.flatMap((table) => table.columns)),
+    groups: new Set(
+      german.tables.flatMap((table) => (table.groups ?? []).map((group) => group.id)),
+    ),
     glosses: new Set(
       german.tables
         .filter((table) => table.gloss)
-        .flatMap((table) => table.rows.map((row) => row.id)),
+        .flatMap((table) => tableRows(table).map((row) => row.id)),
     ),
   };
   const unknown: string[] = [];

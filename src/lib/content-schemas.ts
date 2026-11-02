@@ -58,30 +58,35 @@ export const wordOrderSchema = z.strictObject({
 
 export const austrianNoteSchema = z.strictObject({ id, de: text });
 
-/**
- * A table of German forms (`<GermanTable id>`). Column labels and the meaning of each row are
- * per-locale data (`columns.<column>`, `glosses.<row>` in i18n/<locale>.yaml). In cells, `**…**`
- * marks what to notice.
- */
-export const tableSchema = z.strictObject({
+const tableRowSchema = z.strictObject({
   id,
-  columns: z.array(id).min(1),
-  /** Adds a last column with the meaning of each row in the page locale (`glosses.<row id>`) */
-  gloss: z.boolean().optional(),
-  rows: z
-    .array(
-      z.strictObject({
-        id,
-        /** One cell per column */
-        cells: z.array(text).min(1),
-        /** Regional form shown with the flag under the cell of `column` */
-        variants: z
-          .array(z.strictObject({ column: id, de: text, region: regionSchema }))
-          .optional(),
-      }),
-    )
-    .min(1),
+  /** One cell per column */
+  cells: z.array(text).min(1),
+  /** Regional form shown with the flag under the cell of `column` */
+  variants: z.array(z.strictObject({ column: id, de: text, region: regionSchema })).optional(),
 });
+
+/**
+ * A table of German forms (`<GermanTable id>`). Column labels, group labels and the meaning of each
+ * row are per-locale data (`columns.<column>`, `groups.<group>`, `glosses.<row>` in
+ * i18n/<locale>.yaml). In cells, `**…**` marks what to notice. A table has either `rows` or
+ * `groups` of rows, each group under a label row.
+ */
+export const tableSchema = z
+  .strictObject({
+    id,
+    columns: z.array(id).min(1),
+    /** Adds a last column with the meaning of each row in the page locale (`glosses.<row id>`) */
+    gloss: z.boolean().optional(),
+    rows: z.array(tableRowSchema).min(1).optional(),
+    groups: z
+      .array(z.strictObject({ id, rows: z.array(tableRowSchema).min(1) }))
+      .min(1)
+      .optional(),
+  })
+  .refine((table) => (table.rows === undefined) !== (table.groups === undefined), {
+    message: 'a table has either rows or groups',
+  });
 
 /** `german.yaml`: everything German in a topic, shared by all locales. */
 export const germanSchema = z.strictObject({
@@ -119,7 +124,9 @@ export const i18nSchema = z.strictObject({
   austrianNotes: z.record(z.string(), text).default({}),
   /** Table column labels by column id, shared by all tables of the page */
   columns: z.record(z.string(), text).default({}),
-  /** Meaning of each row of a `gloss` table, by row id (unique across the page) */
+  /** Label of each table group, by group id */
+  groups: z.record(z.string(), text).default({}),
+  /** Meaning of each row of a `gloss` table, by row id (the same id in two tables is one word) */
   glosses: z.record(z.string(), text).default({}),
 });
 
@@ -174,3 +181,13 @@ export type Review = z.infer<typeof reviewSchema>;
 export type BaseReview = Review['base'];
 export type TranslationReview = Review['translations'][string];
 export type HistoryEntry = z.infer<typeof historyEntrySchema>;
+export type GermanTableRow = z.infer<typeof tableRowSchema>;
+
+/** The rows of a table by group; a table without groups is one group without an id. */
+export function tableGroups(table: GermanTable): { id?: string; rows: GermanTableRow[] }[] {
+  return table.groups ?? [{ rows: table.rows ?? [] }];
+}
+
+export function tableRows(table: GermanTable): GermanTableRow[] {
+  return tableGroups(table).flatMap((group) => group.rows);
+}

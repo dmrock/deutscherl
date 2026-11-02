@@ -307,6 +307,7 @@ describe('resolveExercises()', () => {
     wordOrder: { w1: { translation: 'When did you come?', why: 'why w1' } },
     austrianNotes: {},
     columns: {},
+    groups: {},
     glosses: {},
   };
 

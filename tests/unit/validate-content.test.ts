@@ -255,11 +255,43 @@ describe('validate-content: reference pages', () => {
     ]);
   });
 
-  it('fails on a row id used twice across tables', () => {
+  it('fails on a row id used twice in a table', () => {
+    changePage('german.yaml', '- id: sitzen', '- id: fahren');
+    expect(pageIssues()).toContain(
+      'reference/sample/german.yaml: table t1: duplicate row id "fahren"',
+    );
+  });
+
+  it('fails on a row id that names different words in two tables', () => {
     changePage('german.yaml', '- id: lesen', '- id: fahren');
     expect(pageIssues()).toContain(
-      'reference/sample/german.yaml: table t2: duplicate row id "fahren" (row ids are unique across tables)',
+      'reference/sample/german.yaml: table t2: row fahren starts with "lesen" but another table has "fahren" for the same id',
     );
+  });
+
+  it('accepts the same word in two tables', () => {
+    changePage(
+      'german.yaml',
+      "- id: lesen\n            cells: [lesen, 'er **liest**']",
+      "- id: fahren\n            cells: [fahren, 'er **fährt**']",
+    );
+    expect(pageIssues()).toEqual([]);
+  });
+
+  it('fails on a table with both rows and groups', () => {
+    changePage(
+      'german.yaml',
+      '    groups:',
+      '    rows:\n      - id: x\n        cells: [x, y]\n    groups:',
+    );
+    expect(pageIssues()).toEqual(
+      expect.arrayContaining([expect.stringMatching(/a table has either rows or groups/)]),
+    );
+  });
+
+  it('fails on a missing group label in a ready locale', () => {
+    changePage('i18n/ru.yaml', /groups:\n {2}g1: .*\n/, '');
+    expect(pageIssues()).toEqual(['reference/sample: [ru] missing groups.g1']);
   });
 
   it('fails on an unknown table id in MDX', () => {

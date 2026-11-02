@@ -1,8 +1,8 @@
 /**
  * Translation coverage (`.claude/rules/testing.md`: data checks). For every topic, reference page
  * and locale: the missing files (`<locale>.mdx`, `i18n/<locale>.yaml`) and missing keys (every
- * German item needs a translation or explanation, every table column a label, every row of a gloss
- * table its meaning). For every site page (`src/content/pages/<slug>/`): the missing
+ * German item needs a translation or explanation, every table column and group a label, every row
+ * of a gloss table its meaning). For every site page (`src/content/pages/<slug>/`): the missing
  * `<locale>.mdx`. Fails only for ready locales; others are reported for information, so a language
  * can be translated step by step before it goes live.
  *
@@ -12,7 +12,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { type LocaleConfig, locales } from '../src/i18n/locales.ts';
-import { germanSchema, i18nSchema, type TopicI18n } from '../src/lib/content-schemas.ts';
+import { germanSchema, i18nSchema, type TopicI18n, tableRows } from '../src/lib/content-schemas.ts';
 import { readContent, type TopicFiles } from './lib/content.ts';
 
 /** Site pages (about, legal): one folder per page, one MDX file per locale. */
@@ -41,9 +41,12 @@ export function requiredKeys(topic: TopicFiles): string[] {
     ]),
     ...german.austrianNotes.map((item) => `austrianNotes.${item.id}`),
     ...[...new Set(german.tables.flatMap((table) => table.columns))].map((id) => `columns.${id}`),
-    ...german.tables
-      .filter((table) => table.gloss)
-      .flatMap((table) => table.rows.map((row) => `glosses.${row.id}`)),
+    ...german.tables.flatMap((table) => (table.groups ?? []).map((group) => `groups.${group.id}`)),
+    ...new Set(
+      german.tables
+        .filter((table) => table.gloss)
+        .flatMap((table) => tableRows(table).map((row) => `glosses.${row.id}`)),
+    ),
   ];
 }
 

@@ -432,6 +432,20 @@ html:root {
     background-color: var(--color-surface);
   }
 
+  /* Group label rows span the table; the label stays in view while the table scrolls sideways. */
+  .german-table tbody th.group {
+    position: static;
+    background-color: var(--color-surface);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: normal;
+  }
+
+  .german-table th.group > span {
+    position: sticky;
+    inset-inline-start: 0.75rem;
+  }
+
   .german-table td.gloss {
     min-width: 8rem;
     white-space: normal;

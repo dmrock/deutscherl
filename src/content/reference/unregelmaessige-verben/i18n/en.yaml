@@ -1,11 +1,7 @@
 examples:
-  e1: He cycles to the office every day.
-  e2: You read very fast.
-  e3: We went to Salzburg at the weekend.
-  e4: I've lost my key.
-  e5: Yesterday I was very tired.
-  e6: As a child, I couldn't swim.
-  e7: I drove the car into the garage.
+  e1: I drove the car into the garage.
+  e2: Yesterday I was very tired.
+  e3: As a child, I couldn't swim.
 austrianNotes:
   at1: We sat in the garden for a long time in the evening.
 columns:
@@ -13,6 +9,14 @@ columns:
   present: Present (*er / sie / es*)
   perfekt: Perfekt (*er / sie / es*)
   praeteritum: Präteritum (*er / sie / es*)
+groups:
+  a-ae: 'Present tense: *a* becomes *ä* (*au* becomes *äu*)'
+  e-i: 'Present tense: *e* becomes *i*'
+  e-ie: 'Present tense: *e* becomes *ie*'
+  perfekt-sein: 'Regular present, Perfekt with *sein*'
+  perfekt-haben: 'Regular present, Perfekt with *haben*'
+  mixed: 'Mixed verbs: *-t*, but the stem changes'
+  sein-haben-werden: '*sein*, *haben* and *werden*'
 glosses:
   fahren: to drive, to go (by vehicle)
   fallen: to fall

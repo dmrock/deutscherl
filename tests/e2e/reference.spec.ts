@@ -41,21 +41,25 @@ test('the Reference tab is marked and the sidebar lists the reference pages', as
 
 test('a reference page has tables of German forms and no practice', async ({ page }) => {
   await page.goto(verbsPath);
-  const table = page.locator('#german-table-a-ae');
+  const table = page.locator('#german-table-verbs');
   // A focusable region named by the caption, so keyboard users can scroll it.
   await expect(table).toHaveAttribute('role', 'region');
   await expect(table).toHaveAttribute('tabindex', '0');
   const caption = await table.locator('caption').textContent();
   await expect(page.getByRole('region', { name: caption ?? '' })).toBeVisible();
 
-  const row = page.locator('#row-fahren');
+  const row = page.locator('#row-verbs-fahren');
   await expect(row.getByRole('rowheader')).toHaveText('fahren');
   await expect(row.locator('[lang="de"]')).toHaveText(['fahren', 'fährt', 'ist gefahren']);
   await expect(row.locator('td.gloss')).not.toHaveAttribute('lang', /.*/);
   await expect(row.getByRole('rowheader')).toHaveCSS('position', 'sticky');
-  await expect(page.locator('#german-table-a-ae th[scope="col"]').last()).toHaveText(
-    t('en', 'table.meaning'),
-  );
+  await expect(table.locator('th[scope="col"]').last()).toHaveText(t('en', 'table.meaning'));
+
+  // Each group of rows starts with a label row across all columns.
+  const groupLabels = table.locator('tbody th[scope="rowgroup"]');
+  await expect(groupLabels).toHaveCount(7);
+  await expect(groupLabels.first()).toHaveAttribute('colspan', '4');
+  await expect(groupLabels.first().locator('[lang="de"]').first()).toHaveText('a');
 
   await expect(page.locator('#practice')).toHaveCount(0);
   await expect(page.locator('[data-badge]')).toHaveCount(1);
@@ -63,21 +67,11 @@ test('a reference page has tables of German forms and no practice', async ({ pag
 
 test('an Austrian variant shows the flag and a label in the page language', async ({ page }) => {
   await page.goto(verbsPath);
-  const row = page.locator('#row-sitzen');
+  const row = page.locator('#row-verbs-sitzen');
   await expect(row.locator('.flag')).toHaveCount(1);
   await expect(row.locator('.sr-only')).toHaveText(`${t('en', 'topic.austrianUsage')}:`);
   await expect(row.locator('.sr-only')).not.toHaveAttribute('lang', /.*/);
   await expect(row.locator('[lang="de"]').last()).toHaveText('ist gesessen');
-});
-
-test('the contents list jumps to a section', async ({ page }) => {
-  await page.goto(verbsPath);
-  const contents = page.getByRole('navigation', { name: t('en', 'reference.onThisPage') });
-  const link = contents.getByRole('link').nth(1);
-  const target = (await link.getAttribute('href')) ?? '';
-  await link.click();
-  await expect(page).toHaveURL(new RegExp(`${target}$`));
-  await expect(page.locator(target)).toBeInViewport();
 });
 
 test('search finds a participle from a reference table', async ({ page }) => {

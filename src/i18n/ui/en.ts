@@ -57,7 +57,6 @@ export const en = {
   'reference.title': 'Reference',
   'reference.description':
     'Tables and overviews of German grammar to look things up while you learn, at any level.',
-  'reference.onThisPage': 'On this page',
   'table.meaning': 'Meaning',
   'exercise.needsJs': 'The exercises need JavaScript. Please turn it on to practice.',
   'exercise.start': 'Start practice',

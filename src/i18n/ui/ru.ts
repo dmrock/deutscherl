@@ -56,7 +56,6 @@ export const ru = {
   'reference.title': 'Справочник',
   'reference.description':
     'Таблицы и обзоры немецкой грамматики, в которые можно заглянуть во время учёбы, на любом уровне.',
-  'reference.onThisPage': 'На этой странице',
   'table.meaning': 'Значение',
   'exercise.needsJs': 'Для упражнений нужен JavaScript. Включи его, чтобы потренироваться.',
   'exercise.start': 'Начать практику',
