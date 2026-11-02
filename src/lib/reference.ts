@@ -4,7 +4,6 @@
  */
 import { getCollection, getEntry } from 'astro:content';
 import type { LocaleCode } from '../i18n/locales.ts';
-import { stripMarks } from './marked-text.ts';
 import { type ReferenceLink, referenceInOrder } from './navigation.ts';
 
 /** Reference pages of `locale` in reading order. */
@@ -19,7 +18,7 @@ export async function getReferenceLinks(locale: LocaleCode): Promise<ReferenceLi
       order: meta.data.order,
       levels: meta.data.levels,
       title: page.data.title,
-      summary: stripMarks(page.data.summary),
+      summary: page.data.summary,
     });
   }
   return referenceInOrder(links);

@@ -10,8 +10,12 @@ sources:
     url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
   - title: 'Duden: E-Mail (besonders süddeutsch, österreichisch, schweizerisch: das E-Mail)'
     url: https://www.duden.de/rechtschreibung/E_Mail
+  - title: 'DWDS: E-Mail (Nebenform Neutrum, besonders A, CH)'
+    url: https://www.dwds.de/wb/E-Mail
   - title: 'Duden: Cola (süddeutsch, österreichisch, schweizerisch nur: das Cola)'
     url: https://www.duden.de/rechtschreibung/Cola
+  - title: 'Wiktionary: Cola (das Cola in Süddeutschland, der Schweiz und Österreich)'
+    url: https://de.wiktionary.org/wiki/Cola
   - title: 'DWDS: Tor (Neutrum)'
     url: https://www.dwds.de/wb/Tor
   - title: 'Duden: Tor [Eingang; Einfahrt] (Neutrum)'
@@ -30,8 +34,16 @@ sources:
     url: https://www.dwds.de/wb/-lein
   - title: 'DWDS: Kätzchen (Neutrum)'
     url: https://www.dwds.de/wb/Kätzchen
-  - title: 'DWDS: ge- (Kollektivbildungen mit Substantiven im Neutrum)'
+  - title: 'DWDS: ge- (Neutrum: Kollektivbildungen, Wiederholung und Ergebnis einer Handlung)'
     url: https://www.dwds.de/wb/Ge-
+  - title: 'DWDS: Geschenk (Neutrum)'
+    url: https://www.dwds.de/wb/Geschenk
+  - title: 'Duden: Geschenk (Neutrum)'
+    url: https://www.duden.de/rechtschreibung/Geschenk
+  - title: 'DWDS: Gespräch (Neutrum)'
+    url: https://www.dwds.de/wb/Gespräch
+  - title: 'Duden: Gespräch (Neutrum)'
+    url: https://www.duden.de/rechtschreibung/Gespraech
   - title: 'Duden: Gebirge (Kollektivbildung zu Berg, Neutrum)'
     url: https://www.duden.de/rechtschreibung/Gebirge
   - title: 'DWDS: Gebirge (Kollektivbildung, Neutrum)'

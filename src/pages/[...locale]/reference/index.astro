@@ -1,5 +1,6 @@
 ---
 import type { GetStaticPaths } from 'astro';
+import MarkedText from '../../../components/content/MarkedText.astro';
 import { levels, site } from '../../../config/site.ts';
 import { defaultLocale, type LocaleCode, localeCodes } from '../../../i18n/locales.ts';
 import { localizePath, t } from '../../../i18n/utils.ts';
@@ -48,7 +49,9 @@ const structuredData = breadcrumbData([
         >
           <span class="eyebrow text-muted">{page.levels.map(levelLabel).join(', ')}</span>
           <span class="mt-0.5 font-semibold group-hover:text-accent">{page.title}</span>
-          <span class="mt-1 text-sm text-muted">{page.summary}</span>
+          <span class="mt-1 text-sm text-muted">
+            <MarkedText text={page.summary} />
+          </span>
         </a>
       </li>
     ))}

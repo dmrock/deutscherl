@@ -41,14 +41,16 @@ const { locale, active, class: className } = Astro.props;
     </ul>
   </nav>
   <span class="mx-1 h-5 border-s border-border" aria-hidden="true"></span>
-  <a
-    href={localizePath(referencePath(), locale)}
-    aria-current={active === 'reference' ? 'true' : undefined}
-    class:list={[
-      'inline-flex rounded-ui px-3 py-1 text-sm font-semibold',
-      active === 'reference' ? 'bg-surface' : 'hover:bg-surface',
-    ]}
-  >
-    {t(locale, 'nav.reference')}
-  </a>
+  <nav aria-label={t(locale, 'nav.reference')}>
+    <a
+      href={localizePath(referencePath(), locale)}
+      aria-current={active === 'reference' ? 'true' : undefined}
+      class:list={[
+        'inline-flex rounded-ui px-3 py-1 text-sm font-semibold',
+        active === 'reference' ? 'bg-surface' : 'hover:bg-surface',
+      ]}
+    >
+      {t(locale, 'nav.reference')}
+    </a>
+  </nav>
 </div>

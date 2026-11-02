@@ -21,7 +21,12 @@ export const metaSchema = z.strictObject({
 export const referenceMetaSchema = z.strictObject({
   order: z.number().int().positive(),
   /** Levels whose learners the page is for, shown under the title */
-  levels: z.array(z.enum(levelIds)).min(1),
+  levels: z
+    .array(z.enum(levelIds))
+    .min(1)
+    .refine((levels) => new Set(levels).size === levels.length, {
+      message: 'levels must be unique',
+    }),
   sources: metaSchema.shape.sources,
 });
 

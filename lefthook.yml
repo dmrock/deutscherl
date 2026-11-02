@@ -16,7 +16,8 @@ pre-commit:
       run: node scripts/check-language.ts {staged_files}
 
     # Recomputes review hashes and resets changed scopes to draft (`.claude/rules/review.md`),
-    # then stages review.yaml so the reset shows up in the same commit.
+    # then stages review.yaml so the reset shows up in the same commit. The quoted pathspec is
+    # matched by git (`*` crosses folders), so a kind of content without pages does not fail it.
     - name: review
       glob: 'src/content/{topics,reference}/**'
-      run: node scripts/review.ts sync && git add src/content/topics/*/*/review.yaml src/content/reference/*/review.yaml
+      run: node scripts/review.ts sync && git add 'src/content/*/review.yaml'

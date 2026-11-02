@@ -11,7 +11,7 @@ export interface TopicLink {
   category: CategoryId;
   order: number;
   title: string;
-  /** Without `*` markers */
+  /** `*word*` marks a German word (`MarkedText`) */
   summary: string;
 }
 
@@ -75,7 +75,7 @@ export interface ReferenceLink {
   order: number;
   levels: readonly LevelId[];
   title: string;
-  /** Without `*` markers */
+  /** `*word*` marks a German word (`MarkedText`) */
   summary: string;
 }
 

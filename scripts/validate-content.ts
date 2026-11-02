@@ -131,8 +131,8 @@ function checkWordOrder(item: WordOrderItem, add: (message: string) => void): vo
 }
 
 /**
- * Tables: unique columns, one cell per column, variants of known columns, row ids unique within a
- * table. A row id used in several tables is the same word (it keys one gloss), so its first cell
+ * Tables: unique columns, one cell per column, variants of known columns and none twice, row ids
+ * unique within a table. A row id used in several tables is the same word (it keys one gloss), so its first cell
  * must match.
  */
 function checkTables(german: GermanContent, add: (message: string) => void): void {
@@ -157,12 +157,18 @@ function checkTables(german: GermanContent, add: (message: string) => void): voi
           `table ${table.id}: row ${row.id} has ${row.cells.length} cells for ${table.columns.length} columns`,
         );
       }
+      const variants = new Set<string>();
       for (const variant of row.variants ?? []) {
         if (!table.columns.includes(variant.column)) {
           add(
             `table ${table.id}: row ${row.id} has a variant for unknown column "${variant.column}"`,
           );
         }
+        const key = `${variant.column} ${variant.region} ${variant.de}`;
+        if (variants.has(key)) {
+          add(`table ${table.id}: row ${row.id} has the variant "${variant.de}" twice`);
+        }
+        variants.add(key);
       }
     }
   }

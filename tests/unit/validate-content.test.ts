@@ -255,6 +255,24 @@ describe('validate-content: reference pages', () => {
     ]);
   });
 
+  it('fails on the same variant twice', () => {
+    changePage(
+      'german.yaml',
+      "            de: 'ist **gesessen**'\n            region: AT\n",
+      "            de: 'ist **gesessen**'\n            region: AT\n          - column: perfekt\n            de: 'ist **gesessen**'\n            region: AT\n",
+    );
+    expect(pageIssues()).toEqual([
+      'reference/sample/german.yaml: table t1: row sitzen has the variant "ist **gesessen**" twice',
+    ]);
+  });
+
+  it('fails on a level listed twice', () => {
+    changePage('meta.yaml', 'levels: [a1, a2]', 'levels: [a1, a1]');
+    expect(pageIssues()).toEqual([
+      expect.stringMatching(/^reference\/sample\/meta\.yaml: levels: levels must be unique/),
+    ]);
+  });
+
   it('fails on a row id used twice in a table', () => {
     changePage('german.yaml', '- id: sitzen', '- id: fahren');
     expect(pageIssues()).toContain(
