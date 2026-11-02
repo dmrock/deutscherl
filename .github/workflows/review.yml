@@ -55,6 +55,22 @@ jobs:
           find pr-head -name .claude -type d -prune -exec rm -rf {} +
           find pr-head -type f \( -name CLAUDE.md -o -name CLAUDE.local.md -o -name .mcp.json -o -name .claude.json \) -delete
 
+      # The env scrub needs bubblewrap, and Claude Code does not start without it. The action
+      # installs it only when `allowed_non_write_users` is set, so this step does the same:
+      # bubblewrap and socat, then allow unprivileged user namespaces, which AppArmor blocks on
+      # Ubuntu 24.04.
+      - name: Install subprocess isolation dependencies
+        run: |
+          for i in 1 2 3; do
+            sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends bubblewrap socat && break
+            if [ "$i" = 3 ]; then exit 1; fi
+            echo "apt-get attempt $i failed, retrying..."
+            sleep 5
+          done
+          if [ -f /proc/sys/kernel/apparmor_restrict_unprivileged_userns ]; then
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
+
       - name: Review
         uses: anthropics/claude-code-action@d535f5172dec02b204866b393d6b20b9b2aaf98d # v1.0.266
         with:
