@@ -78,6 +78,30 @@ export function topicData(options: {
   };
 }
 
+/** A reference page: tables to look things up, for one or more levels. */
+export function referenceData(options: {
+  title: string;
+  description: string;
+  url: string;
+  locale: LocaleCode;
+  /** CEFR level labels, e.g. `['A1', 'A2']` */
+  levels: readonly string[];
+}): StructuredData {
+  return {
+    '@context': SCHEMA,
+    '@type': 'LearningResource',
+    name: options.title,
+    description: options.description,
+    url: options.url,
+    inLanguage: options.locale,
+    educationalLevel: options.levels.join(', '),
+    learningResourceType: ['reference'],
+    about: { '@type': 'Thing', name: 'German grammar' },
+    isAccessibleForFree: true,
+    license: CONTENT_LICENSE_URL,
+  };
+}
+
 /** Whether a built page (absolute URL) belongs in the sitemap. */
 export function inSitemap(url: string): boolean {
   const path = new URL(url).pathname;

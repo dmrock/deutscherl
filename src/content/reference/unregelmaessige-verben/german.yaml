@@ -1,0 +1,167 @@
+examples:
+  - id: e1
+    de: 'Ich **habe** das Auto in die Garage **gefahren**.'
+  - id: e2
+    de: 'Gestern **war** ich sehr müde.'
+  - id: e3
+    de: 'Als Kind **konnte** ich nicht schwimmen.'
+tables:
+  - id: verbs
+    columns: [infinitive, present, perfekt]
+    gloss: true
+    groups:
+      - id: a-ae
+        rows:
+          - id: fahren
+            cells: ['fahren', '**fährt**', '**ist** gefahren']
+          - id: fallen
+            cells: ['fallen', '**fällt**', '**ist** gefallen']
+          - id: gefallen
+            cells: ['gefallen', '**gefällt**', 'hat gefallen']
+          - id: halten
+            cells: ['halten', '**hält**', 'hat gehalten']
+          - id: lassen
+            cells: ['lassen', '**lässt**', 'hat gelassen']
+          - id: laufen
+            cells: ['laufen', '**läuft**', '**ist** gelaufen']
+          - id: schlafen
+            cells: ['schlafen', '**schläft**', 'hat geschlafen']
+          - id: tragen
+            cells: ['tragen', '**trägt**', 'hat getragen']
+          - id: waschen
+            cells: ['waschen', '**wäscht**', 'hat gewaschen']
+      - id: e-i
+        rows:
+          - id: essen
+            cells: ['essen', '**isst**', 'hat gegessen']
+          - id: geben
+            cells: ['geben', '**gibt**', 'hat gegeben']
+          - id: helfen
+            cells: ['helfen', '**hilft**', 'hat geholfen']
+          - id: nehmen
+            cells: ['nehmen', '**nimmt**', 'hat genommen']
+          - id: sprechen
+            cells: ['sprechen', '**spricht**', 'hat gesprochen']
+          - id: sterben
+            cells: ['sterben', '**stirbt**', '**ist** gestorben']
+          - id: treffen
+            cells: ['treffen', '**trifft**', 'hat getroffen']
+          - id: vergessen
+            cells: ['vergessen', '**vergisst**', 'hat vergessen']
+          - id: werfen
+            cells: ['werfen', '**wirft**', 'hat geworfen']
+      - id: e-ie
+        rows:
+          - id: empfehlen
+            cells: ['empfehlen', '**empfiehlt**', 'hat empfohlen']
+          - id: lesen
+            cells: ['lesen', '**liest**', 'hat gelesen']
+          - id: sehen
+            cells: ['sehen', '**sieht**', 'hat gesehen']
+      - id: perfekt-sein
+        rows:
+          - id: bleiben
+            cells: ['bleiben', 'bleibt', '**ist** geblieben']
+          - id: fliegen
+            cells: ['fliegen', 'fliegt', '**ist** geflogen']
+          - id: gehen
+            cells: ['gehen', 'geht', '**ist** gegangen']
+          - id: kommen
+            cells: ['kommen', 'kommt', '**ist** gekommen']
+          - id: schwimmen
+            cells: ['schwimmen', 'schwimmt', '**ist** geschwommen']
+      - id: perfekt-haben
+        rows:
+          - id: beginnen
+            cells: ['beginnen', 'beginnt', 'hat begonnen']
+          - id: bekommen
+            cells: ['bekommen', 'bekommt', 'hat bekommen']
+          - id: bitten
+            cells: ['bitten', 'bittet', 'hat gebeten']
+          - id: finden
+            cells: ['finden', 'findet', 'hat gefunden']
+          - id: gewinnen
+            cells: ['gewinnen', 'gewinnt', 'hat gewonnen']
+          - id: heissen
+            cells: ['heißen', 'heißt', 'hat geheißen']
+          - id: liegen
+            cells: ['liegen', 'liegt', 'hat gelegen']
+            variants:
+              - column: perfekt
+                de: '**ist** gelegen'
+                region: AT
+          - id: rufen
+            cells: ['rufen', 'ruft', 'hat gerufen']
+          - id: scheinen
+            cells: ['scheinen', 'scheint', 'hat geschienen']
+          - id: schliessen
+            cells: ['schließen', 'schließt', 'hat geschlossen']
+          - id: schreiben
+            cells: ['schreiben', 'schreibt', 'hat geschrieben']
+          - id: singen
+            cells: ['singen', 'singt', 'hat gesungen']
+          - id: sitzen
+            cells: ['sitzen', 'sitzt', 'hat gesessen']
+            variants:
+              - column: perfekt
+                de: '**ist** gesessen'
+                region: AT
+          - id: stehen
+            cells: ['stehen', 'steht', 'hat gestanden']
+            variants:
+              - column: perfekt
+                de: '**ist** gestanden'
+                region: AT
+          - id: trinken
+            cells: ['trinken', 'trinkt', 'hat getrunken']
+          - id: tun
+            cells: ['tun', 'tut', 'hat getan']
+          - id: verlieren
+            cells: ['verlieren', 'verliert', 'hat verloren']
+          - id: verstehen
+            cells: ['verstehen', 'versteht', 'hat verstanden']
+      - id: mixed
+        rows:
+          - id: bringen
+            cells: ['bringen', 'bringt', 'hat gebracht']
+          - id: denken
+            cells: ['denken', 'denkt', 'hat gedacht']
+          - id: kennen
+            cells: ['kennen', 'kennt', 'hat gekannt']
+          - id: rennen
+            cells: ['rennen', 'rennt', '**ist** gerannt']
+          - id: wissen
+            cells: ['wissen', '**weiß**', 'hat gewusst']
+      - id: sein-haben-werden
+        rows:
+          - id: sein
+            cells: ['sein', '**ist**', '**ist** gewesen']
+          - id: haben
+            cells: ['haben', '**hat**', 'hat gehabt']
+          - id: werden
+            cells: ['werden', '**wird**', '**ist** geworden']
+  - id: praeteritum
+    columns: [infinitive, present, praeteritum]
+    gloss: true
+    rows:
+      - id: sein
+        cells: ['sein', '**ist**', 'war']
+      - id: haben
+        cells: ['haben', '**hat**', 'hatte']
+      - id: werden
+        cells: ['werden', '**wird**', 'wurde']
+      - id: koennen
+        cells: ['können', '**kann**', 'konnte']
+      - id: muessen
+        cells: ['müssen', '**muss**', 'musste']
+      - id: wollen
+        cells: ['wollen', '**will**', 'wollte']
+      - id: duerfen
+        cells: ['dürfen', '**darf**', 'durfte']
+      - id: sollen
+        cells: ['sollen', '**soll**', 'sollte']
+      - id: moegen
+        cells: ['mögen', '**mag**', 'mochte']
+austrianNotes:
+  - id: at1
+    de: 'Wir **sind** am Abend lange im Garten **gesessen**.'

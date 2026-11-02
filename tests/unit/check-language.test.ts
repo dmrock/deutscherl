@@ -22,6 +22,8 @@ describe('check-language', () => {
       'src/i18n/ui/ru.ts',
       'src/content/topics/a2/perfekt/ru.mdx',
       'src/content/topics/a2/perfekt/i18n/ru.yaml',
+      'src/content/reference/genus/ru.mdx',
+      'src/content/reference/genus/i18n/ru.yaml',
       'src/content/pages/legal/ru.mdx',
       'tests/fixtures/i18n/ru/paragraph.md',
     ];
@@ -63,6 +65,7 @@ describe('check-language', () => {
     expect(isAllowedPath('src/i18n/ui/index.ts')).toBe(false);
     expect(isAllowedPath('src/i18n/ui/xx.ts')).toBe(false);
     expect(isAllowedPath('src/content/topics/a2/perfekt/german.yaml')).toBe(false);
+    expect(isAllowedPath('src/content/reference/genus/german.yaml')).toBe(false);
     expect(isAllowedPath('tests/fixtures/other/ru.txt')).toBe(false);
     expect(isAllowedPath('src/content/pages/legal/notes.md')).toBe(false);
     expect(isAllowedPath('src/content/pages/about/sources/ru.mdx')).toBe(false);

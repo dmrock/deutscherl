@@ -2,6 +2,9 @@ import { describe, expect, it } from 'vitest';
 import {
   groupByCategory,
   neighbours,
+  type ReferenceLink,
+  referenceInOrder,
+  referencePath,
   type TopicLink,
   topicPath,
   topicsInOrder,
@@ -86,5 +89,25 @@ describe('neighbours()', () => {
 describe('topicPath()', () => {
   it('builds the unprefixed topic path with a trailing slash', () => {
     expect(topicPath({ level: 'a2', slug: 'perfekt' })).toBe('/a2/perfekt/');
+  });
+});
+
+describe('reference pages', () => {
+  const page = (slug: string, rank: number): ReferenceLink => ({
+    slug,
+    order: rank,
+    levels: ['a1'],
+    title: slug,
+    summary: '',
+  });
+
+  it('orders by order, then slug', () => {
+    const pages = [page('verben', 2), page('plural', 1), page('genus', 1)];
+    expect(referenceInOrder(pages).map((item) => item.slug)).toEqual(['genus', 'plural', 'verben']);
+  });
+
+  it('builds the index and page paths', () => {
+    expect(referencePath()).toBe('/reference/');
+    expect(referencePath('genus')).toBe('/reference/genus/');
   });
 });

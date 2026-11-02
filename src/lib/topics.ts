@@ -4,7 +4,6 @@
  */
 import { getCollection, getEntry } from 'astro:content';
 import type { LocaleCode } from '../i18n/locales.ts';
-import { stripMarks } from './marked-text.ts';
 import type { TopicLink } from './navigation.ts';
 
 export async function getTopicLinks(locale: LocaleCode): Promise<TopicLink[]> {
@@ -19,7 +18,7 @@ export async function getTopicLinks(locale: LocaleCode): Promise<TopicLink[]> {
       category: meta.data.category,
       order: meta.data.order,
       title: page.data.title,
-      summary: stripMarks(page.data.summary),
+      summary: page.data.summary,
     });
   }
   return links;

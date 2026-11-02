@@ -15,14 +15,22 @@ import {
   germanSchema,
   i18nSchema,
   metaSchema,
+  referenceMetaSchema,
+  tableRows,
   type WordOrderItem,
 } from '../src/lib/content-schemas.ts';
 import { coverage } from './i18n-coverage.ts';
-import { CONTENT_ROOT, type ParsedFile, readTopics, type TopicFiles } from './lib/content.ts';
+import {
+  CONTENT_ROOTS,
+  type ContentRoots,
+  type ParsedFile,
+  readContent,
+  type TopicFiles,
+} from './lib/content.ts';
 import { isInSync } from './review.ts';
 
 export interface Issue {
-  /** `a2/perfekt` */
+  /** `a2/perfekt`, `reference/genus` */
   topic: string;
   /** File inside the topic folder, if the issue belongs to one */
   file?: string;
@@ -122,13 +130,69 @@ function checkWordOrder(item: WordOrderItem, add: (message: string) => void): vo
   }
 }
 
-function checkGerman(german: GermanContent, add: (message: string) => void): void {
+/**
+ * Tables: unique columns, one cell per column, variants of known columns and none twice, row ids
+ * unique within a table. A row id used in several tables is the same word (it keys one gloss), so its first cell
+ * must match.
+ */
+function checkTables(german: GermanContent, add: (message: string) => void): void {
+  const firstCells = new Map<string, string | undefined>();
+  for (const table of german.tables) {
+    if (new Set(table.columns).size !== table.columns.length) {
+      add(`table ${table.id}: columns must be unique`);
+    }
+    const rowIds = new Set<string>();
+    for (const row of tableRows(table)) {
+      if (rowIds.has(row.id)) add(`table ${table.id}: duplicate row id "${row.id}"`);
+      rowIds.add(row.id);
+      const first = firstCells.get(row.id);
+      if (firstCells.has(row.id) && first !== row.cells[0]) {
+        add(
+          `table ${table.id}: row ${row.id} starts with "${row.cells[0]}" but another table has "${first}" for the same id`,
+        );
+      }
+      firstCells.set(row.id, row.cells[0]);
+      if (row.cells.length !== table.columns.length) {
+        add(
+          `table ${table.id}: row ${row.id} has ${row.cells.length} cells for ${table.columns.length} columns`,
+        );
+      }
+      const variants = new Set<string>();
+      for (const variant of row.variants ?? []) {
+        if (!table.columns.includes(variant.column)) {
+          add(
+            `table ${table.id}: row ${row.id} has a variant for unknown column "${variant.column}"`,
+          );
+        }
+        const key = `${variant.column} ${variant.region} ${variant.de}`;
+        if (variants.has(key)) {
+          add(`table ${table.id}: row ${row.id} has the variant "${variant.de}" twice`);
+        }
+        variants.add(key);
+      }
+    }
+  }
+}
+
+function checkGerman(
+  german: GermanContent,
+  kind: TopicFiles['kind'],
+  add: (message: string) => void,
+): void {
   const ids = new Set<string>();
-  const all = [...german.examples, ...german.choice, ...german.wordOrder, ...german.austrianNotes];
+  const all = [
+    ...german.examples,
+    ...german.choice,
+    ...german.wordOrder,
+    ...german.austrianNotes,
+    ...german.tables,
+    ...german.tables.flatMap((table) => table.groups ?? []),
+  ];
   for (const { id } of all) {
     if (ids.has(id)) add(`duplicate id "${id}" (ids are unique across the whole file)`);
     ids.add(id);
   }
+  checkTables(german, add);
 
   for (const item of german.choice) {
     const gaps = item.text.split('___').length - 1;
@@ -146,7 +210,11 @@ function checkGerman(german: GermanContent, add: (message: string) => void): voi
       }
     }
   }
-  if (german.choice.length < MIN_CHOICE_ITEMS) {
+  if (kind === 'reference') {
+    if (german.choice.length > 0 || german.wordOrder.length > 0) {
+      add('reference pages have no practice: remove choice and wordOrder');
+    }
+  } else if (german.choice.length < MIN_CHOICE_ITEMS) {
     add(`needs at least ${MIN_CHOICE_ITEMS} choice items (found ${german.choice.length})`);
   }
 
@@ -160,6 +228,15 @@ function unknownI18nKeys(i18n: z.infer<typeof i18nSchema>, german: GermanContent
     choice: new Set(german.choice.map((item) => item.id)),
     wordOrder: new Set(german.wordOrder.map((item) => item.id)),
     austrianNotes: new Set(german.austrianNotes.map((item) => item.id)),
+    columns: new Set(german.tables.flatMap((table) => table.columns)),
+    groups: new Set(
+      german.tables.flatMap((table) => (table.groups ?? []).map((group) => group.id)),
+    ),
+    glosses: new Set(
+      german.tables
+        .filter((table) => table.gloss)
+        .flatMap((table) => tableRows(table).map((row) => row.id)),
+    ),
   };
   const unknown: string[] = [];
   for (const section of Object.keys(known) as (keyof typeof known)[]) {
@@ -179,17 +256,20 @@ export function validateTopic(
   const add = (file: string | undefined, message: string) =>
     issues.push(file ? { topic: key, file, message } : { topic: key, message });
 
-  if (!(levelIds as readonly string[]).includes(topic.folderLevel)) {
-    add(undefined, `folder "${topic.folderLevel}" is not a level (${levelIds.join(', ')})`);
+  const folderLevel = topic.folderLevel ?? '';
+  if (topic.kind === 'topic' && !(levelIds as readonly string[]).includes(folderLevel)) {
+    add(undefined, `folder "${folderLevel}" is not a level (${levelIds.join(', ')})`);
   }
-  for (const file of topic.unknownFiles) add(file, 'unknown file in a topic folder');
+  for (const file of topic.unknownFiles) add(file, `unknown file in a ${topic.kind} folder`);
 
   // meta.yaml
   if (!topic.meta) add(undefined, 'missing meta.yaml');
-  else if (schemaIssues(key, topic.meta, metaSchema, issues)) {
+  else if (topic.kind === 'reference') {
+    schemaIssues(key, topic.meta, referenceMetaSchema, issues);
+  } else if (schemaIssues(key, topic.meta, metaSchema, issues)) {
     const meta = metaSchema.parse(topic.meta.data);
-    if (meta.level !== topic.folderLevel) {
-      add('meta.yaml', `level "${meta.level}" does not match the folder "${topic.folderLevel}"`);
+    if (meta.level !== folderLevel) {
+      add('meta.yaml', `level "${meta.level}" does not match the folder "${folderLevel}"`);
     }
   }
 
@@ -198,7 +278,7 @@ export function validateTopic(
   if (!topic.german) add(undefined, 'missing german.yaml');
   else if (schemaIssues(key, topic.german, germanSchema, issues)) {
     german = germanSchema.parse(topic.german.data);
-    checkGerman(german, (message) => add('german.yaml', message));
+    checkGerman(german, topic.kind, (message) => add('german.yaml', message));
   }
 
   // <locale>.mdx
@@ -211,6 +291,10 @@ export function validateTopic(
     if (!german) continue;
     const examples = new Set(german.examples.map((item) => item.id));
     const notes = new Set(german.austrianNotes.map((item) => item.id));
+    const tables = new Set(german.tables.map((item) => item.id));
+    for (const id of file.refs.tables) {
+      if (!tables.has(id)) add(file.name, `<GermanTable id="${id}"> is not a table in german.yaml`);
+    }
     for (const id of file.refs.examples) {
       if (!examples.has(id))
         add(file.name, `<Example id="${id}"> is not an example in german.yaml`);
@@ -252,8 +336,8 @@ export function validateTopic(
   return issues;
 }
 
-export function validateContent(root: string = CONTENT_ROOT): Issue[] {
-  return readTopics(root).flatMap((topic) => validateTopic(topic));
+export function validateContent(roots: ContentRoots = CONTENT_ROOTS): Issue[] {
+  return readContent(roots).flatMap((topic) => validateTopic(topic));
 }
 
 export function formatIssue({ topic, file, message }: Issue): string {
@@ -263,7 +347,9 @@ export function formatIssue({ topic, file, message }: Issue): string {
 function main(): number {
   const issues = validateContent();
   if (issues.length === 0) {
-    console.log(`Content valid (${readTopics().length} topics).`);
+    const units = readContent();
+    const pages = units.filter((unit) => unit.kind === 'reference').length;
+    console.log(`Content valid (${units.length - pages} topics, ${pages} reference pages).`);
     return 0;
   }
   for (const issue of issues) console.error(formatIssue(issue));

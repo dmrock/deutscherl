@@ -31,7 +31,7 @@ What `ready: false` does:
 - The locale is not in the language picker, `hreflang`, `og:locale:alternate` or the sitemap (all read `readyLocales`), and Pagefind does not index its pages (`data-pagefind-body` only for ready locales).
 - Content checks report its gaps as information only (`pnpm i18n:coverage`, `pnpm validate`).
 - The about and legal pages show the English text until `src/content/pages/<page>/xx.mdx` exists (`src/lib/pages.ts`).
-- A topic without `xx.mdx` has no page in this locale and is left out of its navigation (`src/lib/topics.ts`).
+- A topic without `xx.mdx` has no page in this locale and is left out of its navigation (`src/lib/topics.ts`); the same goes for reference pages (`src/lib/reference.ts`).
 
 The 404 page (`/xx/404.html`) and the language check's allowlist (step 5) follow from the entry automatically.
 
@@ -56,7 +56,7 @@ Each locale has its own font; German content blocks keep the German font on ever
 
 Every key must exist even while the locale is not ready; strings not translated yet can stay in English for the preview.
 
-## 4. Site pages and topics
+## 4. Site pages, topics and reference pages
 
 Translate from the English files; the English explanation is the canonical one.
 
@@ -65,6 +65,7 @@ Translate from the English files; the English explanation is the canonical one.
   - `xx.mdx`: frontmatter `title` and `summary`, then the explanation. It references German content by id (`<Example id="e1" />`) and never contains German example sentences.
   - `i18n/xx.yaml`: translations of the examples and Austrian notes, the `why` of every choice item, `translation` and `why` of every word-order item.
   - `german.yaml` is shared by all locales: never copy or change German sentences for a translation.
+- Each reference page in `src/content/reference/<slug>/`: `xx.mdx` and `i18n/xx.yaml` as for a topic, without practice items, plus `columns` (the table column labels) and `glosses` (the meaning of each table row) in `i18n/xx.yaml` (`.claude/rules/reference.md`).
 - `.claude/rules/content.md` has the file formats and the writing rules.
 
 Check progress with:
@@ -73,11 +74,11 @@ Check progress with:
 pnpm i18n:coverage
 ```
 
-It lists every missing file and key per topic and page. For a locale that is not ready the gaps are marked `info (not ready)` and do not fail.
+It lists every missing file and key per topic, reference page and site page. For a locale that is not ready the gaps are marked `info (not ready)` and do not fail.
 
 ## 5. Language check
 
-Nothing to edit. `scripts/check-language.ts` builds its allowlist from the locale codes in `locales.ts`: once `xx` is there, native-language text is allowed in `src/i18n/ui/xx.ts`, `src/content/topics/**/xx.mdx`, `src/content/topics/**/i18n/xx.yaml`, `src/content/pages/<page>/xx.mdx` and `tests/fixtures/i18n/xx/`. Everything else stays English. Run it with:
+Nothing to edit. `scripts/check-language.ts` builds its allowlist from the locale codes in `locales.ts`: once `xx` is there, native-language text is allowed in `src/i18n/ui/xx.ts`, `src/content/topics/**/xx.mdx`, `src/content/topics/**/i18n/xx.yaml`, `src/content/reference/<slug>/xx.mdx`, `src/content/reference/<slug>/i18n/xx.yaml`, `src/content/pages/<page>/xx.mdx` and `tests/fixtures/i18n/xx/`. Everything else stays English. Run it with:
 
 ```sh
 pnpm check:language
@@ -87,26 +88,27 @@ pnpm check:language
 
 Open a pull request: CI builds a preview at `pr-<number>-deutscherl.<subdomain>.workers.dev`. Check on the preview, at phone and desktop width:
 
-- the home, level, topic, about, legal and 404 pages under `/xx/`;
+- the home, level, topic, reference, about, legal and 404 pages under `/xx/`;
 - long strings: headers, buttons, the previous/next topic cards and the practice card must not break (translations are often longer than English);
-- for `dir: 'rtl'`: the page mirrors (sidebar, tables, the word-order line and the word bank, the progress dots), German blocks stay left-to-right (`lang="de"`);
+- for `dir: 'rtl'`: the page mirrors (sidebar, tables and their sticky first column, the word-order line and the word bank, the progress dots), German blocks stay left-to-right (`lang="de"`);
 - search (Pagefind takes its UI language and stemming from `<html lang>`) once the locale is ready, since only ready locales are indexed.
 
 ## 7. Review
 
-The pre-commit hook runs `pnpm review:sync`, which adds `translations.xx` (status `draft`) to each topic's `review.yaml` as soon as the topic has an `xx` file. Never edit `review.yaml` by hand.
+The pre-commit hook runs `pnpm review:sync`, which adds `translations.xx` (status `draft`) to the `review.yaml` of each topic and reference page as soon as it has an `xx` file. Never edit `review.yaml` by hand.
 
 A fluent speaker reads each translated topic against the English page. A maintainer then records it:
 
 ```sh
 pnpm review:set <level>/<slug> xx reviewed --by "Name"
+pnpm review:set reference/<slug> xx reviewed --by "Name"
 ```
 
 `pnpm review:status` shows the state of every topic. The topic page shows "Translation reviewed" or "Translation not reviewed yet" (`.claude/rules/review.md`).
 
 ## 8. Switch to `ready: true`
 
-When every topic and site page is translated (and, ideally, reviewed):
+When every topic, reference page and site page is translated (and, ideally, reviewed):
 
 1. Set `ready: true` in `locales.ts`.
 2. Run the checks; for a ready locale they fail on gaps:

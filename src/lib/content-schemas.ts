@@ -17,6 +17,19 @@ export const metaSchema = z.strictObject({
   sources: z.array(z.strictObject({ title: text, url: z.url().optional() })).min(1),
 });
 
+/** `meta.yaml` of a reference page (`src/content/reference/<slug>/`): no level of its own. */
+export const referenceMetaSchema = z.strictObject({
+  order: z.number().int().positive(),
+  /** Levels whose learners the page is for, shown under the title */
+  levels: z
+    .array(z.enum(levelIds))
+    .min(1)
+    .refine((levels) => new Set(levels).size === levels.length, {
+      message: 'levels must be unique',
+    }),
+  sources: metaSchema.shape.sources,
+});
+
 export const regionSchema = z.enum(['AT']);
 
 /** German example; `de` may mark key words with `**…**` (highlighted, stripped for audio). */
@@ -50,12 +63,43 @@ export const wordOrderSchema = z.strictObject({
 
 export const austrianNoteSchema = z.strictObject({ id, de: text });
 
+const tableRowSchema = z.strictObject({
+  id,
+  /** One cell per column */
+  cells: z.array(text).min(1),
+  /** Regional form shown with the flag under the cell of `column` */
+  variants: z.array(z.strictObject({ column: id, de: text, region: regionSchema })).optional(),
+});
+
+/**
+ * A table of German forms (`<GermanTable id>`). Column labels, group labels and the meaning of each
+ * row are per-locale data (`columns.<column>`, `groups.<group>`, `glosses.<row>` in
+ * i18n/<locale>.yaml). In cells, `**…**` marks what to notice. A table has either `rows` or
+ * `groups` of rows, each group under a label row.
+ */
+export const tableSchema = z
+  .strictObject({
+    id,
+    columns: z.array(id).min(1),
+    /** Adds a last column with the meaning of each row in the page locale (`glosses.<row id>`) */
+    gloss: z.boolean().optional(),
+    rows: z.array(tableRowSchema).min(1).optional(),
+    groups: z
+      .array(z.strictObject({ id, rows: z.array(tableRowSchema).min(1) }))
+      .min(1)
+      .optional(),
+  })
+  .refine((table) => (table.rows === undefined) !== (table.groups === undefined), {
+    message: 'a table has either rows or groups',
+  });
+
 /** `german.yaml`: everything German in a topic, shared by all locales. */
 export const germanSchema = z.strictObject({
   examples: z.array(exampleSchema).default([]),
   choice: z.array(choiceSchema).default([]),
   wordOrder: z.array(wordOrderSchema).default([]),
   austrianNotes: z.array(austrianNoteSchema).default([]),
+  tables: z.array(tableSchema).default([]),
 });
 
 /** `<locale>.mdx` frontmatter. In `summary`, `*word*` marks a German term. */
@@ -83,6 +127,12 @@ export const i18nSchema = z.strictObject({
     .record(z.string(), z.strictObject({ translation: text.optional(), why: text.optional() }))
     .default({}),
   austrianNotes: z.record(z.string(), text).default({}),
+  /** Table column labels by column id, shared by all tables of the page */
+  columns: z.record(z.string(), text).default({}),
+  /** Label of each table group, by group id */
+  groups: z.record(z.string(), text).default({}),
+  /** Meaning of each row of a `gloss` table, by row id (the same id in two tables is one word) */
+  glosses: z.record(z.string(), text).default({}),
 });
 
 export const baseStatusSchema = z.enum(['draft', 'reviewed', 'verified']);
@@ -124,6 +174,8 @@ export const reviewSchema = z.strictObject({
 });
 
 export type TopicMeta = z.infer<typeof metaSchema>;
+export type ReferenceMeta = z.infer<typeof referenceMetaSchema>;
+export type GermanTable = z.infer<typeof tableSchema>;
 export type GermanContent = z.infer<typeof germanSchema>;
 export type ChoiceItem = z.infer<typeof choiceSchema>;
 export type WordOrderItem = z.infer<typeof wordOrderSchema>;
@@ -134,3 +186,13 @@ export type Review = z.infer<typeof reviewSchema>;
 export type BaseReview = Review['base'];
 export type TranslationReview = Review['translations'][string];
 export type HistoryEntry = z.infer<typeof historyEntrySchema>;
+export type GermanTableRow = z.infer<typeof tableRowSchema>;
+
+/** The rows of a table by group; a table without groups is one group without an id. */
+export function tableGroups(table: GermanTable): { id?: string; rows: GermanTableRow[] }[] {
+  return table.groups ?? [{ rows: table.rows ?? [] }];
+}
+
+export function tableRows(table: GermanTable): GermanTableRow[] {
+  return tableGroups(table).flatMap((group) => group.rows);
+}

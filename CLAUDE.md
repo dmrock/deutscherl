@@ -3,9 +3,10 @@
 A free website for learning German grammar: explanations in the learner's native language, German examples with translations, interactive exercises. Working name; it lives only in `src/config/site.ts`.
 
 - Pilot: levels A1 and A2 (7 and 6 topics, listed in `PLAN.md` stage 8); B1, B2 and C1 show as "coming soon".
+- Reference pages (`/reference/`): tables to look things up at any level, such as noun gender clues and irregular verbs. They have no level and no practice.
 - Native languages: English (default) and Russian. More will follow, possibly in other scripts or right to left, so everything language-specific is data, not code.
 - Signature feature: notes on Austrian German (usage that differs from Germany).
-- The site teaches grammar only: no dictionary or vocabulary database; Austrian vocabulary goes into the topics.
+- The site teaches grammar only: no dictionary or vocabulary database; Austrian vocabulary goes into the topics. Reference pages are curated grammar tables, not a dictionary: every row is a word a learner at the covered levels meets and cannot derive from a rule on the site, with only the forms those levels teach; no full inventories, generated paradigms or imported word lists, at most about 80 rows per page.
 - No accounts, no progress tracking, no cookies, no ad trackers, no runtime API or database calls.
 - Sponsor banners later: static, labeled as ads. The topic layout keeps a sponsor slot.
 - Audio for German sentences comes later, once there is enough content.
@@ -33,7 +34,7 @@ pnpm budget             # JS budget per page (after a build)
 
 - Commit with sign-off: `git commit -s` (DCO is enforced in CI).
 - Content you generate stays `draft` (base and translations). Never set `reviewed` or `verified`, never edit `review.yaml` by hand, and run `review:minor` or `review:set` only when asked to explicitly.
-- If you are not sure a German sentence is correct, say so in your summary instead of guessing.
+- Check German against reliable sources and fix it yourself (sources and checklist in `.claude/rules/content.md`). A fact needs two independent sources. Replace sentences that are correct but awkward with natural ones. Report only what no source settles, and say what you checked. Content still stays `draft` until a teacher verifies it.
 - Before adding a dependency, check its current docs (Context7 or the official site) and state its gzipped size and why it is needed, also in your summary.
 - At the end of every stage, update this file or the matching file in `.claude/rules/` when a rule or the structure changed. There is no decision log: a decision that matters becomes a rule, and background that helps contributors goes into `README.md`.
 - The repository is public. Commit messages, PR descriptions, docs and comments describe what the code does; they never mention who decided something or why someone asked for it.
@@ -47,6 +48,7 @@ Native-language text is allowed only in localization files:
 - `src/i18n/ui/<locale>.ts` (UI strings)
 - `src/i18n/locales.ts`, only the `name` field
 - `src/content/topics/**/<locale>.mdx` and `src/content/topics/**/i18n/<locale>.yaml`
+- `src/content/reference/<slug>/<locale>.mdx` and `src/content/reference/<slug>/i18n/<locale>.yaml`
 - `src/content/pages/<page>/<locale>.mdx`
 - test fixtures under `tests/fixtures/i18n/<locale>/`
 
@@ -88,6 +90,7 @@ Components, pages and tests use `t(locale, key)` or read content files instead o
 Path-scoped files in `.claude/rules/` load when you work on matching files:
 
 - `content.md`: writing topics, the content model, MDX components, lesson formatting, exercise items, validation
+- `reference.md`: reference pages, their scope, German tables, routes and navigation
 - `review.md`: review scopes, hashes, automatic reset, badges
 - `exercises.md`: exercise runner, practice section, word-order UI
 - `ui.md`: JS budgets, page types, layout, design tokens, accessibility

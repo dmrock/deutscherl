@@ -19,3 +19,7 @@ export const pageTitle = (slug: string): string =>
 /** Title of a topic (`src/content/topics/<level>/<slug>/en.mdx`). */
 export const topicTitle = (key: string): string =>
   frontmatter(`topics/${key}/en.mdx`).title as string;
+
+/** Title of a reference page (`src/content/reference/<slug>/en.mdx`). */
+export const referenceTitle = (slug: string): string =>
+  frontmatter(`reference/${slug}/en.mdx`).title as string;

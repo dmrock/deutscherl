@@ -13,7 +13,16 @@ test.describe('noindex', () => {
     });
   }
 
-  for (const path of ['/', '/a1/', '/a2/', '/a2/perfekt/', '/about/', '/legal/']) {
+  for (const path of [
+    '/',
+    '/a1/',
+    '/a2/',
+    '/a2/perfekt/',
+    '/reference/',
+    '/reference/genus/',
+    '/about/',
+    '/legal/',
+  ]) {
     test(`${path} is noindex only in preview builds`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator('meta[name="robots"][content="noindex"]')).toHaveCount(
@@ -121,7 +130,7 @@ test.describe('static navigation', () => {
     const sidebar = (await chromeBoxes(page))[3];
     expect(sidebar).not.toBeNull();
 
-    for (const path of ['/a2/', '/b1/', '/a2/perfekt/']) {
+    for (const path of ['/a2/', '/b1/', '/a2/perfekt/', '/reference/', '/reference/genus/']) {
       await page.goto(path);
       expect(await chromeBoxes(page), path).toEqual([brand, levels, toggle, sidebar]);
     }

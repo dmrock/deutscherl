@@ -1,0 +1,78 @@
+examples:
+  e1: Я загнал машину в гараж.
+  e2: Вчера я очень устал.
+  e3: В детстве я не умел плавать.
+austrianNotes:
+  at1: Вечером мы долго сидели в саду.
+columns:
+  infinitive: Инфинитив
+  present: Настоящее время (*er / sie / es*)
+  perfekt: Перфект (*er / sie / es*)
+  praeteritum: Претеритум (*er / sie / es*)
+groups:
+  a-ae: 'Настоящее время: *a* меняется на *ä* (*au* на *äu*)'
+  e-i: 'Настоящее время: *e* меняется на *i*'
+  e-ie: 'Настоящее время: *e* меняется на *ie*'
+  perfekt-sein: 'Настоящее время правильное, перфект с *sein*'
+  perfekt-haben: 'Настоящее время правильное, перфект с *haben*'
+  mixed: 'Смешанные глаголы: *-t*, но основа меняется'
+  sein-haben-werden: '*sein*, *haben* и *werden*'
+glosses:
+  fahren: ехать
+  fallen: падать
+  gefallen: нравиться
+  halten: держать, останавливаться
+  lassen: оставлять, позволять
+  laufen: бежать, идти пешком
+  schlafen: спать
+  tragen: нести, носить (одежду)
+  waschen: мыть, стирать
+  essen: есть
+  geben: давать
+  helfen: помогать
+  nehmen: брать
+  sprechen: говорить
+  sterben: умирать
+  treffen: встречать
+  vergessen: забывать
+  werfen: бросать
+  empfehlen: советовать, рекомендовать
+  lesen: читать
+  sehen: видеть
+  bleiben: оставаться
+  fliegen: лететь
+  gehen: идти
+  kommen: приходить
+  schwimmen: плавать
+  beginnen: начинать
+  bekommen: получать
+  bitten: просить
+  finden: находить
+  gewinnen: выигрывать
+  heissen: называться, зваться
+  liegen: лежать
+  rufen: звать
+  scheinen: светить, казаться
+  schliessen: закрывать
+  schreiben: писать
+  singen: петь
+  sitzen: сидеть
+  stehen: стоять
+  trinken: пить
+  tun: делать
+  verlieren: терять
+  verstehen: понимать
+  bringen: приносить
+  denken: думать
+  kennen: знать (человека, место)
+  rennen: бегать, мчаться
+  wissen: знать (факт)
+  sein: быть
+  haben: иметь
+  werden: становиться
+  koennen: мочь, уметь
+  muessen: быть должным, надо
+  wollen: хотеть
+  duerfen: можно, иметь право
+  sollen: следует, быть должным (по чужой воле)
+  moegen: любить, нравиться

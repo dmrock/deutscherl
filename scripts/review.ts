@@ -1,8 +1,8 @@
 /**
- * Review state of topics (`.claude/rules/review.md`). `review.yaml` in each topic folder
- * is managed only by this script.
+ * Review state of topics and reference pages (`.claude/rules/review.md`). `review.yaml` in each
+ * folder is managed only by this script.
  *
- * Two scopes per topic, each with a content hash:
+ * Two scopes per topic or reference page, each with a content hash:
  * - `base`: meta.yaml, german.yaml, <default locale>.mdx, i18n/<default locale>.yaml
  *   (draft → reviewed → verified)
  * - `translations.<locale>`: <locale>.mdx, i18n/<locale>.yaml (draft → reviewed), with `basedOn` =
@@ -30,7 +30,7 @@ import {
   type TranslationReview,
   translationStatusSchema,
 } from '../src/lib/content-schemas.ts';
-import { CONTENT_ROOT, readTopics, type TopicFiles } from './lib/content.ts';
+import { CONTENT_ROOTS, type ContentRoots, readContent, type TopicFiles } from './lib/content.ts';
 
 export type Clock = () => Date;
 const systemClock: Clock = () => new Date();
@@ -390,7 +390,11 @@ export function formatStatus(rows: readonly StatusRow[]): string {
 
 function findTopic(topics: readonly TopicFiles[], key: string | undefined): TopicFiles {
   const topic = topics.find((item) => item.key === key);
-  if (!topic) throw new Error(`Unknown topic "${key ?? ''}". Use <level>/<slug>, e.g. a2/perfekt.`);
+  if (!topic) {
+    throw new Error(
+      `Unknown topic "${key ?? ''}". Use <level>/<slug> (a2/perfekt) or reference/<slug> (reference/genus).`,
+    );
+  }
   return topic;
 }
 
@@ -404,7 +408,7 @@ function write(topic: TopicFiles, review: Review): void {
   writeFileSync(join(topic.dir, 'review.yaml'), serializeReview(review));
 }
 
-export function main(argv: readonly string[], root: string = CONTENT_ROOT): number {
+export function main(argv: readonly string[], roots: ContentRoots = CONTENT_ROOTS): number {
   const { values, positionals } = parseArgs({
     args: [...argv],
     allowPositionals: true,
@@ -415,7 +419,7 @@ export function main(argv: readonly string[], root: string = CONTENT_ROOT): numb
     },
   });
   const [command, topicKey, scope, status] = positionals;
-  const topics = readTopics(root);
+  const topics = readContent(roots);
 
   switch (command) {
     case 'sync': {
@@ -435,7 +439,7 @@ export function main(argv: readonly string[], root: string = CONTENT_ROOT): numb
       }
       console.log(
         outOfSync === 0
-          ? `Review state in sync (${topics.length} topics).`
+          ? `Review state in sync (${topics.length} topics and reference pages).`
           : 'review.yaml updated.',
       );
       return 0;

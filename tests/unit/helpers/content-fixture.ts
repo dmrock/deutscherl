@@ -1,17 +1,26 @@
 /**
- * A temporary copy of the valid fixture topic (tests/fixtures/content/topics/a2/sample) with its
- * review.yaml synced, so each test can apply one change and check the result.
+ * A temporary copy of the valid fixture content (tests/fixtures/content: the topic
+ * topics/a2/sample and the reference page reference/sample) with review.yaml synced for both, so
+ * each test can apply one change to one of them and check the result.
  */
 import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { readTopic, type TopicFiles } from '../../../scripts/lib/content.ts';
+import {
+  type ContentKind,
+  type ContentRoots,
+  readReferencePage,
+  readTopic,
+  type TopicFiles,
+} from '../../../scripts/lib/content.ts';
 import { readReview, serializeReview, syncReview } from '../../../scripts/review.ts';
 
-const FIXTURE = join(import.meta.dirname, '../../fixtures/content/topics');
+const FIXTURE = join(import.meta.dirname, '../../fixtures/content');
 
 export interface ContentFixture {
-  root: string;
+  /** Content roots of the copy, for validateContent() and the review CLI */
+  roots: ContentRoots;
+  /** Folder of the fixture this instance edits */
   dir: string;
   topic(): TopicFiles;
   read(file: string): string;
@@ -23,26 +32,34 @@ export interface ContentFixture {
   cleanup(): void;
 }
 
-export function contentFixture(): ContentFixture {
+/** `kind` picks the folder the fixture edits: the topic (default) or the reference page. */
+export function contentFixture(kind: ContentKind = 'topic'): ContentFixture {
   const root = mkdtempSync(join(tmpdir(), 'deutscherl-content-'));
   cpSync(FIXTURE, root, { recursive: true });
-  const dir = join(root, 'a2', 'sample');
+  const roots = { topics: join(root, 'topics'), reference: join(root, 'reference') };
+  const read = {
+    topic: () => readTopic(roots.topics, 'a2', 'sample'),
+    reference: () => readReferencePage(roots.reference, 'sample'),
+  };
+  const dir =
+    kind === 'topic' ? join(roots.topics, 'a2', 'sample') : join(roots.reference, 'sample');
+  const syncFolder = (unit: TopicFiles) => {
+    const { review, changes } = syncReview(unit, readReview(unit));
+    writeFileSync(join(unit.dir, 'review.yaml'), serializeReview(review));
+    return changes;
+  };
   const fixture: ContentFixture = {
-    root,
+    roots,
     dir,
-    topic: () => readTopic(root, 'a2', 'sample'),
+    topic: read[kind],
     read: (file) => readFileSync(join(dir, file), 'utf8'),
     write: (file, content) => writeFileSync(join(dir, file), content),
     edit: (file, change) => fixture.write(file, change(fixture.read(file))),
     remove: (file) => rmSync(join(dir, file)),
-    sync: () => {
-      const topic = fixture.topic();
-      const { review, changes } = syncReview(topic, readReview(topic));
-      fixture.write('review.yaml', serializeReview(review));
-      return changes;
-    },
+    sync: () => syncFolder(fixture.topic()),
     cleanup: () => rmSync(root, { recursive: true, force: true }),
   };
-  fixture.sync();
+  syncFolder(read.topic());
+  syncFolder(read.reference());
   return fixture;
 }

@@ -37,7 +37,15 @@ test.describe('language picker', () => {
 });
 
 test.describe('the picker keeps the page on every page type', () => {
-  for (const path of ['/', '/a2/', '/b1/', '/about/', '/legal/']) {
+  for (const path of [
+    '/',
+    '/a2/',
+    '/b1/',
+    '/reference/',
+    '/reference/genus/',
+    '/about/',
+    '/legal/',
+  ]) {
     test(path, async ({ page }) => {
       await page.goto(path);
       const picker = page.locator('[data-language-picker]');
@@ -84,13 +92,15 @@ test.describe('localized head', () => {
 test.describe('mobile width', () => {
   test.use({ viewport: { width: 360, height: 740 } });
 
-  test('the Russian topic page has no horizontal scrolling', async ({ page }) => {
-    await page.goto('/ru/a2/perfekt/');
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    );
-    expect(overflow).toBeLessThanOrEqual(0);
-  });
+  for (const path of ['/ru/a2/perfekt/', '/ru/reference/unregelmaessige-verben/']) {
+    test(`${path} has no horizontal scrolling`, async ({ page }) => {
+      await page.goto(path);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
+    });
+  }
 });
 
 test.describe('404 page per locale', () => {

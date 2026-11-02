@@ -11,7 +11,7 @@ export interface TopicLink {
   category: CategoryId;
   order: number;
   title: string;
-  /** Without `*` markers */
+  /** `*word*` marks a German word (`MarkedText`) */
   summary: string;
 }
 
@@ -67,4 +67,24 @@ export function neighbours(
 /** URL path of a topic, without locale prefix. */
 export function topicPath(topic: Pick<TopicLink, 'level' | 'slug'>): string {
   return `/${topic.level}/${topic.slug}/`;
+}
+
+/** A reference page (`src/content/reference/<slug>/`) in navigation. */
+export interface ReferenceLink {
+  slug: string;
+  order: number;
+  levels: readonly LevelId[];
+  title: string;
+  /** `*word*` marks a German word (`MarkedText`) */
+  summary: string;
+}
+
+/** Reference pages in reading order: `order` from meta.yaml, then slug. */
+export function referenceInOrder(pages: readonly ReferenceLink[]): ReferenceLink[] {
+  return [...pages].sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug));
+}
+
+/** URL path of the reference index (no slug) or of a reference page, without locale prefix. */
+export function referencePath(slug?: string): string {
+  return slug ? `/reference/${slug}/` : '/reference/';
 }

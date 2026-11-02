@@ -1,6 +1,7 @@
 ---
 paths:
   - "src/content/topics/**"
+  - "src/content/reference/**"
   - "scripts/review.ts"
   - "src/lib/review-badges.ts"
   - "src/components/content/StatusBadges.astro"
@@ -14,7 +15,7 @@ A German teacher verifies the German and the canonical English explanation. Ever
 
 ## Scopes
 
-Both live in each topic's `review.yaml`, written only by `scripts/review.ts`:
+Both live in each topic's and reference page's `review.yaml`, written only by `scripts/review.ts`. Reference pages go through the same flow, keyed `reference/<slug>`:
 
 1. `base`: `meta.yaml`, `german.yaml`, `en.mdx`, `i18n/en.yaml`. Status `draft` → `reviewed` (a maintainer read it) → `verified` (a German teacher checked all of it). Stores `verifiedBy`, `verifiedAt`, `contentHash`, `history`.
 2. `translations.<locale>` for every non-English locale: `<locale>.mdx`, `i18n/<locale>.yaml`. Status `draft` → `reviewed` (a fluent speaker confirmed it says the same as English). Stores `reviewedBy`, `reviewedAt`, `contentHash`, `basedOn` (the `base` hash it was last written or reviewed against; `review:sync` sets it whenever the translation files change), `history`.
@@ -29,7 +30,7 @@ Both live in each topic's `review.yaml`, written only by `scripts/review.ts`:
 
 ## Commands
 
-- `pnpm review:status`: every topic with base status, translation status per locale and outdated translations.
+- `pnpm review:status`: every topic and reference page with base status, translation status per locale and outdated translations.
 - Maintainers only (never run them unless asked to explicitly):
   - `pnpm review:minor <topic> <base|locale> --reason "typo in c3 why"`: updates the hash, keeps the status, appends `{ at, event: minor, reason, previousHash }`; for `base`, translations based on the previous hash move to the new one.
   - `pnpm review:set <topic> base reviewed|verified --by "Name"` and `pnpm review:set <topic> <locale> reviewed --by "Name"` (sets `basedOn` to the current base hash). Refuses when `review.yaml` is out of sync.

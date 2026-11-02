@@ -176,10 +176,10 @@ describe('review:sync', () => {
   it('--check reports drift without writing', () => {
     const before = fixture.read('review.yaml');
     fixture.edit('meta.yaml', (c) => c.replace('order: 1', 'order: 2'));
-    expect(main(['sync', '--check'], fixture.root)).toBe(1);
+    expect(main(['sync', '--check'], fixture.roots)).toBe(1);
     expect(fixture.read('review.yaml')).toBe(before);
-    expect(main(['sync'], fixture.root)).toBe(0);
-    expect(main(['sync', '--check'], fixture.root)).toBe(0);
+    expect(main(['sync'], fixture.roots)).toBe(0);
+    expect(main(['sync', '--check'], fixture.roots)).toBe(0);
   });
 });
 
@@ -272,6 +272,33 @@ describe('review:status', () => {
     syncNow();
     expect(formatStatus(statusRows([fixture.topic()]))).toBe(
       'a2/sample  base: draft  ru: draft (outdated)',
+    );
+  });
+});
+
+describe('reference pages', () => {
+  let page: ContentFixture;
+
+  beforeEach(() => {
+    page = contentFixture('reference');
+  });
+
+  afterEach(() => {
+    page.cleanup();
+  });
+
+  it('are keyed reference/<slug> and reset like topics when a table changes', () => {
+    const before = readReview(page.topic());
+    if (!before) throw new Error('no review.yaml');
+    page.write(
+      'review.yaml',
+      serializeReview(setStatus(page.topic(), before, 'base', 'verified', 'Teacher', clock)),
+    );
+    page.edit('german.yaml', (c) => c.replace("'er **liest**'", "'er **lest**'"));
+    expect(main(['sync', '--check'], page.roots)).toBe(1);
+    expect(main(['sync'], page.roots)).toBe(0);
+    expect(formatStatus(statusRows([page.topic()]))).toBe(
+      'reference/sample  base: draft  ru: draft (outdated)',
     );
   });
 });

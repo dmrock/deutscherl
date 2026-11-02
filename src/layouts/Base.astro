@@ -9,6 +9,7 @@ import { cssVariableOf, germanFont } from '../config/fonts.ts';
 import { type LevelId, site } from '../config/site.ts';
 import { getLocaleConfig, type LocaleCode, readyLocales } from '../i18n/locales.ts';
 import { alternates, localizePath, t } from '../i18n/utils.ts';
+import { getReferenceLinks } from '../lib/reference.ts';
 import { jsonLd, type StructuredData } from '../lib/seo.ts';
 import { getTopicLinks } from '../lib/topics.ts';
 import '../styles/global.css';
@@ -28,7 +29,9 @@ interface Props {
   notFound?: boolean;
   /** Level of the page: shows the sidebar with that level's topics. */
   level?: LevelId | undefined;
-  /** Slug of the topic page: marks it in the sidebar. */
+  /** Reference section page: shows the sidebar with the reference pages (ignored with `level`). */
+  reference?: boolean;
+  /** Slug of the topic or reference page: marks it in the sidebar. */
   topic?: string | undefined;
   /** Open Graph type: `article` for topic pages */
   ogType?: 'website' | 'article';
@@ -43,6 +46,7 @@ const {
   noindex = false,
   notFound = false,
   level,
+  reference = false,
   topic,
   ogType = 'website',
   structuredData,
@@ -65,6 +69,9 @@ const fontPreload = localeConfig.font.preload.map((subset) => ({
 }));
 
 const topics = level ? await getTopicLinks(locale) : [];
+const referenceSection = !level && reference;
+const references = referenceSection ? await getReferenceLinks(locale) : [];
+const hasSidebar = Boolean(level) || referenceSection;
 ---
 
 <!doctype html>
@@ -111,13 +118,22 @@ const topics = level ? await getTopicLinks(locale) : [];
     >
       {t(locale, 'site.skipToContent')}
     </a>
-    <Header locale={locale} path={path} level={level} hasSidebar={Boolean(level)} />
+    <Header
+      locale={locale}
+      path={path}
+      active={level ?? (referenceSection ? 'reference' : undefined)}
+      hasSidebar={hasSidebar}
+    />
     <!-- Fills the screen between header and footer, so short pages do not scroll. -->
     <div class="mx-auto flex w-full max-w-6xl flex-1">
       {level && <Sidebar locale={locale} level={level} topics={topics} current={topic} />}
+      {referenceSection && <Sidebar locale={locale} references={references} current={topic} />}
       <main
         id="main"
-        class:list={['min-w-0 flex-1 px-4 py-6 lg:px-6', level && 'lg:border-s lg:border-border']}
+        class:list={[
+          'min-w-0 flex-1 px-4 py-6 lg:px-6',
+          hasSidebar && 'lg:border-s lg:border-border',
+        ]}
       >
         <slot />
       </main>
