@@ -1,5 +1,5 @@
 ---
-/** Site footer, full width: about and legal page, source code, licenses (`.claude/rules/ui.md`). */
+/** Site footer, full width: about, legal and privacy page, source code, licenses (`.claude/rules/ui.md`). */
 import { site } from '../../config/site.ts';
 import type { LocaleCode } from '../../i18n/locales.ts';
 import { localizePath, t } from '../../i18n/utils.ts';
@@ -13,6 +13,7 @@ const { locale } = Astro.props;
 const links = [
   { href: localizePath('/about/', locale), label: t(locale, 'footer.about') },
   { href: localizePath('/legal/', locale), label: t(locale, 'footer.legal') },
+  { href: localizePath('/privacy/', locale), label: t(locale, 'footer.privacy') },
   { href: site.repo, label: t(locale, 'footer.github') },
 ];
 ---

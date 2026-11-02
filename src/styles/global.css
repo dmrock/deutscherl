@@ -219,7 +219,7 @@ html:root {
   --pf-result-excerpt-font-size: 14px;
 }
 
-/* Explanation text of a topic (MDX body) and of the site pages (about, legal). */
+/* Explanation text of a topic (MDX body) and of the site pages (about, legal, privacy). */
 @layer components {
   .topic-prose > * + * {
     margin-top: 0.75rem;

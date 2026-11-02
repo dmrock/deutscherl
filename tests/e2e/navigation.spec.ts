@@ -52,6 +52,7 @@ test.describe('footer', () => {
   const links = [
     { key: 'footer.about', path: '/about/', title: pageTitle('about') },
     { key: 'footer.legal', path: '/legal/', title: pageTitle('legal') },
+    { key: 'footer.privacy', path: '/privacy/', title: pageTitle('privacy') },
   ] as const;
 
   for (const { key, path, title } of links) {
@@ -71,4 +72,21 @@ test('the legal page names the Medieninhaber and links the contact email', async
     'href',
     `mailto:${site.email}`,
   );
+});
+
+test('the legal and privacy pages link to each other', async ({ page }) => {
+  for (const [from, to] of [
+    ['/legal/', '/privacy/'],
+    ['/privacy/', '/legal/'],
+  ]) {
+    await page.goto(from);
+    await expect(page.getByRole('main').locator(`a[href="${to}"]`), from).toHaveCount(1);
+  }
+});
+
+test('the privacy page names the browser storage keys the site uses', async ({ page }) => {
+  await page.goto('/privacy/');
+  const main = page.getByRole('main');
+  await expect(main.getByText('theme', { exact: true })).toBeVisible();
+  await expect(main.getByText(/^seen:/)).toBeVisible();
 });

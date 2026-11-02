@@ -25,6 +25,7 @@ const pages = [
   { name: 'reference', path: '/reference/unregelmaessige-verben/' },
   { name: 'about', path: '/about/' },
   { name: 'legal', path: '/legal/' },
+  { name: 'privacy', path: '/privacy/' },
   { name: '404', path: '/404.html' },
 ];
 

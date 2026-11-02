@@ -100,7 +100,7 @@ const reference = defineCollection({
   schema: frontmatterSchema,
 });
 
-/** Site pages (about, legal): `src/content/pages/about/en.mdx`, id `about/en` */
+/** Site pages (about, legal, privacy): `src/content/pages/about/en.mdx`, id `about/en` */
 const pages = defineCollection({
   loader: glob({
     pattern: '*/*.mdx',

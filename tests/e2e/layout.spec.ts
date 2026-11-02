@@ -22,6 +22,7 @@ test.describe('noindex', () => {
     '/reference/genus/',
     '/about/',
     '/legal/',
+    '/privacy/',
   ]) {
     test(`${path} is noindex only in preview builds`, async ({ page }) => {
       await page.goto(path);
@@ -135,7 +136,7 @@ test.describe('static navigation', () => {
       expect(await chromeBoxes(page), path).toEqual([brand, levels, toggle, sidebar]);
     }
     // Pages without a sidebar: the header stays in place too.
-    for (const path of ['/about/', '/legal/']) {
+    for (const path of ['/about/', '/legal/', '/privacy/']) {
       await page.goto(path);
       expect(await chromeBoxes(page), path).toEqual([brand, levels, toggle, null]);
     }

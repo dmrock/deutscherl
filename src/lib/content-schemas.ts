@@ -108,7 +108,7 @@ export const frontmatterSchema = z.strictObject({
   summary: text,
 });
 
-/** Frontmatter of a site page (`src/content/pages/<slug>/<locale>.mdx`: about, legal pages). */
+/** Frontmatter of a site page (`src/content/pages/<slug>/<locale>.mdx`: about, legal, privacy pages). */
 export const pageFrontmatterSchema = z.strictObject({
   title: text,
   /** Meta description */

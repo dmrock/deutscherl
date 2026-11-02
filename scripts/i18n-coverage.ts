@@ -15,7 +15,7 @@ import { type LocaleConfig, locales } from '../src/i18n/locales.ts';
 import { germanSchema, i18nSchema, type TopicI18n, tableRows } from '../src/lib/content-schemas.ts';
 import { readContent, type TopicFiles } from './lib/content.ts';
 
-/** Site pages (about, legal): one folder per page, one MDX file per locale. */
+/** Site pages (about, legal, privacy): one folder per page, one MDX file per locale. */
 export const PAGES_ROOT = resolve(fileURLToPath(import.meta.url), '../../src/content/pages');
 
 export interface CoverageGap {
