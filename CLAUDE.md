@@ -2,7 +2,7 @@
 
 A free website for learning German grammar: explanations in the learner's native language, German examples with translations, interactive exercises. Working name; it lives only in `src/config/site.ts`.
 
-- Pilot: levels A1 and A2 (7 and 6 topics, listed in `PLAN.md` stage 8); B1, B2 and C1 show as "coming soon".
+- Pilot: levels A1 and A2 (7 and 6 topics, in `src/content/topics/`); B1, B2 and C1 show as "coming soon".
 - Reference pages (`/reference/`): tables to look things up at any level, such as noun gender clues and irregular verbs. They have no level and no practice.
 - Native languages: English (default) and Russian. More will follow, possibly in other scripts or right to left, so everything language-specific is data, not code.
 - Signature feature: notes on Austrian German (usage that differs from Germany).
@@ -36,7 +36,7 @@ pnpm budget             # JS budget per page (after a build)
 - Content you generate stays `draft` (base and translations). Never set `reviewed` or `verified`, never edit `review.yaml` by hand, and run `review:minor` or `review:set` only when asked to explicitly.
 - Check German against reliable sources and fix it yourself (sources and checklist in `.claude/rules/content.md`). A fact needs two independent sources. Replace sentences that are correct but awkward with natural ones. Report only what no source settles, and say what you checked. Content still stays `draft` until a teacher verifies it.
 - Before adding a dependency, check its current docs (Context7 or the official site) and state its gzipped size and why it is needed, also in your summary.
-- At the end of every stage, update this file or the matching file in `.claude/rules/` when a rule or the structure changed. There is no decision log: a decision that matters becomes a rule, and background that helps contributors goes into `README.md`.
+- In every PR, update this file or the matching file in `.claude/rules/` when a rule or the structure changed. There is no decision log: a decision that matters becomes a rule, and background that helps contributors goes into `README.md`.
 - The repository is public. Commit messages, PR descriptions, docs and comments describe what the code does; they never mention who decided something or why someone asked for it.
 
 ## Repository language
