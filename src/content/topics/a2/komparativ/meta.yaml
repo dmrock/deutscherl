@@ -56,6 +56,24 @@ sources:
     url: https://www.dwds.de/wb/hei%C3%9F
   - title: 'Wiktionary: heiß (heißer, heißesten)'
     url: https://de.wiktionary.org/wiki/hei%C3%9F
+  - title: 'Grimm Grammar (UT Austin): superlative with an extra e after -s, -ß, -z, -d, -t'
+    url: https://coerll.utexas.edu/gg/pr/adj_05.html
+  - title: 'DWDS: gesund (gesünder, am gesündesten)'
+    url: https://www.dwds.de/wb/gesund
+  - title: 'Duden: gesund (Steigerungsformen gesünder, gesündeste)'
+    url: https://www.duden.de/rechtschreibung/gesund
+  - title: 'Duden: hübsch (Deklination, am hübschesten)'
+    url: https://www.duden.de/deklination/adjektive/huebsch
+  - title: 'Wiktionary: hübsch (hübscher, am hübschesten)'
+    url: https://de.wiktionary.org/wiki/h%C3%BCbsch
+  - title: 'DWDS: praktisch (praktischer, am praktischsten)'
+    url: https://www.dwds.de/wb/praktisch
+  - title: 'Wiktionary: praktisch (praktischer, am praktischsten)'
+    url: https://de.wiktionary.org/wiki/praktisch
+  - title: 'DWDS: spannend (spannender, am spannendsten)'
+    url: https://www.dwds.de/wb/spannend
+  - title: 'Duden: spannend (Deklination, am spannendsten)'
+    url: https://www.duden.de/deklination/adjektive/spannend
   - title: 'Duden: Marille (österreichisch)'
     url: https://www.duden.de/rechtschreibung/Marille
   - title: 'Austria-Forum: Liste von Austriazismen (Marille)'

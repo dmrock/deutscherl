@@ -16,6 +16,12 @@ sources:
     url: https://www.duden.de/rechtschreibung/im
   - title: 'Duden: am (an dem)'
     url: https://www.duden.de/rechtschreibung/am
+  - title: 'DWDS: hängen (hing, gehangen; hängte, gehängt)'
+    url: https://www.dwds.de/wb/h%C3%A4ngen
+  - title: 'Duden: hängen (starkes Verb: hing, gehangen)'
+    url: https://www.duden.de/rechtschreibung/haengen_gehangen
+  - title: 'Duden: hängen (schwaches Verb: hängte, gehängt)'
+    url: https://www.duden.de/rechtschreibung/haengen_gehaengt
   - title: 'DWDS: Stiege (meist Österreich: Treppe)'
     url: https://www.dwds.de/wb/Stiege
   - title: 'Austria-Forum: Liste von Austriazismen (Stiege, auch süddeutsch)'
