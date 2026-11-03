@@ -1,0 +1,16 @@
+---
+/** Link to another site page in the current page's locale: `<PageLink page="privacy">…</PageLink>` in site pages. */
+import { getLocaleFromPath, localizePath } from '../../i18n/utils.ts';
+import type { PageSlug } from '../../lib/pages.ts';
+
+interface Props {
+  page: PageSlug;
+}
+
+const { page } = Astro.props;
+const href = localizePath(`/${page}/`, getLocaleFromPath(Astro.url.pathname));
+---
+
+<a href={href}>
+  <slot />
+</a>

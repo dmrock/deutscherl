@@ -30,7 +30,7 @@ What `ready: false` does:
 - Every page is built at `/xx/…`, with `noindex` (`Base.astro`).
 - The locale is not in the language picker, `hreflang`, `og:locale:alternate` or the sitemap (all read `readyLocales`), and Pagefind does not index its pages (`data-pagefind-body` only for ready locales).
 - Content checks report its gaps as information only (`pnpm i18n:coverage`, `pnpm validate`).
-- The about and legal pages show the English text until `src/content/pages/<page>/xx.mdx` exists (`src/lib/pages.ts`).
+- The about, legal and privacy pages show the English text until `src/content/pages/<page>/xx.mdx` exists (`src/lib/pages.ts`).
 - A topic without `xx.mdx` has no page in this locale and is left out of its navigation (`src/lib/topics.ts`); the same goes for reference pages (`src/lib/reference.ts`).
 
 The 404 page (`/xx/404.html`) and the language check's allowlist (step 5) follow from the entry automatically.
@@ -60,7 +60,7 @@ Every key must exist even while the locale is not ready; strings not translated 
 
 Translate from the English files; the English explanation is the canonical one.
 
-- Site pages: `src/content/pages/about/xx.mdx` and `src/content/pages/legal/xx.mdx` (frontmatter `title` and `description`; `.claude/rules/site-pages.md`).
+- Site pages: `src/content/pages/about/xx.mdx`, `src/content/pages/legal/xx.mdx` and `src/content/pages/privacy/xx.mdx` (frontmatter `title` and `description`; `.claude/rules/site-pages.md`).
 - Each topic in `src/content/topics/<level>/<slug>/`:
   - `xx.mdx`: frontmatter `title` and `summary`, then the explanation. It references German content by id (`<Example id="e1" />`) and never contains German example sentences.
   - `i18n/xx.yaml`: translations of the examples and Austrian notes, the `why` of every choice item, `translation` and `why` of every word-order item.
@@ -88,7 +88,7 @@ pnpm check:language
 
 Open a pull request: CI builds a preview at `pr-<number>-deutscherl.<subdomain>.workers.dev`. Check on the preview, at phone and desktop width:
 
-- the home, level, topic, reference, about, legal and 404 pages under `/xx/`;
+- the home, level, topic, reference, about, legal, privacy and 404 pages under `/xx/`;
 - long strings: headers, buttons, the previous/next topic cards and the practice card must not break (translations are often longer than English);
 - for `dir: 'rtl'`: the page mirrors (sidebar, tables and their sticky first column, the word-order line and the word bank, the progress dots), German blocks stay left-to-right (`lang="de"`);
 - search (Pagefind takes its UI language and stemming from `<html lang>`) once the locale is ready, since only ready locales are indexed.

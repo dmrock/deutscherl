@@ -96,6 +96,6 @@ Path-scoped files in `.claude/rules/` load when you work on matching files:
 - `ui.md`: JS budgets, page types, layout, design tokens, accessibility
 - `i18n.md`: locales, routing, language picker, SEO, search
 - `fonts.md`: per-locale and German fonts
-- `site-pages.md`: about and legal pages
+- `site-pages.md`: about, legal and privacy pages
 - `testing.md`: what is tested where, e2e mechanics
 - `deployment.md`: CI, pull request review, Cloudflare deployment, analytics

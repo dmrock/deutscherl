@@ -27,7 +27,7 @@ paths:
 - Reference index and reference pages: see `.claude/rules/reference.md`; no islands, so the 3 KB budget.
 - Under the topic title, next to the badges, "↓ Practice" jumps to the practice card (the card links back with "↑ Explanation").
 - Previous/next topic (`TopicPager.astro`): two cards at the end of the topic page with the topic titles, on every screen size, in reading order across levels (the last A1 topic leads to the first A2 topic, and the card names the level). No fixed bottom bar.
-- Footer on every page, across the whole width under sidebar and content (the `contentinfo` landmark): About, Legal notice and privacy, source code, licenses.
+- Footer on every page, across the whole width under sidebar and content (the `contentinfo` landmark): About, Legal notice, Privacy, source code, licenses.
 - `noindex`: coming-soon pages, 404 pages, `ready: false` locales, preview deployments.
 
 ## Layout

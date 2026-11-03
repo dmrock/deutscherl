@@ -45,6 +45,7 @@ test.describe('the picker keeps the page on every page type', () => {
     '/reference/genus/',
     '/about/',
     '/legal/',
+    '/privacy/',
   ]) {
     test(path, async ({ page }) => {
       await page.goto(path);
@@ -58,6 +59,16 @@ test.describe('the picker keeps the page on every page type', () => {
         `${site.url}${path}`,
       );
     });
+  }
+});
+
+test('links between site pages stay in the locale', async ({ page }) => {
+  for (const [from, to] of [
+    ['/ru/legal/', '/ru/privacy/'],
+    ['/ru/privacy/', '/ru/legal/'],
+  ]) {
+    await page.goto(from);
+    await expect(page.getByRole('main').locator(`a[href="${to}"]`), from).toHaveCount(1);
   }
 });
 

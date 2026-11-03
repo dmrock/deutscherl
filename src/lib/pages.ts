@@ -1,5 +1,5 @@
 /**
- * Site pages (about, legal) from `src/content/pages/<slug>/<locale>.mdx` (Astro-only: reads the
+ * Site pages (about, legal, privacy) from `src/content/pages/<slug>/<locale>.mdx` (Astro-only: reads the
  * `pages` collection). Every ready locale must have its own file (i18n-coverage checks it); a
  * locale that is not ready yet falls back to the default locale's text, so its preview has no
  * broken footer links.
@@ -7,7 +7,7 @@
 import { type CollectionEntry, getEntry } from 'astro:content';
 import { defaultLocale, getLocaleConfig, type LocaleCode, localeCodes } from '../i18n/locales.ts';
 
-export const pageSlugs = ['about', 'legal'] as const;
+export const pageSlugs = ['about', 'legal', 'privacy'] as const;
 export type PageSlug = (typeof pageSlugs)[number];
 
 export interface PageProps {
