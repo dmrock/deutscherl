@@ -8,7 +8,7 @@
   The server renders the "Start practice" button (disabled until hydrated); the round is picked
   when it is pressed, so the first paint never changes.
 
-  No jumps (the page must not move under the learner, decisions #74, #77): "Start" marks the
+  No jumps (the page must not move under the learner): "Start" marks the
   practice area (`[data-practice-area]` around the practice card on the topic page) active and
   scrolls the card to the top once. The area is at least a screen tall
   (global.css) and never shrinks while the page is open (`--practice-tallest` = tallest content so

@@ -135,8 +135,8 @@
 
 /*
  * Practice area (around the practice card) while a round runs, set by ExerciseRunner on "Start
- * practice" (decisions #74, #77): at least the screen below the sticky header (3rem + 1rem scroll
- * margin), and never less than its tallest content so far (--practice-tallest, set by the runner).
+ * practice": at least the screen below the sticky header (3rem + 1rem scroll margin), and never
+ * less than its tallest content so far (--practice-tallest, set by the runner).
  * The page height stays the same while answering; spare room ends up below the card, at the end of
  * the page, not inside it.
  */
