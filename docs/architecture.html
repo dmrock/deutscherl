@@ -264,7 +264,6 @@ footer{margin-top:72px;font-size:14px;color:var(--ink-3)}
 </div>
 <pre class="tree"><span class="k">deutscherl/</span>
 ├── CLAUDE.md                     <span class="c">source of truth for Claude Code</span>
-├── PLAN.md                       <span class="c">stages and prompts</span>
 ├── LICENSE / LICENSE-CONTENT     <span class="c">MIT for code, CC BY-SA 4.0 for content</span>
 ├── CONTRIBUTING.md               <span class="c">issue first, then PR, DCO</span>
 ├── wrangler.jsonc                <span class="c">static-assets Worker</span>
@@ -433,6 +432,7 @@ sequenceDiagram
   Note over U: inline script sets the theme, text is visible without JS
   U->>R: scrolls to the exercises
   Note over R: client:visible loads the island
+  U->>R: presses "Start practice"
   R->>S: reads seen ids
   R->>R: picks 5 new items
   R->>S: stores seen ids
@@ -441,7 +441,7 @@ sequenceDiagram
 </pre>
 </figure>
 <div class="prose">
-<p>Moving to another page is a normal browser navigation animated with CSS <code>@view-transition</code>. Chrome and Safari animate it; other browsers simply open the page. No JavaScript involved.</p>
+<p>Moving to another page is a normal browser navigation without page transitions. No JavaScript involved.</p>
 </div>
 </section>
 
