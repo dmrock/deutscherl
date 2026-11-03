@@ -37,11 +37,22 @@ export function wordOrderItem(id: string): WordOrderItem {
   return item;
 }
 
-/** The next round contains exactly these items (in random order): every other id is "seen". */
-export async function onlyUnseen(page: Page, ids: string[]): Promise<void> {
-  const seen = allIds.filter((id) => !ids.includes(id));
+/** Every item id of a topic (`<level>/<slug>`). */
+export function topicItemIds(topic: string): string[] {
+  const content = germanSchema.parse(
+    parse(readFileSync(join(TOPIC_DIR, '../..', topic, 'german.yaml'), 'utf8')),
+  );
+  return [...content.choice, ...content.wordOrder].map((item) => item.id);
+}
+
+/**
+ * The next round contains exactly these items (in random order): every other id is "seen".
+ * Another topic than the default one is given as `<level>/<slug>`.
+ */
+export async function onlyUnseen(page: Page, ids: string[], topic?: string): Promise<void> {
+  const seen = (topic ? topicItemIds(topic) : allIds).filter((id) => !ids.includes(id));
   await page.addInitScript(([key, value]) => window.sessionStorage.setItem(key, value), [
-    SEEN_KEY,
+    topic ? `seen:${topic}` : SEEN_KEY,
     JSON.stringify(seen),
   ] as const);
 }
@@ -63,8 +74,8 @@ export async function scrollSettled(page: Page): Promise<void> {
  * Opens the topic page, scrolls to the exercises (the island hydrates when visible) and presses
  * "Start practice", which scrolls the section to the top.
  */
-export async function openPractice(page: Page, query = ''): Promise<void> {
-  await page.goto(`${TOPIC_PATH}${query}`);
+export async function openPractice(page: Page, query = '', path = TOPIC_PATH): Promise<void> {
+  await page.goto(`${path}${query}`);
   await page.locator('#practice').scrollIntoViewIfNeeded();
   const start = page.getByRole('button', { name: t('en', 'exercise.start') });
   await expect(start).toBeEnabled();

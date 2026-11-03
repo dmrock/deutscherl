@@ -176,7 +176,11 @@
 {/if}
 
 {#if result}
-  <p class="mt-3 flex flex-wrap items-end gap-1.5" data-testid="word-order-result">
+  <p
+    class="word-line mt-3 flex flex-wrap items-end gap-1.5"
+    data-punctuation={item.punctuation}
+    data-testid="word-order-result"
+  >
     {#each shown as word, index (index)}
       <span class={['chip chip-static', result.wrong[index] ? 'chip-wrong' : 'chip-right']}
         ><span lang="de">{word}</span>{#if result.wrong[index]}<span class="sr-only"
@@ -184,7 +188,7 @@
           >{/if}</span
       >
     {/each}
-    <span lang="de" class="german">{item.punctuation}</span>
+    <span lang="de" class="sr-only">{item.punctuation}</span>
   </p>
 {:else}
   <div class="mt-3 flex items-start gap-1.5 rounded-ui border border-control bg-card p-1.5">
@@ -202,8 +206,11 @@
           aria-hidden="true">{strings['exercise.wordOrder.dropHere']}</span
         >
       {/if}
+      <!-- The punctuation follows the last word (`.word-line`); every child is a word. -->
       <div
-        class="flex min-h-9 flex-wrap gap-1.5 rounded-chip"
+        class="word-line flex min-h-9 flex-wrap gap-1.5 rounded-chip"
+        data-punctuation={item.punctuation}
+        data-empty={line.length === 0 || undefined}
         aria-label={strings['exercise.wordOrder.answer']}
         data-testid="answer-line"
         bind:this={lineEl}
@@ -224,7 +231,7 @@
         {/each}
       </div>
     </div>
-    <span lang="de" class="german self-center pe-1">{item.punctuation}</span>
+    <span lang="de" class="sr-only">{item.punctuation}</span>
   </div>
 
   <div

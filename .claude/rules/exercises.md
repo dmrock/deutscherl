@@ -35,6 +35,7 @@ Exercise types are multiple choice and word order by drag and drop; there is no 
 - The wrapper is then at least a screen tall (below the sticky header, `global.css`) and never shrinks while the page is open (`--practice-tallest`, set by the runner, reset when its width changes).
 - The card always fits its content and grows into the spare room below it, so page height and scroll position stay the same (an e2e test checks this at desktop and phone width).
 - Answering never changes the size of what is already on screen: fixed-width gap, ✓/✗ as corner badges on the option buttons.
+- Punctuation never starts a line: in a choice sentence, the characters right after the gap stay on the gap's line; in word order, the end punctuation is the line's `::after` (`.word-line` in `global.css`), so it follows the last word on any row, before and after checking (screen readers get it from an `sr-only` element).
 - When a question with its feedback is taller than the screen, the page scrolls smoothly (`block: 'nearest'`) only as far as needed. Focus always moves with `preventScroll`; the feedback fades in (`motion-safe:animate-appear`).
 
 ## Word order UI

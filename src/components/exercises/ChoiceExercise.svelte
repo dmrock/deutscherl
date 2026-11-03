@@ -22,6 +22,8 @@
   let { item, strings, locale, onanswer }: Props = $props();
   let chosen = $state<string>();
   const gap = $derived(splitGap(item.text));
+  // Punctuation right after the gap ("___." or "___,") stays on the gap's line.
+  const attached = $derived(/^\S*/.exec(gap[1])?.[0] ?? '');
   const result = $derived(chosen === undefined ? undefined : checkChoice(item, chosen));
 
   function choose(option: string) {
@@ -47,17 +49,19 @@
 <p class="text-muted">{strings['exercise.choice.prompt']}</p>
 <p lang="de" class="german mt-1 text-lg" data-testid="choice-sentence">
   <!-- The gap keeps its width when it is filled, so the sentence does not reflow. -->
-  {gap[0]}<span
-    class={[
-      'inline-block min-w-14 border-b-2 text-center align-baseline',
-      chosen === undefined && 'border-control',
-      result?.correct === true && 'border-success font-semibold text-success',
-      result?.correct === false && 'border-danger font-semibold text-danger',
-    ]}
-    >{#if chosen === undefined}&nbsp;<span class="sr-only" lang={locale}
-        >{strings['exercise.choice.blank']}</span
-      >{:else}{chosen}{/if}</span
-  >{gap[1]}
+  {gap[0]}<span class="whitespace-nowrap" data-testid="choice-gap"
+    ><span
+      class={[
+        'inline-block min-w-14 border-b-2 text-center align-baseline',
+        chosen === undefined && 'border-control',
+        result?.correct === true && 'border-success font-semibold text-success',
+        result?.correct === false && 'border-danger font-semibold text-danger',
+      ]}
+      >{#if chosen === undefined}&nbsp;<span class="sr-only" lang={locale}
+          >{strings['exercise.choice.blank']}</span
+        >{:else}{chosen}{/if}</span
+    >{attached}</span
+  >{gap[1].slice(attached.length)}
 </p>
 <div role="group" aria-label={strings['exercise.choice.options']} class="mt-3 flex flex-wrap gap-2">
   {#each item.shuffledOptions as option (option)}
