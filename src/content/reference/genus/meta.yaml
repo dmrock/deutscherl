@@ -68,7 +68,7 @@ sources:
     url: https://www.duden.de/rechtschreibung/Matura
   - title: 'DWDS: Matura (Femininum; in Österreich und der Schweiz)'
     url: https://www.dwds.de/wb/Matura
-  - title: 'Duden: Sackerl (Neutrum; bayrisch, österreichisch)'
+  - title: 'Duden: Sackerl (Neutrum; bayrisch, österreichisch; ohne Stilangabe umgangssprachlich)'
     url: https://www.duden.de/rechtschreibung/Sackerl
   - title: 'DWDS: Sackerl (Neutrum; A, umgangssprachlich)'
     url: https://www.dwds.de/wb/Sackerl
@@ -86,3 +86,25 @@ sources:
     url: https://amor.cms.hu-berlin.de/~h2816i3x/Lehre/2006_VL_Typologie/Typologie_02_Genus.pdf
   - title: 'Masaryk-Universität, Seminarunterlage Genus der Substantive (Tage, Monate, Jahreszeiten, Winde, Niederschläge maskulin)'
     url: https://is.muni.cz/el/phil/jaro2013/NJII_3343/um/genus.pdf
+  - title: 'Duden: Termin (maskulin)'
+    url: https://www.duden.de/rechtschreibung/Termin
+  - title: 'DWDS: Termin (Maskulinum)'
+    url: https://www.dwds.de/wb/Termin
+  - title: 'Duden: Löwe (maskulin)'
+    url: https://www.duden.de/rechtschreibung/Loewe
+  - title: 'DWDS: Löwe (Maskulinum)'
+    url: https://www.dwds.de/wb/Löwe
+  - title: 'Duden: Frühjahr (Neutrum; Synonym zu Frühling)'
+    url: https://www.duden.de/rechtschreibung/Fruehjahr
+  - title: 'DWDS: Frühjahr (Neutrum)'
+    url: https://www.dwds.de/wb/Frühjahr
+  - title: 'Duden: Joghurt (der oder, besonders österreichisch und schweizerisch, das)'
+    url: https://www.duden.de/rechtschreibung/Joghurt
+  - title: 'DWDS: Joghurt (Maskulinum besonders D; Neutrum besonders A, CH)'
+    url: https://www.dwds.de/wb/Joghurt
+  - title: 'Duden: Keks (der, seltener das; österreichisch: das Keks)'
+    url: https://www.duden.de/rechtschreibung/Keks
+  - title: 'DWDS: Keks (Maskulinum; Neutrum A)'
+    url: https://www.dwds.de/wb/Keks
+  - title: 'DWDS: -el (Nebenform -erl, Südostdeutsch und A; Synonym zu -chen, -lein; Neutrum oder Maskulinum)'
+    url: https://www.dwds.de/wb/-el

@@ -5,6 +5,10 @@ examples:
     de: 'Gestern **war** ich sehr müde.'
   - id: e3
     de: 'Als Kind **konnte** ich nicht schwimmen.'
+  - id: e4
+    de: 'Mein Vater **hat** mich zum Bahnhof **gefahren**.'
+  - id: e5
+    de: 'Im Winter **sind** wir Ski **gefahren**.'
 tables:
   - id: verbs
     columns: [infinitive, present, perfekt]
@@ -12,6 +16,10 @@ tables:
     groups:
       - id: a-ae
         rows:
+          - id: anfangen
+            cells: ['anfangen', '**fängt** an', 'hat angefangen']
+          - id: einladen
+            cells: ['einladen', '**lädt** ein', 'hat eingeladen']
           - id: fahren
             cells: ['fahren', '**fährt**', '**ist** gefahren']
           - id: fallen
@@ -60,8 +68,12 @@ tables:
             cells: ['sehen', '**sieht**', 'hat gesehen']
       - id: perfekt-sein
         rows:
+          - id: aufstehen
+            cells: ['aufstehen', 'steht auf', '**ist** aufgestanden']
           - id: bleiben
             cells: ['bleiben', 'bleibt', '**ist** geblieben']
+          - id: einsteigen
+            cells: ['einsteigen', 'steigt ein', '**ist** eingestiegen']
           - id: fliegen
             cells: ['fliegen', 'fliegt', '**ist** geflogen']
           - id: gehen

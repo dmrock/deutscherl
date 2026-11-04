@@ -2,6 +2,8 @@ examples:
   e1: Я загнал машину в гараж.
   e2: Вчера я очень устал.
   e3: В детстве я не умел плавать.
+  e4: Папа отвёз меня на вокзал.
+  e5: Зимой мы катались на лыжах.
 austrianNotes:
   at1: Вечером мы долго сидели в саду.
 columns:
@@ -18,7 +20,9 @@ groups:
   mixed: 'Смешанные глаголы: *-t*, но основа меняется'
   sein-haben-werden: '*sein*, *haben* и *werden*'
 glosses:
-  fahren: ехать
+  anfangen: начинать
+  einladen: приглашать
+  fahren: ехать, вести (машину)
   fallen: падать
   gefallen: нравиться
   halten: держать, останавливаться
@@ -39,7 +43,9 @@ glosses:
   empfehlen: советовать, рекомендовать
   lesen: читать
   sehen: видеть
+  aufstehen: вставать
   bleiben: оставаться
+  einsteigen: садиться (в транспорт)
   fliegen: лететь
   gehen: идти
   kommen: приходить
