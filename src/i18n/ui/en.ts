@@ -61,7 +61,7 @@ export const en = {
   'exercise.needsJs': 'The exercises need JavaScript. Please turn it on to practice.',
   'exercise.start': 'Start practice',
   'exercise.progress': 'Question {current} of {total}',
-  'exercise.choice.prompt': 'Choose the right word.',
+  'exercise.choice.prompt': 'Choose the right answer.',
   'exercise.choice.blank': 'blank',
   'exercise.choice.options': 'Answers',
   'exercise.wordOrder.prompt': 'Put the words in the right order.',

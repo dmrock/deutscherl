@@ -60,7 +60,7 @@ export const ru = {
   'exercise.needsJs': 'Для упражнений нужен JavaScript. Включи его, чтобы потренироваться.',
   'exercise.start': 'Начать практику',
   'exercise.progress': 'Вопрос {current} из {total}',
-  'exercise.choice.prompt': 'Выбери правильное слово.',
+  'exercise.choice.prompt': 'Выбери правильный ответ.',
   'exercise.choice.blank': 'пропуск',
   'exercise.choice.options': 'Варианты ответа',
   'exercise.wordOrder.prompt': 'Расставь слова в правильном порядке.',

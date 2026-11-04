@@ -428,6 +428,96 @@ test.describe('no layout jumps', () => {
   });
 });
 
+test.describe('punctuation at phone width', () => {
+  test.use({ viewport: { width: 375, height: 812 } });
+
+  // Each test narrows the sentence step by step, so at some width the line breaks right before
+  // the mark, and collects the widths at which the mark leaves the line of the element before it.
+
+  test('choice: the mark after the gap stays on the gap line', async ({ page }) => {
+    // "Der Pullover ist schön. Ich kaufe ___." on the A1 accusative topic; a round of choice items.
+    await onlyUnseen(page, ['c14', 'c15', 'c16', 'c17', 'c18'], 'a1/akkusativ');
+    await openPractice(page, '', '/a1/akkusativ/');
+    while ((await currentItemId(page)) !== 'c14') {
+      await page
+        .getByRole('group', { name: t('en', 'exercise.choice.options') })
+        .getByRole('button')
+        .first()
+        .click();
+      await goOn(page);
+    }
+    await expect(page.getByTestId('choice-gap')).toHaveText(/\.$/);
+
+    const { wrapped, detached } = await page
+      .getByTestId('choice-sentence')
+      .evaluate((sentence: HTMLElement) => {
+        const glued = sentence.querySelector('[data-testid="choice-gap"]');
+        const gap = glued?.firstElementChild;
+        const mark = glued?.lastChild;
+        if (!gap || !mark) throw new Error('No gap');
+        const range = document.createRange();
+        range.selectNodeContents(mark);
+        const firstLine = sentence.getBoundingClientRect().top;
+        let wrapped = false;
+        const detached: number[] = [];
+        for (let width = sentence.clientWidth; width >= 120; width -= 4) {
+          sentence.style.width = `${width}px`;
+          const box = gap.getBoundingClientRect();
+          const text = range.getBoundingClientRect();
+          if (box.top > firstLine + box.height / 2) wrapped = true;
+          if (text.top >= box.bottom || text.bottom <= box.top) detached.push(width);
+        }
+        sentence.style.width = '';
+        return { wrapped, detached };
+      });
+    expect(wrapped).toBe(true);
+    expect(detached).toEqual([]);
+  });
+
+  /**
+   * The mark is the line's `::after`, right after the last word: alone on a row, it would make
+   * the line end below the last word.
+   */
+  function strayMarkWidths(line: HTMLElement) {
+    const chips = [...line.querySelectorAll('.chip')];
+    let wrapped = false;
+    const detached: number[] = [];
+    for (let width = line.clientWidth; width >= 160; width -= 4) {
+      line.style.width = `${width}px`;
+      const first = chips[0]?.getBoundingClientRect();
+      const last = chips.at(-1)?.getBoundingClientRect();
+      if (!first || !last) throw new Error('No words');
+      if (last.top > first.top) wrapped = true;
+      if (Math.abs(line.getBoundingClientRect().bottom - last.bottom) > 1) detached.push(width);
+    }
+    line.style.width = '';
+    return { wrapped, detached };
+  }
+
+  test('word order: the mark follows the last word before and after checking', async ({ page }) => {
+    // The other items are choice items, so the test drags no words at this width.
+    await onlyUnseen(page, ['w1', 'c1', 'c2', 'c3', 'c4']);
+    await openPractice(page);
+    while ((await currentItemId(page)) !== 'w1') {
+      await answerCurrent(page);
+      await goOn(page);
+    }
+    const item = wordOrderItem('w1');
+    for (const word of item.parts) await bank(page).getByLabel(word, { exact: true }).click();
+    await expect(answerLine(page).locator('.chip')).toHaveText(item.parts);
+    await expect(answerLine(page)).toHaveAttribute('data-punctuation', item.punctuation);
+    expect(await answerLine(page).evaluate(strayMarkWidths)).toEqual({
+      wrapped: true,
+      detached: [],
+    });
+
+    await check(page);
+    const result = page.getByTestId('word-order-result');
+    await expect(result).toHaveAttribute('data-punctuation', item.punctuation);
+    expect(await result.evaluate(strayMarkWidths)).toEqual({ wrapped: true, detached: [] });
+  });
+});
+
 test.describe('back to the explanation', () => {
   /** True when the top of the explanation (the article) sits just below the sticky header. */
   async function explanationOnTop(page: Page) {
