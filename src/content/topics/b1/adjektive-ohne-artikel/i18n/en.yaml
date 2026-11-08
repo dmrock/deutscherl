@@ -1,0 +1,93 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I drink black coffee in the morning.
+  e2: There are fresh apples at the market.
+  e3: I don't like cold coffee.
+  e4: Fresh fruit is healthy.
+  e5: I prefer green tea.
+  e6: We still need fresh milk.
+  e7: Do you also have still water?
+  e8: After a long wait, the bus finally came.
+  e9: I drink coffee with warm milk.
+  e10: At the weekend I'm meeting up with old friends.
+  e11: When the weather is nice, we eat in the garden.
+  e12: She speaks in a quiet voice.
+  e13: The concert is cancelled because of bad weather.
+  e14: We went for a walk despite the heavy rain.
+  e15: Because of high demand, there is a second concert.
+  e16: We have two small children.
+  e17: I met lots of nice people in Vienna.
+  e18: I still have some old photos of you.
+  e19: I went to Italy with two good friends.
+  e20: Good morning, Ms Huber!
+  e21: Happy birthday!
+  e22: Love from Graz!
+  e23: Merry Christmas, everyone!
+  e24: Goodbye, and have a nice day!
+  e25: Thanks, have a nice day!
+
+choice:
+  c1:
+    why: '*der Kaffee* is masculine and the object of *trinken*, so it is in the accusative. Like *den*, the adjective ends in *-en*: *schwarzen Kaffee*.'
+  c2:
+    why: '*das Brot* is neuter and the subject. With no article, the adjective shows the neuter with *-es*, as in *das*: *frisches Brot*.'
+  c3:
+    why: '*mit* takes the dative, and *die Milch* is feminine. Like *der* in the feminine dative, the adjective ends in *-er*: *mit warmer Milch*.'
+  c4:
+    why: '*bei* takes the dative, and *das Wetter* is neuter. Like *dem*, the adjective ends in *-em*: *bei schlechtem Wetter*.'
+  c5:
+    why: '*Erdbeeren* is plural and the object of *es gibt*. In the plural accusative without an article, the ending is *-e*: *frische Erdbeeren*.'
+  c6:
+    why: '*mit* takes the dative, and *Freunden* is plural. Like *den*, the adjective ends in *-en*: *mit alten Freunden*.'
+  c7:
+    why: '*der Tee* is masculine and the subject. With no article, the adjective shows the masculine with *-er*, as in *der*: *schwarzer Tee*.'
+  c8:
+    why: '*das Bier* is neuter and the subject. With no article, the ending is *-es*, as in *das*: *kaltes Bier*.'
+  c9:
+    why: 'After a number, the adjective takes the endings it has without an article. *Cafés* is plural accusative, so the ending is *-e*: *zwei gute Cafés*.'
+  c10:
+    why: 'After *viele*, the adjective takes the endings it has without an article. *Leute* is plural nominative, so the ending is *-e*: *viele nette Leute*.'
+  c11:
+    why: '*alle* works like *die*, so in the plural the adjective ends in *-en*: *alle neuen Kollegen*.'
+  c12:
+    why: 'After *mehrere*, the adjective takes the endings it has without an article. *Fehler* is plural accusative here, so the ending is *-e*: *mehrere kleine Fehler*.'
+  c13:
+    why: '*mit* takes the dative. After a number, the dative plural ending is *-en*, like *den*: *mit zwei netten Freundinnen*.'
+  c14:
+    why: '*wegen* takes the genitive, and *das Wetter* is neuter. In the masculine and neuter genitive, the noun gets *-s* and the adjective ends in *-en*, not *-es*: *wegen schlechten Wetters*.'
+  c15:
+    why: 'A wish is the object of a verb that is left out, so it is in the accusative. *der Glückwunsch* is masculine, so the ending is *-en*: *Herzlichen Glückwunsch*.'
+  c16:
+    why: 'A wish is in the accusative. *die Nacht* is feminine, so the ending is *-e*: *Gute Nacht*.'
+  c17:
+    why: 'Greetings are the object of a verb that is left out, like *senden*, so they are in the accusative. *Grüße* is plural, so the ending is *-e*: *Liebe Grüße*.'
+  c18:
+    why: 'A wish is in the accusative. *der Abend* is masculine, so the ending is *-en*, with or without *einen*: *schönen Abend noch*.'
+
+wordOrder:
+  w1:
+    translation: When the weather is nice, we eat in the garden.
+    why: '*bei schönem Wetter* is in position 1, so the verb *essen* comes next, then the subject *wir*.'
+  w2:
+    translation: I drink coffee with warm milk.
+    why: 'The adjective goes between *mit* and the noun. *mit* takes the dative, so *die Milch* gives *warmer Milch*.'
+  w3:
+    translation: There's fresh bread for breakfast.
+    why: '*zum Frühstück* is in position 1, then the verb *gibt* and *es*. The object *frisches Brot* goes at the end.'
+  w4:
+    translation: I met lots of nice people in Vienna.
+    why: '*in Wien* is in position 1, then the verb *habe* and the subject *ich*. The participle *kennengelernt* goes to the end. After *viele*, the adjective ends in *-e*.'
+  w5:
+    translation: We went for a walk despite the heavy rain.
+    why: '*trotz starken Regens* is in position 1, so *sind* comes next, then *wir*. *spazieren gegangen* goes to the end.'
+  w6:
+    translation: Happy birthday!
+    why: 'The adjective comes before the noun: *Herzlichen Glückwunsch*. *zum Geburtstag* follows.'
+  w7:
+    translation: Say hello to your parents for me!
+    why: 'The adjective comes before the noun: *Viele Grüße*. Then *an* and the person who gets the greeting.'
+
+austrianNotes:
+  at1: The apple strudel comes with fresh whipped cream.

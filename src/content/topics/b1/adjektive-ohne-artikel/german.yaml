@@ -1,0 +1,168 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the adjective whose ending the page explains.
+
+examples:
+  # When there is no article
+  - id: e1
+    de: 'Ich trinke morgens **schwarzen** Kaffee.'
+  - id: e2
+    de: 'Auf dem Markt gibt es **frische** Äpfel.'
+  # The endings: nominative, accusative, dative
+  - id: e3
+    de: '**Kalter** Kaffee schmeckt mir nicht.'
+  - id: e4
+    de: '**Frisches** Obst ist gesund.'
+  - id: e5
+    de: 'Ich trinke lieber **grünen** Tee.'
+  - id: e6
+    de: 'Wir brauchen noch **frische** Milch.'
+  - id: e7
+    de: 'Haben Sie auch **stilles** Wasser?'
+  - id: e8
+    de: 'Nach **langem** Warten kam endlich der Bus.'
+  - id: e9
+    de: 'Ich trinke Kaffee mit **warmer** Milch.'
+  - id: e10
+    de: 'Am Wochenende treffe ich mich mit **alten** Freunden.'
+  # What is new compared with ein: the dative singular
+  - id: e11
+    de: 'Bei **schönem** Wetter essen wir im Garten.'
+  - id: e12
+    de: 'Sie spricht mit **leiser** Stimme.'
+  # Genitive
+  - id: e13
+    de: 'Wegen **schlechten** Wetters fällt das Konzert aus.'
+  - id: e14
+    de: 'Trotz **starken** Regens sind wir spazieren gegangen.'
+  - id: e15
+    de: 'Wegen **großer** Nachfrage gibt es ein zweites Konzert.'
+  # After numbers, viele, einige, mehrere
+  - id: e16
+    de: 'Wir haben zwei **kleine** Kinder.'
+  - id: e17
+    de: 'In Wien habe ich viele **nette** Leute kennengelernt.'
+  - id: e18
+    de: 'Ich habe noch einige **alte** Fotos von dir.'
+  - id: e19
+    de: 'Ich war mit zwei **guten** Freundinnen in Italien.'
+  # Greetings and wishes
+  - id: e20
+    de: '**Guten** Morgen, Frau Huber!'
+  - id: e21
+    de: '**Herzlichen** Glückwunsch zum Geburtstag!'
+  - id: e22
+    de: '**Liebe** Grüße aus Graz!'
+  - id: e23
+    de: '**Frohe** Weihnachten euch allen!'
+  - id: e24
+    de: 'Auf Wiedersehen und einen **schönen** Tag noch!'
+  - id: e25
+    de: 'Danke, **schönen** Tag noch!'
+
+choice:
+  - id: c1
+    text: Ich trinke morgens ___ Kaffee.
+    answer: schwarzen
+    options: [schwarzen, schwarzer, schwarzes, schwarzem]
+  - id: c2
+    text: ___ Brot schmeckt am besten.
+    answer: Frisches
+    options: [Frisches, Frischer, Frische, Frischen]
+  - id: c3
+    text: Ich trinke Tee mit ___ Milch.
+    answer: warmer
+    options: [warmer, warme, warmem, warmen]
+  - id: c4
+    text: Bei ___ Wetter bleiben wir zu Hause.
+    answer: schlechtem
+    options: [schlechtem, schlechten, schlechtes, schlechter]
+  - id: c5
+    text: Heute gibt es auf dem Markt ___ Erdbeeren.
+    answer: frische
+    options: [frische, frischen, frischer, frisches]
+  - id: c6
+    text: Ich treffe mich heute mit ___ Freunden.
+    answer: alten
+    options: [alten, alte, alter, altem]
+  - id: c7
+    text: ___ Tee ist mir zu bitter.
+    answer: Schwarzer
+    options: [Schwarzer, Schwarzen, Schwarzes, Schwarze]
+  - id: c8
+    text: Im Kühlschrank ist noch ___ Bier.
+    answer: kaltes
+    options: [kaltes, kalter, kalte, kaltem]
+  - id: c9
+    text: In unserer Straße gibt es zwei ___ Cafés.
+    answer: gute
+    options: [gute, guten, guter, gutes]
+  - id: c10
+    text: Auf der Party waren viele ___ Leute.
+    answer: nette
+    options: [nette, netten, netter, nettes]
+  - id: c11
+    text: Alle ___ Kollegen bekommen einen Laptop.
+    answer: neuen
+    options: [neuen, neue, neuer, neues]
+  - id: c12
+    text: Wir haben mehrere ___ Fehler gefunden.
+    answer: kleine
+    options: [kleine, kleinen, kleiner, kleines]
+  - id: c13
+    text: Sie wohnt mit zwei ___ Freundinnen zusammen.
+    answer: netten
+    options: [netten, nette, netter, nettem]
+  - id: c14
+    text: Wegen ___ Wetters fällt das Fest aus.
+    answer: schlechten
+    options: [schlechten, schlechtes, schlechter, schlechtem]
+  - id: c15
+    text: ___ Glückwunsch zum neuen Job!
+    answer: Herzlichen
+    options: [Herzlichen, Herzlicher, Herzliches, Herzliche]
+  - id: c16
+    text: ___ Nacht, schlaf gut!
+    answer: Gute
+    options: [Gute, Guten, Guter, Gutes]
+  - id: c17
+    text: ___ Grüße aus Salzburg!
+    answer: Liebe
+    options: [Liebe, Lieben, Lieber, Liebes]
+  - id: c18
+    text: Danke, ___ Abend noch!
+    answer: schönen
+    options: [schönen, schöner, schönes, schönem]
+
+wordOrder:
+  - id: w1
+    parts: [bei, schönem, Wetter, essen, wir, im Garten]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: [ich, trinke, Kaffee, mit, warmer, Milch]
+    fixed: true
+    punctuation: '.'
+  - id: w3
+    parts: [zum Frühstück, gibt, es, frisches, Brot]
+    fixed: true
+    punctuation: '.'
+  - id: w4
+    parts: [in Wien, habe, ich, viele, nette, Leute, kennengelernt]
+    fixed: true
+    punctuation: '.'
+  - id: w5
+    parts: [trotz, starken, Regens, sind, wir, spazieren gegangen]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: [herzlichen, Glückwunsch, zum, Geburtstag]
+    fixed: true
+    punctuation: '!'
+  - id: w7
+    parts: [viele, Grüße, an, deine Eltern]
+    fixed: true
+    punctuation: '!'
+
+austrianNotes:
+  - id: at1
+    de: 'Den Apfelstrudel gibt es mit **frischem** Schlagobers.'
