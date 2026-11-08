@@ -1,0 +1,60 @@
+---
+/**
+ * End of a topic's explanation: the topics at lower levels it builds on and the topics at higher
+ * levels that build on it (`buildsOn` in meta.yaml, `levelLinks()` in src/lib/navigation.ts).
+ * One card with a list per direction; renders nothing when the topic has no links.
+ */
+import { levels } from '../../config/site.ts';
+import type { LocaleCode } from '../../i18n/locales.ts';
+import { localizePath, t } from '../../i18n/utils.ts';
+import { type TopicLink, topicPath } from '../../lib/navigation.ts';
+
+interface Props {
+  locale: LocaleCode;
+  buildsOn: readonly TopicLink[];
+  continuedIn: readonly TopicLink[];
+}
+
+const { locale, buildsOn, continuedIn } = Astro.props;
+const groups = [
+  { id: 'builds-on', label: t(locale, 'topic.buildsOn'), topics: buildsOn },
+  { id: 'continued-in', label: t(locale, 'topic.continuedIn'), topics: continuedIn },
+].filter((group) => group.topics.length > 0);
+const levelLabel = (topic: TopicLink) =>
+  levels.find((entry) => entry.id === topic.level)?.label ?? topic.level;
+---
+
+{groups.length > 0 && (
+  <nav
+    aria-labelledby="level-links-title"
+    class="mt-6 rounded-card border border-border bg-card px-3 py-2.5 shadow-card"
+    data-level-links
+    data-pagefind-ignore
+  >
+    <h2 id="level-links-title" class="eyebrow text-muted">
+      {t(locale, 'topic.otherLevels')}
+    </h2>
+    {groups.map((group) => (
+      <div class="mt-2">
+        <p id={`level-links-${group.id}`} class="text-sm text-muted">
+          {group.label}
+        </p>
+        <ul aria-labelledby={`level-links-${group.id}`} class="mt-1 flex flex-col gap-1.5">
+          {group.topics.map((topic) => (
+            <li>
+              <a
+                href={localizePath(topicPath(topic), locale)}
+                class="flex items-baseline gap-2 hover:text-accent"
+              >
+                <span class="shrink-0 rounded-chip border border-border px-1.5 text-xs font-semibold text-muted">
+                  {levelLabel(topic)}
+                </span>
+                <span class="font-semibold">{topic.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </nav>
+)}

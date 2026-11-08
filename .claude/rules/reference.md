@@ -50,4 +50,4 @@ The same files as a topic (`.claude/rules/content.md`), with these differences:
 - Reference page order: eyebrow ("Reference" · levels), title, badges, In short, explanation with tables, sponsor slot. No contents list, no practice, no previous/next cards.
 - The "Reference" tab follows the levels after a divider (`LevelSwitcher.astro`): in the header from lg up and in the sidebar sheet. On reference pages the sidebar lists the reference pages (`Base` prop `reference`).
 - The home page has a Reference section with links to every page (phones have no other way in from the home page).
-- Topics and reference pages do not link to each other.
+- Topics and reference pages do not link to each other. Topics link only to topics at other levels (`buildsOn`, `.claude/rules/content.md`).

@@ -1,4 +1,8 @@
+import { cpSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { readTopic } from '../../scripts/lib/content.ts';
+import { readReview, serializeReview, syncReview } from '../../scripts/review.ts';
 import { capitalizedParts, validateContent } from '../../scripts/validate-content.ts';
 import { type ContentFixture, contentFixture } from './helpers/content-fixture.ts';
 
@@ -343,5 +347,66 @@ describe('capitalizedParts', () => {
       'Nach Wien',
     ]);
     expect(capitalizedParts(['Kaffee', 'Anna', 'Sie', 'die', 'Kinder', 'Morgen'])).toEqual([]);
+  });
+});
+
+describe('buildsOn', () => {
+  /** Copies the fixture topic to `<level>/<slug>` with that level, review.yaml synced. */
+  function addTopic(level: string, slug: string): void {
+    const dir = join(fixture.roots.topics, level, slug);
+    cpSync(fixture.dir, dir, { recursive: true });
+    const meta = join(dir, 'meta.yaml');
+    writeFileSync(meta, readFileSync(meta, 'utf8').replace('level: a2', `level: ${level}`));
+    const unit = readTopic(fixture.roots.topics, level, slug);
+    writeFileSync(
+      join(dir, 'review.yaml'),
+      serializeReview(syncReview(unit, readReview(unit)).review),
+    );
+  }
+
+  function buildsOn(list: string): void {
+    change('meta.yaml', 'order: 1', `order: 1\nbuildsOn: ${list}`);
+  }
+
+  it('accepts a topic at a lower level', () => {
+    addTopic('a1', 'basics');
+    buildsOn('[a1/basics]');
+    expect(issues()).toEqual([]);
+  });
+
+  it('fails on a topic that does not exist', () => {
+    buildsOn('[a1/missing]');
+    expect(issues()).toEqual(['meta.yaml: buildsOn "a1/missing" is not a topic']);
+  });
+
+  it('fails on a reference page', () => {
+    buildsOn('[reference/sample]');
+    expect(issues()).toEqual(['meta.yaml: buildsOn "reference/sample" is not a topic']);
+  });
+
+  it('fails on a topic at the same level, and on the topic itself', () => {
+    addTopic('a2', 'other');
+    buildsOn('[a2/other, a2/sample]');
+    expect(issues()).toEqual([
+      'meta.yaml: buildsOn "a2/other" must be a topic at a lower level than a2',
+      'meta.yaml: buildsOn "a2/sample" must be a topic at a lower level than a2',
+    ]);
+  });
+
+  it('fails on a topic at a higher level', () => {
+    addTopic('b1', 'later');
+    buildsOn('[b1/later]');
+    expect(issues()).toEqual([
+      'meta.yaml: buildsOn "b1/later" must be a topic at a lower level than a2',
+    ]);
+  });
+
+  it('fails on a duplicate, a malformed key and too many topics', () => {
+    buildsOn('[a1/basics, a1/basics]');
+    expect(issues()).toEqual(['meta.yaml: buildsOn: buildsOn must be unique']);
+    change('meta.yaml', 'buildsOn: [a1/basics, a1/basics]', 'buildsOn: [basics]');
+    expect(issues()).toEqual(['meta.yaml: buildsOn.0: topics are <level>/<slug>']);
+    change('meta.yaml', 'buildsOn: [basics]', 'buildsOn: [a1/a, a1/b, a1/c, a1/d]');
+    expect(issues()).toEqual([expect.stringMatching(/^meta\.yaml: buildsOn: /)]);
   });
 });

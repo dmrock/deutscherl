@@ -23,7 +23,8 @@ paths:
 
 - Home: intro, level cards (available levels list their topics, the others their planned topics under "Coming soon"), features.
 - Level pages: topic cards by category with title and summary. Coming-soon pages: planned topics (`plannedTopics` in `site.ts`, labels `planned.<id>`), `noindex`.
-- Topic page order: article (explanation), sponsor slot, practice, previous/next topic. No sources on the site.
+- Topic page order: article (explanation, ending with the "Other levels" box when the topic has one), sponsor slot, practice, previous/next topic. No sources on the site.
+- "Other levels" (`TopicLevelLinks.astro`, `levelLinks()` in `src/lib/navigation.ts`): one card at the end of the explanation, from `buildsOn` in `meta.yaml` (`.claude/rules/content.md`). Two lists, "Builds on" (the topics this one names) and "Continued in" (the topics that name this one), each in reading order; a row is a level chip and the topic title as a link. No arrows, so it does not look like the previous/next cards, and the practice card always separates the two. A topic may appear both here and in the previous/next cards. No box without links.
 - Reference index and reference pages: see `.claude/rules/reference.md`; no islands, so the 3 KB budget.
 - Under the topic title, next to the badges, "↓ Practice" jumps to the practice card (the card links back with "↑ Explanation").
 - Previous/next topic (`TopicPager.astro`): two cards at the end of the topic page with the topic titles, on every screen size, in reading order across levels (the last A1 topic leads to the first A2 topic, and the card names the level). No fixed bottom bar.

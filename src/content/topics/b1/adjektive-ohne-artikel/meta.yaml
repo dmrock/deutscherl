@@ -1,6 +1,7 @@
 level: b1
 category: adjectives
 order: 1
+buildsOn: [a2/adjektivdeklination]
 sources:
   - title: 'Duden: Deklination zu gemeinsam (starke Beugung ohne Artikel: gemeinsamer, gemeinsame, gemeinsames, gemeinsamem; Genitiv gemeinsamen)'
     url: https://www.duden.de/deklination/adjektive/gemeinsam

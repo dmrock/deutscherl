@@ -52,6 +52,9 @@ export const ru = {
   'topic.inShort': 'Коротко',
   'topic.inAustria': 'В Австрии',
   'topic.austrianUsage': 'Австрийский вариант',
+  'topic.otherLevels': 'Другие уровни',
+  'topic.buildsOn': 'Основа',
+  'topic.continuedIn': 'Продолжение',
   'reference.title': 'Справочник',
   'reference.description':
     'Таблицы и обзоры немецкой грамматики, в которые можно заглянуть во время учёбы, на любом уровне.',

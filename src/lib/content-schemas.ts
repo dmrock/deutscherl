@@ -9,11 +9,25 @@ import { categoryIds, levelIds } from '../config/site.ts';
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/, 'ids are lowercase letters, digits and dashes');
 const text = z.string().trim().min(1);
 
+/** Most topics one topic can build on (`buildsOn`): only the ones it extends directly. */
+export const MAX_BUILDS_ON = 3;
+
 /** `meta.yaml` */
 export const metaSchema = z.strictObject({
   level: z.enum(levelIds),
   category: z.enum(categoryIds),
   order: z.number().int().positive(),
+  /**
+   * Topics at a lower level that this topic extends, as `<level>/<slug>`. The page links to them,
+   * and each of them links back (derived, see `levelLinks()` in src/lib/navigation.ts).
+   * scripts/validate-content.ts checks that each one exists at a lower level.
+   */
+  buildsOn: z
+    .array(z.string().regex(/^[a-z][a-z0-9]*\/[a-z][a-z0-9-]*$/, 'topics are <level>/<slug>'))
+    .min(1)
+    .max(MAX_BUILDS_ON)
+    .refine((keys) => new Set(keys).size === keys.length, { message: 'buildsOn must be unique' })
+    .optional(),
   sources: z.array(z.strictObject({ title: text, url: z.url().optional() })).min(1),
 });
 
