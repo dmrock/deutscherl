@@ -13,6 +13,8 @@ export interface TopicLink {
   title: string;
   /** `*word*` marks a German word (`MarkedText`) */
   summary: string;
+  /** Topics at lower levels this topic extends, as `<level>/<slug>` (`buildsOn` in meta.yaml) */
+  buildsOn?: readonly string[];
 }
 
 export interface CategoryGroup {
@@ -62,6 +64,33 @@ export function neighbours(
   const index = ordered.findIndex((topic) => topic.level === level && topic.slug === slug);
   if (index === -1) return { prev: undefined, next: undefined };
   return { prev: ordered[index - 1], next: ordered[index + 1] };
+}
+
+/** Key of a topic, `<level>/<slug>`, as `buildsOn` in meta.yaml names it. */
+export function topicKey(topic: Pick<TopicLink, 'level' | 'slug'>): string {
+  return `${topic.level}/${topic.slug}`;
+}
+
+/**
+ * Topics at other levels linked to a topic: the ones it builds on (its `buildsOn`) and the ones
+ * that build on it (every topic whose `buildsOn` names it), both in reading order. Keys without a
+ * topic in `topics` are skipped (validate-content reports them; a locale may lack a page).
+ */
+export function levelLinks(
+  topics: readonly TopicLink[],
+  level: LevelId,
+  slug: string,
+  categoryOrder: readonly CategoryId[],
+  levelOrder: readonly LevelId[],
+): { buildsOn: TopicLink[]; continuedIn: TopicLink[] } {
+  const ordered = levelOrder.flatMap((id) => topicsInOrder(topics, id, categoryOrder));
+  const key = topicKey({ level, slug });
+  const current = ordered.find((topic) => topicKey(topic) === key);
+  const targets = new Set(current?.buildsOn ?? []);
+  return {
+    buildsOn: ordered.filter((topic) => targets.has(topicKey(topic))),
+    continuedIn: ordered.filter((topic) => topic.buildsOn?.includes(key)),
+  };
 }
 
 /** URL path of a topic, without locale prefix. */

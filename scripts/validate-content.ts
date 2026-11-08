@@ -336,8 +336,43 @@ export function validateTopic(
   return issues;
 }
 
+/**
+ * `buildsOn` in meta.yaml (`.claude/rules/content.md`): every key names an existing topic at a
+ * lower level than the topic itself. Reference pages are never targets (their keys are
+ * `reference/<slug>`, not a level). Topics whose meta.yaml fails its schema are skipped: that is
+ * reported already.
+ */
+export function checkLevelLinks(units: readonly TopicFiles[]): Issue[] {
+  const topics = units.filter((unit) => unit.kind === 'topic');
+  const levelOf = new Map(topics.map((unit) => [unit.key, unit.folderLevel ?? '']));
+  const rank = (level: string) => (levelIds as readonly string[]).indexOf(level);
+  const issues: Issue[] = [];
+  for (const unit of topics) {
+    const meta = metaSchema.safeParse(unit.meta?.data);
+    if (!meta.success) continue;
+    for (const target of meta.data.buildsOn ?? []) {
+      const targetLevel = levelOf.get(target);
+      if (targetLevel === undefined) {
+        issues.push({
+          topic: unit.key,
+          file: 'meta.yaml',
+          message: `buildsOn "${target}" is not a topic`,
+        });
+      } else if (rank(targetLevel) === -1 || rank(targetLevel) >= rank(meta.data.level)) {
+        issues.push({
+          topic: unit.key,
+          file: 'meta.yaml',
+          message: `buildsOn "${target}" must be a topic at a lower level than ${meta.data.level}`,
+        });
+      }
+    }
+  }
+  return issues;
+}
+
 export function validateContent(roots: ContentRoots = CONTENT_ROOTS): Issue[] {
-  return readContent(roots).flatMap((topic) => validateTopic(topic));
+  const units = readContent(roots);
+  return [...units.flatMap((topic) => validateTopic(topic)), ...checkLevelLinks(units)];
 }
 
 export function formatIssue({ topic, file, message }: Issue): string {

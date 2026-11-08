@@ -19,6 +19,7 @@ export async function getTopicLinks(locale: LocaleCode): Promise<TopicLink[]> {
       order: meta.data.order,
       title: page.data.title,
       summary: page.data.summary,
+      buildsOn: meta.data.buildsOn ?? [],
     });
   }
   return links;

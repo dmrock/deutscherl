@@ -53,6 +53,9 @@ export const en = {
   'topic.inShort': 'In short',
   'topic.inAustria': 'In Austria',
   'topic.austrianUsage': 'Austrian usage',
+  'topic.otherLevels': 'Other levels',
+  'topic.buildsOn': 'Builds on',
+  'topic.continuedIn': 'Continued in',
   'reference.title': 'Reference',
   'reference.description':
     'Tables and overviews of German grammar to look things up while you learn, at any level.',

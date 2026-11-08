@@ -1,5 +1,5 @@
 /** Topic page content components, English page (`.claude/rules/testing.md`). */
-import { expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { t } from '../../src/i18n/utils.ts';
 
 const PATH = '/a2/perfekt/';
@@ -29,4 +29,45 @@ test('the Austrian note shows its German sentence and translation', async ({ pag
 test('the rule table is rendered', async ({ page }) => {
   await page.goto(PATH);
   await expect(page.locator('.rule-table table')).toBeVisible();
+});
+
+test.describe('links to topics at other levels', () => {
+  const A2 = '/a2/adjektivdeklination/';
+  const B1 = '/b1/adjektive-ohne-artikel/';
+
+  /** The links of one group ("Builds on", "Continued in") in the "Other levels" box. */
+  const group = (page: Page, key: 'topic.buildsOn' | 'topic.continuedIn') =>
+    page
+      .getByRole('navigation', { name: t('en', 'topic.otherLevels') })
+      .getByRole('list', { name: t('en', key) })
+      .getByRole('link');
+
+  test('the higher topic links back to the topic it builds on', async ({ page }) => {
+    await page.goto(B1);
+    const links = group(page, 'topic.buildsOn');
+    await expect(links).toHaveCount(1);
+    await expect(links).toHaveAttribute('href', A2);
+    await expect(links).toContainText('A2');
+    await expect(group(page, 'topic.continuedIn')).toHaveCount(0);
+  });
+
+  test('the lower topic links forward to the topic that builds on it', async ({ page }) => {
+    await page.goto(A2);
+    const links = group(page, 'topic.continuedIn');
+    await expect(links).toHaveCount(1);
+    await expect(links).toHaveAttribute('href', B1);
+    await expect(links).toContainText('B1');
+    await links.click();
+    await expect(page).toHaveURL(B1);
+  });
+
+  test('the box sits inside the explanation, before the practice card', async ({ page }) => {
+    await page.goto(A2);
+    await expect(page.locator('#explanation [data-level-links]')).toBeVisible();
+  });
+
+  test('a topic without links has no box', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('[data-level-links]')).toHaveCount(0);
+  });
 });

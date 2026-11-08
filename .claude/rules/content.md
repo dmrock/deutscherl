@@ -45,7 +45,8 @@ Before a pull request with new or changed German content, a separate review pass
 
 ## Files of a topic (`src/content/topics/<level>/<slug>/`)
 
-- `meta.yaml`: `level` (matches the folder), `category`, `order`, `sources` (`{title, url?}`, at least one; for review only, never shown on the site).
+- `meta.yaml`: `level` (matches the folder), `category`, `order`, `buildsOn?`, `sources` (`{title, url?}`, at least one; for review only, never shown on the site).
+  - `buildsOn`: the topics at lower levels whose rule this topic extends, as `<level>/<slug>` (`buildsOn: [a2/adjektivdeklination]`), at most 3. Only direct steps: in a chain A1 → A2 → B1, the B1 topic names the A2 topic, not the A1 one. The topic page links to them, and each of them links back; the link back is derived, so the lower topic's files do not change. Only topics: never a reference page.
 - `german.yaml`, the only place for German sentences, shared by all locales; ids unique across the file:
   - `examples`: `{ id, de, region?: AT }`; in `de`, `**…**` marks the key words the page highlights.
   - `choice`: `{ id, text (with ___), answer, options, alsoCorrect?: [{ value, region }] }`
@@ -89,4 +90,4 @@ The topic page passes them; MDX files import nothing.
 
 ## Validation
 
-Per-file shapes are Zod schemas in `src/lib/content-schemas.ts` (shared by `content.config.ts` and the scripts). Everything across files is in `scripts/validate-content.ts` (`pnpm validate`, run in CI and before `astro build`): schemas, folder level, unique ids, choice (one `___`, answer and `alsoCorrect` in options), word order (`accept` orders are distinct permutations of `parts` that start with the fixed part; neutral case via a list of closed-class words such as `Ich`, `Gestern`), MDX and i18n ids exist in `german.yaml`, tables (one cell per column, variant columns exist, no variant twice, row ids unique within a table and naming the same word across tables, either rows or groups), coverage of ready locales, at least 10 choice items for topics and none for reference pages, `review.yaml` in sync. The scripts read topics and reference pages through `scripts/lib/content.ts` (`readContent`).
+Per-file shapes are Zod schemas in `src/lib/content-schemas.ts` (shared by `content.config.ts` and the scripts). Everything across files is in `scripts/validate-content.ts` (`pnpm validate`, run in CI and before `astro build`): schemas, folder level, unique ids, choice (one `___`, answer and `alsoCorrect` in options), word order (`accept` orders are distinct permutations of `parts` that start with the fixed part; neutral case via a list of closed-class words such as `Ich`, `Gestern`), MDX and i18n ids exist in `german.yaml`, tables (one cell per column, variant columns exist, no variant twice, row ids unique within a table and naming the same word across tables, either rows or groups), coverage of ready locales, at least 10 choice items for topics and none for reference pages, `buildsOn` (each key an existing topic at a lower level; unique keys and at most 3 in the schema), `review.yaml` in sync. The scripts read topics and reference pages through `scripts/lib/content.ts` (`readContent`).

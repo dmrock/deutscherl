@@ -69,6 +69,7 @@ The level decides vocabulary, sentence length and how much of the rule the page 
 - List every topic with its category and order: `grep -E '^(category|order):' src/content/topics/*/*/meta.yaml`, and read the `title` and `summary` of each `en.mdx`.
 - List the reference pages with their order and levels: `grep -E '^(order|levels):' src/content/reference/*/meta.yaml`, and read their titles and summaries.
 - A table that already lives on a reference page is not copied into a topic, and a topic's rule is not repeated on a reference page. Topics and reference pages do not link to each other.
+- If the new topic extends the rule of a topic at a lower level (the B1 adjectives without an article extend the A2 adjective endings after articles), it names that topic in `buildsOn` in `meta.yaml`. Name only the direct step, at most 3 topics. The lower topic links back on its own; do not edit its files. Do not repeat the lower topic's explanation: say what is new compared with it.
 - If the new page overlaps an existing one, say how you would split the material, or suggest extending the existing page instead.
 
 ### Read two model pages in full
@@ -102,6 +103,7 @@ Slug: src/content/topics/<level>/<slug>/
 Category: <category id>, order <n> (and which topics shift)
 Level evidence: <source>: <what it says>; <source>: <what it says>
 Overlap: <existing topics or reference pages it touches, and how>
+Builds on: <lower-level topics it extends, as <level>/<slug>, or "none">
 
 Summary (In short box): <draft>
 
@@ -155,7 +157,7 @@ Work on a branch named after the task: `content/<level>-<slug>` for a topic (for
 
 ### Write the files in this order
 
-1. `meta.yaml`: `sources`, and for a topic `level`, `category`, `order`; for a reference page `order` and `levels`. Each source title says what it confirms (`'Duden: Keks (österreichisch: das Keks)'`). If the new page takes an order another page already has, move the other page and say so in the summary.
+1. `meta.yaml`: `sources`, and for a topic `level`, `category`, `order`, and `buildsOn` when the plan names topics it builds on; for a reference page `order` and `levels`. Each source title says what it confirms (`'Duden: Keks (österreichisch: das Keks)'`). If the new page takes an order another page already has, move the other page and say so in the summary.
 2. `german.yaml`: all German of the page lives here and nowhere else. A topic has examples, choice items, word-order items and Austrian notes. A reference page has `tables`, examples and Austrian notes, and no choice or word-order items.
 3. `en.mdx`: the canonical explanation. The teacher verifies this page, and every other locale is translated from it.
 4. `i18n/en.yaml`: example translations and Austrian note translations; for a topic every `why` and word-order `translation`; for a reference page `columns`, `groups` and `glosses`.
@@ -187,7 +189,7 @@ pnpm check:language
 pnpm lint
 ```
 
-Then start `pnpm dev` and open the English and Russian pages: `http://localhost:4321/<level>/<slug>/` for a topic, `http://localhost:4321/reference/<slug>/` for a reference page. Check that the examples sit under the rules they belong to and that tables fit on a phone-width screen. For a topic, check that it appears in the sidebar under the planned category and that one practice round works. For a reference page, check that it appears on `/reference/` and in the sidebar of the other reference pages. If the dev server is not available, say that you could not check the page.
+Then start `pnpm dev` and open the English and Russian pages: `http://localhost:4321/<level>/<slug>/` for a topic, `http://localhost:4321/reference/<slug>/` for a reference page. Check that the examples sit under the rules they belong to and that tables fit on a phone-width screen. For a topic, check that it appears in the sidebar under the planned category and that one practice round works. With `buildsOn`, check that the "Other levels" box links to the lower topic and that the lower topic's page links back. For a reference page, check that it appears on `/reference/` and in the sidebar of the other reference pages. If the dev server is not available, say that you could not check the page.
 
 ### Quality pass
 

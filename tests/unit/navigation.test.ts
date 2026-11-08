@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import {
   groupByCategory,
+  levelLinks,
   neighbours,
   type ReferenceLink,
   referenceInOrder,
   referencePath,
   type TopicLink,
+  topicKey,
   topicPath,
   topicsInOrder,
 } from '../../src/lib/navigation.ts';
@@ -82,6 +84,39 @@ describe('neighbours()', () => {
     expect(neighbours(topics, 'a2', 'missing', order, levelOrder)).toEqual({
       prev: undefined,
       next: undefined,
+    });
+  });
+});
+
+describe('levelLinks()', () => {
+  const linked = (slug: string, category: string, level: 'a1' | 'a2', buildsOn: string[]) => ({
+    ...topic(slug, category, 1, level),
+    buildsOn,
+  });
+  const levelTopics = [
+    linked('dative-more', 'cases', 'a2', ['a1/dative']),
+    linked('perfekt', 'verbs', 'a2', ['a1/present', 'a1/dative', 'a1/missing']),
+    topic('dative', 'cases', 1, 'a1'),
+    topic('present', 'verbs', 1, 'a1'),
+    topic('alone', 'sentences', 1, 'a1'),
+  ];
+
+  it('lists the topics a topic builds on, in reading order, skipping unknown keys', () => {
+    const links = levelLinks(levelTopics, 'a2', 'perfekt', order, levelOrder);
+    expect(links.buildsOn.map(topicKey)).toEqual(['a1/present', 'a1/dative']);
+    expect(links.continuedIn).toEqual([]);
+  });
+
+  it('derives the topics that build on a topic, in reading order', () => {
+    const links = levelLinks(levelTopics, 'a1', 'dative', order, levelOrder);
+    expect(links.buildsOn).toEqual([]);
+    expect(links.continuedIn.map(topicKey)).toEqual(['a2/perfekt', 'a2/dative-more']);
+  });
+
+  it('returns no links for a topic without any', () => {
+    expect(levelLinks(levelTopics, 'a1', 'alone', order, levelOrder)).toEqual({
+      buildsOn: [],
+      continuedIn: [],
     });
   });
 });
