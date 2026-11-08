@@ -21,7 +21,7 @@ German correctness cannot be assumed, neither the maintainers' nor yours. Check 
 - Accepted sources: Duden (dictionary, grammar, Sprachratgeber), DWDS, grammis (IDS Mannheim), the Österreichisches Wörterbuch, the Variantengrammatik des Standarddeutschen, the Variantenwörterbuch des Deutschen; grammars and course material from established publishers and universities. Wiktionary counts only as a second source.
 - Add every source you used to `meta.yaml` `sources`, with what it confirms in the title.
 - Replace sentences that are correct but awkward with natural ones.
-- Leave out what no two sources settle, and report it with what you checked.
+- Verify everything yourself. When no two sources confirm a point, rephrase it to what they do confirm, replace it with a confirmed example, or leave it out. Never leave open questions for the teacher, in content, summaries or PR descriptions.
 
 Everything you write stays `draft`: content counts as correct only after a teacher has verified it.
 
@@ -29,7 +29,7 @@ Everything you write stays `draft`: content counts as correct only after a teach
 - Every topic and reference page lists `sources` (e.g. Duden grammar, Goethe-Institut / ÖSD level descriptions). Write your own text and examples: never copy from books, course material or other websites, and never copy Goethe/ÖSD word lists wholesale.
 - Explanations: short sentences, no jargon without a one-line definition.
 - Examples: natural, everyday German.
-- Austrian notes only for real, established Austrian usage (reference: Österreichisches Wörterbuch), marked with `region: AT`. Every note needs two sources (the Österreichisches Wörterbuch, the Variantengrammatik or the Variantenwörterbuch, Duden or DWDS with an Austrian label); without them, leave the note out and report it (no TODOs in content).
+- Austrian notes only for real, established Austrian usage (reference: Österreichisches Wörterbuch), marked with `region: AT`. Every note needs two sources (the Österreichisches Wörterbuch, the Variantengrammatik or the Variantenwörterbuch, Duden or DWDS with an Austrian label); without them, pick another note the sources confirm or leave the note out (no TODOs in content).
 - Russian explanations: simple, friendly Russian (informal "you"), grammar terms in Russian with the German term in parentheses the first time (e.g. the Russian term for "dative case" followed by "(Dativ)").
 
 ## Content checklist

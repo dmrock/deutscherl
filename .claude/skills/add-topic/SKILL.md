@@ -36,7 +36,8 @@ Copy this checklist into your task list and tick it off as you go:
 - [ ] Page checked in pnpm dev
 - [ ] Separate quality pass done, findings fixed
 - [ ] CLAUDE.md updated if needed
-- [ ] Summary with unsettled points
+- [ ] Every fact confirmed by two sources, or replaced or removed
+- [ ] Summary
 ```
 
 ## Phase 1: research
@@ -172,7 +173,7 @@ Writing the German and checking it are separate steps. After `german.yaml` is wr
 - For a topic, check every word-order item: write down every order a native speaker would accept, and put each one other than `parts` in `accept`.
 - For a reference page, check every table cell, and check that every row earns its place under the scope rule above.
 - Add the sources you used to `meta.yaml`.
-- Leave out what no two sources settle, and keep a note of it for the summary.
+- When no two sources confirm a point, rephrase it to what they do confirm, replace it with a confirmed example, or leave it out. Nothing stays open for the teacher.
 
 ### Validate
 
@@ -190,7 +191,7 @@ Then start `pnpm dev` and open the English and Russian pages: `http://localhost:
 
 ### Quality pass
 
-The session that wrote the German is the worst judge of it. Start a fresh `general-purpose` sub-agent with the `Agent` tool. Give it the page's path, the rule files to read (`.claude/rules/content.md`, plus `.claude/rules/reference.md` for a reference page), and this brief: run the content checklist from `content.md` on every file of the page, check each German fact against two sources it fetches itself, fix what it finds directly in the files, and return a list of what it changed and what it could not settle. Then read its changes, run the validation again, and keep its unsettled points for the summary.
+The session that wrote the German is the worst judge of it. Start a fresh `general-purpose` sub-agent with the `Agent` tool. Give it the page's path, the rule files to read (`.claude/rules/content.md`, plus `.claude/rules/reference.md` for a reference page), and this brief: run the content checklist from `content.md` on every file of the page, check each German fact against two sources it fetches itself, fix what it finds directly in the files, replace or remove any point it cannot confirm with two sources, and return a list of what it changed. Then read its changes, check that nothing unconfirmed is left (a hedge like "mostly" or "usually" needs a source that says so), and run the validation again.
 
 ### Repository updates
 
@@ -202,7 +203,7 @@ The session that wrote the German is the worst judge of it. Start a fresh `gener
 Commit only when the user asks. Then:
 
 - `git commit -s`, a message in English that says what the page covers, for example `A2 topic: modal verbs in the present tense` or `Reference page: verbs with prepositions`.
-- The pull request description says what the page adds and nothing about how the plan was chosen. It never mentions who asked for it.
+- The pull request description says what the page adds and nothing about how the plan was chosen. It never mentions who asked for it, and it has no list of open points for the teacher.
 
 ## Rules that are easy to miss
 
@@ -220,4 +221,4 @@ End with:
 - the level or levels and the sources that support them;
 - the result of each check (validate, coverage, language, lint, the page in the browser);
 - what the quality pass changed;
-- every point no two sources settled, with what you checked, so the user can decide or pass it to the teacher.
+- what was rephrased, replaced or removed because two sources could not confirm it.
