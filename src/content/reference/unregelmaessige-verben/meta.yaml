@@ -10,9 +10,9 @@ sources:
     url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
   - title: 'Duden: sitzen (hat / süddeutsch, österreichisch, schweizerisch: ist gesessen)'
     url: https://www.duden.de/rechtschreibung/sitzen
-  - title: 'Duden: fahren (Fahrzeug steuern, befördern: Perfekt mit hat)'
+  - title: 'Duden: fahren (Fahrzeug steuern, befördern: Perfekt mit hat; Auto, Rad, Ski fahren: Perfekt mit ist)'
     url: https://www.duden.de/rechtschreibung/fahren
-  - title: 'DWDS: fahren (transitiv: Perfektbildung mit haben)'
+  - title: 'DWDS: fahren (transitiv, Fahrzeug lenken oder jmdn. befördern: Perfektbildung mit haben; Auto, Ski fahren: sein)'
     url: https://www.dwds.de/wb/fahren
   - title: 'Duden: fliegen (Luftfahrzeug steuern, befördern: Perfekt mit hat)'
     url: https://www.duden.de/rechtschreibung/fliegen
@@ -26,3 +26,29 @@ sources:
     url: https://grammis.ids-mannheim.de/systematische-grammatik/1442
   - title: 'André Meinunger: Sick of Sick? (2008), Auszug bei Klett (sein, haben und Modalverben auch in der gesprochenen Sprache sehr häufig im Präteritum)'
     url: https://www2.klett.de/sixcms/media.php/229/350470_0097_Meinunger_Sick.pdf
+  - title: 'Duden: stehen (hat / süddeutsch, österreichisch, schweizerisch: ist gestanden)'
+    url: https://www.duden.de/rechtschreibung/stehen
+  - title: 'Variantengrammatik des Standarddeutschen: Bildung des Perfekts (sitzen, stehen, liegen mit sein)'
+    url: http://mediawiki.ids-mannheim.de/VarGra/index.php/Bildung_des_Perfekts
+  - title: 'Duden: anfangen (Perfekt mit hat)'
+    url: https://www.duden.de/rechtschreibung/anfangen
+  - title: 'DWDS: anfangen (fängt an, hat angefangen)'
+    url: https://www.dwds.de/wb/anfangen
+  - title: 'Duden Konjugation: einladen (lädt ein, hat eingeladen)'
+    url: https://www.duden.de/konjugation/einladen_spendieren
+  - title: 'DWDS: einladen (lädt ein, hat eingeladen)'
+    url: https://www.dwds.de/wb/einladen
+  - title: 'Duden: aufstehen (sich erheben, das Bett verlassen: Perfekt mit ist)'
+    url: https://www.duden.de/rechtschreibung/aufstehen
+  - title: 'DWDS: aufstehen (steht auf, ist aufgestanden)'
+    url: https://www.dwds.de/wb/aufstehen
+  - title: 'Duden: einsteigen (Perfekt mit ist)'
+    url: https://www.duden.de/rechtschreibung/einsteigen
+  - title: 'Duden: steigen (ist gestiegen)'
+    url: https://www.duden.de/rechtschreibung/steigen
+  - title: 'DWDS: einsteigen (steigt ein, ist eingestiegen)'
+    url: https://www.dwds.de/wb/einsteigen
+  - title: 'Duden: wissen (ich weiß, du weißt, er weiß; hat gewusst)'
+    url: https://www.duden.de/rechtschreibung/wissen
+  - title: 'DWDS: wissen (ich weiß, er weiß; hat gewusst)'
+    url: https://www.dwds.de/wb/wissen
