@@ -189,7 +189,11 @@ pnpm check:language
 pnpm lint
 ```
 
-Then start `pnpm dev` and open the English and Russian pages: `http://localhost:4321/<level>/<slug>/` for a topic, `http://localhost:4321/reference/<slug>/` for a reference page. Check that the examples sit under the rules they belong to and that tables fit on a phone-width screen. For a topic, check that it appears in the sidebar under the planned category and that one practice round works. With `buildsOn`, check that the "Other levels" box links to the lower topic and that the lower topic's page links back. For a reference page, check that it appears on `/reference/` and in the sidebar of the other reference pages. If the dev server is not available, say that you could not check the page.
+Then start `pnpm dev` and open the English and Russian pages: `http://localhost:4321/<level>/<slug>/` for a topic, `http://localhost:4321/reference/<slug>/` for a reference page.
+
+Check pages in headless Chromium from the project's Playwright, never in the user's own browser (no Claude in Chrome, no resizing their windows). For layout, take screenshots and read them: `pnpm exec playwright screenshot --full-page --viewport-size=375,800 <url> <scratchpad>/<name>.png` for phone width, and again at `1280,800` for desktop. For interactions such as a practice round, run a short script from the project root with `node --input-type=module -e "import { chromium } from '@playwright/test'; …"` that launches `chromium.launch()` (headless by default), clicks through, and prints what it finds or saves screenshots to the scratchpad.
+
+Check that the examples sit under the rules they belong to and that tables fit on a phone-width screen. For a topic, check that it appears in the sidebar under the planned category and that one practice round works. With `buildsOn`, check that the "Other levels" box links to the lower topic and that the lower topic's page links back. For a reference page, check that it appears on `/reference/` and in the sidebar of the other reference pages. If the dev server is not available, say that you could not check the page.
 
 ### Quality pass
 
