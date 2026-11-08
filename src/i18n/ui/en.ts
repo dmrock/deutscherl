@@ -34,7 +34,6 @@ export const en = {
   'planned.praeteritum': 'Simple past (*Präteritum*)',
   'planned.konjunktiv-ii': 'Wishes and polite requests (*Konjunktiv II*)',
   'planned.passiv': 'The passive (*Passiv*)',
-  'planned.relativsaetze': 'Relative clauses (*Relativsätze*)',
   'planned.infinitiv-mit-zu': 'Infinitive with *zu*',
   'planned.passiv-modalverben': 'The passive with modal verbs',
   'planned.konjunktiv-i': 'Reported speech (*Konjunktiv I*)',

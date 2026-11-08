@@ -41,10 +41,10 @@ test('the home page lists the topics of available levels and the planned ones of
 });
 
 test('a coming-soon page lists the planned topics', async ({ page }) => {
-  await page.goto('/b1/');
+  await page.goto('/b2/');
   const planned = page.getByRole('region', { name: t('en', 'level.planned') });
   await expect(planned.getByRole('listitem')).toHaveText(
-    plannedTopicsOf('b1').map((id) => stripMarks(t('en', `planned.${id}`))),
+    plannedTopicsOf('b2').map((id) => stripMarks(t('en', `planned.${id}`))),
   );
 });
 

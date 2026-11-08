@@ -24,7 +24,7 @@ export interface Level {
  * coming-soon pages. Labels are UI strings (`planned.<id>`).
  */
 export const plannedTopics = {
-  b1: ['praeteritum', 'konjunktiv-ii', 'passiv', 'relativsaetze', 'infinitiv-mit-zu'],
+  b1: ['praeteritum', 'konjunktiv-ii', 'passiv', 'infinitiv-mit-zu'],
   b2: [
     'passiv-modalverben',
     'konjunktiv-i',
@@ -63,7 +63,7 @@ export const site = {
 export const levels: readonly Level[] = [
   { id: 'a1', label: 'A1', available: true },
   { id: 'a2', label: 'A2', available: true },
-  { id: 'b1', label: 'B1', available: false },
+  { id: 'b1', label: 'B1', available: true },
   { id: 'b2', label: 'B2', available: false },
   { id: 'c1', label: 'C1', available: false },
 ];

@@ -40,7 +40,7 @@ test.describe('the picker keeps the page on every page type', () => {
   for (const path of [
     '/',
     '/a2/',
-    '/b1/',
+    '/b2/',
     '/reference/',
     '/reference/genus/',
     '/about/',

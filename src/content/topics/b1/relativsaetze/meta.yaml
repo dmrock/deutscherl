@@ -1,0 +1,34 @@
+level: b1
+category: sentences
+order: 1
+sources:
+  - title: 'Goethe-Institut: Goethe-Zertifikat A2, Prüfungsziele und Testbeschreibung (no relative clauses in the A2 grammar inventory)'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A2_SD2.pdf
+  - title: 'Hueber: Schritte international Neu 5+6, Spielesammlung, contents (relative clauses in the nominative, accusative and dative in Neu 5, Lektion 2; with prepositions in Neu 6, Lektion 8)'
+    url: https://shop-sk.hueber.de/media/hueber_dateien/Internet_Inhaltsverz/Red1/9783193410863_Inhalt.pdf
+  - title: 'Universität Basel, Sprachenzentrum: Deutsch A2.2 self-assessment, based on Netzwerk neu A2.2 (relative clauses in the nominative and accusative)'
+    url: https://sprachenzentrum.unibas.ch/fileadmin/user_upload/sprachenzentrum/Einstufung/DE_A2.2.pdf
+  - title: 'DWDS: der (Relativpronomen: same gender and number as the noun; denen, dessen, deren)'
+    url: https://www.dwds.de/wb/der
+  - title: 'Duden: denen (dative plural of the relative pronoun der)'
+    url: https://www.duden.de/rechtschreibung/denen
+  - title: 'Duden: Sackerl (das; bayrisch, österreichisch: Beutel, Tüte)'
+    url: https://www.duden.de/rechtschreibung/Sackerl
+  - title: 'DWDS: Sackerl (das; meist Österreich, umgangssprachlich: Beutel oder Tüte)'
+    url: https://www.dwds.de/wb/Sackerl
+  - title: 'Duden: Tüte (feminine, no regional label; synonym "(österreichisch) Sackerl")'
+    url: https://www.duden.de/rechtschreibung/Tuete
+  - title: 'DWDS: Tüte (synonym Sackerl marked österr., süddt.)'
+    url: https://www.dwds.de/wb/T%C3%BCte
+  - title: 'Hueber: Akademie Deutsch, Lernliste Relativsätze (forms der/die/das, dem/der/denen; same as the definite article except genitive and dative plural; gender and number from the noun, case from the function in the clause; preposition + pronoun; a Partizip II or infinitive can stand between the noun and the relative clause)'
+    url: https://edit.hueber.de/media/36/Akademie_Deutsch_Relativsaetze.pdf
+  - title: 'Dartmouth College, German Grammar Review: Relative Clauses (gender and number from the antecedent, case from the function; preposition before the pronoun; finite verb at the end; always set off by commas)'
+    url: https://www.germanstudiesdepartmenaluser.host.dartmouth.edu/WordOrder/relatives.html
+  - title: 'Duden: Komma, D 118 (subordinate clauses are set off by a comma; an inserted clause takes a comma on both sides)'
+    url: https://www.duden.de/sprachwissen/rechtschreibregeln/komma
+  - title: 'Altmann/Hofmann, Topologie fürs Examen (LMU München), 4.3.7 Extraposition: a relative clause can stand right after its noun or extraposed in the Nachfeld; extraposition relieves the sentence bracket'
+    url: https://epub.ub.uni-muenchen.de/74224/1/Altmann_Hofmann_Topologie_fuers_Examen.pdf
+  - title: 'Strunk, A Statistical Model of Competing Motivations Affecting Relative Clause Extraposition in German (Ruhr-Universität Bochum): relative clauses usually stand right after the noun but can be extraposed, mostly to the end of the clause; distance is the strongest factor'
+    url: https://www.eva.mpg.de/lingua/conference/10-CompetingMotivations/pdf/Konferenz_papers/Strunk_Jan.pdf
+  - title: 'Strunk, Relative Clause Extraposition in Low Saxon (Universität zu Köln): with one intervening word about 90 % of relative clauses are extraposed; reports similar figures for written German from Uszkoreit et al. (1998)'
+    url: https://kups.ub.uni-koeln.de/6913/1/RelClauseLS.pdf

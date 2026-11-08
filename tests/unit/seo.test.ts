@@ -92,7 +92,7 @@ describe('inSitemap', () => {
 
   it('leaves out coming-soon levels and the 404 pages', () => {
     for (const path of [
-      '/b1/',
+      '/b2/',
       '/c1/',
       '/ru/b2/',
       '/404/',

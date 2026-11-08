@@ -1,0 +1,149 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the relative pronoun (with its preposition) and the verb at the end of the clause.
+# In the section on the clause in the middle, it also marks the verb of the main clause after the second comma.
+
+examples:
+  # What a relative clause does
+  - id: e1
+    de: 'Das ist der Mann, **der** neben uns **wohnt**.'
+  - id: e2
+    de: 'Ich suche eine Wohnung, **die** nicht so teuer **ist**.'
+  # Nominative: the pronoun is the subject
+  - id: e3
+    de: 'Ich habe einen Kollegen, **der** sehr gut Englisch **spricht**.'
+  - id: e4
+    de: 'Ich brauche ein Handy, **das** lange **hält**.'
+  # Accusative: the pronoun is the direct object
+  - id: e5
+    de: 'Das ist der Pullover, **den** ich mir gestern gekauft **habe**.'
+  - id: e6
+    de: 'Wo sind die Fotos, **die** du im Urlaub gemacht **hast**?'
+  # Dative: after verbs like helfen, or the person who gets something
+  - id: e7
+    de: 'Das ist die Kollegin, **der** ich beim Umzug geholfen **habe**.'
+  - id: e8
+    de: 'Ich habe nette Nachbarn, **denen** ich meinen Schlüssel geben **kann**.'
+  # With a preposition
+  - id: e9
+    de: 'Das ist die Freundin, **mit der** ich nach Italien **fahre**.'
+  - id: e10
+    de: 'Wie heißt das Hotel, **in dem** ihr gewohnt **habt**?'
+  - id: e11
+    de: 'Wie heißt die Firma, **für die** du **arbeitest**?'
+  - id: e12
+    de: 'Das sind die Kollegen, **von denen** ich dir erzählt **habe**.'
+  # The clause in the middle: verb, comma, verb
+  - id: e13
+    de: 'Der Film, **den** wir gestern gesehen **haben**, **war** super.'
+  - id: e14
+    de: 'Die Frau, **die** dort am Fenster **sitzt**, **ist** meine Chefin.'
+  # The clause after the second verb
+  - id: e15
+    de: 'Ich habe den Film gesehen, **den** du mir empfohlen **hast**.'
+  - id: e16
+    de: 'Kannst du mir das Buch leihen, **das** du gerade **liest**?'
+
+choice:
+  # Nominative, accusative, dative
+  - id: c1
+    text: Ich kenne einen Mann, ___ fünf Sprachen spricht.
+    answer: der
+    options: [der, den, dem, die]
+  - id: c2
+    text: Der Pullover, ___ ich gekauft habe, ist zu klein.
+    answer: den
+    options: [den, der, dem, das]
+  - id: c3
+    text: Wie heißt die Frau, ___ du gestern getroffen hast?
+    answer: die
+    options: [die, der, den, denen]
+  - id: c4
+    text: Das Auto, ___ vor dem Haus steht, gehört meinem Bruder.
+    answer: das
+    options: [das, den, dem, der]
+  - id: c5
+    text: Kennst du die Leute, ___ dort am Tisch sitzen?
+    answer: die
+    options: [die, denen, der, den]
+  - id: c6
+    text: Ich habe ein Buch gelesen, ___ mir sehr gefallen hat.
+    answer: das
+    options: [das, den, dem, die]
+  - id: c7
+    text: Das Kind, ___ ich bei den Hausaufgaben helfe, ist zehn.
+    answer: dem
+    options: [dem, das, den, der]
+  - id: c8
+    text: Das ist die Kollegin, ___ ich zum Geburtstag Blumen geschenkt habe.
+    answer: der
+    options: [der, die, den, dem]
+  - id: c9
+    text: Ich habe Freunde, ___ ich alles erzählen kann.
+    answer: denen
+    options: [denen, den, die, dem]
+  # With a preposition
+  - id: c10
+    text: Wie heißt das Hotel, in ___ ihr gewohnt habt?
+    answer: dem
+    options: [dem, das, den, der]
+  - id: c11
+    text: Das ist der Kollege, mit ___ ich das Projekt mache.
+    answer: dem
+    options: [dem, den, der, denen]
+  - id: c12
+    text: Wie heißt die Firma, für ___ du arbeitest?
+    answer: die
+    options: [die, der, den, das]
+  - id: c13
+    text: Das sind die Nachbarn, von ___ ich dir erzählt habe.
+    answer: denen
+    options: [denen, den, die, der]
+  # Word order
+  - id: c14
+    text: Das ist die Wohnung, ___.
+    answer: die ich gemietet habe
+    options: [die ich gemietet habe, die ich habe gemietet]
+  - id: c15
+    text: Der Mann, der dort steht, ___.
+    answer: ist mein Lehrer
+    options: [ist mein Lehrer, mein Lehrer ist]
+
+wordOrder:
+  - id: w1
+    parts: ['das ist der Mann,', der, neben uns, wohnt]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: ['ich habe eine Kollegin,', die, sehr gut, Englisch, spricht]
+    fixed: true
+    accept:
+      - ['ich habe eine Kollegin,', die, Englisch, sehr gut, spricht]
+    punctuation: '.'
+  - id: w3
+    parts: ['wo sind die Fotos,', die, du, im Urlaub, gemacht, hast]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: ['das ist die Freundin,', mit, der, ich, nach Italien, fahre]
+    fixed: true
+    punctuation: '.'
+  - id: w5
+    parts: ['ich habe Nachbarn,', denen, ich, meinen Schlüssel, geben, kann]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: ['der Film,', den, wir, gestern, gesehen, 'haben,', war, super]
+    fixed: true
+    punctuation: '.'
+  - id: w7
+    parts: ['ich habe den Film gesehen,', den, du, mir, empfohlen, hast]
+    fixed: true
+    punctuation: '.'
+  - id: w8
+    parts: ['wie heißt die Firma,', für, die, du, arbeitest]
+    fixed: true
+    punctuation: '?'
+
+austrianNotes:
+  - id: at1
+    de: 'Das **Sackerl**, **das** du mitgebracht hast, ist zu klein.'

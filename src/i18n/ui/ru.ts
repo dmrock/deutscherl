@@ -32,7 +32,6 @@ export const ru = {
   'planned.praeteritum': 'Простое прошедшее время (*Präteritum*)',
   'planned.konjunktiv-ii': 'Желания и вежливые просьбы (*Konjunktiv II*)',
   'planned.passiv': 'Страдательный залог (*Passiv*)',
-  'planned.relativsaetze': 'Относительные придаточные (*Relativsätze*)',
   'planned.infinitiv-mit-zu': 'Инфинитив с *zu*',
   'planned.passiv-modalverben': 'Страдательный залог с модальными глаголами',
   'planned.konjunktiv-i': 'Косвенная речь (*Konjunktiv I*)',

@@ -1,0 +1,81 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: That's the man who lives next door to us.
+  e2: I'm looking for a flat that isn't too expensive.
+  e3: I have a colleague who speaks very good English.
+  e4: I need a phone that lasts a long time.
+  e5: That's the jumper I bought myself yesterday.
+  e6: Where are the photos you took on holiday?
+  e7: That's the colleague I helped with her move.
+  e8: I have nice neighbours I can give my key to.
+  e9: That's the friend I'm going to Italy with.
+  e10: What's the name of the hotel you stayed in?
+  e11: What's the name of the company you work for?
+  e12: Those are the colleagues I told you about.
+  e13: The film we saw yesterday was great.
+  e14: The woman sitting over there by the window is my boss.
+  e15: I've seen the film you recommended to me.
+  e16: Can you lend me the book you're reading at the moment?
+
+choice:
+  c1:
+    why: '*einen Mann* is accusative in the main clause, but that does not matter. In the relative clause, the man is the one who speaks, so the pronoun is the subject: nominative *der*.'
+  c2:
+    why: '*der Pullover* is masculine, and *ich* is the subject of the clause. The jumper is the direct object, so you need the accusative *den*.'
+  c3:
+    why: '*die Frau* is feminine, and *du* is the subject. The direct object is accusative, and the feminine form is *die*.'
+  c4:
+    why: '*das Auto* is neuter, and the car is the one that stands, so the pronoun is the subject: nominative *das*.'
+  c5:
+    why: '*die Leute* is plural, and the people are the ones sitting, so the pronoun is the subject: nominative *die*.'
+  c6:
+    why: '*das Buch* is neuter, and the book is the subject of *gefallen*. *mir* is the dative, so the pronoun is nominative *das*.'
+  c7:
+    why: '*helfen* takes the dative, and *das Kind* is neuter, so the pronoun is *dem*.'
+  c8:
+    why: 'The colleague is the person who gets the flowers, so you need the dative. *die Kollegin* is feminine: *der*.'
+  c9:
+    why: 'The friends are the people you tell things to, so you need the dative. In the plural it is *denen*, not *den*.'
+  c10:
+    why: '*in* takes the dative for a place, and *das Hotel* is neuter, so it is *in dem*.'
+  c11:
+    why: '*mit* always takes the dative, and *der Kollege* is masculine, so it is *mit dem*.'
+  c12:
+    why: '*für* always takes the accusative, and *die Firma* is feminine, so it is *für die*.'
+  c13:
+    why: '*von* always takes the dative, and *die Nachbarn* is plural, so it is *von denen*.'
+  c14:
+    why: 'In a relative clause, the verb that changes with the person comes last: *gemietet habe*.'
+  c15:
+    why: 'The noun and its relative clause are position 1 together, so the verb *ist* comes right after the second comma.'
+
+wordOrder:
+  w1:
+    translation: That's the man who lives next door to us.
+    why: 'The relative pronoun *der* starts the clause, and the verb *wohnt* goes to the end.'
+  w2:
+    translation: I have a colleague who speaks very good English.
+    why: '*die* starts the clause, and *spricht* goes to the end. *sehr gut* and *Englisch* can come in either order.'
+  w3:
+    translation: Where are the photos you took on holiday?
+    why: '*die* starts the clause, then the subject *du*. In the Perfekt, *hast* comes last, after *gemacht*.'
+  w4:
+    translation: That's the friend I'm going to Italy with.
+    why: 'The preposition *mit* comes before the pronoun *der*. Then come *ich* and *nach Italien*, and *fahre* goes to the end.'
+  w5:
+    translation: I have neighbours I can give my key to.
+    why: '*denen* starts the clause. With a modal verb, *kann* comes last, after the infinitive *geben*.'
+  w6:
+    translation: The film we saw yesterday was great.
+    why: 'The relative clause comes right after *der Film* and ends with *haben*. Then the main clause goes on with its verb *war*.'
+  w7:
+    translation: I've seen the film you recommended to me.
+    why: 'The relative clause comes after the participle *gesehen*, at the end of the sentence. *den* starts it, and *hast* goes last.'
+  w8:
+    translation: What's the name of the company you work for?
+    why: 'The preposition *für* comes before the pronoun *die*. Then comes *du*, and *arbeitest* goes to the end.'
+
+austrianNotes:
+  at1: The bag you brought is too small.
