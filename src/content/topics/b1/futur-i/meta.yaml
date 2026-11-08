@@ -1,0 +1,36 @@
+level: b1
+category: verbs
+order: 1
+sources:
+  - title: 'Duden: werden (Hilfsverb: Futur mit werden + Infinitiv; vermutetes Geschehen; Passiv mit 2. Partizip)'
+    url: https://www.duden.de/rechtschreibung/werden_Hilfsverb
+  - title: 'Duden: Konjugation werden (Präsens: werde, wirst, wird, werden, werdet, werden)'
+    url: https://www.duden.de/konjugation/werden_Hilfsverb
+  - title: 'DWDS: werden (Vollverb: in einen Zustand kommen, Beruf; Hilfsverb: Zukunft, Vermutung, Befehl; Passiv)'
+    url: https://www.dwds.de/wb/werden
+  - title: 'Hueber, Menschen B1: Grammatikübersicht (L05: Zukunft mit Präsens + Zeitangabe; Futur I für Vorhersage/Vermutung, Warnung/Aufforderung, Versprechen/Vorsatz/Plan)'
+    url: https://legacy.hueber.de/media/36/msn-b1-grammatik-uebersicht.pdf
+  - title: 'Hueber, Schritte international Neu 6: Unterrichtsplan Lektion 11 (Futur I; für die Zukunft in der Regel Präsens mit Zeitangabe)'
+    url: https://edit.hueber.de/media/36/611086_SIN_Neu_6_UP_L11.pdf
+  - title: 'Goethe-Institut: Fit in Deutsch 2 (A2), Prüfungsziele und Testbeschreibung (Grammatikinventar ohne Futur; Zukunft mit Präsens + Zeitangabe)'
+    url: https://goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A2_Fit2.pdf
+  - title: 'Duden: Fachausdrücke (Verbletztsatz: das finite Verb steht am Ende)'
+    url: https://www.duden.de/Fachausdr%C3%BCcke-Buchstabe-T-V
+  - title: 'Kohl-Verlag: Futur I (im Nebensatz werden am Ende; Präsens mit Zeitadverb als Konkurrenz; Pläne, Vorhersagen, Vermutung über Gegenwärtiges)'
+    url: https://www.kohlverlag.de/themen/deutsch/zeitformen/futur-i/
+  - title: 'Duden Learnattack, Lernhelfer: Satzklammer (werden … lösen)'
+    url: https://www.lernhelfer.de/schuelerlexikon/deutsch/artikel/satzklammer
+  - title: 'Duden: Matura (österreichisch, schweizerisch: Abitur)'
+    url: https://www.duden.de/rechtschreibung/Matura
+  - title: 'DWDS: Matura (in Österreich und der Schweiz; die Matura machen, bestehen, schaffen)'
+    url: https://www.dwds.de/wb/Matura
+  - title: 'grammis (IDS Mannheim), Kontrastive Grammatik: Das Präsens (für Zukünftiges meist Präsens, nicht Futur)'
+    url: https://grammis.ids-mannheim.de/kontrastive-grammatik/4176
+  - title: 'grammis (IDS Mannheim): Futur (Futur I = werden + Infinitiv; modale Verwendung für Vermutungen)'
+    url: https://grammis.ids-mannheim.de/vggf/2229
+  - title: 'Hueber, Schritte Übungsgrammatik B1: Zukunft, Präsens und Futur (Präsens + Zeitangabe; Futur I für Vorhersage/Vermutung oft mit wohl, bestimmt; Aufforderung, Versprechen, Vorsatz/Plan)'
+    url: https://legacy.hueber.de/media/36/uebungsgram_01_srp.pdf
+  - title: 'DWDS: wohl (Partikel: Sprecher hält eine Annahme für wahrscheinlich; Das wird wohl so sein)'
+    url: https://www.dwds.de/wb/wohl
+  - title: 'DWDS: bestimmt (Adverb: ganz sicher)'
+    url: https://www.dwds.de/wb/bestimmt

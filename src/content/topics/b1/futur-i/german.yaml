@@ -1,0 +1,148 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the verb forms that the page highlights.
+
+examples:
+  # Present tense or Futur I
+  - id: e1
+    de: 'Morgen **fahre** ich nach Graz.'
+  - id: e2
+    de: 'Ab morgen **werde** ich mehr Sport **machen**.'
+  # Forms: one example per cell of the forms table
+  - id: e3
+    de: 'Ich **werde** dich morgen **anrufen**.'
+  - id: e4
+    de: 'Wir **werden** pünktlich **sein**.'
+  - id: e5
+    de: 'Du **wirst** die Stadt **lieben**.'
+  - id: e6
+    de: 'Ihr **werdet** die Prüfung sicher **schaffen**.'
+  - id: e7
+    de: 'Heute Nacht **wird** es **schneien**.'
+  - id: e8
+    de: 'Die Preise **werden** weiter **steigen**.'
+  # Word order
+  - id: e9
+    de: '**Wirst** du ihr die Wahrheit **sagen**?'
+  - id: e10
+    de: 'Was **wirst** du nach dem Studium **machen**?'
+  - id: e11
+    de: 'Ich bin sicher, dass sie die Stelle **bekommen wird**.'
+  - id: e12
+    de: 'Er sagt, dass er später **anrufen wird**.'
+  # Uses: plans and promises
+  - id: e13
+    de: 'Ich **werde** ab jetzt weniger Kaffee **trinken**.'
+  - id: e14
+    de: 'Keine Sorge, ich **werde** es niemandem **sagen**.'
+  # Uses: predictions
+  - id: e15
+    de: 'Das **wird** nicht **funktionieren**.'
+  - id: e16
+    de: 'Bald **werden** die meisten Autos elektrisch **fahren**.'
+  # Uses: guesses about now
+  - id: e17
+    de: 'Wo ist Paul? – Er **wird** wohl noch im Büro **sein**.'
+  - id: e18
+    de: 'Es ist schon elf. Die Kinder **werden** bestimmt schon **schlafen**.'
+  # Uses: firm demands
+  - id: e19
+    de: 'Du **wirst** jetzt dein Zimmer **aufräumen**!'
+  - id: e20
+    de: 'Ihr **werdet** jetzt sofort ins Bett **gehen**!'
+  # werden alone or with an infinitive
+  - id: e21
+    de: 'Meine Schwester **wird** Ärztin.'
+  - id: e22
+    de: 'Meine Schwester **wird** in Wien **arbeiten**.'
+
+choice:
+  - id: c1
+    text: Ich ___ dich heute Abend anrufen.
+    answer: werde
+    options: [werde, wirst, wird, werden]
+  - id: c2
+    text: ___ du mir am Wochenende helfen?
+    answer: Wirst
+    options: [Wirst, Wird, Werde, Werdet]
+  - id: c3
+    text: Morgen ___ es in den Bergen schneien.
+    answer: wird
+    options: [wird, wirst, werden, werdet]
+  - id: c4
+    text: Ihr ___ die Prüfung bestimmt schaffen.
+    answer: werdet
+    options: [werdet, werden, wirst, wird]
+  - id: c5
+    text: Meine Eltern ___ uns im Sommer besuchen.
+    answer: werden
+    options: [werden, werdet, wird, wirst]
+  - id: c6
+    text: Was ___ ihr nach dem Kurs machen?
+    answer: werdet
+    options: [werdet, werden, wird, wirst]
+  - id: c7
+    text: Er wird morgen früher ___.
+    answer: kommen
+    options: [kommen, gekommen, kommt, kam]
+  - id: c8
+    text: Ich werde dir das Geld morgen ___.
+    answer: zurückgeben
+    options: [zurückgeben, zurückgegeben, zurückgebe, zurückgibst]
+  - id: c9
+    text: Ich glaube, dass Anna die Stelle ___.
+    answer: bekommen wird
+    options: [bekommen wird, wird bekommen, bekommt wird, bekommen werden]
+  - id: c10
+    text: Ich bin sicher, dass du die Stadt ___ wirst.
+    answer: lieben
+    options: [lieben, geliebt, liebst, liebe]
+  - id: c11
+    text: Wo ist Tom? – Er ___ wohl noch im Bett liegen.
+    answer: wird
+    options: [wird, wirst, werdet, werden]
+  - id: c12
+    text: Du ___ jetzt sofort dein Handy weglegen!
+    answer: wirst
+    options: [wirst, wird, werdet, werde]
+
+wordOrder:
+  - id: w1
+    parts: [ich, werde, dich, morgen, anrufen]
+    accept:
+      - [morgen, werde, ich, dich, anrufen]
+    punctuation: '.'
+  - id: w2
+    parts: [wirst, du, mir, helfen]
+    fixed: true
+    punctuation: '?'
+  - id: w3
+    parts: [was, werdet, ihr, am Wochenende, machen]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [morgen, wird, es, schneien]
+    accept:
+      - [es, wird, morgen, schneien]
+    punctuation: '.'
+  - id: w5
+    parts: ['ich glaube,', dass, Anna, die Stelle, bekommen, wird]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: [er, wird, wohl, im Büro, sein]
+    accept:
+      - [im Büro, wird, er, wohl, sein]
+    punctuation: '.'
+  - id: w7
+    parts: [du, wirst, jetzt, aufräumen]
+    accept:
+      - [jetzt, wirst, du, aufräumen]
+    punctuation: '!'
+  - id: w8
+    parts: ['er sagt,', dass, er, später, anrufen, wird]
+    fixed: true
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: 'Du wirst die **Matura** bestimmt schaffen!'
