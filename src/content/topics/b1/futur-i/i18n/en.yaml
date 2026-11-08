@@ -1,0 +1,81 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I'm going to Graz tomorrow.
+  e2: From tomorrow on, I'm going to do more sport.
+  e3: I'll call you tomorrow.
+  e4: We'll be on time.
+  e5: You'll love the city.
+  e6: You'll surely pass the exam.
+  e7: It's going to snow tonight.
+  e8: Prices will keep going up.
+  e9: Are you going to tell her the truth?
+  e10: What are you going to do after university?
+  e11: I'm sure that she'll get the job.
+  e12: He says he'll call later.
+  e13: From now on I'm going to drink less coffee.
+  e14: Don't worry, I won't tell anyone.
+  e15: That won't work.
+  e16: Soon most cars will run on electricity.
+  e17: Where's Paul? – He's probably still at the office.
+  e18: It's already eleven. The children are surely asleep by now.
+  e19: You're going to tidy your room now!
+  e20: You're going to bed right now!
+  e21: My sister is going to be a doctor.
+  e22: My sister is going to work in Vienna.
+
+choice:
+  c1:
+    why: 'With *ich*, the form of *werden* is *werde*: *ich werde anrufen*.'
+  c2:
+    why: 'With *du*, the form is *wirst*. In a yes/no question it comes first, and the infinitive *helfen* stays at the end.'
+  c3:
+    why: '*es* takes the form *wird*: *es wird schneien*. The time word *morgen* comes first, so *es* moves after the verb.'
+  c4:
+    why: 'With *ihr*, the form is *werdet*: *ihr werdet schaffen*. *werden* goes with *wir* and *sie*.'
+  c5:
+    why: '*Meine Eltern* is plural (*sie*), so the form is *werden*.'
+  c6:
+    why: 'With *ihr*, the form is *werdet*. After the question word *was*, the verb comes second and *machen* goes to the end.'
+  c7:
+    why: 'The Futur I needs the infinitive at the end: *er wird kommen*. *gekommen* is the participle of the Perfekt, and *kommt* and *kam* are not infinitives.'
+  c8:
+    why: 'The infinitive goes at the end, and a separable verb stays in one piece: *ich werde zurückgeben*. *zurückgegeben* is the participle.'
+  c9:
+    why: 'After *dass*, the form of *werden* goes to the very end, after the infinitive: *dass Anna die Stelle bekommen wird*. *Anna* is one person, so the form is *wird*, not *werden*.'
+  c10:
+    why: 'Before *wirst* at the end of the clause comes the infinitive: *dass du die Stadt lieben wirst*. *geliebt* is the participle.'
+  c11:
+    why: 'A guess about now: *er wird wohl liegen* (he is probably lying in bed). With *er* the form is *wird*; *werden* goes with *wir* and *sie*.'
+  c12:
+    why: 'A firm demand to *du*, so the form is *wirst*: *du wirst weglegen*.'
+
+wordOrder:
+  w1:
+    translation: I'll call you tomorrow.
+    why: '*werde* is in position 2 and the infinitive *anrufen* at the end. *morgen* can also come first; then *ich* moves after the verb.'
+  w2:
+    translation: Will you help me?
+    why: 'A yes/no question starts with *wirst*, then the subject *du*. The infinitive *helfen* is at the end.'
+  w3:
+    translation: What are you going to do at the weekend?
+    why: 'The question word *was* comes first, then *werdet*, then the subject *ihr*. The infinitive *machen* is at the end.'
+  w4:
+    translation: It's going to snow tomorrow.
+    why: '*wird* is in position 2 and *schneien* at the end. *morgen* or *es* can come first.'
+  w5:
+    translation: I think that Anna will get the job.
+    why: 'After *dass*, the verbs go to the end: first the infinitive *bekommen*, then *wird* as the very last word.'
+  w6:
+    translation: He's probably at the office.
+    why: 'A guess about now. *wird* is in position 2 and *sein* at the end; *wohl* comes after the subject. *im Büro* can also come first; then *er* moves after the verb.'
+  w7:
+    translation: You're going to tidy up now!
+    why: 'A firm demand. *wirst* is in position 2 and *aufräumen* at the end. *jetzt* can also come first; then *du* moves after the verb.'
+  w8:
+    translation: He says he'll call later.
+    why: 'After *dass*, the infinitive *anrufen* and then *wird* go to the end. The separable verb *anrufen* stays in one piece.'
+
+austrianNotes:
+  at1: I'm sure you'll pass the Matura!
