@@ -194,7 +194,7 @@ The session that wrote the German is the worst judge of it. Start a fresh `gener
 
 ### Repository updates
 
-- For a topic, update the topic count in `CLAUDE.md` ("levels A1, A2 and B1 (7, 6 and 2 topics …)"), and the level list if a level opened.
+- For a topic, update the topic count in `CLAUDE.md` ("levels A1, A2 and B1 (7, 7 and 2 topics …)"), and the level list if a level opened.
 - If a rule or the structure changed (a new category, a new level), update the matching file in `.claude/rules/` in the same branch.
 
 ### Commit and pull request

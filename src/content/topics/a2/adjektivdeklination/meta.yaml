@@ -1,0 +1,44 @@
+level: a2
+category: adjectives
+order: 1
+sources:
+  - title: 'Duden: Deklination zu gemeinsam (schwache Beugung mit Artikel, gemischte Beugung mit ein, kein, Possessivpronomen)'
+    url: https://www.duden.de/deklination/adjektive/gemeinsam
+  - title: 'Grimm Grammar (UT Austin): adjective endings after der-words (weak endings), dropped e in dunkel, uninflected lila and rosa'
+    url: https://coerll.utexas.edu/gg/gr/adj_03.html
+  - title: 'Grimm Grammar (UT Austin): adjective endings after ein-words'
+    url: https://coerll.utexas.edu/gg/gr/adj_02.html
+  - title: 'DWDS: hoch (attributive Form hohe)'
+    url: https://www.dwds.de/wb/hoch
+  - title: 'Wiktionary: Flexion hoch (der hohe, ein hoher, ein hohes)'
+    url: https://de.wiktionary.org/wiki/Flexion:hoch
+  - title: 'DWDS: teuer (ein teures Buch)'
+    url: https://www.dwds.de/wb/teuer
+  - title: 'Wiktionary: Flexion teuer (der teure, ein teurer, ein teures)'
+    url: https://de.wiktionary.org/wiki/Flexion:teuer
+  - title: 'DWDS: dunkel (ein dunkler Anzug, ein dunkles Kleid)'
+    url: https://www.dwds.de/wb/dunkel
+  - title: 'DWDS: Wiener (Adjektiv, indeklinabel: Wiener Schnitzel)'
+    url: https://www.dwds.de/wb/Wiener
+  - title: 'Wiktionary: Wiener (Adjektiv, indeklinabel)'
+    url: https://de.wiktionary.org/wiki/Wiener
+  - title: 'Grimm Grammar (UT Austin): adjectives without an article (plural nominative and accusative -e)'
+    url: https://coerll.utexas.edu/gg/gr/adj_04.html
+  - title: 'Martin, Ng: A Foundation Course in Reading German, place names with -er as adjectives take no further endings'
+    url: https://human.libretexts.org/Bookshelves/Languages/German/A_Foundation_Course_in_Reading_German_(Martin_and_Ng)/04%3A_Verbs_With_Prefixes_Adjective_Endings/4.07%3A_Place_Names_as_Adjectives
+  - title: 'Duden Rechtschreibregeln: Wörter auf -er von geografischen Namen schreibt man groß (Hamburger Hafen)'
+    url: https://www.duden.de/222-Diktate/Rechtschreibregeln
+  - title: 'Duden: lila (ein lila Kleid; gebeugt nur umgangssprachlich)'
+    url: https://www.duden.de/rechtschreibung/lila
+  - title: 'DWDS: rosa (indeklinabel; gebeugte Formen umgangssprachlich)'
+    url: https://www.dwds.de/wb/rosa
+  - title: 'Duden: Cola (das Cola süddeutsch, österreichisch, schweizerisch; die Cola)'
+    url: https://www.duden.de/rechtschreibung/Cola
+  - title: 'de Cillia, Ransmayr (2019): Österreichisches Deutsch macht Schule, Böhlau, S. 188 (ein Cola österreichisch, eine Cola deutsch)'
+    url: https://austria-forum.org/web-books/osterreichdeutsch00de2019isds/000190
+  - title: 'Wiktionary: Cola (das Cola in Süddeutschland, der Schweiz und Österreich)'
+    url: https://de.wiktionary.org/wiki/Cola
+  - title: 'Bard College Berlin, German A1–C2 syllabi: prädikatives Adjektiv at A1, Adjektivdeklination at A2'
+    url: https://tools.bard.edu/wwwmedia/files/9729970/2/German%20A1-C2.pdf
+  - title: 'unibz Deutsch A2.1 syllabus (Panorama A2): Adjektivdeklination'
+    url: https://guide.unibz.it/assets/languages/language-courses/sillabi/2021-Deutsch-A2.1.pdf
