@@ -36,6 +36,9 @@ jobs:
       # Strips credentials such as the subscription token from the commands Claude runs;
       # GitHub tokens stay, so `gh` works.
       CLAUDE_CODE_SUBPROCESS_ENV_SCRUB: 1
+      # Sub-agents run in the foreground only. The action ends the session at the first result,
+      # so background sub-agents would be cut off before they report.
+      CLAUDE_CODE_DISABLE_BACKGROUND_TASKS: 1
     steps:
       # main at the root: CLAUDE.md, .claude/rules and the skill.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
