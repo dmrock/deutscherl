@@ -30,6 +30,8 @@ sources:
     url: https://www.dwds.de/wb/gute%20Nacht
   - title: 'DWDS: guten Appetit (als Akkusativobjekt: guten Appetit wünschen)'
     url: https://www.dwds.de/wb/guten%20Appetit
+  - title: 'DWDS: guten Tag (als Akkusativobjekt: guten Tag sagen, wünschen)'
+    url: https://www.dwds.de/wb/guten%20Tag
   - title: 'Wiktionary: guten Tag (Tag im Akkusativ)'
     url: https://de.wiktionary.org/wiki/guten_Tag
   - title: 'Wiktionary: guten Abend (Abend im Akkusativ)'
@@ -42,6 +44,8 @@ sources:
     url: https://www.dwds.de/wb/einen%20sch%C3%B6nen%20Abend%20noch
   - title: 'Duden: Glückwunsch (der, masculine; herzlichen Glückwunsch zum Geburtstag)'
     url: https://www.duden.de/rechtschreibung/Glueckwunsch
+  - title: 'DWDS: Glückwunsch (jmdm. seinen Glückwunsch zum Geburtstag aussprechen: Glückwunsch als Akkusativobjekt)'
+    url: https://www.dwds.de/wb/Gl%C3%BCckwunsch
   - title: 'Wiktionary: herzlichen Glückwunsch (gekürzt aus „Wir sprechen dir unseren herzlichen Glückwunsch aus“)'
     url: https://de.wiktionary.org/wiki/herzlichen_Gl%C3%BCckwunsch
   - title: 'Duden: Gruß (jemandem liebe Grüße senden; viele, herzliche, liebe Grüße; freundliche Grüße als Briefschluss)'
