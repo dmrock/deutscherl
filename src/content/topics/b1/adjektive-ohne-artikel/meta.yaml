@@ -1,0 +1,64 @@
+level: b1
+category: adjectives
+order: 1
+sources:
+  - title: 'Duden: Deklination zu gemeinsam (starke Beugung ohne Artikel: gemeinsamer, gemeinsame, gemeinsames, gemeinsamem; Genitiv gemeinsamen)'
+    url: https://www.duden.de/deklination/adjektive/gemeinsam
+  - title: 'Grimm Grammar (UT Austin): adjectives without an article (strong endings in all four cases, also after numbers, viele, einige)'
+    url: https://coerll.utexas.edu/gg/gr/adj_04.html
+  - title: 'Hueber, Übungsgrammatik für die Mittelstufe aktuell (B1–C1), contents: 3.3 Adjektivdeklination ohne Artikel; 3.4 alle netten Kollegen – mehrere unklare Antworten'
+    url: https://shop.hueber.de/media/hueber_dateien/Internet_Inhaltsverz/Red7/9783191116576_Inhalt.pdf
+  - title: 'Universität Basel, Sprachenzentrum, Deutsch B1.3 (Netzwerk neu B1.2, Kap. 9–12): Adjektivdeklination ohne Artikel'
+    url: https://sprachenzentrum.unibas.ch/fileadmin/user_upload/sprachenzentrum/Einstufung/DE_B1.3.pdf
+  - title: 'Bard College Berlin, German A1–C2 curriculum: Adjektivdeklination ohne Artikel in Netzwerk neu B1, Kap. 9'
+    url: https://tools.bard.edu/wwwmedia/files/9729970/6/2026_German%20Studies%20Curriculum%20Niveaustufen%20Uebersicht%20Spring%202026-r-mg-v2.pdf
+  - title: 'ZČU Plzeň, Deklination der Adjektive: strong endings after viele, mehrere, einige (plural); weak after alle (plural)'
+    url: https://moje.zcu.cz/CoursewarePortlets2/DownloadDokumentu?id=242789
+  - title: 'Duden: einige (einige gute Menschen; einiger guter Menschen)'
+    url: https://www.duden.de/rechtschreibung/einige
+  - title: 'Duden: mehrere (mehrere ältere Teilnehmer; mit mehreren älteren Teilnehmern)'
+    url: https://www.duden.de/rechtschreibung/mehrere
+  - title: 'Duden: all (alle schönen Mädchen, alle ehrlichen Menschen)'
+    url: https://www.duden.de/rechtschreibung/all
+  - title: 'DWDS: zwei (zweier kräftiger Männer, von zwei kräftigen Männern)'
+    url: https://www.dwds.de/wb/zwei
+  - title: 'Duden: zwei (zweier mächtiger Kaiser)'
+    url: https://www.duden.de/rechtschreibung/zwei
+  - title: 'DWDS: guten Morgen (als Akkusativobjekt: guten Morgen sagen, wünschen)'
+    url: https://www.dwds.de/wb/guten%20Morgen
+  - title: 'DWDS: gute Nacht (als Akkusativobjekt: gute Nacht sagen, wünschen)'
+    url: https://www.dwds.de/wb/gute%20Nacht
+  - title: 'DWDS: guten Appetit (als Akkusativobjekt: guten Appetit wünschen)'
+    url: https://www.dwds.de/wb/guten%20Appetit
+  - title: 'Wiktionary: guten Tag (Tag im Akkusativ)'
+    url: https://de.wiktionary.org/wiki/guten_Tag
+  - title: 'Wiktionary: guten Abend (Abend im Akkusativ)'
+    url: https://de.wiktionary.org/wiki/guten_Abend
+  - title: 'Duden: Abend (Guten/guten Abend sagen)'
+    url: https://www.duden.de/rechtschreibung/Abend
+  - title: 'DWDS: einen schönen Tag noch (Variante: schönen Tag noch)'
+    url: https://www.dwds.de/wb/einen%20sch%C3%B6nen%20Tag%20noch
+  - title: 'DWDS: einen schönen Abend noch (Variante: schönen Abend noch; verkürzt aus „Ich wünsche Ihnen noch einen schönen Abend“)'
+    url: https://www.dwds.de/wb/einen%20sch%C3%B6nen%20Abend%20noch
+  - title: 'Duden: Glückwunsch (der, masculine; herzlichen Glückwunsch zum Geburtstag)'
+    url: https://www.duden.de/rechtschreibung/Glueckwunsch
+  - title: 'Wiktionary: herzlichen Glückwunsch (gekürzt aus „Wir sprechen dir unseren herzlichen Glückwunsch aus“)'
+    url: https://de.wiktionary.org/wiki/herzlichen_Gl%C3%BCckwunsch
+  - title: 'Duden: Gruß (jemandem liebe Grüße senden; viele, herzliche, liebe Grüße; freundliche Grüße als Briefschluss)'
+    url: https://www.duden.de/rechtschreibung/Grusz
+  - title: 'DWDS: Gruß (jmdm. liebe, viele Grüße senden, schicken; mit freundlichen Grüßen)'
+    url: https://www.dwds.de/wb/Gru%C3%9F
+  - title: 'Wiktionary: Gruß (liebe Grüße, viele Grüße, mit freundlichen Grüßen)'
+    url: https://de.wiktionary.org/wiki/Gru%C3%9F
+  - title: 'Duden: Weihnachten (in Wunschformeln allgemein Plural: frohe Weihnachten)'
+    url: https://www.duden.de/rechtschreibung/Weihnachten
+  - title: 'DWDS: Weihnachten (Plural vor allem mit Adjektiv: fröhliche Weihnachten)'
+    url: https://www.dwds.de/wb/Weihnachten
+  - title: 'Wiktionary: frohe Weihnachten (Grußformel)'
+    url: https://de.wiktionary.org/wiki/frohe_Weihnachten
+  - title: 'Duden: Schlagobers (das, österreichisch für Schlagsahne)'
+    url: https://www.duden.de/rechtschreibung/Schlagobers
+  - title: 'DWDS: Schlagobers (Neutrum, österreichisch)'
+    url: https://www.dwds.de/wb/Schlagobers
+  - title: 'Duden: Schlagsahne (die; österreichisch Schlagobers)'
+    url: https://www.duden.de/rechtschreibung/Schlagsahne
