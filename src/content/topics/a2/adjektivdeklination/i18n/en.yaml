@@ -1,0 +1,86 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: Our flat is new.
+  e2: We have a new flat.
+  e3: The new colleague is from Graz.
+  e4: The old bike belongs to my brother.
+  e5: What do you think of the red jacket?
+  e6: Do you see the little dog over there?
+  e7: The new shoes are very comfortable.
+  e8: Do you know the woman with the blue glasses?
+  e9: That's a good plan.
+  e10: Vienna is a beautiful city.
+  e11: My new phone is already broken.
+  e12: We have a small problem.
+  e13: He's wearing a black coat.
+  e14: Don't you have a warm jumper?
+  e15: My old friends live in Salzburg.
+  e16: We have no free rooms left.
+  e17: She lives in a small flat.
+  e18: I drive to work in my old car.
+  e19: That's an expensive hotel.
+  e20: There's still snow on the high mountain.
+  e21: She's wearing a dark dress.
+  e22: I'll have a Wiener schnitzel.
+  e23: We're meeting at Salzburg central station.
+  e24: She has a purple bag.
+
+choice:
+  c1:
+    why: '*der Kollege* is masculine and the subject, so it is in the nominative. After *der* in the nominative, the ending is *-e*: *der neue Kollege*.'
+  c2:
+    why: '*einen* shows the masculine accusative. After *einen*, the ending is *-en*: *einen neuen Tisch*.'
+  c3:
+    why: '*das Buch* is neuter, and *ein* has no ending, so the adjective shows the neuter with *-es*: *ein gutes Buch*.'
+  c4:
+    why: '*in einer* is dative. In the dative the adjective always ends in *-en*: *in einer kleinen Wohnung*.'
+  c5:
+    why: '*Schuhe* is plural. After *die* in the plural, the adjective ends in *-en*: *die roten Schuhe*.'
+  c6:
+    why: '*einen* shows the masculine accusative, so the ending is *-en*: *einen großen Regenschirm*.'
+  c7:
+    why: '*der Nachbar* is masculine and the subject. *mein* has no ending, so the adjective shows the masculine with *-er*: *mein neuer Nachbar*.'
+  c8:
+    why: '*mit* takes the dative, *mit dem*. In the dative the adjective always ends in *-en*: *mit dem alten Fahrrad*.'
+  c9:
+    why: '*die Jacke* is feminine and in the accusative. After *eine*, the ending is *-e*: *eine warme Jacke*.'
+  c10:
+    why: '*das Wetter* is neuter and the subject. After *das* in the nominative, the ending is *-e*: *das kalte Wetter*.'
+  c11:
+    why: '*Zimmer* is neuter, so *keine* shows that it is plural here. After *keine* in the plural, the adjective ends in *-en*: *keine freien Zimmer*.'
+  c12:
+    why: '*helfen* takes the dative, *einer Frau*. In the dative the adjective always ends in *-en*: *einer alten Frau*.'
+  c13:
+    why: '*das Hotel* is neuter, so after *ein* the ending is *-es*. *teuer* loses its *e* before the ending: *ein teures Hotel*.'
+  c14:
+    why: '*auf dem* is dative, so the ending is *-en*. *hoch* loses the *c* before an ending: *dem hohen Berg*.'
+  c15:
+    why: 'Adjectives from city names with *-er* never change: *ein Wiener Schnitzel*.'
+
+wordOrder:
+  w1:
+    translation: I'm looking for a cheap flat.
+    why: 'The adjective goes between the article and the noun: *eine günstige Wohnung*.'
+  w2:
+    translation: That's an expensive hotel.
+    why: 'The adjective goes between *ein* and the noun. *teuer* loses its *e*: *ein teures Hotel*.'
+  w3:
+    translation: The new neighbours are very nice.
+    why: '*die neuen Nachbarn* is the subject in position 1, so the verb *sind* comes next. After *sein*, *nett* has no ending.'
+  w4:
+    translation: My old friend lives in Graz.
+    why: '*mein alter Freund* is the subject in position 1, then the verb *wohnt*. After *mein* in the masculine nominative, the adjective ends in *-er*.'
+  w5:
+    translation: He helps an old woman.
+    why: '*helfen* takes the dative: *einer alten Frau*. The adjective goes between the article and the noun.'
+  w6:
+    translation: Don't you have a warm jumper?
+    why: 'A yes/no question starts with the verb. Then come *du* and the object *keinen warmen Pullover*.'
+  w7:
+    translation: I'll have a Wiener schnitzel.
+    why: '*Wiener* goes before the noun like any adjective, but it never gets an ending.'
+
+austrianNotes:
+  at1: I'd like a cold Coke, please.

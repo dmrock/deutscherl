@@ -1,0 +1,154 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the adjective whose ending the page explains.
+
+examples:
+  # No ending after sein, an ending before a noun
+  - id: e1
+    de: 'Unsere Wohnung ist **neu**.'
+  - id: e2
+    de: 'Wir haben eine **neue** Wohnung.'
+  # After der, die, das
+  - id: e3
+    de: 'Der **neue** Kollege kommt aus Graz.'
+  - id: e4
+    de: 'Das **alte** Fahrrad gehört meinem Bruder.'
+  - id: e5
+    de: 'Wie findest du die **rote** Jacke?'
+  - id: e6
+    de: 'Siehst du den **kleinen** Hund dort?'
+  - id: e7
+    de: 'Die **neuen** Schuhe sind sehr bequem.'
+  - id: e8
+    de: 'Kennst du die Frau mit der **blauen** Brille?'
+  # After ein, kein, mein
+  - id: e9
+    de: 'Das ist ein **guter** Plan.'
+  - id: e10
+    de: 'Wien ist eine **schöne** Stadt.'
+  - id: e11
+    de: 'Mein **neues** Handy ist schon kaputt.'
+  - id: e12
+    de: 'Wir haben ein **kleines** Problem.'
+  - id: e13
+    de: 'Er trägt einen **schwarzen** Mantel.'
+  - id: e14
+    de: 'Hast du keinen **warmen** Pullover?'
+  - id: e15
+    de: 'Meine **alten** Freunde wohnen in Salzburg.'
+  - id: e16
+    de: 'Wir haben keine **freien** Zimmer mehr.'
+  # Dative: always -en
+  - id: e17
+    de: 'Sie wohnt in einer **kleinen** Wohnung.'
+  - id: e18
+    de: 'Ich fahre mit meinem **alten** Auto zur Arbeit.'
+  # Spelling changes
+  - id: e19
+    de: 'Das ist ein **teures** Hotel.'
+  - id: e20
+    de: 'Auf dem **hohen** Berg liegt noch Schnee.'
+  - id: e21
+    de: 'Sie trägt ein **dunkles** Kleid.'
+  # Words without an ending
+  - id: e22
+    de: 'Ich bestelle ein **Wiener** Schnitzel.'
+  - id: e23
+    de: 'Wir treffen uns am **Salzburger** Hauptbahnhof.'
+  - id: e24
+    de: 'Sie hat eine **lila** Tasche.'
+
+choice:
+  - id: c1
+    text: Der ___ Kollege ist sehr nett.
+    answer: neue
+    options: [neue, neuen, neuer, neues]
+  - id: c2
+    text: Ich kaufe einen ___ Tisch.
+    answer: neuen
+    options: [neuen, neuer, neue, neues]
+  - id: c3
+    text: Das ist ein ___ Buch.
+    answer: gutes
+    options: [gutes, guter, gute, guten]
+  - id: c4
+    text: Wir wohnen in einer ___ Wohnung.
+    answer: kleinen
+    options: [kleinen, kleine, kleiner, kleines]
+  - id: c5
+    text: Die ___ Schuhe sind bequem.
+    answer: roten
+    options: [roten, rote, roter, rotes]
+  - id: c6
+    text: Hast du einen ___ Regenschirm?
+    answer: großen
+    options: [großen, großer, große, großes]
+  - id: c7
+    text: Mein ___ Nachbar ist sehr laut.
+    answer: neuer
+    options: [neuer, neue, neuen, neues]
+  - id: c8
+    text: Ich fahre mit dem ___ Fahrrad zur Arbeit.
+    answer: alten
+    options: [alten, alte, altes, alter]
+  - id: c9
+    text: Sie trägt eine ___ Jacke.
+    answer: warme
+    options: [warme, warmen, warmer, warmes]
+  - id: c10
+    text: Das ___ Wetter gefällt mir nicht.
+    answer: kalte
+    options: [kalte, kalten, kaltes, kalter]
+  - id: c11
+    text: Wir haben leider keine ___ Zimmer mehr.
+    answer: freien
+    options: [freien, freie, freies, freier]
+  - id: c12
+    text: Er hilft einer ___ Frau über die Straße.
+    answer: alten
+    options: [alten, alte, alter, altes]
+  - id: c13
+    text: Das ist ein sehr ___ Hotel.
+    answer: teures
+    options: [teures, teuren, teurer, teure]
+  - id: c14
+    text: Auf dem ___ Berg liegt noch Schnee.
+    answer: hohen
+    options: [hohen, hochen, hohem, hoher]
+  - id: c15
+    text: Zum Mittagessen bestelle ich ein ___ Schnitzel.
+    answer: Wiener
+    options: [Wiener, Wieneres, Wienern]
+
+wordOrder:
+  - id: w1
+    parts: [ich, suche, eine, günstige, Wohnung]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: [das, ist, ein, teures, Hotel]
+    fixed: true
+    punctuation: '.'
+  - id: w3
+    parts: [die, neuen, Nachbarn, sind, sehr nett]
+    fixed: true
+    punctuation: '.'
+  - id: w4
+    parts: [mein, alter, Freund, wohnt, in Graz]
+    fixed: true
+    punctuation: '.'
+  - id: w5
+    parts: [er, hilft, einer, alten, Frau]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: [hast, du, keinen, warmen, Pullover]
+    fixed: true
+    punctuation: '?'
+  - id: w7
+    parts: [ich, bestelle, ein, Wiener, Schnitzel]
+    fixed: true
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: 'Ich hätte gern ein **kaltes** Cola.'
