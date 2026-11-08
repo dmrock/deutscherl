@@ -37,7 +37,7 @@ Everything you write stays `draft`: content counts as correct only after a teach
 Before a pull request with new or changed German content, a separate review pass runs this checklist on all of that content (topics and reference pages) and fixes what it finds, following the source rules above:
 
 1. Every German sentence is correct and natural.
-2. Rules name the main exceptions an A1/A2 learner meets, and the examples use common words.
+2. Rules name the main exceptions a learner at the page's level meets, and the examples use common words.
 3. Exercise items have exactly one correct answer, or complete `accept` lists.
 4. Austrian usage: every note is confirmed by two sources, and Austrian usage that matters for the page is not missing.
 5. Every translation says the same as the English page.

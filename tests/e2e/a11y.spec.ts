@@ -19,7 +19,7 @@ const pages = [
   { name: 'home', path: '/' },
   { name: 'level', path: '/a2/' },
   { name: 'level without topics', path: '/a1/' },
-  { name: 'coming soon', path: '/b1/' },
+  { name: 'coming soon', path: '/b2/' },
   { name: 'topic', path: '/a2/perfekt/' },
   { name: 'reference index', path: '/reference/' },
   { name: 'reference', path: '/reference/unregelmaessige-verben/' },

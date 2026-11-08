@@ -61,7 +61,7 @@ The level decides vocabulary, sentence length and how much of the rule the page 
 - If the user named a level and the sources disagree, say so and recommend one.
 - Some points are split across levels (the Perfekt with `haben` at A1, the full `haben` or `sein` choice at A2). Then say which part belongs at which level and plan only that part.
 - For a reference page, settle `levels` instead: the levels whose learners need the table (`[a1, a2]` for both pages so far). Rows and forms are limited to what those levels teach.
-- Levels and their availability are in `src/config/site.ts` (`levels`, `plannedTopics`). A topic for a level with `available: false` (B1, B2, C1 today) means opening that level: setting `available: true`, removing the topic from `plannedTopics` and its `planned.<id>` UI strings, and changing every test that uses the level as the coming-soon example. Find them with `grep -rn "b1" tests/` (for B1); today they are the e2e specs `layout`, `a11y`, `language`, `seo` and `navigation`, and the unit test `tests/unit/seo.test.ts`. That is a site change, not just content. Ask the user before planning such a topic, and if they agree, list these changes in the plan. A reference page whose `levels` include a level that is not available yet raises the same question.
+- Levels and their availability are in `src/config/site.ts` (`levels`, `plannedTopics`). A topic for a level with `available: false` (B2 and C1 today) means opening that level: setting `available: true`, removing the topic from `plannedTopics` and its `planned.<id>` UI strings, and changing every test that uses the level as the coming-soon example. Find them with `grep -rn "b2" tests/` (for B2); today they are the e2e specs `layout`, `a11y`, `language`, `seo` and `navigation`, and the unit test `tests/unit/seo.test.ts`. That is a site change, not just content. Ask the user before planning such a topic, and if they agree, list these changes in the plan. A reference page whose `levels` include a level that is not available yet raises the same question.
 
 ### Check what already exists
 
@@ -194,7 +194,7 @@ The session that wrote the German is the worst judge of it. Start a fresh `gener
 
 ### Repository updates
 
-- For a topic, update the topic count in `CLAUDE.md` ("levels A1 and A2 (7 and 6 topics …)"), and the level list if a level opened.
+- For a topic, update the topic count in `CLAUDE.md` ("levels A1, A2 and B1 (7, 6 and 1 topics …)"), and the level list if a level opened.
 - If a rule or the structure changed (a new category, a new level), update the matching file in `.claude/rules/` in the same branch.
 
 ### Commit and pull request
