@@ -102,5 +102,5 @@ Path-scoped files in `.claude/rules/` load when you work on matching files:
 
 ## Project skills
 
-- `/add-topic <grammar point> [level]` (`.claude/skills/add-topic/`): settles the level, plans the topic with the user, then writes, checks and quality-passes it.
+- `/add-topic <grammar point> [level | reference]` (`.claude/skills/add-topic/`): for a new topic or reference page; settles the level, plans the page with the user, then writes, checks and quality-passes it.
 - `/pr-review` (`.claude/skills/pr-review/`): run by CI, see `deployment.md`.
