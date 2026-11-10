@@ -6,7 +6,7 @@ import { t } from '../../src/i18n/utils.ts';
 const deployEnv = process.env.PUBLIC_DEPLOY_ENV ?? 'development';
 
 test.describe('noindex', () => {
-  for (const path of ['/b2/', '/c1/']) {
+  for (const path of ['/c1/']) {
     test(`coming-soon page ${path} is noindex`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
@@ -131,7 +131,7 @@ test.describe('static navigation', () => {
     const sidebar = (await chromeBoxes(page))[3];
     expect(sidebar).not.toBeNull();
 
-    for (const path of ['/a2/', '/b2/', '/a2/perfekt/', '/reference/', '/reference/genus/']) {
+    for (const path of ['/a2/', '/c1/', '/a2/perfekt/', '/reference/', '/reference/genus/']) {
       await page.goto(path);
       expect(await chromeBoxes(page), path).toEqual([brand, levels, toggle, sidebar]);
     }
@@ -146,7 +146,7 @@ test.describe('static navigation', () => {
     page,
   }) => {
     // The coming-soon page stays short while the level pages grow with new topics.
-    await page.goto('/b2/');
+    await page.goto('/c1/');
     const overflow = await page.evaluate(
       () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
     );

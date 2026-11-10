@@ -25,13 +25,7 @@ export interface Level {
  */
 export const plannedTopics = {
   b1: ['praeteritum', 'konjunktiv-ii', 'passiv', 'infinitiv-mit-zu'],
-  b2: [
-    'passiv-modalverben',
-    'konjunktiv-i',
-    'n-deklination',
-    'zweiteilige-konnektoren',
-    'nomen-verb',
-  ],
+  b2: ['passiv-modalverben', 'n-deklination', 'zweiteilige-konnektoren', 'nomen-verb'],
   c1: [
     'nominalstil',
     'modalpartikeln',
@@ -64,6 +58,6 @@ export const levels: readonly Level[] = [
   { id: 'a1', label: 'A1', available: true },
   { id: 'a2', label: 'A2', available: true },
   { id: 'b1', label: 'B1', available: true },
-  { id: 'b2', label: 'B2', available: false },
+  { id: 'b2', label: 'B2', available: true },
   { id: 'c1', label: 'C1', available: false },
 ];
