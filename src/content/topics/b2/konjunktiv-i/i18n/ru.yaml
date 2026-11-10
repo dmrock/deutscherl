@@ -49,17 +49,17 @@ choice:
   c7:
     why: '*die Straße* — один предмет (*sie*, единственное число), поэтому форма — *sei*.'
   c8:
-    why: 'В Konjunktiv I *sie haben* совпадает с настоящим временем. Поэтому во множественном числе бери Konjunktiv II: *sie hätten*.'
+    why: '*ihre Kinder* — множественное число. В Konjunktiv I *sie haben* совпадает с настоящим временем, поэтому бери Konjunktiv II: *sie hätten*. *hätte* и *habe* — формы единственного числа, *habest* — для *du*.'
   c9:
-    why: '*sie können* совпадает с настоящим временем, поэтому бери Konjunktiv II: *sie könnten*. *könne* и *könnte* — формы единственного числа, *könnest* — для *du*.'
+    why: '*die Spieler* — множественное число. *sie können* совпадает с настоящим временем, поэтому бери Konjunktiv II: *sie könnten*. *könne* и *könnte* — формы единственного числа, *könnest* — для *du*.'
   c10:
-    why: '*sein* образует перфект с *sein*, поэтому в прошлом — *sie sei gewesen*. *sie* — один человек, значит, не *seien*.'
+    why: '*sein* образует перфект с *sein*, поэтому в прошлом — *er sei gewesen*. *ihr Bruder* — один человек, значит, не *seien*.'
   c11:
     why: '*verpassen* образует перфект с *haben*, поэтому в прошлом — *er habe verpasst*.'
   c12:
     why: 'Прошлое — это *habe* + причастие прошедшего времени: *er habe geschrieben*.'
   c13:
-    why: 'Для будущего бери *werde* + инфинитив. *die Firma* — единственное число (*sie*), поэтому форма — *werde*.'
+    why: 'Для будущего бери *werde* + инфинитив. *die Firma* — единственное число (*sie*), поэтому форма — *werde*. *werdest* и *würdest* — для *du*, *werdet* — для *ihr*.'
   c14:
     why: 'Пересказанный вопрос без вопросительного слова начинается с *ob* (ли). *dass* вопрос не вводит.'
   c15:

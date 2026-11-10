@@ -49,17 +49,17 @@ choice:
   c7:
     why: '*die Straße* is one thing (*sie*, singular), so the form is *sei*.'
   c8:
-    why: 'In the Konjunktiv I, *sie haben* looks like the present tense. So use the Konjunktiv II for the plural: *sie hätten*.'
+    why: '*ihre Kinder* is plural. In the Konjunktiv I, *sie haben* looks like the present tense, so use the Konjunktiv II: *sie hätten*. *hätte* and *habe* are singular forms, *habest* is for *du*.'
   c9:
-    why: '*sie können* looks like the present tense, so use the Konjunktiv II: *sie könnten*. *könne* and *könnte* are singular forms, *könnest* is for *du*.'
+    why: '*die Spieler* is plural. *sie können* looks like the present tense, so use the Konjunktiv II: *sie könnten*. *könne* and *könnte* are singular forms, *könnest* is for *du*.'
   c10:
-    why: '*sein* forms its Perfekt with *sein*, so the past is *sie sei gewesen*. *sie* is one person, so not *seien*.'
+    why: '*sein* forms its Perfekt with *sein*, so the past is *er sei gewesen*. *ihr Bruder* is one person, so not *seien*.'
   c11:
     why: '*verpassen* forms its Perfekt with *haben*, so the past is *er habe verpasst*.'
   c12:
     why: 'The past is *habe* + past participle: *er habe geschrieben*.'
   c13:
-    why: 'For the future, use *werde* + infinitive. *die Firma* is singular (*sie*), so the form is *werde*.'
+    why: 'For the future, use *werde* + infinitive. *die Firma* is singular (*sie*), so the form is *werde*. *werdest* and *würdest* are for *du*, *werdet* for *ihr*.'
   c14:
     why: 'A reported yes/no question starts with *ob* (whether). *dass* does not introduce a question.'
   c15:

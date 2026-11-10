@@ -104,15 +104,15 @@ choice:
     answer: sei
     options: [sei, seien, seist, seiet]
   - id: c8
-    text: Meine Eltern sagen, sie ___ am Sonntag keine Zeit.
+    text: Die Nachbarn sagen, ihre Kinder ___ am Sonntag keine Zeit.
     answer: hätten
     options: [hätten, hätte, habe, habest]
   - id: c9
-    text: Die Studenten sagen, sie ___ am Montag nicht kommen.
+    text: Die Trainerin sagt, die Spieler ___ am Montag nicht trainieren.
     answer: könnten
     options: [könnten, könnte, könne, könnest]
   - id: c10
-    text: Sie erzählt, sie ___ gestern im Kino gewesen.
+    text: Lisa erzählt, ihr Bruder ___ gestern im Kino gewesen.
     answer: sei
     options: [sei, habe, seien, hätten]
   - id: c11
@@ -126,7 +126,7 @@ choice:
   - id: c13
     text: Die Firma teilt mit, sie ___ neue Mitarbeiter einstellen.
     answer: werde
-    options: [werde, werden, werdest, werdet]
+    options: [werde, werdest, werdet, würdest]
   - id: c14
     text: Sie fragt, ___ das Museum heute offen sei.
     answer: ob

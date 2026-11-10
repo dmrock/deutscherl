@@ -40,3 +40,17 @@ sources:
     url: https://www.duden.de/rechtschreibung/Jaenner
   - title: 'DWDS: Jänner (standard only in Austria today)'
     url: https://www.dwds.de/wb/J%C3%A4nner
+  - title: 'Duden: Konjugation kommen (Konjunktiv I Futur I: er werde kommen, sie werden kommen)'
+    url: https://www.duden.de/konjugation/kommen
+  - title: 'Duden: Konjugation können (Indikativ ich kann, Konjunktiv I ich könne; wir/sie können in both moods)'
+    url: https://www.duden.de/konjugation/koennen
+  - title: 'Wiktionary: Flexion können (ich kann, ich könne; wir/sie können in both moods)'
+    url: https://de.wiktionary.org/wiki/Flexion:k%C3%B6nnen
+  - title: 'Duden: Konjugation wandern (Konjunktiv I er wandere)'
+    url: https://www.duden.de/konjugation/wandern
+  - title: 'Wiktionary: Flexion wandern (Konjunktiv I er wandere, wandre)'
+    url: https://de.wiktionary.org/wiki/Flexion:wandern
+  - title: 'Duden: Konjugation sammeln (Konjunktiv I er sammele, sammle)'
+    url: https://www.duden.de/konjugation/sammeln
+  - title: 'Wiktionary: Flexion sammeln (Konjunktiv I er sammele, sammle)'
+    url: https://de.wiktionary.org/wiki/Flexion:sammeln
