@@ -1,0 +1,94 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: Anna says she has no time today.
+  e2: The mayor stated that the new bridge was safe.
+  e3: Anna says that she has no time today.
+  e4: Tom says that the concert is already sold out.
+  e5: Paul says he'll come a bit later.
+  e6: Lisa says her son cycles to school every day.
+  e7: The doctor thinks I need to sleep more.
+  e8: She writes that she knows nothing about it.
+  e9: My boss thinks I'm ill.
+  e10: The teacher says we're a great class.
+  e11: Grandma writes that you're always welcome.
+  e12: The coach says you're well prepared.
+  e13: The police report that the road is clear again.
+  e14: The parents say the children are already in bed.
+  e15: He thinks I have too much work.
+  e16: My parents say they have no time on Sunday.
+  e17: The students say they can't come on Monday.
+  e18: The children say they play football every day.
+  e19: He says he missed the train.
+  e20: She says she was ill yesterday.
+  e21: The guests say they slept well.
+  e22: The company announces that it will hire new staff in the autumn.
+  e23: She says she's tired.
+  e24: She says that she's tired.
+  e25: I'm ill.
+  e26: Tom says he's ill.
+  e27: She asks whether the museum is open today.
+  e28: He wanted to know when the train would arrive.
+  e29: The doctor says I should drink more water.
+  e30: The customer asks to be called back later.
+
+choice:
+  c1:
+    why: 'For *er*, the Konjunktiv I is the stem + *-e*: *er habe*. *habest* is for *du*, *haben* for *wir* and *sie*, *habet* for *ihr*.'
+  c2:
+    why: '*ihr Bruder* is one person (*er*), so the form is *wohne*. *wohnest* is for *du*, *wohnen* for the plural, *wohnet* for *ihr*.'
+  c3:
+    why: 'The Konjunktiv I keeps the vowel of the infinitive: *er fahre*, without an umlaut. *fahrest* is for *du*, *fahren* for the plural, *fahret* for *ihr*.'
+  c4:
+    why: 'The form for *ich* is the stem + *-e*: *ich müsse*. It is different from the present tense *ich muss*. *müssest* is for *du*, *müssen* for the plural, *müsset* for *ihr*.'
+  c5:
+    why: '*die Kinder* is plural, so the form of *sein* is *seien*.'
+  c6:
+    why: 'For *du*, the Konjunktiv I of *sein* is *seist* (or *seiest*).'
+  c7:
+    why: '*die Straße* is one thing (*sie*, singular), so the form is *sei*.'
+  c8:
+    why: '*ihre Kinder* is plural. In the Konjunktiv I, *sie haben* looks like the present tense, so use the Konjunktiv II: *sie hätten*. *hätte* and *habe* are singular forms, *habest* is for *du*.'
+  c9:
+    why: '*die Spieler* is plural. *sie können* looks like the present tense, so use the Konjunktiv II: *sie könnten*. *könne* and *könnte* are singular forms, *könnest* is for *du*.'
+  c10:
+    why: '*sein* forms its Perfekt with *sein*, so the past is *er sei gewesen*. *ihr Bruder* is one person, so not *seien*.'
+  c11:
+    why: '*verpassen* forms its Perfekt with *haben*, so the past is *er habe verpasst*.'
+  c12:
+    why: 'The past is *habe* + past participle: *er habe geschrieben*.'
+  c13:
+    why: 'For the future, use *werde* + infinitive. *die Firma* is singular (*sie*), so the form is *werde*. *werdest* and *würdest* are for *du*, *werdet* for *ihr*.'
+  c14:
+    why: 'A reported yes/no question starts with *ob* (whether). *dass* does not introduce a question.'
+  c15:
+    why: 'After a question word, the verb goes to the end, and a separable verb stays in one piece: *wann der Zug ankomme*. *ankommen* is the infinitive.'
+  c16:
+    why: 'A reported order or advice takes *solle* + infinitive. For *ich*, the form is *solle*, not the present tense *soll*.'
+
+wordOrder:
+  w1:
+    translation: She says she's tired.
+    why: 'Without *dass*, the reported part is a normal statement: the verb *sei* is in position 2. *müde* can also come first for emphasis; then *sie* moves after the verb.'
+  w2:
+    translation: She says that she's tired.
+    why: 'After *dass*, the verb *sei* goes to the end.'
+  w3:
+    translation: He says he missed the train.
+    why: '*habe* is in position 2 and the participle *verpasst* at the end. *den Zug* can also come first; then *er* moves after the verb.'
+  w4:
+    translation: She asks whether the museum is open today.
+    why: 'After *ob*, the verb *sei* goes to the end. *heute* can stand before or after *das Museum*.'
+  w5:
+    translation: He wanted to know when the train would arrive.
+    why: 'After the question word *wann*, the verb goes to the end. The separable verb *ankommen* stays in one piece: *ankomme*.'
+  w6:
+    translation: The doctor says I should drink more water.
+    why: '*solle* is in position 2 and the infinitive *trinken* at the end. *mehr Wasser* can also come first; then *ich* moves after the verb.'
+  w7:
+    translation: The company announces that it will hire new staff.
+    why: '*werde* is in position 2 and the infinitive *einstellen* at the end. *neue Mitarbeiter* can also come first; then *sie* moves after the verb.'
+
+austrianNotes:
+  at1: The minister said that the new law would apply from January.

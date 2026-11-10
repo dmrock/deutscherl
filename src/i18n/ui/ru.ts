@@ -34,7 +34,6 @@ export const ru = {
   'planned.passiv': 'Страдательный залог (*Passiv*)',
   'planned.infinitiv-mit-zu': 'Инфинитив с *zu*',
   'planned.passiv-modalverben': 'Страдательный залог с модальными глаголами',
-  'planned.konjunktiv-i': 'Косвенная речь (*Konjunktiv I*)',
   'planned.n-deklination': 'Слабое склонение существительных (*n-Deklination*)',
   'planned.zweiteilige-konnektoren': 'Парные союзы (*sowohl … als auch*)',
   'planned.nomen-verb': 'Сочетания существительных с глаголами (*Nomen-Verb-Verbindungen*)',

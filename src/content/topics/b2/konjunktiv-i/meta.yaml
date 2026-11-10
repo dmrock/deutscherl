@@ -1,0 +1,56 @@
+level: b2
+category: verbs
+order: 1
+sources:
+  - title: 'Hueber, Sicher! aktuell B2: contents (Lektion 7: indirekte Rede)'
+    url: https://shop-es.hueber.de/media/hueber_dateien/Internet_Inhaltsverz/Red1/9783193012074_Inhalt.pdf
+  - title: 'FU Berlin, Sprachenzentrum: Grammatik mit Sinn und Verstand, "Was die anderen sagen – Indirekte Rede und Konjunktiv I" (Niveaustufe B2, C1, C2)'
+    url: https://sprachenzentrum.fu-berlin.de/slz/wega/deutsch/5_DE_GR_RUG/09.html
+  - title: 'Duden, für Lernende: wörtliche und indirekte Rede (Konjunktiv I as the usual form; Konjunktiv II when the Konjunktiv I is not clear: die Schüler hätten; indirect speech with or without dass)'
+    url: https://www.duden.de/sprachwissen/fuer-lernende/w%C3%B6rtliche-rede-erkl%C3%A4rung
+  - title: 'Duden Learnattack, Lernhelfer: Modus der Verben (Konjunktiv I = present stem + -e, -est, -e, -en, -et, -en; indirect speech needs the Konjunktiv I; Konjunktiv II when the form equals the indicative; past with habe/sei + Partizip II; future with werde + infinitive)'
+    url: https://www.lernhelfer.de/index.php/schuelerlexikon/deutsch/artikel/modus-der-verben
+  - title: 'grammis (IDS Mannheim), Fragen: Konjunktiv Präsens in reported speech (er komme, er sei unterwegs gewesen; indicative more frequent in speech; Konjunktiv Präsens can sound formal in informal contexts; reported speech as a dass-clause or a main clause)'
+    url: https://grammis.ids-mannheim.de/fragen/160
+  - title: 'grammis (IDS Mannheim), Fragen: forms in reported speech (Konjunktiv Präsens where it is clearly recognizable: sei, habe, müsse, solle; otherwise Konjunktiv Präteritum; würde forms mostly avoided in writing)'
+    url: https://grammis.ids-mannheim.de/fragen/3548
+  - title: 'Wikipedia: Konjunktiv im Deutschen (formation from the infinitive stem; sein without ending in 1st and 3rd person; 1st and 3rd person plural equal the indicative except seien; Konjunktiv II as replacement, würde when that is ambiguous too; past with sei/habe + participle, future with werde; mainly written language)'
+    url: https://de.wikipedia.org/wiki/Konjunktiv_im_Deutschen
+  - title: 'Duden, Korrektes Deutsch kurz gefasst (Dudenverlag), Konjunktiv: Konjunktiv I from the present stem (er geht, er gehe; er trage); indirect speech in Konjunktiv I in writing, often indicative in speech, fine after dass or a question word; Konjunktiv II when the Konjunktiv I equals the indicative (hätten); Konjunktiv II also as a mere replacement because the Konjunktiv I feels formal (er wüsste statt wisse); würde forms not wrong but stylistically weaker'
+    url: https://static.onleihe.de/content/brockhaus/20071108/978-3-411-72301-0/v978-3-411-72301-0.pdf
+  - title: 'Duden: Konjugation werden (Konjunktiv I ich werde, wir werden, ihr werdet, sie werden equal the indicative; er werde differs from er wird)'
+    url: https://www.duden.de/konjugation/werden_Hilfsverb
+  - title: 'Duden: Konjugation sein (Konjunktiv I: sei, seiest/seist, sei, seien, seiet, seien)'
+    url: https://www.duden.de/konjugation/sein_Hilfsverb
+  - title: 'Wiktionary: Flexion sein (Konjunktiv I: sei, seiest/seist, sei, seien, seiet, seien)'
+    url: https://de.wiktionary.org/wiki/Flexion:sein
+  - title: 'Lingoda: Konjunktiv 1 (forms of sein, haben, werden; habe gegessen in reported speech; indicative in colloquial speech; Konjunktiv signals distance or neutrality)'
+    url: https://www.lingoda.com/blog/de/konjunktiv-1-deutsch
+  - title: 'Lingoda: Indirekte Rede (questions with ob or a question word, verb at the end; requests with sollen or mögen, mögen polite and formal; pronouns change to the reporter''s view)'
+    url: https://www.lingoda.com/blog/de/indirekte-rede-deutsch/
+  - title: 'Duden: ob (introduces an indirect question: er fragte sie, ob sie noch käme)'
+    url: https://www.duden.de/rechtschreibung/ob_Konjunktion
+  - title: 'DWDS: ob (introduces an indirect question: seine Frage, ob er abreisen könne)'
+    url: https://www.dwds.de/wb/ob
+  - title: 'DWDS: sollen (reported request: sie sagte, er solle es sie wissen lassen)'
+    url: https://www.dwds.de/wb/sollen
+  - title: 'DWDS: mögen (in indirect speech: er bat mich, ich möge ihm helfen)'
+    url: https://www.dwds.de/wb/m%C3%B6gen
+  - title: 'Duden: Jänner (österreichisch, seltener süddeutsch: Januar)'
+    url: https://www.duden.de/rechtschreibung/Jaenner
+  - title: 'DWDS: Jänner (standard only in Austria today)'
+    url: https://www.dwds.de/wb/J%C3%A4nner
+  - title: 'Duden: Konjugation kommen (Konjunktiv I Futur I: er werde kommen, sie werden kommen)'
+    url: https://www.duden.de/konjugation/kommen
+  - title: 'Duden: Konjugation können (Indikativ ich kann, Konjunktiv I ich könne; wir/sie können in both moods)'
+    url: https://www.duden.de/konjugation/koennen
+  - title: 'Wiktionary: Flexion können (ich kann, ich könne; wir/sie können in both moods)'
+    url: https://de.wiktionary.org/wiki/Flexion:k%C3%B6nnen
+  - title: 'Duden: Konjugation wandern (Konjunktiv I er wandere)'
+    url: https://www.duden.de/konjugation/wandern
+  - title: 'Wiktionary: Flexion wandern (Konjunktiv I er wandere, wandre)'
+    url: https://de.wiktionary.org/wiki/Flexion:wandern
+  - title: 'Duden: Konjugation sammeln (Konjunktiv I er sammele, sammle)'
+    url: https://www.duden.de/konjugation/sammeln
+  - title: 'Wiktionary: Flexion sammeln (Konjunktiv I er sammele, sammle)'
+    url: https://de.wiktionary.org/wiki/Flexion:sammeln

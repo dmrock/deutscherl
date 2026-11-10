@@ -6,7 +6,7 @@
 
 A free website for learning German grammar. Each topic has a short explanation in your native language, examples in German with translations, and exercises to practice.
 
-- Levels A1, A2 and B1 first; B2 and C1 will follow.
+- Levels A1 to B2 first; C1 will follow.
 - Native languages: English and Russian, with more to come.
 - Notes on Austrian German where usage differs from Germany.
 - No accounts, no cookies, no tracking.

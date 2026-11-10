@@ -36,7 +36,6 @@ export const en = {
   'planned.passiv': 'The passive (*Passiv*)',
   'planned.infinitiv-mit-zu': 'Infinitive with *zu*',
   'planned.passiv-modalverben': 'The passive with modal verbs',
-  'planned.konjunktiv-i': 'Reported speech (*Konjunktiv I*)',
   'planned.n-deklination': 'Weak nouns (*n-Deklination*)',
   'planned.zweiteilige-konnektoren': 'Two-part conjunctions (*sowohl … als auch*)',
   'planned.nomen-verb': 'Noun-verb phrases (*Nomen-Verb-Verbindungen*)',

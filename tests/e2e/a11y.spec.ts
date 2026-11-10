@@ -19,7 +19,7 @@ const pages = [
   { name: 'home', path: '/' },
   { name: 'level', path: '/a2/' },
   { name: 'level without topics', path: '/a1/' },
-  { name: 'coming soon', path: '/b2/' },
+  { name: 'coming soon', path: '/c1/' },
   { name: 'topic', path: '/a2/perfekt/' },
   { name: 'topic with links to other levels', path: '/b1/adjektive-ohne-artikel/' },
   { name: 'reference index', path: '/reference/' },

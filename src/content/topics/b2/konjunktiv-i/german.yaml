@@ -1,0 +1,185 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the verb forms that the page talks about, and dass, ob or a question word
+# where the section is about word order.
+
+examples:
+  # What the Konjunktiv I is for: reported speech
+  - id: e1
+    de: 'Anna sagt, sie **habe** heute keine Zeit.'
+  - id: e2
+    de: 'Der Bürgermeister erklärte, die neue Brücke **sei** sicher.'
+  # In conversation: the indicative, in a clause with dass
+  - id: e3
+    de: 'Anna sagt, dass sie heute keine Zeit **hat**.'
+  - id: e4
+    de: 'Tom meint, dass das Konzert schon ausverkauft **ist**.'
+  # Forms: stem + -e, no vowel change
+  - id: e5
+    de: 'Paul sagt, er **komme** etwas später.'
+  - id: e6
+    de: 'Lisa erzählt, ihr Sohn **fahre** jeden Tag mit dem Rad zur Schule.'
+  - id: e7
+    de: 'Der Arzt meint, ich **müsse** mehr schlafen.'
+  - id: e8
+    de: 'Sie schreibt, sie **wisse** nichts davon.'
+  # sein: one example per cell of the forms table
+  - id: e9
+    de: 'Mein Chef denkt, ich **sei** krank.'
+  - id: e10
+    de: 'Die Lehrerin sagt, wir **seien** eine tolle Klasse.'
+  - id: e11
+    de: 'Oma schreibt, du **seist** jederzeit willkommen.'
+  - id: e12
+    de: 'Der Trainer sagt, ihr **seiet** gut vorbereitet.'
+  - id: e13
+    de: 'Die Polizei meldet, die Straße **sei** wieder frei.'
+  - id: e14
+    de: 'Die Eltern sagen, die Kinder **seien** schon im Bett.'
+  # Konjunktiv II when the Konjunktiv I looks like the present tense
+  - id: e15
+    de: 'Er glaubt, ich **hätte** zu viel Arbeit.'
+  - id: e16
+    de: 'Meine Eltern sagen, sie **hätten** am Sonntag keine Zeit.'
+  - id: e17
+    de: 'Die Studenten sagen, sie **könnten** am Montag nicht kommen.'
+  - id: e18
+    de: 'Die Kinder sagen, sie **würden** jeden Tag Fußball **spielen**.'
+  # Past and future
+  - id: e19
+    de: 'Er sagt, er **habe** den Zug **verpasst**.'
+  - id: e20
+    de: 'Sie erzählt, sie **sei** gestern krank **gewesen**.'
+  - id: e21
+    de: 'Die Gäste sagen, sie **hätten** gut **geschlafen**.'
+  - id: e22
+    de: 'Die Firma teilt mit, sie **werde** im Herbst neue Mitarbeiter **einstellen**.'
+  # With or without dass
+  - id: e23
+    de: 'Sie sagt, sie **sei** müde.'
+  - id: e24
+    de: 'Sie sagt, **dass** sie müde **sei**.'
+  # Pronouns: direct and reported
+  - id: e25
+    de: 'Ich **bin** krank.'
+  - id: e26
+    de: 'Tom sagt, er **sei** krank.'
+  # Questions
+  - id: e27
+    de: 'Sie fragt, **ob** das Museum heute offen **sei**.'
+  - id: e28
+    de: 'Er wollte wissen, **wann** der Zug **ankomme**.'
+  # Requests
+  - id: e29
+    de: 'Die Ärztin sagt, ich **solle** mehr Wasser **trinken**.'
+  - id: e30
+    de: 'Der Kunde bittet, man **möge** ihn später **zurückrufen**.'
+
+choice:
+  - id: c1
+    text: Paul sagt, er ___ heute keine Zeit.
+    answer: habe
+    options: [habe, habest, haben, habet]
+  - id: c2
+    text: Lisa sagt, ihr Bruder ___ jetzt in Graz.
+    answer: wohne
+    options: [wohne, wohnest, wohnen, wohnet]
+  - id: c3
+    text: Sie erzählt, ihr Mann ___ jeden Winter Ski.
+    answer: fahre
+    options: [fahre, fahrest, fahren, fahret]
+  - id: c4
+    text: Der Arzt meint, ich ___ weniger arbeiten.
+    answer: müsse
+    options: [müsse, müssest, müssen, müsset]
+  - id: c5
+    text: Die Eltern sagen, die Kinder ___ schon im Bett.
+    answer: seien
+    options: [seien, sei, seist, seiet]
+  - id: c6
+    text: Oma schreibt, du ___ jederzeit willkommen.
+    answer: seist
+    options: [seist, sei, seien, seiet]
+  - id: c7
+    text: Die Polizei meldet, die Straße ___ wieder frei.
+    answer: sei
+    options: [sei, seien, seist, seiet]
+  - id: c8
+    text: Die Nachbarn sagen, ihre Kinder ___ am Sonntag keine Zeit.
+    answer: hätten
+    options: [hätten, hätte, habe, habest]
+  - id: c9
+    text: Die Trainerin sagt, die Spieler ___ am Montag nicht trainieren.
+    answer: könnten
+    options: [könnten, könnte, könne, könnest]
+  - id: c10
+    text: Lisa erzählt, ihr Bruder ___ gestern im Kino gewesen.
+    answer: sei
+    options: [sei, habe, seien, hätten]
+  - id: c11
+    text: Er sagt, er ___ den Zug verpasst.
+    answer: habe
+    options: [habe, sei, haben, seien]
+  - id: c12
+    text: Er sagt, er habe den Brief schon ___.
+    answer: geschrieben
+    options: [geschrieben, schreibe, schreiben, schrieb]
+  - id: c13
+    text: Die Firma teilt mit, sie ___ neue Mitarbeiter einstellen.
+    answer: werde
+    options: [werde, werdest, werdet, würdest]
+  - id: c14
+    text: Sie fragt, ___ das Museum heute offen sei.
+    answer: ob
+    options: [ob, dass, wenn, was]
+  - id: c15
+    text: Er wollte wissen, wann der Zug ___.
+    answer: ankomme
+    options: [ankomme, komme an, ankommen, kommt an]
+  - id: c16
+    text: Die Ärztin sagt, ich ___ mehr Wasser trinken.
+    answer: solle
+    options: [solle, sollest, sollen, sollet]
+
+wordOrder:
+  - id: w1
+    parts: ['sie sagt,', sie, sei, müde]
+    fixed: true
+    accept:
+      - ['sie sagt,', müde, sei, sie]
+    punctuation: '.'
+  - id: w2
+    parts: ['sie sagt,', dass, sie, müde, sei]
+    fixed: true
+    punctuation: '.'
+  - id: w3
+    parts: ['er sagt,', er, habe, den Zug, verpasst]
+    fixed: true
+    accept:
+      - ['er sagt,', den Zug, habe, er, verpasst]
+    punctuation: '.'
+  - id: w4
+    parts: ['sie fragt,', ob, das Museum, heute, offen, sei]
+    fixed: true
+    accept:
+      - ['sie fragt,', ob, heute, das Museum, offen, sei]
+    punctuation: '.'
+  - id: w5
+    parts: ['er wollte wissen,', wann, der Zug, ankomme]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: ['die Ärztin sagt,', ich, solle, mehr Wasser, trinken]
+    fixed: true
+    accept:
+      - ['die Ärztin sagt,', mehr Wasser, solle, ich, trinken]
+    punctuation: '.'
+  - id: w7
+    parts: ['die Firma teilt mit,', sie, werde, neue Mitarbeiter, einstellen]
+    fixed: true
+    accept:
+      - ['die Firma teilt mit,', neue Mitarbeiter, werde, sie, einstellen]
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: 'Der Minister sagte, das neue Gesetz gelte ab **Jänner**.'

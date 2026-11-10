@@ -62,7 +62,7 @@ test('the sitemap lists indexable pages with their alternates, no coming-soon pa
   expect(sitemap).toContain(
     `<xhtml:link rel="alternate" hreflang="ru" href="${site.url}/ru/privacy/"/>`,
   );
-  expect(sitemap).not.toContain(`<loc>${site.url}/b2/</loc>`);
+  expect(sitemap).not.toContain(`<loc>${site.url}/c1/</loc>`);
   expect(sitemap).not.toContain('404');
 });
 
