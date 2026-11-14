@@ -52,7 +52,7 @@ choice:
   c14:
     why: 'After *es gibt* comes the accusative. *Supermarkt* is masculine, so *ein* → *einen* → *keinen*.'
   c15:
-    why: '*Ahnung* (idea, clue) has no article in the positive, so it takes *kein*. *Ahnung* is feminine: *keine Ahnung*, also as the object of *haben*.'
+    why: '*Milch* has no article in the positive (*Ich trinke Milch*), so it takes *kein*. *Milch* is feminine: *keine Milch*, also as the object of *trinken*.'
 
 wordOrder:
   w1:

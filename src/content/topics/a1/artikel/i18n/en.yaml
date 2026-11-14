@@ -72,7 +72,7 @@ choice:
   c24:
     why: 'The cat was mentioned before, so it is clear which cat: *die Katze*. *eine* is for the first time you mention it.'
   c25:
-    why: '*Restaurant* is neuter (*das Restaurant*), and it is mentioned for the first time, so "a" is *ein*.'
+    why: 'There is only one moon, so it is clear which one you mean: *der Mond*. *ein* would mean one of many.'
 
 austrianNotes:
   at1: I'll write you an email later.

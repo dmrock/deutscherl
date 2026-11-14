@@ -106,7 +106,7 @@ choice:
     answer: keinen
     options: [keinen, kein, keine, nicht]
   - id: c15
-    text: Ich habe ___ Ahnung.
+    text: Ich trinke ___ Milch.
     answer: keine
     options: [keine, kein, keinen, nicht]
 

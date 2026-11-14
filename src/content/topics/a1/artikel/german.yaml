@@ -144,9 +144,9 @@ choice:
     answer: Die
     options: [Die, Eine, Der, Ein]
   - id: c25
-    text: Gleich um die Ecke ist ___ Restaurant.
-    answer: ein
-    options: [ein, eine, einen, einem]
+    text: ___ Mond ist heute sehr hell.
+    answer: Der
+    options: [Der, Ein, Die, Eine]
 
 austrianNotes:
   - id: at1

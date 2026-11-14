@@ -65,7 +65,7 @@ choice:
   c15:
     why: '*die Schule* is feminine, and *zu der* becomes *zur*. *zum* is for masculine and neuter nouns, and *bei* would mean she is already there.'
   c16:
-    why: 'The parents get the present, so they are in the dative. In the dative plural *meine* becomes *meinen*. *Eltern* already ends in -n, so it gets no extra -n.'
+    why: 'The parents get the card, so they are in the dative. In the dative plural *meine* becomes *meinen*. *Eltern* already ends in -n, so it gets no extra -n.'
   c17:
     why: 'The child gets the water, so it is in the dative. *das Kind* is neuter: *dem Kind*.'
   c18:
@@ -81,9 +81,9 @@ choice:
   c23:
     why: '*bei* is for buying something at a shop or being there. *der Bäcker* is masculine, and *bei dem* becomes *beim*. *zum* would be the way to the bakery.'
   c24:
-    why: '*schmecken* takes the dative. *die Kinder* is plural, so *sie* becomes *ihnen*. *sie* is the nominative or accusative.'
+    why: 'The children get the apple, so they are in the dative. *die Kinder* is plural, so *sie* becomes *ihnen*. *sie* is the nominative or accusative.'
   c25:
-    why: 'The neighbour is the person who sees the garden, so she is in the dative. *die Nachbarin* is feminine: *der Nachbarin*. The thing, *den Garten*, is in the accusative.'
+    why: 'The neighbour is the person I show the garden to, so she is in the dative. *die Nachbarin* is feminine: *der Nachbarin*. The thing, *den Garten*, is in the accusative.'
 
 austrianNotes:
   at1: We're taking the tram to the town hall.

@@ -158,7 +158,7 @@ choice:
     answer: keine
     options: [keine, keinen, kein, keinem]
   - id: c24
-    text: Entschuldigung, ich habe ___ Frage.
+    text: Ich habe noch ___ Frage.
     answer: eine
     options: [eine, einen, ein, einer]
   - id: c25

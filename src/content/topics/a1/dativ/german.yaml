@@ -135,7 +135,7 @@ choice:
     answer: zur
     options: [zur, zum, bei der, beim]
   - id: c16
-    text: Ich schenke ___ Eltern eine Reise.
+    text: Ich schreibe ___ Eltern eine Karte.
     answer: meinen
     options: [meinen, meine, meinem, meiner]
   - id: c17
@@ -167,7 +167,7 @@ choice:
     answer: beim
     options: [beim, bei der, zum, zur]
   - id: c24
-    text: Die Kinder essen die Suppe nicht. Sie schmeckt ___ nicht.
+    text: Die Kinder haben Hunger. Ich gebe ___ einen Apfel.
     answer: ihnen
     options: [ihnen, sie, ihm, ihn]
   - id: c25
