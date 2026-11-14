@@ -66,52 +66,55 @@ choice:
     answer: keinen
     options: [keinen, kein, keine, nicht]
   - id: c5
-    text: Ich verstehe das ___.
+    text: Ich kann dich heute ___ abholen.
     answer: nicht
-    options: [nicht, kein, keine]
+    options: [nicht, kein, keine, keinen]
   - id: c6
     text: Das Hotel ist ___ teuer.
     answer: nicht
-    options: [nicht, kein, keine]
+    options: [nicht, kein, keine, keinen]
   - id: c7
     text: Das ist ___ mein Fahrrad.
     answer: nicht
-    options: [nicht, kein, keine]
+    options: [nicht, kein, keine, keinen]
   - id: c8
     text: Sie hat ___ Geschwister.
     answer: keine
     options: [keine, kein, keinen, nicht]
   - id: c9
-    text: Ich finde meinen Schlüssel ___.
+    text: Wir fahren dieses Jahr ___ nach Italien.
     answer: nicht
-    options: [nicht, kein, keinen]
+    options: [nicht, kein, keine, keinen]
   - id: c10
-    text: Wir trinken ___ Alkohol.
-    answer: keinen
-    options: [keinen, kein, keine, nicht]
+    text: Ich esse ___ Fleisch.
+    answer: kein
+    options: [kein, keine, keinen, nicht]
   - id: c11
-    text: Hast du keine Zeit? – ___, ich habe Zeit.
-    answer: Doch
-    options: [Doch, Nein]
+    text: 'Hast du keine Zeit? – ___ Ich komme gern mit.'
+    answer: 'Doch, ich habe Zeit.'
+    options: ['Doch, ich habe Zeit.', 'Nein, ich habe Zeit.', 'Doch, ich habe keine Zeit.', 'Nein, ich habe keine Zeit.']
   - id: c12
-    text: Kommst du nicht mit? – ___, ich bleibe zu Hause.
-    answer: Nein
-    options: [Nein, Doch]
+    text: 'Kommst du nicht mit? – ___ Ich bleibe zu Hause.'
+    answer: 'Nein, ich komme nicht mit.'
+    options: ['Nein, ich komme nicht mit.', 'Doch, ich komme nicht mit.', 'Nein, ich komme mit.', 'Doch, ich komme mit.']
   - id: c13
     text: Ich wohne ___ in Wien, sondern in Linz.
     answer: nicht
-    options: [nicht, kein, keine]
+    options: [nicht, kein, keine, keinen]
   - id: c14
     text: Hier gibt es ___ Supermarkt.
     answer: keinen
     options: [keinen, kein, keine, nicht]
+  - id: c15
+    text: Ich habe ___ Ahnung.
+    answer: keine
+    options: [keine, kein, keinen, nicht]
 
 wordOrder:
   - id: w1
-    parts: [ich, komme, heute, nicht]
+    parts: [ich, verstehe, die Frage, nicht]
     accept:
-      - [heute, komme, ich, nicht]
-      - [ich, komme, nicht, heute]
+      - [die Frage, verstehe, ich, nicht]
     punctuation: '.'
   - id: w2
     parts: [ich, weiß, das, nicht]
@@ -129,9 +132,9 @@ wordOrder:
       - [in Wien, wohnt, er, nicht]
     punctuation: '.'
   - id: w5
-    parts: [wir, haben, keine Zeit]
+    parts: [das Essen, schmeckt, mir, nicht]
     accept:
-      - [keine Zeit, haben, wir]
+      - [mir, schmeckt, das Essen, nicht]
     punctuation: '.'
   - id: w6
     parts: [ich, kann, leider, nicht, kommen]
@@ -139,13 +142,21 @@ wordOrder:
       - [leider, kann, ich, nicht, kommen]
     punctuation: '.'
   - id: w7
-    parts: [hast, du, keinen Hunger]
+    parts: [kommst, du, nicht, mit]
     fixed: true
     punctuation: '?'
   - id: w8
-    parts: [das, ist, nicht, mein Handy]
+    parts: [er, ist, nicht, zu Hause]
     accept:
-      - [mein Handy, ist, das, nicht]
+      - [zu Hause, ist, er, nicht]
+    punctuation: '.'
+  - id: w9
+    parts: [er, will, den Film, nicht, sehen]
+    accept:
+      - [den Film, will, er, nicht, sehen]
+    punctuation: '.'
+  - id: w10
+    parts: [sie, kommt, nicht, 'aus Deutschland,', sondern, aus Österreich]
     punctuation: '.'
 
 austrianNotes:

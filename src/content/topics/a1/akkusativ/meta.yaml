@@ -22,3 +22,11 @@ sources:
     url: https://www.dwds.de/wb/Joghurt
   - title: 'DWDS: Keks (Neutrum A)'
     url: https://www.dwds.de/wb/Keks
+  - title: 'Duden: Termin (der, Plural Termine)'
+    url: https://www.duden.de/rechtschreibung/Termin
+  - title: 'DWDS: Termin (Maskulinum, Plural Termine)'
+    url: https://www.dwds.de/wb/Termin
+  - title: 'Duden: Café (das)'
+    url: https://www.duden.de/rechtschreibung/Cafe
+  - title: 'DWDS: Café (Neutrum)'
+    url: https://www.dwds.de/wb/Caf%C3%A9

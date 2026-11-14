@@ -41,11 +41,11 @@ choice:
   c3:
     why: 'After *bei* comes the dative. *die Mutter* is feminine, so *seine* becomes *seiner*.'
   c4:
-    why: 'In the dative plural, the noun gets an extra -n: *die Kinder* → *mit den Kindern*.'
+    why: 'In the dative plural, the article is *den* and the noun gets an extra -n: *die Kinder* → *mit den Kindern*. *die Kinder* is the nominative or accusative.'
   c5:
     why: '*gehören* takes the dative. *die Lehrerin* is feminine, so the dative article is *der*.'
   c6:
-    why: '*helfen* takes the dative, so *ich* becomes *mir*. *mich* is the accusative.'
+    why: '*helfen* takes the dative. *Oma* is a woman, so *sie* becomes *ihr*. *sie* is the accusative, and *ihm* and *ihn* are for a man.'
   c7:
     why: '*gratulieren* takes the dative. *der Bruder* is masculine, so it is *meinem Bruder*. *meinen* would be the accusative.'
   c8:
@@ -63,30 +63,27 @@ choice:
   c14:
     why: 'After *aus* comes the dative. *die Schweiz* is feminine and always has an article: *aus der Schweiz*.'
   c15:
-    why: '*die Schule* is feminine, and *zu der* becomes *zur*. *zum* is for masculine and neuter nouns.'
-
-wordOrder:
-  w1:
-    translation: We're giving our grandma a calendar.
-    why: 'The verb *schenken* is in position 2. The person (*unserer Oma*, dative) comes before the thing (*einen Kalender*, accusative). Either object can also come first; then *wir* moves after the verb.'
-  w2:
-    translation: Who are you giving the flowers to?
-    why: 'The question word *wem* comes first, then the verb *schenkst*, then the subject *du*, then the thing.'
-  w3:
-    translation: I really like the jacket.
-    why: 'With *gefallen*, the thing (*die Jacke*) is the subject and the person (*mir*) is in the dative. *mir* can also come first: *mir gefällt die Jacke sehr*.'
-  w4:
-    translation: After the meal, we have a coffee.
-    why: '*nach dem Essen* is in position 1, so the verb *trinken* comes next and the subject *wir* moves after it.'
-  w5:
-    translation: Will you give me your phone number?
-    why: 'In a yes/no question, the verb *gibst* comes first and the subject *du* second. The person (*mir*) comes before the thing.'
-  w6:
-    translation: I'm showing my friends a video.
-    why: '*zeige* is in position 2. The person (*meinen Freunden*, dative plural with -n) comes before the thing (*ein Video*). Either object can also come first; then *ich* moves after the verb.'
-  w7:
-    translation: Happy birthday! (I congratulate you on your birthday.)
-    why: '*gratulieren* takes the dative: *dir*. The reason follows with *zum* (*zu dem*): *zum Geburtstag*.'
+    why: '*die Schule* is feminine, and *zu der* becomes *zur*. *zum* is for masculine and neuter nouns, and *bei* would mean she is already there.'
+  c16:
+    why: 'The parents get the present, so they are in the dative. In the dative plural *meine* becomes *meinen*. *Eltern* already ends in -n, so it gets no extra -n.'
+  c17:
+    why: 'The child gets the water, so it is in the dative. *das Kind* is neuter: *dem Kind*.'
+  c18:
+    why: 'After *mit* comes the dative. *Kolleginnen* is plural, so the article is *den*. The plural already ends in -n, so there is no extra -n. *der* would be one colleague: *mit der Kollegin*.'
+  c19:
+    why: '*gefallen* takes the dative. *Opa* is a man, so *er* becomes *ihm*. *ihn* is the accusative.'
+  c20:
+    why: '*danken* takes the dative. You thank more than one person (*ihr habt*), so *ihr* becomes *euch*. *dir* would be one person.'
+  c21:
+    why: '*von* means "from" here. *der Kindergarten* is masculine, and *von dem* becomes *vom*. *zum* would be the way to the kindergarten.'
+  c22:
+    why: 'After *aus* comes the dative. *der Urlaub* (holiday) is masculine, so it is *aus dem Urlaub*. *den* is the accusative.'
+  c23:
+    why: '*bei* is for buying something at a shop or being there. *der Bäcker* is masculine, and *bei dem* becomes *beim*. *zum* would be the way to the bakery.'
+  c24:
+    why: '*schmecken* takes the dative. *die Kinder* is plural, so *sie* becomes *ihnen*. *sie* is the nominative or accusative.'
+  c25:
+    why: 'The neighbour is the person who sees the garden, so she is in the dative. *die Nachbarin* is feminine: *der Nachbarin*. The thing, *den Garten*, is in the accusative.'
 
 austrianNotes:
   at1: We're taking the tram to the town hall.

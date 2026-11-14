@@ -30,3 +30,23 @@ sources:
     url: https://www.dwds.de/wb/Bim
   - title: 'DWDS: Heurige (Gastwirtschaft, in Österreich)'
     url: https://www.dwds.de/wb/Heurige
+  - title: 'Duden: danken (jemandem danken, mit Dativ)'
+    url: https://www.duden.de/rechtschreibung/danken
+  - title: 'DWDS: danken (jmdm. danken)'
+    url: https://www.dwds.de/wb/danken
+  - title: 'Duden: schmecken (jemandem schmecken)'
+    url: https://www.duden.de/rechtschreibung/schmecken
+  - title: 'DWDS: schmecken (etw. schmeckt jmdm.)'
+    url: https://www.dwds.de/wb/schmecken
+  - title: 'Duden: Kollegin (die, Plural Kolleginnen)'
+    url: https://www.duden.de/rechtschreibung/Kollegin
+  - title: 'DWDS: Kollegin (Femininum, Plural Kolleginnen)'
+    url: https://www.dwds.de/wb/Kollegin
+  - title: 'Duden: Kindergarten (der)'
+    url: https://www.duden.de/rechtschreibung/Kindergarten
+  - title: 'DWDS: Kindergarten (Maskulinum)'
+    url: https://www.dwds.de/wb/Kindergarten
+  - title: 'Duden: Urlaub (der)'
+    url: https://www.duden.de/rechtschreibung/Urlaub
+  - title: 'DWDS: Urlaub (Maskulinum)'
+    url: https://www.dwds.de/wb/Urlaub

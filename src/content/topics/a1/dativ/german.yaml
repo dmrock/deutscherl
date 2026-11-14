@@ -87,17 +87,17 @@ choice:
     answer: seiner
     options: [seiner, seinem, seinen, seine]
   - id: c4
-    text: Die Lehrerin spricht mit den ___.
-    answer: Kindern
-    options: [Kindern, Kinder, Kind]
+    text: Die Lehrerin spricht mit ___.
+    answer: den Kindern
+    options: [den Kindern, den Kinder, die Kinder, die Kindern]
   - id: c5
     text: Das Handy gehört ___ Lehrerin.
     answer: der
     options: [der, die, dem, den]
   - id: c6
-    text: Kannst du ___ bitte helfen?
-    answer: mir
-    options: [mir, mich, ich]
+    text: Meine Oma trägt eine schwere Tasche. Ich helfe ___.
+    answer: ihr
+    options: [ihr, sie, ihm, ihn]
   - id: c7
     text: Ich gratuliere ___ Bruder zum Geburtstag.
     answer: meinem
@@ -105,7 +105,7 @@ choice:
   - id: c8
     text: Morgen gehe ich ___ Zahnarzt.
     answer: zum
-    options: [zum, zur, beim, vom]
+    options: [zum, zur, beim, bei der]
   - id: c9
     text: Lena kommt um sechs ___ Arbeit nach Hause.
     answer: von der
@@ -133,42 +133,47 @@ choice:
   - id: c15
     text: Morgens bringe ich meine Tochter ___ Schule.
     answer: zur
-    options: [zur, zum, beim, vom]
-
-wordOrder:
-  - id: w1
-    parts: [wir, schenken, unserer Oma, einen Kalender]
-    accept:
-      - [unserer Oma, schenken, wir, einen Kalender]
-      - [einen Kalender, schenken, wir, unserer Oma]
-    punctuation: '.'
-  - id: w2
-    parts: [wem, schenkst, du, die Blumen]
-    fixed: true
-    punctuation: '?'
-  - id: w3
-    parts: [die Jacke, gefällt, mir, sehr]
-    accept:
-      - [mir, gefällt, die Jacke, sehr]
-    punctuation: '.'
-  - id: w4
-    parts: [nach dem Essen, trinken, wir, einen Kaffee]
-    fixed: true
-    punctuation: '.'
-  - id: w5
-    parts: [gibst, du, mir, deine Telefonnummer]
-    fixed: true
-    punctuation: '?'
-  - id: w6
-    parts: [ich, zeige, meinen Freunden, ein Video]
-    accept:
-      - [meinen Freunden, zeige, ich, ein Video]
-      - [ein Video, zeige, ich, meinen Freunden]
-    punctuation: '.'
-  - id: w7
-    parts: [ich, gratuliere, dir, zum Geburtstag]
-    fixed: true
-    punctuation: '.'
+    options: [zur, zum, bei der, beim]
+  - id: c16
+    text: Ich schenke ___ Eltern eine Reise.
+    answer: meinen
+    options: [meinen, meine, meinem, meiner]
+  - id: c17
+    text: Kannst du ___ Kind ein Glas Wasser geben?
+    answer: dem
+    options: [dem, das, den, der]
+  - id: c18
+    text: In der Pause spreche ich mit ___ Kolleginnen.
+    answer: den
+    options: [den, der, dem, die]
+  - id: c19
+    text: Mein Opa wohnt jetzt in Wien. Die Stadt gefällt ___ sehr.
+    answer: ihm
+    options: [ihm, ihn, ihr, sie]
+  - id: c20
+    text: Ihr habt mir sehr geholfen. Ich danke ___!
+    answer: euch
+    options: [euch, ihr, dir, dich]
+  - id: c21
+    text: Ich hole die Kinder um vier ___ Kindergarten ab.
+    answer: vom
+    options: [vom, von der, zum, zur]
+  - id: c22
+    text: Wir kommen gerade aus ___ Urlaub.
+    answer: dem
+    options: [dem, den, der, das]
+  - id: c23
+    text: Ich kaufe mein Brot immer ___ Bäcker an der Ecke.
+    answer: beim
+    options: [beim, bei der, zum, zur]
+  - id: c24
+    text: Die Kinder essen die Suppe nicht. Sie schmeckt ___ nicht.
+    answer: ihnen
+    options: [ihnen, sie, ihm, ihn]
+  - id: c25
+    text: Ich zeige ___ Nachbarin den Garten.
+    answer: der
+    options: [der, die, den, dem]
 
 austrianNotes:
   - id: at1

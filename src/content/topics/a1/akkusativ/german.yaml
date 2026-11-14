@@ -72,19 +72,19 @@ choice:
   - id: c2
     text: Hast du ___ Bleistift?
     answer: einen
-    options: [einen, ein, eine, der]
+    options: [einen, ein, eine, einem]
   - id: c3
     text: Anna bestellt ___ Tee mit Zitrone.
     answer: einen
-    options: [einen, ein, eine, der]
+    options: [einen, ein, eine, einem]
   - id: c4
     text: Lukas möchte ___ Fahrrad.
     answer: ein
-    options: [ein, einen, eine, der]
+    options: [ein, einen, eine, einem]
   - id: c5
     text: Entschuldigung, ich suche ___ Apotheke.
     answer: eine
-    options: [eine, einen, ein, der]
+    options: [eine, einen, ein, einem]
   - id: c6
     text: ___ Kaffee ist heute sehr gut.
     answer: Der
@@ -96,27 +96,27 @@ choice:
   - id: c8
     text: Ich habe heute ___ Hunger.
     answer: keinen
-    options: [keinen, kein, keine]
+    options: [keinen, kein, keine, keinem]
   - id: c9
     text: Ich rufe heute ___ Vater an.
     answer: meinen
-    options: [meinen, mein, meine]
+    options: [meinen, mein, meine, meinem]
   - id: c10
     text: Gibt es hier ___ Supermarkt?
     answer: einen
-    options: [einen, ein, eine, der]
+    options: [einen, ein, eine, einem]
   - id: c11
     text: ___ besuchst du am Wochenende? – Meine Tante.
     answer: Wen
-    options: [Wen, Wer, Was]
+    options: [Wen, Wer, Was, Wem]
   - id: c12
     text: ___ kocht heute? – Mein Mann.
     answer: Wer
-    options: [Wer, Wen, Was]
+    options: [Wer, Wen, Was, Wem]
   - id: c13
-    text: ___ trinkst du am Morgen? – Kaffee.
+    text: ___ suchst du? – Meinen Schlüssel.
     answer: Was
-    options: [Was, Wen, Wer]
+    options: [Was, Wen, Wer, Wem]
   - id: c14
     text: Der Pullover ist schön. Ich kaufe ___.
     answer: ihn
@@ -124,7 +124,7 @@ choice:
   - id: c15
     text: Das ist ___ Computer.
     answer: mein
-    options: [mein, meinen, meine]
+    options: [mein, meinen, meine, meinem]
   - id: c16
     text: Kaufst du bitte ___ Tomaten?
     answer: die
@@ -141,45 +141,30 @@ choice:
     text: Schau, da kommt ___ Bus!
     answer: der
     options: [der, den, die, das]
-
-wordOrder:
-  - id: w1
-    parts: [ich, trinke, morgens, einen Tee]
-    accept:
-      - [morgens, trinke, ich, einen Tee]
-      - [einen Tee, trinke, ich, morgens]
-    punctuation: '.'
-  - id: w2
-    parts: [der Lehrer, fragt, den Schüler]
-    accept:
-      - [den Schüler, fragt, der Lehrer]
-    punctuation: '.'
-  - id: w3
-    parts: [wen, triffst, du, heute]
-    fixed: true
-    punctuation: '?'
-  - id: w4
-    parts: [heute, gibt, es, keinen Unterricht]
-    fixed: true
-    punctuation: '.'
-  - id: w5
-    parts: [ich, vergesse, immer, meinen Schirm]
-    accept:
-      - [immer, vergesse, ich, meinen Schirm]
-      - [meinen Schirm, vergesse, ich, immer]
-    punctuation: '.'
-  - id: w6
-    parts: [möchtest, du, einen Kaffee]
-    fixed: true
-    punctuation: '?'
-  - id: w7
-    parts: [was, kochst, du, heute]
-    fixed: true
-    punctuation: '?'
-  - id: w8
-    parts: [kennst, du, ihn]
-    fixed: true
-    punctuation: '?'
+  - id: c20
+    text: Meine Jacke ist alt. Ich trage ___ nicht mehr.
+    answer: sie
+    options: [sie, ihn, es, ihr]
+  - id: c21
+    text: Anna, ich höre ___ nicht gut. Sprich bitte lauter!
+    answer: dich
+    options: [dich, du, dir, euch]
+  - id: c22
+    text: Wir sind um acht am Bahnhof. Holst du ___ ab?
+    answer: uns
+    options: [uns, wir, euch, ihr]
+  - id: c23
+    text: Ich habe heute ___ Termine.
+    answer: keine
+    options: [keine, keinen, kein, keinem]
+  - id: c24
+    text: Entschuldigung, ich habe ___ Frage.
+    answer: eine
+    options: [eine, einen, ein, einer]
+  - id: c25
+    text: Gibt es hier in der Nähe ___ Café?
+    answer: ein
+    options: [ein, einen, eine, einem]
 
 austrianNotes:
   - id: at1
