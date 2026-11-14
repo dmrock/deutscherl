@@ -75,17 +75,17 @@ choice:
     answer: kleinen
     options: [kleinen, kleine, kleiner, kleines]
   - id: c5
-    text: Die ___ Schuhe sind bequem.
+    text: Die ___ Äpfel schmecken sehr gut.
     answer: roten
     options: [roten, rote, roter, rotes]
   - id: c6
-    text: Hast du einen ___ Regenschirm?
-    answer: großen
-    options: [großen, großer, große, großes]
+    text: Ich nehme die ___ Hose.
+    answer: schwarze
+    options: [schwarze, schwarzen, schwarzer, schwarzes]
   - id: c7
-    text: Mein ___ Nachbar ist sehr laut.
-    answer: neuer
-    options: [neuer, neue, neuen, neues]
+    text: Mein ___ Hund ist sehr laut.
+    answer: kleiner
+    options: [kleiner, kleine, kleinen, kleines]
   - id: c8
     text: Ich fahre mit dem ___ Fahrrad zur Arbeit.
     answer: alten
@@ -99,55 +99,65 @@ choice:
     answer: kalte
     options: [kalte, kalten, kaltes, kalter]
   - id: c11
-    text: Wir haben leider keine ___ Zimmer mehr.
-    answer: freien
-    options: [freien, freie, freies, freier]
+    text: Im Kühlschrank sind keine ___ Eier mehr.
+    answer: frischen
+    options: [frischen, frische, frisches, frischer]
   - id: c12
     text: Er hilft einer ___ Frau über die Straße.
     answer: alten
     options: [alten, alte, alter, altes]
   - id: c13
-    text: Das ist ein sehr ___ Hotel.
+    text: Ich möchte kein ___ Handy.
     answer: teures
     options: [teures, teuren, teurer, teure]
   - id: c14
-    text: Auf dem ___ Berg liegt noch Schnee.
+    text: Wir wohnen in einem ___ Haus am Stadtrand.
     answer: hohen
     options: [hohen, hochen, hohem, hoher]
   - id: c15
-    text: Zum Mittagessen bestelle ich ein ___ Schnitzel.
+    text: Wir treffen uns vor dem ___ Rathaus.
     answer: Wiener
-    options: [Wiener, Wieneres, Wienern]
-
-wordOrder:
-  - id: w1
-    parts: [ich, suche, eine, günstige, Wohnung]
-    fixed: true
-    punctuation: '.'
-  - id: w2
-    parts: [das, ist, ein, teures, Hotel]
-    fixed: true
-    punctuation: '.'
-  - id: w3
-    parts: [die, neuen, Nachbarn, sind, sehr nett]
-    fixed: true
-    punctuation: '.'
-  - id: w4
-    parts: [mein, alter, Freund, wohnt, in Graz]
-    fixed: true
-    punctuation: '.'
-  - id: w5
-    parts: [er, hilft, einer, alten, Frau]
-    fixed: true
-    punctuation: '.'
-  - id: w6
-    parts: [hast, du, keinen, warmen, Pullover]
-    fixed: true
-    punctuation: '?'
-  - id: w7
-    parts: [ich, bestelle, ein, Wiener, Schnitzel]
-    fixed: true
-    punctuation: '.'
+    options: [Wiener, Wieneren, Wienerem, Wienern]
+  - id: c16
+    text: Ich spreche gern mit den ___ Nachbarn.
+    answer: freundlichen
+    options: [freundlichen, freundliche, freundlicher, freundlichem]
+  - id: c17
+    text: Ich verkaufe mein ___ Auto.
+    answer: altes
+    options: [altes, alten, alte, alter]
+  - id: c18
+    text: In unserer Straße hat ein ___ Supermarkt aufgemacht.
+    answer: großer
+    options: [großer, großen, große, großes]
+  - id: c19
+    text: Gestern haben wir in einem ___ Restaurant gegessen.
+    answer: italienischen
+    options: [italienischen, italienischem, italienisches, italienische]
+  - id: c20
+    text: Hast du meine ___ Fotos schon gesehen?
+    answer: neuen
+    options: [neuen, neue, neuer, neues]
+  - id: c21
+    text: Neben uns wohnt eine ___ Familie.
+    answer: nette
+    options: [nette, netten, netter, nettes]
+  - id: c22
+    text: Er trägt heute einen ___ Anzug.
+    answer: dunklen
+    options: [dunklen, dunkelen, dunkle, dunkele]
+  - id: c23
+    text: Vorsicht, die Suppe ist sehr ___!
+    answer: heiß
+    options: [heiß, heiße, heißen, heißes]
+  - id: c24
+    text: Wir nehmen den ___ Zug.
+    answer: nächsten
+    options: [nächsten, nächste, nächster, nächstes]
+  - id: c25
+    text: Wir buchen das ___ Zimmer mit Balkon.
+    answer: große
+    options: [große, großen, großes, großer]
 
 austrianNotes:
   - id: at1

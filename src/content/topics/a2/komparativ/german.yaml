@@ -41,95 +41,103 @@ choice:
   - id: c1
     text: Der Bus ist langsam, aber das Fahrrad ist noch ___.
     answer: langsamer
-    options: [langsamer, langsam, am langsamsten]
+    options: [langsamer, langsam, am langsamsten, mehr langsam]
   - id: c2
     text: Mein Bruder ist zwei Jahre ___ als ich.
     answer: älter
-    options: [älter, alter, am ältesten]
+    options: [älter, alter, am ältesten, mehr alt]
   - id: c3
     text: Heute ist es ___ als gestern.
     answer: kälter
-    options: [kälter, kalter, am kältesten]
+    options: [kälter, kalter, am kältesten, mehr kalt]
   - id: c4
-    text: Anna ist so groß ___ ihre Schwester.
-    answer: wie
-    options: [wie, als]
+    text: Anna und ihre Schwester sind beide 1,70 Meter groß. Anna ist ___ ihre Schwester.
+    answer: so groß wie
+    options: [so groß wie, so größer wie, größer als, groß als]
   - id: c5
     text: Paul ist ___ als sein Vater.
     answer: größer
-    options: [größer, groß, am größten]
+    options: [größer, großer, groß, am größten]
   - id: c6
     text: Welcher Berg ist am ___?
     answer: höchsten
-    options: [höchsten, hochsten, höhesten]
+    options: [höchsten, hochsten, höhesten, höchste]
   - id: c7
-    text: Ich trinke ___ Tee als Kaffee.
+    text: Ich fahre ___ mit dem Rad als mit dem Bus.
     answer: lieber
-    options: [lieber, gerner, am liebsten]
+    options: [lieber, gerner, am liebsten, gern]
   - id: c8
-    text: Das Essen hier ist ___ als im Hotel.
+    text: Mein neues Handy ist viel ___ als das alte.
     answer: besser
-    options: [besser, guter, am besten]
+    options: [besser, guter, am besten, güter]
   - id: c9
-    text: Wer hat am ___ gegessen?
+    text: Wer von euch hat am ___ Geld?
     answer: meisten
-    options: [meisten, vielsten, mehr]
+    options: [meisten, vielsten, mehr, meiste]
   - id: c10
-    text: Im Juli ist es am ___.
+    text: Welcher Tag war diese Woche am ___?
     answer: heißesten
-    options: [heißesten, heißsten]
+    options: [heißesten, heißsten, heißer, heiß]
   - id: c11
-    text: Diese Jacke ist ___ als die andere.
+    text: Das Hotel am See ist ___ als das Hotel in der Stadt.
     answer: teurer
-    options: [teurer, teuer, am teuersten]
+    options: [teurer, teuer, am teuersten, mehr teuer]
   - id: c12
-    text: Meine Schwester ist ___ als ich.
+    text: Unsere Katze ist ___ als unser Hund.
     answer: jünger
-    options: [jünger, junger, am jüngsten]
+    options: [jünger, junger, am jüngsten, mehr jung]
   - id: c13
-    text: Unser Haus ist nicht so groß ___ eures.
-    answer: wie
-    options: [wie, als]
+    text: Mit dem Rad brauche ich zehn Minuten, zu Fuß zwanzig. Mit dem Rad bin ich ___ zu Fuß.
+    answer: schneller als
+    options: [schneller als, so schnell wie, schnell als, mehr schnell als]
   - id: c14
-    text: Wo ist es im Frühling am ___?
+    text: Wann ist es in Wien am ___?
     answer: schönsten
-    options: [schönsten, schöner, schönesten]
-
-wordOrder:
-  - id: w1
-    parts: [der Zug, ist, schneller, als, das Auto]
-    fixed: true
-    punctuation: '.'
-  - id: w2
-    parts: [ich, trinke, lieber, Tee, als, Kaffee]
-    fixed: true
-    accept:
-      - [ich, trinke, Tee, lieber, als, Kaffee]
-    punctuation: '.'
-  - id: w3
-    parts: [Anna, ist, so groß, wie, ihre Mutter]
-    fixed: true
-    punctuation: '.'
-  - id: w4
-    parts: [im Sommer, ist, es, am schönsten]
-    fixed: true
-    punctuation: '.'
-  - id: w5
-    parts: [welcher Berg, ist, am höchsten]
-    fixed: true
-    punctuation: '?'
-  - id: w6
-    parts: [meine Schwester, ist, jünger, als, ich]
-    fixed: true
-    punctuation: '.'
-  - id: w7
-    parts: [das Wetter, ist, heute, nicht so schön, wie, gestern]
-    fixed: true
-    punctuation: '.'
-  - id: w8
-    parts: [wer, läuft, am schnellsten]
-    fixed: true
-    punctuation: '?'
+    options: [schönsten, schöner, schönesten, schönste]
+  - id: c15
+    text: Im Sommer habe ich ___ Zeit als im Winter.
+    answer: mehr
+    options: [mehr, vieler, am meisten, mehrer]
+  - id: c16
+    text: Der neue Turm ist viel ___ als die Kirche.
+    answer: höher
+    options: [höher, hocher, höcher, hoher]
+  - id: c17
+    text: Am Freitag ist der Zug immer ___ als am Dienstag.
+    answer: voller
+    options: [voller, völler, am vollsten, mehr voll]
+  - id: c18
+    text: Wer ist in deiner Familie am ___?
+    answer: ältesten
+    options: [ältesten, ältsten, altesten, altsten]
+  - id: c19
+    text: Welche Stadt in Österreich ist am ___?
+    answer: größten
+    options: [größten, größesten, großten, großesten]
+  - id: c20
+    text: Welches Buch war am ___?
+    answer: spannendsten
+    options: [spannendsten, spannendesten, spannender, spannendste]
+  - id: c21
+    text: Welches Café findest du am ___?
+    answer: besten
+    options: [besten, gutesten, gutsten, besser]
+  - id: c22
+    text: Was isst du am ___?
+    answer: liebsten
+    options: [liebsten, gernsten, lieber, gerne]
+  - id: c23
+    text: Gestern hatten wir 30 Grad, heute nur 20. Heute ist es ___ gestern.
+    answer: nicht so warm wie
+    options: [nicht so warm wie, so warm wie, wärmer als, nicht so wärmer wie]
+  - id: c24
+    text: Meine Schwester ist erst 14, aber sie ist schon größer als ___.
+    answer: ich
+    options: [ich, mich, mir, mein]
+  - id: c25
+    text: Welcher Supermarkt ist von hier am ___?
+    answer: nächsten
+    options: [nächsten, nachsten, nähsten, nahsten]
 
 austrianNotes:
   - id: at1

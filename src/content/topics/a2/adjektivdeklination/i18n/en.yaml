@@ -37,11 +37,11 @@ choice:
   c4:
     why: '*in einer* is dative. In the dative the adjective always ends in *-en*: *in einer kleinen Wohnung*.'
   c5:
-    why: '*Schuhe* is plural. After *die* in the plural, the adjective ends in *-en*: *die roten Schuhe*.'
+    why: '*Äpfel* is plural. After *die* in the plural, the adjective ends in *-en*: *die roten Äpfel*.'
   c6:
-    why: '*einen* shows the masculine accusative, so the ending is *-en*: *einen großen Regenschirm*.'
+    why: '*die Hose* is feminine and in the accusative. After *die*, the feminine accusative has *-e*, the same as the nominative: *die schwarze Hose*. Only the masculine changes to *-en* in the accusative.'
   c7:
-    why: '*der Nachbar* is masculine and the subject. *mein* has no ending, so the adjective shows the masculine with *-er*: *mein neuer Nachbar*.'
+    why: '*der Hund* is masculine and the subject. *mein* has no ending, so the adjective shows the masculine with *-er*: *mein kleiner Hund*.'
   c8:
     why: '*mit* takes the dative, *mit dem*. In the dative the adjective always ends in *-en*: *mit dem alten Fahrrad*.'
   c9:
@@ -49,38 +49,35 @@ choice:
   c10:
     why: '*das Wetter* is neuter and the subject. After *das* in the nominative, the ending is *-e*: *das kalte Wetter*.'
   c11:
-    why: '*Zimmer* is neuter, so *keine* shows that it is plural here. After *keine* in the plural, the adjective ends in *-en*: *keine freien Zimmer*.'
+    why: '*Eier* is plural. After *keine* in the plural, the adjective ends in *-en*: *keine frischen Eier*.'
   c12:
     why: '*helfen* takes the dative, *einer Frau*. In the dative the adjective always ends in *-en*: *einer alten Frau*.'
   c13:
-    why: '*das Hotel* is neuter, so after *ein* the ending is *-es*. *teuer* loses its *e* before the ending: *ein teures Hotel*.'
+    why: '*das Handy* is neuter and in the accusative. *kein* has no ending, so the adjective shows the neuter with *-es*. *teuer* loses its *e* before the ending: *kein teures Handy*.'
   c14:
-    why: '*auf dem* is dative, so the ending is *-en*. *hoch* loses the *c* before an ending: *dem hohen Berg*.'
+    why: '*in einem* is dative, so the ending is *-en*. *hoch* loses the *c* before an ending: *einem hohen Haus*.'
   c15:
-    why: 'Adjectives from city names with *-er* never change: *ein Wiener Schnitzel*.'
-
-wordOrder:
-  w1:
-    translation: I'm looking for a cheap flat.
-    why: 'The adjective goes between the article and the noun: *eine günstige Wohnung*.'
-  w2:
-    translation: That's an expensive hotel.
-    why: 'The adjective goes between *ein* and the noun. *teuer* loses its *e*: *ein teures Hotel*.'
-  w3:
-    translation: The new neighbours are very nice.
-    why: '*die neuen Nachbarn* is the subject in position 1, so the verb *sind* comes next. After *sein*, *nett* has no ending.'
-  w4:
-    translation: My old friend lives in Graz.
-    why: '*mein alter Freund* is the subject in position 1, then the verb *wohnt*. After *mein* in the masculine nominative, the adjective ends in *-er*.'
-  w5:
-    translation: He helps an old woman.
-    why: '*helfen* takes the dative: *einer alten Frau*. The adjective goes between the article and the noun.'
-  w6:
-    translation: Don't you have a warm jumper?
-    why: 'A yes/no question starts with the verb. Then come *du* and the object *keinen warmen Pullover*.'
-  w7:
-    translation: I'll have a Wiener schnitzel.
-    why: '*Wiener* goes before the noun like any adjective, but it never gets an ending.'
+    why: '*vor dem* is dative, but *Wiener* still gets no ending. Adjectives made from city names with *-er* keep the same form in every gender and case: *vor dem Wiener Rathaus*.'
+  c16:
+    why: '*mit* takes the dative, and *den Nachbarn* is plural. In the dative the adjective always ends in *-en*: *mit den freundlichen Nachbarn*.'
+  c17:
+    why: '*das Auto* is neuter and in the accusative. *mein* has no ending, so the adjective shows the neuter with *-es*: *mein altes Auto*.'
+  c18:
+    why: '*der Supermarkt* is masculine and the subject. *ein* has no ending, so the adjective shows the masculine with *-er*: *ein großer Supermarkt*.'
+  c19:
+    why: '*in einem* is dative. After an article, the dative adjective always ends in *-en*, even though *einem* ends in *-em*: *in einem italienischen Restaurant*.'
+  c20:
+    why: '*Fotos* is plural. After *meine* in the plural, the adjective ends in *-en*: *meine neuen Fotos*. With an article, the plural ending is always *-en*.'
+  c21:
+    why: '*die Familie* is feminine and the subject. After *eine*, the ending is *-e*: *eine nette Familie*.'
+  c22:
+    why: '*einen* shows the masculine accusative, so the ending is *-en*. *dunkel* loses its second *e* before the ending: *einen dunklen Anzug*.'
+  c23:
+    why: 'After *sein*, the adjective is not before a noun, so it has no ending: *Die Suppe ist heiß.*'
+  c24:
+    why: '*der Zug* is masculine, and *den* shows the accusative. After *den*, the ending is *-en*: *den nächsten Zug*.'
+  c25:
+    why: '*das Zimmer* is neuter and in the accusative. After *das*, the ending is *-e*: *das große Zimmer*. After an article, *-es* comes after *ein*, *kein* or a possessive like *mein*.'
 
 austrianNotes:
   at1: I'd like a cold Coke, please.

@@ -25,55 +25,53 @@ choice:
   c1:
     why: 'The book is somewhere (*Wo?*), so *auf* takes the dative. *Tisch* is masculine: *dem Tisch*.'
   c2:
-    why: 'You put the book somewhere (*Wohin?*), so *auf* takes the accusative. *Tisch* is masculine: *den Tisch*.'
+    why: 'You put the newspaper somewhere (*Wohin?*), so *auf* takes the accusative. *Schrank* is masculine: *auf den Schrank*.'
   c3:
-    why: 'You put the milk somewhere (*Wohin?*): accusative. *Kühlschrank* is masculine: *in den*.'
+    why: 'You put the milk somewhere (*Wohin?*): accusative. *Kühlschrank* is masculine: *in den Kühlschrank*. *im* is the dative.'
   c4:
-    why: 'The milk is somewhere (*Wo?*): dative. *in dem* becomes *im*.'
+    why: 'The children are somewhere (*Wo?*): dative. *Garten* is masculine, and *in dem* becomes *im*.'
   c5:
     why: 'The picture is somewhere (*Wo?*): dative. *Wand* is feminine: *an der Wand*.'
   c6:
-    why: 'You put the picture somewhere (*Wohin?*): accusative. *Wand* is feminine: *an die Wand*.'
+    why: 'You put the calendar somewhere (*Wohin?*): accusative. *Tür* is feminine: *an die Tür*.'
   c7:
-    why: 'Sitting down is a movement to a place (*Wohin?*), so *neben* takes the accusative: *mich*.'
+    why: 'Sitting down is a movement to a place (*Wohin?*), so *neben* takes the accusative. *Schwester* is feminine: *neben meine Schwester*.'
   c8:
-    why: 'He is somewhere (*Wo?*), so *neben* takes the dative: *mir*.'
+    why: 'He is somewhere (*Wo?*), so *neben* takes the dative. *Bruder* is masculine: *neben meinem Bruder*.'
   c9:
-    why: 'You put the bag somewhere, so you need *stellen*. *stehen* means that something is standing somewhere.'
+    why: 'You put the bag somewhere, so you need *stellen*. *stehen*, *sitzen* and *liegen* say where something is, and they take no object.'
   c10:
-    why: 'The keys are somewhere, so you need *liegen*. *legen* means that you put something down.'
+    why: 'The keys are somewhere, so you need *liegen*. *legen*, *stellen* and *setzen* mean that you put something somewhere.'
   c11:
-    why: 'You go somewhere (*Wohin?*): accusative. *in das* becomes *ins*.'
+    why: 'You go somewhere (*Wohin?*): accusative. *Theater* is neuter, and *in das* becomes *ins*.'
   c12:
     why: 'The cat is somewhere (*Wo?*): dative. *Sofa* is neuter: *dem Sofa*.'
   c13:
-    why: 'The café is somewhere (*Wo?*), so *zwischen* takes the dative. *Bank* is feminine: *der Bank*.'
-
-wordOrder:
-  w1:
-    translation: The phone is on the table.
-    why: 'The verb *liegt* comes second. *auf dem Tisch* can also come first, and then *das Handy* goes after the verb.'
-  w2:
-    translation: The bottle is in the fridge.
-    why: 'The verb *steht* comes second. *im Kühlschrank* can also come first.'
-  w3:
-    translation: Where are you going?
-    why: 'The question word *wohin* comes first, then the verb *gehst* and *du*.'
-  w4:
-    translation: Please put the milk in the fridge!
-    why: 'The verb *stell* starts the request. *bitte* can come before or after *die Milch*.'
-  w5:
-    translation: We're meeting at the station.
-    why: 'The verb *treffen* comes second, and *uns* right after the subject. *am Bahnhof* can also come first.'
-  w6:
-    translation: The children are sitting on the sofa.
-    why: 'The verb *sitzen* comes second. *auf dem Sofa* can also come first.'
-  w7:
-    translation: Where is my jacket hanging?
-    why: 'The question word *wo* comes first, then the verb *hängt* and the subject *meine Jacke*.'
-  w8:
-    translation: Sit down next to me!
-    why: 'The verb *setz* starts the request, then *dich*, then *neben mich*.'
+    why: 'The café is somewhere (*Wo?*), so *neben* takes the dative. *Bank* is feminine: *neben der Bank*.'
+  c14:
+    why: 'The lamp is somewhere (*Wo?*), so *über* takes the dative. *Tisch* is masculine: *über dem Tisch*.'
+  c15:
+    why: 'You put the bike somewhere (*Wohin?*), so *vor* takes the accusative. *Haus* is neuter: *vor das Haus*.'
+  c16:
+    why: 'You go somewhere (*Wohin?*): accusative. *Berge* is plural: *in die Berge*.'
+  c17:
+    why: 'The letter was somewhere (*Wo?*), so *zwischen* takes the dative. In the dative plural, the article is *den* and the noun adds *-n*: *zwischen den Büchern*.'
+  c18:
+    why: 'The car park is somewhere (*Wo?*), so *hinter* takes the dative. *Schule* is feminine: *hinter der Schule*.'
+  c19:
+    why: 'You put the clock somewhere (*Wohin?*), so *über* takes the accusative. *Tür* is feminine: *über die Tür*.'
+  c20:
+    why: 'You go somewhere (*Wohin?*): accusative. *Meer* is neuter, and *an das* becomes *ans*.'
+  c21:
+    why: 'You are somewhere (*Wo?*): dative. *Fenster* is neuter, and *an dem* becomes *am*.'
+  c22:
+    why: 'Sitting down is a movement to a place (*Wohin?*), so *auf* takes the accusative. *Bank* is feminine: *auf die Bank*.'
+  c23:
+    why: 'The children are at the table (*Wo?*), so you need *sitzen*. *setzen*, *stellen* and *legen* mean that you put something somewhere.'
+  c24:
+    why: 'You are waiting somewhere (*Wo?*), so *vor* takes the dative. *Kino* is neuter: *vor dem Kino*.'
+  c25:
+    why: 'You put the bag somewhere (*Wohin?*), so *unter* takes the accusative. *Tisch* is masculine: *unter den Tisch*.'
 
 austrianNotes:
   at1: The children are sitting on the stairs.
