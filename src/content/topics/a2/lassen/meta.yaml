@@ -2,9 +2,9 @@ level: a2
 category: verbs
 order: 2
 sources:
-  - title: 'Duden: lassen (Bedeutungen, Grammatik)'
+  - title: 'Duden: lassen (Bedeutungen, Grammatik; with an infinitive hat … lassen, e.g. laufen lassen/(seltener:) gelassen)'
     url: https://www.duden.de/rechtschreibung/lassen
-  - title: 'DWDS: lassen'
+  - title: 'DWDS: lassen (with a preceding infinitive, lassen instead of the Partizip II; in the sense "erlauben", gelassen possible when written together with the infinitive)'
     url: https://www.dwds.de/wb/lassen
   - title: 'Duden: Pickerl (österreichisch umgangssprachlich)'
     url: https://www.duden.de/rechtschreibung/Pickerl
