@@ -1,0 +1,184 @@
+examples:
+  # bis with a second preposition
+  - id: e1
+    de: 'Der Bus fährt nur **bis zum** Marktplatz.'
+  # gegenüber after a pronoun
+  - id: e2
+    de: 'Im Zug sitzt sie **mir gegenüber**.'
+tables:
+  # Prepositions with one case: the bold word shows the case
+  - id: prepositions
+    columns: [preposition, example]
+    gloss: true
+    groups:
+      - id: accusative
+        rows:
+          - id: durch
+            cells: ['durch', 'durch **den** Park']
+          - id: fuer
+            cells: ['für', 'für **meinen** Bruder']
+          - id: gegen
+            cells: ['gegen', 'gegen **den** Wind']
+          - id: ohne
+            cells: ['ohne', 'ohne **dich**']
+          - id: um
+            cells: ['um', 'um **den** See']
+          - id: bis
+            cells: ['bis', 'bis **nächsten** Freitag']
+      - id: dative
+        rows:
+          - id: aus
+            cells: ['aus', 'aus **dem** Haus']
+          - id: bei
+            cells: ['bei', '**beim** Bäcker']
+          - id: mit
+            cells: ['mit', 'mit **dem** Bus']
+          - id: nach
+            cells: ['nach', 'nach **dem** Essen']
+          - id: seit
+            cells: ['seit', 'seit **einem** Jahr']
+          - id: von
+            cells: ['von', 'von **meiner** Mutter']
+          - id: zu
+            cells: ['zu', '**zum** Arzt']
+          - id: gegenueber
+            cells: ['gegenüber', 'gegenüber **der** Schule']
+      - id: genitive
+        rows:
+          - id: wegen
+            cells: ['wegen', 'wegen **des** Wetters']
+          - id: trotz
+            cells: ['trotz', 'trotz **der** Kälte']
+          - id: waehrend
+            cells: ['während', 'während **des** Urlaubs']
+          - id: statt
+            cells: ['statt', 'statt **eines** Geschenks']
+          - id: innerhalb
+            cells: ['innerhalb', 'innerhalb **einer** Woche']
+          - id: ausserhalb
+            cells: ['außerhalb', 'außerhalb **der** Stadt']
+  # Two-way prepositions: Wo? (dative) | Wohin? (accusative)
+  - id: two-way
+    columns: [preposition, wo, wohin]
+    gloss: true
+    rows:
+      - id: an
+        cells: ['an', '**am** Fenster', '**ans** Fenster']
+      - id: auf
+        cells: ['auf', 'auf **dem** Tisch', 'auf **den** Tisch']
+      - id: hinter
+        cells: ['hinter', 'hinter **der** Tür', 'hinter **die** Tür']
+      - id: in
+        cells: ['in', '**im** Kino', '**ins** Kino']
+      - id: neben
+        cells: ['neben', 'neben **dem** Sofa', 'neben **das** Sofa']
+      - id: ueber
+        cells: ['über', 'über **dem** Bett', 'über **das** Bett']
+      - id: unter
+        cells: ['unter', 'unter **dem** Tisch', 'unter **den** Tisch']
+      - id: vor
+        cells: ['vor', 'vor **dem** Haus', 'vor **das** Haus']
+      - id: zwischen
+        cells: ['zwischen', 'zwischen **den** Stühlen', 'zwischen **die** Stühle']
+  # Preposition + article in one word
+  - id: short-forms
+    columns: [full, short]
+    rows:
+      - id: zum
+        cells: ['zu dem', '**zum**']
+      - id: zur
+        cells: ['zu der', '**zur**']
+      - id: beim
+        cells: ['bei dem', '**beim**']
+      - id: vom
+        cells: ['von dem', '**vom**']
+      - id: im
+        cells: ['in dem', '**im**']
+      - id: ins
+        cells: ['in das', '**ins**']
+      - id: am
+        cells: ['an dem', '**am**']
+      - id: ans
+        cells: ['an das', '**ans**']
+  # Verbs: the bold words are the objects
+  - id: verbs
+    columns: [verb, example]
+    gloss: true
+    groups:
+      - id: verbs-dative
+        rows:
+          - id: helfen
+            cells: ['helfen', 'Kannst du **mir** helfen?']
+          - id: danken
+            cells: ['danken', 'Ich danke **Ihnen**.']
+          - id: gefallen
+            cells: ['gefallen', 'Die Wohnung gefällt **uns**.']
+          - id: gehoeren
+            cells: ['gehören', 'Das Auto gehört **meinem Vater**.']
+          - id: antworten
+            cells: ['antworten', 'Warum antwortest du **mir** nicht?']
+          - id: gratulieren
+            cells: ['gratulieren', 'Ich gratuliere **dir** zur Hochzeit!']
+          - id: schmecken
+            cells: ['schmecken', 'Schmeckt **dir** die Suppe?']
+          - id: fehlen
+            cells: ['fehlen', 'Du fehlst **mir**.']
+          - id: glauben
+            cells: ['glauben', 'Ich glaube **dir**.']
+          - id: passen
+            cells: ['passen', 'Die Schuhe passen **mir** nicht.']
+          - id: wehtun
+            cells: ['wehtun', '**Mir** tut der Rücken weh.']
+          - id: leidtun
+            cells: ['leidtun', 'Das tut **mir** leid.']
+          - id: zuhoeren
+            cells: ['zuhören', 'Hör **mir** bitte zu!']
+          - id: folgen
+            cells: ['folgen', 'Bitte folgen Sie **mir**.']
+          - id: begegnen
+            cells: ['begegnen', 'Gestern bin ich **meinem Lehrer** begegnet.']
+          - id: vertrauen
+            cells: ['vertrauen', 'Ich vertraue **dir**.']
+      - id: verbs-dative-accusative
+        rows:
+          - id: geben
+            cells: ['geben', 'Gib **mir** bitte **den Schlüssel**.']
+          - id: erklaeren
+            cells: ['erklären', 'Kannst du **mir das** erklären?']
+          - id: bringen
+            cells: ['bringen', 'Bringen Sie **uns** bitte **die Rechnung**.']
+          - id: schicken
+            cells: ['schicken', 'Ich schicke **dir die Adresse**.']
+          - id: empfehlen
+            cells: ['empfehlen', '**Welchen Wein** empfehlen Sie **uns**?']
+          - id: sagen
+            cells: ['sagen', 'Sag **mir die Wahrheit**.']
+          - id: schreiben
+            cells: ['schreiben', 'Ich schreibe **meiner Oma einen Brief**.']
+          - id: erzaehlen
+            cells: ['erzählen', 'Erzähl **mir einen Witz**!']
+          - id: kaufen
+            cells: ['kaufen', 'Ich kaufe **dir ein Eis**.']
+          - id: anbieten
+            cells: ['anbieten', 'Darf ich **Ihnen einen Kaffee** anbieten?']
+          - id: schenken
+            cells: ['schenken', 'Wir schenken **ihm ein Buch**.']
+          - id: zeigen
+            cells: ['zeigen', 'Zeig **mir deine Fotos**!']
+          - id: leihen
+            cells: ['leihen', 'Kannst du **mir dein Fahrrad** leihen?']
+          - id: wuenschen
+            cells: ['wünschen', 'Ich wünsche **dir einen schönen Tag**.']
+      - id: verbs-accusative
+        rows:
+          - id: anrufen
+            cells: ['anrufen', 'Ich rufe **dich** morgen an.']
+          - id: fragen
+            cells: ['fragen', 'Frag doch **den Lehrer**.']
+          - id: bitten
+            cells: ['bitten', 'Darf ich **dich** um einen Gefallen bitten?']
+          - id: besuchen
+            cells: ['besuchen', 'Am Wochenende besuchen wir **unseren Onkel**.']
+austrianNotes:
+  - id: at1
+    de: 'Ich habe die Jacke **um** 40 Euro gekauft.'

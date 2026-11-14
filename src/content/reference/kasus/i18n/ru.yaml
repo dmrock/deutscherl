@@ -1,0 +1,84 @@
+examples:
+  e1: Автобус идёт только до рыночной площади.
+  e2: В поезде она сидит напротив меня.
+austrianNotes:
+  at1: Я купил куртку за 40 евро.
+columns:
+  preposition: Предлог
+  example: Пример
+  wo: '*Wo?* Дательный'
+  wohin: '*Wohin?* Винительный'
+  full: Предлог + артикль
+  short: Короткая форма
+  verb: Глагол
+groups:
+  accusative: Всегда винительный
+  dative: Всегда дательный
+  genitive: Родительный
+  verbs-dative: 'Дополнение в дательном падеже'
+  verbs-dative-accusative: 'Человек в дательном, вещь в винительном'
+  verbs-accusative: 'Винительный, даже для человека'
+glosses:
+  durch: через, сквозь
+  fuer: для
+  gegen: против
+  ohne: без
+  um: вокруг, в (о времени)
+  bis: до
+  aus: из
+  bei: у, при
+  mit: с, на (автобусе, поезде)
+  nach: после, в (о городах и странах)
+  seit: с (какого-то времени), уже (год, неделю)
+  von: от, из
+  zu: к
+  gegenueber: напротив
+  wegen: из-за
+  trotz: несмотря на
+  waehrend: во время
+  statt: вместо
+  innerhalb: в течение, внутри
+  ausserhalb: за пределами, вне
+  an: у, на (вертикальной поверхности)
+  auf: на (сверху)
+  hinter: за, позади
+  in: в
+  neben: рядом с
+  ueber: над
+  unter: под
+  vor: перед
+  zwischen: между
+  helfen: помогать
+  danken: благодарить
+  gefallen: нравиться
+  gehoeren: принадлежать
+  antworten: отвечать
+  gratulieren: поздравлять
+  schmecken: быть вкусным, нравиться (о еде)
+  fehlen: не хватать, скучать
+  glauben: верить
+  passen: подходить, быть впору
+  wehtun: болеть, причинять боль
+  leidtun: быть жаль
+  zuhoeren: слушать
+  folgen: следовать, идти за
+  begegnen: (случайно) встретить
+  vertrauen: доверять
+  geben: давать
+  erklaeren: объяснять
+  bringen: приносить
+  schicken: посылать
+  empfehlen: советовать, рекомендовать
+  sagen: говорить, сказать
+  schreiben: писать
+  erzaehlen: рассказывать
+  kaufen: покупать
+  anbieten: предлагать
+  schenken: дарить
+  zeigen: показывать
+  leihen: одалживать, давать на время
+  wuenschen: желать
+  anrufen: звонить (по телефону)
+  fragen: спрашивать
+  bitten: просить
+  besuchen: навещать, посещать

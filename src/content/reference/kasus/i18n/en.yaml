@@ -1,0 +1,84 @@
+examples:
+  e1: The bus only goes as far as the market square.
+  e2: On the train, she sits opposite me.
+austrianNotes:
+  at1: I bought the jacket for 40 euros.
+columns:
+  preposition: Preposition
+  example: Example
+  wo: '*Wo?* Dative'
+  wohin: '*Wohin?* Accusative'
+  full: Preposition + article
+  short: Short form
+  verb: Verb
+groups:
+  accusative: Always accusative
+  dative: Always dative
+  genitive: Genitive
+  verbs-dative: 'Dative object'
+  verbs-dative-accusative: 'Dative for the person, accusative for the thing'
+  verbs-accusative: 'Accusative, also for a person'
+glosses:
+  durch: through
+  fuer: for
+  gegen: against
+  ohne: without
+  um: around, at (a time)
+  bis: until, as far as
+  aus: out of, from
+  bei: at, at someone's place
+  mit: with, by (bus, train)
+  nach: after, to (cities, countries)
+  seit: since, for (a time)
+  von: from, of
+  zu: to
+  gegenueber: opposite
+  wegen: because of
+  trotz: despite
+  waehrend: during
+  statt: instead of
+  innerhalb: within, inside
+  ausserhalb: outside
+  an: at, on (a side)
+  auf: on (top of)
+  hinter: behind
+  in: in, into
+  neben: next to
+  ueber: above, over
+  unter: under
+  vor: in front of
+  zwischen: between
+  helfen: to help
+  danken: to thank
+  gefallen: to please, to be liked
+  gehoeren: to belong to
+  antworten: to answer
+  gratulieren: to congratulate
+  schmecken: to taste (good)
+  fehlen: to be missing, to be missed
+  glauben: to believe
+  passen: to fit, to suit
+  wehtun: to hurt
+  leidtun: to be sorry
+  zuhoeren: to listen to
+  folgen: to follow
+  begegnen: to meet (by chance)
+  vertrauen: to trust
+  geben: to give
+  erklaeren: to explain
+  bringen: to bring
+  schicken: to send
+  empfehlen: to recommend
+  sagen: to say, to tell
+  schreiben: to write
+  erzaehlen: to tell
+  kaufen: to buy
+  anbieten: to offer
+  schenken: to give (as a present)
+  zeigen: to show
+  leihen: to lend
+  wuenschen: to wish
+  anrufen: to call (by phone)
+  fragen: to ask
+  bitten: to ask (for something)
+  besuchen: to visit
