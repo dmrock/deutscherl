@@ -130,8 +130,8 @@ choice:
     options: [Liebe, Lieben, Lieber, Liebes]
   - id: c18
     text: Ich höre gern ___ Musik.
-    answer: laute
-    options: [laute, lauter, lauten, lautes]
+    answer: klassische
+    options: [klassische, klassischer, klassischen, klassisches]
   - id: c19
     text: Der Tisch ist aus ___ Holz.
     answer: altem
@@ -142,8 +142,8 @@ choice:
     options: [neues, neuen, neuer, neue]
   - id: c21
     text: Trotz ___ Verkehrs waren wir pünktlich.
-    answer: starken
-    options: [starken, starkes, starker, starkem]
+    answer: dichten
+    options: [dichten, dichtes, dichter, dichtem]
   - id: c22
     text: Ich habe noch einige ___ Fragen.
     answer: offene
@@ -157,7 +157,7 @@ choice:
     answer: alten
     options: [alten, alte, alter, altes]
   - id: c25
-    text: ___ Schokolade ist mir zu süß.
+    text: ___ Schokolade ist bei Kindern sehr beliebt.
     answer: Weiße
     options: [Weiße, Weißer, Weißes, Weißen]
 

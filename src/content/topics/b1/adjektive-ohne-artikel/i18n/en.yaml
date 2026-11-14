@@ -64,15 +64,15 @@ choice:
   c17:
     why: 'Greetings are the object of a verb that is left out, like *senden*, so they are in the accusative. *Grüße* is plural, so the ending is *-e*: *Liebe Grüße*.'
   c18:
-    why: '*die Musik* is feminine and the object of *hören*, so it is in the accusative. Like *die*, the adjective ends in *-e*: *laute Musik*.'
+    why: '*die Musik* is feminine and the object of *hören*, so it is in the accusative. Like *die*, the adjective ends in *-e*: *klassische Musik*. Only the masculine changes to *-en* in the accusative.'
   c19:
-    why: '*aus* takes the dative, and *das Holz* is neuter. Like *dem*, the adjective ends in *-em*: *aus altem Holz*.'
+    why: '*aus* takes the dative, and *das Holz* is neuter. After *einem* the adjective would end in *-en*, but with no article it shows the dative itself, like *dem*: *aus altem Holz*.'
   c20:
     why: '*das Papier* is neuter and the object of *brauchen*. In the neuter accusative, the ending is *-es*, as in *das*: *neues Papier*. Only the masculine changes to *-en* in the accusative.'
   c21:
-    why: '*trotz* takes the genitive, and *der Verkehr* is masculine. In the masculine and neuter genitive, the noun gets *-s* and the adjective ends in *-en*, not *-es*: *trotz starken Verkehrs*.'
+    why: '*trotz* takes the genitive, and *der Verkehr* is masculine. In the masculine and neuter genitive, the noun gets *-s* and the adjective ends in *-en*, not *-es*: *trotz dichten Verkehrs*.'
   c22:
-    why: 'After *einige*, the adjective takes the endings it has without an article. *Fragen* is plural accusative here, so the ending is *-e*: *einige offene Fragen*.'
+    why: 'After *einige*, the adjective takes the endings it has without an article. *Fragen* is plural accusative here, so the ending is *-e*: *einige offene Fragen*. *-en* would come after *keine* or *meine*.'
   c23:
     why: '*Schuhe* is plural and the subject. With no article, the plural nominative ends in *-e*: *Neue Schuhe*. After *keine* or *meine* it would be *-en*.'
   c24:

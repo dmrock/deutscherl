@@ -77,7 +77,7 @@ choice:
     answer: lassen
     options: [lassen, lasse, machen, gelassen]
   - id: c15
-    text: Seit Wochen ___ mein Nachbar sein Auto vor unserem Haus stehen.
+    text: Jedes Jahr ___ mein Vater die Winterreifen in der Werkstatt wechseln.
     answer: lässt
     options: [lässt, lasst, lassen, lasse]
 

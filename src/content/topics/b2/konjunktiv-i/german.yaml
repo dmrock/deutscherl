@@ -188,10 +188,8 @@ wordOrder:
     fixed: true
     punctuation: '.'
   - id: w10
-    parts: ['er fragt,', wann, das Geschäft, morgen, aufmache]
+    parts: ['sie fragt,', wo, man, die Tickets, abhole]
     fixed: true
-    accept:
-      - ['er fragt,', wann, morgen, das Geschäft, aufmache]
     punctuation: '.'
 
 austrianNotes:

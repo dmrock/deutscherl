@@ -39,7 +39,7 @@ choice:
   c9:
     why: 'What she says comes after *dass*, and the verb *hat* is at the end. After *denn*, the verb would stay in position 2. *weil* gives a reason, but here the clause is what she says. *als* is for one event in the past.'
   c10:
-    why: 'With a modal verb in the clause, *will* comes last, after the infinitive *schaffen*. After *weil*, the subject *ich* comes first.'
+    why: 'With a modal verb in the clause, *will* comes last, after the infinitive *schaffen*. After *weil*, the subject *ich* comes first. In everyday speech you may hear *weil* with the verb in position 2, but in standard German the verb goes to the end after *weil*.'
   c11:
     why: 'In the Perfekt, *hast* comes last, after the participle *gearbeitet*.'
   c12:
@@ -77,8 +77,8 @@ wordOrder:
     translation: When I have time, I'll visit you.
     why: 'The *wenn* clause is position 1, so the verb *besuche* comes right after the comma, then *ich* and *dich*.'
   w9:
-    translation: 'I''ll call you when I get home.'
-    why: '*wenn* starts the clause, then *ich* and *zu Hause*. At the end of the clause, the separable verb is one word: *ankomme*.'
+    translation: 'I''ll bring you the key when I drop by this evening.'
+    why: '*wenn* starts the clause, then *ich* and *heute Abend*. At the end of the clause, the separable verb is one word: *vorbeikomme*.'
   w10:
     translation: I hope we can see each other soon.
     why: 'After *dass*, the modal verb *können* comes last, after the infinitive *sehen*. *uns* comes right after the subject *wir*.'

@@ -51,11 +51,11 @@ choice:
   c12:
     why: 'A firm demand to *du*, so the form is *wirst*: *du wirst weglegen*.'
   c13:
-    why: 'After *dass*, the form of *werden* goes to the very end, right after the infinitive: *dass sie einen Kuchen mitbringen wird*. The separable verb *mitbringen* stays in one piece.'
+    why: 'After *dass*, the form of *werden* goes to the very end, right after the infinitive: *dass sie einen Kuchen mitbringen wird*. The separable verb *mitbringen* stays in one piece; its front part *mit* does not go to the end.'
   c14:
     why: 'A guess about now: *das wird bestimmt der Postbote sein* (that''s surely the postman). *sein* is already at the end, so the verb in position 2 is *wird*. *werden* would go with a plural.'
   c15:
-    why: 'Here *werden* is a full verb and means "to become": *mein Sohn wird zehn* (my son is turning ten). It needs no infinitive. *mein Sohn* is *er*, so the form is *wird*.'
+    why: 'Here *werden* is a full verb and means "to become": *unsere Zwillinge werden zehn* (our twins are turning ten). It needs no infinitive. *unsere Zwillinge* is plural (*sie*), so the form is *werden*; *werdet* goes with *ihr*.'
 
 wordOrder:
   w1:

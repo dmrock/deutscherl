@@ -9,7 +9,7 @@ base:
 translations:
   ru:
     status: draft
-    contentHash: sha256:a3add1d8142659bc
+    contentHash: sha256:706873be7dab9d89
     basedOn: sha256:c90559db34f2187b
     reviewedBy: null
     reviewedAt: null

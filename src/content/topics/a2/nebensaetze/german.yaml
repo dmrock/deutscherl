@@ -140,7 +140,7 @@ wordOrder:
     fixed: true
     punctuation: '.'
   - id: w9
-    parts: ['ich rufe dich an,', wenn, ich, zu Hause, ankomme]
+    parts: ['ich bringe dir den Schlüssel,', wenn, ich, heute Abend, vorbeikomme]
     fixed: true
     punctuation: '.'
   - id: w10
