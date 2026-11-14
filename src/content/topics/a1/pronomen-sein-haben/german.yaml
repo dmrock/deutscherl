@@ -85,15 +85,15 @@ choice:
   - id: c7
     text: Der Tisch ist neu. ___ ist aus Holz.
     answer: Er
-    options: [Er, Sie, Es, Ihr]
+    options: [Er, Sie, Es, Ihn]
   - id: c8
     text: Die Lampe ist schön, aber ___ ist sehr teuer.
     answer: sie
-    options: [sie, er, es, ihr]
+    options: [sie, er, es, ihn]
   - id: c9
     text: Das Fahrrad ist neu. ___ ist rot.
     answer: Es
-    options: [Es, Er, Sie, Ihr]
+    options: [Es, Er, Sie, Ihm]
   - id: c10
     text: Ich ___ Durst.
     answer: habe
@@ -141,11 +141,11 @@ choice:
   - id: c21
     text: Wo ist mein Handy? – ___ ist in der Küche.
     answer: Es
-    options: [Es, Er, Sie, Ihr]
+    options: [Es, Er, Sie, Ihm]
   - id: c22
     text: Schmeckt dein Kaffee? – Nein, ___ ist zu süß.
     answer: er
-    options: [er, es, sie, ihr]
+    options: [er, es, sie, ihn]
   - id: c23
     text: Heute ___ mein Opa Geburtstag.
     answer: hat

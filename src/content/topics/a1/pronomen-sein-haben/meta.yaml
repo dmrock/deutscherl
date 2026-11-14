@@ -2,7 +2,7 @@ level: a1
 category: verbs
 order: 1
 sources:
-  - title: 'grammis (IDS Mannheim): Personalpronomen'
+  - title: 'grammis (IDS Mannheim): Personalpronomen (er, ihn, ihm; es, es, ihm; sie, sie, ihr)'
     url: https://grammis.ids-mannheim.de/progr@mm/6855
   - title: 'DWDS: sein'
     url: https://www.dwds.de/wb/sein
@@ -34,3 +34,7 @@ sources:
     url: https://www.duden.de/rechtschreibung/Geburtstag
   - title: 'DWDS: Geburtstag (er hat heute seinen 80. Geburtstag)'
     url: https://www.dwds.de/wb/Geburtstag
+  - title: 'Duden: er (Dativ ihm, Akkusativ ihn)'
+    url: https://www.duden.de/rechtschreibung/er
+  - title: 'Wiktionary: er (Deklination: er, ihn, ihm; es, es, ihm)'
+    url: https://de.wiktionary.org/wiki/er

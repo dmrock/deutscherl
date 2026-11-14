@@ -41,11 +41,11 @@ choice:
   c6:
     why: 'Polite *Sie* takes the same form as the plural *sie*: *Sie haben*.'
   c7:
-    why: '*Tisch* is masculine (*der Tisch*), so the pronoun is *er*, even for a thing. *Ihr* is wrong anyway: *ihr* takes *seid*.'
+    why: '*Tisch* is masculine (*der Tisch*), so the pronoun is *er*, even for a thing. *Ihn* is the form for the object (*ich kaufe ihn*), not for the subject.'
   c8:
-    why: '*Lampe* is feminine (*die Lampe*), so the pronoun is *sie*.'
+    why: '*Lampe* is feminine (*die Lampe*), so the pronoun is *sie*. *ihn* is wrong twice: it is masculine, and it is the form for the object.'
   c9:
-    why: '*Fahrrad* is neuter (*das Fahrrad*), so the pronoun is *es*.'
+    why: '*Fahrrad* is neuter (*das Fahrrad*), so the pronoun is *es*. *Ihm* means "to him" or "to it" (*ich gebe ihm das Buch*), so it cannot be the subject.'
   c10:
     why: 'German says "have thirst": *Durst haben*. With *ich*, *haben* is *habe*.'
   c11:
@@ -69,9 +69,9 @@ choice:
   c20:
     why: 'You speak to a small boy, so you use *du*. German says "have fear": *Angst haben*, so *hast du*, not *bist du*.'
   c21:
-    why: '*Handy* is neuter (*das Handy*), so the pronoun is *es*. *mein* does not show this: it goes with masculine and neuter nouns.'
+    why: '*Handy* is neuter (*das Handy*), so the pronoun is *es*. *mein* does not show this: it goes with masculine and neuter nouns. *Ihm* means "to him" or "to it", so it cannot be the subject.'
   c22:
-    why: '*Kaffee* is masculine (*der Kaffee*), so the pronoun is *er*, not *es*, even though English says "it".'
+    why: '*Kaffee* is masculine (*der Kaffee*), so the pronoun is *er*, not *es*, even though English says "it". *ihn* is the form for the object (*ich trinke ihn*), not for the subject.'
   c23:
     why: 'German says "have birthday": *Geburtstag haben*. *mein Opa* is *er*, so the form is *hat*.'
   c24:
