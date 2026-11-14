@@ -47,23 +47,39 @@ choice:
   - id: c7
     text: Ich habe mein Fahrrad am Bahnhof ___.
     answer: gelassen
-    options: [gelassen, lassen, lasse, lässt]
+    options: [gelassen, lassen, gelasst, lasst]
   - id: c8
     text: Er hat sein Auto waschen ___.
     answer: lassen
-    options: [lassen, gelassen, lässt, lasst]
+    options: [lassen, machen, gemacht, gelasst]
   - id: c9
     text: Ich putze die Fenster nicht selbst, ich ___ sie putzen.
     answer: lasse
-    options: [lasse, mache, habe, bin]
+    options: [lasse, mache, lässt, macht]
   - id: c10
-    text: Er ___ seinen Hund nie allein zu Hause.
-    answer: lässt
-    options: [lässt, lasst, lasse, lassen]
+    text: Kinder, ___ eure Schuhe bitte vor der Tür!
+    answer: lasst
+    options: [lasst, lässt, lass, lassen]
   - id: c11
     text: ___ du mich mal kurz telefonieren?
     answer: Lässt
     options: [Lässt, Lasst, Lasse, Lassen]
+  - id: c12
+    text: Wir haben die Tür offen ___.
+    answer: gelassen
+    options: [gelassen, lassen, gelasst, lasst]
+  - id: c13
+    text: ___ Sie mich Ihnen helfen!
+    answer: Lassen
+    options: [Lassen, Lässt, Lasst, Lass]
+  - id: c14
+    text: Ich muss meinen Pass verlängern ___.
+    answer: lassen
+    options: [lassen, lasse, machen, gelassen]
+  - id: c15
+    text: Seit Wochen ___ mein Nachbar sein Auto vor unserem Haus stehen.
+    answer: lässt
+    options: [lässt, lasst, lassen, lasse]
 
 wordOrder:
   - id: w1
@@ -100,6 +116,21 @@ wordOrder:
     accept:
       - [die Fenster, kannst, du, offen, lassen]
     punctuation: '.'
+  - id: w8
+    parts: [hast, du, dir, schon, die Haare, schneiden, lassen]
+    fixed: true
+    accept:
+      - [hast, du, dir, die Haare, schon, schneiden, lassen]
+    punctuation: '?'
+  - id: w9
+    parts: [wir, müssen, die Heizung, reparieren, lassen]
+    accept:
+      - [die Heizung, müssen, wir, reparieren, lassen]
+    punctuation: '.'
+  - id: w10
+    parts: [lasst, mich, bitte, in Ruhe, arbeiten]
+    fixed: true
+    punctuation: '!'
 
 austrianNotes:
   - id: at1

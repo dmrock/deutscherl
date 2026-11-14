@@ -64,30 +64,21 @@ choice:
   c17:
     why: 'Greetings are the object of a verb that is left out, like *senden*, so they are in the accusative. *Grüße* is plural, so the ending is *-e*: *Liebe Grüße*.'
   c18:
-    why: 'A wish is in the accusative. *der Abend* is masculine, so the ending is *-en*, with or without *einen*: *schönen Abend noch*.'
-
-wordOrder:
-  w1:
-    translation: When the weather is nice, we eat in the garden.
-    why: '*bei schönem Wetter* is in position 1, so the verb *essen* comes next, then the subject *wir*.'
-  w2:
-    translation: I drink coffee with warm milk.
-    why: 'The adjective goes between *mit* and the noun. *mit* takes the dative, so *die Milch* gives *warmer Milch*.'
-  w3:
-    translation: There's fresh bread for breakfast.
-    why: '*zum Frühstück* is in position 1, then the verb *gibt* and *es*. The object *frisches Brot* goes at the end.'
-  w4:
-    translation: I met lots of nice people in Vienna.
-    why: '*in Wien* is in position 1, then the verb *habe* and the subject *ich*. The participle *kennengelernt* goes to the end. After *viele*, the adjective ends in *-e*.'
-  w5:
-    translation: We went for a walk despite the heavy rain.
-    why: '*trotz starken Regens* is in position 1, so *sind* comes next, then *wir*. *spazieren gegangen* goes to the end.'
-  w6:
-    translation: Happy birthday!
-    why: 'The adjective comes before the noun: *Herzlichen Glückwunsch*. *zum Geburtstag* follows.'
-  w7:
-    translation: Say hello to your parents for me!
-    why: 'The adjective comes before the noun: *Viele Grüße*. Then *an* and the person who gets the greeting.'
+    why: '*die Musik* is feminine and the object of *hören*, so it is in the accusative. Like *die*, the adjective ends in *-e*: *laute Musik*.'
+  c19:
+    why: '*aus* takes the dative, and *das Holz* is neuter. Like *dem*, the adjective ends in *-em*: *aus altem Holz*.'
+  c20:
+    why: '*das Papier* is neuter and the object of *brauchen*. In the neuter accusative, the ending is *-es*, as in *das*: *neues Papier*. Only the masculine changes to *-en* in the accusative.'
+  c21:
+    why: '*trotz* takes the genitive, and *der Verkehr* is masculine. In the masculine and neuter genitive, the noun gets *-s* and the adjective ends in *-en*, not *-es*: *trotz starken Verkehrs*.'
+  c22:
+    why: 'After *einige*, the adjective takes the endings it has without an article. *Fragen* is plural accusative here, so the ending is *-e*: *einige offene Fragen*.'
+  c23:
+    why: '*Schuhe* is plural and the subject. With no article, the plural nominative ends in *-e*: *Neue Schuhe*. After *keine* or *meine* it would be *-en*.'
+  c24:
+    why: '*alle* works like *die*, so in the plural the adjective ends in *-en*: *alle alten Fotos*. After *viele* or *einige* it would be *-e*.'
+  c25:
+    why: '*die Schokolade* is feminine and the subject. With no article, the feminine nominative ends in *-e*, as in *die*: *Weiße Schokolade*.'
 
 austrianNotes:
   at1: The apple strudel comes with fresh whipped cream.

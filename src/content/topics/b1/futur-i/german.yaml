@@ -73,9 +73,9 @@ choice:
     answer: werdet
     options: [werdet, werden, wirst, wird]
   - id: c5
-    text: Meine Eltern ___ uns im Sommer besuchen.
-    answer: werden
-    options: [werden, werdet, wird, wirst]
+    text: Mein Mann wird dich um acht vom Bahnhof ___.
+    answer: abholen
+    options: [abholen, abgeholt, abholt, holt ab]
   - id: c6
     text: Was ___ ihr nach dem Kurs machen?
     answer: werdet
@@ -104,6 +104,18 @@ choice:
     text: Du ___ jetzt sofort dein Handy weglegen!
     answer: wirst
     options: [wirst, wird, werdet, werde]
+  - id: c13
+    text: Sie sagt, dass sie einen Kuchen ___.
+    answer: mitbringen wird
+    options: [mitbringen wird, wird mitbringen, mitbringt wird, mit wird bringen]
+  - id: c14
+    text: Es klingelt. Das ___ bestimmt der Postbote sein.
+    answer: wird
+    options: [wird, ist, werden, wirst]
+  - id: c15
+    text: Nächstes Jahr ___ mein Sohn zehn.
+    answer: wird
+    options: [wird, werden, wirst, werdet]
 
 wordOrder:
   - id: w1
@@ -140,6 +152,14 @@ wordOrder:
     punctuation: '!'
   - id: w8
     parts: ['er sagt,', dass, er, später, anrufen, wird]
+    fixed: true
+    punctuation: '.'
+  - id: w9
+    parts: [wie lange, wirst, du, in Wien, bleiben]
+    fixed: true
+    punctuation: '?'
+  - id: w10
+    parts: ['ich bin sicher,', dass, der Film, pünktlich, anfangen, wird]
     fixed: true
     punctuation: '.'
 

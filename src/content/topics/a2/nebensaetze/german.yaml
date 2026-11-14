@@ -47,56 +47,64 @@ examples:
 choice:
   - id: c1
     text: Ich glaube, ___.
-    answer: dass er recht hat
-    options: [dass er recht hat, dass er hat recht]
+    answer: dass er morgen kommen kann
+    options: [dass er morgen kommen kann, dass er morgen kann kommen, dass er kann morgen kommen, dass kann er morgen kommen]
   - id: c2
     text: Wir gehen spazieren, wenn ___.
     answer: das Wetter schön ist
-    options: [das Wetter schön ist, das Wetter ist schön]
+    options: [das Wetter schön ist, das Wetter ist schön, ist das Wetter schön, schön ist das Wetter]
   - id: c3
-    text: Wenn ich Zeit habe, ___.
-    answer: besuche ich dich
-    options: [besuche ich dich, ich besuche dich]
+    text: Wenn es morgen regnet, ___.
+    answer: bleiben wir zu Hause
+    options: [bleiben wir zu Hause, wir bleiben zu Hause, wir zu Hause bleiben, zu Hause bleiben wir]
   - id: c4
-    text: Weil es regnet, ___.
-    answer: nehme ich den Bus
-    options: [nehme ich den Bus, ich nehme den Bus]
+    text: Weil der Bus nicht kommt, ___.
+    answer: gehen wir zu Fuß
+    options: [gehen wir zu Fuß, wir gehen zu Fuß, wir zu Fuß gehen, zu Fuß gehen wir]
   - id: c5
     text: Ich bleibe zu Hause, ___ ich krank bin.
     answer: weil
-    options: [weil, denn, dass]
+    options: [weil, denn, dass, als]
   - id: c6
     text: Ich bleibe zu Hause, ___ ich bin krank.
     answer: denn
-    options: [denn, wenn, dass]
+    options: [denn, wenn, dass, weil]
   - id: c7
     text: Ich hoffe, ___ du bald kommst.
     answer: dass
-    options: [dass, wenn, weil]
+    options: [dass, wenn, weil, denn]
   - id: c8
     text: ___ ich Zeit habe, lese ich gern.
     answer: Wenn
-    options: [Wenn, Dass, Denn]
+    options: [Wenn, Dass, Denn, Als]
   - id: c9
     text: Sie sagt, ___ der Zug Verspätung hat.
     answer: dass
-    options: [dass, denn]
+    options: [dass, denn, weil, als]
   - id: c10
-    text: Ich lerne viel, weil ich die Prüfung ___.
-    answer: schaffen will
-    options: [schaffen will, will schaffen]
+    text: Ich lerne viel, weil ___.
+    answer: ich die Prüfung schaffen will
+    options: [ich die Prüfung schaffen will, ich will die Prüfung schaffen, ich die Prüfung will schaffen, will ich die Prüfung schaffen]
   - id: c11
-    text: Ich glaube, dass er schon ___.
-    answer: gegangen ist
-    options: [gegangen ist, ist gegangen]
+    text: Ich weiß, dass ___.
+    answer: du viel gearbeitet hast
+    options: [du viel gearbeitet hast, du hast viel gearbeitet, du viel hast gearbeitet, hast du viel gearbeitet]
   - id: c12
-    text: Ruf mich an, wenn du ___.
-    answer: ankommst
-    options: [ankommst, kommst an]
+    text: Sag mir Bescheid, wenn ___.
+    answer: der Film anfängt
+    options: [der Film anfängt, der Film fängt an, fängt der Film an, der Film an fängt]
   - id: c13
     text: Warum lernst du Deutsch? – ___ ich in Wien arbeite.
     answer: Weil
-    options: [Weil, Denn, Dass]
+    options: [Weil, Denn, Dass, Wenn]
+  - id: c14
+    text: ___ ich klein war, hatte ich einen Hund.
+    answer: Als
+    options: [Als, Wenn, Dass, Denn]
+  - id: c15
+    text: ___ ich nächstes Jahr in Wien bin, besuche ich dich.
+    answer: Wenn
+    options: [Wenn, Als, Dass, Denn]
 
 wordOrder:
   - id: w1
@@ -129,6 +137,14 @@ wordOrder:
     punctuation: '.'
   - id: w8
     parts: ['wenn ich Zeit habe,', besuche, ich, dich]
+    fixed: true
+    punctuation: '.'
+  - id: w9
+    parts: ['ich rufe dich an,', wenn, ich, zu Hause, ankomme]
+    fixed: true
+    punctuation: '.'
+  - id: w10
+    parts: ['ich hoffe,', dass, wir, uns, bald, sehen, können]
     fixed: true
     punctuation: '.'
 

@@ -8,3 +8,11 @@ sources:
     url: http://mediawiki.ids-mannheim.de/VarGra/index.php/Bildung_des_Perfekts
   - title: 'grammis (IDS Mannheim): Ich bin gesessen oder ich habe gesessen? Regionale Varianten beim Perfekt mit sein oder haben'
     url: https://grammis.ids-mannheim.de/fragen/87
+  - title: 'Duden: passieren (geschehen, sich ereignen: Perfektbildung mit „ist“)'
+    url: https://www.duden.de/rechtschreibung/passieren
+  - title: 'DWDS: passieren (geschehen: ist passiert)'
+    url: https://www.dwds.de/wb/passieren
+  - title: 'Duden: tanzen (Perfekt mit „hat“; mit „ist“ only for moving somewhere, e.g. durch den Saal tanzen)'
+    url: https://www.duden.de/rechtschreibung/tanzen
+  - title: 'DWDS: tanzen (dancing in place: haben; irgendwohin tanzen: sein)'
+    url: https://www.dwds.de/wb/tanzen

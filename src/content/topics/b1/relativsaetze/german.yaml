@@ -101,12 +101,12 @@ choice:
   # Word order
   - id: c14
     text: Das ist die Wohnung, ___.
-    answer: die ich gemietet habe
-    options: [die ich gemietet habe, die ich habe gemietet]
+    answer: die ich letztes Jahr gemietet habe
+    options: [die ich letztes Jahr gemietet habe, die ich letztes Jahr habe gemietet, die ich habe letztes Jahr gemietet, ich die letztes Jahr gemietet habe]
   - id: c15
     text: Der Mann, der dort steht, ___.
     answer: ist mein Lehrer
-    options: [ist mein Lehrer, mein Lehrer ist]
+    options: [ist mein Lehrer, mein Lehrer ist, mein Lehrer ist er, ist er mein Lehrer]
 
 wordOrder:
   - id: w1
@@ -143,6 +143,14 @@ wordOrder:
     parts: ['wie heißt die Firma,', für, die, du, arbeitest]
     fixed: true
     punctuation: '?'
+  - id: w9
+    parts: ['das ist ein Problem,', das, wir, schnell, lösen, müssen]
+    fixed: true
+    punctuation: '.'
+  - id: w10
+    parts: ['die Frau,', der, ich, den Weg, gezeigt, 'habe,', kommt, aus Spanien]
+    fixed: true
+    punctuation: '.'
 
 austrianNotes:
   - id: at1
