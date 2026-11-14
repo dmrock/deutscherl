@@ -52,32 +52,28 @@ choice:
     why: '*der Film* is *er*, and the ending is *-t*: *er beginnt*.'
   c14:
     why: 'The stem *wart-* ends in *-t*, so *ihr* gets *-et*: *ihr wartet*. *wartest* is the form for *du*.'
-
-wordOrder:
-  w1:
-    translation: Where do you live?
-    why: 'The question word *wo* comes first, then the verb *wohnst*, then the subject *du*.'
-  w2:
-    translation: Tomorrow we're visiting our grandma.
-    why: 'The verb *besuchen* is in position 2. *morgen*, *wir* or *unsere Oma* can come first. The present tense with *morgen* talks about the future.'
-  w3:
-    translation: Do you like cooking?
-    why: 'A yes/no question starts with the verb *kocht*, then the subject *ihr*. *gern* (gladly) means you like doing it.'
-  w4:
-    translation: My brother works in Linz.
-    why: 'The verb *arbeitet* is in position 2. *in Linz* can also come first; then *mein Bruder* moves after the verb.'
-  w5:
-    translation: What's your name?
-    why: 'The question word *wie* comes first, then the verb *heißt*, then the subject *du*.'
-  w6:
-    translation: It's raining today.
-    why: 'The verb *regnet* is in position 2. *heute* can also come first; then *es* moves after the verb.'
-  w7:
-    translation: Are you learning German?
-    why: 'A yes/no question starts with the verb *lernst*, then the subject *du*.'
-  w8:
-    translation: What are you doing at the weekend?
-    why: 'The question word *was* comes first, then the verb *machst*, then the subject *du*. The time *am Wochenende* goes at the end.'
+  c15:
+    why: 'The stem *find-* ends in *-d*, so *du* gets *-est*: *du findest*. Without the *-e-* you could not hear the ending, so *findst* does not exist.'
+  c16:
+    why: '*sie* here is Anna, one person, so the ending is *-t*: *sie macht*. *machen* would be *sie* for several people.'
+  c17:
+    why: 'The stem *find-* ends in *-d*, so *er* gets *-et*: *er findet*. *findt* does not exist.'
+  c18:
+    why: 'The subject is *ihr*, not the two names. The stem *antwort-* ends in *-t*, so *ihr* gets *-et*: *ihr antwortet*.'
+  c19:
+    why: 'The stem *sitz-* ends in *-z*, so *du* adds only *-t*: *du sitzt*. *sitzst* does not exist.'
+  c20:
+    why: '*öffnen* gets an extra *-e-* like the verbs with *-t* and *-d*: *du öffnest*. *Öffnet* is the form for *er* or *ihr*.'
+  c21:
+    why: 'Frau Berger is one person, but polite *Sie* always takes the infinitive form: *Sie kochen*. *kocht* would be *sie* (she).'
+  c22:
+    why: '*Meine Großeltern* are several people (*sie*), so the form is the infinitive: *leben*. *meine* goes with one woman and with the plural, so look at the noun.'
+  c23:
+    why: '*meine Schwester* is one person (*sie*), so the ending is *-t*: *fliegt*. With *nächste Woche*, the present tense talks about the future.'
+  c24:
+    why: '*es* is the baby (*das Baby*), and *es* takes *-t* like *er* and *sie*: *es weint*.'
+  c25:
+    why: '*sie* here means the shoes, several things, so the form is the infinitive: *sie kosten*. *kostet* would be for one thing.'
 
 austrianNotes:
   at1: Why are you moaning again?

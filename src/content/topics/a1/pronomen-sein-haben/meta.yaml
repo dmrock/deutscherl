@@ -18,3 +18,19 @@ sources:
     url: https://www.duden.de/rechtschreibung/Servus
   - title: 'DWDS: grüß Gott (Österreich, Südostdeutschland)'
     url: https://www.dwds.de/wb/gr%C3%BC%C3%9F%20Gott
+  - title: 'Duden: Handy (das)'
+    url: https://www.duden.de/rechtschreibung/Handy
+  - title: 'DWDS: Handy (das)'
+    url: https://www.dwds.de/wb/Handy
+  - title: 'DWDS: Kaffee (der, Getränk)'
+    url: https://www.dwds.de/wb/Kaffee
+  - title: 'Wiktionary: Kaffee (der)'
+    url: https://de.wiktionary.org/wiki/Kaffee
+  - title: 'Duden: Angst (Angst vor jemandem, etwas haben)'
+    url: https://www.duden.de/rechtschreibung/Angst
+  - title: 'DWDS: Angst ((keine) Angst haben)'
+    url: https://www.dwds.de/wb/Angst
+  - title: 'Duden: Geburtstag (Geburtstag haben)'
+    url: https://www.duden.de/rechtschreibung/Geburtstag
+  - title: 'DWDS: Geburtstag (er hat heute seinen 80. Geburtstag)'
+    url: https://www.dwds.de/wb/Geburtstag

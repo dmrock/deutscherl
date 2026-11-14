@@ -105,45 +105,50 @@ choice:
     text: Ihr ___ schon lange hier, oder?
     answer: wartet
     options: [wartet, wartest, warten, warte]
-
-wordOrder:
-  - id: w1
-    parts: [wo, wohnst, du]
-    fixed: true
-    punctuation: '?'
-  - id: w2
-    parts: [morgen, besuchen, wir, unsere Oma]
-    accept:
-      - [wir, besuchen, morgen, unsere Oma]
-      - [wir, besuchen, unsere Oma, morgen]
-      - [unsere Oma, besuchen, wir, morgen]
-    punctuation: '.'
-  - id: w3
-    parts: [kocht, ihr, gern]
-    fixed: true
-    punctuation: '?'
-  - id: w4
-    parts: [mein Bruder, arbeitet, in Linz]
-    accept:
-      - [in Linz, arbeitet, mein Bruder]
-    punctuation: '.'
-  - id: w5
-    parts: [wie, heißt, du]
-    fixed: true
-    punctuation: '?'
-  - id: w6
-    parts: [es, regnet, heute]
-    accept:
-      - [heute, regnet, es]
-    punctuation: '.'
-  - id: w7
-    parts: [lernst, du, Deutsch]
-    fixed: true
-    punctuation: '?'
-  - id: w8
-    parts: [was, machst, du, am Wochenende]
-    fixed: true
-    punctuation: '?'
+  - id: c15
+    text: ___ du den Film gut?
+    answer: Findest
+    options: [Findest, Findst, Findet, Finden]
+  - id: c16
+    text: Anna arbeitet viel. Was ___ sie am Wochenende?
+    answer: macht
+    options: [macht, machen, machst, mache]
+  - id: c17
+    text: Max sucht seinen Schlüssel, aber er ___ ihn nicht.
+    answer: findet
+    options: [findet, findt, findest, finden]
+  - id: c18
+    text: Lena und Tom, warum ___ ihr nicht?
+    answer: antwortet
+    options: [antwortet, antworten, antwortest, antworte]
+  - id: c19
+    text: Du ___ auf meinem Platz!
+    answer: sitzt
+    options: [sitzt, sitzst, sitze, sitzen]
+  - id: c20
+    text: Es ist warm hier. ___ du bitte das Fenster?
+    answer: Öffnest
+    options: [Öffnest, Öffnst, Öffnet, Öffnen]
+  - id: c21
+    text: Frau Berger, Sie ___ wirklich toll!
+    answer: kochen
+    options: [kochen, kocht, kochst, koche]
+  - id: c22
+    text: Meine Großeltern ___ auf dem Land.
+    answer: leben
+    options: [leben, lebt, lebst, lebe]
+  - id: c23
+    text: Nächste Woche ___ meine Schwester nach Rom.
+    answer: fliegt
+    options: [fliegt, fliegen, fliegst, fliege]
+  - id: c24
+    text: Das Baby hat Hunger. Es ___ schon wieder.
+    answer: weint
+    options: [weint, weinst, weinen, weine]
+  - id: c25
+    text: Die Schuhe sind schön. Wie viel ___ sie?
+    answer: kosten
+    options: [kosten, kostet, kostest, koste]
 
 austrianNotes:
   - id: at1

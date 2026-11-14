@@ -41,7 +41,7 @@ choice:
   c6:
     why: 'Polite *Sie* takes the same form as the plural *sie*: *Sie haben*.'
   c7:
-    why: '*Tisch* is masculine (*der Tisch*), so the pronoun is *er*, even for a thing.'
+    why: '*Tisch* is masculine (*der Tisch*), so the pronoun is *er*, even for a thing. *Ihr* is wrong anyway: *ihr* takes *seid*.'
   c8:
     why: '*Lampe* is feminine (*die Lampe*), so the pronoun is *sie*.'
   c9:
@@ -51,36 +51,33 @@ choice:
   c11:
     why: 'Age goes with *sein*, as in English. *Meine Tochter* is *sie* (one person), so the form is *ist*.'
   c12:
-    why: 'Tom and Lisa are two people, so the pronoun is *sie* (they). Here it starts the sentence, so it has a capital S.'
+    why: 'Tom and Lisa are two people, so the pronoun is *sie* (they), and *sein* with *sie* is *sind*. Here it starts the sentence, so it has a capital S. *Ihr seid* would mean you speak to them.'
   c13:
-    why: 'You speak to two friends, so the pronoun is *ihr*, and *sein* with *ihr* is *seid*.'
+    why: 'You speak to several children, so the pronoun is *ihr*, and *haben* with *ihr* is *habt*. German says "have hunger": *Hunger haben*.'
   c14:
     why: 'German says "have fear": *Angst haben*. *Das Kind* is *es*, so the form is *hat*.'
   c15:
     why: 'You do not know the man, so you use polite *Sie*. *Sie* takes *sind*.'
-
-wordOrder:
-  w1:
-    translation: I'm hungry.
-    why: 'The verb *habe* is in position 2. *Hunger* can also come first to stress it; then *ich* moves after the verb.'
-  w2:
-    translation: Are you at home today?
-    why: 'A yes/no question starts with the verb *bist*, then the subject *du*. *heute* (when) comes before *zu Hause* (where).'
-  w3:
-    translation: Do you have a room available?
-    why: 'A yes/no question starts with the verb *haben*, then the subject *Sie*. *frei* goes at the end.'
-  w4:
-    translation: Where are you?
-    why: 'The question word *wo* comes first, then the verb *seid*, then the subject *ihr*.'
-  w5:
-    translation: It's my mother's birthday today.
-    why: 'The verb *hat* is in position 2. *heute* can also come first; then *meine Mutter* moves after the verb.'
-  w6:
-    translation: Are you Ms Berger?
-    why: 'A yes/no question starts with the verb *sind*, then the subject *Sie*.'
-  w7:
-    translation: How old are you?
-    why: 'The question words *wie alt* come first, then the verb *bist*, then the subject *du*. Age goes with *sein*.'
+  c16:
+    why: 'Age goes with *sein*, not *haben*: *Wie alt sind deine Kinder?* *deine Kinder* are *sie* (they), so the form is *sind*.'
+  c17:
+    why: '*Schuhe* is plural, and the pronoun for a plural noun is always *sie* (they), also for things, so the verb is *sind*. *Sie ist* would be one feminine thing: *die* here is the plural article.'
+  c18:
+    why: 'You do not know the doctor, so you use polite *Sie*, not *du*: *du* is for friends, family and children. *Sie* takes *sind*, also for one person: *ist Sie* is wrong.'
+  c19:
+    why: 'You speak to your grandparents, two people you call *du*, so you use *ihr*. *sein* with *ihr* is *seid*, not *sind*.'
+  c20:
+    why: 'You speak to a small boy, so you use *du*. German says "have fear": *Angst haben*, so *hast du*, not *bist du*.'
+  c21:
+    why: '*Handy* is neuter (*das Handy*), so the pronoun is *es*. *mein* does not show this: it goes with masculine and neuter nouns.'
+  c22:
+    why: '*Kaffee* is masculine (*der Kaffee*), so the pronoun is *er*, not *es*, even though English says "it".'
+  c23:
+    why: 'German says "have birthday": *Geburtstag haben*. *mein Opa* is *er*, so the form is *hat*.'
+  c24:
+    why: '*die Kinder* are several people (*sie*), so *sein* is *sind*. The subject comes after the verb here, so look past the gap.'
+  c25:
+    why: 'You talk about Frau Novak, not to her, so she is *sie* (she), and *haben* with *sie* is *hat*. *haben* would be for *Sie*.'
 
 austrianNotes:
   at1: Hi, Martin! Do you have a moment?

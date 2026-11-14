@@ -85,15 +85,15 @@ choice:
   - id: c7
     text: Der Tisch ist neu. ___ ist aus Holz.
     answer: Er
-    options: [Er, Sie, Es]
+    options: [Er, Sie, Es, Ihr]
   - id: c8
     text: Die Lampe ist schön, aber ___ ist sehr teuer.
     answer: sie
-    options: [sie, er, es]
+    options: [sie, er, es, ihr]
   - id: c9
     text: Das Fahrrad ist neu. ___ ist rot.
     answer: Es
-    options: [Es, Er, Sie]
+    options: [Es, Er, Sie, Ihr]
   - id: c10
     text: Ich ___ Durst.
     answer: habe
@@ -103,13 +103,13 @@ choice:
     answer: ist
     options: [ist, hat, sind, habt]
   - id: c12
-    text: Wo sind Tom und Lisa? – ___ sind im Kino.
-    answer: Sie
-    options: [Sie, Er, Ihr, Du]
+    text: Wo sind Tom und Lisa? – ___ im Kino.
+    answer: Sie sind
+    options: [Sie sind, Ihr seid, Sie ist, Er ist]
   - id: c13
-    text: Hallo Anna, hallo Ben! ___ ihr schon fertig?
-    answer: Seid
-    options: [Seid, Sind, Bist, Ist]
+    text: Kinder, ___ ihr Hunger?
+    answer: habt
+    options: [habt, hat, habe, haben]
   - id: c14
     text: Das Kind ___ Angst.
     answer: hat
@@ -118,38 +118,46 @@ choice:
     text: Entschuldigung, ___ Sie Herr Gruber?
     answer: sind
     options: [sind, seid, ist, bist]
-
-wordOrder:
-  - id: w1
-    parts: [ich, habe, Hunger]
-    accept:
-      - [Hunger, habe, ich]
-    punctuation: '.'
-  - id: w2
-    parts: [bist, du, heute, zu Hause]
-    fixed: true
-    punctuation: '?'
-  - id: w3
-    parts: [haben, Sie, ein Zimmer, frei]
-    fixed: true
-    punctuation: '?'
-  - id: w4
-    parts: [wo, seid, ihr]
-    fixed: true
-    punctuation: '?'
-  - id: w5
-    parts: [meine Mutter, hat, heute, Geburtstag]
-    accept:
-      - [heute, hat, meine Mutter, Geburtstag]
-    punctuation: '.'
-  - id: w6
-    parts: [sind, Sie, Frau Berger]
-    fixed: true
-    punctuation: '?'
-  - id: w7
-    parts: [wie alt, bist, du]
-    fixed: true
-    punctuation: '?'
+  - id: c16
+    text: Wie alt ___ deine Kinder?
+    answer: sind
+    options: [sind, haben, seid, habt]
+  - id: c17
+    text: Die Schuhe sind neu. ___ sehr bequem.
+    answer: Sie sind
+    options: [Sie sind, Sie ist, Er ist, Es ist]
+  - id: c18
+    text: Entschuldigung, ___ hier die Ärztin?
+    answer: sind Sie
+    options: [sind Sie, ist Sie, bist du, seid ihr]
+  - id: c19
+    text: Oma, Opa, ___ schon wach?
+    answer: seid ihr
+    options: [seid ihr, sind ihr, bist du, sind Sie]
+  - id: c20
+    text: Na, Kleiner, ___ Angst vor dem Hund?
+    answer: hast du
+    options: [hast du, bist du, haben Sie, habt ihr]
+  - id: c21
+    text: Wo ist mein Handy? – ___ ist in der Küche.
+    answer: Es
+    options: [Es, Er, Sie, Ihr]
+  - id: c22
+    text: Schmeckt dein Kaffee? – Nein, ___ ist zu süß.
+    answer: er
+    options: [er, es, sie, ihr]
+  - id: c23
+    text: Heute ___ mein Opa Geburtstag.
+    answer: hat
+    options: [hat, ist, haben, sind]
+  - id: c24
+    text: Um neun Uhr ___ die Kinder schon im Bett.
+    answer: sind
+    options: [sind, ist, seid, bist]
+  - id: c25
+    text: Frau Novak ___ zwei Kinder.
+    answer: hat
+    options: [hat, haben, hast, habt]
 
 austrianNotes:
   - id: at1
