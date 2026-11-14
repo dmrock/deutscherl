@@ -67,7 +67,7 @@ choice:
   c19:
     why: '*in einem* is dative. After an article, the dative adjective always ends in *-en*, even though *einem* ends in *-em*: *in einem italienischen Restaurant*.'
   c20:
-    why: '*Fotos* is plural. After *meine* in the plural, the adjective ends in *-en*: *meine neuen Fotos*. *-e* in the plural comes only without an article: *neue Fotos*.'
+    why: '*Fotos* is plural. After *meine* in the plural, the adjective ends in *-en*: *meine neuen Fotos*. With an article, the plural ending is always *-en*.'
   c21:
     why: '*die Familie* is feminine and the subject. After *eine*, the ending is *-e*: *eine nette Familie*.'
   c22:
@@ -77,7 +77,7 @@ choice:
   c24:
     why: '*der Zug* is masculine, and *den* shows the accusative. After *den*, the ending is *-en*: *den nächsten Zug*.'
   c25:
-    why: '*das Zimmer* is neuter and in the accusative. After *das*, the ending is *-e*: *das große Zimmer*. *-es* comes only after *ein*, *kein* or a possessive like *mein*.'
+    why: '*das Zimmer* is neuter and in the accusative. After *das*, the ending is *-e*: *das große Zimmer*. After an article, *-es* comes after *ein*, *kein* or a possessive like *mein*.'
 
 austrianNotes:
   at1: I'd like a cold Coke, please.

@@ -29,7 +29,7 @@ choice:
   c5:
     why: '*als* follows, so you need the comparative. *groß* gets an umlaut: *größer*.'
   c6:
-    why: '*hoch* is irregular: *höher*, *am höchsten*. After *am*, the superlative always ends in *-sten*.'
+    why: '*hoch* is irregular: *höher*, *am höchsten*. After *am*, the superlative ends in *-en*: *am höchsten*, not *am höchste*.'
   c7:
     why: '*gern* is irregular: *lieber*, *am liebsten*. *lieber … als* means "prefer … to". The basic form *gern* cannot go with *als*.'
   c8:
@@ -43,7 +43,7 @@ choice:
   c12:
     why: '*als* follows, so you need the comparative. *jung* gets an umlaut: *jünger*.'
   c13:
-    why: 'Ten minutes is less than twenty, so by bike you are faster. For things that are not equal, use the comparative and *als*: *schneller als*. German adds *-er* instead of using *mehr* like English "more".'
+    why: 'Ten minutes is less than twenty, so by bike you are faster. For things that are not equal, use the comparative and *als*: *schneller als*. *mehr* with the basic form is wrong here: the comparative of *schnell* is *schneller*.'
   c14:
     why: 'After *am*, you need the superlative: *am schönsten*.'
   c15:
