@@ -50,93 +50,103 @@ choice:
   - id: c1
     text: ___ Tisch ist sehr groß.
     answer: Der
-    options: [Der, Die, Das]
+    options: [Der, Die, Das, Den]
   - id: c2
     text: ___ Zeitung ist von heute.
     answer: Die
-    options: [Die, Der, Das]
+    options: [Die, Der, Das, Den]
   - id: c3
     text: ___ Mädchen spielt im Garten.
     answer: Das
-    options: [Das, Die, Der]
+    options: [Das, Die, Der, Den]
   - id: c4
     text: ___ Brötchen sind frisch.
     answer: Die
-    options: [Die, Das, Der]
+    options: [Die, Das, Der, Den]
   - id: c5
     text: ___ Wohnung ist klein, aber schön.
     answer: Die
-    options: [Die, Der, Das]
+    options: [Die, Der, Das, Den]
   - id: c6
     text: Wie heißt ___ Lehrerin?
     answer: die
-    options: [die, der, das]
+    options: [die, der, das, den]
   - id: c7
     text: ___ Winter in Österreich ist kalt.
     answer: Der
-    options: [Der, Die, Das]
+    options: [Der, Die, Das, Den]
   - id: c8
     text: ___ Information ist sehr wichtig.
     answer: Die
-    options: [Die, Der, Das]
+    options: [Die, Der, Das, Den]
   - id: c9
     text: Das ist ___ Bäckerei.
     answer: eine
-    options: [eine, ein, einen]
+    options: [eine, ein, einen, einem]
   - id: c10
-    text: Das ist ___ Fahrrad.
+    text: Vor dem Haus steht ___ Fahrrad.
     answer: ein
-    options: [ein, eine, einen]
+    options: [ein, eine, einen, einem]
   - id: c11
-    text: Das ist ___ Stuhl.
+    text: Hier ist noch ___ Stuhl frei.
     answer: ein
-    options: [ein, eine, einen]
+    options: [ein, eine, einen, einem]
   - id: c12
     text: ___ Kühlschrank ist leer.
     answer: Der
-    options: [Der, Die, Das]
+    options: [Der, Die, Das, Den]
   - id: c13
     text: ___ Handy ist kaputt.
     answer: Das
-    options: [Das, Der, Die]
+    options: [Das, Der, Die, Den]
   - id: c14
     text: Wo ist ___ Schlüssel?
     answer: der
-    options: [der, die, das]
+    options: [der, die, das, den]
   - id: c15
     text: ___ Essen ist fertig!
     answer: Das
-    options: [Das, Der, Die]
-
-wordOrder:
-  - id: w1
-    parts: [wo, ist, die Zeitung]
-    fixed: true
-    punctuation: '?'
-  - id: w2
-    parts: [ist, das, ein Hund]
-    fixed: true
-    punctuation: '?'
-  - id: w3
-    parts: [wie, heißt, das Mädchen]
-    fixed: true
-    punctuation: '?'
-  - id: w4
-    parts: [wo, sind, die Kinder]
-    fixed: true
-    punctuation: '?'
-  - id: w5
-    parts: [ist, der Kühlschrank, leer]
-    fixed: true
-    punctuation: '?'
-  - id: w6
-    parts: [was, kostet, das Brötchen]
-    fixed: true
-    punctuation: '?'
-  - id: w7
-    parts: [ist, die Wohnung, groß]
-    fixed: true
-    punctuation: '?'
+    options: [Das, Der, Die, Den]
+  - id: c16
+    text: ___ Bahnhof ist nicht weit von hier.
+    answer: Der
+    options: [Der, Die, Das, Den]
+  - id: c17
+    text: ___ Äpfel sind sehr süß.
+    answer: Die
+    options: [Die, Der, Das, Den]
+  - id: c18
+    text: Wie alt ist ___ Kind?
+    answer: das
+    options: [das, der, die, den]
+  - id: c19
+    text: Das ist nur ___ Kleinigkeit.
+    answer: eine
+    options: [eine, ein, einen, einem]
+  - id: c20
+    text: ___ Kätzchen schläft auf dem Sofa.
+    answer: Das
+    options: [Das, Die, Der, Den]
+  - id: c21
+    text: ___ August war dieses Jahr sehr heiß.
+    answer: Der
+    options: [Der, Die, Das, Den]
+  - id: c22
+    text: ___ Ärztin kommt gleich.
+    answer: Die
+    options: [Die, Der, Das, Den]
+  - id: c23
+    text: ___ Verkäufer ist sehr nett.
+    answer: Der
+    options: [Der, Die, Das, Den]
+  - id: c24
+    text: Wir haben eine Katze. ___ Katze heißt Mimi.
+    answer: Die
+    options: [Die, Eine, Der, Ein]
+  - id: c25
+    text: ___ Mond ist heute sehr hell.
+    answer: Der
+    options: [Der, Ein, Die, Eine]
 
 austrianNotes:
   - id: at1

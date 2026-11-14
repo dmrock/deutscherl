@@ -82,7 +82,7 @@ What the existing topics have in common:
 - Summary: one or two short sentences, `*word*` for German words.
 - 2 to 7 `##` sections in sentence case, most often 4 to 6. A heading may hold German in `<De>`.
 - 8 to 30 examples, numbered `e1`, `e2`, …, usually two per case.
-- 10 to 19 choice items (`c1`, …) and 6 to 8 word-order items (`w1`, …).
+- Enough practice items for 5 rounds of 5 without a repeat: at least 15 choice items (`c1`, …) and at least 10 word-order items (`w1`, …) when word order is part of what the topic teaches, otherwise at least 25 choice items and no word-order items. Topics about forms (articles, cases, adjective endings, comparison, two-way prepositions) have no word order. The item rules are in `content.md`, "Exercise items".
 - Every topic so far has one Austrian note (`at1`), the Dativ two, placed after the section it belongs to. A topic without a confirmed Austrian note is allowed; say so in the plan.
 
 What the existing reference pages have in common:
@@ -113,7 +113,7 @@ Sections:
 ...
 
 Austrian note: <candidate, with the two sources that would confirm it>, or "none found"
-Exercises: <n> choice items on <what they test>; <n> word-order items on <what they test>
+Exercises: <n> choice items on <what they test>; <n> word-order items on <what they test>, or none for a topic about forms
 Sources to use: <list>
 Out of scope: <what this level leaves for a later topic>
 Site changes: <none, or the level/category changes above>
@@ -158,7 +158,7 @@ Work on a branch named after the task: `content/<level>-<slug>` for a topic (for
 ### Write the files in this order
 
 1. `meta.yaml`: `sources`, and for a topic `level`, `category`, `order`, and `buildsOn` when the plan names topics it builds on; for a reference page `order` and `levels`. Each source title says what it confirms (`'Duden: Keks (österreichisch: das Keks)'`). If the new page takes an order another page already has, move the other page and say so in the summary.
-2. `german.yaml`: all German of the page lives here and nowhere else. A topic has examples, choice items, word-order items and Austrian notes. A reference page has `tables`, examples and Austrian notes, and no choice or word-order items.
+2. `german.yaml`: all German of the page lives here and nowhere else. A topic has examples, choice items, word-order items (only when word order is part of what it teaches) and Austrian notes. A reference page has `tables`, examples and Austrian notes, and no choice or word-order items.
 3. `en.mdx`: the canonical explanation. The teacher verifies this page, and every other locale is translated from it.
 4. `i18n/en.yaml`: example translations and Austrian note translations; for a topic every `why` and word-order `translation`; for a reference page `columns`, `groups` and `glosses`.
 5. For every other locale in `src/i18n/locales.ts` (Russian today): `<locale>.mdx` and `i18n/<locale>.yaml`, translated from the meaning of the English page, following the locale's rules in `content.md`.
@@ -171,8 +171,8 @@ Writing the German and checking it are separate steps. After `german.yaml` is wr
 
 - Check each form, gender, auxiliary, rule and exception against two independent sources from the list in `content.md` (Duden, DWDS, grammis, Österreichisches Wörterbuch, Variantengrammatik, Variantenwörterbuch, established grammars and course material). Fetch the entries; do not rely on memory.
 - Fix what is wrong. Replace sentences that are correct but sound like a textbook with ones a native speaker would say.
-- For a topic, check every choice item: exactly one option fits the sentence. Read each wrong option in the gap and make sure no context makes it correct.
-- For a topic, check every word-order item: write down every order a native speaker would accept, and put each one other than `parts` in `accept`.
+- For a topic, check every choice item: exactly 4 options and exactly one fits the sentence. Read each wrong option in the gap and make sure no context makes it correct. Each distractor is a mistake a real learner makes, and no option can be found by elimination (see "Exercise items" in `content.md`).
+- For a topic with word order, check every word-order item: write down every order a native speaker would accept, and put each one other than `parts` in `accept`.
 - For a reference page, check every table cell, and check that every row earns its place under the scope rule above.
 - Add the sources you used to `meta.yaml`.
 - When no two sources confirm a point, rephrase it to what they do confirm, replace it with a confirmed example, or leave it out. Nothing stays open for the teacher.

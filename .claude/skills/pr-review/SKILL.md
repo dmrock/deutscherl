@@ -81,7 +81,7 @@ For changes under `src/content/topics/**`, `src/content/reference/**` and `src/c
 - German sentences: grammar, spelling, case, gender, verb forms, word order, and whether a native speaker would say it. A correct but unnatural sentence is a finding too; suggest a natural one.
 - Austrian usage only where it is real, established usage (Österreichisches Wörterbuch) and marked with `region: AT`.
 - Every fact and every Austrian note the change adds is backed by at least two independent sources listed in `sources` of the same folder's `meta.yaml`, and the text says no more than the sources do.
-- Choice items: exactly one correct option, every other option clearly wrong for the sentence, except a regional variant in `alsoCorrect`.
+- Choice items: exactly 4 options, exactly one correct option, every other option clearly wrong for the sentence, except a regional variant in `alsoCorrect`. No elimination tells: not three options of one gender, case or person and the answer of another, not only the answer with a certain ending, length or capital letter, no distractor wrong for a reason outside the topic.
 - Word-order items: `accept` lists every other valid full order.
 - Explanations state the rule correctly and match the examples in `german.yaml`. Translations and `why` texts match the German sentence.
 - Other locales match the meaning of the English explanation.

@@ -32,7 +32,7 @@ choice:
   c4:
     why: '*Hunger* is masculine and the direct object of *haben*, so *kein* becomes *keinen*.'
   c5:
-    why: 'Here you negate the verb, so you need *nicht*. It goes at the end, after the object *das*.'
+    why: 'There is no noun to negate, so you need *nicht*. It comes before the second verb *abholen* at the end.'
   c6:
     why: '*teuer* is an adjective. Adjectives take *nicht*, never *kein*.'
   c7:
@@ -40,22 +40,24 @@ choice:
   c8:
     why: '*Geschwister* (brothers and sisters) is plural and has no article in the positive, so it takes *keine*.'
   c9:
-    why: '*meinen Schlüssel* has *mein*, so you negate with *nicht*. It goes at the end, after the object.'
+    why: 'You negate the place (*nach Italien*), and there is no noun with *ein*, so you need *nicht*. It comes right before the place.'
   c10:
-    why: '*Alkohol* has no article in the positive and is masculine. As the direct object it takes *keinen*.'
+    why: '*Fleisch* has no article in the positive (*Ich esse Fleisch*), so it takes *kein*. *Fleisch* is neuter: *kein Fleisch*.'
   c11:
-    why: 'The question is negative, and the answer says "yes, I have time". That "yes" is *doch*.'
+    why: 'The question is negative, but the next sentence says you are coming, so the answer is "yes, I have time". After a negative question, that "yes" is *doch*, and the rest of the answer is positive.'
   c12:
-    why: 'The answer agrees with the negative question: I am not coming. That is *nein*.'
+    why: 'The next sentence says you are staying at home, so you agree with the negative question. That is *nein*, and the rest of the answer stays negative. *doch* would mean you are coming after all.'
   c13:
     why: 'Only the place is negated, and *sondern* gives the correct one. A place takes *nicht*.'
   c14:
     why: 'After *es gibt* comes the accusative. *Supermarkt* is masculine, so *ein* → *einen* → *keinen*.'
+  c15:
+    why: '*Milch* has no article in the positive (*Ich trinke Milch*), so it takes *kein*. *Milch* is feminine: *keine Milch*, also as the object of *trinken*.'
 
 wordOrder:
   w1:
-    translation: I'm not coming today.
-    why: '*nicht* negates the whole sentence, so it goes at the end, after the time word *heute*. *heute* can also come first. *nicht heute* is correct too, but then it negates only the day (*nicht heute, sondern morgen*).'
+    translation: I don't understand the question.
+    why: '*die Frage* has *die*, so you negate with *nicht*. To negate the whole sentence, *nicht* goes at the end, after the object. *die Frage* can also come first.'
   w2:
     translation: I don't know that.
     why: '*nicht* goes at the end, after the object *das*. *das* can also come first, which is very common.'
@@ -66,17 +68,23 @@ wordOrder:
     translation: He doesn't live in Vienna.
     why: '*nicht* comes before the place *in Wien*. When *in Wien* comes first, *nicht* stays at the end.'
   w5:
-    translation: We don't have time.
-    why: '*Zeit* has no article in the positive, so the negative is *keine Zeit*. *keine Zeit* can also come first to stress it.'
+    translation: I don't like the food.
+    why: '*nicht* negates the whole sentence, so it goes at the end, after *mir*. *mir* can also come first: *mir schmeckt das Essen nicht*.'
   w6:
     translation: Unfortunately I can't come.
     why: '*nicht* comes before the second verb *kommen* at the end. *leider* (unfortunately) can also come first.'
   w7:
-    translation: Aren't you hungry?
-    why: 'A yes/no question starts with the verb *hast*, then the subject *du*. *Hunger* is masculine: *keinen Hunger*.'
+    translation: Aren't you coming along?
+    why: 'A yes/no question starts with the verb *kommst*, then the subject *du*. *mitkommen* splits, and *mit* goes to the end. *nicht* comes right before it.'
   w8:
-    translation: That's not my phone.
-    why: '*mein Handy* has *mein*, so it takes *nicht*, right before it. When *mein Handy* comes first, *nicht* goes to the end.'
+    translation: He isn't at home.
+    why: '*nicht* comes before the place *zu Hause*. When *zu Hause* comes first, *nicht* stays at the end.'
+  w9:
+    translation: He doesn't want to see the film.
+    why: '*nicht* comes after the object *den Film* and before the second verb *sehen* at the end. *den Film* can also come first.'
+  w10:
+    translation: She isn't from Germany, but from Austria.
+    why: 'Only the place is negated, so *nicht* comes right before *aus Deutschland*. *sondern* then gives the correct place.'
 
 austrianNotes:
   at1: We're not going on holiday this year.

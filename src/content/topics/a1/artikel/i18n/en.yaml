@@ -42,9 +42,9 @@ choice:
   c9:
     why: '*Bäckerei* is feminine (*die Bäckerei*), so "a" is *eine*.'
   c10:
-    why: '*Fahrrad* is neuter (*das Fahrrad*), so "a" is *ein*. *einen* is only for masculine objects.'
+    why: '*Fahrrad* is neuter (*das Fahrrad*), and it is the subject here: it is what stands there. So "a" is *ein*. *einen* is only for masculine objects.'
   c11:
-    why: '*Stuhl* is masculine (*der Stuhl*). After *das ist* it is not an object, so "a" stays *ein*.'
+    why: '*Stuhl* is masculine (*der Stuhl*). It is the subject of *ist*, not an object, so "a" stays *ein*.'
   c12:
     why: 'In a compound noun the last part decides: *der Schrank*, so *der Kühlschrank*.'
   c13:
@@ -53,29 +53,26 @@ choice:
     why: '*Schlüssel* is masculine: *der Schlüssel*.'
   c15:
     why: 'A verb used as a noun is neuter: *essen* → *das Essen*.'
-
-wordOrder:
-  w1:
-    translation: Where's the newspaper?
-    why: 'The question word *wo* comes first, then the verb *ist*, then the subject *die Zeitung*.'
-  w2:
-    translation: Is that a dog?
-    why: 'A yes/no question starts with the verb *ist*. *das* (that) is the subject, and *ein Hund* comes after it.'
-  w3:
-    translation: What's the girl's name?
-    why: 'The question word *wie* comes first, then the verb *heißt*, then the subject *das Mädchen*.'
-  w4:
-    translation: Where are the children?
-    why: 'The question word *wo* comes first, then the verb *sind*, then the subject *die Kinder*.'
-  w5:
-    translation: Is the fridge empty?
-    why: 'A yes/no question starts with the verb *ist*, then the subject *der Kühlschrank*. *leer* goes at the end.'
-  w6:
-    translation: How much is the roll?
-    why: 'The question word *was* comes first, then the verb *kostet*, then the subject *das Brötchen*.'
-  w7:
-    translation: Is the flat big?
-    why: 'A yes/no question starts with the verb *ist*, then the subject *die Wohnung*. *groß* goes at the end.'
+  c16:
+    why: 'In a compound noun the last part decides: *die Bahn* + *der Hof* → *der Bahnhof*.'
+  c17:
+    why: 'The verb *sind* shows that this is the plural. *Apfel* is masculine (*der Apfel*), but in the plural every noun takes *die*: *die Äpfel*.'
+  c18:
+    why: '*Kind* (child) is neuter: *das Kind*, whether it is a boy or a girl.'
+  c19:
+    why: '*Kleinigkeit* (a small thing) ends in *-keit*, so it is feminine: *eine Kleinigkeit*.'
+  c20:
+    why: 'The ending *-chen* always gives *das*: *die Katze*, but *das Kätzchen* (the kitten).'
+  c21:
+    why: 'Months are masculine: *der August*, *der Mai*.'
+  c22:
+    why: 'A woman''s job with *-in* is feminine: *der Arzt*, but *die Ärztin*.'
+  c23:
+    why: 'Most nouns for people who do something, ending in *-er*, are masculine: *der Verkäufer* (the shop assistant). A woman is *die Verkäuferin*.'
+  c24:
+    why: 'The cat was mentioned before, so it is clear which cat: *die Katze*. *eine* is for the first time you mention it.'
+  c25:
+    why: 'There is only one moon, so it is clear which one you mean: *der Mond*. *ein* would mean one of many.'
 
 austrianNotes:
   at1: I'll write you an email later.
