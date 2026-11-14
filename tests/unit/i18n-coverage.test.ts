@@ -26,11 +26,11 @@ describe('i18n-coverage', () => {
     expect(requiredKeys(fixture.topic())).toEqual([
       'examples.e1',
       'examples.e2',
-      ...Array.from({ length: 10 }, (_, i) => `choice.c${i + 1}.why`),
-      'wordOrder.w1.translation',
-      'wordOrder.w1.why',
-      'wordOrder.w2.translation',
-      'wordOrder.w2.why',
+      ...Array.from({ length: 15 }, (_, i) => `choice.c${i + 1}.why`),
+      ...Array.from({ length: 10 }, (_, i) => [
+        `wordOrder.w${i + 1}.translation`,
+        `wordOrder.w${i + 1}.why`,
+      ]).flat(),
       'austrianNotes.at1',
     ]);
   });

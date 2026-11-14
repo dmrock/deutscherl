@@ -10,6 +10,7 @@ import type { z } from 'astro/zod';
 import { levelIds } from '../src/config/site.ts';
 import { isLocaleCode, type LocaleConfig, locales } from '../src/i18n/locales.ts';
 import {
+  CHOICE_OPTIONS,
   frontmatterSchema,
   type GermanContent,
   germanSchema,
@@ -37,8 +38,17 @@ export interface Issue {
   message: string;
 }
 
-/** Each choice topic needs at least this many items (`.claude/rules/content.md`). */
-export const MIN_CHOICE_ITEMS = 10;
+/*
+ * Pool sizes (`.claude/rules/content.md`): enough items for 5 rounds without a repeat. A round is
+ * 3 choice + 2 word-order items (`ROUND_COUNTS` in src/lib/exercises.ts), or 5 choice items in a
+ * topic without word order.
+ */
+/** Choice items a topic with word-order items needs */
+export const MIN_CHOICE_WITH_WORD_ORDER = 15;
+/** Word-order items a topic with word-order items needs */
+export const MIN_WORD_ORDER = 10;
+/** Choice items a topic without word-order items needs */
+export const MIN_CHOICE_WITHOUT_WORD_ORDER = 25;
 
 /**
  * Closed-class words that are never capitalized inside a sentence. A word-order part starting with
@@ -103,9 +113,30 @@ function schemaIssues(
   if (result.success) return true;
   for (const issue of result.error.issues) {
     const where = issue.path.length > 0 ? `${issue.path.join('.')}: ` : '';
-    issues.push({ topic, file: file.name, message: `${where}${issue.message}` });
+    const message = optionCountMessage(issue.path, file.data) ?? `${where}${issue.message}`;
+    issues.push({ topic, file: file.name, message });
   }
   return false;
+}
+
+/**
+ * The schema rejects a choice item without exactly CHOICE_OPTIONS options. The schema path only
+ * has the item's index, so this names the item by its id and gives the count.
+ */
+function optionCountMessage(path: readonly PropertyKey[], data: unknown): string | undefined {
+  const [section, index, field] = path;
+  if (
+    section !== 'choice' ||
+    typeof index !== 'number' ||
+    field !== 'options' ||
+    path.length !== 3
+  ) {
+    return undefined;
+  }
+  const item = (data as { choice?: { id?: unknown; options?: unknown }[] }).choice?.[index];
+  if (!Array.isArray(item?.options)) return undefined;
+  const name = typeof item.id === 'string' ? item.id : `#${index + 1}`;
+  return `choice ${name}: needs exactly ${CHOICE_OPTIONS} options (found ${item.options.length})`;
 }
 
 function checkWordOrder(item: WordOrderItem, add: (message: string) => void): void {
@@ -214,8 +245,19 @@ function checkGerman(
     if (german.choice.length > 0 || german.wordOrder.length > 0) {
       add('reference pages have no practice: remove choice and wordOrder');
     }
-  } else if (german.choice.length < MIN_CHOICE_ITEMS) {
-    add(`needs at least ${MIN_CHOICE_ITEMS} choice items (found ${german.choice.length})`);
+  } else if (german.wordOrder.length > 0) {
+    if (german.choice.length < MIN_CHOICE_WITH_WORD_ORDER) {
+      add(
+        `needs at least ${MIN_CHOICE_WITH_WORD_ORDER} choice items with word order (found ${german.choice.length})`,
+      );
+    }
+    if (german.wordOrder.length < MIN_WORD_ORDER) {
+      add(`needs at least ${MIN_WORD_ORDER} word-order items (found ${german.wordOrder.length})`);
+    }
+  } else if (german.choice.length < MIN_CHOICE_WITHOUT_WORD_ORDER) {
+    add(
+      `needs at least ${MIN_CHOICE_WITHOUT_WORD_ORDER} choice items without word order (found ${german.choice.length})`,
+    );
   }
 
   for (const item of german.wordOrder) checkWordOrder(item, add);

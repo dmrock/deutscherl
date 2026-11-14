@@ -8,43 +8,63 @@ choice:
   - id: c1
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c2
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c3
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c4
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c5
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c6
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c7
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c8
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c9
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
   - id: c10
     text: Ich ___ gegangen.
     answer: bin
-    options: [bin, habe]
+    options: [bin, habe, ist, hat]
+  - id: c11
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe, ist, hat]
+  - id: c12
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe, ist, hat]
+  - id: c13
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe, ist, hat]
+  - id: c14
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe, ist, hat]
+  - id: c15
+    text: Ich ___ gegangen.
+    answer: bin
+    options: [bin, habe, ist, hat]
 wordOrder:
   - id: w1
     parts: [ich, habe, einen Kaffee, getrunken]
@@ -55,6 +75,30 @@ wordOrder:
     parts: [wann, bist, du, gekommen]
     fixed: true
     punctuation: '?'
+  - id: w3
+    parts: [du, hast, gut, geschlafen]
+    punctuation: '.'
+  - id: w4
+    parts: [sie, ist, früh, aufgestanden]
+    punctuation: '.'
+  - id: w5
+    parts: [wir, sind, zu Hause, geblieben]
+    punctuation: '.'
+  - id: w6
+    parts: [er, hat, das Buch, gelesen]
+    punctuation: '.'
+  - id: w7
+    parts: [ihr, habt, lange, gewartet]
+    punctuation: '.'
+  - id: w8
+    parts: [sie, sind, nach Graz, gefahren]
+    punctuation: '.'
+  - id: w9
+    parts: [ich, bin, müde, geworden]
+    punctuation: '.'
+  - id: w10
+    parts: [du, hast, eine Pizza, bestellt]
+    punctuation: '.'
 austrianNotes:
   - id: at1
     de: 'Ich **bin** gesessen.'

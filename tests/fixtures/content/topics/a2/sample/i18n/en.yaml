@@ -22,6 +22,16 @@ choice:
     why: English why c9
   c10:
     why: English why c10
+  c11:
+    why: English why c11
+  c12:
+    why: English why c12
+  c13:
+    why: English why c13
+  c14:
+    why: English why c14
+  c15:
+    why: English why c15
 wordOrder:
   w1:
     translation: English w1
@@ -29,5 +39,29 @@ wordOrder:
   w2:
     translation: English w2
     why: English why w2
+  w3:
+    translation: English w3
+    why: English why w3
+  w4:
+    translation: English w4
+    why: English why w4
+  w5:
+    translation: English w5
+    why: English why w5
+  w6:
+    translation: English w6
+    why: English why w6
+  w7:
+    translation: English w7
+    why: English why w7
+  w8:
+    translation: English w8
+    why: English why w8
+  w9:
+    translation: English w9
+    why: English why w9
+  w10:
+    translation: English w10
+    why: English why w10
 austrianNotes:
   at1: English at1
