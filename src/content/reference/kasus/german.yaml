@@ -80,26 +80,20 @@ tables:
         cells: ['vor', 'vor **dem** Haus', 'vor **das** Haus']
       - id: zwischen
         cells: ['zwischen', 'zwischen **den** Stühlen', 'zwischen **die** Stühle']
-  # Preposition + article in one word
+  # Preposition + article in one word; – where there is no short form
   - id: short-forms
-    columns: [full, short]
+    columns: [preposition, plus-dem, plus-der, plus-das]
     rows:
-      - id: zum
-        cells: ['zu dem', '**zum**']
-      - id: zur
-        cells: ['zu der', '**zur**']
-      - id: beim
-        cells: ['bei dem', '**beim**']
-      - id: vom
-        cells: ['von dem', '**vom**']
-      - id: im
-        cells: ['in dem', '**im**']
-      - id: ins
-        cells: ['in das', '**ins**']
-      - id: am
-        cells: ['an dem', '**am**']
-      - id: ans
-        cells: ['an das', '**ans**']
+      - id: zu
+        cells: ['zu', '**zum**', '**zur**', '–']
+      - id: bei
+        cells: ['bei', '**beim**', '–', '–']
+      - id: von
+        cells: ['von', '**vom**', '–', '–']
+      - id: in
+        cells: ['in', '**im**', '–', '**ins**']
+      - id: an
+        cells: ['an', '**am**', '–', '**ans**']
   # Verbs: the bold words are the objects
   - id: verbs
     columns: [verb, example]
@@ -179,6 +173,3 @@ tables:
             cells: ['bitten', 'Darf ich **dich** um einen Gefallen bitten?']
           - id: besuchen
             cells: ['besuchen', 'Am Wochenende besuchen wir **unseren Onkel**.']
-austrianNotes:
-  - id: at1
-    de: 'Ich habe die Jacke **um** 40 Euro gekauft.'

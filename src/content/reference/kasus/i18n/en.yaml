@@ -1,15 +1,14 @@
 examples:
   e1: The bus only goes as far as the market square.
   e2: On the train, she sits opposite me.
-austrianNotes:
-  at1: I bought the jacket for 40 euros.
 columns:
   preposition: Preposition
   example: Example
   wo: '*Wo?* Dative'
   wohin: '*Wohin?* Accusative'
-  full: Preposition + article
-  short: Short form
+  plus-dem: '+ *dem*'
+  plus-der: '+ *der*'
+  plus-das: '+ *das*'
   verb: Verb
 groups:
   accusative: Always accusative
@@ -39,15 +38,15 @@ glosses:
   statt: instead of
   innerhalb: within, inside
   ausserhalb: outside
-  an: at, on (a side)
-  auf: on (top of)
-  hinter: behind
-  in: in, into
-  neben: next to
-  ueber: above, over
-  unter: under
-  vor: in front of
-  zwischen: between
+  an: 'at the window / to the window'
+  auf: 'on the table / onto the table'
+  hinter: 'behind the door / (go) behind the door'
+  in: 'at the cinema / to the cinema'
+  neben: 'next to the sofa / (put) next to the sofa'
+  ueber: 'above the bed / (hang) above the bed'
+  unter: 'under the table / (put) under the table'
+  vor: 'in front of the house / (put) in front of the house'
+  zwischen: 'between the chairs / (put) between the chairs'
   helfen: to help
   danken: to thank
   gefallen: to please, to be liked
