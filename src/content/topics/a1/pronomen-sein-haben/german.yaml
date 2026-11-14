@@ -125,7 +125,7 @@ choice:
   - id: c17
     text: Die Schuhe sind neu. ___ sehr bequem.
     answer: Sie sind
-    options: [Sie sind, Sie ist, Er ist, Es ist]
+    options: [Sie sind, Sie ist, Es sind, Es ist]
   - id: c18
     text: Entschuldigung, ___ hier die Ärztin?
     answer: sind Sie
