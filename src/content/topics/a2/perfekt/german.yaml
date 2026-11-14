@@ -125,6 +125,7 @@ wordOrder:
     punctuation: '?'
   - id: w9
     parts: [meine Schwester, hat, mir, ein Buch, geschenkt]
+    fixed: true
     punctuation: '.'
   - id: w10
     parts: [letzten Sommer, sind, wir, nach Italien, geflogen]
