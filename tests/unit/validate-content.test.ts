@@ -84,8 +84,8 @@ describe('validate-content', () => {
   it('fails when the answer is not one of the options', () => {
     change(
       'german.yaml',
-      /answer: bin\n {4}options: \[bin, habe\]/,
-      'answer: bin\n    options: [ist, habe]',
+      /answer: bin\n {4}options: \[bin, habe, ist, hat\]/,
+      'answer: bin\n    options: [war, habe, ist, hat]',
     );
     expect(issues()).toEqual(['german.yaml: choice c1: answer "bin" is not one of the options']);
   });
@@ -100,11 +100,11 @@ describe('validate-content', () => {
   it('fails when alsoCorrect is not one of the options or is the answer', () => {
     change(
       'german.yaml',
-      /( {2}- id: c10\n.*\n.*\n {4}options: \[bin, habe\]\n)/,
-      '$1    alsoCorrect:\n      - { value: ist, region: AT }\n      - { value: bin, region: AT }\n',
+      /( {2}- id: c10\n.*\n.*\n {4}options: \[bin, habe, ist, hat\]\n)/,
+      '$1    alsoCorrect:\n      - { value: war, region: AT }\n      - { value: bin, region: AT }\n',
     );
     expect(issues()).toEqual([
-      'german.yaml: choice c10: alsoCorrect "ist" is not one of the options',
+      'german.yaml: choice c10: alsoCorrect "war" is not one of the options',
       'german.yaml: choice c10: alsoCorrect "bin" is the answer',
     ]);
   });
@@ -117,11 +117,51 @@ describe('validate-content', () => {
     );
   });
 
-  it('fails with fewer than 10 choice items', () => {
-    change('german.yaml', / {2}- id: c10\n(?: {4}.*\n)+/, '');
-    change('i18n/en.yaml', / {2}c10:\n.*\n/, '');
-    change('i18n/ru.yaml', / {2}c10:\n.*\n/, '');
-    expect(issues()).toEqual(['german.yaml: needs at least 10 choice items (found 9)']);
+  it('fails on a choice item with 3 options', () => {
+    change(
+      'german.yaml',
+      /( {2}- id: c2\n.*\n.*\n {4})options: \[bin, habe, ist, hat\]/,
+      '$1options: [bin, habe, ist]',
+    );
+    expect(issues()).toEqual(['german.yaml: choice c2: needs exactly 4 options (found 3)']);
+  });
+
+  it('fails on a choice item with 5 options', () => {
+    change(
+      'german.yaml',
+      /( {2}- id: c2\n.*\n.*\n {4})options: \[bin, habe, ist, hat\]/,
+      '$1options: [bin, habe, ist, hat, war]',
+    );
+    expect(issues()).toEqual(['german.yaml: choice c2: needs exactly 4 options (found 5)']);
+  });
+
+  /** Removes one item from german.yaml and both i18n files. */
+  function removeItem(id: string): void {
+    change('german.yaml', new RegExp(` {2}- id: ${id}\\n(?: {4}.*\\n)+`), '');
+    for (const file of ['i18n/en.yaml', 'i18n/ru.yaml']) {
+      change(file, new RegExp(` {2}${id}:\\n(?: {4}.*\\n)+`), '');
+    }
+  }
+
+  it('fails with fewer than 15 choice items in a topic with word order', () => {
+    removeItem('c15');
+    expect(issues()).toEqual([
+      'german.yaml: needs at least 15 choice items with word order (found 14)',
+    ]);
+  });
+
+  it('fails with fewer than 10 word-order items', () => {
+    removeItem('w10');
+    expect(issues()).toEqual(['german.yaml: needs at least 10 word-order items (found 9)']);
+  });
+
+  it('fails with fewer than 25 choice items in a topic without word order', () => {
+    for (const file of ['german.yaml', 'i18n/en.yaml', 'i18n/ru.yaml']) {
+      change(file, /wordOrder:\n(?: .*\n)+/, '');
+    }
+    expect(issues()).toEqual([
+      'german.yaml: needs at least 25 choice items without word order (found 15)',
+    ]);
   });
 
   it('fails on a capitalized sentence-initial part', () => {
@@ -238,7 +278,7 @@ describe('validate-content: reference pages', () => {
     changePage(
       'german.yaml',
       'tables:',
-      'choice:\n  - id: c1\n    text: Er ___ nach Wien.\n    answer: fährt\n    options: [fährt, fahrt]\ntables:',
+      'choice:\n  - id: c1\n    text: Er ___ nach Wien.\n    answer: fährt\n    options: [fährt, fahrt, fahren, fährst]\ntables:',
     );
     expect(pageIssues()).toContain(
       'reference/sample/german.yaml: reference pages have no practice: remove choice and wordOrder',

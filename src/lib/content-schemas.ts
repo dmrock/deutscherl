@@ -53,12 +53,15 @@ export const exampleSchema = z.strictObject({
   region: regionSchema.optional(),
 });
 
+/** Every choice item has exactly this many options (`.claude/rules/content.md`). */
+export const CHOICE_OPTIONS = 4;
+
 export const choiceSchema = z.strictObject({
   id,
   /** Sentence with one `___` gap */
   text,
   answer: text,
-  options: z.array(text).min(2).max(4),
+  options: z.array(text).length(CHOICE_OPTIONS),
   alsoCorrect: z.array(z.strictObject({ value: text, region: regionSchema })).optional(),
 });
 

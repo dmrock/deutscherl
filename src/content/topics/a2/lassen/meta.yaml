@@ -2,11 +2,17 @@ level: a2
 category: verbs
 order: 2
 sources:
-  - title: 'Duden: lassen (Bedeutungen, Grammatik)'
+  - title: 'Duden: lassen (Bedeutungen, Grammatik; with an infinitive hat … lassen, e.g. laufen lassen/(seltener:) gelassen)'
     url: https://www.duden.de/rechtschreibung/lassen
-  - title: 'DWDS: lassen'
+  - title: 'DWDS: lassen (with a preceding infinitive, lassen instead of the Partizip II; in the sense "erlauben", gelassen possible when written together with the infinitive)'
     url: https://www.dwds.de/wb/lassen
   - title: 'Duden: Pickerl (österreichisch umgangssprachlich)'
     url: https://www.duden.de/rechtschreibung/Pickerl
   - title: 'DWDS: Pickerl (umgangssprachlich, A; Begutachtungsplakette)'
     url: https://www.dwds.de/wb/Pickerl
+  - title: 'Duden: Konjugation lassen (Partizip II gelassen; with an infinitive, Perfekt hat … lassen)'
+    url: https://www.duden.de/konjugation/lassen
+  - title: 'Duke University, German grammar overview: lassen (Perfekt with a second verb: Er hat sein Auto reparieren lassen)'
+    url: https://people.duke.edu/~waltheri/Grammar%20Overviews/Modals%20Semi%20Overview%20LASSEN.pdf
+  - title: 'Duden: offenlassen, also written offen lassen (lässt offen, hat offengelassen)'
+    url: https://www.duden.de/rechtschreibung/offenlassen

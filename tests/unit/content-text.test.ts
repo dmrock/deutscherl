@@ -37,10 +37,21 @@ describe('content schemas', () => {
   });
 
   it('checks choice option counts, punctuation and regions', () => {
-    const choice = { id: 'c1', text: 'Ich ___ da.', answer: 'bin', options: ['bin'] };
+    const choice = {
+      id: 'c1',
+      text: 'Ich ___ da.',
+      answer: 'bin',
+      options: ['bin', 'ist', 'bist'],
+    };
     expect(germanSchema.safeParse({ choice: [choice] }).success).toBe(false);
     expect(
-      germanSchema.safeParse({ choice: [{ ...choice, options: ['bin', 'habe'] }] }).success,
+      germanSchema.safeParse({
+        choice: [{ ...choice, options: [...choice.options, 'sind', 'war'] }],
+      }).success,
+    ).toBe(false);
+    expect(
+      germanSchema.safeParse({ choice: [{ ...choice, options: [...choice.options, 'sind'] }] })
+        .success,
     ).toBe(true);
     const wordOrder = { id: 'w1', parts: ['ich', 'bin'], punctuation: ';' };
     expect(germanSchema.safeParse({ wordOrder: [wordOrder] }).success).toBe(false);

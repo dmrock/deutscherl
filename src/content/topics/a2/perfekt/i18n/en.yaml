@@ -32,6 +32,16 @@ choice:
     why: '*bleiben* always forms the Perfekt with *sein*, even though nothing moves: *wir sind geblieben*. With *wir* the form is *sind*; *seid* goes with *ihr*.'
   c10:
     why: 'In Germany, *sitzen* forms the Perfekt with *haben*: *wir haben gesessen*. In Austria, *wir sind gesessen* is usual and also correct. With *wir*, *hat* and *ist* are the wrong forms.'
+  c11:
+    why: '*passieren* (to happen) forms the Perfekt with *sein*: *es ist passiert*. Learn it with the change-of-state verbs: something happens, and afterwards things are different. *was* is the subject here and counts as *es*, so the form is *ist*.'
+  c12:
+    why: '*sein* forms its own Perfekt with *sein*: *ihr seid gewesen*. With *ihr* the form is *seid*; *sind* goes with *wir* and *sie*.'
+  c13:
+    why: '*einschlafen* is a change of state (from awake to asleep), so the Perfekt uses *sein*. *Unsere Kinder* is plural (*sie*), so the form is *sind*. Compare *schlafen*, which uses *haben*.'
+  c14:
+    why: '*aufwachen* is a change of state (from asleep to awake), so the Perfekt uses *sein*. *Mein Mann* is *er*, so the form is *ist*.'
+  c15:
+    why: 'You move when you dance, but here you do not go to another place, so the Perfekt uses *haben*. With *wir* the form is *haben*; *habt* goes with *ihr*.'
 
 wordOrder:
   w1:
@@ -52,6 +62,18 @@ wordOrder:
   w6:
     translation: The children ate the pizza.
     why: '*haben* is in position 2 and *gegessen* at the end. The object *die Pizza* can also come first: *die Pizza haben die Kinder gegessen*. The meaning stays the same, because *haben* (plural) goes with *die Kinder*.'
+  w7:
+    translation: I got up very early today.
+    why: '*aufstehen* is a change of state, so *bin* is in position 2. The participle *aufgestanden* is one word and goes to the end. *heute* can also come first; then *ich* moves after the verb.'
+  w8:
+    translation: Where did you go on holiday?
+    why: 'The question word *wohin* comes first, then the verb *seid*, then the subject *ihr*. Going to another place uses *sein*, and *gefahren* goes to the end.'
+  w9:
+    translation: My sister gave me a book.
+    why: '*hat* is in position 2 and *geschenkt* at the end. The objects *mir* and *ein Buch* stand between them, and the short pronoun *mir* comes first.'
+  w10:
+    translation: Last summer we flew to Italy.
+    why: 'The time phrase *letzten Sommer* is in position 1, so the verb *sind* comes next, then *wir*. Flying to another place uses *sein*, and *geflogen* goes to the end. *wir* or *nach Italien* can also come first.'
 
 austrianNotes:
   at1: I sat in the office all day.

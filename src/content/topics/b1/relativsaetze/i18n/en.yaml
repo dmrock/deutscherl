@@ -47,9 +47,9 @@ choice:
   c13:
     why: '*von* always takes the dative, and *die Nachbarn* is plural, so it is *von denen*.'
   c14:
-    why: 'In a relative clause, the verb that changes with the person comes last: *gemietet habe*.'
+    why: 'In a relative clause, the pronoun *die* comes first and the verb that changes with the person comes last, after the participle: *gemietet habe*.'
   c15:
-    why: 'The noun and its relative clause are position 1 together, so the verb *ist* comes right after the second comma.'
+    why: 'The noun and its relative clause are position 1 together, so the verb *ist* comes right after the second comma, followed by *mein Lehrer*. No extra *er* is needed: *der Mann* is already the subject.'
 
 wordOrder:
   w1:
@@ -76,6 +76,12 @@ wordOrder:
   w8:
     translation: What's the name of the company you work for?
     why: 'The preposition *für* comes before the pronoun *die*. Then comes *du*, and *arbeitest* goes to the end.'
+  w9:
+    translation: 'That''s a problem we have to solve quickly.'
+    why: '*das* starts the clause, then the subject *wir*. With a modal verb, *müssen* comes last, after the infinitive *lösen*.'
+  w10:
+    translation: The woman I showed the way to is from Spain.
+    why: 'The relative clause comes right after *die Frau*. The dative *der* starts it, and *habe* comes last. Then the main clause goes on with its verb *kommt*.'
 
 austrianNotes:
   at1: The bag you brought is too small.

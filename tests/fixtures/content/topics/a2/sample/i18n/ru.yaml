@@ -22,6 +22,16 @@ choice:
     why: Russian placeholder why c9
   c10:
     why: Russian placeholder why c10
+  c11:
+    why: Russian placeholder why c11
+  c12:
+    why: Russian placeholder why c12
+  c13:
+    why: Russian placeholder why c13
+  c14:
+    why: Russian placeholder why c14
+  c15:
+    why: Russian placeholder why c15
 wordOrder:
   w1:
     translation: Russian placeholder w1
@@ -29,5 +39,29 @@ wordOrder:
   w2:
     translation: Russian placeholder w2
     why: Russian placeholder why w2
+  w3:
+    translation: Russian placeholder w3
+    why: Russian placeholder why w3
+  w4:
+    translation: Russian placeholder w4
+    why: Russian placeholder why w4
+  w5:
+    translation: Russian placeholder w5
+    why: Russian placeholder why w5
+  w6:
+    translation: Russian placeholder w6
+    why: Russian placeholder why w6
+  w7:
+    translation: Russian placeholder w7
+    why: Russian placeholder why w7
+  w8:
+    translation: Russian placeholder w8
+    why: Russian placeholder why w8
+  w9:
+    translation: Russian placeholder w9
+    why: Russian placeholder why w9
+  w10:
+    translation: Russian placeholder w10
+    why: Russian placeholder why w10
 austrianNotes:
   at1: Russian placeholder at1

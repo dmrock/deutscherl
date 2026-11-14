@@ -179,6 +179,18 @@ wordOrder:
     accept:
       - ['die Firma teilt mit,', neue Mitarbeiter, werde, sie, einstellen]
     punctuation: '.'
+  - id: w8
+    parts: ['der Gast bittet,', man, möge, ihm, ein Taxi, rufen]
+    fixed: true
+    punctuation: '.'
+  - id: w9
+    parts: ['sie schreibt,', dass, ihr Zug, pünktlich, angekommen, sei]
+    fixed: true
+    punctuation: '.'
+  - id: w10
+    parts: ['sie fragt,', wo, man, die Tickets, abhole]
+    fixed: true
+    punctuation: '.'
 
 austrianNotes:
   - id: at1

@@ -35,7 +35,7 @@ choice:
   c4:
     why: 'With *ihr*, the form is *werdet*: *ihr werdet schaffen*. *werden* goes with *wir* and *sie*.'
   c5:
-    why: '*Meine Eltern* is plural (*sie*), so the form is *werden*.'
+    why: 'The Futur I needs the infinitive at the end, and a separable verb stays in one piece: *er wird abholen*. *abgeholt* is the participle of the Perfekt, and *abholt* and *holt ab* are present-tense forms.'
   c6:
     why: 'With *ihr*, the form is *werdet*. After the question word *was*, the verb comes second and *machen* goes to the end.'
   c7:
@@ -50,6 +50,12 @@ choice:
     why: 'A guess about now: *er wird wohl liegen* (he is probably lying in bed). With *er* the form is *wird*; *werden* goes with *wir* and *sie*.'
   c12:
     why: 'A firm demand to *du*, so the form is *wirst*: *du wirst weglegen*.'
+  c13:
+    why: 'After *dass*, the form of *werden* goes to the very end, right after the infinitive: *dass sie einen Kuchen mitbringen wird*. The separable verb *mitbringen* stays in one piece; its front part *mit* does not go to the end.'
+  c14:
+    why: 'A guess about now: *das wird bestimmt der Postbote sein* (that''s surely the postman). *sein* is already at the end, so the verb in position 2 is *wird*. *werden* would go with a plural.'
+  c15:
+    why: 'Here *werden* is a full verb and means "to become": *unsere Zwillinge werden zehn* (our twins are turning ten). It needs no infinitive. *unsere Zwillinge* is plural (*sie*), so the form is *werden*; *werdet* goes with *ihr*.'
 
 wordOrder:
   w1:
@@ -76,6 +82,12 @@ wordOrder:
   w8:
     translation: He says he'll call later.
     why: 'After *dass*, the infinitive *anrufen* and then *wird* go to the end. The separable verb *anrufen* stays in one piece.'
+  w9:
+    translation: How long are you going to stay in Vienna?
+    why: 'The question word *wie lange* comes first, then *wirst*, then the subject *du*. The infinitive *bleiben* is at the end.'
+  w10:
+    translation: 'I''m sure the film will start on time.'
+    why: 'After *dass*, the infinitive *anfangen* and then *wird* go to the end. The separable verb *anfangen* stays in one piece.'
 
 austrianNotes:
   at1: I'm sure you'll pass the Matura!

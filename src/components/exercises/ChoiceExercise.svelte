@@ -1,5 +1,5 @@
 <!--
-  Multiple choice: a German sentence with one gap and 2–4 options (already shuffled). One click
+  Multiple choice: a German sentence with one gap and 4 options (already shuffled). One click
   answers; regional variants (`alsoCorrect`) count as correct.
 -->
 <script lang="ts">

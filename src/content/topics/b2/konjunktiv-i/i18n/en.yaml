@@ -89,6 +89,15 @@ wordOrder:
   w7:
     translation: The company announces that it will hire new staff.
     why: '*werde* is in position 2 and the infinitive *einstellen* at the end. *neue Mitarbeiter* can also come first; then *sie* moves after the verb.'
+  w8:
+    translation: The guest asks for a taxi to be called for him.
+    why: 'A polite request is reported with *möge* + infinitive. Without *dass*, *möge* is in position 2 and *rufen* at the end. The pronoun *ihm* comes before *ein Taxi*.'
+  w9:
+    translation: She writes that her train arrived on time.
+    why: 'The past is *sei* + past participle, because *ankommen* forms its Perfekt with *sein*. After *dass*, *sei* goes to the very end, after *angekommen*.'
+  w10:
+    translation: She asks where to pick up the tickets.
+    why: 'After the question word *wo*, the verb goes to the end, and the separable verb stays in one piece: *abhole*. For *man*, the Konjunktiv I is the stem + *-e*, like for *er*.'
 
 austrianNotes:
   at1: The minister said that the new law would apply from January.

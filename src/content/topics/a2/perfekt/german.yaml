@@ -63,6 +63,26 @@ choice:
     alsoCorrect:
       - value: sind
         region: AT
+  - id: c11
+    text: Was ___ passiert?
+    answer: ist
+    options: [ist, hat, sind, haben]
+  - id: c12
+    text: Wo ___ ihr im Sommer gewesen?
+    answer: seid
+    options: [seid, habt, sind, haben]
+  - id: c13
+    text: Unsere Kinder ___ um acht eingeschlafen.
+    answer: sind
+    options: [sind, haben, ist, hat]
+  - id: c14
+    text: Mein Mann ___ heute Nacht dreimal aufgewacht.
+    answer: ist
+    options: [ist, hat, sind, haben]
+  - id: c15
+    text: Wir ___ gestern die ganze Nacht getanzt.
+    answer: haben
+    options: [haben, sind, habt, seid]
 
 wordOrder:
   - id: w1
@@ -93,6 +113,25 @@ wordOrder:
     parts: [die, Kinder, haben, die, Pizza, gegessen]
     accept:
       - [die, Pizza, haben, die, Kinder, gegessen]
+    punctuation: '.'
+  - id: w7
+    parts: [ich, bin, heute, sehr früh, aufgestanden]
+    accept:
+      - [heute, bin, ich, sehr früh, aufgestanden]
+    punctuation: '.'
+  - id: w8
+    parts: [wohin, seid, ihr, im Urlaub, gefahren]
+    fixed: true
+    punctuation: '?'
+  - id: w9
+    parts: [meine Schwester, hat, mir, ein Buch, geschenkt]
+    fixed: true
+    punctuation: '.'
+  - id: w10
+    parts: [letzten Sommer, sind, wir, nach Italien, geflogen]
+    accept:
+      - [wir, sind, letzten Sommer, nach Italien, geflogen]
+      - [nach Italien, sind, wir, letzten Sommer, geflogen]
     punctuation: '.'
 
 austrianNotes:

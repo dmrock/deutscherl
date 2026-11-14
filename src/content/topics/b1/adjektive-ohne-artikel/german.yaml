@@ -129,39 +129,37 @@ choice:
     answer: Liebe
     options: [Liebe, Lieben, Lieber, Liebes]
   - id: c18
-    text: Danke, ___ Abend noch!
-    answer: schönen
-    options: [schönen, schöner, schönes, schönem]
-
-wordOrder:
-  - id: w1
-    parts: [bei, schönem, Wetter, essen, wir, im Garten]
-    fixed: true
-    punctuation: '.'
-  - id: w2
-    parts: [ich, trinke, Kaffee, mit, warmer, Milch]
-    fixed: true
-    punctuation: '.'
-  - id: w3
-    parts: [zum Frühstück, gibt, es, frisches, Brot]
-    fixed: true
-    punctuation: '.'
-  - id: w4
-    parts: [in Wien, habe, ich, viele, nette, Leute, kennengelernt]
-    fixed: true
-    punctuation: '.'
-  - id: w5
-    parts: [trotz, starken, Regens, sind, wir, spazieren gegangen]
-    fixed: true
-    punctuation: '.'
-  - id: w6
-    parts: [herzlichen, Glückwunsch, zum, Geburtstag]
-    fixed: true
-    punctuation: '!'
-  - id: w7
-    parts: [viele, Grüße, an, deine Eltern]
-    fixed: true
-    punctuation: '!'
+    text: Ich höre gern ___ Musik.
+    answer: klassische
+    options: [klassische, klassischer, klassischen, klassisches]
+  - id: c19
+    text: Der Tisch ist aus ___ Holz.
+    answer: altem
+    options: [altem, alten, altes, alter]
+  - id: c20
+    text: Wir brauchen ___ Papier für den Drucker.
+    answer: neues
+    options: [neues, neuen, neuer, neue]
+  - id: c21
+    text: Trotz ___ Verkehrs waren wir pünktlich.
+    answer: dichten
+    options: [dichten, dichtes, dichter, dichtem]
+  - id: c22
+    text: Ich habe noch einige ___ Fragen.
+    answer: offene
+    options: [offene, offenen, offener, offenes]
+  - id: c23
+    text: ___ Schuhe sind oft unbequem.
+    answer: Neue
+    options: [Neue, Neuen, Neuer, Neues]
+  - id: c24
+    text: Ich habe alle ___ Fotos gelöscht.
+    answer: alten
+    options: [alten, alte, alter, altes]
+  - id: c25
+    text: ___ Schokolade ist bei Kindern sehr beliebt.
+    answer: Weiße
+    options: [Weiße, Weißer, Weißes, Weißen]
 
 austrianNotes:
   - id: at1
