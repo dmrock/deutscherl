@@ -49,7 +49,7 @@ choice:
     answer: dem
     options: [dem, den, der, das]
   - id: c2
-    text: Ich lege das Buch auf ___ Tisch.
+    text: Leg die Zeitung bitte auf ___ Schrank.
     answer: den
     options: [den, dem, der, das]
   - id: c3
@@ -57,7 +57,7 @@ choice:
     answer: in den
     options: [in den, im, ins, in die]
   - id: c4
-    text: Die Milch steht ___ Kühlschrank.
+    text: Die Kinder spielen ___ Garten.
     answer: im
     options: [im, in den, ins, in der]
   - id: c5
@@ -65,7 +65,7 @@ choice:
     answer: an der
     options: [an der, an die, am, ans]
   - id: c6
-    text: Ich hänge das Bild ___ Wand.
+    text: Ich hänge den Kalender ___ Tür.
     answer: an die
     options: [an die, an der, ans, am]
   - id: c7

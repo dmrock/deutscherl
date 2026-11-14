@@ -83,9 +83,9 @@ choice:
     answer: schwarze
     options: [schwarze, schwarzen, schwarzer, schwarzes]
   - id: c7
-    text: Mein ___ Nachbar ist sehr laut.
-    answer: neuer
-    options: [neuer, neue, neuen, neues]
+    text: Mein ___ Hund ist sehr laut.
+    answer: kleiner
+    options: [kleiner, kleine, kleinen, kleines]
   - id: c8
     text: Ich fahre mit dem ___ Fahrrad zur Arbeit.
     answer: alten
@@ -119,17 +119,17 @@ choice:
     answer: Wiener
     options: [Wiener, Wieneren, Wienerem, Wienern]
   - id: c16
-    text: Ich spreche mit den ___ Nachbarn.
-    answer: neuen
-    options: [neuen, neue, neuer, neuem]
+    text: Ich spreche gern mit den ___ Nachbarn.
+    answer: freundlichen
+    options: [freundlichen, freundliche, freundlicher, freundlichem]
   - id: c17
     text: Ich verkaufe mein ___ Auto.
     answer: altes
     options: [altes, alten, alte, alter]
   - id: c18
     text: In unserer Straße hat ein ___ Supermarkt aufgemacht.
-    answer: neuer
-    options: [neuer, neuen, neue, neues]
+    answer: großer
+    options: [großer, großen, große, großes]
   - id: c19
     text: Gestern haben wir in einem ___ Restaurant gegessen.
     answer: italienischen

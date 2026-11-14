@@ -25,15 +25,15 @@ choice:
   c1:
     why: 'The book is somewhere (*Wo?*), so *auf* takes the dative. *Tisch* is masculine: *dem Tisch*.'
   c2:
-    why: 'You put the book somewhere (*Wohin?*), so *auf* takes the accusative. *Tisch* is masculine: *den Tisch*.'
+    why: 'You put the newspaper somewhere (*Wohin?*), so *auf* takes the accusative. *Schrank* is masculine: *auf den Schrank*.'
   c3:
     why: 'You put the milk somewhere (*Wohin?*): accusative. *Kühlschrank* is masculine: *in den Kühlschrank*. *im* is the dative.'
   c4:
-    why: 'The milk is somewhere (*Wo?*): dative. *Kühlschrank* is masculine, and *in dem* becomes *im*.'
+    why: 'The children are somewhere (*Wo?*): dative. *Garten* is masculine, and *in dem* becomes *im*.'
   c5:
     why: 'The picture is somewhere (*Wo?*): dative. *Wand* is feminine: *an der Wand*.'
   c6:
-    why: 'You put the picture somewhere (*Wohin?*): accusative. *Wand* is feminine: *an die Wand*.'
+    why: 'You put the calendar somewhere (*Wohin?*): accusative. *Tür* is feminine: *an die Tür*.'
   c7:
     why: 'Sitting down is a movement to a place (*Wohin?*), so *neben* takes the accusative. *Schwester* is feminine: *neben meine Schwester*.'
   c8:

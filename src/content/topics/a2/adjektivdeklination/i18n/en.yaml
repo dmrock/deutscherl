@@ -41,7 +41,7 @@ choice:
   c6:
     why: '*die Hose* is feminine and in the accusative. After *die*, the feminine accusative has *-e*, the same as the nominative: *die schwarze Hose*. Only the masculine changes to *-en* in the accusative.'
   c7:
-    why: '*der Nachbar* is masculine and the subject. *mein* has no ending, so the adjective shows the masculine with *-er*: *mein neuer Nachbar*.'
+    why: '*der Hund* is masculine and the subject. *mein* has no ending, so the adjective shows the masculine with *-er*: *mein kleiner Hund*.'
   c8:
     why: '*mit* takes the dative, *mit dem*. In the dative the adjective always ends in *-en*: *mit dem alten Fahrrad*.'
   c9:
@@ -59,11 +59,11 @@ choice:
   c15:
     why: '*vor dem* is dative, but *Wiener* still gets no ending. Adjectives made from city names with *-er* keep the same form in every gender and case: *vor dem Wiener Rathaus*.'
   c16:
-    why: '*mit* takes the dative, and *den Nachbarn* is plural. In the dative the adjective always ends in *-en*: *mit den neuen Nachbarn*.'
+    why: '*mit* takes the dative, and *den Nachbarn* is plural. In the dative the adjective always ends in *-en*: *mit den freundlichen Nachbarn*.'
   c17:
     why: '*das Auto* is neuter and in the accusative. *mein* has no ending, so the adjective shows the neuter with *-es*: *mein altes Auto*.'
   c18:
-    why: '*der Supermarkt* is masculine and the subject. *ein* has no ending, so the adjective shows the masculine with *-er*: *ein neuer Supermarkt*.'
+    why: '*der Supermarkt* is masculine and the subject. *ein* has no ending, so the adjective shows the masculine with *-er*: *ein großer Supermarkt*.'
   c19:
     why: '*in einem* is dative. After an article, the dative adjective always ends in *-en*, even though *einem* ends in *-em*: *in einem italienischen Restaurant*.'
   c20:
