@@ -14,3 +14,19 @@ sources:
     url: https://www.duden.de/rechtschreibung/raunzen
   - title: 'DWDS: raunzen'
     url: https://www.dwds.de/wb/raunzen
+  - title: 'DWDS: finden (er findet; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/finden
+  - title: 'Wiktionary: Flexion finden (du findest, er findet, ihr findet)'
+    url: https://de.wiktionary.org/wiki/Flexion:finden
+  - title: 'DWDS: antworten (antwortet)'
+    url: https://www.dwds.de/wb/antworten
+  - title: 'Wiktionary: Flexion antworten (du antwortest, ihr antwortet)'
+    url: https://de.wiktionary.org/wiki/Flexion:antworten
+  - title: 'DWDS: sitzen (sitzt)'
+    url: https://www.dwds.de/wb/sitzen
+  - title: 'Wiktionary: Flexion sitzen (du sitzt)'
+    url: https://de.wiktionary.org/wiki/Flexion:sitzen
+  - title: 'DWDS: öffnen (öffnet)'
+    url: https://www.dwds.de/wb/%C3%B6ffnen
+  - title: 'Wiktionary: Flexion öffnen (du öffnest)'
+    url: https://de.wiktionary.org/wiki/Flexion:%C3%B6ffnen

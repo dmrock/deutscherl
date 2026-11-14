@@ -25,15 +25,15 @@ examples:
 
 choice:
   c1:
-    why: '*heute* is in position 1, so the verb *gehe* comes second and the subject *ich* after it.'
+    why: '*heute* is in position 1, so the verb *gehe* comes second and the subject *ich* right after it. *ins Kino* goes after them.'
   c2:
-    why: '*am Wochenende* is one part in position 1. The verb *besuche* comes second, then *ich*.'
+    why: '*am Wochenende* is one part in position 1. The verb *besuche* comes second, then *ich*. The subject does not go to the end.'
   c3:
-    why: 'The object *Deutsch* is in position 1 to stress it. The verb still comes second, then *ich*.'
+    why: 'The object *Deutsch* is in position 1 to stress it. The verb *lerne* still comes second, then *ich*. *seit einem Jahr* cannot also stand before the verb.'
   c4:
-    why: 'In a question, the question word comes first and the verb second: *wo wohnst du*.'
+    why: 'In a question, the question word comes first, the verb second and the subject right after it: *wo wohnst du*. *jetzt* goes after them.'
   c5:
-    why: 'The question word *was* is in position 1, so the verb *machst* comes second, then *du*.'
+    why: 'The question word *was* is in position 1, so the modal verb *möchtest* comes second, then *du*. The second verb *essen* goes to the end.'
   c6:
     why: 'The answer is a place someone comes from (*aus Polen*), so you ask with *woher*.'
   c7:
@@ -43,18 +43,22 @@ choice:
   c9:
     why: 'The answer is a time (*um acht Uhr*), so you ask with *wann*.'
   c10:
-    why: 'You ask for a name with *wie*: *Wie heißt du?*'
+    why: '*morgen* is in position 1, so *muss* comes second, then *ich*. After a modal verb, *aufstehen* goes to the end in one piece.'
   c11:
-    why: 'With the modal verb *möchte* in position 2, the second verb goes to the end in its basic form: *essen*.'
+    why: 'With the modal verb *möchte* in position 2, the second verb goes to the end in its basic form: *essen*. *esse*, *isst* and *esst* change with the person.'
   c12:
-    why: '*abfahren* is a separable verb. *fährt* is in position 2, and *ab* is already at the end.'
+    why: '*abfahren* is a separable verb. *fährt* is in position 2, and *ab* goes to the end: *fährt gleich ab*.'
   c13:
-    why: '*denn* does not take a position. The sentence after it starts with *es*, and the verb *regnet* comes second.'
+    why: '*denn* does not take a position. The sentence after it starts with *ich*, and the verb *bin* comes second. Verb last is for *weil*, not *denn*.'
+  c14:
+    why: '*aber* does not take a position. After it, *am Sonntag* is in position 1, so the verb *schlafe* comes second, then *ich*.'
+  c15:
+    why: 'The question word *wann* comes first, the modal verb *kannst* second, then *du*. After a modal verb, *abholen* goes to the end in one piece.'
 
 wordOrder:
   w1:
-    translation: I live in Graz.
-    why: 'The verb *wohne* comes second. *in Graz* can also come first, and then *ich* goes after the verb.'
+    translation: It's late, but I still have to work.
+    why: '*aber* does not take a position, so *ich* is in position 1 and *muss* second. The second verb *arbeiten* goes to the end. *aber* can also stand after the verb: *ich muss aber noch arbeiten*.'
   w2:
     translation: I'm off on Monday.
     why: '*am Montag* is in position 1, so the verb *habe* comes second and *ich* right after it.'
@@ -65,17 +69,23 @@ wordOrder:
     translation: When does the film start?
     why: 'The question word *wann* comes first and the verb *fängt* second, then the subject *der Film*. *an* from *anfangen* goes to the end.'
   w5:
-    translation: Do you speak English?
-    why: 'A yes/no question starts with the verb *sprechen*, then the subject *Sie*.'
+    translation: On Saturday I tidy my room.
+    why: '*am Samstag* is in position 1, so *räume* comes second, then *ich*. *auf* from *aufräumen* goes to the end.'
   w6:
-    translation: Where do you live?
-    why: 'The question word *wo* comes first, the verb *wohnst* second, then *du*.'
+    translation: Would you like to drink a coffee?
+    why: 'A yes/no question starts with the verb *möchtest*, then *du*. The second verb *trinken* goes to the end.'
   w7:
     translation: What are you doing at the weekend?
     why: 'The question word *was* comes first, then the verb *machst* and the subject *du*. *am Wochenende* goes after them.'
   w8:
     translation: Can you help me?
     why: 'A yes/no question starts with the verb *kannst*, then *du*. The second verb *helfen* goes to the end.'
+  w9:
+    translation: I'll call you this evening.
+    why: '*heute Abend* is in position 1, so *rufe* comes second, then *ich* and *dich*. *an* from *anrufen* goes to the end.'
+  w10:
+    translation: Where can I park here?
+    why: 'The question word *wo* comes first and the modal verb *kann* second, then *ich*. The second verb *parken* goes to the end.'
 
 austrianNotes:
   at1: The new course starts in January.

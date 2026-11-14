@@ -18,3 +18,7 @@ sources:
     url: https://www.duden.de/rechtschreibung/Jaenner
   - title: 'DWDS: Jänner (standardsprachlich nur in Österreich)'
     url: https://www.dwds.de/wb/J%C3%A4nner
+  - title: 'Duden: aber (Konjunktion; after the finite verb: einer von uns muss es aber gewesen sein)'
+    url: https://www.duden.de/rechtschreibung/aber_Konjunktion_Bedeutung_doch
+  - title: 'Wiktionary: aber (Konjunktion; after the finite verb: Irgendeiner muss aber jetzt in den sauren Apfel beißen)'
+    url: https://de.wiktionary.org/wiki/aber

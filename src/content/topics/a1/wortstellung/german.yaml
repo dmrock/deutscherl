@@ -52,25 +52,25 @@ examples:
 
 choice:
   - id: c1
-    text: Heute ___ ins Kino.
-    answer: gehe ich
-    options: [gehe ich, ich gehe]
+    text: Heute ___.
+    answer: gehe ich ins Kino
+    options: [gehe ich ins Kino, ich gehe ins Kino, ins Kino gehe ich, ich ins Kino gehe]
   - id: c2
-    text: Am Wochenende ___ meine Eltern.
-    answer: besuche ich
-    options: [besuche ich, ich besuche]
+    text: Am Wochenende ___.
+    answer: besuche ich meine Eltern
+    options: [besuche ich meine Eltern, ich besuche meine Eltern, besuche meine Eltern ich, ich meine Eltern besuche]
   - id: c3
-    text: Deutsch ___ seit einem Jahr.
-    answer: lerne ich
-    options: [lerne ich, ich lerne]
+    text: Deutsch ___.
+    answer: lerne ich seit einem Jahr
+    options: [lerne ich seit einem Jahr, ich lerne seit einem Jahr, seit einem Jahr lerne ich, lerne seit einem Jahr ich]
   - id: c4
     text: Wo ___?
-    answer: wohnst du
-    options: [wohnst du, du wohnst]
+    answer: wohnst du jetzt
+    options: [wohnst du jetzt, du wohnst jetzt, jetzt wohnst du, jetzt du wohnst]
   - id: c5
-    text: Was ___ am Abend?
-    answer: machst du
-    options: [machst du, du machst]
+    text: Was ___?
+    answer: möchtest du essen
+    options: [möchtest du essen, du möchtest essen, möchtest essen du, essen möchtest du]
   - id: c6
     text: ___ kommst du? – Aus Polen.
     answer: Woher
@@ -88,27 +88,36 @@ choice:
     answer: Wann
     options: [Wann, Wo, Wer, Was]
   - id: c10
-    text: ___ heißt du? – Anna.
-    answer: Wie
-    options: [Wie, Was, Wer, Wo]
+    text: Morgen ___.
+    answer: muss ich früh aufstehen
+    options: [muss ich früh aufstehen, ich muss früh aufstehen, muss ich früh stehen auf, ich früh aufstehen muss]
   - id: c11
     text: Ich möchte heute Pizza ___.
     answer: essen
-    options: [essen, esse, isst]
+    options: [essen, esse, isst, esst]
   - id: c12
-    text: Der Zug ___ um zehn Uhr ab.
-    answer: fährt
-    options: [fährt, abfährt, fahren]
+    text: Der Zug ___.
+    answer: fährt gleich ab
+    options: [fährt gleich ab, abfährt gleich, gleich abfährt, gleich fährt ab]
   - id: c13
-    text: Wir gehen heute nicht spazieren, denn ___.
-    answer: es regnet
-    options: [es regnet, regnet es]
+    text: Ich bleibe zu Hause, ___.
+    answer: denn ich bin krank
+    options: [denn ich bin krank, denn bin ich krank, denn ich krank bin, ich bin krank denn]
+  - id: c14
+    text: Am Samstag arbeite ich, aber am Sonntag ___.
+    answer: schlafe ich lange
+    options: [schlafe ich lange, ich schlafe lange, ich lange schlafe, schlafe lange ich]
+  - id: c15
+    text: Wann ___?
+    answer: kannst du mich abholen
+    options: [kannst du mich abholen, du kannst mich abholen, kannst du mich holen ab, kannst du abholen mich]
 
 wordOrder:
   - id: w1
-    parts: [ich, wohne, in Graz]
+    parts: ['es ist spät,', aber, ich, muss, noch, arbeiten]
+    fixed: true
     accept:
-      - [in Graz, wohne, ich]
+      - ['es ist spät,', ich, muss, aber, noch, arbeiten]
     punctuation: '.'
   - id: w2
     parts: [am Montag, habe, ich, frei]
@@ -123,11 +132,11 @@ wordOrder:
     fixed: true
     punctuation: '?'
   - id: w5
-    parts: [sprechen, Sie, Englisch]
+    parts: [am Samstag, räume, ich, mein Zimmer, auf]
     fixed: true
-    punctuation: '?'
+    punctuation: '.'
   - id: w6
-    parts: [wo, wohnst, du]
+    parts: [möchtest, du, einen Kaffee, trinken]
     fixed: true
     punctuation: '?'
   - id: w7
@@ -136,6 +145,14 @@ wordOrder:
     punctuation: '?'
   - id: w8
     parts: [kannst, du, mir, helfen]
+    fixed: true
+    punctuation: '?'
+  - id: w9
+    parts: [heute Abend, rufe, ich, dich, an]
+    fixed: true
+    punctuation: '.'
+  - id: w10
+    parts: [wo, kann, ich, hier, parken]
     fixed: true
     punctuation: '?'
 
