@@ -1,0 +1,56 @@
+order: 3
+levels: [a1, a2, b1]
+sources:
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Wortliste (durch, für, gegen, ohne, um, bis, aus, bei, mit, nach, seit, von, zu, an, auf, in, über, unter, vor, zwischen; helfen, danken, gefallen, gehören, antworten, gratulieren, schmecken, fehlen, glauben)'
+    url: https://www.goethe.de/pro/relaunch/prf/de/A1_SD1_Wortliste_02.pdf
+  - title: 'Goethe-Institut: Goethe-Zertifikat A2, Wortliste (hinter, neben, gegenüber, wegen, außerhalb; passen, wehtun, leidtun, zuhören, schenken, zeigen, leihen, wünschen)'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Goethe-Zertifikat_A2_Wortliste.pdf
+  - title: 'Goethe-Institut: Goethe-Zertifikat B1, Wortliste (trotz, während, statt, innerhalb; folgen, begegnen, vertrauen)'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Goethe-Zertifikat_B1_Wortliste.pdf
+  - title: 'Hueber: Menschen B1, Grammatikübersicht (Präposition trotz, innerhalb und außerhalb mit Genitiv, Lektion 12)'
+  - title: 'Duden: durch, für, gegen, ohne, um, bis (Präposition mit Akkusativ)'
+    url: https://www.duden.de/rechtschreibung/durch_mittels
+  - title: 'DWDS: durch, für, gegen, ohne, um, bis (Präposition mit Akkusativ)'
+    url: https://www.dwds.de/wb/durch
+  - title: 'Duden: bis (auch in Verbindung mit einer anderen, den Kasus bestimmenden Präposition: bis zum Jahresende)'
+    url: https://www.duden.de/rechtschreibung/bis_Praeposition
+  - title: 'DWDS: bis (mit Akkusativ eines artikellosen Nomens oder mit einer weiteren Präposition, die den folgenden Kasus bestimmt; bis nächsten Dienstag)'
+    url: https://www.dwds.de/wb/bis
+  - title: 'Duden: aus, bei, mit, nach, seit, von, zu, gegenüber (Präposition mit Dativ)'
+    url: https://www.duden.de/rechtschreibung/zu_Praeposition
+  - title: 'DWDS: aus, bei, mit, nach, seit, von, zu, gegenüber (Präposition mit Dativ)'
+    url: https://www.dwds.de/wb/zu
+  - title: 'Duden: gegenüber (gegenüber dem Rathaus / dem Rathaus gegenüber; mir gegenüber)'
+    url: https://www.duden.de/rechtschreibung/gegenueber_Praeposition
+  - title: 'DWDS: gegenüber (ihr gegenüber, seinem Bruder gegenüber)'
+    url: https://www.dwds.de/wb/gegenüber
+  - title: 'Northwestern University, Intermatik, Kapitel 3: Dative prepositions (gegenüber can precede or follow a noun and follows a pronoun)'
+    url: https://intermatik.madstudio.northwestern.edu/kap3/part6/k3master6b.html
+  - title: 'Duden: an, auf, hinter, in, neben, über, unter, vor, zwischen (mit Dativ: Lage; mit Akkusativ: Richtung)'
+    url: https://www.duden.de/rechtschreibung/an_Praeposition
+  - title: 'DWDS: an, auf, hinter, in, neben, über, unter, vor, zwischen (mit Dativ: Lage; mit Akkusativ: Richtung)'
+    url: https://www.dwds.de/wb/an
+  - title: 'Duden: wegen, trotz, während, statt, innerhalb, außerhalb (Präposition mit Genitiv)'
+    url: https://www.duden.de/rechtschreibung/wegen_infolge_bezueglich
+  - title: 'DWDS: wegen, trotz, während, statt, innerhalb, außerhalb (Präposition mit Genitiv)'
+    url: https://www.dwds.de/wb/wegen
+  - title: 'Duden: wegen (mündlich standardsprachlich und schriftlich umgangssprachlich auch mit Dativ: wegen dem Kind)'
+    url: https://www.duden.de/rechtschreibung/wegen_infolge_bezueglich
+  - title: 'DWDS: wegen (Nebenform umgangssprachlich, süddeutsch, österreichisch: Präposition mit Dativ)'
+    url: https://www.dwds.de/wb/wegen
+  - title: 'Variantengrammatik des Standarddeutschen: Wegen (in Zeitungstexten überall mehrheitlich mit Genitiv)'
+    url: https://mediawiki.ids-mannheim.de/VarGra/index.php/Wegen
+  - title: 'Duden: helfen, danken, gefallen, gehören, antworten, gratulieren, schmecken, fehlen, glauben, passen, wehtun, leidtun, zuhören, folgen, begegnen, vertrauen (jemandem …)'
+    url: https://www.duden.de/rechtschreibung/helfen
+  - title: 'DWDS: helfen, danken, gefallen, gehören, antworten, gratulieren, schmecken, fehlen, glauben, passen, wehtun, leidtun, zuhören, folgen, begegnen, vertrauen (jmdm. …)'
+    url: https://www.dwds.de/wb/helfen
+  - title: 'Duden: geben, erklären, bringen, schicken, empfehlen, sagen, schreiben, erzählen, kaufen, anbieten, schenken, zeigen, leihen, wünschen (jemandem etwas …)'
+    url: https://www.duden.de/rechtschreibung/geben
+  - title: 'DWDS: geben, erklären, bringen, schicken, empfehlen, sagen, schreiben, erzählen, kaufen, anbieten, schenken, zeigen, leihen, wünschen (jmdm. etw. …)'
+    url: https://www.dwds.de/wb/geben
+  - title: 'Duden für Lernende: Dativobjekt (bei Verben des Gebens und Schenkens zusammen mit einem Akkusativobjekt; Dativobjekte fast immer Personen)'
+    url: https://www.duden.de/sprachwissen/fuer-lernende/dativobjekt
+  - title: 'Duden: anrufen, fragen, bitten, besuchen (jemanden …)'
+    url: https://www.duden.de/rechtschreibung/anrufen
+  - title: 'DWDS: anrufen, fragen, bitten, besuchen (jmdn. …)'
+    url: https://www.dwds.de/wb/anrufen

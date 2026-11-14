@@ -1,0 +1,16 @@
+# Review state of this topic. Managed by scripts/review.ts (pnpm review:*); do not edit by hand.
+
+base:
+  status: draft
+  contentHash: sha256:387b03f1fb9a7f2b
+  verifiedBy: null
+  verifiedAt: null
+  history: []
+translations:
+  ru:
+    status: draft
+    contentHash: sha256:50e07db6522df0a8
+    basedOn: sha256:387b03f1fb9a7f2b
+    reviewedBy: null
+    reviewedAt: null
+    history: []
