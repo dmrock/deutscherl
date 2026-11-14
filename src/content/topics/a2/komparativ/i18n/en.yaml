@@ -25,13 +25,13 @@ choice:
   c3:
     why: '*als* follows, so you need the comparative. *kalt* gets an umlaut: *kälter*.'
   c4:
-    why: 'With *so* and the basic form *groß*, the two are equal, so you need *wie*.'
+    why: 'Both sisters are 1.70 metres tall, so they are equal. For equal things, use the basic form between *so* and *wie*: *so groß wie*.'
   c5:
     why: '*als* follows, so you need the comparative. *groß* gets an umlaut: *größer*.'
   c6:
-    why: '*hoch* is irregular: *höher*, *am höchsten*.'
+    why: '*hoch* is irregular: *höher*, *am höchsten*. After *am*, the superlative always ends in *-sten*.'
   c7:
-    why: '*gern* is irregular: *lieber*, *am liebsten*. *lieber … als* means "prefer … to".'
+    why: '*gern* is irregular: *lieber*, *am liebsten*. *lieber … als* means "prefer … to". The basic form *gern* cannot go with *als*.'
   c8:
     why: '*gut* is irregular: *besser*, *am besten*. *als* follows, so you need *besser*.'
   c9:
@@ -43,35 +43,31 @@ choice:
   c12:
     why: '*als* follows, so you need the comparative. *jung* gets an umlaut: *jünger*.'
   c13:
-    why: '*so … wie* always takes *wie*, also with *nicht*: *nicht so groß wie*.'
+    why: 'Ten minutes is less than twenty, so by bike you are faster. For things that are not equal, use the comparative and *als*: *schneller als*. German adds *-er* instead of using *mehr* like English "more".'
   c14:
     why: 'After *am*, you need the superlative: *am schönsten*.'
-
-wordOrder:
-  w1:
-    translation: The train is faster than the car.
-    why: 'The comparative *schneller* comes after the verb, then *als* and what you compare with.'
-  w2:
-    translation: I prefer tea to coffee.
-    why: '*lieber* can come before or after *Tee*. *als Kaffee* goes at the end.'
-  w3:
-    translation: Anna is as tall as her mother.
-    why: '*so groß* comes after the verb, then *wie* and the person you compare with.'
-  w4:
-    translation: It's nicest in summer.
-    why: '*im Sommer* is in position 1, so the verb *ist* comes second, then *es*. *am schönsten* goes at the end.'
-  w5:
-    translation: Which mountain is the highest?
-    why: 'The question starts with *welcher Berg*, then the verb *ist*. *am höchsten* goes at the end.'
-  w6:
-    translation: My sister is younger than me.
-    why: 'The comparative *jünger* comes after the verb, then *als ich*.'
-  w7:
-    translation: The weather today isn't as nice as yesterday.
-    why: '*heute* comes right after the verb. *nicht so schön* comes next, then *wie gestern*.'
-  w8:
-    translation: Who runs the fastest?
-    why: 'The question word *wer* is the subject and comes first, then the verb *läuft* and *am schnellsten*.'
+  c15:
+    why: '*viel* is irregular: *mehr*, *am meisten*. *als* follows, so you need the comparative *mehr*.'
+  c16:
+    why: '*hoch* is irregular: it gets an umlaut and loses the *c*: *höher*.'
+  c17:
+    why: '*voll* gets no umlaut: *voller*, *am vollsten*. Not every short adjective with *o* changes.'
+  c18:
+    why: '*alt* ends in *-t*, so the superlative adds an extra *e*: *am ältesten*. It also gets an umlaut, as in *älter*.'
+  c19:
+    why: '*groß* ends in *-ß*, but it is an exception: no extra *e*, only the umlaut: *am größten*.'
+  c20:
+    why: 'Adjectives that end in *-end* add no extra *e*, although they end in *-d*: *am spannendsten*.'
+  c21:
+    why: '*gut* is irregular: *besser*, *am besten*.'
+  c22:
+    why: '*gern* is irregular: *lieber*, *am liebsten*. *Was isst du am liebsten?* means "What do you like eating most?"'
+  c23:
+    why: '20 degrees is less than 30, so today is not as warm. Use *nicht so* with the basic form and *wie*: *nicht so warm wie*.'
+  c24:
+    why: 'After *als*, the pronoun is in the same case as the person you compare it with. *sie* is the subject, so you need the nominative *ich*: *größer als ich*.'
+  c25:
+    why: '*nah* is irregular in the superlative: *am nächsten*.'
 
 austrianNotes:
   at1: I prefer apricots to peaches.

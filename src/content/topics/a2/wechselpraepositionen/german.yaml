@@ -55,87 +55,95 @@ choice:
   - id: c3
     text: Stell die Milch bitte ___ Kühlschrank.
     answer: in den
-    options: [in den, im]
+    options: [in den, im, ins, in die]
   - id: c4
     text: Die Milch steht ___ Kühlschrank.
     answer: im
-    options: [im, in den]
+    options: [im, in den, ins, in der]
   - id: c5
     text: Das Bild hängt ___ Wand.
     answer: an der
-    options: [an der, an die]
+    options: [an der, an die, am, ans]
   - id: c6
     text: Ich hänge das Bild ___ Wand.
     answer: an die
-    options: [an die, an der]
+    options: [an die, an der, ans, am]
   - id: c7
-    text: Setz dich bitte neben ___!
-    answer: mich
-    options: [mich, mir]
+    text: Setz dich doch neben ___ Schwester!
+    answer: meine
+    options: [meine, meiner, meinen, meinem]
   - id: c8
-    text: Er sitzt neben ___.
-    answer: mir
-    options: [mir, mich]
+    text: Er sitzt neben ___ Bruder.
+    answer: meinem
+    options: [meinem, meinen, meiner, mein]
   - id: c9
     text: Ich ___ die Tasche auf den Stuhl.
     answer: stelle
-    options: [stelle, stehe]
+    options: [stelle, stehe, sitze, liege]
   - id: c10
     text: Die Schlüssel ___ auf dem Tisch.
     answer: liegen
-    options: [liegen, legen]
+    options: [liegen, legen, stellen, setzen]
   - id: c11
-    text: Wir gehen heute Abend ___ Kino.
+    text: Am Samstag gehen wir ___ Theater.
     answer: ins
-    options: [ins, im]
+    options: [ins, im, in den, in die]
   - id: c12
     text: Die Katze schläft auf ___ Sofa.
     answer: dem
     options: [dem, das, den, der]
   - id: c13
-    text: Zwischen ___ Bank und der Post ist ein Café.
+    text: Das Café ist gleich neben ___ Bank.
     answer: der
-    options: [der, die]
-
-wordOrder:
-  - id: w1
-    parts: [das Handy, liegt, auf dem Tisch]
-    accept:
-      - [auf dem Tisch, liegt, das Handy]
-    punctuation: '.'
-  - id: w2
-    parts: [die Flasche, steht, im Kühlschrank]
-    accept:
-      - [im Kühlschrank, steht, die Flasche]
-    punctuation: '.'
-  - id: w3
-    parts: [wohin, gehst, du]
-    fixed: true
-    punctuation: '?'
-  - id: w4
-    parts: [stell, die Milch, bitte, in den Kühlschrank]
-    fixed: true
-    accept:
-      - [stell, bitte, die Milch, in den Kühlschrank]
-    punctuation: '!'
-  - id: w5
-    parts: [wir, treffen, uns, am Bahnhof]
-    accept:
-      - [am Bahnhof, treffen, wir, uns]
-    punctuation: '.'
-  - id: w6
-    parts: [die Kinder, sitzen, auf dem Sofa]
-    accept:
-      - [auf dem Sofa, sitzen, die Kinder]
-    punctuation: '.'
-  - id: w7
-    parts: [wo, hängt, meine Jacke]
-    fixed: true
-    punctuation: '?'
-  - id: w8
-    parts: [setz, dich, neben mich]
-    fixed: true
-    punctuation: '!'
+    options: [der, die, dem, den]
+  - id: c14
+    text: Die Lampe hängt über ___ Tisch.
+    answer: dem
+    options: [dem, den, der, das]
+  - id: c15
+    text: Ich stelle das Fahrrad vor ___ Haus.
+    answer: das
+    options: [das, dem, den, der]
+  - id: c16
+    text: Wir fahren am Wochenende ___ Berge.
+    answer: in die
+    options: [in die, in den, in der, im]
+  - id: c17
+    text: Ich habe den Brief zwischen ___ gefunden.
+    answer: den Büchern
+    options: [den Büchern, die Bücher, den Bücher, die Büchern]
+  - id: c18
+    text: Der Parkplatz ist hinter ___ Schule.
+    answer: der
+    options: [der, die, dem, den]
+  - id: c19
+    text: Häng die Uhr bitte über ___ Tür.
+    answer: die
+    options: [die, der, den, das]
+  - id: c20
+    text: Im Sommer fahren wir ___ Meer.
+    answer: ans
+    options: [ans, am, an den, an die]
+  - id: c21
+    text: Im Zug sitze ich gern ___ Fenster.
+    answer: am
+    options: [am, ans, an den, an der]
+  - id: c22
+    text: Komm, wir setzen uns auf ___ Bank dort drüben.
+    answer: die
+    options: [die, der, den, dem]
+  - id: c23
+    text: Die Kinder ___ schon am Tisch.
+    answer: sitzen
+    options: [sitzen, setzen, stellen, legen]
+  - id: c24
+    text: Ich warte vor ___ Kino auf dich.
+    answer: dem
+    options: [dem, das, den, der]
+  - id: c25
+    text: Stell die Tasche einfach unter ___ Tisch.
+    answer: den
+    options: [den, dem, der, das]
 
 austrianNotes:
   - id: at1

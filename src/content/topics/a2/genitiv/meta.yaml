@@ -2,13 +2,13 @@ level: a2
 category: cases
 order: 2
 sources:
-  - title: 'Duden Sprachratgeber: Die Genitivregel'
+  - title: 'Duden Sprachratgeber: Die Genitivregel (genitive -s never alone; von + dative for a plural without article: der Kauf von Orangen)'
     url: https://www.duden.de/sprachwissen/sprachratgeber/Die-Genitivregel
   - title: 'Duden Sprachratgeber: Genitiv auf -s oder -es?'
     url: https://www.duden.de/sprachwissen/sprachratgeber/Genitiv-auf-s-oder-es
   - title: 'Duden: Buch (Genitiv des Buch[e]s)'
     url: https://www.duden.de/rechtschreibung/Buch
-  - title: 'Duden Rechtschreibregeln: Apostroph (D 16, Namen im Genitiv)'
+  - title: 'Duden Rechtschreibregeln: Apostroph (D 16, Namen im Genitiv: Max’, Klaus’; normally no apostrophe before the genitive -s)'
     url: https://www.duden.de/sprachwissen/rechtschreibregeln/apostroph
   - title: 'Duden Sprachratgeber: Beugung von Personennamen'
     url: https://www.duden.de/sprachwissen/sprachratgeber/Beugung-von-Personennamen
@@ -20,3 +20,13 @@ sources:
     url: https://grammis.ids-mannheim.de/fragen/27
   - title: 'Bülow, Vergeiner, Elspaß (2022): Structures of adnominal possession in Austria’s traditional dialects. Journal of Linguistic Geography'
     url: https://www.cambridge.org/core/journals/journal-of-linguistic-geography/article/structures-of-adnominal-possession-in-austrias-traditional-dialects-variation-and-change/BE1FA68EC04015A3F8D367642BB7C46E
+  - title: 'Duden: Platz (Genitiv des Platzes)'
+    url: https://www.duden.de/rechtschreibung/Platz
+  - title: 'Duden: Kurs (Genitiv des Kurses)'
+    url: https://www.duden.de/rechtschreibung/Kurs
+  - title: 'Wiktionary: Max (Genitiv Max’ or des Max)'
+    url: https://de.wiktionary.org/wiki/Max
+  - title: 'Wiktionary: Klaus (Genitiv Klaus’ or des Klaus)'
+    url: https://de.wiktionary.org/wiki/Klaus
+  - title: 'DWDS: von (replaces a genitive attribute: Vater von drei Söhnen)'
+    url: https://www.dwds.de/wb/von

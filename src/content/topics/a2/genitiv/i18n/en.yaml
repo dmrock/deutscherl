@@ -23,21 +23,21 @@ examples:
 
 choice:
   c1:
-    why: '*Bruder* is masculine, and the noun has the genitive ending *-s* (*Bruders*), so the possessive is *meines*. *meinem* and *meinen* are dative or accusative forms.'
+    why: '*der Bruder* is masculine. In the genitive you need both parts: *meines* and the ending *-s* on the noun: *das Zimmer meines Bruders*. *meinem Bruder* is the dative.'
   c2:
     why: '*die Jacke* is feminine. In the genitive, feminine nouns take *der*: *die Farbe der Jacke*. *des* is only for masculine and neuter nouns.'
   c3:
-    why: '*das Geschäft* is neuter, so the genitive is *des Geschäfts*: the article is *des* and the noun adds *-s*.'
+    why: '*das Geschäft* is neuter, so the genitive is *des Geschäfts*: the article is *des* and the noun adds *-s*. *des Geschäft* is missing the *-s*.'
   c4:
-    why: '*das Jahr* is neuter: *am Anfang des Jahres*. Masculine and neuter nouns take *des* in the genitive.'
+    why: '*das Jahr* is neuter, so the genitive is *des Jahres*: *am Anfang des Jahres*. *der* is the genitive article only for feminine and plural nouns.'
   c5:
     why: 'Masculine nouns need both parts in the genitive: *meines* and the ending *-s* on the noun: *meines Chefs*. *meines Chef* is missing the *-s*.'
   c6:
     why: '*eine Lehrerin* is feminine, so the genitive is *einer Lehrerin*. Feminine nouns get no ending.'
   c7:
-    why: 'With a name, add *-s* with no apostrophe: *Annas Schwester*. *Anna’s* with an apostrophe is the English spelling, not the standard German one.'
+    why: 'With a name, add *-s* with no apostrophe and no article, and put the name before the noun: *Annas Schwester*. With *von*, the noun comes first: *die Schwester von Anna*.'
   c8:
-    why: '*Max* ends in *x*, so it gets only an apostrophe in the genitive: *Max’ Zimmer*. No extra *-s*.'
+    why: '*Max* ends in *x*, so in writing it gets only an apostrophe in the genitive: *Max’ Hund*. No extra *-s*.'
   c9:
     why: '*wessen* asks "whose?" and comes right before the noun: *Wessen Tasche ist das?* *wer*, *wen* and *wem* cannot stand before a noun like this.'
   c10:
@@ -47,32 +47,31 @@ choice:
   c12:
     why: '*Eltern* is plural. In the genitive, plural nouns take *der*, so the possessive is *meiner*: *die Wohnung meiner Eltern*.'
   c13:
-    why: '*das Hotel* is neuter, so the genitive is *eines Hotels*: a room of a hotel. *einer* is for feminine nouns.'
+    why: '*das Hotel* is neuter, so the genitive is *eines Hotels*, with *-s* on the noun. *einem Hotel* is the dative.'
   c14:
     why: '*die Schwester* is feminine, so the genitive possessive is *deiner*: *der Freund deiner Schwester*.'
-
-wordOrder:
-  w1:
-    translation: My neighbour's dog is very loud.
-    why: 'The genitive *meiner Nachbarin* comes right after the noun it belongs to: *der Hund meiner Nachbarin*. Then the verb *ist* is in position 2.'
-  w2:
-    translation: We live near the station.
-    why: '*in der Nähe des Bahnhofs* is one phrase: the genitive *des Bahnhofs* follows *in der Nähe*. The whole phrase can also come first; then *wir* moves after the verb.'
-  w3:
-    translation: Whose idea was that?
-    why: '*wessen* stands right before its noun: *wessen Idee*. Together they are the question word in position 1, and the verb *war* follows.'
-  w4:
-    translation: Anna's brother works in a hotel.
-    why: 'A name in the genitive comes before the noun: *Annas Bruder*. *in einem Hotel* can also come first; then *Annas Bruder* moves after the verb.'
-  w5:
-    translation: At the end of the course, we're having a party.
-    why: 'The genitive *des Kurses* follows *am Ende*. The whole phrase is in position 1, so the verb *machen* comes next and the subject *wir* after it.'
-  w6:
-    translation: That's my uncle's car.
-    why: 'Here *von* + dative replaces the genitive: *das Auto von meinem Onkel*. It is very common in speech.'
-  w7:
-    translation: Do you know Hans's sister?
-    why: '*Hans* ends in *s*, so it gets only an apostrophe: *Hans’ Schwester*. The name comes before the noun. In a yes/no question the verb comes first.'
+  c15:
+    why: '*das Haus* is neuter and ends in *-s*, so the genitive ending is *-es*: *die Fenster des Hauses*. *des Haus* is missing the ending.'
+  c16:
+    why: '*der Platz* is masculine and ends in *-z*, so the genitive ending is *-es*: *auf der anderen Seite des Platzes*.'
+  c17:
+    why: '*Kinder* is plural. In the genitive, plural nouns take *der* and get no ending: *die Schule der Kinder*. The *-n* in *Kindern* belongs to the dative.'
+  c18:
+    why: '*die Chefin* is feminine, so the genitive possessive is *meiner*, and the noun gets no ending: *der Mann meiner Chefin*.'
+  c19:
+    why: '*Klaus* ends in *s*, so in writing it gets only an apostrophe: *Klaus’ Freundin*. No extra *-s* or *-es*.'
+  c20:
+    why: '*der Kurs* is masculine and ends in *-s*, so the genitive is *des Kurses*: *am Ende des Kurses*.'
+  c21:
+    why: '*die Wohnung* is feminine, so the genitive possessive is *unserer*: *in der Nähe unserer Wohnung*.'
+  c22:
+    why: '*Flüge* is a plural with no article, so it cannot show the genitive. Use *von* + dative instead, and the dative plural adds *-n*: *der Preis von Flügen*.'
+  c23:
+    why: '*der Freund* is masculine, so the genitive is *eines Freundes*: *das Auto eines Freundes*. *einem Freund* is the dative.'
+  c24:
+    why: '*das Handy* is neuter, so the genitive is *meines Handys*, with *-s* on the noun: *der Akku meines Handys*. *meiner* is for feminine and plural nouns.'
+  c25:
+    why: '*gehören* takes the dative, so the question word is *wem*: *Wem gehört die Jacke?* *wessen* goes before a noun: *Wessen Jacke ist das?*'
 
 austrianNotes:
   at1: That's Dad's car.

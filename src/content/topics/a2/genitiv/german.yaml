@@ -42,25 +42,25 @@ examples:
 
 choice:
   - id: c1
-    text: Das ist das Zimmer ___ Bruders.
-    answer: meines
-    options: [meines, meiner, meinem, meinen]
+    text: Das ist das Zimmer ___.
+    answer: meines Bruders
+    options: [meines Bruders, meines Bruder, meinem Bruder, meiner Bruders]
   - id: c2
     text: Die Farbe ___ Jacke gefällt mir.
     answer: der
     options: [der, des, die, dem]
   - id: c3
-    text: Wie ist die Adresse ___ Geschäfts?
-    answer: des
-    options: [des, der, dem, das]
+    text: Wie ist die Adresse ___?
+    answer: des Geschäfts
+    options: [des Geschäfts, des Geschäft, dem Geschäft, der Geschäfts]
   - id: c4
-    text: Am Anfang ___ Jahres ist es im Büro immer ruhig.
-    answer: des
-    options: [des, der, dem, den]
+    text: Am Anfang ___ ist es im Büro immer ruhig.
+    answer: des Jahres
+    options: [des Jahres, des Jahr, dem Jahr, der Jahres]
   - id: c5
     text: Das Büro ___ ist im dritten Stock.
     answer: meines Chefs
-    options: [meines Chefs, meines Chef, meinem Chef, mein Chef]
+    options: [meines Chefs, meines Chef, meinem Chef, meiner Chefs]
   - id: c6
     text: Sie ist die Tochter ___ Lehrerin.
     answer: einer
@@ -68,9 +68,9 @@ choice:
   - id: c7
     text: ___ Schwester studiert in Graz.
     answer: Annas
-    options: [Annas, Anna’s, Anna]
+    options: [Annas, Anna, Von Anna, Annas’]
   - id: c8
-    text: Ist das ___ Zimmer?
+    text: Wie heißt ___ Hund?
     answer: Max’
     options: [Max’, Maxs, Max’s, Maxes]
   - id: c9
@@ -90,45 +90,57 @@ choice:
     answer: meiner
     options: [meiner, meines, meinen, meinem]
   - id: c13
-    text: Ein Hotelzimmer ist ein Zimmer ___ Hotels.
-    answer: eines
-    options: [eines, einer, einem, ein]
+    text: Er arbeitet an der Rezeption ___.
+    answer: eines Hotels
+    options: [eines Hotels, eines Hotel, einem Hotel, einer Hotels]
   - id: c14
     text: Wie heißt der Freund ___ Schwester?
     answer: deiner
     options: [deiner, deines, deinem, deine]
-
-wordOrder:
-  - id: w1
-    parts: [der Hund, meiner, Nachbarin, ist, sehr laut]
-    fixed: true
-    punctuation: '.'
-  - id: w2
-    parts: [wir, wohnen, in der Nähe, des, Bahnhofs]
-    accept:
-      - [in der Nähe, des, Bahnhofs, wohnen, wir]
-    punctuation: '.'
-  - id: w3
-    parts: [wessen, Idee, war, das]
-    fixed: true
-    punctuation: '?'
-  - id: w4
-    parts: [Annas, Bruder, arbeitet, in einem Hotel]
-    accept:
-      - [in einem Hotel, arbeitet, Annas, Bruder]
-    punctuation: '.'
-  - id: w5
-    parts: [am Ende, des, Kurses, machen, wir, eine Party]
-    fixed: true
-    punctuation: '.'
-  - id: w6
-    parts: [das, ist, das Auto, von, meinem, Onkel]
-    fixed: true
-    punctuation: '.'
-  - id: w7
-    parts: [kennst, du, Hans’, Schwester]
-    fixed: true
-    punctuation: '?'
+  - id: c15
+    text: Die Fenster ___ sind sehr alt.
+    answer: des Hauses
+    options: [des Hauses, des Haus, dem Haus, der Hauses]
+  - id: c16
+    text: Auf der anderen Seite ___ ist ein Café.
+    answer: des Platzes
+    options: [des Platzes, des Platz, dem Platz, der Platzes]
+  - id: c17
+    text: Die Schule ___ ist ganz in der Nähe.
+    answer: der Kinder
+    options: [der Kinder, der Kindern, den Kindern, des Kinder]
+  - id: c18
+    text: Der Mann ___ ist Koch.
+    answer: meiner Chefin
+    options: [meiner Chefin, meines Chefin, meiner Chefins, meine Chefin]
+  - id: c19
+    text: Kennst du ___ Freundin?
+    answer: Klaus’
+    options: [Klaus’, Klaus’s, Klauses, Klaus]
+  - id: c20
+    text: Am Ende ___ haben wir eine Prüfung.
+    answer: des Kurses
+    options: [des Kurses, des Kurs, dem Kurs, der Kurses]
+  - id: c21
+    text: In der Nähe ___ Wohnung ist ein Supermarkt.
+    answer: unserer
+    options: [unserer, unseres, unsere, unserem]
+  - id: c22
+    text: Im Sommer ist der Preis ___ oft hoch.
+    answer: von Flügen
+    options: [von Flügen, von Flüge, Flüge, Flügen]
+  - id: c23
+    text: Ich habe mir das Auto ___ geliehen.
+    answer: eines Freundes
+    options: [eines Freundes, eines Freund, einem Freund, einer Freundes]
+  - id: c24
+    text: Der Akku ___ ist leer.
+    answer: meines Handys
+    options: [meines Handys, meines Handy, meinem Handy, meiner Handys]
+  - id: c25
+    text: ___ gehört die Jacke hier?
+    answer: Wem
+    options: [Wem, Wessen, Wer, Wen]
 
 austrianNotes:
   - id: at1
