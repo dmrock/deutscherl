@@ -129,7 +129,7 @@ choice:
   - id: c18
     text: Entschuldigung, ___ hier die Ärztin?
     answer: sind Sie
-    options: [sind Sie, ist Sie, bist du, seid ihr]
+    options: [sind Sie, ist Sie, seid Sie, seid ihr]
   - id: c19
     text: Oma, Opa, ___ schon wach?
     answer: seid ihr
