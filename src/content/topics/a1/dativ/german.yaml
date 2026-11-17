@@ -73,6 +73,12 @@ examples:
   - id: e30
     de: 'Die Stadt **gefällt unseren Gästen** sehr.'
 
+  # bei with an activity; von zu Hause
+  - id: e31
+    de: '**Beim** Essen sehen wir nicht fern.'
+  - id: e32
+    de: 'Wie lange brauchst du **von zu Hause** zur Arbeit?'
+
 choice:
   - id: c1
     text: Ich fahre jeden Tag mit ___ Zug nach Linz.
@@ -174,6 +180,14 @@ choice:
     text: Ich zeige ___ Nachbarin den Garten.
     answer: der
     options: [der, die, den, dem]
+  - id: c26
+    text: Ich höre ___ Kochen gern Radio.
+    answer: beim
+    options: [beim, bei der, vom, von der]
+  - id: c27
+    text: Woher kommst du gerade? – ___.
+    answer: Von zu Hause
+    options: [Von zu Hause, Aus zu Hause, Nach Hause, Zu Hause]
 
 austrianNotes:
   - id: at1

@@ -1,9 +1,9 @@
 order: 3
 levels: [a1, a2, b1]
 sources:
-  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Wortliste (durch, für, gegen, ohne, um, bis, aus, bei, mit, nach, seit, von, zu, an, auf, in, über, unter, vor, zwischen; helfen, danken, gefallen, gehören, antworten, gratulieren, schmecken, fehlen, glauben)'
+  - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Wortliste (durch, für, gegen, ohne, um, bis, ab, aus, bei, mit, nach, seit, von, zu, an, auf, in, über, unter, vor, zwischen; helfen, danken, gefallen, gehören, antworten, gratulieren, schmecken, fehlen, glauben)'
     url: https://www.goethe.de/pro/relaunch/prf/de/A1_SD1_Wortliste_02.pdf
-  - title: 'Goethe-Institut: Goethe-Zertifikat A2, Wortliste (hinter, neben, gegenüber, wegen, außerhalb; passen, wehtun, leidtun, zuhören, schenken, zeigen, leihen, wünschen)'
+  - title: 'Goethe-Institut: Goethe-Zertifikat A2, Wortliste (hinter, neben, gegenüber, außer, wegen, außerhalb; passen, wehtun, leidtun, zuhören, schenken, zeigen, leihen, wünschen)'
     url: https://www.goethe.de/pro/relaunch/prf/de/Goethe-Zertifikat_A2_Wortliste.pdf
   - title: 'Goethe-Institut: Goethe-Zertifikat B1, Wortliste (trotz, während, statt, innerhalb; folgen, begegnen, vertrauen)'
     url: https://www.goethe.de/pro/relaunch/prf/de/Goethe-Zertifikat_B1_Wortliste.pdf
@@ -20,6 +20,14 @@ sources:
     url: https://www.duden.de/rechtschreibung/zu_Praeposition
   - title: 'DWDS: aus, bei, mit, nach, seit, von, zu, gegenüber (Präposition mit Dativ)'
     url: https://www.dwds.de/wb/zu
+  - title: 'Duden: ab (Präposition mit Dativ; bei artikellosen Substantiven mit adjektivischem Attribut gelegentlich auch mit Akkusativ: ab kommendem/kommenden Montag; ab Mai)'
+    url: https://www.duden.de/rechtschreibung/ab_Praeposition
+  - title: 'DWDS: ab (häufig vor Zeitbestimmungen: ab heute, ab sechs Uhr; mit Dativ: ab nächster Woche; mit Akkusativ: ab ersten Oktober, kommenden Mittwoch)'
+    url: https://www.dwds.de/wb/ab
+  - title: 'Duden: außer (Präposition mit Dativ: niemand kann es lesen außer ihm selbst)'
+    url: https://www.duden.de/rechtschreibung/auszer_Praeposition
+  - title: 'DWDS: außer (mit Dativ: ich habe keinen Freund außer dir)'
+    url: https://www.dwds.de/wb/au%C3%9Fer
   - title: 'Duden: gegenüber (gegenüber dem Rathaus / dem Rathaus gegenüber; mir gegenüber)'
     url: https://www.duden.de/rechtschreibung/gegenueber_Praeposition
   - title: 'DWDS: gegenüber (ihr gegenüber, seinem Bruder gegenüber)'

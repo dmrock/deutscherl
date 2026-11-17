@@ -32,6 +32,8 @@ examples:
   e28: Who are you helping? – My brother.
   e29: The children help their mother in the kitchen.
   e30: Our guests like the city a lot.
+  e31: We don't watch TV while we eat.
+  e32: How long does it take you to get from home to work?
 
 choice:
   c1:
@@ -84,6 +86,10 @@ choice:
     why: 'The children get the apple, so they are in the dative. *die Kinder* is plural, so *sie* becomes *ihnen*. *sie* is the nominative or accusative.'
   c25:
     why: 'The neighbour is the person I show the garden to, so she is in the dative. *die Nachbarin* is feminine: *der Nachbarin*. The thing, *den Garten*, is in the accusative.'
+  c26:
+    why: 'With an activity, *bei* means "while": I listen to the radio while I cook. *das Kochen* is the verb *kochen* used as a noun, and it is neuter, so *bei dem* becomes *beim*. *von* says where something comes from.'
+  c27:
+    why: '*Woher?* asks where from, and "from home" is *von zu Hause*. *aus* does not go with *zu Hause*. *Zu Hause* answers *Wo?*, and *nach Hause* answers *Wohin?*.'
 
 austrianNotes:
   at1: We're taking the tram to the town hall.

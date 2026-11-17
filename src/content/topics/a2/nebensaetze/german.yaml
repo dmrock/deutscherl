@@ -1,6 +1,6 @@
 # German content of the topic, shared by every locale (`.claude/rules/content.md`).
 # In examples, **…** marks weil, dass, wenn or denn and the verb that changes with the person.
-# In the last section it marks the two verbs around the comma.
+# In the last section it marks the two verbs around the comma, and dann between them.
 
 examples:
   # weil | denn
@@ -43,6 +43,9 @@ examples:
     de: 'Weil ich krank **bin**, **bleibe** ich zu Hause.'
   - id: e16
     de: 'Wenn du Zeit **hast**, **gehen** wir einen Kaffee trinken.'
+  # The clause first, with dann: verb, comma, dann, verb
+  - id: e17
+    de: 'Wenn es **regnet**, **dann bleibe** ich zu Hause.'
 
 choice:
   - id: c1
@@ -105,6 +108,10 @@ choice:
     text: ___ ich nächstes Jahr in Wien bin, besuche ich dich.
     answer: Wenn
     options: [Wenn, Als, Dass, Denn]
+  - id: c16
+    text: Wenn du Hunger hast, dann ___.
+    answer: machen wir Nudeln
+    options: [machen wir Nudeln, wir machen Nudeln, wir Nudeln machen, Nudeln machen wir]
 
 wordOrder:
   - id: w1
@@ -146,6 +153,12 @@ wordOrder:
   - id: w10
     parts: ['ich hoffe,', dass, wir, uns, bald, sehen, können]
     fixed: true
+    punctuation: '.'
+  - id: w11
+    parts: ['wenn ich fertig bin,', dann, rufe, ich, dich, an]
+    fixed: true
+    accept:
+      - ['wenn ich fertig bin,', rufe, ich, dich, dann, an]
     punctuation: '.'
 
 austrianNotes:
