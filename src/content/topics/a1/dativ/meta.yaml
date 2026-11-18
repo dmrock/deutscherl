@@ -18,6 +18,16 @@ sources:
     url: https://www.dwds.de/wb/geben
   - title: 'DWDS: mit'
     url: https://www.dwds.de/wb/mit
+  - title: 'Duden: bei (zwei gleichzeitig verlaufende Handlungen; bei Tisch, beim Essen)'
+    url: https://www.duden.de/rechtschreibung/bei
+  - title: 'DWDS: bei (während einer Tätigkeit: beim Lesen eingeschlafen; er ist beim Schreiben)'
+    url: https://www.dwds.de/wb/bei
+  - title: 'Goethe-Institut: Goethe-Zertifikat A2, Wortliste (Ich möchte euch nicht beim Essen stören; Er kommt gerade von zu Hause)'
+    url: https://www.goethe.de/pro/relaunch/prf/de/Goethe-Zertifikat_A2_Wortliste.pdf
+  - title: 'DWDS: Haus (zu Hause, nach Hause; von zu Hause weggegangen)'
+    url: https://www.dwds.de/wb/Haus
+  - title: 'Duden: Haus (zu Haus[e], nach Haus[e], von zu Haus[e])'
+    url: https://www.duden.de/rechtschreibung/Haus
   - title: 'Goethe-Institut: Goethe-Zertifikat A1: Start Deutsch 1, Prüfungsziele und Testbeschreibung'
     url: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsziele_Testbeschreibung_A1_SD1.pdf
   - title: 'Duden: Bim (österreichisch umgangssprachlich: Straßenbahn)'

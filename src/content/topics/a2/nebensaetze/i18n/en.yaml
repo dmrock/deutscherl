@@ -18,6 +18,7 @@ examples:
   e14: I have to go now because my train leaves at seven.
   e15: Because I'm ill, I'm staying at home.
   e16: If you have time, let's go for a coffee.
+  e17: If it rains, then I'll stay at home.
 
 choice:
   c1:
@@ -50,6 +51,8 @@ choice:
     why: 'This is one period in the past (when I was a child), so you need *als*. *wenn* is for things that happen again and again, or for now and the future.'
   c15:
     why: 'This is one event, but in the future, so *wenn* is right. *als* is only for the past.'
+  c16:
+    why: '*dann* after the *wenn* clause does not change the order: the verb *machen* still comes straight after it, then *wir*. *wir machen* would put the verb in position 3.'
 
 wordOrder:
   w1:
@@ -82,6 +85,9 @@ wordOrder:
   w10:
     translation: I hope we can see each other soon.
     why: 'After *dass*, the modal verb *können* comes last, after the infinitive *sehen*. *uns* comes right after the subject *wir*.'
+  w11:
+    translation: When I'm done, I'll call you.
+    why: '*dann* comes right after the comma, and the verb *rufe* follows straight after it, then *ich* and *dich*. *an* goes to the end. *dann* can also stand after *dich*: *rufe ich dich dann an*.'
 
 austrianNotes:
   at1: I'm staying at home today because I've caught a cold.

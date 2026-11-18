@@ -27,6 +27,8 @@ tables:
             cells: ['bis', 'bis **nächsten** Freitag']
       - id: dative
         rows:
+          - id: ab
+            cells: ['ab', 'ab **nächster** Woche']
           - id: aus
             cells: ['aus', 'aus **dem** Haus']
           - id: bei
@@ -41,6 +43,8 @@ tables:
             cells: ['von', 'von **meiner** Mutter']
           - id: zu
             cells: ['zu', '**zum** Arzt']
+          - id: ausser
+            cells: ['außer', 'alle außer **mir**']
           - id: gegenueber
             cells: ['gegenüber', 'gegenüber **der** Schule']
       - id: genitive
