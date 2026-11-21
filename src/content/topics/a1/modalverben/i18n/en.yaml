@@ -1,0 +1,122 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: We want to go to Salzburg in the summer.
+  e2: Do you have to work tomorrow?
+  e3: I can swim well.
+  e4: We can talk on the phone tomorrow.
+  e5: Can you play the guitar?
+  e6: You're welcome to sleep at our place.
+  e7: My son can already read.
+  e8: Could you repeat that, please?
+  e9: You really must read the book!
+  e10: You're allowed to watch TV longer today.
+  e11: My grandma is a really good cook.
+  e12: We can also go by train.
+  e13: I have to get up at six every day.
+  e14: You need to sign here.
+  e15: May I use your phone for a moment?
+  e16: You're not allowed to take photos in the museum.
+  e17: Tomorrow is a public holiday. We don't have to work.
+  e18: There's a school here. You mustn't drive so fast.
+  e19: My brother wants to buy a new car.
+  e20: Do you want to go to the cinema with us?
+  e21: The doctor says I should drink more water.
+  e22: Shall I help you?
+  e23: I'd like a coffee, please.
+  e24: We'd like to pay, please.
+  e25: What would you like to drink?
+  e26: Would you like another piece of cake?
+  e27: Paul would like to go to the mountains at the weekend.
+  e28: Would you like to take a seat?
+  e29: Do you like fish?
+  e30: The children like their teacher a lot.
+
+choice:
+  c1:
+    why: '*können* with *ich* is *kann*, with no ending.'
+  c2:
+    why: '*mein Bruder* is *er*. With modal verbs, *er* has the same form as *ich*, with no *-t*: *er kann*. *kannt* does not exist.'
+  c3:
+    why: 'With *du*, *können* is *kannst*. The yes/no question starts with the modal verb, and *anrufen* goes to the end.'
+  c4:
+    why: 'With *ihr*, the plural form is regular: the stem *müss-* + *-t*, so *ihr müsst*. *musst* is the form for *du*.'
+  c5:
+    why: 'With *du*, *müssen* is *musst*. The stem already ends in an s sound, so *du* adds only *-t*. *müsst* is the form for *ihr*.'
+  c6:
+    why: '*Max* is *er*, and *er* has the same form as *ich*, with no ending: *er darf*. *darft* does not exist.'
+  c7:
+    why: 'With *ihr*, the vowel stays as in the infinitive: *ihr dürft*. Only the singular has *a*: *ich darf*, *du darfst*.'
+  c8:
+    why: 'With *du*, *möchten* takes *-est*: *du möchtest*. Here *möchten* goes with a noun alone, without a second verb.'
+  c9:
+    why: '*mein Freund* is *er*, and *er möchte* has no *-t*, like *ich möchte*. *möchtet* is the form for *ihr*.'
+  c10:
+    why: 'Polite *Sie* takes the infinitive form: *Sie möchten*.'
+  c11:
+    why: '*wollen* with *ich* is *will*, with no ending.'
+  c12:
+    why: 'With *du*, *wollen* is *willst*: the singular has *i*. *wollst* does not exist.'
+  c13:
+    why: '*Lisa* is *sie* (one person), and *sie* has the same form as *ich*, with no ending: *sie soll*. Her mother wants it, so the verb is *sollen*.'
+  c14:
+    why: 'With *du*, *mögen* is *magst*: the singular has *a*. *mögst* does not exist.'
+  c15:
+    why: '*meine Eltern* are several people (*sie*), so the form is the infinitive: *mögen*. *mögt* is the form for *ihr*.'
+  c16:
+    why: 'On holiday, getting up early is not necessary: *nicht müssen*. *ich darf nicht* would mean it is forbidden, which makes no sense here.'
+  c17:
+    why: 'The museum is free, so paying is not necessary: *wir müssen nichts bezahlen*. *wir dürfen nichts bezahlen* would mean paying is forbidden.'
+  c18:
+    why: 'Jonas has a car now, so taking the bus is no longer necessary: *er muss nicht mehr*. *er darf nicht* would mean taking the bus is forbidden.'
+  c19:
+    why: 'With *Darf ich …?* you ask politely for permission. *wollen* and *möchten* say what you want yourself, and *mögen* says what you like, so they do not ask for permission.'
+  c20:
+    why: 'You say politely what you want right now, so you use *möchte*. *mögen* says what you like, and you do not use it for a request like this.'
+  c21:
+    why: 'You listen to jazz every day, so you like it in general: *ich mag*. *möchte* is for a wish right now.'
+  c22:
+    why: 'It is your own dream, so you use *wollen*: *ich will*. *sollen* would mean someone else wants it.'
+  c23:
+    why: 'Your boss wants it, not you, so you use *sollen*: *ich soll*. With *ich*, there is no ending.'
+  c24:
+    why: 'With *Soll ich …?* you ask what the other person wants you to do. With *ich*, the form is *soll*, with no ending. *Will ich …?* asks about your own wish, which makes no sense here.'
+
+wordOrder:
+  w1:
+    translation: On Saturday I want to sleep in.
+    why: '*am Samstag* is in position 1, so *will* comes second, then *ich*. The infinitive *schlafen* goes to the end.'
+  w2:
+    translation: Can you cook well?
+    why: 'A yes/no question starts with the modal verb *kannst*, then *du*. The infinitive *kochen* goes to the end.'
+  w3:
+    translation: What would you like to eat today?
+    why: 'The question word *was* comes first, then the modal verb *möchtest* and *du*. The infinitive *essen* goes to the end.'
+  w4:
+    translation: This evening we have to clean the flat.
+    why: '*heute Abend* is in position 1, so *müssen* comes second, then *wir*. The infinitive *putzen* goes to the end, after *die Wohnung*.'
+  w5:
+    translation: Am I allowed to take photos here?
+    why: 'A yes/no question starts with the modal verb *darf*, then *ich*. The infinitive *fotografieren* goes to the end.'
+  w6:
+    translation: When can we meet?
+    why: 'The question word *wann* comes first, then the modal verb *können* and *wir*. *uns* stays before the infinitive *treffen* at the end.'
+  w7:
+    translation: My daughter wants to be a doctor.
+    why: '*meine Tochter* is in position 1 and the modal verb *will* second. The infinitive *werden* goes to the end.'
+  w8:
+    translation: I'd like to go to Linz tomorrow.
+    why: 'The modal verb *möchte* is in position 2 and the infinitive *fahren* at the end. You can also start with *morgen* or *nach Linz*: then *ich* comes right after *möchte*.'
+  w9:
+    translation: Shall we take the bus?
+    why: 'A yes/no question starts with the modal verb *sollen*, then *wir*. The infinitive *nehmen* goes to the end.'
+  w10:
+    translation: You're not allowed to use your phones in class.
+    why: '*im Unterricht* is in position 1, so *dürft* comes second, then *ihr*. *nicht* comes right before the infinitive *benutzen* at the end.'
+  w11:
+    translation: Would you like something to drink?
+    why: 'A yes/no question starts with the modal verb *möchten*, then *Sie*. The infinitive *trinken* goes to the end.'
+  w12:
+    translation: At the weekend we want to visit friends in Graz.
+    why: '*am Wochenende* is in position 1, so *wollen* comes second, then *wir*. The infinitive *besuchen* goes to the end. *in Graz* can stand before or after *Freunde*.'
