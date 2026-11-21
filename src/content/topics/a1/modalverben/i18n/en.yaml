@@ -107,7 +107,7 @@ wordOrder:
     why: '*meine Tochter* is in position 1 and the modal verb *will* second. The infinitive *werden* goes to the end.'
   w8:
     translation: I'd like to go to Linz tomorrow.
-    why: 'The modal verb *möchte* is in position 2 and the infinitive *fahren* at the end. You can also start with *morgen* or *nach Linz*: then *ich* comes right after *möchte*.'
+    why: '*ich* is in position 1 and the modal verb *möchte* second. The infinitive *fahren* goes to the end.'
   w9:
     translation: Shall we take the bus?
     why: 'A yes/no question starts with the modal verb *sollen*, then *wir*. The infinitive *nehmen* goes to the end.'

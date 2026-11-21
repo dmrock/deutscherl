@@ -205,9 +205,7 @@ wordOrder:
     punctuation: '.'
   - id: w8
     parts: [ich, möchte, morgen, nach Linz, fahren]
-    accept:
-      - [morgen, möchte, ich, nach Linz, fahren]
-      - [nach Linz, möchte, ich, morgen, fahren]
+    fixed: true
     punctuation: '.'
   - id: w9
     parts: [sollen, wir, den Bus, nehmen]
