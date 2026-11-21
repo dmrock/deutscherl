@@ -1,0 +1,227 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the modal verb and the infinitive at the end.
+
+examples:
+  # Modal verb + infinitive
+  - id: e1
+    de: 'Wir **wollen** im Sommer nach Salzburg **fahren**.'
+  - id: e2
+    de: '**Musst** du morgen **arbeiten**?'
+  # können: one example per cell of the forms table
+  - id: e3
+    de: 'Ich **kann** gut **schwimmen**.'
+  - id: e4
+    de: 'Wir **können** morgen **telefonieren**.'
+  - id: e5
+    de: '**Kannst** du Gitarre **spielen**?'
+  - id: e6
+    de: 'Ihr **könnt** gern bei uns **schlafen**.'
+  - id: e7
+    de: 'Mein Sohn **kann** schon **lesen**.'
+  - id: e8
+    de: '**Können** Sie das bitte **wiederholen**?'
+  # The other modal verbs
+  - id: e9
+    de: 'Du **musst** das Buch unbedingt **lesen**!'
+  - id: e10
+    de: 'Ihr **dürft** heute länger **fernsehen**.'
+  # können: ability and possibility
+  - id: e11
+    de: 'Meine Oma **kann** sehr gut **kochen**.'
+  - id: e12
+    de: 'Wir **können** auch mit dem Zug **fahren**.'
+  # müssen
+  - id: e13
+    de: 'Ich **muss** jeden Tag um sechs Uhr **aufstehen**.'
+  - id: e14
+    de: 'Sie **müssen** hier **unterschreiben**.'
+  # dürfen
+  - id: e15
+    de: '**Darf** ich kurz dein Handy **benutzen**?'
+  - id: e16
+    de: 'Im Museum **darf** man nicht **fotografieren**.'
+  # nicht müssen or nicht dürfen
+  - id: e17
+    de: 'Morgen ist Feiertag. Wir **müssen** nicht **arbeiten**.'
+  - id: e18
+    de: 'Hier ist eine Schule. Du **darfst** nicht so schnell **fahren**.'
+  # wollen
+  - id: e19
+    de: 'Mein Bruder **will** ein neues Auto **kaufen**.'
+  - id: e20
+    de: '**Willst** du mit uns ins Kino **gehen**?'
+  # sollen
+  - id: e21
+    de: 'Der Arzt sagt, ich **soll** mehr Wasser **trinken**.'
+  - id: e22
+    de: '**Soll** ich dir **helfen**?'
+  # möchten: one example per cell of the forms table
+  - id: e23
+    de: 'Ich **möchte** einen Kaffee, bitte.'
+  - id: e24
+    de: 'Wir **möchten** bitte **zahlen**.'
+  - id: e25
+    de: 'Was **möchtest** du **trinken**?'
+  - id: e26
+    de: '**Möchtet** ihr noch ein Stück Kuchen?'
+  - id: e27
+    de: 'Paul **möchte** am Wochenende in die Berge **fahren**.'
+  - id: e28
+    de: '**Möchten** Sie Platz **nehmen**?'
+  # mögen
+  - id: e29
+    de: '**Magst** du Fisch?'
+  - id: e30
+    de: 'Die Kinder **mögen** ihre Lehrerin sehr.'
+
+choice:
+  # Forms
+  - id: c1
+    text: Ich ___ leider kein Französisch sprechen.
+    answer: kann
+    options: [kann, kannst, könnt, können]
+  - id: c2
+    text: Mein Bruder ___ sehr gut tanzen.
+    answer: kann
+    options: [kann, kannst, könnt, können]
+  - id: c3
+    text: ___ du mich morgen anrufen?
+    answer: Kannst
+    options: [Kannst, Kann, Könnt, Können]
+  - id: c4
+    text: Kinder, ihr ___ jetzt ins Bett gehen.
+    answer: müsst
+    options: [müsst, musst, muss, müssen]
+  - id: c5
+    text: Du ___ um acht Uhr im Büro sein.
+    answer: musst
+    options: [musst, muss, müsst, müssen]
+  - id: c6
+    text: Max ___ heute Abend lange fernsehen.
+    answer: darf
+    options: [darf, darfst, dürft, dürfen]
+  - id: c7
+    text: ___ ihr im Sommer allein nach Wien fahren?
+    answer: Dürft
+    options: [Dürft, Darf, Darfst, Dürfen]
+  - id: c8
+    text: Was ___ du zum Geburtstag?
+    answer: möchtest
+    options: [möchtest, möchte, möchtet, möchten]
+  - id: c9
+    text: Mein Freund ___ einen Tee mit Zitrone.
+    answer: möchte
+    options: [möchte, möchtet, möchtest, möchten]
+  - id: c10
+    text: Herr Novak, ___ Sie noch etwas trinken?
+    answer: möchten
+    options: [möchten, möchte, möchtet, möchtest]
+  - id: c11
+    text: Ich ___ heute Abend früh schlafen gehen.
+    answer: will
+    options: [will, willst, wollt, wollen]
+  - id: c12
+    text: ___ du am Wochenende mit uns wandern?
+    answer: Willst
+    options: [Willst, Will, Wollt, Wollen]
+  - id: c13
+    text: Lisa ___ heute die Küche aufräumen. Das sagt ihre Mutter.
+    answer: soll
+    options: [soll, sollst, sollt, sollen]
+  - id: c14
+    text: ___ du Schokolade?
+    answer: Magst
+    options: [Magst, Mag, Mögt, Mögen]
+  - id: c15
+    text: Meine Eltern ___ keinen Knoblauch.
+    answer: mögen
+    options: [mögen, mag, magst, mögt]
+  # Meaning
+  - id: c16
+    text: Ich habe Urlaub. Ich ___ nicht früh aufstehen.
+    answer: muss
+    options: [muss, musst, müssen, darfst]
+  - id: c17
+    text: Das Museum ist gratis. Wir ___ nichts bezahlen.
+    answer: müssen
+    options: [müssen, müsst, muss, dürft]
+  - id: c18
+    text: Jonas hat jetzt ein Auto. Er ___ nicht mehr mit dem Bus fahren.
+    answer: muss
+    options: [muss, musst, müsst, darfst]
+  - id: c19
+    text: ___ ich Sie kurz etwas fragen?
+    answer: Darf
+    options: [Darf, Darfst, Dürfen, Willst]
+  - id: c20
+    text: Ich ___ bitte mit Karte zahlen.
+    answer: möchte
+    options: [möchte, möchtest, möchten, magst]
+  - id: c21
+    text: Ich höre jeden Tag Jazz. Ich ___ Jazz sehr.
+    answer: mag
+    options: [mag, magst, mögen, möchtest]
+  - id: c22
+    text: Ich ___ Pilotin werden. Das ist mein Traum.
+    answer: will
+    options: [will, willst, wollen, sollst]
+  - id: c23
+    text: Mein Chef sagt, ich ___ morgen früher kommen.
+    answer: soll
+    options: [soll, sollst, sollen, willst]
+  - id: c24
+    text: Es ist kalt hier. ___ ich das Fenster zumachen?
+    answer: Soll
+    options: [Soll, Sollst, Sollen, Willst]
+
+wordOrder:
+  - id: w1
+    parts: [am Samstag, will, ich, lange, schlafen]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: [kannst, du, gut, kochen]
+    fixed: true
+    punctuation: '?'
+  - id: w3
+    parts: [was, möchtest, du, heute, essen]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [heute Abend, müssen, wir, die Wohnung, putzen]
+    fixed: true
+    punctuation: '.'
+  - id: w5
+    parts: [darf, ich, hier, fotografieren]
+    fixed: true
+    punctuation: '?'
+  - id: w6
+    parts: [wann, können, wir, uns, treffen]
+    fixed: true
+    punctuation: '?'
+  - id: w7
+    parts: [meine Tochter, will, Ärztin, werden]
+    fixed: true
+    punctuation: '.'
+  - id: w8
+    parts: [ich, möchte, morgen, nach Linz, fahren]
+    fixed: true
+    punctuation: '.'
+  - id: w9
+    parts: [sollen, wir, den Bus, nehmen]
+    fixed: true
+    punctuation: '?'
+  - id: w10
+    parts: [im Unterricht, dürft, ihr, das Handy, nicht, benutzen]
+    fixed: true
+    punctuation: '.'
+  - id: w11
+    parts: [möchten, Sie, etwas, trinken]
+    fixed: true
+    punctuation: '?'
+  - id: w12
+    parts: [am Wochenende, wollen, wir, in Graz, Freunde, besuchen]
+    fixed: true
+    accept:
+      - [am Wochenende, wollen, wir, Freunde, in Graz, besuchen]
+    punctuation: '.'
