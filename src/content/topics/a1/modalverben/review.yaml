@@ -2,15 +2,15 @@
 
 base:
   status: draft
-  contentHash: sha256:e15bfd37ffa15ca1
+  contentHash: sha256:812d25eef3673a53
   verifiedBy: null
   verifiedAt: null
   history: []
 translations:
   ru:
     status: draft
-    contentHash: sha256:2354885d9f74d8ef
-    basedOn: sha256:e15bfd37ffa15ca1
+    contentHash: sha256:73434602a9696057
+    basedOn: sha256:812d25eef3673a53
     reviewedBy: null
     reviewedAt: null
     history: []

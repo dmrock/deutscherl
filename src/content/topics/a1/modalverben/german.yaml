@@ -83,7 +83,7 @@ choice:
   - id: c2
     text: Mein Bruder ___ sehr gut tanzen.
     answer: kann
-    options: [kann, kannt, kannst, können]
+    options: [kann, kannst, könnt, können]
   - id: c3
     text: ___ du mich morgen anrufen?
     answer: Kannst
@@ -99,11 +99,11 @@ choice:
   - id: c6
     text: Max ___ heute Abend lange fernsehen.
     answer: darf
-    options: [darf, darft, darfst, dürfen]
+    options: [darf, darfst, dürft, dürfen]
   - id: c7
     text: ___ ihr im Sommer allein nach Wien fahren?
     answer: Dürft
-    options: [Dürft, Darft, Darfst, Dürfen]
+    options: [Dürft, Darf, Darfst, Dürfen]
   - id: c8
     text: Was ___ du zum Geburtstag?
     answer: möchtest
@@ -123,7 +123,7 @@ choice:
   - id: c12
     text: ___ du am Wochenende mit uns wandern?
     answer: Willst
-    options: [Willst, Will, Wollst, Wollt]
+    options: [Willst, Will, Wollt, Wollen]
   - id: c13
     text: Lisa ___ heute die Küche aufräumen. Das sagt ihre Mutter.
     answer: soll
@@ -131,7 +131,7 @@ choice:
   - id: c14
     text: ___ du Schokolade?
     answer: Magst
-    options: [Magst, Mag, Mögst, Mögt]
+    options: [Magst, Mag, Mögt, Mögen]
   - id: c15
     text: Meine Eltern ___ keinen Knoblauch.
     answer: mögen
@@ -140,39 +140,39 @@ choice:
   - id: c16
     text: Ich habe Urlaub. Ich ___ nicht früh aufstehen.
     answer: muss
-    options: [muss, darf, musst, darfst]
+    options: [muss, musst, müssen, darfst]
   - id: c17
     text: Das Museum ist gratis. Wir ___ nichts bezahlen.
     answer: müssen
-    options: [müssen, dürfen, muss, darf]
+    options: [müssen, müsst, muss, dürft]
   - id: c18
     text: Jonas hat jetzt ein Auto. Er ___ nicht mehr mit dem Bus fahren.
     answer: muss
-    options: [muss, darf, musst, darfst]
+    options: [muss, musst, müsst, darfst]
   - id: c19
     text: ___ ich Sie kurz etwas fragen?
     answer: Darf
-    options: [Darf, Will, Mag, Möchte]
+    options: [Darf, Darfst, Dürfen, Willst]
   - id: c20
     text: Ich ___ bitte mit Karte zahlen.
     answer: möchte
-    options: [möchte, mag, möchtest, magst]
+    options: [möchte, möchtest, möchten, magst]
   - id: c21
     text: Ich höre jeden Tag Jazz. Ich ___ Jazz sehr.
     answer: mag
-    options: [mag, möchte, magst, möchtest]
+    options: [mag, magst, mögen, möchtest]
   - id: c22
     text: Ich ___ Pilotin werden. Das ist mein Traum.
     answer: will
-    options: [will, soll, willst, sollst]
+    options: [will, willst, wollen, sollst]
   - id: c23
     text: Mein Chef sagt, ich ___ morgen früher kommen.
     answer: soll
-    options: [soll, will, sollst, willst]
+    options: [soll, sollst, sollen, willst]
   - id: c24
     text: Es ist kalt hier. ___ ich das Fenster zumachen?
     answer: Soll
-    options: [Soll, Sollst, Will, Willst]
+    options: [Soll, Sollst, Sollen, Willst]
 
 wordOrder:
   - id: w1

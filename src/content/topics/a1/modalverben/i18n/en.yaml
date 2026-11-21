@@ -37,7 +37,7 @@ choice:
   c1:
     why: '*können* with *ich* is *kann*, with no ending.'
   c2:
-    why: '*mein Bruder* is *er*. With modal verbs, *er* has the same form as *ich*, with no *-t*: *er kann*. *kannt* does not exist.'
+    why: '*mein Bruder* is *er*. With modal verbs, *er* has the same form as *ich*, with no ending: *er kann*. *kannst* is the form for *du*, *könnt* the form for *ihr*.'
   c3:
     why: 'With *du*, *können* is *kannst*. The yes/no question starts with the modal verb, and *anrufen* goes to the end.'
   c4:
@@ -45,9 +45,9 @@ choice:
   c5:
     why: 'With *du*, *müssen* is *musst*. The stem already ends in an s sound, so *du* adds only *-t*. *müsst* is the form for *ihr*.'
   c6:
-    why: '*Max* is *er*, and *er* has the same form as *ich*, with no ending: *er darf*. *darft* does not exist.'
+    why: '*Max* is *er*, and *er* has the same form as *ich*, with no ending: *er darf*. *darfst* is the form for *du*, *dürft* the form for *ihr*.'
   c7:
-    why: 'With *ihr*, the vowel stays as in the infinitive: *ihr dürft*. Only the singular has *a*: *ich darf*, *du darfst*.'
+    why: 'With *ihr*, the vowel stays as in the infinitive and the ending is *-t*: *ihr dürft*. *darf* and *darfst* are singular forms, and *dürfen* is the form for *wir*, *sie* and *Sie*.'
   c8:
     why: 'With *du*, *möchten* takes *-est*: *du möchtest*. Here *möchten* goes with a noun alone, without a second verb.'
   c9:
@@ -57,31 +57,31 @@ choice:
   c11:
     why: '*wollen* with *ich* is *will*, with no ending.'
   c12:
-    why: 'With *du*, *wollen* is *willst*: the singular has *i*. *wollst* does not exist.'
+    why: 'With *du*, *wollen* is *willst*: the singular has *i*. *will* is the form for *ich* and *er*, *wollt* the form for *ihr*.'
   c13:
     why: '*Lisa* is *sie* (one person), and *sie* has the same form as *ich*, with no ending: *sie soll*. Her mother wants it, so the verb is *sollen*.'
   c14:
-    why: 'With *du*, *mögen* is *magst*: the singular has *a*. *mögst* does not exist.'
+    why: 'With *du*, *mögen* is *magst*: the singular has *a*. *mag* is the form for *ich* and *er*, *mögt* the form for *ihr*.'
   c15:
     why: '*meine Eltern* are several people (*sie*), so the form is the infinitive: *mögen*. *mögt* is the form for *ihr*.'
   c16:
-    why: 'On holiday, getting up early is not necessary: *nicht müssen*. *ich darf nicht* would mean it is forbidden, which makes no sense here.'
+    why: 'On holiday, getting up early is not necessary: *ich muss nicht*. With *ich*, *müssen* is *muss*, with no ending. *darfst* is a form for *du*, and *ich darf nicht* would mean it is forbidden.'
   c17:
-    why: 'The museum is free, so paying is not necessary: *wir müssen nichts bezahlen*. *wir dürfen nichts bezahlen* would mean paying is forbidden.'
+    why: 'The museum is free, so paying is not necessary: *wir müssen nichts bezahlen*. With *wir*, the form is the infinitive. *dürft* is a form for *ihr*, and *wir dürfen nichts bezahlen* would mean paying is forbidden.'
   c18:
-    why: 'Jonas has a car now, so taking the bus is no longer necessary: *er muss nicht mehr*. *er darf nicht* would mean taking the bus is forbidden.'
+    why: 'Jonas has a car now, so taking the bus is no longer necessary: *er muss nicht mehr*. *er* has the same form as *ich*: *muss*. *darfst* is a form for *du*, and *er darf nicht* would mean taking the bus is forbidden.'
   c19:
-    why: 'With *Darf ich …?* you ask politely for permission. *wollen* and *möchten* say what you want yourself, and *mögen* says what you like, so they do not ask for permission.'
+    why: 'With *Darf ich …?* you ask politely for permission. With *ich*, the form is *darf*, with no ending. *Willst* is a form for *du*, and *wollen* says what you want yourself.'
   c20:
-    why: 'You say politely what you want right now, so you use *möchte*. *mögen* says what you like, and you do not use it for a request like this.'
+    why: 'You say politely what you want right now, so you use *möchte*. With *ich*, the ending is *-e*. *magst* is a form for *du*, and *mögen* says what you like, not what you want now.'
   c21:
-    why: 'You listen to jazz every day, so you like it in general: *ich mag*. *möchte* is for a wish right now.'
+    why: 'You listen to jazz every day, so you like it in general: *ich mag*, with no ending. *möchtest* is a form for *du*, and *möchten* is for a wish right now.'
   c22:
-    why: 'It is your own dream, so you use *wollen*: *ich will*. *sollen* would mean someone else wants it.'
+    why: 'It is your own dream, so you use *wollen*: *ich will*, with no ending. *sollst* is a form for *du*, and *sollen* would mean someone else wants it.'
   c23:
-    why: 'Your boss wants it, not you, so you use *sollen*: *ich soll*. With *ich*, there is no ending.'
+    why: 'Your boss wants it, not you, so you use *sollen*: *ich soll*, with no ending. *willst* is a form for *du*, and *wollen* would mean it is your own wish.'
   c24:
-    why: 'With *Soll ich …?* you ask what the other person wants you to do. With *ich*, the form is *soll*, with no ending. *Will ich …?* asks about your own wish, which makes no sense here.'
+    why: 'With *Soll ich …?* you ask what the other person wants you to do. With *ich*, the form is *soll*, with no ending. *Willst* is a form for *du*, and *wollen* asks about your own wish.'
 
 wordOrder:
   w1:
