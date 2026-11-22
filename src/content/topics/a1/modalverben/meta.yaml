@@ -1,0 +1,36 @@
+level: a1
+category: verbs
+order: 3
+sources:
+  - title: 'ÖIF: A1 Einstufungsmatrix modular (Modul A1+: Modalverben möchten, können, wollen, müssen, dürfen, sollen + Satzklammer)'
+    url: https://www.integrationsfonds.at/fileadmin/user_upload/A1_OEIF-Einstufungsmatrix_modular.pdf
+  - title: 'telc: Einfach gut A1, Grammatik (present forms of mögen, möchten, können, dürfen, wollen, müssen, sollen)'
+    url: https://www.telc.net/ebook/demo/einfach-gut-digital/a1/documents/pdf/Grammatik_Grammatik_A1.pdf
+  - title: 'Duden Sprachratgeber: Modalverben (dürfen = Erlaubnis, nicht dürfen = verboten, müssen = notwendig, nicht brauchen = nicht notwendig, sollen = Forderung, wollen = Wunsch; infinitive at the end)'
+    url: https://www.duden.de/sprachwissen/sprachratgeber/modalverben
+  - title: 'DWDS: können (Fähigkeit, Möglichkeit; Synonym zu dürfen: du kannst heute ausnahmsweise etwas länger aufbleiben)'
+    url: https://www.dwds.de/wb/k%C3%B6nnen
+  - title: 'Duden: können (Fähigkeit: sie kann gut turnen; Möglichkeit; Erlaubnis: kann ich jetzt gehen?)'
+    url: https://www.duden.de/rechtschreibung/koennen
+  - title: 'DWDS: müssen (Notwendigkeit; du musst es nicht tun, kein Mensch zwingt dich dazu; umgangssprachlich in verneinten Aufforderungen: du musst nicht weinen)'
+    url: https://www.dwds.de/wb/m%C3%BCssen
+  - title: 'Duden: müssen (ich muss, du musst; verneint norddeutsch for nicht dürfen, nicht sollen)'
+    url: https://www.duden.de/rechtschreibung/muessen
+  - title: 'DWDS: dürfen (Erlaubnis; verneint: Verbot; darf ich …? in polite questions)'
+    url: https://www.dwds.de/wb/d%C3%BCrfen
+  - title: 'DWDS: wollen (Wille, Absicht: ich will Medizin studieren)'
+    url: https://www.dwds.de/wb/wollen
+  - title: 'DWDS: sollen (Auftrag einer anderen Person; soll ich gehen? Nein, das sollst du nicht)'
+    url: https://www.dwds.de/wb/sollen
+  - title: 'Duden: sollen (Auftrag: sie soll sofort kommen; questions: was soll ich machen?, sollen wir früher gehen?)'
+    url: https://www.duden.de/rechtschreibung/sollen
+  - title: 'DWDS: mögen (with a noun: gern haben; möchte höflich in Bitten, felt as present tense)'
+    url: https://www.dwds.de/wb/m%C3%B6gen
+  - title: 'Duden: mögen (ich mag, du magst; möchte = den Wunsch haben; also a wish: magst du einen Kaffee?)'
+    url: https://www.duden.de/rechtschreibung/moegen
+  - title: 'University of Texas at Austin, Grimm Grammar: Modalverben, Präsens (present forms of all modal verbs and möchten; du musst nicht = you do not have to, du darfst nicht = you must not; mögen with nouns; möchten = would like)'
+    url: https://coerll.utexas.edu/gg/gr/vm_01.html
+  - title: 'Wiktionary: Flexion mögen (ich mag, du magst, ihr mögt; Konjunktiv II ich möchte, er möchte, ihr möchtet)'
+    url: https://de.wiktionary.org/wiki/Flexion:m%C3%B6gen
+  - title: 'DWDS: früh (Adverb, am Morgen: seit heute früh)'
+    url: https://www.dwds.de/wb/fr%C3%BCh
