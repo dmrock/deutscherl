@@ -68,11 +68,11 @@ choice:
   - id: c4
     text: ___ du gern Bücher?
     answer: Liest
-    options: [Liest, Liesst, Lest, Lesst]
+    options: [Liest, Lies, Lest, Lese]
   - id: c5
     text: ___ du heute Mittag in der Kantine?
     answer: Isst
-    options: [Isst, Issst, Esst, Essst]
+    options: [Isst, Iss, Esst, Esse]
   - id: c6
     text: ___ du einen Kaffee oder einen Tee?
     answer: Nimmst
@@ -113,7 +113,7 @@ choice:
   - id: c15
     text: Herr Wagner ___ jeden Morgen die Zeitung.
     answer: liest
-    options: [liest, lest, liesst, lesst]
+    options: [liest, lies, lest, lese]
   - id: c16
     text: Mein Opa ___ nicht mehr so gut.
     answer: sieht
@@ -133,7 +133,7 @@ choice:
   - id: c20
     text: Mein Sohn ___ kein Fleisch.
     answer: isst
-    options: [isst, esst, issen, essen]
+    options: [isst, iss, esst, esse]
   - id: c21
     text: Mein Mann ___ keinen Zucker in den Kaffee.
     answer: nimmt
@@ -150,15 +150,15 @@ choice:
   - id: c24
     text: Wir ___ heute Abend Pizza.
     answer: essen
-    options: [essen, issen, esst, isst]
+    options: [essen, esst, isst, esse]
   - id: c25
     text: Für mich keine Suppe, danke. Ich ___ den Salat.
     answer: nehme
-    options: [nehme, nimme, nehmt, nimmt]
+    options: [nehme, nimm, nehmt, nimmt]
   - id: c26
     text: Herr Bauer, ___ Sie Deutsch oder Englisch?
     answer: sprechen
-    options: [sprechen, sprichen, sprecht, spricht]
+    options: [sprechen, sprecht, spricht, sprichst]
   - id: c27
     text: Kinder, ___ ihr den Hund da drüben?
     answer: seht
@@ -166,7 +166,7 @@ choice:
   - id: c28
     text: Am Wochenende ___ ich immer lange.
     answer: schlafe
-    options: [schlafe, schläfe, schlafst, schläfst]
+    options: [schlafe, schlaft, schläft, schläfst]
   - id: c29
     text: Danke, ihr ___ mir wirklich sehr!
     answer: helft
@@ -175,8 +175,8 @@ choice:
   - id: c30
     text: Meine Mutter ___ seit zehn Jahren nicht mehr.
     answer: raucht
-    options: [raucht, räucht, rauchst, räuchst]
+    options: [raucht, rauchst, rauchen, rauche]
   - id: c31
     text: Lukas ___ heute nicht in die Schule. Er ist krank.
     answer: geht
-    options: [geht, gieht, gehst, giehst]
+    options: [geht, gehst, gehen, gehe]

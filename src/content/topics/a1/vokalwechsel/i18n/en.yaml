@@ -31,7 +31,7 @@ choice:
   c3:
     why: '*schlafen* changes *a* to *ä* with *du*: *du schläfst*. *schlaft* is the form for *ihr*.'
   c4:
-    why: '*lesen* changes *e* to *ie*, and its stem ends in an s sound, so *du* adds only *-t*: *du liest*. *liesst* does not exist.'
+    why: '*lesen* changes *e* to *ie*, and its stem ends in an s sound, so *du* adds only *-t*: *du liest*. *lest* is the form for *ihr*.'
   c5:
     why: '*essen* changes *e* to *i*, and its stem ends in an s sound, so *du* adds only *-t*: *du isst*. *esst* is the form for *ihr*.'
   c6:
@@ -63,7 +63,7 @@ choice:
   c19:
     why: '*laufen* changes *au* to *äu* with *er*: *er läuft*. *lauft* is the form for *ihr*.'
   c20:
-    why: '*mein Sohn* is *er*, and *essen* changes *e* to *i*: *er isst*. *issen* does not exist: with a plural subject the vowel stays, *sie essen*.'
+    why: '*mein Sohn* is *er*, and *essen* changes *e* to *i*: *er isst*. *esst* is the form for *ihr*.'
   c21:
     why: '*mein Mann* is *er*, and *nehmen* becomes *nimmt*: the *h* goes and the *m* doubles. *nehmt* is the form for *ihr*.'
   c22:
