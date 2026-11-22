@@ -2,14 +2,16 @@ level: b1
 category: sentences
 order: 2
 sources:
-  - title: 'Hueber, Menschen B1: Grammatikübersicht (L07 Infinitiv mit zu nach bestimmten Verben, Nomen + haben, Konstruktionen mit es wie es macht Spaß; nachdenken → nachzudenken; L24 damit / um … zu: um … zu nur bei gleichem Subjekt)'
+  - title: 'Hueber, Menschen B1: Grammatikübersicht (L07 Infinitiv mit zu nach bestimmten Verben, Nomen + haben, Konstruktionen mit es wie es macht Spaß; Ich empfehle Ihnen, … zu lassen; nachdenken → nachzudenken; L24 damit / um … zu: um … zu nur bei gleichem Subjekt)'
     url: https://legacy.hueber.de/media/36/msn-b1-grammatik-uebersicht.pdf
   - title: 'Hueber, Schritte international Neu 5+6: Inhaltsverzeichnis (Infinitiv mit zu: Es ist toll, Kunden zu beraten; um … zu + Infinitiv und damit)'
     url: https://shop.hueber.de/media/hueber_dateien/Internet_Inhaltsverz/Red1/9783191010867_Inhalt.pdf
   - title: 'DWDS: zu (Konjunktion vor Infinitiv; bei trennbaren Verben tritt zu hinter die betonte Silbe: aufzufallen, wiederzusehen)'
     url: https://www.dwds.de/wb/zu
-  - title: 'Lingolia: Infinitiv (bei trennbaren Verben steht zu zwischen den beiden Teilen; Infinitiv ohne zu nach Modalverben und lassen)'
+  - title: 'Lingolia: Infinitiv (bei trennbaren Verben steht zu zwischen den beiden Teilen; Infinitiv ohne zu nach Modalverben, lassen, Bewegungsverben wie gehen und Wahrnehmungsverben wie sehen, hören)'
     url: https://deutsch.lingolia.com/de/grammatik/verben/infinitiv
+  - title: 'DWDS: gehen (einkaufen gehen; wir hörten die Tür gehen)'
+    url: https://www.dwds.de/wb/gehen
   - title: 'grammis (IDS Mannheim): Modalverben im Verbalkomplex (müssen, sollen, dürfen, mögen/möchte-, wollen, können mit reinem Infinitiv)'
     url: https://grammis.ids-mannheim.de/systematische-grammatik/1543
   - title: 'Duden: werden (Hilfsverb: Futur mit werden + Infinitiv)'
@@ -22,7 +24,7 @@ sources:
     url: https://rechtschreibrat.com/DOX/RfdR_Amtliches-Regelwerk_2024_UeberblickAenderungen.pdf
   - title: 'grammis (IDS Mannheim), Amtliche Regelung: § 73 Nebensätze (E1: infinite Nebensätze mit um, ohne, statt und ohne Einleitewort stehen mit Komma; E2: beim bloßen zu-Infinitiv Komma nur, wenn er als Nebensatz verstanden wird)'
     url: https://grammis.ids-mannheim.de/rechtschreibung/6203
-  - title: 'IIK Düsseldorf: Infinitivsätze und dass-Sätze (Infinitiv bei gleichem Subjekt oder wenn das Objekt des Hauptsatzes handelt, z. B. bitten, raten, erlauben; sonst nur dass; nach sagen immer dass)'
+  - title: 'IIK Düsseldorf: Infinitivsätze und dass-Sätze (Infinitiv bei gleichem Subjekt oder wenn das Objekt des Hauptsatzes handelt, z. B. bitten, empfehlen, raten, erlauben; nach es ist + Adjektiv mit unpersönlichem Subjekt man; sonst nur dass; nach sagen immer dass)'
     url: https://www.wirtschaftsdeutsch.de/lehrmaterialien/grammatik-infinitivsatz-B.doc
   - title: 'Molnár (IDS Mannheim, Arbeitspapiere der Abteilung Grammatik 2): Gibt es eine Konkurrenz zwischen Infinitivkonstruktionen und dass-Sätzen? (das logische Subjekt des Infinitivs ist in der Regel das Subjekt oder das Objekt des Hauptsatzes: Er hat mir vorgeschlagen, das Buch zu kaufen)'
     url: https://ids-pub.bsz-bw.de/files/4341/Molnar_Gibt%20es%20eine%20Konkurrenz%20zwischen%20Dass-S%C3%A4tzen_2015.pdf

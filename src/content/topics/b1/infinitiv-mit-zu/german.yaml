@@ -129,7 +129,7 @@ choice:
   - id: c18
     text: Ich versuche, meine Oma jede Woche ___.
     answer: zu besuchen
-    options: [zu besuchen, bezusuchen, besuchen, besuche]
+    options: [zu besuchen, besuchen zu, besuchen, besuche]
   - id: c19
     text: Es ist schön, ___ du wieder da bist.
     answer: dass
