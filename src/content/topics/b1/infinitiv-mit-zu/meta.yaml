@@ -1,0 +1,52 @@
+level: b1
+category: sentences
+order: 2
+sources:
+  - title: 'Hueber, Menschen B1: Grammatikübersicht (L07 Infinitiv mit zu nach bestimmten Verben, Nomen + haben, Konstruktionen mit es wie es macht Spaß; nachdenken → nachzudenken; L24 damit / um … zu: um … zu nur bei gleichem Subjekt)'
+    url: https://legacy.hueber.de/media/36/msn-b1-grammatik-uebersicht.pdf
+  - title: 'Hueber, Schritte international Neu 5+6: Inhaltsverzeichnis (Infinitiv mit zu: Es ist toll, Kunden zu beraten; um … zu + Infinitiv und damit)'
+    url: https://shop.hueber.de/media/hueber_dateien/Internet_Inhaltsverz/Red1/9783191010867_Inhalt.pdf
+  - title: 'DWDS: zu (Konjunktion vor Infinitiv; bei trennbaren Verben tritt zu hinter die betonte Silbe: aufzufallen, wiederzusehen)'
+    url: https://www.dwds.de/wb/zu
+  - title: 'Lingolia: Infinitiv (bei trennbaren Verben steht zu zwischen den beiden Teilen; Infinitiv ohne zu nach Modalverben und lassen)'
+    url: https://deutsch.lingolia.com/de/grammatik/verben/infinitiv
+  - title: 'grammis (IDS Mannheim): Modalverben im Verbalkomplex (müssen, sollen, dürfen, mögen/möchte-, wollen, können mit reinem Infinitiv)'
+    url: https://grammis.ids-mannheim.de/systematische-grammatik/1543
+  - title: 'Duden: werden (Hilfsverb: Futur mit werden + Infinitiv)'
+    url: https://www.duden.de/rechtschreibung/werden_Hilfsverb
+  - title: 'grammis (IDS Mannheim): Futur (Futur I = werden + Infinitiv)'
+    url: https://grammis.ids-mannheim.de/vggf/2229
+  - title: 'DWDS: lassen (lassen + Akkusativ + Infinitiv ohne zu: einen Voranschlag machen lassen)'
+    url: https://www.dwds.de/wb/lassen
+  - title: 'Rat für deutsche Rechtschreibung: Amtliches Regelwerk 2024, Überblick der Änderungen (§ 73: erweiterte zu-Infinitive sind infinite Nebensätze, Komma verpflichtend; nicht erweiterte zu-Infinitive mit Komma als Nebensatz, ohne Komma als Satzglied)'
+    url: https://rechtschreibrat.com/DOX/RfdR_Amtliches-Regelwerk_2024_UeberblickAenderungen.pdf
+  - title: 'grammis (IDS Mannheim), Amtliche Regelung: § 73 Nebensätze (E1: infinite Nebensätze mit um, ohne, statt und ohne Einleitewort stehen mit Komma; E2: beim bloßen zu-Infinitiv Komma nur, wenn er als Nebensatz verstanden wird)'
+    url: https://grammis.ids-mannheim.de/rechtschreibung/6203
+  - title: 'IIK Düsseldorf: Infinitivsätze und dass-Sätze (Infinitiv bei gleichem Subjekt oder wenn das Objekt des Hauptsatzes handelt, z. B. bitten, raten, erlauben; sonst nur dass; nach sagen immer dass)'
+    url: https://www.wirtschaftsdeutsch.de/lehrmaterialien/grammatik-infinitivsatz-B.doc
+  - title: 'Molnár (IDS Mannheim, Arbeitspapiere der Abteilung Grammatik 2): Gibt es eine Konkurrenz zwischen Infinitivkonstruktionen und dass-Sätzen? (das logische Subjekt des Infinitivs ist in der Regel das Subjekt oder das Objekt des Hauptsatzes: Er hat mir vorgeschlagen, das Buch zu kaufen)'
+    url: https://ids-pub.bsz-bw.de/files/4341/Molnar_Gibt%20es%20eine%20Konkurrenz%20zwischen%20Dass-S%C3%A4tzen_2015.pdf
+  - title: 'Rapp (IDS Mannheim): Zur Distribution von infiniten Komplementsätzen im Deutschen (versprechen erlaubt dass-Satz und zu-Infinitiv; sagen tendiert stark zum dass-Satz, ?Sie sagt, nach Ulm zu fahren wirkt markiert)'
+    url: https://ids-pub.bsz-bw.de/frontdoor/deliver/index/docId/12604/file/Rapp_Zur_Distribution_von_infiniten_Komplementsaetzen_2015.pdf
+  - title: 'Duden Sprachratgeber: Infinitiv mit zu (bei trennbaren Verben zusammengeschrieben: wegzulaufen; bei untrennbaren Verben steht zu für sich: zu unterbinden)'
+    url: https://www.duden.de/sprachwissen/sprachratgeber/Infinitiv-mit-zu
+  - title: 'Duden: Konjugation besuchen (Infinitiv mit zu: zu besuchen)'
+    url: https://www.duden.de/konjugation/besuchen
+  - title: 'Wiktionary: Flexion besuchen und vergessen (erweiterter Infinitiv: zu besuchen, zu vergessen)'
+    url: https://de.wiktionary.org/wiki/Flexion:vergessen
+  - title: 'Lingoda: Infinitiv mit zu (nur wenn das Subjekt des dass-Satzes mit dem Subjekt oder Objekt des Hauptsatzes identisch ist; haben + Nomen, sein/finden + Adjektiv; Infinitivsätze werden mit Komma abgetrennt)'
+    url: https://www.lingoda.com/blog/de/infinitiv-mit-zu/
+  - title: 'DWDS: um (Konjunktion um … zu: Absicht einer im Hauptsatz genannten Person)'
+    url: https://www.dwds.de/wb/um
+  - title: 'DWDS: damit (Konjunktion: zu dem Zwecke, dass; auch bei gleichem Subjekt: er beeilt sich, damit er rechtzeitig ankommt)'
+    url: https://www.dwds.de/wb/damit
+  - title: 'Duden: dafürstehen (österreichisch: sich lohnen; es steht [nicht] dafür)'
+    url: https://www.duden.de/rechtschreibung/dafuerstehen
+  - title: 'DWDS: dafürstehen (österreichisch, umgangssprachlich: das steht nicht dafür = das lohnt nicht)'
+    url: https://www.dwds.de/wb/daf%C3%BCrstehen
+  - title: 'Langenscheidt Großwörterbuch Deutsch als Fremdsprache: dafürstehen (es steht nicht dafür + zu + Infinitiv; südd, A: es lohnt sich nicht, etwas zu tun)'
+    url: https://german_as_foreign.de-academic.com/5478/daf%C3%BCrstehen
+  - title: 'PONS Deutsch-Englisch: dafürstehen (südd, A: sich lohnen, to be worth it)'
+    url: https://de.pons.com/%C3%BCbersetzung-2/deutsch-englisch/daf%C3%BCrstehen
+  - title: 'DWDS: lohnen (es lohnt sich [nicht], … zu + Infinitiv)'
+    url: https://www.dwds.de/wb/lohnen

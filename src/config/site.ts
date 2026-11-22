@@ -24,7 +24,7 @@ export interface Level {
  * coming-soon pages. Labels are UI strings (`planned.<id>`).
  */
 export const plannedTopics = {
-  b1: ['praeteritum', 'konjunktiv-ii', 'passiv', 'infinitiv-mit-zu'],
+  b1: ['praeteritum', 'konjunktiv-ii', 'passiv'],
   b2: ['passiv-modalverben', 'n-deklination', 'zweiteilige-konnektoren', 'nomen-verb'],
   c1: [
     'nominalstil',
