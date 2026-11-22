@@ -1,0 +1,80 @@
+level: a1
+category: verbs
+order: 4
+sources:
+  - title: 'ÖIF: A1 Einstufungsmatrix modular (Modul A1+: Verben mit Vokalwechsel im Präsens)'
+    url: https://www.integrationsfonds.at/fileadmin/user_upload/A1_OEIF-Einstufungsmatrix_modular.pdf
+  - title: 'telc: Einfach gut A1, Grammatik (Verben mit Vokalwechsel: e → i, e → ie, a → ä, only du and er/sie/es; Verbstamm auf -s, -ß, -z)'
+    url: https://www.telc.net/ebook/demo/einfach-gut-digital/a1/documents/pdf/Grammatik_Grammatik_A1.pdf
+  - title: 'Duden: Konjugation sprechen (sprichst, spricht, sprecht)'
+    url: https://www.duden.de/konjugation/sprechen
+  - title: 'DWDS: sprechen (spricht; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/sprechen
+  - title: 'Duden: Konjugation nehmen (nimmst, nimmt, nehmt)'
+    url: https://www.duden.de/konjugation/nehmen
+  - title: 'DWDS: nehmen (nimmt; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/nehmen
+  - title: 'Duden: Konjugation essen (du isst, er isst, ihr esst)'
+    url: https://www.duden.de/konjugation/essen
+  - title: 'DWDS: essen (isst; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/essen
+  - title: 'Duden: Konjugation geben (gibst, gibt)'
+    url: https://www.duden.de/konjugation/geben
+  - title: 'DWDS: geben (gibt; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/geben
+  - title: 'Duden: Konjugation helfen (hilfst, hilft, helft)'
+    url: https://www.duden.de/konjugation/helfen
+  - title: 'DWDS: helfen (hilft; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/helfen
+  - title: 'Duden: Konjugation treffen (triffst, trifft)'
+    url: https://www.duden.de/konjugation/treffen
+  - title: 'DWDS: treffen (trifft; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/treffen
+  - title: 'DWDS: lesen (liest; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/lesen
+  - title: 'Wiktionary: Flexion lesen (du liest, ihr lest)'
+    url: https://de.wiktionary.org/wiki/Flexion:lesen
+  - title: 'DWDS: sehen (sieht; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/sehen
+  - title: 'Wiktionary: Flexion sehen (du siehst, ihr seht)'
+    url: https://de.wiktionary.org/wiki/Flexion:sehen
+  - title: 'Duden: Konjugation fahren (fährst, fährt, fahrt)'
+    url: https://www.duden.de/konjugation/fahren
+  - title: 'DWDS: fahren (fährt; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/fahren
+  - title: 'Duden: Konjugation schlafen (schläfst, schläft, schlaft)'
+    url: https://www.duden.de/konjugation/schlafen
+  - title: 'DWDS: schlafen (schläft; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/schlafen
+  - title: 'Duden: Konjugation waschen (wäschst, wäscht, wascht)'
+    url: https://www.duden.de/konjugation/waschen
+  - title: 'DWDS: waschen (wäscht; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/waschen
+  - title: 'DWDS: gefallen (gefällt; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/gefallen
+  - title: 'Wiktionary: Flexion gefallen (gefällt)'
+    url: https://de.wiktionary.org/wiki/Flexion:gefallen
+  - title: 'Duden: Konjugation laufen (läufst, läuft, lauft)'
+    url: https://www.duden.de/konjugation/laufen
+  - title: 'DWDS: laufen (läuft; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/laufen
+  - title: 'Duden: Konjugation kaufen (kauft, no vowel change)'
+    url: https://www.duden.de/konjugation/kaufen
+  - title: 'DWDS: kaufen (kauft)'
+    url: https://www.dwds.de/wb/kaufen
+  - title: 'Duden: Konjugation gehen (geht, no vowel change)'
+    url: https://www.duden.de/konjugation/gehen
+  - title: 'DWDS: gehen (geht)'
+    url: https://www.dwds.de/wb/gehen
+  - title: 'Duden: kaufen (du kaufst; käufst only regional, so not used as a distractor)'
+    url: https://www.duden.de/rechtschreibung/kaufen
+  - title: 'Duden: Konjugation rauchen (raucht, no vowel change)'
+    url: https://www.duden.de/konjugation/rauchen
+  - title: 'DWDS: rauchen (raucht; Goethe-Zertifikat A1)'
+    url: https://www.dwds.de/wb/rauchen
+  - title: 'Hueber: Schritte plus neu A1, Trainingsbuch (Vokalwechsel only in the 2nd and 3rd person singular; essen: du isst, er isst)'
+    url: https://shop.hueber.de/media/hueber_dateien/Internet_Muster/Red7/9783196574937_Muster_3.pdf
+  - title: 'Schubert-Verlag: Arbeitsblatt 26, Vokaländerungen in der 2. und 3. Person Singular (incl. laufen)'
+    url: https://www.aufgaben.schubert-verlag.de/arbeitsblaetter_a1_z/arbeitsblatt026.pdf
+  - title: 'Variantengrammatik: Verbformen im Präsens mit / ohne Umlaut (forms without umlaut such as schlaft are not confirmed as Austrian or other regional standard; no Austrian note)'
+    url: https://mediawiki.ids-mannheim.de/VarGra/index.php?title=Verbformen_im_Pr%C3%A4sens_mit_/_ohne_Umlaut

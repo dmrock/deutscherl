@@ -1,0 +1,88 @@
+# Russian translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: Я каждый день езжу на велосипеде.
+  e2: Сегодня мы едим у моей бабушки.
+  e3: Ты говоришь по-английски?
+  e4: Вы поедете на автобусе или на метро?
+  e5: Мой брат ещё спит.
+  e6: Что Вы сейчас читаете?
+  e7: Папа помогает мне с домашним заданием.
+  e8: Когда ты встречаешься с друзьями?
+  e9: Лена любит читать детективы.
+  e10: Видишь автобус там впереди?
+  e11: Сколько ты спишь по воскресеньям?
+  e12: Квартира мне очень нравится.
+  e13: Мой сын очень быстро бегает.
+  e14: Ты каждое утро бегаешь в парке?
+  e15: Я возьму чай. А ты что будешь?
+  e16: Моя жена всегда ездит на поезде в семь.
+  e17: Что ты ешь на завтрак?
+  e18: Ты ещё читаешь газету?
+  e19: Она каждый день ходит на работу пешком.
+  e20: По субботам он всегда покупает свежий хлеб.
+
+choice:
+  c1:
+    why: 'У *fahren* с *du* *a* меняется на *ä*: *du fährst*. У *fahrst* окончание верное, но гласная не изменилась.'
+  c2:
+    why: 'У *sprechen* с *du* *e* меняется на *i*: *du sprichst*. *spricht* — форма для *er / sie / es*.'
+  c3:
+    why: 'У *schlafen* с *du* *a* меняется на *ä*: *du schläfst*. *schlaft* — форма для *ihr*.'
+  c4:
+    why: 'У *lesen* *e* меняется на *ie*, а основа заканчивается на звук «с», поэтому *du* добавляет только *-t*: *du liest*. Формы *liesst* нет.'
+  c5:
+    why: 'У *essen* *e* меняется на *i*, а основа заканчивается на звук «с», поэтому *du* добавляет только *-t*: *du isst*. *esst* — форма для *ihr*.'
+  c6:
+    why: 'У *nehmen* с *du* *e* меняется на *i*, *h* пропадает, а *m* удваивается: *du nimmst*. Формы *nehmst* нет.'
+  c7:
+    why: 'У *sehen* с *du* *e* меняется на *ie*: *du siehst*. *sieht* — форма для *er / sie / es*.'
+  c8:
+    why: 'У *helfen* с *du* *e* меняется на *i*: *du hilfst*. В вопросе без вопросительного слова глагол стоит на первом месте.'
+  c9:
+    why: 'У *laufen* с *du* *au* меняется на *äu*: *du läufst*. У *laufst* окончание верное, но гласная не изменилась.'
+  c10:
+    why: '*der Bus* — это *er*, а у *fahren* с *er* *a* меняется на *ä*: *er fährt*. *fahrt* — форма для *ihr*.'
+  c11:
+    why: '*Lisa* — это *sie* (один человек), а у *sprechen* *e* меняется на *i*: *sie spricht*. *sprecht* — форма для *ihr*.'
+  c12:
+    why: '*Paul* — это *er*, а у *helfen* *e* меняется на *i*: *er hilft*. *hilfst* — форма для *du*.'
+  c13:
+    why: '*das Baby* — это *es*, а у *schlafen* *a* меняется на *ä*: *es schläft*. *schlaft* — форма для *ihr*.'
+  c14:
+    why: '*der Film* — это *er*, а у *gefallen* *a* меняется на *ä*: *er gefällt*. *gefällst* — форма для *du*.'
+  c15:
+    why: '*Herr Wagner* — это *er*, а у *lesen* *e* меняется на *ie*: *er liest*. *lest* — форма для *ihr*.'
+  c16:
+    why: '*mein Opa* — это *er*, а у *sehen* *e* меняется на *ie*: *er sieht*. *seht* — форма для *ihr*.'
+  c17:
+    why: '*Anna* — это *sie* (один человек), а у *treffen* *e* меняется на *i*: *sie trifft*. *trefft* — форма для *ihr*.'
+  c18:
+    why: '*Tim* — это *er*, а у *waschen* *a* меняется на *ä*: *er wäscht*. *wascht* — форма для *ihr*.'
+  c19:
+    why: 'У *laufen* с *er* *au* меняется на *äu*: *er läuft*. *lauft* — форма для *ihr*.'
+  c20:
+    why: '*mein Sohn* — это *er*, а у *essen* *e* меняется на *i*: *er isst*. Формы *issen* нет: во множественном числе гласная не меняется, *sie essen*.'
+  c21:
+    why: '*mein Mann* — это *er*, а *nehmen* превращается в *nimmt*: *h* пропадает, *m* удваивается. *nehmt* — форма для *ihr*.'
+  c22:
+    why: '*meine Oma* — это *sie* (один человек), а у *geben* *e* меняется на *i*: *sie gibt*. *gebt* — форма для *ihr*.'
+  c23:
+    why: 'С *ihr* гласная не меняется: *ihr fahrt*. *fährt* — форма для *er / sie / es*.'
+  c24:
+    why: 'С *wir* гласная не меняется: *wir essen*, как в инфинитиве.'
+  c25:
+    why: 'С *ich* гласная не меняется: *ich nehme*. *nimm-* бывает только с *du* и *er / sie / es*.'
+  c26:
+    why: 'Вежливое *Sie* берёт форму инфинитива, и гласная не меняется: *Sie sprechen*. *spricht* — это *er / sie / es*.'
+  c27:
+    why: 'С *ihr* гласная не меняется: *ihr seht*. *sieht* — форма для *er / sie / es*.'
+  c28:
+    why: 'С *ich* гласная не меняется: *ich schlafe*. *ä* есть только в *du schläfst* и *er schläft*.'
+  c29:
+    why: 'С *ihr* гласная не меняется: *ihr helft*. *hilft* — форма для *er / sie / es*.'
+  c30:
+    why: '*rauchen* — правильный глагол: *sie raucht*. В нём есть *au*, как в *laufen*, но на *äu* меняется только *laufen*.'
+  c31:
+    why: '*gehen* — правильный глагол: *er geht*. Он звучит похоже на *sehen*, но на *ie* меняется только *sehen*.'

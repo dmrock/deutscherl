@@ -1,0 +1,88 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I ride my bike every day.
+  e2: Today we're eating at my grandma's.
+  e3: Do you speak English?
+  e4: Are you taking the bus or the underground?
+  e5: My brother is still asleep.
+  e6: What are you reading at the moment?
+  e7: My father helps me with my homework.
+  e8: When are you meeting your friends?
+  e9: Lena likes reading crime novels.
+  e10: Can you see the bus up ahead?
+  e11: How long do you sleep on Sundays?
+  e12: I really like the flat.
+  e13: My son runs very fast.
+  e14: Do you go running in the park every morning?
+  e15: I'll have a tea. What are you having?
+  e16: My wife always takes the seven o'clock train.
+  e17: What do you have for breakfast?
+  e18: Are you still reading the paper?
+  e19: She walks to work every day.
+  e20: He always buys fresh bread on Saturdays.
+
+choice:
+  c1:
+    why: '*fahren* changes *a* to *ä* with *du*: *du fährst*. *fahrst* has the right ending but not the new vowel.'
+  c2:
+    why: '*sprechen* changes *e* to *i* with *du*: *du sprichst*. *spricht* is the form for *er / sie / es*.'
+  c3:
+    why: '*schlafen* changes *a* to *ä* with *du*: *du schläfst*. *schlaft* is the form for *ihr*.'
+  c4:
+    why: '*lesen* changes *e* to *ie*, and its stem ends in an s sound, so *du* adds only *-t*: *du liest*. *liesst* does not exist.'
+  c5:
+    why: '*essen* changes *e* to *i*, and its stem ends in an s sound, so *du* adds only *-t*: *du isst*. *esst* is the form for *ihr*.'
+  c6:
+    why: '*nehmen* changes *e* to *i* with *du*, the *h* goes and the *m* doubles: *du nimmst*. *nehmst* does not exist.'
+  c7:
+    why: '*sehen* changes *e* to *ie* with *du*: *du siehst*. *sieht* is the form for *er / sie / es*.'
+  c8:
+    why: '*helfen* changes *e* to *i* with *du*: *du hilfst*. In a yes/no question the verb comes first.'
+  c9:
+    why: '*laufen* changes *au* to *äu* with *du*: *du läufst*. *laufst* has the right ending but not the new vowel.'
+  c10:
+    why: '*der Bus* is *er*, and *fahren* changes *a* to *ä* with *er*: *er fährt*. *fahrt* is the form for *ihr*.'
+  c11:
+    why: '*Lisa* is *sie* (one person), and *sprechen* changes *e* to *i*: *sie spricht*. *sprecht* is the form for *ihr*.'
+  c12:
+    why: '*Paul* is *er*, and *helfen* changes *e* to *i*: *er hilft*. *hilfst* is the form for *du*.'
+  c13:
+    why: '*das Baby* is *es*, and *schlafen* changes *a* to *ä*: *es schläft*. *schlaft* is the form for *ihr*.'
+  c14:
+    why: '*der Film* is *er*, and *gefallen* changes *a* to *ä*: *er gefällt*. *gefällst* is the form for *du*.'
+  c15:
+    why: '*Herr Wagner* is *er*, and *lesen* changes *e* to *ie*: *er liest*. *lest* is the form for *ihr*.'
+  c16:
+    why: '*mein Opa* is *er*, and *sehen* changes *e* to *ie*: *er sieht*. *seht* is the form for *ihr*.'
+  c17:
+    why: '*Anna* is *sie* (one person), and *treffen* changes *e* to *i*: *sie trifft*. *trefft* is the form for *ihr*.'
+  c18:
+    why: '*Tim* is *er*, and *waschen* changes *a* to *ä*: *er wäscht*. *wascht* is the form for *ihr*.'
+  c19:
+    why: '*laufen* changes *au* to *äu* with *er*: *er läuft*. *lauft* is the form for *ihr*.'
+  c20:
+    why: '*mein Sohn* is *er*, and *essen* changes *e* to *i*: *er isst*. *issen* does not exist: with a plural subject the vowel stays, *sie essen*.'
+  c21:
+    why: '*mein Mann* is *er*, and *nehmen* becomes *nimmt*: the *h* goes and the *m* doubles. *nehmt* is the form for *ihr*.'
+  c22:
+    why: '*meine Oma* is *sie* (one person), and *geben* changes *e* to *i*: *sie gibt*. *gebt* is the form for *ihr*.'
+  c23:
+    why: 'With *ihr*, the vowel does not change: *ihr fahrt*. *fährt* is the form for *er / sie / es*.'
+  c24:
+    why: 'With *wir*, the vowel does not change: *wir essen*, the same as the infinitive.'
+  c25:
+    why: 'With *ich*, the vowel does not change: *ich nehme*. Only *du* and *er / sie / es* get *nimm-*.'
+  c26:
+    why: 'Polite *Sie* takes the infinitive form, and the vowel does not change: *Sie sprechen*. *spricht* would be *er / sie / es*.'
+  c27:
+    why: 'With *ihr*, the vowel does not change: *ihr seht*. *sieht* is the form for *er / sie / es*.'
+  c28:
+    why: 'With *ich*, the vowel does not change: *ich schlafe*. Only *du schläfst* and *er schläft* have *ä*.'
+  c29:
+    why: 'With *ihr*, the vowel does not change: *ihr helft*. *hilft* is the form for *er / sie / es*.'
+  c30:
+    why: '*rauchen* is a regular verb: *sie raucht*. It has *au* like *laufen*, but only *laufen* changes to *äu*.'
+  c31:
+    why: '*gehen* is a regular verb: *er geht*. It sounds like *sehen*, but only *sehen* changes to *ie*.'
