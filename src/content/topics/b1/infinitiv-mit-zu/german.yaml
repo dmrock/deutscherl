@@ -1,0 +1,194 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks zu with its infinitive, or the infinitive without zu.
+# In the sections on dass and um … zu, it also marks dass, um and damit and the verb at the end.
+
+examples:
+  # zu + infinitive at the end
+  - id: e1
+    de: 'Ich habe keine Lust, heute **zu kochen**.'
+  - id: e2
+    de: 'Wir haben beschlossen, nächstes Jahr **zu heiraten**.'
+  # After verbs
+  - id: e3
+    de: 'Ich versuche, jeden Tag zehn neue Wörter **zu lernen**.'
+  - id: e4
+    de: 'Wir haben vor, im Sommer nach Kroatien **zu fahren**.'
+  # After a noun + haben
+  - id: e5
+    de: 'Hast du morgen Zeit, mir beim Umzug **zu helfen**?'
+  - id: e6
+    de: 'Er hat Angst, vor vielen Leuten **zu sprechen**.'
+  # After es ist + adjective
+  - id: e7
+    de: 'Es ist wichtig, genug Wasser **zu trinken**.'
+  - id: e8
+    de: 'Es ist gar nicht so leicht, in Wien eine Wohnung **zu finden**.'
+  # Separable verbs
+  - id: e9
+    de: 'Vergiss nicht, deine Mutter **anzurufen**.'
+  - id: e10
+    de: 'Hast du Lust, am Samstag **mitzukommen**?'
+  # Without zu: modal verbs | with zu
+  - id: e11
+    de: 'Ich **will** mehr Sport **machen**.'
+  - id: e12
+    de: 'Ich habe vor, mehr Sport **zu machen**.'
+  # The same person | another person
+  - id: e13
+    de: 'Ich hoffe, dich bald **wiederzusehen**.'
+  - id: e14
+    de: 'Ich hoffe, **dass** ihr gut nach Hause **kommt**.'
+  # The person named in the main clause as the object
+  - id: e15
+    de: 'Ich bitte dich, das Fenster **zuzumachen**.'
+  - id: e16
+    de: 'Der Arzt hat mir geraten, mehr **zu schlafen**.'
+  # After sagen: usually dass
+  - id: e17
+    de: 'Sie sagt, **dass** sie später **kommt**.'
+  # um … zu
+  - id: e18
+    de: 'Ich lerne Deutsch, **um** in Österreich **zu studieren**.'
+  - id: e19
+    de: 'Ich fahre jeden Tag mit dem Rad, **um** fit **zu bleiben**.'
+  # damit: another person
+  - id: e20
+    de: 'Ich spreche langsam, **damit** mich alle **verstehen**.'
+  - id: e21
+    de: 'Ich gebe dir meine Nummer, **damit** du mich anrufen **kannst**.'
+
+choice:
+  - id: c1
+    text: Ich habe keine Lust, heute Abend ___.
+    answer: zu kochen
+    options: [zu kochen, kochen, kochen zu, koche]
+  - id: c2
+    text: Ich muss morgen sehr früh ___.
+    answer: aufstehen
+    options: [aufstehen, aufzustehen, zu aufstehen, aufstehe]
+  - id: c3
+    text: Vergiss nicht, das Licht ___!
+    answer: auszumachen
+    options: [auszumachen, zu ausmachen, ausmachen, aus zu machen]
+  - id: c4
+    text: Hast du Zeit, mich vom Bahnhof ___?
+    answer: abzuholen
+    options: [abzuholen, zu abholen, abholen, abholst]
+  - id: c5
+    text: Wir haben vor, im Sommer ans Meer ___.
+    answer: zu fahren
+    options: [zu fahren, fahren, fahren zu, fahre]
+  - id: c6
+    text: Ich kann heute leider nicht ___.
+    answer: kommen
+    options: [kommen, zu kommen, kommen zu, komme]
+  - id: c7
+    text: Es ist nicht leicht, eine günstige Wohnung ___.
+    answer: zu finden
+    options: [zu finden, finden, finden zu, findet]
+  - id: c8
+    text: Meine Chefin hat mir erlaubt, morgen früher ___.
+    answer: zu gehen
+    options: [zu gehen, gehen, gehen zu, gehe]
+  - id: c9
+    text: Ich hoffe, ___.
+    answer: dass du morgen kommst
+    options: [dass du morgen kommst, du morgen zu kommen, dass du morgen zu kommen, du morgen kommst]
+  - id: c10
+    text: Ich lerne Deutsch, ___ in Wien zu arbeiten.
+    answer: um
+    options: [um, damit, weil, für]
+  - id: c11
+    text: Ich erkläre es dir noch einmal, ___ du es verstehst.
+    answer: damit
+    options: [damit, um, denn, für]
+  - id: c12
+    text: Ich gehe in den Supermarkt, ___.
+    answer: um Milch zu kaufen
+    options: [um Milch zu kaufen, um Milch kaufen, um zu Milch kaufen, damit Milch zu kaufen]
+  - id: c13
+    text: Ich stehe früh auf, um pünktlich im Büro ___.
+    answer: anzukommen
+    options: [anzukommen, zu ankommen, ankommen, ankomme]
+  - id: c14
+    text: Wir sollen morgen um acht Uhr ___.
+    answer: anfangen
+    options: [anfangen, anzufangen, zu anfangen, fangen an]
+  - id: c15
+    text: Ich lasse mein Auto in der Werkstatt ___.
+    answer: reparieren
+    options: [reparieren, zu reparieren, reparieren zu, repariert]
+  - id: c16
+    text: Keine Sorge, ich werde dir morgen ___.
+    answer: helfen
+    options: [helfen, zu helfen, helfen zu, helfe]
+  - id: c17
+    text: Es macht mir Spaß, mit Kindern ___.
+    answer: zu arbeiten
+    options: [zu arbeiten, arbeiten, arbeiten zu, arbeite]
+  - id: c18
+    text: Ich versuche, meine Oma jede Woche ___.
+    answer: zu besuchen
+    options: [zu besuchen, besuchen zu, besuchen, besuche]
+  - id: c19
+    text: Es ist schön, ___ du wieder da bist.
+    answer: dass
+    options: [dass, um, damit, denn]
+  - id: c20
+    text: Ich habe Angst, ___.
+    answer: dass mein Hund wegläuft
+    options: [dass mein Hund wegläuft, mein Hund wegzulaufen, dass mein Hund wegzulaufen, mein Hund wegläuft]
+
+wordOrder:
+  - id: w1
+    parts: ['ich habe keine Lust,', am Sonntag, zu, arbeiten]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: ['vergiss nicht,', heute, deinen Bruder, anzurufen]
+    fixed: true
+    accept:
+      - ['vergiss nicht,', deinen Bruder, heute, anzurufen]
+    punctuation: '!'
+  - id: w3
+    parts: ['es ist gesund,', viel Obst, zu, essen]
+    fixed: true
+    punctuation: '.'
+  - id: w4
+    parts: ['hast du heute Abend Zeit,', mit mir, zu, kochen]
+    fixed: true
+    punctuation: '?'
+  - id: w5
+    parts: ['wir haben vor,', im Sommer, nach Italien, zu, fahren]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: ['ich spare Geld,', um, ein Auto, zu, kaufen]
+    fixed: true
+    punctuation: '.'
+  - id: w7
+    parts: ['ich stehe früh auf,', um, den ersten Bus, zu, nehmen]
+    fixed: true
+    punctuation: '.'
+  - id: w8
+    parts: ['ich schreibe dir die Adresse auf,', damit, du, sie, nicht, vergisst]
+    fixed: true
+    punctuation: '.'
+  - id: w9
+    parts: ['der Arzt hat mir geraten,', weniger, zu, arbeiten]
+    fixed: true
+    punctuation: '.'
+  - id: w10
+    parts: ['ich habe gestern versucht,', dich, im Büro, anzurufen]
+    fixed: true
+    punctuation: '.'
+  - id: w11
+    parts: ['ich bitte dich,', während des Konzerts, dein Handy, auszuschalten]
+    fixed: true
+    accept:
+      - ['ich bitte dich,', dein Handy, während des Konzerts, auszuschalten]
+    punctuation: '.'
+
+austrianNotes:
+  - id: at1
+    de: 'Für zehn Minuten ein Taxi nehmen? Das **steht** nicht **dafür**.'

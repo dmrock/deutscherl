@@ -34,7 +34,6 @@ export const en = {
   'planned.praeteritum': 'Simple past (*Präteritum*)',
   'planned.konjunktiv-ii': 'Wishes and polite requests (*Konjunktiv II*)',
   'planned.passiv': 'The passive (*Passiv*)',
-  'planned.infinitiv-mit-zu': 'Infinitive with *zu*',
   'planned.passiv-modalverben': 'The passive with modal verbs',
   'planned.n-deklination': 'Weak nouns (*n-Deklination*)',
   'planned.zweiteilige-konnektoren': 'Two-part conjunctions (*sowohl … als auch*)',

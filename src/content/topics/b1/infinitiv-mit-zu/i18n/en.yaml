@@ -1,0 +1,105 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I don't feel like cooking today.
+  e2: We've decided to get married next year.
+  e3: I try to learn ten new words every day.
+  e4: We're planning to go to Croatia in the summer.
+  e5: Do you have time to help me move tomorrow?
+  e6: He's afraid of speaking in front of a lot of people.
+  e7: It's important to drink enough water.
+  e8: It's really not that easy to find a flat in Vienna.
+  e9: Don't forget to call your mother.
+  e10: Do you feel like coming along on Saturday?
+  e11: I want to do more sport.
+  e12: I'm planning to do more sport.
+  e13: I hope to see you again soon.
+  e14: I hope you get home safely.
+  e15: I'm asking you to close the window.
+  e16: The doctor advised me to sleep more.
+  e17: She says she's coming later.
+  e18: I'm learning German so that I can study in Austria.
+  e19: I cycle every day to stay fit.
+  e20: I speak slowly so that everyone understands me.
+  e21: I'll give you my number so that you can call me.
+
+choice:
+  c1:
+    why: 'After *Lust haben*, the infinitive takes *zu*, and *zu* comes right before it: *zu kochen*. The infinitive part never takes a form that changes with the person, like *koche*.'
+  c2:
+    why: 'After a modal verb like *müssen*, the infinitive has no *zu*: *ich muss aufstehen*.'
+  c3:
+    why: '*ausmachen* is separable, so *zu* goes between *aus* and *machen*, written as one word: *auszumachen*.'
+  c4:
+    why: '*abholen* is separable, so *zu* goes in the middle, written as one word: *abzuholen*. After *Zeit haben*, the infinitive needs *zu*.'
+  c5:
+    why: 'After *vorhaben*, the infinitive takes *zu*, and *zu* comes right before it: *zu fahren*.'
+  c6:
+    why: 'After the modal verb *können*, the infinitive has no *zu*: *ich kann nicht kommen*.'
+  c7:
+    why: 'After *es ist* + adjective, the infinitive takes *zu*: *es ist nicht leicht, eine Wohnung zu finden*.'
+  c8:
+    why: 'After *erlauben*, the person who is allowed (*mir*) does the action, and the infinitive takes *zu*: *früher zu gehen*.'
+  c9:
+    why: 'The person who comes (*du*) is not the person who hopes (*ich*). So you need a clause with *dass*, its own subject and the verb at the end. An infinitive part has no subject.'
+  c10:
+    why: '*um … zu* says what something is for, and the person who learns is the same one who will work. *damit* and *weil* start a clause with its own subject and verb, and *für* cannot go with an infinitive.'
+  c11:
+    why: 'The person who explains (*ich*) is not the one who understands (*du*), so use *damit* with its own subject and the verb at the end. *um* goes with *zu* + infinitive, and after *denn* the verb would come second.'
+  c12:
+    why: '*um* starts the infinitive part, and *zu* + infinitive ends it: *um Milch zu kaufen*. *damit* cannot go with *zu* + infinitive.'
+  c13:
+    why: '*um … zu* with the separable verb *ankommen*: *zu* goes in the middle, written as one word: *anzukommen*.'
+  c14:
+    why: 'After the modal verb *sollen*, the infinitive has no *zu*, and a separable verb stays in one piece at the end: *anfangen*.'
+  c15:
+    why: 'After *lassen*, the infinitive has no *zu*: *ich lasse mein Auto reparieren* (I''m having my car repaired).'
+  c16:
+    why: 'The future tense is *werden* + infinitive without *zu*: *ich werde dir helfen*.'
+  c17:
+    why: '*es macht Spaß* works like *es ist* + adjective: the infinitive takes *zu*, right before it: *zu arbeiten*.'
+  c18:
+    why: '*besuchen* is not separable, so *zu* goes in front: *zu besuchen*. Only separable verbs take *zu* in the middle.'
+  c19:
+    why: 'The person who is back is *du*, and *du* is not in the main clause. So you need a clause with *dass*: *es ist schön, dass du wieder da bist*. *um* and *damit* say what something is for, and after *denn* the verb would come second.'
+  c20:
+    why: 'The dog runs away, not the speaker. So you need a clause with *dass*, its own subject and the verb at the end: *dass mein Hund wegläuft*.'
+
+wordOrder:
+  w1:
+    translation: I don't feel like working on Sunday.
+    why: 'After *Lust haben*, the infinitive part comes after the comma: first *am Sonntag*, then *zu*, and the infinitive *arbeiten* at the end.'
+  w2:
+    translation: Don't forget to call your brother today!
+    why: '*anrufen* is separable, so *zu* goes in the middle: *anzurufen*. It is the last word. *heute* and *deinen Bruder* can come in either order.'
+  w3:
+    translation: It's healthy to eat a lot of fruit.
+    why: 'After *es ist* + adjective, the infinitive part comes after the comma, with *zu* right before the infinitive at the end.'
+  w4:
+    translation: Do you have time to cook with me tonight?
+    why: 'After *Zeit haben*, the infinitive part comes after the comma. *mit mir* comes before *zu*, and *kochen* is the last word.'
+  w5:
+    translation: We're planning to go to Italy in the summer.
+    why: 'After *vorhaben*, the infinitive part comes after the comma. The time comes first, then the place, then *zu fahren* at the end.'
+  w6:
+    translation: I'm saving money to buy a car.
+    why: '*um* starts the infinitive part, *ein Auto* comes in the middle, and *zu kaufen* ends it.'
+  w7:
+    translation: I get up early to take the first bus.
+    why: '*um* starts the infinitive part, *den ersten Bus* comes in the middle, and *zu nehmen* ends it.'
+  w8:
+    translation: I'll write the address down for you so that you don't forget it.
+    why: 'The person who forgets is *du*, not *ich*, so the clause starts with *damit* and has its own subject. Its verb *vergisst* goes to the end, after *nicht*.'
+  w9:
+    translation: The doctor advised me to work less.
+    why: 'After *raten*, the person who is advised (*mir*) does the action. The infinitive part comes after the comma: *weniger zu arbeiten*.'
+  w10:
+    translation: I tried to call you at the office yesterday.
+    why: '*anrufen* is separable, so *zu* goes in the middle: *anzurufen*. It is the last word, and the pronoun *dich* comes first in the infinitive part.'
+  w11:
+    translation: I'm asking you to switch off your phone during the concert.
+    why: '*ausschalten* is separable, so *zu* goes in the middle: *auszuschalten*. It is the last word. *während des Konzerts* and *dein Handy* can come in either order.'
+
+austrianNotes:
+  at1: Take a taxi for ten minutes? It's not worth it.
