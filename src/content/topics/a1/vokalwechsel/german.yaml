@@ -1,0 +1,182 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the verb forms that the page highlights.
+
+examples:
+  # Only du and er / sie / es change: one example per cell of the forms table
+  - id: e1
+    de: 'Ich **fahre** jeden Tag mit dem Rad.'
+  - id: e2
+    de: 'Wir **essen** heute bei meiner Oma.'
+  - id: e3
+    de: '**Sprichst** du Englisch?'
+  - id: e4
+    de: '**Nehmt** ihr den Bus oder die U-Bahn?'
+  - id: e5
+    de: 'Mein Bruder **schläft** noch.'
+  - id: e6
+    de: 'Was **lesen** Sie gerade?'
+  # e becomes i
+  - id: e7
+    de: 'Mein Vater **hilft** mir bei den Hausaufgaben.'
+  - id: e8
+    de: 'Wann **triffst** du deine Freunde?'
+  # e becomes ie
+  - id: e9
+    de: 'Lena **liest** gern Krimis.'
+  - id: e10
+    de: '**Siehst** du den Bus da vorne?'
+  # a becomes ä
+  - id: e11
+    de: 'Wie lange **schläfst** du am Sonntag?'
+  - id: e12
+    de: 'Die Wohnung **gefällt** mir sehr.'
+  # au becomes äu
+  - id: e13
+    de: 'Mein Sohn **läuft** sehr schnell.'
+  - id: e14
+    de: '**Läufst** du jeden Morgen im Park?'
+  # Spelling: nehmen
+  - id: e15
+    de: 'Ich nehme einen Tee. Was **nimmst** du?'
+  - id: e16
+    de: 'Meine Frau **nimmt** immer den Zug um sieben.'
+  # Spelling: stems ending in an s sound
+  - id: e17
+    de: 'Was **isst** du zum Frühstück?'
+  - id: e18
+    de: '**Liest** du die Zeitung noch?'
+  # Verbs that do not change
+  - id: e19
+    de: 'Sie **geht** jeden Tag zu Fuß zur Arbeit.'
+  - id: e20
+    de: 'Er **kauft** am Samstag immer frisches Brot.'
+
+choice:
+  # du: the vowel changes
+  - id: c1
+    text: Du ___ zu schnell! Bitte langsamer.
+    answer: fährst
+    options: [fährst, fahrst, fährt, fahrt]
+  - id: c2
+    text: Wie viele Sprachen ___ du?
+    answer: sprichst
+    options: [sprichst, sprechst, spricht, sprecht]
+  - id: c3
+    text: Du ___ ja noch! Es ist schon zehn Uhr.
+    answer: schläfst
+    options: [schläfst, schlafst, schläft, schlaft]
+  - id: c4
+    text: ___ du gern Bücher?
+    answer: Liest
+    options: [Liest, Lies, Lest, Lese]
+  - id: c5
+    text: ___ du heute Mittag in der Kantine?
+    answer: Isst
+    options: [Isst, Iss, Esst, Esse]
+  - id: c6
+    text: ___ du einen Kaffee oder einen Tee?
+    answer: Nimmst
+    options: [Nimmst, Nehmst, Nimmt, Nehmt]
+  - id: c7
+    text: Was ___ du da? Ich sehe nichts.
+    answer: siehst
+    options: [siehst, sehst, sieht, seht]
+  - id: c8
+    text: ___ du mir kurz? Die Tasche ist so schwer.
+    answer: Hilfst
+    options: [Hilfst, Helfst, Hilft, Helft]
+  - id: c9
+    text: Du ___ am Sonntag einen Marathon? Toll!
+    answer: läufst
+    options: [läufst, laufst, läuft, lauft]
+  # er / sie / es: the vowel changes
+  - id: c10
+    text: Der Bus ___ alle zehn Minuten.
+    answer: fährt
+    options: [fährt, fahrt, fährst, fahrst]
+  - id: c11
+    text: Lisa ___ sehr gut Spanisch.
+    answer: spricht
+    options: [spricht, sprecht, sprichst, sprechst]
+  - id: c12
+    text: Paul ___ seiner Mutter in der Küche.
+    answer: hilft
+    options: [hilft, helft, hilfst, helfst]
+  - id: c13
+    text: Psst! Das Baby ___ endlich.
+    answer: schläft
+    options: [schläft, schlaft, schläfst, schlafst]
+  - id: c14
+    text: Der Film ___ mir nicht.
+    answer: gefällt
+    options: [gefällt, gefallt, gefällst, gefallst]
+  - id: c15
+    text: Herr Wagner ___ jeden Morgen die Zeitung.
+    answer: liest
+    options: [liest, lies, lest, lese]
+  - id: c16
+    text: Mein Opa ___ nicht mehr so gut.
+    answer: sieht
+    options: [sieht, seht, siehst, sehst]
+  - id: c17
+    text: Anna ___ heute ihre Freundin im Café.
+    answer: trifft
+    options: [trifft, trefft, triffst, treffst]
+  - id: c18
+    text: Tim ___ am Samstag immer das Auto.
+    answer: wäscht
+    options: [wäscht, wascht, wäschst, waschst]
+  - id: c19
+    text: Ben ist erst ein Jahr alt, aber er ___ schon.
+    answer: läuft
+    options: [läuft, lauft, läufst, laufst]
+  - id: c20
+    text: Mein Sohn ___ kein Fleisch.
+    answer: isst
+    options: [isst, iss, esst, esse]
+  - id: c21
+    text: Mein Mann ___ keinen Zucker in den Kaffee.
+    answer: nimmt
+    options: [nimmt, nehmt, nimmst, nehmst]
+  - id: c22
+    text: Meine Oma ___ den Kindern immer Schokolade.
+    answer: gibt
+    options: [gibt, gebt, gibst, gebst]
+  # ich, wir, ihr, Sie: the vowel stays
+  - id: c23
+    text: Wohin ___ ihr im Sommer?
+    answer: fahrt
+    options: [fahrt, fährt, fahrst, fährst]
+  - id: c24
+    text: Wir ___ heute Abend Pizza.
+    answer: essen
+    options: [essen, esst, isst, esse]
+  - id: c25
+    text: Für mich keine Suppe, danke. Ich ___ den Salat.
+    answer: nehme
+    options: [nehme, nimm, nehmt, nimmt]
+  - id: c26
+    text: Herr Bauer, ___ Sie Deutsch oder Englisch?
+    answer: sprechen
+    options: [sprechen, sprecht, spricht, sprichst]
+  - id: c27
+    text: Kinder, ___ ihr den Hund da drüben?
+    answer: seht
+    options: [seht, sieht, sehst, siehst]
+  - id: c28
+    text: Am Wochenende ___ ich immer lange.
+    answer: schlafe
+    options: [schlafe, schlaft, schläft, schläfst]
+  - id: c29
+    text: Danke, ihr ___ mir wirklich sehr!
+    answer: helft
+    options: [helft, hilft, helfst, hilfst]
+  # Verbs that do not change
+  - id: c30
+    text: Meine Mutter ___ seit zehn Jahren nicht mehr.
+    answer: raucht
+    options: [raucht, rauchst, rauchen, rauche]
+  - id: c31
+    text: Lukas ___ heute nicht in die Schule. Er ist krank.
+    answer: geht
+    options: [geht, gehst, gehen, gehe]
