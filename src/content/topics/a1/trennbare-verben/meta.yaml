@@ -30,8 +30,12 @@ sources:
     url: https://www.dwds.de/wb/fernsehen
   - title: 'DWDS: aufhören (hört auf; mit etwas aufhören)'
     url: https://www.dwds.de/wb/aufh%C3%B6ren
+  - title: 'Duden: aufhören (hört auf; mit etwas nicht fortfahren, Schluss machen)'
+    url: https://www.duden.de/rechtschreibung/aufhoeren
   - title: 'DWDS: zuhören (hört zu)'
     url: https://www.dwds.de/wb/zuh%C3%B6ren
+  - title: 'Duden: zuhören (hört zu; gut, aufmerksam zuhören)'
+    url: https://www.duden.de/rechtschreibung/zuhoeren
   - title: 'Duden: aufmachen (das Fenster aufmachen)'
     url: https://www.duden.de/rechtschreibung/aufmachen
   - title: 'DWDS: aufmachen (macht auf; das Fenster aufmachen)'
@@ -40,9 +44,9 @@ sources:
     url: https://www.duden.de/rechtschreibung/mitkommen
   - title: 'DWDS: mitkommen (da komme ich nicht mehr mit: nicht before the particle; ich kann nicht mitkommen: one word after a modal verb)'
     url: https://www.dwds.de/wb/mitkommen
-  - title: 'Duden: aufdrehen (süddeutsch, österreichisch: einschalten; die Beleuchtung aufdrehen)'
+  - title: 'Duden: aufdrehen (dreht auf; süddeutsch, österreichisch: einschalten; die Beleuchtung aufdrehen)'
     url: https://www.duden.de/rechtschreibung/aufdrehen
-  - title: 'DWDS: aufdrehen (süddeutsch, österreichisch: das Licht aufdrehen = andrehen, einschalten)'
+  - title: 'DWDS: aufdrehen (dreht auf; süddeutsch, österreichisch: das Licht aufdrehen = andrehen, einschalten)'
     url: https://www.dwds.de/wb/aufdrehen
   - title: 'Duden: anmachen (umgangssprachlich, no regional label: einschalten; das Licht anmachen)'
     url: https://www.duden.de/rechtschreibung/anmachen
@@ -50,8 +54,12 @@ sources:
     url: https://www.dwds.de/wb/anmachen
   - title: 'DWDS: ausmachen (umgangssprachlich: ausschalten; das Licht ausmachen)'
     url: https://www.dwds.de/wb/ausmachen
+  - title: 'Duden: ausmachen (macht aus; umgangssprachlich: ausschalten; das Licht ausmachen)'
+    url: https://www.duden.de/rechtschreibung/ausmachen
   - title: 'DWDS: einschalten (das Licht einschalten, no style or regional label)'
     url: https://www.dwds.de/wb/einschalten
+  - title: 'Duden: einschalten (das Licht einschalten, no style or regional label)'
+    url: https://www.duden.de/rechtschreibung/einschalten
   - title: 'Duden: anrufen (stress on an-)'
     url: https://www.duden.de/rechtschreibung/anrufen
   - title: 'Duden: besuchen (stress on the u of -su-)'
@@ -72,8 +80,34 @@ sources:
     url: https://www.dwds.de/wb/abfahren
   - title: 'DWDS: einladen (lädt ein; ladet ein only as a colloquial variant)'
     url: https://www.dwds.de/wb/einladen
-  - title: 'DWDS: aussteigen, einsteigen (ein Fahrzeug verlassen; in ein Fahrzeug steigen)'
+  - title: 'DWDS: aussteigen (steigt aus; ein Fahrzeug verlassen)'
     url: https://www.dwds.de/wb/aussteigen
+  - title: 'Duden: aussteigen (ein Fahrzeug, Beförderungsmittel verlassen)'
+    url: https://www.duden.de/rechtschreibung/aussteigen
+  - title: 'DWDS: einsteigen (steigt ein; in ein Fahrzeug steigen)'
+    url: https://www.dwds.de/wb/einsteigen
+  - title: 'Duden: einsteigen (in ein Fahrzeug steigen; in den Zug, Bus einsteigen)'
+    url: https://www.duden.de/rechtschreibung/einsteigen
+  - title: 'Duden: ankommen (kommt an; stress on an-; einen Ort erreichen)'
+    url: https://www.duden.de/rechtschreibung/ankommen
+  - title: 'DWDS: ankommen (kommt an; [ˈankɔmən]; mit dem Zug ankommen)'
+    url: https://www.dwds.de/wb/ankommen
+  - title: 'Duden: einkaufen (kauft ein; Waren für den täglichen Bedarf kaufen; einkaufen gehen)'
+    url: https://www.duden.de/rechtschreibung/einkaufen
+  - title: 'DWDS: einkaufen (kauft ein; etwas für den täglichen Bedarf kaufen; ich gehe einkaufen)'
+    url: https://www.dwds.de/wb/einkaufen
+  - title: 'Duden: zumachen (macht zu; umgangssprachlich: schließen; die Tür zumachen)'
+    url: https://www.duden.de/rechtschreibung/zumachen
+  - title: 'DWDS: zumachen (macht zu; umgangssprachlich: schließen; das Fenster zumachen)'
+    url: https://www.dwds.de/wb/zumachen
+  - title: 'Duden: abholen (holt ab; stress on ab-; jemanden am Bahnhof abholen)'
+    url: https://www.duden.de/rechtschreibung/abholen
+  - title: 'DWDS: abholen (holt ab; jemanden an einem vereinbarten Ort treffen)'
+    url: https://www.dwds.de/wb/abholen
+  - title: 'Duden: zurückkommen (stress on zurück; wann kommt ihr nach Hause zurück?)'
+    url: https://www.duden.de/rechtschreibung/zurueckkommen
+  - title: 'DWDS: zurückkommen (kommt zurück; zum Ausgangsort kommen)'
+    url: https://www.dwds.de/wb/zur%C3%BCckkommen
   - title: 'grammis (IDS Mannheim): Stellung des Negationssupplements (unmarked nicht directly before the predicate at the end)'
     url: https://grammis.ids-mannheim.de/systematische-grammatik/788
   - title: 'Wiktionary: einladen (ich lade ein, du lädst ein, er lädt ein)'
