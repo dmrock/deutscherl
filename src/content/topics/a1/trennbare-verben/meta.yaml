@@ -1,0 +1,82 @@
+level: a1
+category: verbs
+order: 5
+sources:
+  - title: 'ÖIF: Einstufungsmatrix A1 modular (trennbare Verben im Präsens, Modul A1+)'
+    url: https://www.integrationsfonds.at/fileadmin/user_upload/A1_OEIF-Einstufungsmatrix_modular.pdf
+  - title: 'telc: Einfach gut A1, Grammatik (Trennbare Verben: aufstehen, einkaufen, anrufen; untrennbare Vorsilbe: verstehen)'
+    url: https://www.telc.net/ebook/demo/einfach-gut-digital/a1/documents/pdf/Grammatik_Grammatik_A1.pdf
+  - title: 'GfdS, Der Sprachdienst 4-5/2024: Trennbare und nicht trennbare Verben (Partikel betont, am Satzende; be-, emp-, ent-, er-, ge-, miss-, ver-, zer- untrennbar und unbetont)'
+    url: https://gfds.de/trennbare-und-nicht-trennbare-verben/
+  - title: 'Grimm Grammar (University of Texas at Austin): Separable prefix verbs (prefix at the very end, also in questions; with a modal verb one word)'
+    url: https://www.coerll.utexas.edu/gg/gr/v_04.html
+  - title: 'Grimm Grammar (University of Texas at Austin): Inseparable prefix verbs (be-, emp-, ent-, er-, ge-, ver-, zer- stay connected)'
+    url: https://www.coerll.utexas.edu/gg/gr/v_05.html
+  - title: 'Wiktionary: anrufen (stress on an-; ich rufe an, du rufst an, er ruft an)'
+    url: https://de.wiktionary.org/wiki/anrufen
+  - title: 'DWDS: anrufen (ruft an)'
+    url: https://www.dwds.de/wb/anrufen
+  - title: 'Wiktionary: verstehen, besuchen (stress on the verb part: verSTEhen, beSUchen)'
+    url: https://de.wiktionary.org/wiki/verstehen
+  - title: 'Duden: verstehen (versteht; stress on the e of -ste-)'
+    url: https://www.duden.de/rechtschreibung/verstehen
+  - title: 'Duden: anfangen (stress on an-)'
+    url: https://www.duden.de/rechtschreibung/anfangen
+  - title: 'DWDS: anfangen (fängt an; [ˈanfaŋən]: stress on an-)'
+    url: https://www.dwds.de/wb/anfangen
+  - title: 'Duden: fernsehen (stress on fern-; sieht fern)'
+    url: https://www.duden.de/rechtschreibung/fernsehen
+  - title: 'DWDS: fernsehen (sieht fern; [ˈfɛʁnzeːən]: stress on fern-)'
+    url: https://www.dwds.de/wb/fernsehen
+  - title: 'DWDS: aufhören (hört auf; mit etwas aufhören)'
+    url: https://www.dwds.de/wb/aufh%C3%B6ren
+  - title: 'DWDS: zuhören (hört zu)'
+    url: https://www.dwds.de/wb/zuh%C3%B6ren
+  - title: 'Duden: aufmachen (das Fenster aufmachen)'
+    url: https://www.duden.de/rechtschreibung/aufmachen
+  - title: 'DWDS: aufmachen (macht auf; das Fenster aufmachen)'
+    url: https://www.dwds.de/wb/aufmachen
+  - title: 'Duden: mitkommen (bei diesem Tempo komme ich nicht mit: nicht before the particle)'
+    url: https://www.duden.de/rechtschreibung/mitkommen
+  - title: 'DWDS: mitkommen (da komme ich nicht mehr mit: nicht before the particle; ich kann nicht mitkommen: one word after a modal verb)'
+    url: https://www.dwds.de/wb/mitkommen
+  - title: 'Duden: aufdrehen (süddeutsch, österreichisch: einschalten; die Beleuchtung aufdrehen)'
+    url: https://www.duden.de/rechtschreibung/aufdrehen
+  - title: 'DWDS: aufdrehen (süddeutsch, österreichisch: das Licht aufdrehen = andrehen, einschalten)'
+    url: https://www.dwds.de/wb/aufdrehen
+  - title: 'Duden: anmachen (umgangssprachlich, no regional label: einschalten; das Licht anmachen)'
+    url: https://www.duden.de/rechtschreibung/anmachen
+  - title: 'DWDS: anmachen (umgangssprachlich, no regional label: einschalten)'
+    url: https://www.dwds.de/wb/anmachen
+  - title: 'DWDS: ausmachen (umgangssprachlich: ausschalten; das Licht ausmachen)'
+    url: https://www.dwds.de/wb/ausmachen
+  - title: 'DWDS: einschalten (das Licht einschalten, no style or regional label)'
+    url: https://www.dwds.de/wb/einschalten
+  - title: 'Duden: anrufen (stress on an-)'
+    url: https://www.duden.de/rechtschreibung/anrufen
+  - title: 'Duden: besuchen (stress on the u of -su-)'
+    url: https://www.duden.de/rechtschreibung/besuchen
+  - title: 'DWDS: besuchen (pronunciation: be- unstressed, stress on -su-)'
+    url: https://www.dwds.de/wb/besuchen
+  - title: 'Duden: bekommen (stress on the o of -kom-)'
+    url: https://www.duden.de/rechtschreibung/bekommen
+  - title: 'Duden: aufstehen (stress on auf-)'
+    url: https://www.duden.de/rechtschreibung/aufstehen
+  - title: 'Duden: mitbringen (stress on mit-)'
+    url: https://www.duden.de/rechtschreibung/mitbringen
+  - title: 'DWDS: mitbringen (bringt mit)'
+    url: https://www.dwds.de/wb/mitbringen
+  - title: 'Duden: abfahren (stress on ab-)'
+    url: https://www.duden.de/rechtschreibung/abfahren
+  - title: 'DWDS: abfahren (fährt ab)'
+    url: https://www.dwds.de/wb/abfahren
+  - title: 'DWDS: einladen (lädt ein; ladet ein only as a colloquial variant)'
+    url: https://www.dwds.de/wb/einladen
+  - title: 'DWDS: aussteigen, einsteigen (ein Fahrzeug verlassen; in ein Fahrzeug steigen)'
+    url: https://www.dwds.de/wb/aussteigen
+  - title: 'grammis (IDS Mannheim): Stellung des Negationssupplements (unmarked nicht directly before the predicate at the end)'
+    url: https://grammis.ids-mannheim.de/systematische-grammatik/788
+  - title: 'Wiktionary: einladen (ich lade ein, du lädst ein, er lädt ein)'
+    url: https://de.wiktionary.org/wiki/einladen
+  - title: 'Wiktionary: anfangen (ich fange an, du fängst an, er fängt an)'
+    url: https://de.wiktionary.org/wiki/anfangen

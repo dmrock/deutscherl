@@ -1,0 +1,101 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: I'll call you tomorrow.
+  e2: We're doing the shopping on Saturday.
+  e3: At the weekend I get up late.
+  e4: My girlfriend is coming along this evening.
+  e5: The air is stuffy. I'm opening the window.
+  e6: Now it's cold. I'm closing the window again.
+  e7: We get off at the main station.
+  e8: I'll pick you up at five.
+  e9: I stop work at five.
+  e10: The children listen well.
+  e11: I call my mother every Sunday after lunch.
+  e12: Tomorrow I'm inviting my colleagues for a meal.
+  e13: When is your brother coming back from his holiday?
+  e14: Are you going shopping today?
+  e15: I'm not coming along today.
+  e16: Can you pick me up from the station?
+  e17: My brother watches TV every evening.
+  e18: School starts in September.
+  e19: My train arrives at nine.
+  e20: I'm getting a bike for my birthday.
+  e21: On Sunday we're visiting our grandparents.
+  e22: Sorry, I don't understand the question.
+
+choice:
+  c1:
+    why: 'With *ich*, the verb part is *stehe*, in position 2. The prefix *auf* is already at the end, so it does not also go in front: *aufstehe* is wrong.'
+  c2:
+    why: '*anrufen* splits: *ruft* is in position 2, and *an* goes to the very end, after *mich* and *jeden Tag*.'
+  c3:
+    why: 'In a question with *wann*, the verb part *kommt* comes second, then the subject *der Zug*. The prefix *an* goes to the end.'
+  c4:
+    why: 'In a yes/no question, the verb part comes first, and *mit* is already at the end. With *du*, the form is *kommst*.'
+  c5:
+    why: '*ver-* is never stressed, so *verstehen* never splits: *ich verstehe das nicht*. With *ich*, the form is *verstehe*.'
+  c6:
+    why: '*be-* never splits, so *besuchen* stays one word. After *wann*, the verb comes second, then the subject *du*.'
+  c7:
+    why: 'The verb part of *anfangen* changes like *fangen*: *er fängt*. *an* is already at the end. *fängst* is the form for *du*.'
+  c8:
+    why: 'The verb part of *fernsehen* changes like *sehen*: *du siehst*. In a yes/no question it comes first, and *fern* goes to the end.'
+  c9:
+    why: 'Buying food for home is *einkaufen*, so the prefix is *ein*.'
+  c10:
+    why: 'When you are cold, you close the window: *zumachen*. *aufmachen* means to open.'
+  c11:
+    why: '*Paul* is one person, so the form is *hört*. The prefix *auf* is already at the end, so it does not go in front of the verb.'
+  c12:
+    why: '*be-* never splits, so *bekomme* stays one word. After *zum Geburtstag*, the verb comes second and *ich* right after it.'
+  c13:
+    why: 'The verb part of *einladen* changes like *laden*: *sie lädt*. *ein* is already at the end. *lädst* is the form for *du*.'
+  c14:
+    why: '*mitkommen* splits, and *mit* is the very last word. *nicht* comes right before the prefix.'
+  c15:
+    why: 'With a modal verb like *kannst* in position 2, the separable verb goes to the end as one word: *abholen*.'
+  c16:
+    why: 'You leave the bus or tram at your stop, so the verb is *aussteigen*. *einsteigen* means to get on.'
+
+wordOrder:
+  w1:
+    translation: I'm bringing a cake to the party.
+    why: '*zur Party* is in position 1, so *bringe* comes second, then *ich* and *einen Kuchen*. The prefix *mit* goes to the end.'
+  w2:
+    translation: On Saturday we do the shopping at the supermarket.
+    why: '*am Samstag* is in position 1, so *kaufen* comes second, then *wir*. The place goes in the middle, and *ein* goes to the end.'
+  w3:
+    translation: When do you arrive in Salzburg?
+    why: 'After *wann*, the verb part *kommt* comes second, then the subject *ihr*. *in Salzburg* goes in the middle, and *an* goes to the end.'
+  w4:
+    translation: Are you coming along this evening?
+    why: 'A yes/no question starts with the verb part *kommst*, then *du*. The prefix *mit* goes to the end.'
+  w5:
+    translation: My train leaves at eight.
+    why: 'The verb part of *abfahren* changes like *fahren*: *er fährt*. *fährt* is in position 2, and *ab* goes to the end.'
+  w6:
+    translation: My daughter watches too much TV.
+    why: '*sieht* is in position 2, and *fern* from *fernsehen* goes to the end. *zu viel* goes in the middle.'
+  w7:
+    translation: When are you picking me up?
+    why: 'After *wann*, the verb part *holst* comes second, then *du* and *mich*. The prefix *ab* goes to the end.'
+  w8:
+    translation: I'm not coming along today.
+    why: '*heute* is in position 1, so *komme* comes second, then *ich*. *nicht* comes right before the prefix *mit*, which goes to the end.'
+  w9:
+    translation: Can you close the window, please?
+    why: 'The question starts with the verb part *machst*, then *du*. *zu* from *zumachen* goes to the end. *bitte* can also come after *das Fenster*.'
+  w10:
+    translation: At the weekend we visit our grandparents.
+    why: '*besuchen* has *be-*, so it never splits. It stays one word in position 2, and *wir* comes right after it.'
+  w11:
+    translation: I don't understand the word.
+    why: '*verstehen* has *ver-*, so it never splits. *verstehe* is in position 2, and *nicht* goes to the end.'
+  w12:
+    translation: When are you coming back from your holiday?
+    why: 'After *wann*, the verb part *kommst* comes second, then *du*. *aus dem Urlaub* goes in the middle, and *zurück* goes to the end.'
+
+austrianNotes:
+  at1: Can you switch on the light, please?

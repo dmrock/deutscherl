@@ -1,0 +1,176 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the verb in position 2 and the prefix at the end, or a verb that stays whole.
+
+examples:
+  # One verb, two parts
+  - id: e1
+    de: 'Ich **rufe** dich morgen **an**.'
+  - id: e2
+    de: 'Wir **kaufen** am Samstag **ein**.'
+  # Common prefixes
+  - id: e3
+    de: 'Am Wochenende **stehe** ich spät **auf**.'
+  - id: e4
+    de: 'Meine Freundin **kommt** heute Abend **mit**.'
+  - id: e5
+    de: 'Die Luft ist schlecht. Ich **mache** das Fenster **auf**.'
+  - id: e6
+    de: 'Jetzt ist es kalt. Ich **mache** das Fenster wieder **zu**.'
+  - id: e7
+    de: 'Am Hauptbahnhof **steigen** wir **aus**.'
+  - id: e8
+    de: 'Ich **hole** dich um fünf **ab**.'
+  # The prefix changes the meaning
+  - id: e9
+    de: 'Um fünf **höre** ich mit der Arbeit **auf**.'
+  - id: e10
+    de: 'Die Kinder **hören** gut **zu**.'
+  # The prefix goes to the very end
+  - id: e11
+    de: 'Ich **rufe** meine Mutter jeden Sonntag nach dem Essen **an**.'
+  - id: e12
+    de: 'Morgen **lade** ich meine Kollegen zum Essen **ein**.'
+  - id: e13
+    de: 'Wann **kommt** dein Bruder aus dem Urlaub **zurück**?'
+  - id: e14
+    de: '**Kaufst** du heute noch **ein**?'
+  - id: e15
+    de: 'Ich **komme** heute nicht **mit**.'
+  - id: e16
+    de: '**Kannst** du mich vom Bahnhof **abholen**?'
+  # The verb part changes like the simple verb
+  - id: e17
+    de: 'Mein Bruder **sieht** jeden Abend **fern**.'
+  - id: e18
+    de: 'Die Schule **fängt** im September **an**.'
+  # Prefixes that stay attached
+  - id: e19
+    de: 'Mein Zug **kommt** um neun Uhr **an**.'
+  - id: e20
+    de: 'Zum Geburtstag **bekomme** ich ein Fahrrad.'
+  - id: e21
+    de: 'Am Sonntag **besuchen** wir unsere Großeltern.'
+  - id: e22
+    de: 'Entschuldigung, ich **verstehe** die Frage nicht.'
+
+choice:
+  - id: c1
+    text: Ich ___ jeden Tag um halb sieben auf.
+    answer: stehe
+    options: [stehe, stehst, steht, aufstehe]
+  - id: c2
+    text: Meine Schwester ___.
+    answer: ruft mich jeden Tag an
+    options: [ruft mich jeden Tag an, anruft mich jeden Tag, ruft an mich jeden Tag, mich jeden Tag anruft]
+  - id: c3
+    text: Wann ___?
+    answer: kommt der Zug an
+    options: [kommt der Zug an, ankommt der Zug, kommt an der Zug, der Zug kommt an]
+  - id: c4
+    text: ___ du heute Abend mit?
+    answer: Kommst
+    options: [Kommst, Kommt, Mitkommst, Mitkommt]
+  - id: c5
+    text: Entschuldigung, ich ___.
+    answer: verstehe das nicht
+    options: [verstehe das nicht, stehe das nicht ver, verstehst das nicht, stehst das nicht ver]
+  - id: c6
+    text: Wann ___? – Am Sonntag.
+    answer: besuchst du uns
+    options: [besuchst du uns, suchst du uns be, du besuchst uns, du suchst uns be]
+  - id: c7
+    text: Der Film ___ um 20 Uhr an.
+    answer: fängt
+    options: [fängt, fängst, anfängt, anfängst]
+  - id: c8
+    text: ___ du gern fern?
+    answer: Siehst
+    options: [Siehst, Sehst, Fernsiehst, Fernsehst]
+  - id: c9
+    text: Ich habe kein Brot mehr. Ich kaufe heute noch ___.
+    answer: ein
+    options: [ein, an, auf, mit]
+  - id: c10
+    text: Mir ist kalt. Ich mache das Fenster ___.
+    answer: zu
+    options: [zu, auf, an, aus]
+  - id: c11
+    text: Um fünf Uhr ___ Paul mit der Arbeit auf.
+    answer: hört
+    options: [hört, hören, aufhört, aufhören]
+  - id: c12
+    text: Zum Geburtstag ___.
+    answer: bekomme ich ein Fahrrad
+    options: [bekomme ich ein Fahrrad, komme ich ein Fahrrad be, bekomme ein Fahrrad ich, komme be ich ein Fahrrad]
+  - id: c13
+    text: Lisa ___ uns zu ihrer Party ein.
+    answer: lädt
+    options: [lädt, lädst, einlädt, einlädst]
+  - id: c14
+    text: Ich bin krank. Ich ___.
+    answer: komme heute nicht mit
+    options: [komme heute nicht mit, komme heute mit nicht, mitkomme heute nicht, komme mit heute nicht]
+  - id: c15
+    text: Kannst du mich morgen ___?
+    answer: abholen
+    options: [abholen, holen ab, abholst, holst ab]
+  - id: c16
+    text: Ich muss jetzt raus, das ist meine Haltestelle. Ich steige hier ___.
+    answer: aus
+    options: [aus, ein, an, auf]
+
+wordOrder:
+  - id: w1
+    parts: [zur Party, bringe, ich, einen Kuchen, mit]
+    fixed: true
+    punctuation: '.'
+  - id: w2
+    parts: [am Samstag, kaufen, wir, im Supermarkt, ein]
+    fixed: true
+    punctuation: '.'
+  - id: w3
+    parts: [wann, kommt, ihr, in Salzburg, an]
+    fixed: true
+    punctuation: '?'
+  - id: w4
+    parts: [kommst, du, heute Abend, mit]
+    fixed: true
+    punctuation: '?'
+  - id: w5
+    parts: [mein Zug, fährt, um acht Uhr, ab]
+    fixed: true
+    punctuation: '.'
+  - id: w6
+    parts: [meine Tochter, sieht, zu viel, fern]
+    fixed: true
+    punctuation: '.'
+  - id: w7
+    parts: [wann, holst, du, mich, ab]
+    fixed: true
+    punctuation: '?'
+  - id: w8
+    parts: [heute, komme, ich, nicht, mit]
+    fixed: true
+    punctuation: '.'
+  - id: w9
+    parts: [machst, du, bitte, das Fenster, zu]
+    fixed: true
+    accept:
+      - [machst, du, das Fenster, bitte, zu]
+    punctuation: '?'
+  - id: w10
+    parts: [am Wochenende, besuchen, wir, unsere Großeltern]
+    fixed: true
+    punctuation: '.'
+  - id: w11
+    parts: [ich, verstehe, das Wort, nicht]
+    fixed: true
+    punctuation: '.'
+  - id: w12
+    parts: [wann, kommst, du, aus dem Urlaub, zurück]
+    fixed: true
+    punctuation: '?'
+
+austrianNotes:
+  - id: at1
+    de: '**Drehst** du bitte das Licht **auf**?'
