@@ -1,0 +1,92 @@
+level: a1
+category: verbs
+order: 6
+sources:
+  - title: 'ÖIF: Einstufungsmatrix A1 modular (Imperativ in the A1 grammar)'
+    url: https://www.integrationsfonds.at/fileadmin/user_upload/A1_OEIF-Einstufungsmatrix_modular.pdf
+  - title: 'telc: Einfach gut A1, Grammatik (Der Imperativ: trink, trinkt, trinken Sie; nimm, iss)'
+    url: https://www.telc.net/ebook/demo/einfach-gut-digital/a1/documents/pdf/Grammatik_Grammatik_A1.pdf
+  - title: 'grammis (IDS Mannheim): Imperativ (with or without -e; hilf, lies without -e; plural = ihr form; Sie form with Sie; verb first)'
+    url: https://grammis.ids-mannheim.de/terminologie/104
+  - title: 'Wiktionary: Hilfe:Imperativ (hol and hole)'
+    url: https://de.wiktionary.org/wiki/Hilfe:Imperativ
+  - title: 'Duden: Konjugation kommen (komm, komme; kommt)'
+    url: https://www.duden.de/konjugation/kommen
+  - title: 'Duden: Konjugation machen (mach, mache; macht)'
+    url: https://www.duden.de/konjugation/machen
+  - title: 'Duden: Konjugation trinken (trink, trinke)'
+    url: https://www.duden.de/konjugation/trinken
+  - title: 'Duden: Konjugation warten (warte; wartet)'
+    url: https://www.duden.de/konjugation/warten
+  - title: 'Wiktionary: Flexion warten (warte; warten Sie)'
+    url: https://de.wiktionary.org/wiki/Flexion:warten
+  - title: 'Duden: Konjugation arbeiten (arbeite; arbeitet)'
+    url: https://www.duden.de/konjugation/arbeiten
+  - title: 'Wiktionary: arbeiten (Imperativ arbeite)'
+    url: https://de.wiktionary.org/wiki/arbeiten
+  - title: 'Duden: Konjugation nehmen (nimm; nehmt)'
+    url: https://www.duden.de/konjugation/nehmen
+  - title: 'Wiktionary: nehmen (Imperativ nimm, nehmt)'
+    url: https://de.wiktionary.org/wiki/nehmen
+  - title: 'Duden: Konjugation essen (iss; esst)'
+    url: https://www.duden.de/konjugation/essen
+  - title: 'Wiktionary: essen (Imperativ iss, esst; esse is not standard)'
+    url: https://de.wiktionary.org/wiki/essen
+  - title: 'Wiktionary: lesen (Imperativ lies, lest)'
+    url: https://de.wiktionary.org/wiki/lesen
+  - title: 'Duden: Konjugation geben (gib; gebt)'
+    url: https://www.duden.de/konjugation/geben
+  - title: 'Duden: Konjugation sprechen (sprich; sprecht)'
+    url: https://www.duden.de/konjugation/sprechen
+  - title: 'Duden: Konjugation helfen (hilf; helft)'
+    url: https://www.duden.de/konjugation/helfen
+  - title: 'Wiktionary: geben, sprechen, helfen (Imperativ gib, sprich, hilf)'
+    url: https://de.wiktionary.org/wiki/sprechen
+  - title: 'Duden: Konjugation fahren (fahr, fahre; fahrt)'
+    url: https://www.duden.de/konjugation/fahren
+  - title: 'Duden: Konjugation schlafen (schlaf, schlafe)'
+    url: https://www.duden.de/konjugation/schlafen
+  - title: 'Duden: Konjugation laufen (lauf, laufe)'
+    url: https://www.duden.de/konjugation/laufen
+  - title: 'Wiktionary: fahren, schlafen, laufen (Imperativ fahr, schlaf, lauf)'
+    url: https://de.wiktionary.org/wiki/fahren
+  - title: 'Duden: Konjugation sein (sei; seid)'
+    url: https://www.duden.de/konjugation/sein_Hilfsverb
+  - title: 'Wiktionary: Flexion sein (sei, seid)'
+    url: https://de.wiktionary.org/wiki/Flexion:sein
+  - title: 'Duden: Konjugation aufstehen (steh auf)'
+    url: https://www.duden.de/konjugation/aufstehen
+  - title: 'Duden: Konjugation anziehen (zieh an)'
+    url: https://www.duden.de/konjugation/anziehen
+  - title: 'Wiktionary: anziehen (Imperativ zieh an)'
+    url: https://de.wiktionary.org/wiki/anziehen
+  - title: 'Duden: Konjugation hereinkommen (komm herein)'
+    url: https://www.duden.de/konjugation/hereinkommen
+  - title: 'Wiktionary: hereinkommen (Imperativ komm herein)'
+    url: https://de.wiktionary.org/wiki/hereinkommen
+  - title: 'Duden: Konjugation rufen (ruf, rufe; ruft)'
+    url: https://www.duden.de/konjugation/rufen
+  - title: 'Duden: Konjugation steigen (steig, steige)'
+    url: https://www.duden.de/konjugation/steigen
+  - title: 'Wiktionary: einsteigen (Imperativ steig ein)'
+    url: https://de.wiktionary.org/wiki/einsteigen
+  - title: 'Duden: Konjugation aufmachen, zumachen, einkaufen, mitkommen (mach auf, mach zu, kauf ein, komm mit)'
+    url: https://www.duden.de/konjugation/aufmachen
+  - title: 'Wiktionary: anrufen, aufmachen, aufstehen (Imperativ ruf an, mach auf, steh auf)'
+    url: https://de.wiktionary.org/wiki/anrufen
+  - title: 'Duden: bitte (bitte helfen Sie mir; entschuldige bitte)'
+    url: https://www.duden.de/rechtschreibung/bitte
+  - title: 'DWDS: bitte (kommen Sie bitte; setzt euch bitte; sei bitte still; bitte, nehmen Sie Platz; der Nächste[,] bitte)'
+    url: https://www.dwds.de/wb/bitte
+  - title: 'Duden Sprachratgeber: Kommasetzung bei bitte (bitte at the start, in the middle or at the end: Antworte bitte; Kümmere dich darum, bitte!)'
+    url: https://www.duden.de/sprachwissen/sprachratgeber/Kommasetzung-bei-bitte
+  - title: 'Duden Sprachratgeber: Höfliche Aufforderungen (Seien Sie [bitte] vorsichtig; Sind Sie is not correct here; kannst du mir bitte)'
+    url: https://www.duden.de/sprachwissen/sprachratgeber/Hofliche-Aufforderungen
+  - title: 'Duden Sprachratgeber: Bildung des Imperativs (formed from the present stem; with or without -e; -e required after a stem in d/t)'
+    url: https://www.duden.de/sprachwissen/sprachratgeber/Bildung-des-Imperativs
+  - title: 'grammis (IDS Mannheim): Aufforderungssatz (no Vorfeld, verb first)'
+    url: https://grammis.ids-mannheim.de/systematische-grammatik/1949
+  - title: 'Duden: Konjugation anmachen (mach an)'
+    url: https://www.duden.de/konjugation/anmachen
+  - title: 'Wiktionary: anmachen (Imperativ mach an, macht an)'
+    url: https://de.wiktionary.org/wiki/anmachen
