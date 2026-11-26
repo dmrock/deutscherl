@@ -46,3 +46,9 @@ sources:
     url: https://www.duden.de/rechtschreibung/Auto_Fahrzeug
   - title: 'Duden and DWDS: Eltern, Großeltern (nur im Plural)'
     url: https://www.dwds.de/wb/Eltern
+  - title: 'Duden and DWDS: Hotel, Zimmer, Buch (Neutrum); Freund, Kaffee, Garten (maskulin)'
+    url: https://www.dwds.de/wb/Hotel
+  - title: 'DWDS: Deklinationstabellen Freund (Dativ Plural: Freunden), Zimmer (Plural: Zimmer, Dativ Plural: Zimmern)'
+    url: https://www.dwds.de/lemma/flexion/Freund
+  - title: 'Duden: ihr (Zugehörigkeit zu einer Person oder Sache); grammis: Possessiv-Artikel (Genus und Numerus des Besitzers, auch Sachen)'
+    url: https://www.duden.de/rechtschreibung/ihr_sie_ihre

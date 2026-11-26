@@ -19,10 +19,13 @@ examples:
   e15: We're selling our car.
   e16: His parents live in Vienna.
   e17: On Sunday she's visiting her parents.
-  e18: I still live with my parents.
+  e18: On Friday I'm going to the cinema with my friends.
   e19: Lena is taking her dog for a walk.
   e20: Are you helping your sister with her homework?
-  e21: The car belongs to our son.
+  e21: The book belongs to our child.
+  e22: Where's Leo? His coffee is getting cold.
+  e23: My neighbours are nice. Their garden is very beautiful.
+  e24: Where's Sarah? Her phone is here.
 
 choice:
   c1:
@@ -44,7 +47,7 @@ choice:
   c9:
     why: 'The owner is Lisa, so it is *ihr*. *Bruder* is masculine, and after *für* comes the accusative: *ihren Bruder*.'
   c10:
-    why: '*das Kind* is neuter, so the possessive is *sein*. *Ball* is masculine and the subject here: *sein Ball*.'
+    why: 'The owner is *das Hotel*, which is neuter, so it is *sein*. The owner can also be a thing. *Zimmer* is plural here (*sind*), so it takes *-e*: *seine Zimmer*.'
   c11:
     why: 'There are several owners, the neighbours, so it is *ihr* (their). *Tochter* is feminine: *ihre Tochter*.'
   c12:
@@ -85,6 +88,11 @@ choice:
     why: '*gehören* takes the dative. *Tochter* is feminine, so it is *unserer Tochter*.'
   c30:
     why: 'After *zu* comes the dative. *Großeltern* is plural, so it is *euren Großeltern*. The plural already ends in -n.'
+
+  c31:
+    why: 'After *mit* comes the dative. *Auto* is neuter, so it is *unserem Auto*, like the masculine.'
+  c32:
+    why: 'After *mit* comes the dative. In the plural, the article ends in *-en* and the noun gets an extra *-n*: *die Kinder* → *mit seinen Kindern*.'
 
 austrianNotes:
   at1: My cola is already quite warm.

@@ -41,13 +41,20 @@ examples:
     de: 'Sie besucht am Sonntag **ihre** Eltern.'
   # Dative
   - id: e18
-    de: 'Ich wohne noch bei **meinen** Eltern.'
+    de: 'Am Freitag gehe ich mit **meinen** Freunden ins Kino.'
   - id: e19
     de: 'Lena geht mit **ihrem** Hund spazieren.'
   - id: e20
     de: 'Hilfst du **deiner** Schwester bei den Hausaufgaben?'
   - id: e21
-    de: 'Das Auto gehört **unserem** Sohn.'
+    de: 'Das Buch gehört **unserem** Kind.'
+  # Who it belongs to: sein, ihr (plural), ihr (feminine), one example per table cell
+  - id: e22
+    de: 'Wo ist Leo? **Sein** Kaffee wird kalt.'
+  - id: e23
+    de: 'Meine Nachbarn sind nett. **Ihr** Garten ist sehr schön.'
+  - id: e24
+    de: 'Wo ist Sarah? **Ihr** Handy liegt hier.'
 
 choice:
   # Which possessive: the person
@@ -89,9 +96,9 @@ choice:
     answer: ihren
     options: [ihren, ihre, seinen, seine]
   - id: c10
-    text: Das Kind ist traurig, denn ___ Ball ist kaputt.
-    answer: sein
-    options: [sein, seine, ihr, ihre]
+    text: Das Hotel ist alt, aber ___ Zimmer sind modern.
+    answer: seine
+    options: [seine, sein, ihre, ihr]
   - id: c11
     text: Meine Nachbarn haben zwei Kinder. ___ Tochter heißt Emma.
     answer: Ihre
@@ -174,6 +181,15 @@ choice:
     text: Fahrt ihr am Sonntag zu ___ Großeltern?
     answer: euren
     options: [euren, eure, eurem, eurer]
+
+  - id: c31
+    text: Wir fahren mit ___ Auto nach Italien.
+    answer: unserem
+    options: [unserem, unseren, unser, unserer]
+  - id: c32
+    text: Am Wochenende spielt Herr Novak mit ___ Fußball.
+    answer: seinen Kindern
+    options: [seinen Kindern, seinen Kinder, seine Kinder, seine Kindern]
 
 austrianNotes:
   - id: at1
