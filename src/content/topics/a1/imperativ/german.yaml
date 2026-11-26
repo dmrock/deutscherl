@@ -14,7 +14,7 @@ examples:
     de: '**Trink** ein Glas Wasser!'
   - id: e5
     de: '**Schreib** mir eine Nachricht!'
-  # Stems ending in -t
+  # Stems ending in -t or -d
   - id: e6
     de: '**Warte** hier, ich bin gleich zurück!'
   - id: e7
