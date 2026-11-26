@@ -1,0 +1,112 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: Come quickly, the bus is here!
+  e2: Kids, come and eat!
+  e3: Come in, Ms Huber!
+  e4: Drink a glass of water!
+  e5: Send me a message!
+  e6: Wait here, I'll be right back!
+  e7: Don't work at the weekend!
+  e8: Have another piece of cake!
+  e9: Drive carefully, it's snowing!
+  e10: Don't eat so much chocolate!
+  e11: Good night, sleep well!
+  e12: Read the text again!
+  e13: It's raining, run home quickly!
+  e14: Eat slowly, we have time!
+  e15: Lena, Jakob, give me a hand for a moment!
+  e16: Take a seat, the doctor will be with you shortly.
+  e17: Turn left at the traffic lights!
+  e18: Be careful, the road is icy!
+  e19: Kids, be quiet, the baby is sleeping!
+  e20: Be on time, the course starts at nine.
+  e21: Get up now, it's already eight!
+  e22: Call me in the evening!
+  e23: Pass me the salt, please!
+  e24: Please speak more slowly!
+  e25: Please call me tomorrow!
+  e26: Close the door, please!
+
+choice:
+  c1:
+    why: 'You speak to Anna, one person you call *du*. *geben* changes e to i (*du gibst*), and the change stays: *gib*. *Gebt* is for several people, and *Geb* is wrong, because the change stays.'
+  c2:
+    why: 'You speak to Lukas, so you need the *du* form. *essen* changes e to i (*du isst*), and the change stays: *iss*. *ess* is wrong, because the change stays, and *esst* is for several people.'
+  c3:
+    why: '*fahren* changes a to ä with *du* (*du fährst*), but the imperative drops the umlaut: *fahr*. *Fahrt* is for several people.'
+  c4:
+    why: '*lesen* changes e to ie (*du liest*), and the change stays: *lies*. Drop only the *-t* of *liest*. *les* is wrong, because the change stays, and *lest* is for several people.'
+  c5:
+    why: 'You speak to several children, so you need the *ihr* form: *ihr nehmt* → *nehmt*. The *ihr* form never changes its vowel. *nimm* is for one person.'
+  c6:
+    why: 'You speak to Frau Gruber politely, so you need *Sie*: the verb comes first, then *Sie*. *nimm Sie* mixes the *du* form with *Sie*, and *nehmen* without *Sie* is not an imperative.'
+  c7:
+    why: 'You speak to several children, so you need the *ihr* form of *sein*: *seid*. *sei* is for one person, and *sind* is not an imperative.'
+  c8:
+    why: 'You speak to Tim, one person you call *du*. The *du* imperative of *sein* is *sei*. *bist* is the present tense, and *seid* is for several people.'
+  c9:
+    why: 'You speak to Herr Novak politely, so you need *Seien Sie*. *sein* is the only verb whose *Sie* form is not the present tense: *Sind Sie* is a question.'
+  c10:
+    why: 'You speak to Mia, so you need the *du* form. The stem *wart-* ends in *-t*, so the form has *-e*: *warte*. *wartet* is for several people.'
+  c11:
+    why: '*Sie* follows the gap, so you need the *Sie* form, which looks like the infinitive: *helfen Sie*. The vowel change e → i happens only with *du*: *hilf*. *helft* is for several people you call *du*.'
+  c12:
+    why: '*anmachen* is a separable verb. In the imperative, the verb comes first and *an* goes to the end: *Mach bitte das Licht an*. The *du* imperative has no *-st*.'
+  c13:
+    why: 'You speak to Herr Berger politely, so the form is the infinitive form followed by *Sie*: *rufen Sie*. *ruf Sie* mixes the *du* form with *Sie*, and *rufen* without *Sie* is not an imperative.'
+  c14:
+    why: 'You speak to your grandad, one person you call *du*. *helfen* changes e to i (*du hilfst*), and the change stays: *hilf*. *helf* is wrong, because the change stays, and *helft* is for several people.'
+  c15:
+    why: 'You speak to several children, so you need the *ihr* form: *ihr geht* → *geht*. *geh* is for one person. Without a pronoun, *gehen* and *gehst* are not imperatives.'
+  c16:
+    why: 'You speak to Jonas, so you need the *du* form: drop *du* and *-st* from *du schreibst*: *schreib*. *schreibt* is for several people.'
+  c17:
+    why: '*sprechen* changes e to i (*du sprichst*), and the change stays: *sprich*. *Sprech* is wrong, because the change stays, and *Sprecht* is for several people.'
+  c18:
+    why: 'You speak to Maria, so you need the *du* form. The stem *arbeit-* ends in *-t*, so the form has *-e*: *arbeite*. *arbeitet* is for several people.'
+  c19:
+    why: 'You speak to Emil, so you need the *du* form. *schlafen* changes a to ä with *du* (*du schläfst*), but the imperative drops the umlaut: *schlaf*. *schlaft* is for several people.'
+  c20:
+    why: 'You speak to Frau Weber politely, so you need the infinitive form followed by *Sie*: *fahren Sie*. *fahr* is the *du* form, and *fahrt* is for several people.'
+  c21:
+    why: '*einsteigen* is a separable verb. The verb comes first, and *ein* goes to the very end: *Steig schnell ein*. The *du* imperative has no *-st*.'
+
+wordOrder:
+  w1:
+    translation: Please close the window!
+    why: 'The verb *mach* comes first, and *zu* from *zumachen* goes to the end. *bitte* can come after the verb, after *das Fenster*, at the start or at the end.'
+  w2:
+    translation: Put your jacket on!
+    why: 'The verb *zieh* comes first, and *an* from *anziehen* goes to the end.'
+  w3:
+    translation: Please come in!
+    why: 'In the *Sie* form, the verb comes first and *Sie* right after it. *herein* from *hereinkommen* goes to the end. *bitte* comes after *Sie*, at the start or at the end.'
+  w4:
+    translation: Call me!
+    why: 'The verb comes first, then *Sie*. *an* from *anrufen* goes to the end.'
+  w5:
+    translation: Take the umbrella with you!
+    why: 'The verb *nimm* comes first, and *mit* from *mitnehmen* goes to the end.'
+  w6:
+    translation: Do the shopping for the weekend!
+    why: 'The *ihr* form *kauft* comes first, and *ein* from *einkaufen* goes to the end.'
+  w7:
+    translation: Please be on time!
+    why: 'The imperative *sei* comes first. *bitte* can come after it, at the start or at the end.'
+  w8:
+    translation: Don't be so loud!
+    why: 'The *ihr* form *seid* comes first, then *nicht so laut*.'
+  w9:
+    translation: Please drive more slowly!
+    why: 'In the *Sie* form, the verb comes first and *Sie* right after it. *bitte* comes after *Sie*, at the start or at the end.'
+  w10:
+    translation: Help me, please!
+    why: 'The verb *hilf* comes first, then *mir*. *bitte* can come after *mir* or at the start.'
+  w11:
+    translation: Read the text again!
+    why: 'The verb *lies* comes first. *den Text* and *noch einmal* can come in either order.'
+  w12:
+    translation: Open your books!
+    why: 'The *ihr* form *macht* comes first, and *auf* from *aufmachen* goes to the end.'

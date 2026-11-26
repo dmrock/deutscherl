@@ -1,0 +1,206 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the imperative (with Sie), the separable prefix at the end and bitte.
+
+examples:
+  # Three forms: one example per row of the table (du, ihr, Sie)
+  - id: e1
+    de: '**Komm** schnell, der Bus ist da!'
+  - id: e2
+    de: 'Kinder, **kommt** zum Essen!'
+  - id: e3
+    de: '**Kommen Sie** herein, Frau Huber!'
+  # The du form
+  - id: e4
+    de: '**Trink** ein Glas Wasser!'
+  - id: e5
+    de: '**Schreib** mir eine Nachricht!'
+  # Stems ending in -t or -d
+  - id: e6
+    de: '**Warte** hier, ich bin gleich zurück!'
+  - id: e7
+    de: '**Arbeite** nicht am Wochenende!'
+  # Vowel changes: one example per cell of the table
+  - id: e8
+    de: '**Nimm** noch ein Stück Kuchen!'
+  - id: e9
+    de: '**Fahr** vorsichtig, es schneit!'
+  - id: e10
+    de: '**Iss** nicht so viel Schokolade!'
+  - id: e11
+    de: 'Gute Nacht, **schlaf** gut!'
+  - id: e12
+    de: '**Lies** den Text noch einmal!'
+  - id: e13
+    de: 'Es regnet, **lauf** schnell nach Hause!'
+  # ihr
+  - id: e14
+    de: '**Esst** langsam, wir haben Zeit!'
+  - id: e15
+    de: 'Lena, Jakob, **helft** mir kurz!'
+  # Sie
+  - id: e16
+    de: '**Nehmen Sie** Platz, der Arzt kommt gleich.'
+  - id: e17
+    de: '**Fahren Sie** an der Ampel links!'
+  # sein: one example per column of the table
+  - id: e18
+    de: '**Sei** vorsichtig, die Straße ist glatt!'
+  - id: e19
+    de: 'Kinder, **seid** leise, das Baby schläft!'
+  - id: e20
+    de: '**Seien Sie** pünktlich, der Kurs beginnt um neun.'
+  # Separable verbs
+  - id: e21
+    de: '**Steh** endlich **auf**, es ist schon acht!'
+  - id: e22
+    de: '**Ruf** mich am Abend **an**!'
+  # bitte
+  - id: e23
+    de: '**Gib** mir **bitte** das Salz!'
+  - id: e24
+    de: '**Sprechen Sie bitte** langsamer!'
+  - id: e25
+    de: '**Bitte ruf** mich morgen **an**!'
+  - id: e26
+    de: '**Mach** die Tür **zu**, **bitte**!'
+
+choice:
+  - id: c1
+    text: ___ mir bitte das Buch, Anna!
+    answer: Gib
+    options: [Gib, Gibst, Geb, Gebt]
+  - id: c2
+    text: Lukas, ___ nicht so schnell!
+    answer: iss
+    options: [iss, isst, ess, esst]
+  - id: c3
+    text: ___ vorsichtig, Papa! Die Straße ist glatt.
+    answer: Fahr
+    options: [Fahr, Fähr, Fährst, Fahrt]
+  - id: c4
+    text: Max, ___ den Satz bitte laut!
+    answer: lies
+    options: [lies, les, liest, lest]
+  - id: c5
+    text: Kinder, ___ eure Jacken mit, es ist kalt!
+    answer: nehmt
+    options: [nehmt, nimm, nimmt, nehmen]
+  - id: c6
+    text: Frau Gruber, ___ bitte Platz!
+    answer: nehmen Sie
+    options: [nehmen Sie, nimm Sie, nehmt, nehmen]
+  - id: c7
+    text: Kinder, ___ brav! Wir sind um sechs zurück.
+    answer: seid
+    options: [seid, sei, sind, seien]
+  - id: c8
+    text: Tim, ___ nicht traurig!
+    answer: sei
+    options: [sei, bist, seid, sein]
+  - id: c9
+    text: ___ bitte pünktlich, Herr Novak!
+    answer: Seien Sie
+    options: [Seien Sie, Sind Sie, Sei, Seid]
+  - id: c10
+    text: Mia, ___ hier! Ich hole schnell das Auto.
+    answer: warte
+    options: [warte, wartest, wartet, warten]
+  - id: c11
+    text: Bitte ___ Sie mir, ich finde den Bahnhof nicht!
+    answer: helfen
+    options: [helfen, hilf, helft, hilft]
+  - id: c12
+    text: Es ist so dunkel hier. ___!
+    answer: Mach bitte das Licht an
+    options: [Mach bitte das Licht an, Anmach bitte das Licht, Mach an bitte das Licht, Machst bitte das Licht an]
+  - id: c13
+    text: Herr Berger, ___ mich bitte morgen an!
+    answer: rufen Sie
+    options: [rufen Sie, ruf Sie, ruft, rufen]
+  - id: c14
+    text: Opa, ___ mir bitte!
+    answer: hilf
+    options: [hilf, hilfst, helf, helft]
+  - id: c15
+    text: Kinder, ___ jetzt ins Bett!
+    answer: geht
+    options: [geht, gehen, geh, gehst]
+  - id: c16
+    text: Jonas, ___ mir bitte eine Postkarte aus Wien!
+    answer: schreib
+    options: [schreib, schreibst, schreibt, schreiben]
+  - id: c17
+    text: Ich höre dich nicht. ___ bitte lauter!
+    answer: Sprich
+    options: [Sprich, Sprech, Sprichst, Sprecht]
+  - id: c18
+    text: Maria, ___ nicht so lange, es ist schon spät!
+    answer: arbeite
+    options: [arbeite, arbeitest, arbeitet, arbeiten]
+  - id: c19
+    text: Emil, ___ noch ein bisschen, es ist erst sechs!
+    answer: schlaf
+    options: [schlaf, schläf, schläfst, schlaft]
+  - id: c20
+    text: Frau Weber, ___ bitte geradeaus und dann links!
+    answer: fahren Sie
+    options: [fahren Sie, fährt Sie, fahr, fahrt]
+  - id: c21
+    text: ___! Der Zug fährt gleich ab.
+    answer: Steig schnell ein
+    options: [Steig schnell ein, Einsteig schnell, Steigst schnell ein, Einsteigst schnell]
+
+wordOrder:
+  - id: w1
+    parts: [mach, bitte, das Fenster, zu]
+    accept:
+      - [bitte, mach, das Fenster, zu]
+      - [mach, das Fenster, bitte, zu]
+      - [mach, das Fenster, zu, bitte]
+    punctuation: '!'
+  - id: w2
+    parts: [zieh, die Jacke, an]
+    punctuation: '!'
+  - id: w3
+    parts: [kommen, Sie, bitte, herein]
+    accept:
+      - [bitte, kommen, Sie, herein]
+      - [kommen, Sie, herein, bitte]
+    punctuation: '!'
+  - id: w4
+    parts: [rufen, Sie, mich, an]
+    punctuation: '!'
+  - id: w5
+    parts: [nimm, den Regenschirm, mit]
+    punctuation: '!'
+  - id: w6
+    parts: [kauft, fürs Wochenende, ein]
+    punctuation: '!'
+  - id: w7
+    parts: [sei, bitte, pünktlich]
+    accept:
+      - [bitte, sei, pünktlich]
+      - [sei, pünktlich, bitte]
+    punctuation: '!'
+  - id: w8
+    parts: [seid, nicht, so laut]
+    punctuation: '!'
+  - id: w9
+    parts: [fahren, Sie, bitte, langsamer]
+    accept:
+      - [bitte, fahren, Sie, langsamer]
+      - [fahren, Sie, langsamer, bitte]
+    punctuation: '!'
+  - id: w10
+    parts: [hilf, mir, bitte]
+    accept:
+      - [bitte, hilf, mir]
+    punctuation: '!'
+  - id: w11
+    parts: [lies, den Text, noch einmal]
+    accept:
+      - [lies, noch einmal, den Text]
+    punctuation: '!'
+  - id: w12
+    parts: [macht, eure Bücher, auf]
+    punctuation: '!'
