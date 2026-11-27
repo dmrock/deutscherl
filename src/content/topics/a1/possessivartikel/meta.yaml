@@ -1,0 +1,54 @@
+level: a1
+category: nouns
+order: 2
+sources:
+  - title: 'ÖIF: A1 Einstufungsmatrix modular (Possessivartikel mein/dein/Ihr im Nominativ und Akkusativ; sein/ihr, unser/euer)'
+    url: https://www.integrationsfonds.at/fileadmin/user_upload/A1_OEIF-Einstufungsmatrix_modular.pdf
+  - title: 'telc: Einfach gut A1, Grammatik (Possessivartikel mein … ihr/Ihr, euer/eure; funktionieren wie ein/eine; den Kindern)'
+    url: https://www.telc.net/ebook/demo/einfach-gut-digital/a1/documents/pdf/Grammatik_Grammatik_A1.pdf
+  - title: 'grammis (IDS Mannheim): Possessiv-Artikel (Endung nach dem Nomen, Stamm nach dem Besitzer)'
+    url: https://grammis.ids-mannheim.de/terminologie/194
+  - title: 'Duden: ihr (Possessivpronomen; Femininum, Plural; Ihr in der Anrede mit Sie)'
+    url: https://www.duden.de/rechtschreibung/ihr_sie_ihre
+  - title: 'DWDS: ihr (Possessivpronomen: weibliche Person, mehrere Personen; ihrem Sohn)'
+    url: https://www.dwds.de/wb/ihr
+  - title: 'DWDS: sein (Possessivpronomen, Maskulinum und Neutrum)'
+    url: https://www.dwds.de/wb/sein
+  - title: 'Duden: euer (eu[e]re, eu[e]ren, eu[e]rem)'
+    url: https://www.duden.de/rechtschreibung/euer_Anrede_wessen
+  - title: 'DWDS: euer (eurem Haus, euren Vater)'
+    url: https://www.dwds.de/wb/euer
+  - title: 'Wiktionary: euere (flektierte Form von euer)'
+    url: https://de.wiktionary.org/wiki/euere
+  - title: 'Grimm Grammar (University of Texas at Austin): dative plural -n, not after plurals in -n (den Eltern)'
+    url: https://www.coerll.utexas.edu/gg/pr/cas_07.html
+  - title: 'DWDS: Deklinationstabelle Handy (Dativ Plural: Handys, ohne -n); Kind (Dativ Plural: Kindern); Eltern (Dativ: Eltern)'
+    url: https://www.dwds.de/lemma/flexion/Handy
+  - title: 'Wiktionary: Handy (Dativ Plural: den Handys)'
+    url: https://de.wiktionary.org/wiki/Handy
+  - title: 'Duden: Cola (das Cola, süddeutsch, österreichisch, schweizerisch nur so; sonst auch die Cola)'
+    url: https://www.duden.de/rechtschreibung/Cola
+  - title: 'de Cillia, Ransmayr (2019): Österreichisches Deutsch macht Schule, Böhlau, S. 188 (ein Cola österreichisch, eine Cola deutsch)'
+    url: https://austria-forum.org/web-books/osterreichdeutsch00de2019isds/000190
+  - title: 'Wiktionary: Cola (das Cola in Süddeutschland, der Schweiz und Österreich)'
+    url: https://de.wiktionary.org/wiki/Cola
+  - title: 'Duden and DWDS: Bruder, Koffer, Schlüssel, Hund, Sohn, Ball, Vater, Opa, Ring (maskulin)'
+    url: https://www.dwds.de/wb/Koffer
+  - title: 'Duden and DWDS: Zug (maskulin), Mann (maskulin)'
+    url: https://www.duden.de/rechtschreibung/Mann_Person
+  - title: 'Duden: Pass (der, Plural die Pässe), Bus (maskulin)'
+    url: https://www.duden.de/rechtschreibung/Pass_Dokument
+  - title: 'DWDS: Pass (Maskulinum, Plural Pässe), Bus (Maskulinum)'
+    url: https://www.dwds.de/wb/Pass
+  - title: 'Duden and DWDS: Schwester, Mutter, Tochter, Wohnung, Tasche, Frau, Oma, Telefonnummer, Lehrerin, Freundin, Jacke (feminin)'
+    url: https://www.dwds.de/wb/Telefonnummer
+  - title: 'Duden and DWDS: Handy, Haus, Kind, Auto (Neutrum)'
+    url: https://www.duden.de/rechtschreibung/Auto_Fahrzeug
+  - title: 'Duden and DWDS: Eltern, Großeltern (nur im Plural)'
+    url: https://www.dwds.de/wb/Eltern
+  - title: 'Duden and DWDS: Hotel, Zimmer, Buch (Neutrum); Freund, Kaffee, Garten (maskulin)'
+    url: https://www.dwds.de/wb/Hotel
+  - title: 'DWDS: Deklinationstabellen Freund (Dativ Plural: Freunden), Zimmer (Plural: Zimmer, Dativ Plural: Zimmern)'
+    url: https://www.dwds.de/lemma/flexion/Freund
+  - title: 'Duden: ihr (Zugehörigkeit zu einer Person oder Sache); grammis: Possessiv-Artikel (Genus und Numerus des Besitzers, auch Sachen)'
+    url: https://www.duden.de/rechtschreibung/ihr_sie_ihre

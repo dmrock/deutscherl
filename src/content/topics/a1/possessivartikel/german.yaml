@@ -1,0 +1,196 @@
+# German content of the topic, shared by every locale (`.claude/rules/content.md`).
+# In examples, **…** marks the possessive articles that the page highlights.
+
+examples:
+  # Who it belongs to: mein, dein, unser, euer, Ihr
+  - id: e1
+    de: 'Das ist **mein** Bruder Max.'
+  - id: e2
+    de: 'Ist das **dein** Handy?'
+  - id: e3
+    de: '**Unser** Haus ist schon alt.'
+  - id: e4
+    de: 'Wo wohnen **eure** Eltern?'
+  - id: e5
+    de: 'Ist das **Ihr** Koffer, Frau Huber?'
+  # sein or ihr: the owner decides
+  - id: e6
+    de: 'Das ist Paul. **Seine** Schwester wohnt in Linz.'
+  - id: e7
+    de: 'Das ist Anna. **Ihr** Bruder wohnt in Salzburg.'
+  - id: e8
+    de: 'Das Kind ist müde. **Seine** Mutter bringt es ins Bett.'
+  - id: e9
+    de: 'Tom und Lisa sind verheiratet. **Ihre** Tochter ist zwei Jahre alt.'
+  # Endings like ein: nominative | accusative, one pair per gender and the plural
+  - id: e10
+    de: '**Euer** Zug fährt um acht.'
+  - id: e11
+    de: 'Habt ihr **euren** Schlüssel dabei?'
+  - id: e12
+    de: '**Meine** Wohnung ist klein, aber hell.'
+  - id: e13
+    de: 'Wie findest du **meine** Wohnung?'
+  - id: e14
+    de: '**Unser** Auto ist kaputt.'
+  - id: e15
+    de: 'Wir verkaufen **unser** Auto.'
+  - id: e16
+    de: '**Seine** Eltern wohnen in Wien.'
+  - id: e17
+    de: 'Sie besucht am Sonntag **ihre** Eltern.'
+  # Dative
+  - id: e18
+    de: 'Am Freitag gehe ich mit **meinen** Freunden ins Kino.'
+  - id: e19
+    de: 'Lena geht mit **ihrem** Hund spazieren.'
+  - id: e20
+    de: 'Hilfst du **deiner** Schwester bei den Hausaufgaben?'
+  - id: e21
+    de: 'Das Buch gehört **unserem** Kind.'
+  # Who it belongs to: sein, ihr (plural), ihr (feminine), one example per table cell
+  - id: e22
+    de: 'Wo ist Leo? **Sein** Kaffee wird kalt.'
+  - id: e23
+    de: 'Meine Nachbarn sind nett. **Ihr** Garten ist sehr schön.'
+  - id: e24
+    de: 'Wo ist Sarah? **Ihr** Handy liegt hier.'
+
+choice:
+  # Which possessive: the person
+  - id: c1
+    text: Ich habe einen Bruder und eine Schwester. ___ Schwester heißt Mia.
+    answer: Meine
+    options: [Meine, Mein, Deine, Dein]
+  - id: c2
+    text: Ihr wohnt jetzt zusammen in Graz? Ist ___ Wohnung schön?
+    answer: eure
+    options: [eure, euer, deine, dein]
+  - id: c3
+    text: Habt ihr ein Auto? – Ja, aber ___ Auto ist sehr alt.
+    answer: unser
+    options: [unser, unsere, euer, eure]
+  - id: c4
+    text: Frau Berger, ist das ___ Tasche?
+    answer: Ihre
+    options: [Ihre, Ihr, deine, dein]
+  - id: c5
+    text: Wo wohnst du? Ist ___ Wohnung groß?
+    answer: deine
+    options: [deine, dein, Ihre, Ihr]
+  - id: c6
+    text: Kinder, wo ist ___ Ball?
+    answer: euer
+    options: [euer, eure, dein, deine]
+  # sein or ihr
+  - id: c7
+    text: Herr Novak ist verheiratet. ___ Frau heißt Eva.
+    answer: Seine
+    options: [Seine, Sein, Ihre, Ihr]
+  - id: c8
+    text: Frau Novak ist Ärztin. ___ Mann ist Lehrer.
+    answer: Ihr
+    options: [Ihr, Ihre, Sein, Seine]
+  - id: c9
+    text: Lisa ist heute in der Stadt. Sie kauft ein Geschenk für ___ Bruder.
+    answer: ihren
+    options: [ihren, ihre, seinen, seine]
+  - id: c10
+    text: Das Hotel ist alt, aber ___ Zimmer sind modern.
+    answer: seine
+    options: [seine, sein, ihre, ihr]
+  - id: c11
+    text: Meine Nachbarn haben zwei Kinder. ___ Tochter heißt Emma.
+    answer: Ihre
+    options: [Ihre, Ihr, Seine, Sein]
+  - id: c12
+    text: Meine Großeltern wohnen auf dem Land. ___ Haus ist sehr alt.
+    answer: Ihr
+    options: [Ihr, Ihre, Sein, Seine]
+  - id: c13
+    text: Anna wohnt in Wien. Jeden Sonntag ruft sie ___ Vater an.
+    answer: ihren
+    options: [ihren, ihre, seinen, seine]
+  - id: c14
+    text: Max ist sehr glücklich. ___ Freundin kommt morgen zu Besuch.
+    answer: Seine
+    options: [Seine, Sein, Ihre, Ihr]
+  # Endings in the nominative and accusative
+  - id: c15
+    text: Ich finde ___ Handy nicht.
+    answer: mein
+    options: [mein, meinen, meine, meinem]
+  - id: c16
+    text: Wir besuchen am Wochenende ___ Opa.
+    answer: unseren
+    options: [unseren, unser, unsere, unserem]
+  - id: c17
+    text: Hast du ___ Pass dabei?
+    answer: deinen
+    options: [deinen, dein, deine, deinem]
+  - id: c18
+    text: ___ Eltern kommen aus der Türkei.
+    answer: Meine
+    options: [Meine, Mein, Meinen, Meinem]
+  - id: c19
+    text: Besucht ihr morgen ___ Oma?
+    answer: eure
+    options: [eure, euer, euren, eurem]
+  - id: c20
+    text: Ihr kommt zu spät! ___ Bus ist schon weg.
+    answer: Euer
+    options: [Euer, Eure, Euren, Eurem]
+  - id: c21
+    text: Bringt ihr ___ Hund mit?
+    answer: euren
+    options: [euren, euer, eure, eurem]
+  - id: c22
+    text: Herr Weber, ich brauche noch ___ Telefonnummer.
+    answer: Ihre
+    options: [Ihre, Ihren, Ihr, Ihrem]
+  - id: c23
+    text: Mein Bruder liebt ___ Auto.
+    answer: sein
+    options: [sein, seinen, seine, seinem]
+  - id: c24
+    text: Das ist ___ Lehrerin, Frau Gruber.
+    answer: unsere
+    options: [unsere, unser, unseren, unserem]
+  - id: c25
+    text: Lisa sucht ___ Ring.
+    answer: ihren
+    options: [ihren, ihr, ihre, ihrem]
+  # Dative
+  - id: c26
+    text: Ich fahre mit ___ Freundin nach Wien.
+    answer: meiner
+    options: [meiner, meinem, meine, meinen]
+  - id: c27
+    text: Wohnst du noch bei ___ Eltern?
+    answer: deinen
+    options: [deinen, deine, deinem, deiner]
+  - id: c28
+    text: Paul hilft ___ Vater im Garten.
+    answer: seinem
+    options: [seinem, seinen, sein, seiner]
+  - id: c29
+    text: Die Jacke gehört ___ Tochter.
+    answer: unserer
+    options: [unserer, unsere, unserem, unseren]
+  - id: c30
+    text: Fahrt ihr am Sonntag zu ___ Großeltern?
+    answer: euren
+    options: [euren, eure, eurem, eurer]
+
+  - id: c31
+    text: Wir fahren mit ___ Auto nach Italien.
+    answer: unserem
+    options: [unserem, unseren, unser, unserer]
+  - id: c32
+    text: Am Wochenende spielt Herr Novak mit ___ Fußball.
+    answer: seinen Kindern
+    options: [seinen Kindern, seinen Kinder, seine Kinder, seine Kindern]
+
+austrianNotes:
+  - id: at1
+    de: '**Mein Cola** ist schon ganz warm.'

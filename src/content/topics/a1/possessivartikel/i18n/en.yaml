@@ -1,0 +1,98 @@
+# English translations and explanations for german.yaml, keyed by item id.
+# *word* marks a German word inside the text.
+
+examples:
+  e1: This is my brother Max.
+  e2: Is this your phone?
+  e3: Our house is quite old.
+  e4: Where do your parents live?
+  e5: Is this your suitcase, Ms Huber?
+  e6: This is Paul. His sister lives in Linz.
+  e7: This is Anna. Her brother lives in Salzburg.
+  e8: The child is tired. Its mother puts it to bed.
+  e9: Tom and Lisa are married. Their daughter is two years old.
+  e10: Your train leaves at eight.
+  e11: Have you got your key with you?
+  e12: My flat is small but bright.
+  e13: What do you think of my flat?
+  e14: Our car is broken.
+  e15: We're selling our car.
+  e16: His parents live in Vienna.
+  e17: On Sunday she's visiting her parents.
+  e18: On Friday I'm going to the cinema with my friends.
+  e19: Lena is taking her dog for a walk.
+  e20: Are you helping your sister with her homework?
+  e21: The book belongs to our child.
+  e22: Where's Leo? His coffee is getting cold.
+  e23: My neighbours are nice. Their garden is very beautiful.
+  e24: Where's Sarah? Her phone is here.
+
+choice:
+  c1:
+    why: 'You talk about your own sister, so it is *mein* (my). *Schwester* is feminine, so it takes *-e*: *Meine Schwester*.'
+  c2:
+    why: 'You talk to several people (*ihr wohnt*), so "your" is *euer*. *Wohnung* is feminine, and *euer* gets shorter with an ending: *eure Wohnung*. *deine* is for one person.'
+  c3:
+    why: 'The answer is about the speakers'' own car, so it is *unser* (our). *Auto* is neuter and the subject here, so there is no ending: *unser Auto*.'
+  c4:
+    why: '*Frau Berger* is someone you call *Sie*, so "your" is *Ihr*, with a capital letter. *Tasche* is feminine: *Ihre Tasche*. *deine* is for someone you call *du*.'
+  c5:
+    why: 'You call the person *du* (*wohnst du*), so "your" is *dein*. *Wohnung* is feminine: *deine Wohnung*. *Ihre* is for someone you call *Sie*.'
+  c6:
+    why: 'You talk to several children, so "your" is *euer*. *Ball* is masculine and the subject here, so there is no ending: *euer Ball*. *dein* is for one child.'
+  c7:
+    why: 'The owner is *Herr Novak*, a man, so it is *sein*. *Frau* is feminine: *seine Frau*. *Ihre* would mean the wife of a woman.'
+  c8:
+    why: 'The owner is *Frau Novak*, a woman, so it is *ihr*. *Mann* is masculine, but that only decides the ending: *ihr Mann*. *Sein* would be a man''s husband.'
+  c9:
+    why: 'The owner is Lisa, so it is *ihr*. *Bruder* is masculine, and after *für* comes the accusative: *ihren Bruder*.'
+  c10:
+    why: 'The owner is *das Hotel*, which is neuter, so it is *sein*. The owner can also be a thing. *Zimmer* is plural here (*sind*), so it takes *-e*: *seine Zimmer*.'
+  c11:
+    why: 'There are several owners, the neighbours, so it is *ihr* (their). *Tochter* is feminine: *ihre Tochter*.'
+  c12:
+    why: 'The grandparents are several owners, so it is *ihr* (their). *Haus* is neuter and the subject here: *ihr Haus*. *Sein* is only for one owner who is *er* or *es*.'
+  c13:
+    why: 'The owner is Anna, so it is *ihr*. *Vater* is masculine and the direct object of *anrufen*, so it is *ihren Vater*.'
+  c14:
+    why: 'The owner is Max, so it is *sein*. *Freundin* is feminine, but that only decides the ending: *seine Freundin*.'
+  c15:
+    why: '*Handy* is neuter. In the accusative only masculine nouns change, so it stays *mein Handy*.'
+  c16:
+    why: '*Opa* is masculine and the direct object of *besuchen*. In the accusative, masculine takes *-en*: *unseren Opa*.'
+  c17:
+    why: '*Pass* (passport) is masculine and the direct object of *haben*, so it is *deinen Pass*.'
+  c18:
+    why: '*Eltern* is plural and the subject here, so it takes *-e*: *meine Eltern*.'
+  c19:
+    why: '*Oma* is feminine. Feminine looks the same in the accusative, and *euer* gets shorter with an ending: *eure Oma*.'
+  c20:
+    why: '*Bus* is masculine and the subject here, so there is no ending: *euer Bus*.'
+  c21:
+    why: '*Hund* is masculine and the direct object of *mitbringen*. With *-en*, *euer* gets shorter: *euren Hund*.'
+  c22:
+    why: '*Telefonnummer* is feminine. Feminine looks the same in the accusative, so it is *Ihre Telefonnummer*. *Ihren* is only for masculine nouns.'
+  c23:
+    why: '*Auto* is neuter. Neuter does not change in the accusative, so it is *sein Auto*.'
+  c24:
+    why: 'After *sein* (to be), the noun stays in the nominative. *Lehrerin* is feminine: *unsere Lehrerin*.'
+  c25:
+    why: '*Ring* is masculine and the direct object of *suchen*, so it is *ihren Ring*.'
+  c26:
+    why: 'After *mit* comes the dative. *Freundin* is feminine, so it is *meiner Freundin*.'
+  c27:
+    why: 'After *bei* comes the dative. *Eltern* is plural, so it is *deinen Eltern*. *Eltern* already ends in -n, so the noun gets no extra -n.'
+  c28:
+    why: '*helfen* takes the dative. *Vater* is masculine, so it is *seinem Vater*. *seinen* would be the accusative.'
+  c29:
+    why: '*gehören* takes the dative. *Tochter* is feminine, so it is *unserer Tochter*.'
+  c30:
+    why: 'After *zu* comes the dative. *Großeltern* is plural, so it is *euren Großeltern*. The plural already ends in -n.'
+
+  c31:
+    why: 'After *mit* comes the dative. *Auto* is neuter, so it is *unserem Auto*, like the masculine.'
+  c32:
+    why: 'After *mit* comes the dative. In the plural, the article ends in *-en* and the noun gets an extra *-n*: *die Kinder* → *mit seinen Kindern*.'
+
+austrianNotes:
+  at1: My cola is already quite warm.
